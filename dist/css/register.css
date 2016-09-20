@@ -21,24 +21,24 @@ body, td, th {
     text-align: center;
 }
 
-#library_user_register_title, #gps_user_register_title {
-    width: 190px;
-    position: relative;
-    display: block;
-    padding: 0px 0px;
-    line-height: 1.428571429;
-    border: 1px solid transparent;
-    border-radius: 4px 4px 0 0;
-    margin-left: auto;
-    margin-right: auto;
-}
+/*#library_user_register_title, #gps_user_register_title {*/
+    /*width: 190px;*/
+    /*position: relative;*/
+    /*display: block;*/
+    /*padding: 0px 0px;*/
+    /*line-height: 1.428571429;*/
+    /*border: 1px solid transparent;*/
+    /*border-radius: 4px 4px 0 0;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+/*}*/
 
-#library_user, #gps_user {
-    position: relative;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
+/*#library_user, #gps_user {*/
+    /*position: relative;*/
+    /*width: 100%;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+/*}*/
 
 /*#gps_user{*/
 /*position: relative;*/
@@ -46,14 +46,14 @@ body, td, th {
 /*margin-left: auto;*/
 /*margin-right: auto;*/
 /*}*/
-#library_user_register, #gps_user_register {
-    margin-top: 200px;
+/*#library_user_register, #gps_user_register {*/
+    /*margin-top: 200px;*/
 
-    position: relative;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
+    /*position: relative;*/
+    /*width: 100%;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+/*}*/
 
 #lgbtn {
     position: relative;
