@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>社馆互动</title>
+
+    <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/css/left_nav.css">
+
+    <link rel="stylesheet" href="../dist/css/header.css">
+    <script src="../dist/js/jquery.min.js"></script>
+
+
+    <style>
+        .down {
+            padding-top: 25px;
+            width: 770px;
+        }
+    </style>
+</head>
+<body>
+{include file="header.html"}
+<div class="">
+    <div class="row ">
+
+        <div class="col-sm-3">
+            {include file="left_nav.html"}
+
+        </div>
+
+        <div class="col-sm-9">
+            <div class="down">
+                <div id="guanpeidongtai">
+                    <div >馆配动态</div>
+
+                </div>
+                <div id="communication_record">
+                    <div >沟通记录</div>
+                </div>
+                <div id="communication_method">
+                    <div >业务联系方式</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="../dist/js/bootstrap.min.js"></script>
+<script src="../dist/js/holder.min.js"></script>
+<script src="../dist/js/application.js"></script>
+<!--<script src="../dist/js/jquery.icheck.min.js"></script>-->
+
+<script src="../dist/js/zzsc.js"></script>
+<script src="../dist/js/left_nav.js"></script>
+
+</html>

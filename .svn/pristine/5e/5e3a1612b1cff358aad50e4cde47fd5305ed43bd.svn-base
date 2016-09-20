@@ -1,0 +1,42 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2016/6/24
+ * Time: 20:12
+ */
+
+//include ("libs/Smarty.class.php");
+include ("include/GuanCangSmarty.php");
+
+
+require_once("config.php");
+
+include  ("db/con_mysql2.php");
+
+//echo $_GET['book_id'];
+//exit();
+
+session_start();
+
+$smarty = new GuanCangSmarty();
+
+$book_id = $_GET['book_id'];
+
+$con_mysql2 = new con_mysql2();
+
+//$smt=$pdo->query("SELECT * FROM bookinfo where bookinfo_id = '$book_id'");
+//
+//$bookdetails=$smt->fetchAll(PDO::FETCH_ASSOC);
+
+$sql = "select * from ecs_book where book_id = '$book_id'";
+
+$bookdetails =  $con_mysql2->sdb($sql);
+
+
+
+
+
+$smarty->assign('details',$bookdetails);
+
+$smarty->display("detail.html");

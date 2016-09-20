@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+
+    <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
+    <script src="../dist/js/jquery.min.js"></script>
+    <script src="../dist/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="../dist/css/header.css">
+    <script language="javascript" src="../dist/js/login_gps.js"></script>
+    <script language="javascript" src="../dist/js/login.js"></script>
+    <link rel="stylesheet" type="text/css" href="../dist/css/login.css"/>
+
+    <script language="javascript" src="../dist/js/xmlhttprequest.js"></script>
+    <style>
+        .library_user_login , .gps_user_login {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -150px 0 0 -100px;
+            width: 300px;
+            height: 200px;
+            /*background: black;*/
+            font-size: 18px;
+            font-family: 'Microsoft YaHei', 'Arial';
+        }
+    </style>
+</head>
+<body>
+{include file="header.html"}
+
+<div class="login_group">
+    <ul id="login_group_title" class="nav nav-tabs ">
+        <li><a href="#library_user" data-toggle='tab'>图书馆用户登录</a></li>
+        <li class='active'><a href="#gps_user" data-toggle='tab'>馆配商用户登录</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane  fade " id='library_user'>
+            <div id="library_user_login" class="library_user_login">
+                <div id="bgdiv">
+                    <!--<div id='top_title'><font size="4">会员登录及注册</font></div>-->
+                    <div id="txtdiv1">登录名称：<input id="lgname" name="lgname" type="text"/></div>
+                    <div id="txtdiv2">登录密码：<input id="lgpwd" name="lgpwd" type="password"/></div>
+                    <div id="txtdiv3">验&nbsp;&nbsp;证&nbsp;&nbsp;码：<input id="lgchk" type="text" maxlength="4"
+                                                                         style="width:35px;"><img id='chkid' src=""/><a
+                            id="changea">看不清</a></div>
+                    <div id="btndiv">
+                        <button id="lgbtn">&nbsp;</button>
+                        <button id="rgbtn">&nbsp;</button>
+                        <button id="fdbtn">&nbsp;</button>
+                        <input id="chknm" name="chknm" type="hidden" value=""/></div>
+                    <div id="regimg" style="visibility: hidden;">&nbsp;</div>
+
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane active fade in" id='gps_user'>
+            <div id="gps_user_login" class="gps_user_login">
+                <div id="bgdiv_gps">
+                    <!--<div id='top_title_gps'><font size="4">会员登录及注册</font></div>-->
+                    <div id="txtdiv1_gps">登录名称：<input id="lgname_gps" name="lgname_gps" type="text"/></div>
+                    <div id="txtdiv2_gps">登录密码：<input id="lgpwd_gps" name="lgpwd_gps" type="password"/></div>
+                    <div id="txtdiv3_gps">验&nbsp;&nbsp;证&nbsp;&nbsp;码：<input id="lgchk_gps" type="text" maxlength="4"
+                                                                         style="width:35px;"><img id='chkid_gps' src=""/><a
+                            id="changea_gps">看不清</a></div>
+                    <div id="btndiv_gps">
+                        <button id="lgbtn_gps">&nbsp;</button>
+                        <button id="rgbtn_gps">&nbsp;</button>
+                        <button id="fdbtn_gps">&nbsp;</button>
+                        <input id="chknm_gps" name="chknm_gps" type="hidden" value=""/></div>
+                    <div id="regimg_gps" style="visibility: hidden;">&nbsp;</div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

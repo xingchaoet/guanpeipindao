@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>更多</title>
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+    <script src="dist/js/jquery.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="dist/js/holder.min.js"></script>
+    <script src="dist/js/application.js"></script>
+
+    <script src="dist/js/zzsc.js"></script>
+    <script src="dist/js/left_nav.js"></script>
+    <link rel="stylesheet" href="dist/css/left_nav.css">
+
+    <link rel="stylesheet" href="dist/css/header.css">
+    <style>
+        body {
+            padding-top: 10px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        .col-sm-4 {
+            background: #F0FFFF;
+            margin-bottom: 10px;
+            padding-left: 1px;
+            padding-right: 1px;
+        }
+
+        .col-sm-9 {
+            width: 770px;
+        }
+
+        .row {
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-family: 'Microsoft YaHei', 'Arial';
+            /*font-size: smaller;*/
+            font-size: xx-small;
+            display: block;
+            -webkit-margin-before: 0em;
+            -webkit-margin-after: 1px;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+
+        }
+
+        button {
+            font-family: 'Microsoft YaHei', 'Arial';
+        }
+
+        .btn-toolbar {
+            width: 400px;
+            margin-left: 530px;
+        }
+
+        .show_title {
+            margin-top: 10px;
+        }
+
+        .down {
+            padding-top: 10px;
+            width: 770px;
+        }
+
+        .navbar {
+            background-color: lightblue;
+        }
+
+        #show_type {
+            font-family: 'Microsoft YaHei', 'Arial';
+            float: left;
+        }
+
+        .fen_mian {
+            width: 105px;
+            height: 150px;
+        }
+
+        .sum {
+            width: 20px;
+            overflow-x: visible;
+            overflow-y: visible;
+        }
+
+        .left_td {
+
+        }
+
+        .right_td {
+
+        }
+    </style>
+</head>
+<body>
+
+{include file="header.html"}
+<div class="">
+    <div class="row ">
+
+        <div class="col-sm-3">
+            <!--<img src="../dist/js/holder.js/263x800" alt="">-->
+            {include file="left_nav.html"}
+        </div>
+
+        <div class="col-sm-9">
+
+            <div id="show_type">
+                <h4><b>{$sub_title}</b></h4>
+            </div>
+            <div class="btn-toolbar">
+                <div class="btn-group show_title">
+                    <a class="btn">显示方式：</a>
+                    <a><img id="list" src="{$relpostodist}dist/picture/pic_list/list_enable.gif" ></a>
+                    <!--<img id="list" src="{$relpostodist}dist/picture/pic_list/list_disable.gif">-->
+                    <!--<a href="more.php?type=recommend&show=list" class='btn btn-info'>列表</a>-->
+                    <a><img id="picture" src="{$relpostodist}dist/picture/pic_list/pic_disable.gif" ></a>
+                    <!--<img id="picture" src="{$relpostodist}dist/picture/pic_list/pic_enable.gif">-->
+                </div>
+                </p>
+            </div>
+
+            <div id="down" class="down" onmouseover="active_topagesend();">
+                <div>
+                    <div>
+                        <input type="checkbox" checked="checked" class="checkall_box">
+                    </div>
+                    <div class="row">
+                        {foreach $books as $val }
+                        <div class="col-sm-4">
+                            <table id="table">
+                                <tr>
+                                    <td class="left_td">
+                                        <a href="detail.php?book_id={$val['book_id']}"><img
+                                                src="http://www.ecsponline.com/{trim($val['slt'])}"
+                                                class="fen_mian" alt=""></a>
+                                    </td>
+                                    <td class="right_td">
+                                        <input type="checkbox" checked="checked" name="{$val['book_id']}"
+                                               class="checkall"/>
+                                        <p>数量：
+                                            <input type="text" id="sum_{$val['book_id']}" class="sum" value="2"/>
+                                        </p>
+                                        <div class="tooltip-demo">
+                                            <p data-toggle="tooltip" title="{$val['sm']}">书名：
+                                                {$val['sm']|truncate:16:"...":true}</p>
+                                        </div>
+                                        <p>ISBN: {$val['isbn']}</p>
+
+                                        <div class="tooltip-demo">
+                                            <p data-toggle="tooltip" title="{$val['zzh']}">作者：
+                                                {$val['zzh']|truncate:9:"...":true}</p>
+                                        </div>
+                                        <p>出版日期: {$val['cbrq']}</p>
+                                        <p>价格: ￥{$val['dj']|string_format:"%.2f"}</p>
+                                        <p>库存:{$val['kucun']}</p>
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        {/foreach}
+                    </div>
+                    <div style="margin-left:700px;margin-bottom:40px;"><a id="buy" class="btn btn-default">加入订单</a>
+                        {if $smarty.session.user_type eq 2}
+                        <a href='showorder.php' class="btn  btn-default">查看订单</a>
+                        {/if}
+                    </div>
+
+                    {$page->show()}
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<a id="userid" style="display: none ">{$smarty.session.user_id}</a>
+
+<a id="usertype" style="display: none ">{$smarty.session.user_type}</a>
+
+<a id="booktype" style="display: none ">{$type}</a>
+<a id="page_num" style="display: none ">{$page_num}</a>
+
+</body>
+<script>
+
+    var more_url = 'http://localhost/guanpeipindao/more.php';
+
+    function creatXHR() {
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+            xhr = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        return xhr;
+    }
+
+    var xhr = creatXHR();
+
+    function firstpagesend() {
+        //首页显示不判断用户id
+
+        var fdata = new FormData();
+
+        var page = $("#firstpage").attr("page");
+        fdata.append("page", page);
+
+        var type = $("#firstpage").attr("type");
+        fdata.append("type", type);
+
+        var show = $("#firstpage").attr("show");
+        fdata.append("show", show);
+
+        xhr.open('POST', more_url, true);
+
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('down').innerHTML = '';
+                document.getElementById('down').innerHTML = this.responseText;
+            }
+        }
+    }
+
+
+    function prepagesend() {
+
+        var fdata = new FormData();
+
+        var page = $("#prepage").attr("page");
+        fdata.append("page", page);
+
+        var type = $("#prepage").attr("type");
+        fdata.append("type", type);
+
+        var show = $("#prepage").attr("show");
+        fdata.append("show", show);
+
+        xhr.open('POST', more_url, true);
+
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('down').innerHTML = '';
+                document.getElementById('down').innerHTML = this.responseText;
+            }
+        }
+    }
+
+
+    function nextpagesend() {
+
+        var fdata = new FormData();
+
+        var page = $("#nextpage").attr("page");
+        fdata.append("page", page);
+
+        var type = $("#nextpage").attr("type");
+        fdata.append("type", type);
+
+        var show = $("#nextpage").attr("show");
+        fdata.append("show", show);
+
+//        alert(page);
+//        alert(type);
+//        alert(show);
+
+        xhr.open('POST', more_url, true);
+
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('down').innerHTML = '';
+                document.getElementById('down').innerHTML = this.responseText;
+            }
+        }
+    }
+
+
+    function lastpagesend() {
+
+//        var fm = document.getElementById('condition');
+        var fdata = new FormData();
+
+        var page = $("#lastpage").attr("page");
+        fdata.append("page", page);
+
+        var type = $("#lastpage").attr("type");
+        fdata.append("type", type);
+
+        var show = $("#lastpage").attr("show");
+        fdata.append("show", show);
+
+        xhr.open('POST', more_url, true);
+
+        xhr.send(fdata);
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('down').innerHTML = '';
+                document.getElementById('down').innerHTML = this.responseText;
+            }
+        }
+    }
+
+    //    var flag = 0;
+
+    function active_topagesend() {
+//        alert(flag);
+//        if(flag <= 1){
+
+        $(".topagesend").click(function () {
+
+                    var fdata = new FormData();
+
+                    var page = $(this).attr("page");
+                    fdata.append("page", page);
+
+                    var type = $(this).attr("type");
+                    fdata.append("type", type);
+
+                    var show = $(this).attr("show");
+                    fdata.append("show", show);
+
+//                        alert(page);
+//                        alert(type);
+//                        alert(show);
+
+                    xhr.open('POST', more_url, true);
+
+                    xhr.send(fdata);
+                    xhr.onreadystatechange = function () {
+                        if (this.readyState == 4) {
+                            document.getElementById('down').innerHTML = '';
+                            document.getElementById('down').innerHTML = this.responseText;
+                        }
+                    }
+                }
+        );
+//            flag = flag + 1;
+//        }
+
+    }
+
+
+    function jumptopagesend() {
+
+        var fdata = new FormData();
+
+        var page = $("#jumptopage").val();
+        fdata.append("page", page);
+
+        var type = $("#jumptopage").attr("type");
+        fdata.append("type", type);
+
+        var show = $("#jumptopage").attr("show");
+        fdata.append("show", show);
+
+        xhr.open('POST', more_url, true);
+
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('down').innerHTML = '';
+                document.getElementById('down').innerHTML = this.responseText;
+            }
+        }
+    }
+
+    $("#list").click(function () {
+
+                var fdata = new FormData();
+//推荐还是最新
+                var booktype = $("#booktype").text();
+                fdata.append("type", booktype);
+
+                var page_num = $("#page_num").text();
+                fdata.append("page", page_num);
+
+                fdata.append("show", 'list');
+
+                xhr.open('POST', more_url, true);
+
+                xhr.send(fdata);
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        path = "{$relpostodist}dist/picture/pic_list/list_disable.gif";
+                        $("#list").attr('src',path);
+                        path2 = "{$relpostodist}dist/picture/pic_list/pic_enable.gif";
+                        $("#picture").attr('src',path2);
+                        document.getElementById('down').innerHTML = '';
+                        document.getElementById('down').innerHTML = this.responseText;
+                    }
+                }
+            }
+    );
+
+    $("#picture").click(function () {
+                var fdata = new FormData();
+//推荐还是最新
+                var booktype = $("#booktype").text();
+                fdata.append("type", booktype);
+
+                var page_num = $("#page_num").text();
+                fdata.append("page", page_num);
+
+                fdata.append("show", 'picture');
+
+                fdata.append("toggle", 'picture');
+
+                xhr.open('POST', more_url, true);
+
+                xhr.send(fdata);
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        path = "{$relpostodist}dist/picture/pic_list/pic_disable.gif";
+                        $("#picture").attr('src',path);
+                        path2 = "{$relpostodist}dist/picture/pic_list/list_enable.gif";
+                        $("#list").attr('src',path2);
+                        document.getElementById('down').innerHTML = '';
+                        document.getElementById('down').innerHTML = this.responseText;
+                    }
+                }
+            }
+    );
+
+    //    function list() {
+    //        var fdata = new FormData();
+    ////推荐还是最新
+    //        var booktype = $("#booktype").text();
+    //        fdata.append("type", booktype);
+    //
+    //        var page_num = $("#page_num").text();
+    //        fdata.append("page", page_num);
+    //
+    //        fdata.append("show", 'list');
+    //
+    //        xhr.open('POST', more_url, true);
+    //
+    //        xhr.send(fdata);
+    //        xhr.onreadystatechange = function () {
+    //            if (this.readyState == 4) {
+    //                document.getElementById('down').innerHTML = '';
+    //                document.getElementById('down').innerHTML = this.responseText;
+    //            }
+    //        }
+    //    }
+
+    //    function picture() {
+    //        var fdata = new FormData();
+    ////推荐还是最新
+    //        var booktype = $("#booktype").text();
+    //        fdata.append("type", booktype);
+    //
+    //        var page_num = $("#page_num").text();
+    //        fdata.append("page", page_num);
+    //
+    //        fdata.append("show", 'picture');
+    //
+    //        fdata.append("toggle", 'picture');
+    //
+    //        xhr.open('POST', more_url, true);
+    //
+    //        xhr.send(fdata);
+    //        xhr.onreadystatechange = function () {
+    //            if (this.readyState == 4) {
+    //                document.getElementById('down').innerHTML = '';
+    //                document.getElementById('down').innerHTML = this.responseText;
+    //            }
+    //        }
+    //    }
+</script>
+</html>

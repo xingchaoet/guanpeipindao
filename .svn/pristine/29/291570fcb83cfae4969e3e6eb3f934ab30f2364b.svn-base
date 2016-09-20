@@ -1,0 +1,26 @@
+/**
+ * Created by Administrator on 2016/8/12.
+ */
+var leftMenu = [{
+    "name": "馆配服务",
+    "submenu": [{
+        "name": "在线订购",
+        "url": "http://localhost/guanpeipindao/chachong/chachong.php"
+    }, {
+        "name": "数据下载",
+        "url": "http://localhost/guanpeipindao/data_download.php"
+    }, {
+        "name": "社馆互动",
+        "url": ""
+    }, {
+        "name": "会员空间",
+        "url": "http://localhost/guanpeipindao/zhengdingdan/orders_view.php?usrn=479"
+    }]
+},
+
+];
+$(function() {
+    new AccordionMenu({
+        menuArrs: leftMenu
+    });
+});

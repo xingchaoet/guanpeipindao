@@ -1,0 +1,26 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2016/6/27
+ * Time: 1:56
+ */
+include ("include/GuanCangSmarty.php");
+
+
+$smarty = new GuanCangSmarty();
+
+session_start();
+session_unset();
+session_destroy();
+
+setcookie(session_name(),"",time()-3600,"/");
+
+setcookie('count',false);
+setcookie('name',false);
+setcookie('xm',false);
+setcookie('lib_no',false);
+setcookie('tsgqc',false);
+setcookie('zw',false);
+
+$smarty->display("index.html");

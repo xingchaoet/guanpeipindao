@@ -1,0 +1,46 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2016/7/21
+ * Time: 8:02
+ */
+
+include("../include/GuanCangSmarty.php");
+
+
+require_once("../config.php");
+
+include("../db/con_mysql2.php");
+
+require_once('../PHPExcel.php');
+require_once("../db/con_mssql.php");
+require_once("../db/con_mysql2.php");
+require_once("../db/con_mysql3.php");
+include("../db/dao.php");
+session_start();
+
+
+if (isset($_SESSION['err'])) {
+    $err = $_SESSION['err'];
+} else {
+    $err = "";
+};
+
+
+$smarty = new GuanCangSmarty();
+$smarty->MySmarty();
+//$smarty->php_handling = SMARTY::PHP_ALLOW;
+// 实例化SQLServer封装类
+$ms = new con_mssql();
+//$sql = ser("fx_book_info","distinct qtfl","1=1");
+//$rs = $ms->sdb($sql);
+
+// print_r($smarty->getTemplateDir());
+
+
+$relpostodist = '../';
+$smarty->assign("relpostodist", $relpostodist);
+//echo CSSJS_ROOT;
+//exit();
+$smarty->display("chachong/chachong.html");

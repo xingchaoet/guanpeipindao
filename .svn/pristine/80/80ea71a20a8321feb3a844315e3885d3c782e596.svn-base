@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
+
+    <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
+    <script src="../dist/js/jquery.min.js"></script>
+    <script src="../dist/js/bootstrap.min.js"></script>
+    <script src="../dist/js/holder.min.js"></script>
+    <script src="../dist/js/application.js"></script>
+    <link rel="stylesheet" href="../dist/css/header.css">
+    <title>馆藏查重</title>
+    <style>
+
+        .row {
+            margin-bottom: 10px;
+            font-family: 'Microsoft YaHei', 'Arial';
+            font-size: 11px;
+        }
+
+        .col-sm-3 {
+            background: #F0FFFF;
+            margin-bottom: 10px;
+        }
+
+        .col-sm-9 {
+            width: 770px;
+        }
+
+        .down {
+            padding-top: 45px;
+            width: 770px;
+        }
+
+        .history {
+            padding-top: 45px;
+            width: 770px;
+            display: none;
+        }
+
+        #condition {
+            font-family: 'Microsoft YaHei', 'Arial';
+
+        }
+
+        .mid {
+            margin-top: 10px;
+            font-family: 'Microsoft YaHei', 'Arial';
+
+        }
+
+        .form-inline {
+            margin-top: 15px;
+            font-family: 'Microsoft YaHei', 'Arial';
+
+            font-size: 11px;
+            background-color: #e1edf7;
+        }
+
+        .checklist {
+            font-family: 'Microsoft YaHei', 'Arial';
+            font-size: 11px;
+        }
+
+        .save {
+            margin-top: 10px;
+            font-family: 'Microsoft YaHei', 'Arial';
+
+        }
+
+        .list_pic {
+            margin-top: 15px;
+            background-color: #1e51a4;
+        }
+
+        .bottom {
+            margin-left: 550px;
+            margin-top: 20px;
+        }
+
+        select {
+            font-size: 11px;
+        }
+
+        .btn-sm {
+            /*size: 22px;*/
+            padding: 3px 3px;
+        }
+
+        .black_overlay {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1001;
+            -moz-opacity: 0.8;
+            opacity: .80;
+            filter: alpha(opacity=80);
+        }
+
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 5%;
+            width: 90%;
+            height: 90%;
+            padding: 16px;
+            /*border: 16px solid black;*/
+            background-color: white;
+            z-index: 1002;
+            overflow: auto
+        }
+
+        .history {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 5%;
+            width: 90%;
+            height: 90%;
+            padding: 16px;
+            /*border: 16px solid black;*/
+            background-color: white;
+            z-index: 1002;
+            overflow: auto
+        }
+
+        .toggle:hover {
+            background: olive;
+        }
+
+        .panel-body {
+            /*background-color: #00B83F;*/
+        }
+
+        .panel-default {
+            width: 620px;
+        }
+
+        .piciinfo {
+            float: left;
+        }
+
+    </style>
+</head>
+<body>
+{include file="header.html"}
+<div class="">
+    <div class="row ">
+
+        <div class="col-sm-3">
+            <img src="../../../dist/js/holder.js/263x800" alt="">
+        </div>
+
+        <div class="col-sm-9">
+            <div class="history">
+
+            </div>
+            <div class="down">
+                <!--<form action="cc_index.php" method="post" enctype="multipart/form-data">-->
+                <input type="hidden" name="usrn" value="479"/>
+                <input type="hidden" name="leadExcel" value="true">
+                <form id="condition">
+                    <input type="hidden" name="usrn" value="479"/>
+                    <table>
+
+                        <tr>
+                            <td height=30 colspan=4 bgcolor='EDEDED'><b>信息查询查重</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height=25 width='60' align='right'>书名</td>
+                            <td width='200'><input maxlength="100" size="25" type="text" name="bname" id="bname"
+                                                   value=''></td>
+                            <td width='200' align='right'>上架时间</td>
+                            <td width='350'>
+                                <input class="Wdate" type="text" name="sjdate_low" id="sjdate_low" value=''
+                                       onClick="WdatePicker()">至
+                                <input class="Wdate" type="text" name="sjdate_high" id="sjdate_high" value=''
+                                       onClick="WdatePicker()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height=25 width='60' align='right'>丛书名</td>
+                            <td><input maxlength="100" size="25" type="text" name="csbname" id="csbname" value=""></td>
+                            <td align='right'>出版时间</td>
+                            <td><input class="Wdate" type="text" name="cbdate_low" id="cbdate_low" value=""
+                                       onClick="WdatePicker()">至
+                                <input class="Wdate" type="text" name="cbdate_high" id="cbdate_high" value=""
+                                       onClick="WdatePicker()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height=25 width='60' align='right'>书号</td>
+                            <td><input maxlength="100" size="25" type="text" name="isbn" id="isbn" value=""></td>
+                            <td height=25 align='right' name="zyfl_value" id="zyfl_value">图书分类</td>
+                            <td style='position: absolute;  z-index:2;'>{php} include('zyfl.php');{/php}</td>
+                        </tr>
+                        <tr>
+                            <td height=25 width='60' align='right'>作译者</td>
+                            <td><input maxlength="100" size="25" type="text" name="writer" id="writer" value=""></td>
+                            <td align='right' name="skfl_value">中图法-社会科学</td>
+                            <td style='position: absolute; z-index:1;'>{php} include('ztfl_sk.php');{/php}</td>
+                        </tr>
+                        <tr>
+                            <td height=25 width='60' align='right'>主题词</td>
+                            <td><input maxlength="100" size="25" type="text" name="keyword" id="keyword" value=""></td>
+                            <td align='right' name="zkfl_value" id="zkfl_value">中图法-自然科学</td>
+                            <td style='position: absolute; z-index:0;'>{php} include('ztfl_zk.php');{/php}</td>
+                        </tr>
+                        <tr>
+                            <td align='right'>定价</td>
+                            <td><input maxlength="18" size="8" type="text" name="price_low" id="price_low" value="">至
+                                <input maxlength="18" size="8" type="text" name="price_high" id="price_high" value="">
+                            </td>
+                            <td align='right'>产品介质</td>
+                            <td><select name="media" id="media">
+                                <option value="全部">全部</option>
+                                <option value="纸质书">纸质书</option>
+                                <option value="按需印刷">按需印刷</option>
+                            </select>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+
+
+                <!--导入模板及查重查询安钮--开始-->
+
+
+                <div class='mid'>
+
+                    <div class="form-inline">
+                        <!--<form action="guangcang_chachong.php" method="post" enctype="multipart/form-data">-->
+                        <form id="guangcangexcel">
+
+                            <a class="btn btn-sm btn-info" href="<?php echo PATH; ?>gc_moban.xlsx">模板下载</a>
+
+                            <label>上传馆藏数据:</label>
+                            <input type="hidden" name="usrn" value="479"/>
+                            <input type="hidden" name="leadExcel" value="true">
+                            <div class="form-group btn  btn-sm">
+                                <input class="btn btn-sm" type="file" name="inputExcel" id="inputExcel">
+                            </div>
+                            <div class="form-group btn  btn-sm">
+                                <input class="btn btn-sm btn-danger " type="button" value="导入数据"
+                                       onclick="gangcangimport();">
+                                <!--<input class="btn btn-sm " type="submit" value="导入数据" >-->
+                            </div>
+
+                            <div class="form-group btn  btn-sm">
+                                <!--<a href="gangcang_import_history.php?uid=479"  class="btn btn-sm btn-info " type="button" value="馆藏导入历史" >馆藏导入历史</a>-->
+                                <button onclick="guan_cang_import_history()" class="btn btn-sm btn-info " type="button"
+                                        value="馆藏导入历史">馆藏导入历史
+                                </button>
+
+                                <!--<input class="btn btn-sm " type="submit" value="导入数据" >-->
+                            </div>
+
+                            <div class="form-group btn  btn-sm">
+                                <input style="margin-left: 40px" type="button" class="btn btn-sm " name="submit_cc"
+                                       onclick="send();"
+                                       value="查询查重"/>
+                            </div>
+                            <div class="form-group btn  btn-sm">
+                                <input style="margin-left: 20px" type="reset" class="btn btn-sm " value="清空"/>
+                            </div>
+                        </form>
+
+
+                    </div>
+
+                    <div class="list_pic">
+
+                        <label style="margin-left: 10px">结果列表</label>
+
+                        <label style="margin-left: 550px">显示方式：</label>
+
+                        <span id="list_disable_pic_enable" style="margin-left: 30px;">
+                            <a><img src="{$relpostodist}dist/picture/pic_list/list_disable.gif" onclick="send();"></a>
+                            <a><img src="{$relpostodist}dist/picture/pic_list/pic_enable.gif" onclick="sendpic();"></a>
+                        </span>
+
+                        <span id="pic_disable_list_enable" style="display: none">
+                            <a><img src="{$relpostodist}dist/picture/pic_list/list_enable.gif" onclick="send();"></a>
+                            <a><img src="{$relpostodist}dist/picture/pic_list/pic_disable.gif" onclick="sendpic();"></a>
+                        </span>
+
+                        <!--<input type="button" onclick="send();" value="列表"/>-->
+                        <!--<input type="button" onclick="sendpic();" value="图片"/>-->
+
+                    </div>
+                    <!--导入模板及查重查询安钮--结束-->
+                    <!--<?php include("cc_search.php");?>-->
+                    <!--查询结果显示--开始-->
+                </div>
+
+
+                <div id="show">
+
+
+                </div>
+
+                <div id="light" class="white_content">
+                    <a href="#" onClick="document.getElementById('light').style.display='none';"
+                       style="color:blue;z-index:9999">关闭</a>
+                    <div style="width:715px;height:360px;border:#ccc solid 1px;" id="content">
+
+                    </div>
+                </div>
+
+                <div id="history" class="history">
+                    <a href="#" onClick="document.getElementById('history').style.display='none';"
+                       style="color:blue;z-index:9999">关闭</a>
+                    <div style="width:715px;height:360px;border:#ccc solid 1px;" id="history_content">
+
+                    </div>
+                </div>
+
+                <!--<div class="save">-->
+                <!--勾选书目前请先保存该搜索结果列表-->
+                <!--<input type="submit" value="保存搜索结果">保存批次号:-->
+                <!--</div>-->
+                <!--查询结果显示--结束-->
+
+                <!--<tr><td colspan=4 align=center><?php echo $pagenav;?></td></tr>-->
+                <div class="bottom">
+                    <input type="button" value="生成征订单" href="<?php echo PATH;  ?>gc_c.php?usrn=479"/>
+
+                    <input type="button" value="未完成征订单筛选" href="<?php echo FPATH; ?>zdd_dd.php?usrn=479"/>
+                    <p><font color="red"><?php echo $err; ?></font></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script>
+    var search_url = 'http://localhost/guanpeipindao/search.php';
+    var guangcangimport_url = 'http://localhost/guanpeipindao/chachong/guangcang_chachong.php';
+    var guan_cang_import_history_url = 'http://localhost/guanpeipindao/chachong/gangcang_import_history.php';
+    var delpici_url = 'http://localhost/guanpeipindao/chachong/delpici.php';
+
+    function creatXHR() {
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+            xhr = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        ;
+
+
+        return xhr;
+    }
+
+    var xhr = creatXHR();
+
+    function gangcangimport() {
+        var fm = document.getElementById('guangcangexcel');
+        var fdata = new FormData(fm);
+
+        xhr.open('POST', guangcangimport_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('content').innerHTML = '';
+                document.getElementById('light').style.display = 'block';
+                document.getElementById('content').innerHTML = this.responseText;
+//                $("#show").load("../../guanpeipindao/chachong/cc_list.php");
+            }
+            ;
+        }
+    }
+
+    function send() {
+
+//        if(document.getElementById('list_d_pic_e').style.display == 'block'){
+//            document.getElementById('list_d_pic_e').style.display = 'none';
+//            document.getElementById('list_e_pic_d').style.display = 'block';
+//        }else if( document.getElementById('list_d_pic_e').style.display == 'none'){
+//            document.getElementById('list_d_pic_e').style.display = 'block';
+//            document.getElementById('list_e_pic_d').style.display = 'none';
+//        };
+
+//        if($('#list_d_pic_e').css("display") == "none"){
+//            alert(1);
+//            $('#list_d_pic_e').show();
+//            $('#list_e_pic_d').hide();
+//        }else if($('#list_e_pic_d').css("display") == "none"){
+//            alert(2);
+//
+//            $('#list_e_pic_d').show();
+//            $('#list_d_pic_e').hide();
+//        }
+//        alert($('#list_d_pic_e').is(':visible'));
+//        alert($('#list_e_pic_d').is(':visible'));
+//
+//        alert($('#list_d_pic_e').is(':hidden'));
+//        alert($('#list_e_pic_d').is(':hidden'));
+
+        alert($('#list_disable_pic_enable').css("display"));
+        alert($('#pic_disable_list_enable').css("display"));
+
+
+        if($('#list_disable_pic_enable').is(':visible')){
+            alert(1);
+
+            $('#list_disable_pic_enable').hide();
+            $('#pic_disable_list_enable').show();
+        }else if($('#pic_disable_list_enable').is(':visible')){
+            alert(2);
+            $('#list_disable_pic_enable').show();
+            $('#pic_disable_list_enable').hide();
+        }
+
+        var fm = document.getElementById('condition');
+        var fdata = new FormData(fm);
+//         alert($(this).attr("page"));
+//         var page = $(this).attr("page");
+//         fdata.append("page",page);
+//        var fs = fm.serialize();
+//        alert(fs['bname']);
+        xhr.open('POST', search_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+//                $("#show").load("../../guanpeipindao/chachong/cc_list.php");
+            };
+        }
+    }
+
+
+    function sendpic() {
+//        alert($('#list_d_pic_e').is(':visible'));
+//        alert($('#list_e_pic_d').is(':visible'));
+//
+//        alert($('#list_d_pic_e').is(':hidden'));
+//        alert($('#list_e_pic_d').is(':hidden'));
+
+        alert($('#list_d_pic_e').css("display"));
+        alert($('#pic_e_list_d').css("display"));
+//        if(document.getElementById('list_d_pic_e').style.display == 'block'){
+//            document.getElementById('list_d_pic_e').style.display = 'none';
+//            document.getElementById('list_e_pic_d').style.display = 'block';
+//        }else if( document.getElementById('list_d_pic_e').style.display == 'none'){
+//            document.getElementById('list_d_pic_e').style.display = 'block';
+//            document.getElementById('list_e_pic_d').style.display = 'none';
+//        };
+
+
+//        if($('#list_d_pic_e').is(':visible')){
+//            alert(1);
+//
+//            $('#list_d_pic_e').show();
+//            $('#pic_e_list_d').style.display = 'none';
+//        }else if($('#list_d_pic_e').is(':visible')){
+//            alert(2);
+//            $('#pic_e_list_d').style.display = 'block';
+//            $('#list_d_pic_e').hide();
+//        }
+
+//        if($('#list_d_pic_e').css("display") == "none"){
+//            alert(1);
+//
+//            $('#list_d_pic_e').show();
+//            $('#list_e_pic_d').hide();
+//        }else if($('#list_e_pic_d').css("display") == "none"){
+//            alert(2);
+//
+//            $('#list_e_pic_d').show();
+//            $('#list_d_pic_e').hide();
+//        }
+
+        alert($('#list_disable_pic_enable').css("display"));
+        alert($('#pic_disable_list_enable').css("display"));
+
+
+        if($('#list_disable_pic_enable').is(':visible')){
+            alert(1);
+
+            $('#list_disable_pic_enable').hide();
+            $('#pic_disable_list_enable').show();
+        }else if($('#pic_disable_list_enable').is(':visible')){
+            alert(2);
+            $('#list_disable_pic_enable').show();
+            $('#pic_disable_list_enable').hide();
+        }
+
+        var fm = document.getElementById('condition');
+        var fdata = new FormData(fm);
+//         alert($(this).attr("page"));
+//         var page = $(this).attr("page");
+        fdata.append("show_type", 'pic');
+//        alert(fdata);
+        xhr.open('POST', search_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+            }
+            ;
+        }
+    }
+    function firstpagesend() {
+
+        var fm = document.getElementById('condition');
+        var fdata = new FormData(fm);
+
+//        alert($("#firstpage").attr("page"));
+        var page = $("#firstpage").attr("page");
+        fdata.append("page", page);
+
+        var showtype = $("#firstpage").attr("showtype");
+        fdata.append("show_type", showtype);
+
+        xhr.open('POST', search_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+            }
+            ;
+        }
+    }
+
+    function prepagesend() {
+
+        var fm = document.getElementById('condition');
+        var fdata = new FormData(fm);
+
+//        alert($("#prepage").attr("page"));
+        var page = $("#prepage").attr("page");
+        fdata.append("page", page);
+
+        var showtype = $("#prepage").attr("showtype");
+        fdata.append("show_type", showtype);
+
+        xhr.open('POST', search_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+            }
+            ;
+        }
+    }
+
+    function nextpagesend() {
+
+        var fm = document.getElementById('condition');
+        var fdata = new FormData(fm);
+
+//        alert($("#nextpage").attr("page"));
+        var page = $("#nextpage").attr("page");
+        fdata.append("page", page);
+
+        var showtype = $("#nextpage").attr("showtype");
+        fdata.append("show_type", showtype);
+
+        xhr.open('POST', search_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+            }
+            ;
+        }
+    }
+
+    function lastpagesend() {
+
+        var fm = document.getElementById('condition');
+        var fdata = new FormData(fm);
+
+//        alert($("#lastpage").attr("page"));
+        var page = $("#lastpage").attr("page");
+        fdata.append("page", page);
+
+        var showtype = $("#lastpage").attr("showtype");
+        fdata.append("show_type", showtype);
+
+        xhr.open('POST', search_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+            }
+            ;
+        }
+    }
+
+    function jumptopagesend() {
+
+        var fm = document.getElementById('condition');
+        var fdata = new FormData(fm);
+
+//        alert($("#jumptopage").attr("selected"));
+//        alert($("#jumptopage").val());
+
+        var page = $("#jumptopage").val();
+        fdata.append("page", page);
+
+        var showtype = $("#jumptopage").attr("showtype");
+        fdata.append("show_type", showtype);
+
+        xhr.open('POST', search_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+            }
+            ;
+        }
+    }
+
+
+    var checkboxes_sel = "input.checkall:checkbox:enabled";
+
+    var checkboxes_changed = function () {
+        var $row = $('.row');
+        var $div_list = $('#div_list');
+        var $checkallbox = $div_list.find("input.checkall_box:checkbox");
+
+        var total_boxes = $row.find(checkboxes_sel).length;
+        var checked_boxes = $row.find(checkboxes_sel + ":checked").length;
+        if (total_boxes == checked_boxes) {
+            $checkallbox.prop("checked", true);
+//            alert($checkallbox.prop("checked"));
+        } else {
+            $checkallbox.prop("checked", false);
+        }
+    };
+
+    $(document).on("change", checkboxes_sel, checkboxes_changed);
+
+    var checkallbox_changed = function () {
+        var $div_list = $('#div_list');
+        var $checkallbox = $div_list.find("input.checkall_box:checkbox");
+        var checkalllist = $('.checkall');
+        if ($checkallbox.prop("checked")) {
+            $.each(checkalllist, function (index, domEle) {
+                domEle.checked = true;
+            });
+        } else {
+            $.each(checkalllist, function (index, domEle) {
+                domEle.checked = false;
+            });
+        }
+    };
+
+
+    function guan_cang_import_history() {
+//        $('.down').hide();
+        var uid = '479';
+        xhr.open('POST', guan_cang_import_history_url, true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("uid=" + uid);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+//                $('.history').show();
+                document.getElementById('history_content').innerHTML = '';
+                document.getElementById('history').style.display = 'block';
+                document.getElementById('history_content').innerHTML = this.responseText;
+//
+//                $('.history').append(this.responseText);
+            }
+        }
+
+    }
+
+    //
+    //    $(".btn-danger").click(function () {
+    ////        alert($(this).parent().prev().children().eq(1).prop('id'));
+    //        var pici_id = $(this).parent().prev().children().eq(1).prop('id');
+    //        var pici = $(this).parent().parent();
+    //        alert(pici);
+    //        xhr.open('POST', delpici_url, true);
+    //        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    //        xhr.send("pici_id=" + pici_id);
+    //        xhr.onreadystatechange = function () {
+    //            if (this.readyState == 4) {
+    //                if (this.responseText == "success") {
+    ////                    alert(this.responseText);
+    //                    alert('删除成功！');
+    //                    pici.remove();
+    //                } else {
+    ////                    alert(this.responseText);
+    //                    alert('删除失败！');
+    //                };
+    //            }
+    //        }
+    //
+    //    });
+
+    function delpici() {
+//        alert($(this).parent());
+        var pici_id = $(this).parent().prev().children().eq(1).prop('id');
+        var pici = $(this).parent().parent();
+        alert(pici_id);
+        xhr.open('POST', delpici_url, true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("pici_id=" + pici_id);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.responseText == "success") {
+//                    alert(this.responseText);
+                    alert('删除成功！');
+                    pici.remove();
+                } else {
+//                    alert(this.responseText);
+                    alert('删除失败！');
+                }
+                ;
+            }
+        }
+    }
+
+    //    $('.toggle').click(function () {
+    //        val = $(this).attr('href');
+    //        alert(val);
+    //        $(val).slideToggle(500);
+    //    });
+
+
+    var flag = 0;
+
+
+    function toggle_click() {
+
+        if (flag <= 0) {
+
+
+            $('.toggle').click(function () {
+                val = $(this).attr('href');
+//            alert(val);
+                $(val).slideToggle(500);
+            });
+
+
+            $(".delpici").click(function () {
+                //        alert($(this).parent().prev().children().eq(1).prop('id'));
+                var pici_id = $(this).parent().prev().children().eq(1).prop('id');
+                var pici = $(this).parent().parent();
+//                alert(pici);
+                xhr.open('POST', delpici_url, true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send("pici_id=" + pici_id);
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        if (this.responseText == "success") {
+                            //                    alert(this.responseText);
+                            alert('删除成功！');
+                            pici.remove();
+                        } else {
+                            //                    alert(this.responseText);
+                            alert('删除失败！');
+                        }
+                        ;
+                    }
+                }
+
+            });
+
+            flag = flag + 1;
+        }
+
+//
+//        $('.toggle').bind("click",tc());
+
+    }
+
+    function return_to_guancangchachong() {
+//        alert(1);
+        $('.history').hide();
+        $('.history').empty();
+
+        $('.down').show();
+    }
+    ;
+</script>
+</html>

@@ -1,0 +1,37 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2016/8/12
+ * Time: 11:34
+ */
+require_once("../config.php");
+require_once("../db/con_mssql.php");
+require_once("../db/con_mysql2.php");
+include("../db/dao.php");
+
+include("../include/GuanCangSmarty.php");
+
+session_start();
+$global_url = GLOBAL_URL;
+
+if($_SESSION['user_type'] == "gps_user"){
+    echo "<script type='text/javascript'>alert('您是馆配商用户，只有图书馆用户才可以访问此栏目!');</script>";
+    echo "<script type='text/javascript'>window.location.href='http://'+\"$global_url\"+'/guanpeipindao/';</script>";
+}
+
+
+session_start();
+
+$smarty = new GuanCangSmarty();
+//$smarty->caching = false; //设置缓存方式
+$smarty->MySmarty();
+
+$relpostodist = '../';
+$smarty->assign("first_level","<a href={$relpostodist}guanpeipindao.php>馆配服务</a>");
+$smarty->assign("second_level","<a href='data_download.php'>数据下载</a>");
+$smarty->assign("relpostodist", $relpostodist);
+
+
+
+$smarty->display("data_download/data_download.html");

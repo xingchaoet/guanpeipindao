@@ -1,0 +1,37 @@
+<?php
+require_once("../config.php");
+require_once("../DB/con_mssql.php");
+include("../DB/dao.php");
+$ms = new con_mssql();
+$reback = '0';
+$regdate = date("Y-m-d H:i:s", time());
+
+//$_GET['xb'] = $_GET['xb'];
+
+$_GET['xb'] = iconv('UTF-8', 'GBK', $_GET['xb']);
+$_GET['zw'] = iconv('UTF-8', 'GBK', $_GET['zw']);
+$_GET['xm'] = iconv('UTF-8', 'GBK', $_GET['xm']);
+$_GET['question'] = iconv('UTF-8', 'GBK', $_GET['question']);
+$_GET['answer'] = iconv('UTF-8', 'GBK', $_GET['answer']);
+$_GET['ddate'] = iconv('UTF-8', 'GBK', $_GET['ddate']); //发送频次
+
+$sql = "insert into lib_lxr_info
+(user_id,user_pwd,question,answer,dzyj1,xm,xb,zw,csny,bgdh,sj1,qq1,active,ddate,dformat,lib_no,regdate,FromType) 
+values
+('" . trim($_GET['name']) . "','" . md5(trim($_GET['pwd'])) . "','" . $_GET['question'] . "','" . $_GET['answer'] . "','" . $_GET['email'] . "','" . $_GET['realname'] . "','" . $_GET['xb'] . "','" . $_GET['zw'] . "','" . $_GET['birthday'] . "','" . $_GET['telephone'] . "','" . $_GET['mobile'] . "','" . $_GET['qq'] . "','1','" . $_GET['ddate'] . "','" . $_GET['dformat'] . "','" . $_GET['lib_no'] . "','" . $regdate . "','" . out . "')";
+//echo $sql;
+
+//$sql = "insert into lib_lxr_info(user_id,user_pwd,question,answer,dzyj1,xm,xb,zw,csny,bgdh,sj1,qq1,active,ddate,dformat,lib_no,regdate) values('aa','96e79218965eb72c92a549dd5a330112','11','11','11@11.com','test','nan','0','1981-12-09','11','11','11','111','11','EXCEL','AH0001    ','2016-08-23 15:24:15')";
+//$open = fopen("D:/xampps/htdocs/guanpeipindao/user/sql.txt", "a");
+//fwrite($open, $sql . "\r\n");
+//fclose($open);
+
+$AdminResult = $ms->sdb($sql);
+$sql1 = "select * from lib_lxr_info where ltrim(rtrim(user_id))='" . trim($_GET['name']) . "'";
+$AdminResult1 = $ms->sdb($sql1);
+$num = odbc_num_rows($AdminResult1);
+if ($num == 1) {
+    $reback = '1';
+}
+echo $reback;
+?>

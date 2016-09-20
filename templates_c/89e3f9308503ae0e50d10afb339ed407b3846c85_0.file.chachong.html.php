@@ -1,0 +1,878 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-09-19 14:25:42
+  from "D:\WWW\guanpeipindao\templates\chachong\chachong.html" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_57df84e630cc05_53127503',
+  'file_dependency' => 
+  array (
+    '89e3f9308503ae0e50d10afb339ed407b3846c85' => 
+    array (
+      0 => 'D:\\WWW\\guanpeipindao\\templates\\chachong\\chachong.html',
+      1 => 1473384638,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:header.html' => 1,
+    'file:left_nav.html' => 1,
+  ),
+),false)) {
+function content_57df84e630cc05_53127503 ($_smarty_tpl) {
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/css/left_nav.css">
+
+    <link rel="stylesheet" href="../dist/css/header.css">
+    <link rel="stylesheet" href="../dist/css/introduce.css">
+
+    <?php echo '<script'; ?>
+ src="../dist/js/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"><?php echo '</script'; ?>
+>
+
+    <title>馆藏查重</title>
+    <style>
+
+        .row {
+            margin-bottom: 10px;
+            font-family: 'Microsoft YaHei', 'Arial';
+            font-size: 11px;
+        }
+
+        .col-sm-3 {
+            background: #F0FFFF;
+            margin-bottom: 10px;
+            width: 210px;
+        }
+
+        .col-sm-9 {
+            width: 770px;
+        }
+
+        .down {
+            padding-top: 12px;
+            width: 770px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .history {
+            padding-top: 45px;
+            width: 770px;
+            display: none;
+        }
+
+        #condition {
+            font-family: 'Microsoft YaHei', 'Arial';
+
+        }
+
+        .mid {
+            margin-top: 10px;
+            font-family: 'Microsoft YaHei', 'Arial';
+
+        }
+
+        .form-inline {
+            margin-top: 15px;
+            font-family: 'Microsoft YaHei', 'Arial';
+
+            font-size: 11px;
+            /*background-color: #e1edf7;*/
+        }
+
+        .checklist {
+            font-family: 'Microsoft YaHei', 'Arial';
+            font-size: 11px;
+        }
+
+        .save {
+            margin-top: 10px;
+            font-family: 'Microsoft YaHei', 'Arial';
+
+        }
+
+        .list_pic {
+            margin-top: 15px;
+            background-color: #1e51a4;
+        }
+
+        .bottom {
+            margin-left: 600px;
+            margin-top: 20px;
+        }
+
+        select {
+            font-size: 11px;
+        }
+
+        .btn-sm {
+            /*size: 22px;*/
+            padding: 3px 3px;
+        }
+
+        .black_overlay {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1001;
+            -moz-opacity: 0.8;
+            opacity: .80;
+            filter: alpha(opacity=80);
+        }
+
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 5%;
+            width: 90%;
+            height: 90%;
+            padding: 16px;
+            /*border: 16px solid black;*/
+            background-color: white;
+            z-index: 1002;
+            overflow: auto
+        }
+
+        .history {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 5%;
+            width: 90%;
+            min-height: 360px;
+            padding: 16px;
+            /*border: 16px solid black;*/
+            background-color: white;
+            z-index: 1002;
+            /*overflow: auto*/
+        }
+
+        .toggle:hover {
+            background: olive;
+        }
+
+        .panel-default {
+            width: 620px;
+        }
+
+        .piciinfo {
+            float: left;
+        }
+
+        .picioption {
+            margin-top: 10px;
+        }
+
+        #pici_list {
+            /*border: #3f3f3f;*/
+            display: none;
+            width: 100px;
+
+            min-height: 150px;
+        }
+    </style>
+</head>
+<body>
+<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+<div class="site">
+    <div class="row ">
+
+        <div class="col-sm-3">
+            <!--<img src="../../../dist/js/holder.js/263x800" alt="">-->
+            <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:left_nav.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+
+            <div class="introduce">
+                <?php echo $_smarty_tpl->tpl_vars['introduce']->value;?>
+
+            </div>
+        </div>
+
+        <div class="col-sm-9">
+            <div class="history">
+
+            </div>
+            <div class="down">
+                <!--<form action="cc_index.php" method="post" enctype="multipart/form-data">-->
+                <input type="hidden" name="usrn" value="<?php echo $_SESSION['user_id'];?>
+"/>
+                <input type="hidden" name="leadExcel" value="true">
+                <form id="condition">
+                    <input type="hidden" name="usrn" value="<?php echo $_SESSION['user_id'];?>
+"/>
+                    <table>
+
+                        <tr>
+                            <td height=30 colspan=4 bgcolor='EDEDED'><b>信息查询查重</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height=25 width='60' align='right'>书名</td>
+                            <td width='200'><input maxlength="100" size="25" type="text" name="bname" id="bname"
+                                                   value=''></td>
+                            <td width='200' align='right'>上架时间</td>
+                            <td width='350'>
+                                <input class="Wdate" type="text" name="sjdate_low" id="sjdate_low" value=''
+                                       onClick="WdatePicker()">至
+                                <input class="Wdate" type="text" name="sjdate_high" id="sjdate_high" value=''
+                                       onClick="WdatePicker()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height=25 width='60' align='right'>丛书名</td>
+                            <td><input maxlength="100" size="25" type="text" name="csbname" id="csbname" value=""></td>
+                            <td align='right'>出版时间</td>
+                            <td><input class="Wdate" type="text" name="cbdate_low" id="cbdate_low" value=""
+                                       onClick="WdatePicker()">至
+                                <input class="Wdate" type="text" name="cbdate_high" id="cbdate_high" value=""
+                                       onClick="WdatePicker()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height=25 width='60' align='right'>书号</td>
+                            <td><input maxlength="100" size="25" type="text" name="isbn" id="isbn" value=""></td>
+                            <td height=25 align='right' name="zyfl_value" id="zyfl_value">图书分类</td>
+                            <td style='position: absolute;  z-index:2;'><?php  include('zyfl.php');?></td>
+                        </tr>
+                        <tr>
+                            <td height=25 width='60' align='right'>作译者</td>
+                            <td><input maxlength="100" size="25" type="text" name="writer" id="writer" value=""></td>
+                            <td align='right' name="skfl_value">中图法-社会科学</td>
+                            <td style='position: absolute; z-index:1;'><?php  include('ztfl_sk.php');?></td>
+                        </tr>
+                        <tr>
+                            <td height=25 width='60' align='right'>主题词</td>
+                            <td><input maxlength="100" size="25" type="text" name="keyword" id="keyword" value=""></td>
+                            <td align='right' name="zkfl_value" id="zkfl_value">中图法-自然科学</td>
+                            <td style='position: absolute; z-index:0;'><?php  include('ztfl_zk.php');?></td>
+                        </tr>
+                        <tr>
+                            <td align='right'>定价</td>
+                            <td><input maxlength="18" size="8" type="text" name="price_low" id="price_low" value="">至
+                                <input maxlength="18" size="8" type="text" name="price_high" id="price_high" value="">
+                            </td>
+                            <td align='right'>产品介质</td>
+                            <td><select name="media" id="media">
+                                <option value="全部">全部</option>
+                                <option value="纸质书">纸质书</option>
+                                <option value="按需印刷">按需印刷</option>
+                            </select>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+
+
+                <!--导入模板及查重查询安钮--开始-->
+
+
+                <div class='mid'>
+
+                    <div class="form-inline">
+                        <!--<form action="guangcang_chachong.php" method="post" enctype="multipart/form-data">-->
+                        <form id="guangcangexcel">
+
+                            <a class="btn btn-sm btn-info" href="<?php echo PATH; ?>gc_moban.xlsx">模板下载</a>
+
+                            <label>上传馆藏数据:</label>
+                            <input type="hidden" name="usrn" value="<?php echo $_SESSION['user_id'];?>
+"/>
+                            <input type="hidden" name="leadExcel" value="true">
+                            <div class="form-group btn  btn-sm">
+                                <input class="btn btn-sm" type="file" name="inputExcel" id="inputExcel">
+                            </div>
+                            <div class="form-group btn  btn-sm">
+                                <input class="btn btn-sm btn-danger " type="button" value="导入数据"
+                                       onclick="gangcangimport();">
+                                <!--<input class="btn btn-sm " type="submit" value="导入数据" >-->
+                            </div>
+
+                            <div class="form-group btn  btn-sm">
+                                <!--<a href="gangcang_import_history.php?uid=<?php echo $_SESSION['user_id'];?>
+"  class="btn btn-sm btn-info " type="button" value="馆藏导入历史" >馆藏导入历史</a>-->
+                                <button onclick="guan_cang_import_history()" class="btn btn-sm btn-info " type="button"
+                                        value="馆藏导入历史">馆藏导入历史
+                                </button>
+
+                                <!--<input class="btn btn-sm " type="submit" value="导入数据" >-->
+                            </div>
+
+                            <div class="form-group btn  btn-sm">
+                                <!--<input type="hidden" name=t1 value="chaxunchachong">-->
+                                <input style="margin-left: 20px" type="button" class="btn btn-sm " name="submit_cc"
+                                       onclick="send('chaxunchachong');"
+                                       value="查询查重"/>
+                            </div>
+                            <div class="form-group btn  btn-sm">
+                                <input style="margin-left: 20px" type="reset" class="btn btn-sm " value="清空"/>
+                            </div>
+                        </form>
+
+
+                    </div>
+
+                    <!--<div id="option">-->
+                    <!--<label>-->
+                    <!--<input class="option" type="radio" name='rname' value="tianjiadaoyiyoupici"> 添加到已有批次-->
+                    <!--</label>-->
+                    <!--<label>-->
+                    <!--<input class="option" type="radio" name='rname' value="xinjianpici"> 新建批次-->
+                    <!--</label>-->
+                    <!--</div>-->
+
+                    <!--<div id="pici_list">-->
+
+                    <!--</div>-->
+
+                    <div class="list_pic">
+
+                        <label style="margin-left: 10px">结果列表</label>
+
+                        <label style="margin-left: 550px">显示方式：</label>
+
+                        <span id="list_disable_pic_enable" style="margin-left: 30px;">
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_disable.gif" onclick="send();"></a>
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_enable.gif" onclick="sendpic();"></a>
+                        </span>
+
+                        <span id="pic_disable_list_enable" style="margin-left: 30px; display: none">
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_enable.gif" onclick="send();"></a>
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_disable.gif" onclick="sendpic();"></a>
+                        </span>
+
+                    </div>
+                    <!--导入模板及查重查询安钮--结束-->
+                    <!--<?php include("cc_search.php");?>-->
+                    <!--查询结果显示--开始-->
+                </div>
+
+
+                <div id="show">
+
+
+                </div>
+
+                <div id="light" class="white_content">
+                    <a href="#" onClick="document.getElementById('light').style.display='none';"
+                       style="color:blue;z-index:9999">关闭</a>
+                    <div style="width:715px;height:360px;border:#ccc solid 1px;" id="content">
+
+                    </div>
+                </div>
+
+                <div id="history" class="history">
+                    <a href="#" onClick="document.getElementById('history').style.display='none';"
+                       style="color:blue;z-index:9999">关闭</a>
+                    <div style="width:715px;height:360px;border:#ccc solid 1px;" id="history_content">
+
+                    </div>
+                </div>
+
+                <!--<div class="save">-->
+                <!--勾选书目前请先保存该搜索结果列表-->
+                <!--<input type="submit" value="保存搜索结果">保存批次号:-->
+                <!--</div>-->
+                <!--查询结果显示--结束-->
+
+                <!--<tr><td colspan=4 align=center><?php echo $pagenav;?></td></tr>-->
+                <div class="bottom">
+                    <button type="button" onclick="generate_order();" value="生成征订单和预订单">生成征订单和预订单
+                    </button>
+                    <button type="button" onclick="view_my_orders();" value=""
+                    >查看我的订单
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--<a id="userid" style="display: none "><?php echo $_SESSION['user_id'];?>
+</a>-->
+    <!--<a id="usertype" style=" display: none "><?php echo $_SESSION['user_type'];?>
+</a>-->
+</div>
+
+
+</body>
+<?php echo '<script'; ?>
+ src="../dist/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/holder.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/application.js"><?php echo '</script'; ?>
+>
+<!--<?php echo '<script'; ?>
+ src="../dist/js/jquery.icheck.min.js"><?php echo '</script'; ?>
+>-->
+
+<?php echo '<script'; ?>
+ src="../dist/js/zzsc.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/left_nav.js"><?php echo '</script'; ?>
+>
+
+<?php echo '<script'; ?>
+>
+
+
+    //    var global_url = "192.168.1.138";
+    var global_url = $('#global_url').html();
+
+
+    var search_url = 'http://' + global_url + '/guanpeipindao/search.php';
+    var guangcangimport_url = 'http://' + global_url + '/guanpeipindao/chachong/guangcang_chachong.php';
+    var guan_cang_import_history_url = 'http://' + global_url + '/guanpeipindao/chachong/gangcang_import_history.php';
+    var delpici_url = 'http://' + global_url + '/guanpeipindao/chachong/delpici.php';
+    var generate_order_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/generate_order.php';
+    var order_list_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/order_list.php';
+
+    function creatXHR() {
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+            xhr = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        return xhr;
+    }
+
+    var xhr = creatXHR();
+    //
+    //    function check_user() {
+    //
+    //        var utp = $('#usertype').html();
+    //
+    //        if (utp == null || utp == undefined || utp == '') {
+    //            alert("您还没登录");
+    //            return false;
+    //        }
+    //
+    //        if (utp != "library_user") {
+    //            alert("您不是图书馆用户");
+    //        }
+    //
+    //    }
+
+    function gangcangimport() {
+
+
+        var utp = $('#usertype').html();
+
+        if (utp == null || utp == undefined || utp == '') {
+            alert("您还没登录");
+            return false;
+        }
+
+        if (utp != "library_user") {
+            alert("您不是图书馆用户");
+        }
+
+        var fm = document.getElementById('guangcangexcel');
+        var fdata = new FormData(fm);
+
+        xhr.open('POST', guangcangimport_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('content').innerHTML = '';
+                document.getElementById('light').style.display = 'block';
+                document.getElementById('content').innerHTML = this.responseText;
+            }
+        }
+    }
+
+    function send(arg) {
+
+        if (arg == "chaxunchachong" || $('#pic_disable_list_enable').is(':visible')) {
+
+            var fm = document.getElementById('condition');
+            var fdata = new FormData(fm);
+            if (arg == "chaxunchachong") {
+                fdata.append("show_type", 'chaxunchachong');
+            } else {
+                fdata.append("show_type", 'list');
+            }
+
+            xhr.open('POST', search_url, true);
+            xhr.send(fdata);
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4) {
+
+                    $('#list_disable_pic_enable').show();
+                    $('#pic_disable_list_enable').hide();
+
+                    document.getElementById('show').innerHTML = '';
+                    document.getElementById('show').innerHTML = this.responseText;
+//                $("#show").load("../../guanpeipindao/chachong/cc_list.php");
+                }
+            }
+        }
+    }
+
+
+    function sendpic() {
+
+        if ($('#list_disable_pic_enable').is(':visible')) {
+
+            var fm = document.getElementById('condition');
+            var fdata = new FormData(fm);
+            fdata.append("show_type", 'pic');
+            xhr.open('POST', search_url, true);
+            xhr.send(fdata);
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    $('#list_disable_pic_enable').hide();
+                    $('#pic_disable_list_enable').show();
+
+                    document.getElementById('show').innerHTML = '';
+                    document.getElementById('show').innerHTML = this.responseText;
+                }
+            }
+        }
+    }
+    function firstpagesend() {
+
+        var fm = document.getElementById('condition');
+        var fdata = new FormData(fm);
+
+        var page = $("#firstpage").attr("page");
+        fdata.append("page", page);
+
+        var showtype = $("#firstpage").attr("showtype");
+        fdata.append("show_type", showtype);
+
+        xhr.open('POST', search_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+            }
+        }
+    }
+
+    function prepagesend() {
+
+        var fm = document.getElementById('condition');
+        var fdata = new FormData(fm);
+
+        var page = $("#prepage").attr("page");
+        fdata.append("page", page);
+
+        var showtype = $("#prepage").attr("showtype");
+        fdata.append("show_type", showtype);
+
+        xhr.open('POST', search_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+            }
+        }
+    }
+
+    function nextpagesend() {
+
+        var fm = document.getElementById('condition');
+        var fdata = new FormData(fm);
+
+        var page = $("#nextpage").attr("page");
+        fdata.append("page", page);
+
+        var showtype = $("#nextpage").attr("showtype");
+        fdata.append("show_type", showtype);
+
+        xhr.open('POST', search_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+            }
+        }
+    }
+
+    function lastpagesend() {
+
+        var fm = document.getElementById('condition');
+        var fdata = new FormData(fm);
+        var page = $("#lastpage").attr("page");
+        fdata.append("page", page);
+
+        var showtype = $("#lastpage").attr("showtype");
+        fdata.append("show_type", showtype);
+
+        xhr.open('POST', search_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+            }
+        }
+    }
+
+    function jumptopagesend() {
+
+        var fm = document.getElementById('condition');
+        var fdata = new FormData(fm);
+
+        var page = $("#jumptopage").val();
+        fdata.append("page", page);
+//        alert(page);
+        var showtype = $("#jumptopage").attr("showtype");
+        fdata.append("show_type", showtype);
+
+        xhr.open('POST', search_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+            }
+        }
+    }
+
+
+    var checkboxes_sel = "input.checkall:checkbox:enabled";
+
+    var checkboxes_changed = function () {
+        var $row = $('.row');
+        var $div_list = $('#div_list');
+        var $checkallbox = $div_list.find("input.checkall_box:checkbox");
+
+        var total_boxes = $row.find(checkboxes_sel).length;
+        var checked_boxes = $row.find(checkboxes_sel + ":checked").length;
+        if (total_boxes == checked_boxes) {
+            $checkallbox.prop("checked", true);
+        } else {
+            $checkallbox.prop("checked", false);
+        }
+    };
+
+    $(document).on("change", checkboxes_sel, checkboxes_changed);
+
+    var checkallbox_changed = function () {
+        var $div_list = $('#div_list');
+        var $checkallbox = $div_list.find("input.checkall_box:checkbox");
+        var checkalllist = $('.checkall');
+        if ($checkallbox.prop("checked")) {
+            $.each(checkalllist, function (index, domEle) {
+                domEle.checked = true;
+            });
+        } else {
+            $.each(checkalllist, function (index, domEle) {
+                domEle.checked = false;
+            });
+        }
+    };
+
+
+    function guan_cang_import_history() {
+//        var uid = '<?php echo $_SESSION['user_id'];?>
+';
+
+        var utp = $('#usertype').html();
+
+        if (utp == null || utp == undefined || utp == '') {
+            alert("您还没登录");
+            return false;
+        }
+
+        if (utp != "library_user") {
+            alert("您不是图书馆用户");
+        }
+
+        var uid = $('#userid').html();
+
+
+        xhr.open('POST', guan_cang_import_history_url, true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("uid=" + uid);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('history_content').innerHTML = '';
+                document.getElementById('history').style.display = 'block';
+                document.getElementById('history_content').innerHTML = this.responseText;
+            }
+        }
+    }
+
+
+    function delpici() {
+//        alert($(this).parent());
+        var pici_id = $(this).parent().prev().children().eq(1).prop('id');
+        var pici = $(this).parent().parent();
+        alert(pici_id);
+        xhr.open('POST', delpici_url, true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("pici_id=" + pici_id);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.responseText == "success") {
+                    alert('删除成功！');
+                    pici.remove();
+                } else {
+                    alert('删除失败！');
+                }
+            }
+        }
+    }
+
+    var flag = 0;
+
+    function toggle_click() {
+
+        if (flag <= 0) {
+            $('.toggle').click(function () {
+                val = $(this).attr('href');
+                $(val).slideToggle(500);
+            });
+
+            $(".delpici").click(function () {
+                var pici_id = $(this).parent().prev().children().eq(1).prop('id');
+                var pici = $(this).parent().parent();
+                xhr.open('POST', delpici_url, true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send("pici_id=" + pici_id);
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        if (this.responseText == "success") {
+                            alert('删除成功！');
+                            pici.remove();
+                        } else {
+                            alert('删除失败！');
+                        }
+                    }
+                }
+
+            });
+
+            flag = flag + 1;
+        }
+    }
+
+    function return_to_guancangchachong() {
+        $('.history').hide();
+        $('.history').empty();
+
+        $('.down').show();
+    }
+
+    //    var $flag_for_num_limit = 0;
+    function num_limit() {
+//        $flag_for_num_limit++;
+//        if ($flag_for_num_limit <= 1) {
+        var list = $('input[id^=amount1]');
+        $.each(list, function (index, domEle) {
+            domEle.onkeyup = function () {
+                this.value = this.value.replace(/\D/g, '');
+                if (domEle.value > 5) {
+                    domEle.value = 5;
+                }
+                if (domEle.value < 1) {
+                    domEle.value = 1;
+                }
+            }
+        });
+//        }
+    }
+
+    function generate_order() {
+
+
+        var utp = $('#usertype').html();
+
+        if (utp == null || utp == undefined || utp == '') {
+            alert("您还没登录");
+            return false;
+        }
+
+        if (utp != "library_user") {
+            alert("您不是图书馆用户");
+        }
+
+        user_id = $('#userid').html();
+
+//        alert(user_id);
+
+        var book_ids = [];
+        var book_nums = [];
+        var $row = $('.row');
+        var checked_boxes = $row.find(checkboxes_sel + ":checked");
+
+        $.each(checked_boxes, function (index, checkboxEle) {
+            if ($(this).parent().attr('class') == 'list') {
+                book_nums.push($(this).parent().next().children().val());
+            } else {
+                book_nums.push($(this).next().val());
+            }
+            if (checkboxEle.name) {
+                book_ids.push(checkboxEle.name);
+            }
+        })
+
+//        alert(book_ids);
+//        alert(book_nums);
+
+        xhr.open('POST', generate_order_url, true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("user_id=" + user_id + "&book_ids=" + book_ids + "&book_nums=" + book_nums);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                alert(this.responseText);
+            }
+        }
+
+    }
+
+    function view_my_orders() {
+
+        var utp = $('#usertype').html();
+
+        if (utp == null || utp == undefined || utp == '') {
+            alert("您还没登录");
+            return false;
+        }
+
+        if (utp != "library_user") {
+            alert("您不是图书馆用户");
+        }
+
+        var uid = $('#userid').html();
+
+        window.location.href = "http://" + global_url + "/guanpeipindao/zhengdingdan/orders_view.php?usrn=" + uid;
+    }
+
+<?php echo '</script'; ?>
+>
+</html><?php }
+}

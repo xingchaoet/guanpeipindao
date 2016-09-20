@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script language="javascript" src="js/xmlhttprequest.js"></script>
+    <script language="javascript" src="js/register.js"></script>
+
+    <script type="text/javascript">
+        var xmlHttp;
+        //取xmlhttprequest对象
+        function GetXmlHttpObject() {
+            var xmlHttp = null;
+            try {
+                // Firefox, Opera 8.0+, Safari
+                xmlHttp = new XMLHttpRequest();
+            }
+            catch (e) {
+                // Internet Explorer
+                try {
+                    xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+                }
+                catch (e) {
+                    xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+            }
+            return xmlHttp;
+        }
+        //处理省份，select_sheng是获取到的省份名称
+        function selectCity(select_sheng) {
+            var cObj = document.getElementById('libspan');//取网页中id为city的容器对象
+            xmlHttp = GetXmlHttpObject();
+            if (xmlHttp == null) {
+                alert("您的浏览器不支持AJAX！");
+                return false;
+            }
+
+            //判断确实选择到了省份值
+            if (select_sheng != '' && select_sheng != null && select_sheng != 0 && select_sheng != -1) {
+                //将省份名称值提交lib_select.php
+                xmlHttp.open('GET', 'lib_select.php?sheng=' + select_sheng, true);
+                xmlHttp.onreadystatechange = function () {
+                    if (xmlHttp.readyState != 4) {
+                        cObj.innerHTML = '<option value="loading">loading……</option>';
+                    }
+                    if (xmlHttp.readyState == 4) {
+                        if (xmlHttp.status == 200) {
+                            //将从chkpc中获取到的输出值写入网页中id为city的对象容器
+                            cObj.innerHTML = xmlHttp.responseText;
+                        }
+                    }
+                }
+                xmlHttp.send(null);
+            }
+            else {
+                cObj.innerHTML = '';
+                //alert('请重新选择省份！');
+                return false;
+            }
+        }
+    </script>
+
+
+</head>
+<body>
+<!---<form action="#" method="post" name="myform">---->
+<div id="container">
+    <div id="rgbgdiv">
+        <div id='top_title'><font size="4">会员注册</font></div>
+        <div id="regnamediv"><b>注册名称 </b><input id="regname" name="regname" type="text"/>
+            <div id="namediv">请输入用户名</div>
+        </div>
+        <div id="regpwddiv1"><b>注册密码 </b><input id="regpwd1" name="regpwd1" type="password"/>
+            <div id="pwddiv1">请输入密码</div>
+        </div>
+        <div id="regpwddiv2"><b>确认密码 </b><input id="regpwd2" name="regpwd2" type="password"/>
+            <div id="pwddiv2">请输入确认密码</div>
+        </div>
+        <div id="regemaildiv"><b>电子邮箱 </b><input id="email" name="email" type="text"/>
+            <div id="emaildiv">用户激活和找回密码使用</div>
+        </div>
+        <div id="regshengdiv"><b>所属省份 </b><?php include('sheng_select.php'); ?>
+            <div id="shengdiv">工作单位所属省份</div>
+        </div>
+        <div id="reglibdiv"><b>工作单位 </b><span id="libspan" width="100px;"><select id="lib" name="lib"><option
+                        value='-1'>请先选择省份</option></select></span>
+            <div id="libdiv">工作单位全称</div>
+        </div>
+        <div id="regaddressdiv"><b>通讯地址 </b><input id="address" name="address" type="text"/>
+            <div id="addressdiv">工作单位通讯地址</div>
+        </div>
+        <div id="regpostcodediv"><b>邮政编码 </b><input id="postcode" name="postcode" type="text"/>
+            <div id="postcodediv">工作单位邮政编码</div>
+        </div>
+        <div id="regtelephonediv"><b>办公电话 </b><input id="telephone" name="telephone" type="text"/>
+            <div id="telephonediv">您的固定联系电话</div>
+        </div>
+        <div id="regmobilediv"><b>移动电话 </b><input id="mobile" name="mobile" type="text"/>
+            <div id="mobilediv">您的手机号码</div>
+        </div>
+        <div id="regquestiondiv"><b>密保问题 </b><input id="question" name="question" type="text"/>
+            <div id="questiondiv">用户激活和找回密码使用</div>
+        </div>
+        <div id="reganswerdiv"><b>密保答案 </b><input id="answer" name="answer" type="text"/>
+            <div id="answerdiv">用户激活和找回密码使用</div>
+        </div>
+        <div id="regrealnamediv"><b>真实姓名 </b><input id="realname" name="realname" type="text"/>
+            <div id="realnamediv">用户的真实姓名</div>
+        </div>
+        <div id="regsexdiv"><b>性&nbsp;&nbsp;&nbsp;&nbsp;别 </b><select id="sex" name="sex">
+                <option value="-1">请选择</option>
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+            <div id="sexdiv">用户的性别</div>
+        </div>
+        <div id="regzwdiv"><b>职&nbsp;&nbsp;&nbsp;&nbsp;务 </b><input id="zw" name="zw" type="text"/>
+            <div id="zwdiv">担任职务</div>
+        </div>
+        <div id="regbirthdaydiv"><b>出生日期 </b><input id="birthday" name="birthday" type="text"/>
+            <div id="birthdaydiv">用户的出生日期。格式：YYYY-MM-DD</div>
+        </div>
+        <div id="regqqdiv">&nbsp;&nbsp;<b>QQ号码 </b><input id="qq" name="qq" type="text"/>
+            <div id="qqdiv">用户QQ号</div>
+        </div>
+        <div id="regdata_datediv"><b>发送频率 </b><select id="data_date" name="data_date">
+                <option value="-1">请选择</option>
+                <option value="每周">每周</option>
+                <option value="每月">每月</option>
+                <option value="每季度">每季度</option>
+                <option value="半年">半年</option>
+            </select>
+            <div id="data_datediv">征订单数据发送频率</div>
+        </div>
+        <div id="regdata_formatdiv"><b>数据格式 </b><select id="data_format" name="data_format">
+                <option value="-1">请选择</option>
+                <option value="EXCEL">EXCEL</option>
+                <option value="MARC">MARC</option>
+                <option value="EXCEL+MARC">EXCEL+MARC</option>
+            </select>
+            <div id="data_formatdiv">数据文件格式</div>
+        </div>
+        <div id="btndiv2">
+            <button id="regbtn" disabled="disabled">&nbsp;</button>
+            <button id="logbtn">&nbsp;</button>
+        </div>
+        <div id="imgdiv" style=" visibility: hidden;">&nbsp;</div>
+    </div>
+</div>
+<!-----</form>----->
+</body>
+</html>

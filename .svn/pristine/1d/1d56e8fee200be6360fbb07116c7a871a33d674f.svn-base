@@ -1,0 +1,35 @@
+		body {
+			padding-top: 10px;
+			margin-left: 30px;
+			margin-right: 30px;
+		}
+
+		.site_head{
+			font-size: 16px;
+			font-family: 'Microsoft YaHei', 'Arial';
+		}
+		.nav{
+			background-color: blue;
+			width: 100%;
+			font-size: 18px;
+			font-family: 'Microsoft YaHei', 'Arial';
+		}
+
+		#thenavbar>ul>li{
+			width: 10%;
+			text-align: center;
+		}
+
+		#thenavbar>ul>li>a{
+			color:#eef8ff;
+			
+		}
+
+		.nav>li>a:hover, .nav>li>a:focus{
+			background-color: #8585cc;
+		}
+
+
+		*, *:before, *:after{
+
+		}

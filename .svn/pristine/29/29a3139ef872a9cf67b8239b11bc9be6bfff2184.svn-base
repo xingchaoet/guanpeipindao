@@ -1,0 +1,76 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-08-03 18:56:01
+  from "D:\xampps\htdocs\guanpeipindao\templates\zhengdingdan\order_list.html" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_57a1cdc17fb435_09458270',
+  'file_dependency' => 
+  array (
+    '3aa775294378a7d5d5ed0bde3a2b845cba29f027' => 
+    array (
+      0 => 'D:\\xampps\\htdocs\\guanpeipindao\\templates\\zhengdingdan\\order_list.html',
+      1 => 1470221737,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_57a1cdc17fb435_09458270 ($_smarty_tpl) {
+?>
+<div style="margin-top: 10px" class="">
+    <form class="form-inline" role="form">
+        <div class="form-group">
+            <!--<label class="form-label">Search</label>-->
+            <!--<input type="text" class="form-control">-->
+            <label class="label label-default form-label" style="margin-left: 20px">征订单批次号</label><label
+                class="label label-default form-label" style=" margin-left: 201px">订单生成时间</label><label
+                class="btn btn-danger btn-sm form-label" style=" margin-left: 200px"
+                onclick="close_pici_list()"; value="">X</label>
+
+        </div>
+    </form>
+
+    <?php
+$_from = $_smarty_tpl->tpl_vars['order_list']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_order_0_saved_item = isset($_smarty_tpl->tpl_vars['order']) ? $_smarty_tpl->tpl_vars['order'] : false;
+$_smarty_tpl->tpl_vars['order'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['order']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['order']->value) {
+$_smarty_tpl->tpl_vars['order']->_loop = true;
+$__foreach_order_0_saved_local_item = $_smarty_tpl->tpl_vars['order'];
+?>
+
+    <div id="" class="panel panel-default" style="margin-top: 10px">
+        <div class="order_info">
+            <h5 class="">
+
+                <input type="radio" name="zdd" value="zddsss"/>
+
+                <label class="label label-default" style=""> <?php echo $_smarty_tpl->tpl_vars['order']->value['zdd_pc_id'];?>
+</label>
+                <label class="label label-default" style=" margin-left: 150px"><?php echo $_smarty_tpl->tpl_vars['order']->value['zdd_time'];?>
+</label>
+            </h5>
+
+        </div>
+
+    </div>
+
+    <?php
+$_smarty_tpl->tpl_vars['order'] = $__foreach_order_0_saved_local_item;
+}
+if ($__foreach_order_0_saved_item) {
+$_smarty_tpl->tpl_vars['order'] = $__foreach_order_0_saved_item;
+}
+?>
+
+</div>
+<?php }
+}

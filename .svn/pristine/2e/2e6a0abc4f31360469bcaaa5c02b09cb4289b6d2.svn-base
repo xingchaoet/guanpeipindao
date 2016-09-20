@@ -1,0 +1,131 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2016/6/24
+ * Time: 23:22
+ */
+include ("include/GuanCangSmarty.php");
+
+require_once("config.php");
+include  ("db/con_mysql2.php");
+include  ("db/dao.php");
+
+include ("class/Page.class.php");
+
+session_start();
+
+$smarty = new GuanCangSmarty();
+
+$con_mysql2 = new con_mysql2();
+$ms_tsfl4 = new con_mysql2();
+
+if($_GET['type'] == 'recommend'){
+
+//    计算总数
+
+//    $sql = "select count(*) as sum from ecs_book where bjtj != ''"; //写推荐条件
+
+    $sql = "SELECT count(*) as sum FROM ecs_book WHERE bjtj IS NOT NULL";
+
+    $recommendbooks_sum =  $con_mysql2->sdb($sql);
+    $data = mysqli_fetch_array($recommendbooks_sum);
+
+    $tot = $data['sum'];
+//
+//    echo $tot;
+//
+//    exit();
+
+    $page=new Page('more.php',$tot,21,$_GET['type'],$_GET['show']);
+
+    $sql = "SELECT * FROM ecs_book WHERE bjtj IS NOT NULL $page->limit";
+    $recommendbooksObject =  $con_mysql2->sdb($sql);
+//    print_r($recommendbooksObject);
+//
+//    exit();
+
+    while($data = $recommendbooksObject->fetch_array(MYSQLI_ASSOC)){
+
+        $isbn = $data['isbn'];
+        if ($data['kc'] > 0) {
+//            echo '纸本可供';
+            $data['kucun'] = "纸本可供";
+        } else {
+            $sql_tsfl4 = ser("ecs_book", "sm,isbn,zzh,kb,cbrq,dj,kc", "jz=2 and isbn='%{$isbn}%' ");
+            $rs_tsfl4 = $ms_tsfl4->sdb($sql_tsfl4);
+            $tsfl_data4 = mysqli_fetch_assoc($rs_tsfl4);
+            $dj11 = trim($tsfl_data4['dj']);
+            if ($dj11 == null) {
+                //echo 'POD可供';
+                $data['kucun'] = "可预订";
+//                echo '可预订';
+            } else {
+                //echo '可预订';
+                $data['kucun'] = "POD可供";
+//                echo 'POD可供';
+            }
+        }
+
+
+        $recommendbooks[] = $data;
+    }
+//    $recommendbooks = $recommendbooksObject->fetch_array(MYSQLI_ASSOC);
+//    print_r($recommendbooks);
+//
+//    exit();
+    $smarty->assign("type","recommend");
+    $smarty->assign("page",$page);
+    $smarty->assign("recommendbooks",$recommendbooks);
+
+}else{
+
+    $sql = "select count(*) as sum from ecs_book where cbrq > '2015-01-01'";// 做个数量限制
+    $newbooks_sum =  $con_mysql2->sdb($sql);
+    $data = mysqli_fetch_array($newbooks_sum);
+    $tot = $data['sum'];
+
+    $page=new Page('more.php',$tot,21,$_GET['type'],$_GET['show']);
+    $sql = "select * from ecs_book ORDER BY cbrq DESC $page->limit";
+    $newbooksObject =  $con_mysql2->sdb($sql);
+//    print_r($recommendbooksObject);
+//
+//    exit();
+    while($data = $newbooksObject->fetch_array(MYSQLI_ASSOC)){
+        $isbn = $data['isbn'];
+        if ($data['kc'] > 0) {
+//            echo '纸本可供';
+            $data['kucun'] = "纸本可供";
+        } else {
+            $sql_tsfl4 = ser("ecs_book", "sm,isbn,zzh,kb,cbrq,dj,kc", "jz=2 and isbn='%{$isbn}%' ");
+            $rs_tsfl4 = $ms_tsfl4->sdb($sql_tsfl4);
+            $tsfl_data4 = mysqli_fetch_assoc($rs_tsfl4);
+            $dj11 = trim($tsfl_data4['dj']);
+            if ($dj11 == null) {
+                //echo 'POD可供';
+                $data['kucun'] = "可预订";
+//                echo '可预订';
+            } else {
+                //echo '可预订';
+                $data['kucun'] = "POD可供";
+//                echo 'POD可供';
+            }
+        }
+        $newbooks[] = $data;
+    }
+
+    $smarty->assign("type","new");
+    $smarty->assign("page",$page);
+    $smarty->assign("newbooks",$newbooks);
+}
+
+if($_GET['show'] == 'list'){
+
+    $smarty->display("morelist.html");
+
+}else{
+
+    $smarty->display("more.html");
+
+}
+

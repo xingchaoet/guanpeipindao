@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据下载</title>
+
+    <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/css/left_nav.css">
+
+    <link rel="stylesheet" href="../dist/css/header.css">
+
+    <style>
+        .row {
+            margin-bottom: 10px;
+            font-family: 'Microsoft YaHei', 'Arial';
+            font-size: 11px;
+        }
+
+        .col-sm-3 {
+            background: #F0FFFF;
+            margin-bottom: 10px;
+        }
+
+        .col-sm-9 {
+            width: 770px;
+        }
+
+        #guanpeipaihang{
+            height: auto;
+        }
+        #data_diy{
+            height: auto;
+        }
+        #result_download{
+            height: auto;
+        }
+        #special_data{
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+{include file="header.html"}
+
+<div class="">
+    <div class="row ">
+
+        <div class="col-sm-3">
+            {include file="left_nav.html"}
+
+        </div>
+
+        <div class="col-sm-9">
+            <div id="guanpeipaihang">
+                <div>馆配排行</div>
+            </div>
+            <div id="data_diy">
+                <div>数据定制</div>
+
+            </div>
+            <div id="result_download">
+                <div>搜索结果下载</div>
+
+            </div>
+            <div id="special_data">
+                <div>专题数据</div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="../dist/js/jquery.min.js"></script>
+<script src="../dist/js/bootstrap.min.js"></script>
+<script src="../dist/js/holder.min.js"></script>
+<script src="../dist/js/application.js"></script>
+<!--<script src="../dist/js/jquery.icheck.min.js"></script>-->
+
+<script src="../dist/js/zzsc.js"></script>
+<script src="../dist/js/left_nav.js"></script>
+
+</html>

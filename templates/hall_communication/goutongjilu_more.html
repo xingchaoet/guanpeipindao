@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>沟通记录-更多</title>
+    <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/css/left_nav.css">
+
+    <link rel="stylesheet" href="../dist/css/header.css">
+    <link rel="stylesheet" href="../dist/css/introduce.css">
+
+    <script src="../dist/js/jquery.min.js"></script>
+    <style>
+        .down {
+            padding-top: 25px;
+            width: 770px;
+        }
+
+    </style>
+</head>
+<body>
+
+{include file="header.html"}
+<div class="site">
+    <div class="row ">
+
+        <div class="col-sm-3">
+            {include file="left_nav.html"}
+
+        </div>
+
+        <div class="col-sm-9">
+            <div class="down">
+                <div id="communication_record">
+                    <div><label>沟通记录</label></div>
+                    <hr class="hr"/>
+                    <div class="communication_record_content">
+                        {foreach $gtjl as $value}
+                        <div class="list-group">
+                            <a href="#" class="list-group-item ">
+                                <h4 class="list-group-item-heading">
+                                    {$value['UserName']}:{$value['MessageContents']}
+                                    <!--留言一-->
+                                </h4>
+                                <p class="list-group-item-text">
+                                    <!--2016-8-30-->
+                                    {$value['MessageTime']}
+                                </p>
+                            </a>
+                            {foreach $value['reply'] as $val}
+                            <a href="#" class="list-group-item">
+                                <p class="list-group-item-text">
+                                    <!--留言回复一-->
+                                    {$val['ReplyUserName']}:{$val['ReplyContents']}
+                                </p>
+                                <p class="list-group-item-text">
+                                    <!--2016-8-30-->
+                                    {$val['ReplyTime']}
+                                </p>
+                            </a>
+                            {/foreach}
+                        </div>
+                        {/foreach}
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="../dist/js/bootstrap.min.js"></script>
+<script src="../dist/js/holder.min.js"></script>
+<script src="../dist/js/application.js"></script>
+<script src="../dist/js/zzsc.js"></script>
+<script src="../dist/js/left_nav.js"></script>
+</html>

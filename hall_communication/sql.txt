@@ -1,0 +1,41 @@
+insert into bs_message_board(user_id,user_pwd,question,answer,dzyj1,xm,xb,zw,csny,bgdh,sj1,qq1,active,ddate,dformat,lib_no,regdate) values('aa','96e79218965eb72c92a549dd5a330112','11','11','11@11.com','test','nan','0','1981-12-09','11','11','11','111','11','EXCEL','AH0001    ','2016-08-23 15:24:15')
+insert into bs_message_board
+(UserName,CompanyName,Position,MessageContents,MessageTime,MessageTime,FlagAudit,FlagMask,FlagReply) 
+values
+('aa','GD0080','zw','é™åˆ¶5000å­—ã€‚','2016-09-02 14:33:54','0','0','0')
+insert into bs_message_board
+(UserName,CompanyName,Position,MessageContents,MessageTime,FlagAudit,FlagMask,FlagReply) 
+values
+('aa','GD0080','zw','é™åˆ¶5000å­—ã€‚','2016-09-02 14:36:34','0','0','0')
+insert into bs_message_board
+(UserName,CompanyName,Position,MessageContents,MessageTime,FlagAudit,FlagMask,FlagReply) 
+values
+('aa','GD0080','zw','é™åˆ¶5000å­—ã€‚','2016-09-02 14:38:58','0','0','0')
+insert into bs_message_board
+(UserName,CompanyName,Position,MessageContents,MessageTime,FlagAudit,FlagMask,FlagReply) 
+values
+('aa','GD0080','','é™åˆ¶5000å­—ã€‚','2016-09-02 14:41:03','0','0','0')
+insert into bs_message_board
+(UserName,CompanyName,Position,MessageContents,MessageTime,FlagAudit,FlagMask,FlagReply) 
+values
+('aa','GD0080','','é™åˆ¶5000å­—ã€‚','2016-09-02 14:41:39','0','0','0')
+insert into bs_message_board
+(UserName,CompanyName,Position,MessageContents,MessageTime,FlagAudit,FlagMask,FlagReply) 
+values
+('zw','AH0001','Ö°Îñ','ä¸­æ–‡','2016-09-02 15:09:01','0','0','0')
+insert into bs_message_board
+(UserName,CompanyName,Position,MessageContents,MessageTime,FlagAudit,FlagMask,FlagReply) 
+values
+('zw','AH0001','','ä¸­æ–‡','2016-09-02 15:13:22','0','0','0')
+insert into bs_message_board
+(UserName,CompanyName,Position,MessageContents,MessageTime,FlagAudit,FlagMask,FlagReply) 
+values
+('zhw','AH0001','Ö°Îñ','ä¸­æ–‡','2016-09-02 15:18:11','0','0','0')
+insert into bs_message_board
+(UserName,CompanyName,Position,MessageContents,MessageTime,FlagAudit,FlagMask,FlagReply) 
+values
+('zhw','AH0001','Ö°Îñ','ÖĞÎÄ','2016-09-02 15:20:11','0','0','0')
+insert into bs_message_board
+(UserName,CompanyName,Position,MessageContents,MessageTime,FlagAudit,FlagMask,FlagReply) 
+values
+('zhw','AH0001','Ö°Îñ','ÏŞÖÆ5000×Ö¡£','2016-09-02 15:20:20','0','0','0')

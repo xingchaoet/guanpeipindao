@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+    <script src="dist/js/jquery.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="dist/js/holder.min.js"></script>
+    <script src="dist/js/application.js"></script>
+    <style>
+        .register{
+            padding-top: 80px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+        .form-control{
+            width: 30%;
+        }
+
+        .navbar{
+            background-color:lightblue;
+        }
+        .form-control{
+            display: inline;
+            position: fixed;
+            right: 750px;
+        }
+        .error{
+            padding-top: 8px;
+            display: none;
+            position: fixed;
+            left: 540px;
+            font-family: 'Microsoft YaHei', 'Arial';
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+<div class="navbar  navbar-fixed-top" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#example-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"  href="javascript:scroll(0,0)">北京理工大学</a>
+        </div>
+        <nav class="collapse navbar-collapse" id="example-navbar-collapse"  role="navigation">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="guanpeipindao.php">馆配频道</a>
+                </li>
+                <li>
+                    <a href="other1.php">其他频道1</a>
+                </li>
+                <li>
+                    <a href="other2.php">其他频道2</a>
+                </li>
+
+                <li style="margin-left: 600px">
+                    <a href="login.php">登录</a>
+                </li>
+
+                <li>
+                    <a href="register.php">注册</a>
+                </li>
+
+            </ul>
+        </nav>
+
+
+    </div>
+
+</div>
+
+<div class="register">
+
+
+    <form action="register.php" method="post">
+        <div class="form-group has-success">
+            <label for="nameid">用户名: </label>
+            <input type="text" id="nameid" name="username" class="form-control"  placeholder="">
+            <span class = 'error'>用户名长度至少六位！</span>
+        </div>
+
+        <div class="form-group has-error">
+            <label for="passid">密码:</label>
+            <input type="password" id="passid" name="password"  class="form-control " placeholder="">
+            <span class = 'error'>密码长度至少六位！</span>
+        </div>
+
+        <div class="form-group has-error">
+            <label for="passid">确认密码:</label>
+            <input type="password" id="repassid" name="repassword" class="form-control " placeholder="">
+            <span class = 'error'></span>
+        </div>
+
+
+
+        <div class="form-group has-success">
+            <div class="radio-inline">
+                <label>
+                    <input type="radio" name='usertype' value="1">管理和营销人员
+                </label>
+            </div>
+            <div class="radio-inline">
+                <label>
+                    <input type="radio" name='usertype' value="2"> 图书馆用户
+                </label>
+            </div>
+            <div class="radio-inline">
+                <label>
+                    <input type="radio" name='usertype' value="3"> 经销商用户
+                </label>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <input id = "summit" type="submit" value='提交' class="btn btn-primary ">
+            <input id = "reset" type="reset" value="重置" class="btn btn-danger ">
+        </div>
+
+
+    </form>
+</div>
+
+</body>
+<script type="text/javascript">
+    $('#nameid').blur(function(){
+        val = $(this).val();
+        if(val.length < 6){
+            $(this).next().show();
+            $(this).data(['s',0]);
+
+
+        }else{
+            $(this).next().hide();
+            $(this).data(['s',1]);
+
+        }
+    });
+
+    $('#passid').blur(function(){
+        val = $(this).val();
+        if(val.length < 6){
+            $(this).next().show();
+            $(this).data(['s',0]);
+
+        }else{
+            $(this).next().hide();
+            $(this).data(['s',1]);
+
+        }
+    });
+
+
+    $('#repassid').blur(function(){
+        val = $(this).val();
+        pass = $('#passid').val();
+        if(val != pass){
+            $(this).next().text('两次输入密码不一致！');
+            $(this).next().show();
+            $(this).data(['s',0]);
+        }else{
+            $(this).next().hide();
+            $(this).data(['s',1]);
+        }
+    });
+
+    $('#summit').click(function(){
+
+        tot = 0;
+
+        $('.form-control').each(function(){
+            tot += $(this).data('s');
+        });
+
+        if(tot == 3){
+            $('form').submit();
+        }
+
+    });
+
+</script>
+</html>

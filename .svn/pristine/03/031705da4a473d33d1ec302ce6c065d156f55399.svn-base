@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>社馆互动</title>
+
+    <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/css/left_nav.css">
+
+    <link rel="stylesheet" href="../dist/css/header.css">
+    <script src="../dist/js/jquery.min.js"></script>
+
+
+    <style>
+        .down {
+            padding-top: 25px;
+            width: 770px;
+        }
+
+        .list-group-item {
+            position: relative;
+            display: block;
+            padding: 4px 4px;
+            margin-bottom: -1px;
+            background-color: #fff;
+            border: 0px solid #ddd;
+        }
+
+        .communication_record_content {
+            margin-left: 50px;
+        }
+
+        .message {
+            position: relative;
+            left: -45px;
+            width: 700px;
+            height: auto;
+            border: 1px solid grey;
+        }
+
+        .communication_method {
+            margin-top: 20px;
+        }
+
+        textarea {
+            margin-left: 10px;
+        }
+
+        .message_title{
+            margin-left: 10px;
+            margin-top: 15px;
+        }
+
+        .message_btn_wrap{
+            margin-left: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .message_btn{
+            height: 35px;
+            width: 150px;
+            background: blue;
+            color: white;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+{include file="header.html"}
+<div class="">
+    <div class="row ">
+
+        <div class="col-sm-3">
+            {include file="left_nav.html"}
+
+        </div>
+
+        <div class="col-sm-9">
+            <div class="down">
+                <div id="guanpeidongtai">
+                    <div><label> 馆配动态</label></div>
+                    <div class="guanpeidongtai_content">
+                        <ul class="list-group">
+                            <li class="list-group-item">动态1
+                                2015-05
+                            </li>
+
+                            <li class="list-group-item">动态2
+                                2015-05
+                            </li>
+                            <li class="list-group-item">动态3
+                                2015-05
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="communication_record">
+                    <div><label>沟通记录</label></div>
+                    <div class="communication_record_content">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item ">
+                                <h4 class="list-group-item-heading">
+                                    留言一
+                                </h4>
+                                <p class="list-group-item-text">
+                                    2016-8-30
+                                </p>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <p class="list-group-item-text">
+                                    留言回复一
+                                </p>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <p class="list-group-item-text">
+                                    留言回复二
+                                </p>
+                            </a>
+                        </div>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item ">
+                                <h4 class="list-group-item-heading">
+                                    留言二
+                                </h4>
+                                <p class="list-group-item-text">
+                                    2016-8-30
+                                </p>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <p class="list-group-item-text">
+                                    留言回复一
+                                </p>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <p class="list-group-item-text">留言回复二</p>
+                            </a>
+                        </div>
+                        <div class="message">
+                            <label class="message_title">留言</label>
+                            <div>
+                                <textarea rows="3" cols="90">
+                                限制5000字。
+                                </textarea>
+                            </div>
+                            <div class="message_btn_wrap">
+                                <input class="message_btn" type="button" value="提交"
+                                       onclick="send_message();">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="communication_method">
+                        <div><label>业务联系方式</label></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="../dist/js/bootstrap.min.js"></script>
+<script src="../dist/js/holder.min.js"></script>
+<script src="../dist/js/application.js"></script>
+<!--<script src="../dist/js/jquery.icheck.min.js"></script>-->
+
+<script src="../dist/js/zzsc.js"></script>
+<script src="../dist/js/left_nav.js"></script>
+
+</html>

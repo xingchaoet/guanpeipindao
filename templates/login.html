@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="../../dist/css/bootstrap.min.css">
+
+    <style>
+        .register{
+            padding-top: 80px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+        .form-control{
+            width: 50%;
+        }
+        .navbar{
+            background-color:lightblue;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="navbar  navbar-fixed-top" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#example-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"  href="javascript:scroll(0,0)">北京理工大学</a>
+        </div>
+        <nav class="collapse navbar-collapse" id="example-navbar-collapse"  role="navigation">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="guanpeipindao.php">馆配频道</a>
+                </li>
+                <li>
+                    <a href="other1.php">其他频道1</a>
+                </li>
+                <li>
+                    <a href="other2.php">其他频道2</a>
+                </li>
+
+                <li style="margin-left: 600px">
+                    <a href="login.php">登录</a>
+                </li>
+
+                <li>
+                    <a href="register.php">注册</a>
+                </li>
+
+            </ul>
+        </nav>
+
+
+    </div>
+
+</div>
+
+<div class="register">
+
+
+    <form action="login.php" method="post">
+        <div class="form-group has-success">
+            <label for="nameid">用户名: </label>
+            <input type="text" id="nameid" name="username" class="form-control"  placeholder="">
+        </div>
+
+        <div class="form-group has-error">
+            <label for="passid">密码:</label>
+            <input type="password" id="passid" name="password"  class="form-control " placeholder="">
+        </div>
+
+
+        <div class="form-group">
+            <input type="submit" value='提交' class="btn btn-primary ">
+            <input type="reset" value="重置" class="btn btn-danger ">
+        </div>
+
+
+    </form>
+</div>
+
+</body>
+<script src="../../dist/js/jquery.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<script src="../../dist/js/holder.min.js"></script>
+<script src="../../dist/js/application.js"></script>
+</html>

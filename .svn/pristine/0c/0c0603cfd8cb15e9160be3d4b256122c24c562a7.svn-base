@@ -1,0 +1,487 @@
+/* CSS Document */
+/* 登录页面 */
+/*body{*/
+/*margin:0px auto;*/
+/*background-color:#FFFFFF;*/
+/*}*/
+body {
+    padding-top: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+body, td, th {
+    font-size: 12px;
+    /*color:#666666;*/
+    color: #1b578a;
+}
+
+#container {
+    margin: 0px;
+    text-align: center;
+}
+
+#bgdiv {
+    /*background: url(../images/bg.gif);*/
+
+    background-repeat: no-repeat;
+
+    width: 770px;
+    height: 630px;
+    left: 0px;
+    MARGIN-RIGHT: auto;
+    MARGIN-LEFT: auto;
+}
+
+#txtdiv1 {
+    position: relative;
+    top: 150px;
+    left: 0px;
+    width: 200px;
+    height: 18px;
+    text-align: left;
+    MARGIN-RIGHT: auto;
+    MARGIN-LEFT: auto;
+}
+
+#txtdiv2 {
+    position: relative;
+    top: 160px;
+    left: 0px;
+    height: 18px;
+    width: 200px;
+    text-align: left;
+    MARGIN-RIGHT: auto;
+    MARGIN-LEFT: auto;
+}
+
+#txtdiv3 {
+    position: relative;
+    top: 170px;
+    left: 0px;
+    height: 18px;
+    width: 200px;
+    text-align: left;
+    MARGIN-RIGHT: auto;
+    MARGIN-LEFT: auto;
+}
+
+#btndiv {
+    position: relative;
+    top: 200px;
+    left: 0px;
+    height: 18px;
+    width: 180px;
+    text-align: left;
+    MARGIN-RIGHT: auto;
+    MARGIN-LEFT: auto;
+}
+
+#lgbtn {
+    position: relative;
+    top: 0px;
+    left: 10px;
+    height: 20px;
+    width: 48px;
+    border: 1px dodgerblue solid;
+    /*background-image:url(../images/lgbtn.gif);*/
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#rgbtn {
+    position: relative;
+    top: 0px;
+    left: 20px;
+    height: 20px;
+    width: 59px;
+    border: 1px dodgerblue solid;
+    /*background-image:url(../images/rgbtn.gif);*/
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#fdbtn {
+    position: relative;
+    top: 0px;
+    left: 30px;
+    height: 20px;
+    width: 59px;
+    border: 1px dodgerblue solid;
+    /*background-image:url(../images/fdbtn.gif);*/
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#lgname, #lgpwd {
+    border: 1px dodgerblue solid;
+    width: 135px;
+    height: 18px;
+}
+
+#lgchk {
+    border: 1px dodgerblue solid;
+    width: 135px;
+    height: 16px;
+}
+
+#chkid {
+    position: relative;
+    width: 50px;
+    top: 0px;
+    left: 2px;
+    height: 18px;
+    border: 0px;
+}
+
+#changea {
+    position: relative;
+    top: 0px;
+    left: 5px;
+    cursor: hand;
+}
+
+#regimg {
+    position: relative;
+    top: 340px;
+    left: 0px;
+    height: 30px;
+    width: 245px;
+    /*background-image:url(../images/loading.gif);*/
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/*	注册页面  */
+#rgbgdiv,#rgbgdiv_gps {
+    margin-top: 160px;
+    text-align: center;
+    /*background-image: url(../images/bg.gif);*/
+    /*background-repeat: no-repeat;*/
+    width: 770px;
+    height: auto;
+    /*text-align: left;*/
+    MARGIN-RIGHT: auto;
+    MARGIN-LEFT: auto;
+}
+
+#top_title {
+    position: relative;
+    top: 90px;
+    left: 0px;
+    width: 770px;
+    height: 20px;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+#main {
+    position: relative;
+    top: 150px;
+    left: 0px;
+    width: 600px;
+    height: 18px;
+    text-align: left;
+    padding-bottom: 5px;
+}
+
+#mainbody {
+    position: relative;
+    top: 150px;
+    left: 0px;
+    width: 600px;
+    height: 18px;
+    text-align: left;
+    padding-bottom: 5px;
+}
+
+#regnamediv {
+    position: relative;
+    margin-top: 5px;
+    top:150px;
+    left: 150px;
+    width: 410px;
+    height: 18px;
+    text-align: left;
+    padding-bottom: 5px;
+}
+
+#regpwddiv1, #regpwddiv2, #regemaildiv, #reglibdiv, #regshengdiv, #regaddressdiv, #regpostcodediv, #regtelephonediv, #regmobilediv, #regquestiondiv, #reganswerdiv, #regrealnamediv, #regsexdiv, #regzwdiv, #regbirthdaydiv, #regqqdiv, #regdata_datediv, #regdata_formatdiv {
+    position: relative;
+    margin-top: 5px;
+    top:150px;
+    left: 150px;
+    width: 410px;
+    height: 18px;
+    text-align: left;
+    padding-bottom: 5px;
+}
+
+#regname, #regpwd1, #regpwd2, #email, #lib, #sheng, #address, #postcode, #telephone, #mobile, #question, #answer, #realname, #sex, #zw, #birthday, #qq, #data_date, #data_format {
+    /*border:1px #66CC00 solid;*/
+    border: 1px dodgerblue solid;
+    width: 200px;
+    height: 18px;
+}
+
+#namediv, #pwddiv1, #pwddiv2, #emaildiv, #libdiv, #shengdiv, #addressdiv, #postcodediv, #telephonediv, #mobilediv, #questiondiv, #answerdiv, #realnamediv, #sexdiv, #zwdiv, #birthdaydiv, #qqdiv, #data_datediv, #data_formatdiv {
+    position: absolute;
+    top: 0px;
+    left: 270px;
+    border: 1px #f0f0f0 dashed;
+    background-color: #FEFEE2;
+    width: 200px;
+    height: 20px;
+    color: #ADADAD;
+    line-height: 23px;
+}
+
+
+/*馆配商注册*/
+#regnamediv_gps {
+    position: relative;
+    margin-top: 5px;
+    top:150px;
+    left: 150px;
+    width: 410px;
+    height: 18px;
+    text-align: left;
+    padding-bottom: 5px;
+}
+
+#regpwddiv1_gps, #regpwddiv2_gps, #regemaildiv_gps, #reglibdiv_gps, #regshengdiv_gps, #regaddressdiv_gps, #regpostcodediv_gps, #regtelephonediv_gps, #regmobilediv_gps, #regquestiondiv_gps, #reganswerdiv_gps, #regrealnamediv_gps, #regsexdiv_gps, #regzwdiv_gps, #regbirthdaydiv_gps, #regqqdiv_gps, #regdata_datediv_gps, #regdata_formatdiv_gps {
+    position: relative;
+    margin-top: 5px;
+    top:150px;
+    left: 150px;
+    width: 410px;
+    height: 18px;
+    text-align: left;
+    padding-bottom: 5px;
+}
+
+#regname_gps, #regpwd1_gps, #regpwd2_gps, #email_gps, #lib_gps, #sheng_gps, #address_gps, #postcode_gps, #telephone_gps, #mobile_gps, #question_gps, #answer_gps, #realname_gps, #sex_gps, #zw_gps, #birthday_gps, #qq_gps, #data_date_gps, #data_format_gps {
+    /*border:1px #66CC00 solid;*/
+    border: 1px dodgerblue solid;
+    width: 200px;
+    height: 18px;
+}
+
+#namediv_gps, #pwddiv1_gps, #pwddiv2_gps, #emaildiv_gps, #libdiv_gps, #shengdiv_gps, #addressdiv_gps, #postcodediv_gps, #telephonediv_gps, #mobilediv_gps, #questiondiv_gps, #answerdiv_gps, #realnamediv_gps, #sexdiv_gps, #zwdiv_gps, #birthdaydiv_gps, #qqdiv_gps, #data_datediv_gps, #data_formatdiv_gps {
+    position: absolute;
+    top: 0px;
+    left: 270px;
+    border: 1px #f0f0f0 dashed;
+    background-color: #FEFEE2;
+    width: 200px;
+    height: 20px;
+    color: #ADADAD;
+    line-height: 23px;
+}
+
+#btndiv2_gps {
+    position: relative;
+    top: 170px;
+    left: 210px;
+    height: 20px;
+    width: 179px;
+    text-align: left;
+}
+
+#regbtn_gps {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 20px;
+    width: 48px;
+    border: 1px dodgerblue solid;
+    /*background-image:url(../images/rgbtn2.gif);*/
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#logbtn_gps {
+    position: absolute;
+    top: 0px;
+    left: 130px;
+    height: 20px;
+    width: 59px;
+    border: 1px dodgerblue solid;
+    /*background-image:url(../images/lgbtn2.gif);*/
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#imgdiv_gps {
+    position: relative;
+    top: 340px;
+    left: 285px;
+    height: 30px;
+    width: 245px;
+    /*background-image:url(../images/loading.gif);*/
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/*  非必选信息  */
+#btndiv2 {
+    position: relative;
+    top: 170px;
+    left: 210px;
+    height: 20px;
+    width: 179px;
+    text-align: left;
+}
+
+#regbtn {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 20px;
+    width: 48px;
+    border: 1px dodgerblue solid;
+    /*background-image:url(../images/rgbtn2.gif);*/
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#logbtn {
+    position: absolute;
+    top: 0px;
+    left: 130px;
+    height: 20px;
+    width: 59px;
+    border: 1px dodgerblue solid;
+    /*background-image:url(../images/lgbtn2.gif);*/
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#imgdiv {
+    position: relative;
+    top: 340px;
+    left: 285px;
+    height: 30px;
+    width: 245px;
+    /*background-image:url(../images/loading.gif);*/
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 找回密码页面  */
+#fdbgdiv {
+    margin: 0 auto;
+    width: 296px;
+    height: 196px;
+    border: 2px #E8B38B solid;
+    background-color: #FFFFFF;
+}
+
+#top {
+    height: 25px;
+    border-bottom: 1px #E8B38B solid;
+    /*background-image:url(../images/fdbg.gif);*/
+    background-position: top;
+    background-repeat: repeat-x;
+    text-align: left;
+    line-height: 25px;
+    text-indent: 10px;
+    font-weight: bolder;
+}
+
+#foundname, #fdquestion, #fdanswer {
+    width: 100px;
+    height: 15px;
+    border: 1px #000000 solid;
+}
+
+#foundnamediv {
+    position: relative;
+    top: 20px;
+    left: 50px;
+    width: 170px;
+}
+
+#step1 {
+    position: relative;
+    top: 15px;
+    margin: 0 auto;
+    width: 60px;
+    height: 18px;
+    /*background-image:url(../images/finish.gif);*/
+    background-repeat: repeat-x;
+    background-position: center;
+    border: 1px dodgerblue solid;
+}
+
+#bottom {
+    position: absolute;
+    /*background-image: url(../images/bottom.gif);*/
+    background-repeat: no-repeat;
+    background-position: right;
+    bottom: 15px;
+    right: 15px;
+    width: 100%;
+    height: 20px;
+}
+
+span {
+    /*width:500px;*/
+    /*text-align:center;*/
+}
+
+#sex {
+    margin-left: 25px;
+}
+
+#zw {
+    margin-left: 25px;
+}
+
+#qq {
+    margin-left: 7px;
+}
+
+#sex_gps {
+    margin-left: 25px;
+}
+
+#zw_gps {
+    margin-left: 25px;
+}
+
+#qq_gps {
+    margin-left: 7px;
+}
+
+.register_group {
+    position: relative;
+    top: 25px;
+    left: 0px;
+    /*height:18px;*/
+    /*width:200px;*/
+    text-align: left;
+    MARGIN-RIGHT: auto;
+    MARGIN-LEFT: auto;
+}
+
+#register_group_title {
+    background-color: orangered;
+    width: 40%;
+    /*height: 0px;*/
+    font-size: 18px;
+    font-family: 'Microsoft YaHei', 'Arial';
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    margin-top: 0;
+    MARGIN-RIGHT: auto;
+    MARGIN-LEFT: auto;
+    border-bottom: 0px solid #ddd;
+    display: block;
+}
+
+.nav-tabs {
+    height: 0px;
+}

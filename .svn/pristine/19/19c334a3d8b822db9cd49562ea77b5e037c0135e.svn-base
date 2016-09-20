@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章内容</title>
+
+    <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/css/left_nav.css">
+
+    <link rel="stylesheet" href="../dist/css/header.css">
+    <script src="../dist/js/jquery.min.js"></script>
+    <style>
+        .down {
+            padding-top: 55px;
+            width: 770px;
+        }
+
+        .article_head {
+            text-align: center;
+        }
+
+        .article_title {
+            font-weight: bold;
+            margin: 0 auto;
+            width: 400px;
+            line-height: 30px;
+        }
+
+        .author_time {
+            margin: 0 auto;
+            width: 400px;
+            color: #F16D06;
+        }
+
+        .article_content{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+{include file="header.html"}
+<div class="">
+    <div class="row ">
+
+        <div class="col-sm-3">
+            {include file="left_nav.html"}
+
+        </div>
+
+        <div class="col-sm-9">
+            <div class="down">
+
+                <div class="article_head">
+                    <div class="article_title">
+                        {$gpdt[0]['Title']}
+                    </div>
+                    <div class="author_time">
+                        {$gpdt[0]['Writer']}/{$gpdt[0]['UpTime']}
+                    </div>
+                </div>
+                <div class="article_content">
+                    {$gpdt[0]['Article']}
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../dist/js/bootstrap.min.js"></script>
+<script src="../dist/js/holder.min.js"></script>
+<script src="../dist/js/application.js"></script>
+<script src="../dist/js/zzsc.js"></script>
+<script src="../dist/js/left_nav.js"></script>
+
+</html>

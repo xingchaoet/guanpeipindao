@@ -1,0 +1,30 @@
+<table  class='table table-bordered table-striped'>
+    <span style="" id="zdd_times">{$zdd_times}</span>
+    <tr style="text-align: center">
+        <td>征订单编号</td>
+        <td>生成时间</td>
+        <td>品种数量</td>
+        <td>操作</td>
+    </tr>
+
+    {foreach $zdd_order_list as $order}
+    <tr>
+        <td id="{$order['zdd_pc_id']}">
+            {$order['zdd_pc_id']}
+        </td>
+        <td>
+            {$order['zdd_time']}
+        </td>
+        <td id="{$order['zdd_sum']}">
+            {$order['zdd_sum']}
+        </td>
+        <td>
+            <a id="view_zdd_detail"  onmouseover="show_zdd();" class="view_zdd_detail">查看详情</a>
+            <a  class="zhengdingdan_download_marc" onmouseover="zhengdingdan_download_marc();">下载</a>
+        </td>
+
+    </tr>
+    {/foreach}
+    {$pagenav}
+
+</table>

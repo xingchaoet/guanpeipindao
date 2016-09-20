@@ -1,0 +1,78 @@
+<div class="site">
+    <div class="login_register">
+
+        {if $smarty.session.islogin}
+        <!--<a style="margin-left: 930px">欢迎{$smarty.session.username}</a>-->
+        <p style="margin-left: 900px">
+            <a >欢迎{$smarty.session.username}</a>
+            <a href="{$relpostodist}user/logout.php">退出</a>
+        </p>
+
+        {else}
+        <span style="margin-left: 680px">您好,欢迎来到科学出版社!</span>
+        <a style="margin-left: 10px; font-weight:bold;" href="{$relpostodist}user/login.php"> [请登录],</a>
+        <span>新用户？</span>
+        <a style="font-weight:bold;" href="{$relpostodist}user/register.php">[免费注册]</a>
+        {/if}
+
+    </div>
+    <hr class="hr"/>
+
+    <div>
+        <div>
+            <a href="{$relpostodist}index.php" style="float:left; margin-right: 100px" href="javascript:scroll(0,0)">
+                <img height="56" width="238" src="{$relpostodist}dist/picture/logo.gif" alt="logo"></a>
+            <div style="float: left">
+                <form action="" class="navbar-form">
+                    <div class="form-group">
+                        <input  type="text" placeholder='书名、内容简介或作者' class='form-control search_size'>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="搜索" class='btn btn-primary'>
+                    </div>
+                    <p class="keys">热门关键词 ：物理 科学 企业管理与培训</p>
+                </form>
+            </div>
+            <!--<div style=""><p class="gouwuche">去购物车结算</p></div>-->
+
+        </div>
+
+
+    </div>
+    <a id="global_url" style="display: none"><?php echo GLOBAL_URL;?></a>
+    <a id="userid" style="display: none">{$smarty.session.user_id}</a>
+    <a id="usertype" style="display: none">{$smarty.session.user_type}</a>
+
+    <div id="thenavbar">
+        <ul class="nav navbar-nav">
+            <li class="active">
+                <a id="first_all" href="guanpeipindao.php">全部商品分类</a>
+            </li>
+            <li class="nav_li_second">
+                <a href="other1.php">网上书店</a>
+            </li>
+            <li class="nav_li">
+                <a href="other2.php">按需印刷</a>
+            </li>
+            <li class="nav_li">
+                <a href=".php">电子书</a>
+            </li>
+            <li class="nav_li">
+                <a href="other1.php">预出版</a>
+            </li>
+            <li class="nav_li">
+                <a href="/guanpeipindao/guanpeipindao.php">馆配服务</a>
+            </li>
+            <li class="nav_li">
+                <a href="other1.php">教学服务</a>
+            </li>
+            <li class="nav_li">
+                <a href="other2.php">经销商服务</a>
+            </li>
+
+
+        </ul>
+    </div>
+
+
+</div>

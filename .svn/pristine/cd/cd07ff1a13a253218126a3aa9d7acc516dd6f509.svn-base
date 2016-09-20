@@ -1,0 +1,28 @@
+<table  class='table table-bordered table-striped'>
+    <tr style="text-align: center">
+        <td>征订单编号</td>
+        <td>生成时间</td>
+        <td>品种数量</td>
+        <td>操作</td>
+    </tr>
+
+    {foreach $zdd_order_list as $order}
+    <tr>
+        <td>
+            {$order['zdd_pc_id']}
+        </td>
+        <td>
+            {$order['zdd_time']}
+        </td>
+        <td>
+            {$order['zdd_sum']}
+        </td>
+        <td>
+            查看详情
+        </td>
+
+    </tr>
+    {/foreach}
+    {$pagenav}
+
+</table>

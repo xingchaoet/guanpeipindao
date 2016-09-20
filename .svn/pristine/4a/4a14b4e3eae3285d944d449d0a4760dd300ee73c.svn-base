@@ -1,0 +1,43 @@
+                <div class="">
+                    <!--<a href="http://localhost/guanpeipindao/chachong/chachong.php">馆藏查重</a>-->
+                    <!--<button onclick="return_to_guancangchachong();">馆藏查重</button>-->
+
+                    <div  onmouseover="toggle_click();" class="panel-group" id="accordion">
+                        {foreach $pici_info_collection as $pici}
+
+                        <div id="" class="panel panel-default">
+                            <div class="piciinfo">
+                                <div class="">
+                                    <h5 class="panel-title">
+                                        <div class="toggle" data-parent="#accordion" href="#{$pici['gc_dr_pc']}">
+
+                                            <span class="label label-default">批次号:</span>
+                                            {$pici['gc_dr_pc']}
+                                            <span class="label label-default" style="margin-left: 50px">导入时间:</span>
+                                            {$pici['uptime']}
+                                        </div>
+                                    </h5>
+                                </div>
+
+                                <div id="{$pici['gc_dr_pc']}" class="panel-collapse collapse">
+                                    <!--<span class="label label-default">isbn:</span>-->
+                                    <div class="panel-body">
+
+                                        {foreach $pici[{$pici['gc_dr_pc']}] as $isbn}
+                                        <span class="label label-primary"> {$isbn} </span>
+                                        {/foreach}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <button class="btn btn-danger btn-xs delpici" >删除批次</button>
+                                <!--<button class="btn btn-danger btn-xs" onclick="delpici();">删除批次</button>-->
+
+                            </div>
+                        </div>
+
+                        {/foreach}
+
+                    </div>
+                </div>

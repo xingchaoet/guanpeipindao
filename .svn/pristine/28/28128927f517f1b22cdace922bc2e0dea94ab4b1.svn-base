@@ -1,0 +1,197 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2016/9/5
+ * Time: 10:04
+ */
+require_once("../db/con_mssql.php");
+include("../db/dao.php");
+require_once("../config.php");
+
+session_start();
+
+// 实例化SQLServer封装类
+$ms = new con_mssql();
+// 创建MARC数据临时缓存
+$tmp_marc = "";
+
+$zhtshj_no = $_REQUEST['zhtshj_no'];
+
+$MARC = $_REQUEST['MARC'];
+$CALIS = $_REQUEST['CALIS'];
+$CF = $_REQUEST['CF'];
+$EXCEL = $_REQUEST['EXCEL'];
+
+//下载MARC格式
+if ($MARC) { //采访类型
+//从SQLServer中提取特定的MARC数据
+    $sql = ser("bs_marc_seminar", "MarcGt", "id='$zhtshj_no'");
+
+    // 查询数据
+    $rs = $ms->sdb($sql);
+    if (!$rs) {
+        echo "Error in query preparation/execution.<br />";
+        die(print_r(iconv('GBK', 'UTF-8', odbc_errormsg()), true));
+    }
+    if (odbc_fetch_row($rs)) {
+        $tmp_marc = $tmp_marc . odbc_result($rs, "MarcGt") . chr(13) . chr(10);
+    }
+
+// 下载MARC数据
+    $filename = 'MARC_' . $zhtshj_no . '.iso';
+    if (strlen($tmp_marc) <= 4) {
+        $_SESSION['err'] = "无此批书MARC数据!";
+        echo "<script type='text/javascript'>alert('无此批书MARC数据!');</script>";
+
+        $global_url = GLOBAL_URL;
+
+        echo "<script type='text/javascript'>window.location.href='http://$global_url/guanpeipindao/data_download/data_download.php';</script>";
+
+    } else {
+        unset($_SESSION['err']);
+        $open = fopen("$filename", "a+");
+        fwrite($open, $tmp_marc);
+        fclose($open);
+
+        $file = "./" . $filename;
+        header("Content-Type: application/force-download");
+        Header("Accept-Ranges:bytes ");
+        Header("Accept-Length:" . strlen($file));
+        Header("Content-Disposition: attachment;filename={$filename}");
+        @readfile($file);//输出文件;
+        @unlink($file);
+        unset($tmp_marc);
+
+    }
+}
+
+
+//下载CALIS格式
+if ($CALIS) { //采访类型
+//从SQLServer中提取特定的MARC数据
+    $sql = ser("bs_marc_seminar", "MarcCalis", "id='$zhtshj_no'");
+
+    // 查询数据
+    $rs = $ms->sdb($sql);
+    if (!$rs) {
+        echo "Error in query preparation/execution.<br />";
+        die(print_r(iconv('GBK', 'UTF-8', odbc_errormsg()), true));
+    }
+    if (odbc_fetch_row($rs)) {
+        $tmp_marc = $tmp_marc . odbc_result($rs, "MarcCalis") . chr(13) . chr(10);
+    }
+
+// 下载MARC数据
+    $filename = 'Calis_' . $zhtshj_no . '.iso';
+    if (strlen($tmp_marc) <= 4) {
+        $_SESSION['err'] = "无此批书MARC数据!";
+        echo "<script type='text/javascript'>alert('无此批书MARC数据!');</script>";
+
+        $global_url = GLOBAL_URL;
+
+        echo "<script type='text/javascript'>window.location.href='http://$global_url/guanpeipindao/data_download/data_download.php';</script>";
+
+    } else {
+        unset($_SESSION['err']);
+        $open = fopen("$filename", "a+");
+        fwrite($open, $tmp_marc);
+        fclose($open);
+
+        $file = "./" . $filename;
+        header("Content-Type: application/force-download");
+        Header("Accept-Ranges:bytes ");
+        Header("Accept-Length:" . strlen($file));
+        Header("Content-Disposition: attachment;filename={$filename}");
+        @readfile($file);//输出文件;
+        @unlink($file);
+        unset($tmp_marc);
+    }
+}
+
+
+//下载CF格式
+if ($CF) { //采访类型
+//从SQLServer中提取特定的MARC数据
+    $sql = ser("bs_marc_seminar", "MarcCf", "id='$zhtshj_no'");
+
+    // 查询数据
+    $rs = $ms->sdb($sql);
+    if (!$rs) {
+        echo "Error in query preparation/execution.<br />";
+        die(print_r(iconv('GBK', 'UTF-8', odbc_errormsg()), true));
+    }
+    if (odbc_fetch_row($rs)) {
+        $tmp_marc = $tmp_marc . odbc_result($rs, "MarcCf") . chr(13) . chr(10);
+    }
+
+// 下载MARC数据
+    $filename = 'MarcCf_' . $zhtshj_no . '.iso';
+    if (strlen($tmp_marc) <= 4) {
+        $_SESSION['err'] = "无此批书采访数据!";
+        echo "<script type='text/javascript'>alert('无此批书采访数据!');</script>";
+
+        $global_url = GLOBAL_URL;
+
+        echo "<script type='text/javascript'>window.location.href='http://$global_url/guanpeipindao/data_download/data_download.php';</script>";
+
+    } else {
+        unset($_SESSION['err']);
+        $open = fopen("$filename", "a+");
+        fwrite($open, $tmp_marc);
+        fclose($open);
+
+        $file = "./" . $filename;
+        header("Content-Type: application/force-download");
+        Header("Accept-Ranges:bytes ");
+        Header("Accept-Length:" . strlen($file));
+        Header("Content-Disposition: attachment;filename={$filename}");
+        @readfile($file);//输出文件;
+        @unlink($file);
+        unset($tmp_marc);
+    }
+}
+
+//下载EXCEL格式
+if ($EXCEL) {
+    //从SQLServer中提取特定的MARC数据
+    $sql = ser("bs_marc_seminar", "MarcExcel", "id='$zhtshj_no'");
+
+    // 查询数据
+    $rs = $ms->sdb($sql);
+    if (!$rs) {
+        echo "Error in query preparation/execution.<br />";
+        die(print_r(iconv('GBK', 'UTF-8', odbc_errormsg()), true));
+    }
+    if (odbc_fetch_row($rs)) {
+        $tmp_marc = $tmp_marc . odbc_result($rs, "MarcExcel") . chr(13) . chr(10);
+    }
+
+// 下载数据
+    $filename = 'MarcExcel_' . $zhtshj_no . '.xls';
+    if (strlen($tmp_marc) <= 4) {
+        $_SESSION['err'] = "无此批书Excel数据!";
+        echo "<script type='text/javascript'>alert('无此批书Excel数据!');</script>";
+
+        $global_url = GLOBAL_URL;
+
+        echo "<script type='text/javascript'>window.location.href='http://$global_url/guanpeipindao/data_download/data_download.php';</script>";
+
+    } else {
+        unset($_SESSION['err']);
+        $open = fopen("$filename", "a+");
+        fwrite($open, $tmp_marc);
+        fclose($open);
+
+        $file = "./" . $filename;
+        header("Content-Type: application/force-download");
+        Header("Accept-Ranges:bytes ");
+        Header("Accept-Length:" . strlen($file));
+        Header("Content-Disposition: attachment;filename={$filename}");
+        @readfile($file);//输出文件;
+        @unlink($file);
+        unset($tmp_marc);
+    }
+}
+
+?>

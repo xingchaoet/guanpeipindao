@@ -1,0 +1,120 @@
+<?php 
+class Page{
+	public $total;
+	public $length;
+	public $pagenum;
+	public $page;
+	public $offset;
+	public $limit;
+	public $prevpage;
+	public $nextpage;
+	public $type;
+	public $url;
+	private $bothnum;      //两边保持数字分页的量
+	private $show;
+    private $pagebar;
+
+
+
+	function __construct($url,$total,$length,$type,$show){
+		$this->total=$total;
+		$this->length=$length;
+		$this->page=$_GET['p']?$_GET['p']:1;
+		$this->pagenum=ceil($this->total/$this->length);
+		$this->offset=($this->page-1)*$this->length;
+		$this->limit="limit {$this->offset},{$this->length}";
+		$this->prevpage=$this->page-1;
+		$this->type=$type;
+		$this->url=$url;
+		$this->bothnum = 2;
+		$this->show = $show;
+		$this->nextpage();
+	}
+
+	function nextpage(){
+		if($this->page>=$this->pagenum){
+			$this->nextpage=$this->pagenum;
+		}else{
+			$this->nextpage=$this->page+1;
+		}
+	}
+
+	private function pageList() {
+
+		for ($i=$this->bothnum;$i>=1;$i--) {
+			$_page = $this->page-$i;
+			if ($_page < 1) continue;
+			$_pagelist .= ' <a href=" '.$this->url.'?p='.$_page.'&type='.$this->type.'&show='.$this->show.' ">'.$_page.'</a> ';
+		}
+		$_pagelist .= ' <span class="active">'.$this->page.'</span> ';
+		for ($i=1;$i<=$this->bothnum;$i++) {
+			$_page = $this->page+$i;
+			if ($_page > $this->pagenum) break;
+			$_pagelist .= ' <a href=" '.$this->url.'?p='.$_page.'&type='.$this->type.'&show='.$this->show.' ">'.$_page.'</a> ';
+		}
+		return $_pagelist;
+	}
+
+	function page(){
+
+		return $this->page;
+
+	}
+
+	function show(){
+
+		if($this->page == 1){
+			if($this->nextpage == 1){
+
+			    $this->pagebar = "<div style=\"margin-left:500px\"><p><b>总计{$this->total}条记录 <a href={$this->url}?p=1&type={$this->type}&show={$this->show}'>首页</a>|".$this->pageList()."|<a href='{$this->url}?p={$this->pagenum}&type={$this->type}&show={$this->show}'>末页</a>|跳到<select name='topage' size='1' onchange='window.location=\"more.php?p=\" + this.value+ \"&type={$this->type}&show={$this->show}\"'></b></p></div>";
+
+                for($i=1;$i<=$this->pagenum;$i++){
+                    if($i==$this->page) $this->pagebar.="<option value='$i' selected>$i</option>\n";
+                    else
+                        $this->pagebar.="<option value='$i'>$i</option>\n";
+                }
+
+                echo $this->pagebar;
+
+			}else{
+
+                $this->pagebar = "<div style=\"margin-left:500px\"><p><b>总计{$this->total}条记录 <a href={$this->url}?p=1&type={$this->type}&show={$this->show}'>首页</a>|".$this->pageList()."|<a href='{$this->url}?p={$this->nextpage}&type={$this->type}&show={$this->show}'>下一页</a>|<a href='{$this->url}?p={$this->pagenum}&type={$this->type}&show={$this->show}'>末页</a>|跳到<select name='topage' size='1' onchange='window.location=\"more.php?p=\" + this.value+ \"&type={$this->type}&show={$this->show}\"'></b></p></div>";
+
+                for($i=1;$i<=$this->pagenum;$i++){
+                    if($i==$this->page) $this->pagebar.="<option value='$i' selected>$i</option>\n";
+                    else
+                        $this->pagebar.="<option value='$i'>$i</option>\n";
+                }
+
+                echo $this->pagebar;
+
+            }
+
+		}else if($this->page * $this->length >= $this->total){
+
+            $this->pagebar = "<div style=\"margin-left:500px\"><p><b>总计{$this->total}条记录 <a href='{$this->url}?p=1&type={$this->type}&show={$this->show}'>首页</a>|<a href='{$this->url}?p={$this->prevpage}&type={$this->type}&show={$this->show}'>上一页</a>|".$this->pageList()."|<a href='{$this->url}?p={$this->pagenum}&type={$this->type}&show={$this->show}'>末页</a>|跳到<select name='topage' size='1' onchange='window.location=\"more.php?p=\" + this.value +\"&type ={$this->type}&show={$this->show}\"'></b></p></div>";
+
+            for($i=1;$i<=$this->pagenum;$i++){
+                if($i==$this->page) $this->pagebar.="<option value='$i' selected>$i</option>\n";
+                else
+                    $this->pagebar.="<option value='$i'>$i</option>\n";
+            }
+
+            echo $this->pagebar;
+
+        }else{
+
+            $this->pagebar =  "<div style=\"margin-left:500px\"><p><b>总计{$this->total}条记录 <a href='{$this->url}?p=1&type={$this->type}&show={$this->show}'>首页</a>|<a href='{$this->url}?p={$this->prevpage}&type={$this->type}&show={$this->show}'>上一页</a>|".$this->pageList()."|<a href='{$this->url}?p={$this->nextpage}&type={$this->type}&show={$this->show}'>下一页</a>|<a href='{$this->url}?p={$this->pagenum}&type={$this->type}&show={$this->show}'>末页</a>|跳到<select name='topage' size='1' onchange='window.location=\"more.php?p=\" + this.value  +\"&type={$this->type}&show={$this->show}\"'></b></p></div>";
+
+            for($i=1;$i<=$this->pagenum;$i++){
+                if($i==$this->page) $this->pagebar.="<option value='$i' selected>$i</option>\n";
+                else
+                    $this->pagebar.="<option value='$i'>$i</option>\n";
+            }
+
+            echo $this->pagebar;
+
+        }
+	}
+}
+?>

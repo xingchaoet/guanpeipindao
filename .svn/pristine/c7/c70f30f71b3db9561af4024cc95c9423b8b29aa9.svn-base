@@ -1,0 +1,60 @@
+<div id="div_list" name="div_list">
+    <div>
+        <input type="checkbox" checked="checked" id="checkall_box" onclick='checkallbox_changed();'
+               name="all" class="checkall_box">
+        <label>全选</label>
+    </div>
+    <div class="row">
+        {foreach $books as $val }
+        <div class="col-sm-4">
+            <table id="table">
+                <tr>
+                    <td class="left_td">
+                        <!--<a href="detail.php?book_id={$val['book_id']}"><img-->
+                                <!--src="http://www.ecsponline.com/{trim($val['slt'])}"-->
+                                <!--class="fen_mian" alt=""></a>-->
+<!---->
+                        {if trim($val['slt'])}
+                        <a href="detail.php?book_id={$val['book_id']}"><img
+                                src="http://www.ecsponline.com/{trim($val['slt'])}"
+                                class="fen_mian" alt=""></a>
+                        {else}
+                        <a href="detail.php?book_id={$val['book_id']}"><img
+                                src="dist/images/nopicture.png"
+                                class="fen_mian" alt=""></a>
+                        {/if}
+
+                    </td>
+                    <td class="right_td">
+                        <input type="checkbox" checked="checked" name="{$val['book_id']}" class="checkall"/>
+                        <p>数量：
+                            <input type="text" id="sum_{$val['book_id']}" class="sum" value="2"/>
+                        </p>
+                        <div class="tooltip-demo">
+                            <p data-toggle="tooltip" title="{$val['sm']}">书名：
+                                {$val['sm']|truncate:10:"...":true}</p>
+                        </div>
+                        <p>ISBN: {$val['isbn']}</p>
+
+                        <div class="tooltip-demo">
+                            <p data-toggle="tooltip" title="{$val['zzh']}">作者：
+                                {$val['zzh']|truncate:9:"...":true}</p>
+                        </div>
+                        <p>出版日期: {$val['cbrq']}</p>
+                        <p>价格: ￥{$val['dj']|string_format:"%.2f"}</p>
+                        <p>库存:{$val['kucun']}</p>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+        {/foreach}
+    </div>
+    <div style="margin-left:700px;margin-bottom:40px;"><a id="buy" class="btn btn-default" onclick="generate_order();">加入订单</a>
+        {if $smarty.session.user_type eq library_user}
+        <a href='zhengdingdan/orders_view.php' class="btn  btn-default">查看订单</a>
+        {/if}
+    </div>
+
+    {$page->show()}
+</div>

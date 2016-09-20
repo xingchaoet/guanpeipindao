@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>社馆互动</title>
+
+    <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/css/left_nav.css">
+
+    <link rel="stylesheet" href="../dist/css/header.css">
+    <link rel="stylesheet" href="../dist/css/introduce.css">
+    <script src="../dist/js/jquery.min.js"></script>
+
+
+    <style>
+        .down {
+            padding-top: 25px;
+            width: 770px;
+        }
+
+        .hr {
+            height: 0px;
+            border: none;
+            border-top: 1px ridge darkgray;
+            margin-bottom: 5px;
+
+        }
+
+        hr {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            border: 0;
+            /*border-top: 1px solid #eee;*/
+        }
+
+        hr {
+            height: 0;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+
+        hr {
+            display: block;
+            -webkit-margin-before: 0em;
+            -webkit-margin-after: 0em;
+            -webkit-margin-start: auto;
+            -webkit-margin-end: auto;
+            border-style: inset;
+            border-width: 0px;
+        }
+
+        /*#guanpeidongtai:before,#communication_record:before,#communication_method:before {*/
+        /*content:""*/
+        /*}*/
+
+        .gpdt_table {
+            width: 750px;
+            line-height: 18px;
+            margin-left: 10px;
+        }
+
+        .guanpeidongtai_content {
+            margin-top: 20px;
+        }
+
+        .gpdt_tr {
+            font-family: 'Microsoft YaHei', 'Arial';
+            font-size: 12px;
+        }
+
+        .gpdt_l_td {
+            width: 80%;
+        }
+
+        .gpdt_m_td {
+            color: #F16D06;
+        }
+
+        .gpdt_r_td {
+            width: 20%;
+        }
+
+        .list-group-item {
+            position: relative;
+            display: block;
+            padding: 4px 4px;
+            margin-bottom: -1px;
+            background-color: #fff;
+            border: 0px solid #ddd;
+        }
+
+        #communication_record {
+            margin-top: 30px;
+        }
+
+        .communication_record_content {
+            margin-top: 20px;
+            margin-left: 25px;
+            height: auto;
+        }
+
+        .message {
+            position: relative;
+            left: -25px;
+            width: 700px;
+            height: auto;
+            border: 1px solid grey;
+        }
+
+        .question {
+            color: #665ce6;
+        }
+
+        .answer {
+            color: #6b9619;
+        }
+
+        .message_time {
+            opacity: 0.5;
+        }
+
+        .communication_method {
+            margin-top: 20px;
+        }
+
+        textarea {
+            margin-left: 10px;
+        }
+
+        .message_title {
+            margin-left: 10px;
+            margin-top: 15px;
+        }
+
+        .message_btn_wrap {
+            margin-left: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .message_btn {
+            height: 35px;
+            width: 150px;
+            background: blue;
+            color: white;
+            border-radius: 10px;
+        }
+
+        .ywlxfsh {
+            margin-left: 10px;
+            margin-top: 20px;
+        }
+
+        .square {
+            width: 11px;
+            height: 11px;
+            background-color: grey;
+            float: left;
+            margin-top: 3px;
+            margin-right: 4px;
+        }
+
+        .people_thumbnail {
+            float: left;
+        }
+        .answer_question{
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+{include file="header.html"}
+<div class="site">
+    <div class="row ">
+
+        <div class="col-sm-3">
+            {include file="left_nav.html"}
+            <div class="introduce">
+                {$introduce}
+            </div>
+
+        </div>
+
+        <div class="col-sm-9">
+            <div class="down">
+                <div class="square"></div>
+                <div id="guanpeidongtai">
+                    <div><label> 馆配动态</label> <span style="margin-left: 650px"><a
+                            href="guanpeidongtai_more.php"> MORE </a></span></div>
+                    <hr class="hr"/>
+                    <div class="guanpeidongtai_content">
+                        <table class="gpdt_table">
+                            {foreach $gpdt as $value}
+                            <tr class=" gpdt_tr">
+                                <td class="gpdt_m_td">[{$value['NewsType']}]</td>
+                                <td class="gpdt_l_td"><a href="guanpeidongtai_article_content.php?id={$value['Id']}">
+                                    {$value['Title']} </a></td>
+                                <td><span class="gpdt_r_td">{$value['UpTime']}</span></td>
+                                <!--<td><span class="gpdt_r_td">{$value['UpTime']|truncate:11:"":true}</span></td>-->
+                            </tr>
+                            {/foreach}
+
+                        </table>
+                    </div>
+                </div>
+                <div id="communication_record">
+                    <div class="square"></div>
+                    <div><label>沟通记录</label> <span style="margin-left: 650px"><a
+                            href="goutongjilu_more.php"> MORE </a></span></div>
+                    <hr class="hr"/>
+                    <div class="communication_record_content">
+                        {foreach $gtjl as $value}
+                        <div class="list-group">
+                            <a class="list-group-item ">
+                                <img class="people_thumbnail" src="../dist/picture/question.png">
+                                <div class="answer_question">
+                                    <h4 class="list-group-item-heading ">
+                                        <span class="question">{$value['UserName']}:{$value['MessageContents']}</span>
+                                        <!--留言一-->
+                                    </h4>
+                                    <p class="list-group-item-text message_time">
+                                        <!--2016-8-30-->
+                                        {$value['MessageTime']}
+                                    </p>
+                                </div>
+                            </a>
+                            {foreach $value['reply'] as $val}
+                            <a class="list-group-item">
+
+                                <img class="people_thumbnail" src="../dist/picture/answer.png">
+                                <div class="answer_question">
+                                    <p class="list-group-item-text answer">
+                                        <!--留言回复一-->
+                                        留言回复 : {$val['ReplyContents']}
+                                    </p>
+                                    <p class="list-group-item-text message_time">
+                                        <!--2016-8-30-->
+                                        {$val['ReplyUserName']} {$val['ReplyTime']}
+                                    </p>
+                                </div>
+                            </a>
+                            {/foreach}
+                        </div>
+                        {/foreach}
+                        <div class="message">
+                            <label class="message_title">留言</label>
+                            <div>
+                                <textarea id="message_content" rows="3" cols="90">限制5000字。</textarea>
+                            </div>
+                            <div class="message_btn_wrap">
+                                <input class="message_btn" type="button" value="提交"
+                                       onclick="send_message();">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="communication_method">
+                        <div class="square"></div>
+                        <div><label>业务联系方式</label></div>
+                        <hr class="hr"/>
+                        <div class="ywlxfsh">
+                            {$ywlxfsh[0]['Contents']}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="../dist/js/bootstrap.min.js"></script>
+<script src="../dist/js/holder.min.js"></script>
+<script src="../dist/js/application.js"></script>
+<script src="../dist/js/zzsc.js"></script>
+<script src="../dist/js/left_nav.js"></script>
+<script>
+    var global_url = $('#global_url').html();
+
+    var message_url = 'http://' + global_url + '/guanpeipindao/hall_communication/send_message.php';
+
+    function creatXHR() {
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+            xhr = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        return xhr;
+    }
+
+    var xhr = creatXHR();
+
+
+    function send_message() {
+        var message = $('#message_content').val();
+        alert(message);
+        var fdata = new FormData();
+
+        fdata.append("message", message);
+        alert(message_url);
+
+        xhr.open('POST', message_url, true);
+
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                alert(this.responseText);
+            }
+        }
+    }
+
+</script>
+</html>

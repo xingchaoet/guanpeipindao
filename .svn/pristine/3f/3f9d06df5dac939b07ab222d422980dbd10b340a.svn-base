@@ -1,0 +1,9 @@
+[Microsoft][ODBC SQL Server Driver]COUNT 字段不正确或语法错误
+[Microsoft][ODBC SQL Server Driver][SQL Server]INSERT 语句中列的数目大于 VALUES 子句中指定的值的数目。VALUES 子句中值的数目必须与 INSERT 语句中指定的列的数目匹配。
+[Microsoft][ODBC SQL Server Driver][SQL Server]'2007' 附近有语法错误。
+[Microsoft][ODBC SQL Server Driver][SQL Server]INSERT 语句中列的数目大于 VALUES 子句中指定的值的数目。VALUES 子句中值的数目必须与 INSERT 语句中指定的列的数目匹配。
+[Microsoft][ODBC SQL Server Driver][SQL Server]'鏁版嵁搴撴妧鏈' 附近有语法错误。
+[Microsoft][ODBC SQL Server Driver][SQL Server]INSERT 语句中列的数目小于 VALUES 子句中指定的值的数目。VALUES 子句中值的数目必须与 INSERT 语句中指定的列的数目匹配。
+[Microsoft][ODBC SQL Server Driver][SQL Server]'2007' 附近有语法错误。
+[Microsoft][ODBC SQL Server Driver][SQL Server]转换 varchar 值 '20160802185146479' 时溢出了整数列。
+[Microsoft][ODBC SQL Server Driver][SQL Server]转换 varchar 值 '20160802185250479' 时溢出了整数列。

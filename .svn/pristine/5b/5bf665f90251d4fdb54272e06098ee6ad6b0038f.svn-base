@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <!--<script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>-->
+
+    <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
+    <script src="../dist/js/jquery.min.js"></script>
+    <script src="../dist/js/bootstrap.min.js"></script>
+    <script src="../dist/js/holder.min.js"></script>
+    <script src="../dist/js/application.js"></script>
+
+    <!--<link rel="shortcut icon" href="../favicon.ico">-->
+
+    <link rel="stylesheet" href="../dist/css/header.css">
+    <link rel="stylesheet" href="../dist/css/demo.css">
+    <link rel="stylesheet" href="../dist/css/style.css">
+    <link rel="stylesheet" href="../dist/css/normalize.css">
+
+    <script src="../dist/js/modernizr.custom.04022.js"></script>
+
+    <link rel="stylesheet" href="../dist/css/header.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300,300italic' rel='stylesheet'
+          type='text/css'>
+
+    <title>查看我的订单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Animated Content Tabs with CSS3"/>
+    <meta name="keywords" content="tabs, css3, transition, checked, pseudo-class, label, css-only, sibling combinator"/>
+    <meta name="author" content="Codrops"/>
+
+    <style>
+
+        .row {
+            margin-bottom: 10px;
+            font-family: 'Microsoft YaHei', 'Arial';
+            font-size: 11px;
+        }
+
+        .col-sm-3 {
+            background: #F0FFFF;
+            margin-bottom: 10px;
+        }
+
+        .col-sm-9 {
+            width: 770px;
+        }
+
+        .down {
+            margin-top: 2px;
+            padding-top: 2px;
+            width: 770px;
+        }
+
+        .tabs label {
+            width: 150px;
+            /*color: blue;*/
+            /*background: blue;*/
+            /*background: -moz-linear-gradient(top, blue 0%, lightblue 100%);*/
+            /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,blue), color-stop(100%,lightblue));*/
+            /*background: -webkit-linear-gradient(top, blue 0%,lightblue 100%);*/
+            /*color: blue;*/
+            background: blue;
+            background: -moz-linear-gradient(top, blue 0%, lightblue 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, blue), color-stop(100%, lightblue));
+            background: -webkit-linear-gradient(top, blue 0%, lightblue 100%);
+        }
+
+        .tabs input {
+            position: fixed;
+            z-index: 1000;
+            width: 150px;
+            height: 40px;
+            left: 0px;
+            top: 0px;
+            opacity: 0;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+            filter: alpha(opacity=0);
+            cursor: pointer;
+        }
+
+        #scgc {
+            position: relative;
+            margin-left: 10px;
+            margin-top: 10px;
+            top: 10%;
+            left: 10%;
+            background-color: #002a80;
+            color: #9B410E;
+        }
+
+        /*.btn:hover, .btn:focus {*/
+        /*color: #333;*/
+        /*text-decoration: none;*/
+        /*}*/
+        /*.content div {*/
+        /*position: absolute;*/
+        /*top: 0;*/
+        /*left: 0;*/
+        /*padding: 10px 40px;*/
+        /*z-index: 1;*/
+        /*opacity: 0;*/
+        /*-webkit-transition: opacity linear 0.1s;*/
+        /*-moz-transition: opacity linear 0.1s;*/
+        /*-o-transition: opacity linear 0.1s;*/
+        /*-ms-transition: opacity linear 0.1s;*/
+        /*transition: opacity linear 0.1s;*/
+        /*}*/
+        #scgc {
+            position: relative;
+            margin-left: 20px;
+            z-index: 1000000;
+            opacity: 1;
+            background-color: white;
+            width: 500px;
+            height: 100px;
+        }
+
+        #scgc div {
+            position: relative;
+            z-index: 1100000;
+            opacity: 1;
+            background-color: white;
+            width: 150px;
+            height: 20px;
+        }
+
+        #scgc div input {
+            position: relative;
+            z-index: 1110000;
+            opacity: 1;
+            width: 190px;
+            height: 20px;
+        }
+
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 5%;
+            width: 90%;
+            height: 90%;
+            padding: 16px;
+            /*border: 16px solid black;*/
+            background-color: white;
+            z-index: 1002;
+            overflow: auto
+        }
+
+        .table {
+            font-family: 'Microsoft YaHei', 'Arial';
+            font-size: 6px;
+        }
+
+        /*由jquery添加到该页面*/
+
+        #zhengdingdan_marc {
+            opacity: 1;
+            position: relative;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        #zhengdingdan_marc * {
+            opacity: 1;
+            position: relative;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        #zhengdingdan_marc input {
+            width: 15px;
+            height: 15px;
+        }
+
+        .download_marc_btn {
+            margin-left: 600px;
+            /*width: 60px;*/
+            /*height:35px;*/
+            text-align: center;
+
+        }
+
+    </style>
+
+</head>
+<body>
+{include file="header.html"}
+<div class="row ">
+
+    <div class="col-sm-3">
+        <img src="../dist/js/holder.js/263x800" alt="">
+    </div>
+
+    <div class="col-sm-9">
+
+        <div class="down">
+            <div id="light" class="white_content">
+                <a href="#" onClick="document.getElementById('light').style.display='none';"
+                   style="color:blue;z-index:9999">关闭</a>
+                <div style="width:715px;height:360px;border:#ccc solid 1px;" id="content">
+
+                </div>
+            </div>
+            <div class="container">
+                <!-- Codrops top bar -->
+                <section class="tabs">
+                    <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked"/>
+                    <label for="tab-1" class="tab-label-1">我的征订单</label>
+
+                    <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2"/>
+                    <label for="tab-2" class="tab-label-2">预订单</label>
+
+                    <input id="tab-3" type="radio" name="radio-set" class="tab-selector-3"/>
+                    <label for="tab-3" class="tab-label-3">上传馆藏</label>
+
+                    <input id="tab-4" type="radio" name="radio-set" class="tab-selector-4"/>
+                    <label for="tab-4" class="tab-label-4">注册信息修改</label>
+
+                    <div class="clear-shadow"></div>
+
+                    <div class="content">
+                        <div id="show_zhengdingdan" class="content-1" onmouseover="show_zdd();">
+
+                            <table class='table table-bordered table-striped'>
+                                <tr style="text-align: center">
+                                    <td>征订单编号</td>
+                                    <td>生成时间</td>
+                                    <td>品种数量</td>
+                                    <td>操作</td>
+                                </tr>
+
+                                {foreach $zdd_order_list as $order}
+                                <tr>
+                                    <td id="{$order['zdd_pc_id']}">
+                                        {$order['zdd_pc_id']}
+                                    </td>
+                                    <td>
+                                        {$order['zdd_time']}
+                                    </td>
+                                    <td id="{$order['zdd_sum']}" style="text-align: center">
+                                        {$order['zdd_sum']}
+                                    </td>
+
+                                    <td>
+                                        <a id="view_zdd_detail" class="view_zdd_detail">查看详情</a>
+                                        <a class="zhengdingdan_download_marc"
+                                           onmouseover="zhengdingdan_download_marc();">下载</a>
+                                    </td>
+
+                                </tr>
+                                {/foreach}
+                                {$pagenav}
+
+                            </table>
+
+                        </div>
+                        <div class="content-2">
+                            <table class='table table-bordered table-striped'>
+                                <tr style="text-align: center">
+                                    <td>预订单编号</td>
+                                    <td>生成时间</td>
+                                    <td>品种数量</td>
+                                    <td>操作</td>
+                                </tr>
+
+                                {foreach $ydd_order_list as $order}
+                                <tr>
+                                    <td id="{$order['ydd_pc_id']}">
+                                        {$order['ydd_pc_id']}
+                                    </td>
+                                    <td>
+                                        {$order['ydd_time']}
+                                    </td>
+                                    <td>
+                                        100
+                                    </td>
+                                    <td>
+                                        查看详情
+                                    </td>
+                                </tr>
+                                {/foreach}
+                            </table>
+
+                        </div>
+                        <div class="content-3">
+                            <form id="guangcangexcel">
+
+                                <a style="float: left" class="btn btn-sm btn-info"
+                                   href="<?php echo PATH; ?>gc_moban.xlsx">模板下载</a>
+                                <input type="hidden" name="usrn" value="479"/>
+                                <input type="hidden" name="leadExcel" value="true">
+                                <!--111111-->
+
+                                <!--<span>span</span>-->
+                                <!--<a>a</a>-->
+                                <!--<input type="button" value="button" style="display: block;opacity: 0.5" onclick="alert(1);">-->
+
+                                <div>div</div>
+                                <div id="scgc">
+                                    <div class="form-group ">
+                                        <input id="input_file" class=" " type="file" name="inputExcel" id="inputExcel">
+                                    </div>
+                                    <div id="input_import" class="form-group  ">
+                                        <input class=" " type="button" value="导入数据"
+                                               onclick="gangcangimport();">
+                                        <!--<input class="btn btn-sm " type="submit" value="导入数据" >-->
+                                    </div>
+
+
+                                </div>
+                            </form>
+
+
+                        </div>
+                        <div class="content-4">
+                            注册信息修改
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </div>
+
+    <a id="userid" style="display: none ">479</a>
+    <a id="usertype" style=" display: none "></a>
+</div>
+
+
+</body>
+<script>
+    var orders_view_url = 'http://localhost/guanpeipindao/zhengdingdan/orders_view.php';
+
+    var guangcangimport_url = 'http://localhost/guanpeipindao/chachong/guangcang_chachong.php';
+
+    var orders_view_detail_url = 'http://localhost/guanpeipindao/zhengdingdan/zhengdingdan_detail.php';
+
+    var download_zhengdingdan_url = 'http://localhost/guanpeipindao/zhengdingdan/download_marc.php';
+
+    var zhengdingdan_download_marc_url = 'http://localhost/guanpeipindao/zhengdingdan/zhengdingdan_download_marc.php';
+
+
+    function creatXHR() {
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+            xhr = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        return xhr;
+    }
+
+    var xhr = creatXHR();
+
+    function gangcangimport() {
+        var fm = document.getElementById('guangcangexcel');
+        var fdata = new FormData(fm);
+
+        xhr.open('POST', guangcangimport_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('content').innerHTML = '';
+                document.getElementById('light').style.display = 'block';
+                document.getElementById('content').innerHTML = this.responseText;
+//                alert( this.responseText);
+            }
+        }
+    }
+
+    function firstpagesend() {
+
+        var fdata = new FormData();
+
+        var page = $("#firstpage").attr("page");
+        fdata.append("page", page);
+
+        var uid = $("#userid").text();
+        fdata.append("usrn", uid);
+
+        var showtype = $("#firstpage").attr("showtype");
+        fdata.append("show_type", showtype);
+
+        if (showtype != 'detail') {
+            xhr.open('POST', orders_view_url, true);
+        } else {
+            xhr.open('POST', orders_view_detail_url, true);
+        }
+
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show_zhengdingdan').innerHTML = '';
+                document.getElementById('show_zhengdingdan').innerHTML = this.responseText;
+            }
+        }
+    }
+
+    function prepagesend() {
+
+        var fdata = new FormData();
+
+        var page = $("#prepage").attr("page");
+        fdata.append("page", page);
+
+        var uid = $("#userid").text();
+        fdata.append("usrn", uid);
+
+        var showtype = $("#prepage").attr("showtype");
+        fdata.append("show_type", showtype);
+
+        if (showtype != 'detail') {
+            xhr.open('POST', orders_view_url, true);
+        } else {
+            xhr.open('POST', orders_view_detail_url, true);
+        }
+
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show_zhengdingdan').innerHTML = '';
+                document.getElementById('show_zhengdingdan').innerHTML = this.responseText;
+            }
+        }
+    }
+
+    function nextpagesend() {
+
+        var fdata = new FormData();
+
+        var page = $("#nextpage").attr("page");
+        fdata.append("page", page);
+
+        var uid = $("#userid").text();
+        fdata.append("usrn", uid);
+
+        var showtype = $("#nextpage").attr("showtype");
+        fdata.append("show_type", showtype);
+
+        if (showtype != 'detail') {
+            xhr.open('POST', orders_view_url, true);
+        } else {
+            xhr.open('POST', orders_view_detail_url, true);
+        }
+
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show_zhengdingdan').innerHTML = '';
+                document.getElementById('show_zhengdingdan').innerHTML = this.responseText;
+            }
+        }
+    }
+
+    function lastpagesend() {
+
+//        var fm = document.getElementById('condition');
+        var fdata = new FormData();
+        var page = $("#lastpage").attr("page");
+        fdata.append("page", page);
+
+        var uid = $("#userid").text();
+        fdata.append("usrn", uid);
+
+        var showtype = $("#lastpage").attr("showtype");
+        fdata.append("show_type", showtype);
+
+        if (showtype != 'detail') {
+            xhr.open('POST', orders_view_url, true);
+        } else {
+            xhr.open('POST', orders_view_detail_url, true);
+        }
+
+        xhr.send(fdata);
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show_zhengdingdan').innerHTML = '';
+                document.getElementById('show_zhengdingdan').innerHTML = this.responseText;
+            }
+        }
+    }
+
+    function jumptopagesend() {
+
+        var fdata = new FormData();
+
+        var page = $("#jumptopage").val();
+        fdata.append("page", page);
+
+        var uid = $("#userid").text();
+        fdata.append("usrn", uid);
+
+        var showtype = $("#jumptopage").attr("showtype");
+        fdata.append("show_type", showtype);
+
+        if (showtype != 'detail') {
+            xhr.open('POST', orders_view_url, true);
+        } else {
+            xhr.open('POST', orders_view_detail_url, true);
+        }
+
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show_zhengdingdan').innerHTML = '';
+                document.getElementById('show_zhengdingdan').innerHTML = this.responseText;
+            }
+        }
+    }
+
+
+    function show_zdd() {
+//        alert(flag);
+        $(".view_zdd_detail").click(function () {
+            var fdata = new FormData();
+            var uid = $("#userid").text();
+            fdata.append("usrn", uid);
+            var sheet_no = $(this).parent().parent().children().eq(0).prop('id');
+//                alert(sheet_no);
+            fdata.append("sheet_no", sheet_no);
+
+            xhr.open('POST', orders_view_detail_url, true);
+            xhr.send(fdata);
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    document.getElementById('show_zhengdingdan').innerHTML = '';
+                    document.getElementById('show_zhengdingdan').innerHTML = this.responseText;
+                }
+            }
+
+        });
+    }
+
+    //    function view_zhengdingdan_detail(){
+    ////        alert(1);
+    //        var fdata = new FormData();
+    //        var uid = $("#userid").text();
+    //        fdata.append("usrn", uid);
+    //
+    //        var sheet_no = $(this).parent().parent().children().eq(0).prop('id');
+    //
+    //        alert(sheet_no);
+    //        return;
+    //        fdata.append("sheet_no", sheet_no);
+    //
+    //        xhr.open('POST', orders_view_detail_url, true);
+    //        xhr.send(fdata);
+    //        xhr.onreadystatechange = function () {
+    //            if (this.readyState == 4) {
+    //                document.getElementById('show_zhengdingdan').innerHTML = '';
+    //                document.getElementById('show_zhengdingdan').innerHTML = this.responseText;
+    //            }
+    //        }
+    //    }
+
+
+    //    var flag_page = 0;
+
+    //    function detail_page() {
+    //
+    ////        if (flag_page <= 0) {
+    //        $(".view_zdd_detail").click(function () {
+    //            var fdata = new FormData();
+    //            var uid = $("#userid").text();
+    //            fdata.append("usrn", uid);
+    //            var sheet_no = $(this).parent().parent().children().eq(0).prop('id');
+    ////                alert(sheet_no);
+    //            fdata.append("sheet_no", sheet_no);
+    //
+    //            xhr.open('POST', orders_view_detail_url, true);
+    //            xhr.send(fdata);
+    //            xhr.onreadystatechange = function () {
+    //                if (this.readyState == 4) {
+    //                    document.getElementById('show_zhengdingdan').innerHTML = '';
+    //                    document.getElementById('show_zhengdingdan').innerHTML = this.responseText;
+    //                }
+    //            }
+    //
+    //        });
+    //
+    ////            flag_page = flag_page + 1;
+    ////        }
+    //
+    //    }
+
+
+    function return_to_my_zhengdingdan() {
+        var fdata = new FormData();
+        fdata.append("page", 1);
+
+        var uid = $("#userid").text();
+        fdata.append("usrn", uid);
+        xhr.open('POST', orders_view_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show_zhengdingdan').innerHTML = '';
+                document.getElementById('show_zhengdingdan').innerHTML = this.responseText;
+            }
+        }
+    }
+    //    功能完好
+
+//    var download_zhengdingdan_id = 0;
+
+    function download_zhengdingdan() {
+
+//        if (download_zhengdingdan_id <= 0) {
+
+            $(".download_zhengdingdan").click(function () {
+
+                if ((!$("input[type=radio][name=marc][value='excel']").attr("checked")) && (!$("input[type=radio][name=marc][value='marc']").attr("checked"))) {
+
+                    alert('未选择文件类型！');
+                    return;
+                }
+
+                var sheet_no = $(this).prop('id');
+//                alert(sheet_no);
+                if ($("#CF").attr("checked")) {
+//                    alert(1);
+                    document.location.href =
+                            "http://localhost/guanpeipindao/zhengdingdan/download_marc.php?sheet_no=" + sheet_no + '&CF=1';
+                }
+
+            });
+
+//            download_zhengdingdan_id = download_zhengdingdan_id + 1;
+
+//        }
+
+
+    }
+
+
+    function zhengdingdan_download_marc() {
+
+            $(".zhengdingdan_download_marc").click(function () {
+
+                var fdata = new FormData();
+                var sheet_no = $(this).parent().parent().children().eq(0).prop('id');
+                fdata.append("sheet_no", sheet_no);
+//                alert(sheet_no);
+                var type_num = $(this).parent().parent().children().eq(2).prop('id');
+                fdata.append("type_num", type_num);
+//                alert(type_num);
+
+                xhr.open('POST', zhengdingdan_download_marc_url, true);
+                xhr.send(fdata);
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        document.getElementById('show_zhengdingdan').innerHTML = '';
+                        document.getElementById('show_zhengdingdan').innerHTML = this.responseText;
+                    }
+                }
+
+            });
+
+
+    }
+
+
+    function return_to_my_zhengdingdan() {
+        var fdata = new FormData();
+        fdata.append("page", 1);
+
+        var uid = $("#userid").text();
+        fdata.append("usrn", uid);
+        xhr.open('POST', orders_view_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show_zhengdingdan').innerHTML = '';
+                document.getElementById('show_zhengdingdan').innerHTML = this.responseText;
+            }
+        }
+    }
+
+//    var flag = 0;
+
+    function dmarc() {
+//        if (flag <= 0) {
+
+            if (!($("input[type=radio][name=marc][value='marc']").attr("checked"))) {
+                $('#Calis').attr("disabled", true);
+                $('#CF').attr("disabled", true);
+                $('#MARC').attr("disabled", true);
+            }
+
+            $("input[type=radio][name=marc][value='excel']").change(function () {
+//            alert(1);
+
+                $("#Calis").attr("checked", false);
+                $("#CF").attr("checked", false);
+                $("#MARC").attr("checked", false);
+
+                $('#Calis').attr("disabled", true);
+                $('#CF').attr("disabled", true);
+                $('#MARC').attr("disabled", true);
+
+
+            })
+
+            $("input[type=radio][name=marc][value='marc']").change(function () {
+//            alert(1);
+                $('#Calis').attr("disabled", false);
+                $('#CF').attr("disabled", false);
+                $('#MARC').attr("disabled", false);
+            })
+
+//        }
+//        flag = flag + 1;
+    }
+
+
+</script>
+</html>

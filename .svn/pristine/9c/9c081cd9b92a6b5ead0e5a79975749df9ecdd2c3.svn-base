@@ -1,0 +1,32 @@
+<div style="margin-top: 10px" class="">
+    <form class="form-inline" role="form">
+        <div class="form-group">
+            <!--<label class="form-label">Search</label>-->
+            <!--<input type="text" class="form-control">-->
+            <label class="label label-default form-label" style="margin-left: 20px">征订单批次号</label><label
+                class="label label-default form-label" style=" margin-left: 201px">订单生成时间</label><label
+                class="btn btn-danger btn-sm form-label" style=" margin-left: 200px"
+                onclick="close_pici_list()"; value="">X</label>
+
+        </div>
+    </form>
+
+    {foreach $order_list as $order}
+
+    <div id="" class="panel panel-default" style="margin-top: 10px">
+        <div class="order_info">
+            <h5 class="">
+
+                <input type="radio" name="zdd" value="zddsss"/>
+
+                <label class="label label-default" style=""> {$order['zdd_pc_id']}</label>
+                <label class="label label-default" style=" margin-left: 150px">{$order['zdd_time']}</label>
+            </h5>
+
+        </div>
+
+    </div>
+
+    {/foreach}
+
+</div>

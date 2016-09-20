@@ -1,0 +1,9 @@
+
+
+
+
+select * from lib_lxr_info where xm = '黄老师' AND lib_no = 'BJ0010'
+UPDATE lib_lxr_info  SET user_id=qqq,user_pwd=96e79218965eb72c92a549dd5a330112,question = 1,answer = 1,dzyj1 = 1@1.com,xb = 男,zw = 财务,csny = 1981-12-01,bgdh = 1,sj1 = 1,qq1 = 11,active = 1,ddate = 每周,dformat = EXCEL,regdate = ,FromType = EXCEL where xm = 黄老师 AND lib_no = BJ0010
+UPDATE lib_lxr_info  SET user_id='qqq',user_pwd='96e79218965eb72c92a549dd5a330112',question = '1',answer = '1',dzyj1 = '1@1.com',xb = '男',zw = '财务',csny = '1981-12-01',bgdh = '1',sj1 = '1',qq1 = '11',active = 1'',ddate = '每周',dformat = 'EXCEL',regdate = '',FromType = 'EXCEL where xm = '黄老师' AND lib_no = 'BJ0010'
+UPDATE lib_lxr_info  SET user_id='qqq',user_pwd='96e79218965eb72c92a549dd5a330112',question = '1',answer = '1',dzyj1 = '1@1.com',xb = '男',zw = '财务',csny = '1981-12-01',bgdh = '1',sj1 = '1',qq1 = '11',active = 1'',ddate = '每周',dformat = 'EXCEL',regdate = '',FromType = 'EXCEL' where xm = '黄老师' AND lib_no = 'BJ0010'
+UPDATE lib_lxr_info  SET user_id='qqq',user_pwd='96e79218965eb72c92a549dd5a330112',question = '1',answer = '1',dzyj1 = '1@1.com',xb = '男',zw = '财务',csny = '1981-12-01',bgdh = '1',sj1 = '1',qq1 = '11',active = '1',ddate = '每周',dformat = 'EXCEL',regdate = '',FromType = 'EXCEL' where xm = '黄老师' AND lib_no = 'BJ0010'

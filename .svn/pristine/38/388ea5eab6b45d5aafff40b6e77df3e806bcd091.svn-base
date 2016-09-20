@@ -1,0 +1,277 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2016/8/1
+ * Time: 15:31
+ */
+header("Content-Type: text/html;charset=UTF-8");
+ini_set("max_execution_time", "1800");
+require_once("../db/con_mssql.php");
+require_once("../db/con_mysql2.php");
+include("../db/dao.php");
+require_once("../config.php");
+
+session_start();
+
+$search_TJ = $_SESSION['search_TJ'];
+
+//print_r($search_TJ);
+
+
+$ms = new con_mssql();
+$con_mysql2 = new con_mysql2();
+
+//print_r($_POST);
+// 有用户登录时，可从session中取用户id
+
+$uid = $_POST['user_id'];
+$lib_no = 'FJ0014';
+$book_ids = $_POST['book_ids'];
+$book_id_s = explode(",", $book_ids);
+//print_r($book_ids);
+$book_nums = $_POST['book_nums'];
+$book_num_s = explode(",", $book_nums);
+
+$yudingdan_ids = '';
+$yudingdan_nums = '';
+
+$zhengdingdan_ids = '';
+$zhengdingdan_nums = '';
+
+//$today = date("Y-m-d H:i:s");
+
+$gc_pc_time_prefix = date('YmdHis');
+
+//预订单批次
+$ydd_pc = $lib_no . $uid;
+
+//征订单批次
+$zdd_pc = $lib_no . $uid . '_' . md5($search_TJ);
+
+print_r($zdd_pc);
+//
+//exit();
+
+
+for ($i = 0; $i < count($book_id_s); $i++) {
+    $id = $book_id_s[$i];
+    $sql = "SELECT isbn, kc FROM ecs_book WHERE  book_id = '$id'";
+    $kuncun = '';
+    $isbn = '';
+    $flag = '';
+
+    $book = $con_mysql2->sdb($sql);
+    while ($data = $book->fetch_array(MYSQLI_ASSOC)) {
+        $kuncun = $data['kc'];
+        $isbn = $data['isbn'];
+    }
+    if ($kuncun > 0) {
+//            echo '纸本可供';
+        $flag = "纸本可供";
+        $zhengdingdan_ids[] = $book_id_s[$i];
+        $zhengdingdan_nums[] = $book_num_s[$i];
+    } else {
+        $sql_tsfl4 = ser("ecs_book", "sm,isbn,zzh,kb,cbrq,dj,kc", "jz=2 and isbn='%{$isbn}%' ");
+        $rs_tsfl4 = $con_mysql2->sdb($sql_tsfl4);
+        $tsfl_data4 = mysqli_fetch_assoc($rs_tsfl4);
+        $dj11 = trim($tsfl_data4['dj']);
+        if ($dj11 == null) {
+            //echo 'POD可供';
+            $flag = "可预订";
+            $yudingdan_ids[] = $book_id_s[$i];
+            $yudingdan_nums[] = $book_num_s[$i];
+//                echo '可预订';
+        } else {
+            //echo '可预订';
+            $flag = "POD可供";
+            $zhengdingdan_ids[] = $book_id_s[$i];
+            $zhengdingdan_nums[] = $book_num_s[$i];
+//                echo 'POD可供';
+        }
+    }
+
+}
+
+//print_r($yudingdan_ids);
+//print_r($yudingdan_nums);
+
+if (!empty($yudingdan_ids[0])) { //预订单只创建一次
+
+    $yudingdan_ids_nums = array_combine($yudingdan_ids, $yudingdan_nums);
+
+    $sql = ser(bs_yudingdan, "count(*) as sum", "ydd_pc_id ='$ydd_pc'");
+
+    $rs = $ms->sdb($sql);
+    $data = odbc_fetch_array($rs);
+    $sum = $data['sum'];
+
+    if ($sum == '0') { // 第一次创建预订单
+
+        $yudingdan = json_encode((object)$yudingdan_ids_nums);
+
+        $sql = ins("bs_yudingdan", "ydd_pc_id,ydd_user_id,ydd_detail,ydd_time", "'$ydd_pc','$uid','$yudingdan',GETDATE()");
+
+//    添加到预订单表
+        $rs = $ms->sdb($sql);
+    } else {//添加到预订单
+
+        $sql = ser(bs_yudingdan, "ydd_detail", "ydd_pc_id ='$ydd_pc'");
+
+        $rs = $ms->sdb($sql);
+
+        $data = odbc_fetch_array($rs);
+
+        $rs = $data['ydd_detail'];
+
+        $yudingdan_detail = json_decode($rs, true) + $yudingdan_ids_nums;
+
+        $yudingdan = json_encode((object)$yudingdan_detail);
+
+        $sql = upd("bs_yudingdan", "ydd_detail = '$yudingdan'", "ydd_pc_id = '$ydd_pc'");
+
+        $rs = $ms->sdb($sql);
+
+//        exit();
+    }
+
+//添加到明细表
+    for ($i = 0; $i < count($yudingdan_ids); $i++) {
+
+        $isbn = '';
+        $sm = '';
+        $csm = '';
+        $zzh = '';
+        $dj = '';
+        $cbrq = '';
+        $sl = '';
+        $kb = '';
+
+        $id = $yudingdan_ids[$i];
+
+        $sql = "SELECT isbn,sm,csm,zzh,dj,cbrq,sl,kb FROM ecs_book WHERE  book_id = '$id'";
+
+        $book = $con_mysql2->sdb($sql);
+        while ($data = $book->fetch_array(MYSQLI_ASSOC)) {
+            $isbn = $data['isbn'];
+
+            $sm = iconv('UTF-8', 'GBK', $data['sm']);
+            $csm = iconv('UTF-8', 'GBK', $data['csm']);
+            $zzh = iconv('UTF-8', 'GBK', $data['zzh']);
+            $dj = $data['dj'];
+            $cbrq = $data['cbrq'];
+            $sl = $data['sl'];
+            $kb = iconv('UTF-8', 'GBK', $data['kb']);
+
+            if (strstr($cbrq, "-")) {
+                if (substr_count($cbrq, "-") == 1) {
+                    $cbrq = $cbrq . '-01';
+                }
+                $cbrq = str_replace("-", "/", $cbrq);
+//                $cbrq=strtotime($cbrq);
+//                echo $cbrq;
+            }
+
+            $cbrq = date('Y/m/d', strtotime($cbrq));
+
+        }
+
+        $state = '10';
+        $sql = ins("bs_yudingdan_mx", "sheet_no,isbn,book_name,bookcs_name,writer,price,publish_date,fenlei,kb,amount,inputby,uptime,state,lib_no",
+            "'$ydd_pc','$isbn','$sm','$csm','$zzh','$dj','$cbrq','$sl','$kb','$yudingdan_nums[$i]','$uid',GETDATE(),'$state','$lib_no' ");
+
+        echo $sql;
+
+        $open = fopen("D:/xampps/htdocs/guanpeipindao/zhengdingdan/sql.txt", "a");
+        fwrite($open, $sql . "\r\n");
+        fclose($open);
+
+//添加到预订单明细表
+        $rs = $ms->sdb($sql);
+
+        if (!$rs) {
+            echo "生成{$isbn}到预订单失败<br>";
+        } else {
+            echo "生成{$isbn}到预订单成功<br>";
+        }
+    }
+}
+
+//print_r($yudingdan);
+//print_r($zhengdingdan_ids); //变量为空 什么都不会打印
+//print_r($zhengdingdan_nums);
+//exit();
+//生成征订单
+
+if (!empty($zhengdingdan_ids[0])) {
+
+//查找是否已有相同的批次id
+    $sql = ser(bs_zhengdingdan, "count(*) as sum", "zdd_pc_id ='$zdd_pc'");
+    $rs = $ms->sdb($sql);
+    $data = odbc_fetch_array($rs);
+    $sum = $data['sum'];
+
+    if ($sum == '0') { // 生成新征订单
+        $zhengdingdan_ids_nums = array_combine($zhengdingdan_ids, $zhengdingdan_nums);
+        $zhengdingdan = json_encode((object)$zhengdingdan_ids_nums);
+
+        $sql = ins("bs_zhengdingdan", "zdd_pc_id,zdd_user_id,zdd_detail,zdd_time", "'$zdd_pc','$uid','$zhengdingdan',GETDATE()");
+        $rs = $ms->sdb($sql);
+
+        if (!$rs) {
+            echo "生成征订单失败<br>";
+        } else {
+            echo "生成征订单成功<br>";
+        }
+    } else { //添加到原有征订单
+
+//        $sql = ser(bs_yudingdan, "ydd_detail", "ydd_pc_id ='$ydd_pc'");
+//
+//        $rs = $ms->sdb($sql);
+//
+//        $data = odbc_fetch_array($rs);
+//
+//        $rs = $data['ydd_detail'];
+//
+//        $yudingdan_detail = json_decode($rs, true) + $yudingdan_ids_nums;
+//
+//        $yudingdan = json_encode((object)$yudingdan_detail);
+//
+//        $sql = upd("bs_yudingdan", "ydd_detail = '$yudingdan'", "ydd_pc_id = '$ydd_pc'");
+//
+//        $rs = $ms->sdb($sql);
+//
+        $zhengdingdan_ids_nums = array_combine($zhengdingdan_ids, $zhengdingdan_nums);
+        $zhengdingdan = json_encode((object)$zhengdingdan_ids_nums);
+
+        $sql = ser("bs_zhengdingdan", "zdd_detail", " zdd_pc_id = '$zdd_pc'");
+        echo $sql;
+
+        $rs = $ms->sdb($sql);
+
+        $data = odbc_fetch_array($rs);
+
+        $rs = $data['zdd_detail'];
+
+        $zhengdingdan_detail = json_decode($rs, true) + $zhengdingdan_ids_nums;
+
+        $zhengdingdan = json_encode((object)$zhengdingdan_detail);
+
+        $sql = upd("bs_zhengdingdan", "zdd_detail = '$zhengdingdan'", "zdd_pc_id = '$zdd_pc'");
+
+        echo $sql;
+
+        $rs = $ms->sdb($sql);
+
+        if (!$rs) {
+            echo "合并征订单失败<br>";
+        } else {
+            echo "合并征订单成功<br>";
+        }
+
+
+    }
+}
+
+
+

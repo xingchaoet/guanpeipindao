@@ -1,0 +1,330 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+    <script src="dist/js/jquery.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="dist/js/holder.min.js"></script>
+    <script src="dist/js/application.js"></script>
+
+    <script src="dist/js/zzsc.js"></script>
+    <script src="dist/js/left_nav.js"></script>
+    <link rel="stylesheet" href="dist/css/left_nav.css">
+
+
+    <link rel="stylesheet" href="dist/css/header.css">
+    <style>
+        body {
+            padding-top: 10px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        .col-sm-4 {
+            background: #F0FFFF;
+            margin-bottom: 10px;
+            padding-left: 1px;
+            padding-right: 1px;
+        }
+
+        .row {
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-family: 'Microsoft YaHei', 'Arial';
+            /*font-size: smaller;*/
+            font-size: xx-small;
+            display: block;
+            -webkit-margin-before: 0em;
+            -webkit-margin-after: 1px;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+
+        }
+
+        button {
+            font-family: 'Microsoft YaHei', 'Arial';
+        }
+
+        .btn-toolbar {
+            width: 400px;
+            margin-left: 580px;
+        }
+
+        .down {
+            padding-top: 10px;
+            width: 770px;
+        }
+
+        .navbar {
+            background-color: lightblue;
+        }
+
+        #show_type {
+            font-family: 'Microsoft YaHei', 'Arial';
+            float: left;
+        }
+
+        .fen_mian {
+            width: 105px;
+            height: 150px;
+        }
+
+        .sum {
+            width: 20px;
+            overflow-x: visible;
+            overflow-y: visible;
+        }
+
+        .left_td {
+
+        }
+
+        .right_td {
+
+        }
+    </style>
+</head>
+
+<body>
+
+{include file="header.html"}
+<div class="">
+    <div class="row ">
+
+        <div class="col-sm-3">
+            <!--<img src="../dist/js/holder.js/263x800" alt="">-->
+            {include file="left_nav.html"}
+        </div>
+
+        <div class="col-sm-9">
+
+            <div class="down">
+                <div>
+                    {if $type eq "recommend"}
+                    <div id="show_type">
+                        <h4><b>重点推荐</b></h4></div>
+                    <div class="btn-toolbar">
+                        <div class="btn-group">
+                            <a class='btn'>显示方式：</a>
+                            <a class='btn'>图文</a>
+                            <a href="more.php?type=recommend&show=list" class='btn btn-info'>列表</a>
+                        </div>
+                        </p>
+                    </div>
+                    <div>
+                        <input type="checkbox" checked="checked" class="checkall_box">
+                    </div>
+                    <div class="row">
+                        {foreach $recommendbooks as $val }
+                        <div class="col-sm-4">
+                            <table id="table">
+                                <tr>
+                                    <td class="left_td">
+                                        <a href="detail.php?book_id={$val['book_id']}"><img
+                                                src="http://www.ecsponline.com/{trim($val['slt'])}"
+                                                class="fen_mian" alt=""></a>
+                                    </td>
+                                    <td class="right_td">
+                                        <input type=" checkbox
+                                    " checked="checked" name="{$val['book_id']}"
+                                    class="checkall">
+                                    <p>数量：
+                                        <input type="text" id="sum_{$val['book_id']}" class="sum" value="2"/>
+                                    </p>
+                                    <div class="tooltip-demo">
+                                        <p data-toggle="tooltip" title="{$val['sm']}">书名： {$val['sm']|truncate:16:"...":true}</p>
+                                    </div>
+                                    <p>ISBN: {$val['isbn']}</p>
+
+                                    <div class="tooltip-demo">
+                                        <p data-toggle="tooltip" title="{$val['zzh']}">作者： {$val['zzh']|truncate:9:"...":true}</p>
+                                    </div>
+                                    <p>出版日期: {$val['cbrq']}</p>
+                                    <p>价格: ￥{$val['dj']|string_format:"%.2f"}</p>
+                                    <p>库存:{$val['kucun']}</p>
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        {/foreach}
+                    </div>
+                    <div style="margin-left:700px;margin-bottom:40px;"><a id="buy" class="btn btn-default">加入订单</a>
+                        {if $smarty.session.user_type eq 2}
+                        <a href='showorder.php' class="btn  btn-default">查看订单</a>
+                        {/if}
+                    </div>
+
+                    {$page->show()} {else}
+                    <div id="show_type">
+                        <h4><b>本期新书</b></h4></div>
+                    <div class="btn-toolbar">
+                        <div class="btn-group">
+                            <a class='btn'>显示方式：</a>
+                            <a class='btn'>图文</a>
+                            <a href="more.php?type=new&show=list" class='btn btn-info'>列表</a>
+                        </div>
+                        </p>
+                    </div>
+                    <div>
+                        <input type="checkbox" checked="checked" class="checkall_box">
+                    </div>
+                    <div class="row">
+                        {foreach $newbooks as $val }
+                        <div class="col-sm-4">
+                            <table id="table">
+                                <tr>
+                                    <td class="left_td">
+                                        <a href="detail.php?book_id={$val['book_id']}"><img
+                                                src="http://www.ecsponline.com/{trim($val['slt'])}"
+                                                class="fen_mian" alt=""></a>
+                                    </td>
+                                    <td class="right_td">
+                                        <input type=" checkbox
+                                    " checked="checked" name="{$val['book_id']}"
+                                    class="checkall">
+                                    <p>数量：
+                                        <input type="text" id="sum_{$val['book_id']}" class="sum" value="2"/>
+                                    </p>
+                                    <div class="tooltip-demo">
+                                        <p data-toggle="tooltip" title="{$val['sm']}">书名： {$val['sm']|truncate:16:"...":true}</p>
+                                    </div>
+                                    <p>ISBN: {$val['isbn']}</p>
+
+                                    <div class="tooltip-demo">
+                                        <p data-toggle="tooltip" title="{$val['zzh']}">作者： {$val['zzh']|truncate:9:"...":true}</p>
+                                    </div>
+                                    <p>出版日期: {$val['cbrq']}</p>
+                                    <p>价格: ￥{$val['dj']|string_format:"%.2f"}</p>
+                                    <p>库存:{$val['kucun']}</p>
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        {/foreach}
+                    </div>
+                    <div style="margin-left:700px;margin-bottom:40px;"><a id="buy" class="btn btn-default">加入订单</a>
+                        {if $smarty.session.user_type eq 2}
+                        <a href='showorder.php' class="btn  btn-default">查看订单</a>
+                        {/if}
+                    </div>
+                    {$page->show()} {/if}
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<a id="userid" style="text-align: center; display: none ">{$smarty.session.user_id}</a>
+<a id="usertype" style="text-align: center; display: none ">{$smarty.session.user_type}</a>
+</body>
+<script type="text/javascript">
+
+    var checkboxes_sel = "input.checkall:checkbox:enabled";
+    var checkallbox = $('.checkall_box');
+
+    var checkboxes_changed = function () {
+        var $row = $('.row');
+        var total_boxes = $row.find(checkboxes_sel).length;
+        var checked_boxes = $row.find(checkboxes_sel + ":checked").length;
+        if (total_boxes == checked_boxes) {
+            checkallbox.prop("checked", true);
+        } else {
+            checkallbox.prop("checked", false);
+        }
+    };
+    $(document).on("change", checkboxes_sel, checkboxes_changed);
+
+    var checkallbox_changed = function () {
+
+        var checkalllist = $('.checkall');
+
+        if (checkallbox.prop("checked")) {
+            $.each(checkalllist, function (index, domEle) {
+                domEle.checked = true;
+            });
+        } else {
+            $.each(checkalllist, function (index, domEle) {
+                domEle.checked = false;
+            });
+        }
+    };
+
+    checkallbox.on("click", checkallbox_changed);
+
+
+    $('#buy').on("click", function () {
+
+        user_id = $('#userid').html();
+
+        user_type = $('#usertype').html();
+
+        if (user_type != '2') {
+
+            alert('你不是图书馆用户，不能生成订单！');
+
+            return;
+        }
+
+        var book_ids = [];
+
+        var book_nums = [];
+
+        var checklist = $("input:checked");
+        $.each(checklist, function (index, checkboxEle) {
+
+            if ($(this).parent().is('td')) {
+
+                book_nums.push($(this).next().children().val());
+
+            }
+
+            if (checkboxEle.name) {
+
+                book_ids.push(checkboxEle.name);
+
+            }
+
+        })
+
+        $.ajax({
+            type: "POST",
+            url: "order.php",
+            data: {
+                userid: user_id,
+                book_ids: book_ids,
+                book_nums: book_nums
+            },
+            success: function (msg) {
+                alert("生成订单成功! " + msg);
+            }
+        });
+
+
+    });
+
+    var list = $('input[id^=sum]');
+    $.each(list, function (index, domEle) {
+
+        domEle.onkeyup = function () {
+            this.value = this.value.replace(/\D/g, '');
+            if (domEle.value > 5) {
+                domEle.value = 5;
+            }
+            if (domEle.value < 1) {
+                domEle.value = 1;
+            }
+        }
+    });
+</script>
+
+</html>

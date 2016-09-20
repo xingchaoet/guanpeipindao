@@ -1,0 +1,51 @@
+<table class='table table-bordered table-striped'>
+    <tr style="text-align: center">
+        <td>数量</td>
+        <td>书名</td>
+        <td>书号</td>
+        <td>作者</td>
+        <td>开本</td>
+        <td>出版日期</td>
+        <td>价格</td>
+        <td>库存</td>
+    </tr>
+
+    {foreach $ydd_order_detail as $order}
+    <tr>
+        <td>
+            {$order['amount']}
+        </td>
+        <td>
+            {$order['book_name']}
+        </td>
+        <td>
+            {$order['isbn']}
+        </td>
+        <td>
+            {$order['writer']}
+        </td>
+        <td>
+            {$order['kb']}
+        </td>
+        <td>
+            {$order['publish_date']}
+        </td>
+
+        <td>
+            {$order['price']}
+        </td>
+        <td>
+            {$order['kc']}
+        </td>
+
+    </tr>
+
+    {/foreach}
+
+    {$pagenav}
+
+
+</table>
+
+<!--<a>回到我的征订单</a>-->
+    <button class="btn btn-default btn-sm" id="return_to_my_yudingdan" onclick="return_to_my_yudingdan();" value="返回到我的预订单">返到我的预订单</button>

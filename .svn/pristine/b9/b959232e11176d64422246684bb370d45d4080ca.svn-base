@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据下载</title>
+
+    <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/css/left_nav.css">
+
+    <link rel="stylesheet" href="../dist/css/header.css">
+
+    <style>
+        .row {
+            margin-bottom: 10px;
+            font-family: 'Microsoft YaHei', 'Arial';
+            font-size: 11px;
+        }
+
+        .col-sm-3 {
+            background: #F0FFFF;
+            margin-bottom: 10px;
+        }
+
+        .col-sm-9 {
+            width: 770px;
+        }
+
+        .down {
+            padding-top: 25px;
+            width: 770px;
+        }
+
+        .linear {
+            margin-top: 20px;
+            width: 100%;
+            font-family: 'Microsoft YaHei', 'Arial';
+            font-size: 14px;
+            font-weight: bold;
+            /*height: 600px;*/
+
+            background: -ms-linear-gradient(top, #b8c4cb, #f6f6f8); /* IE 10 */
+
+            background: -moz-linear-gradient(top, #b8c4cb, #f6f6f8); /*火狐*/
+
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b8c4cb), to(#f6f6f8)); /*谷歌*/
+
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b8c4cb), to(#f6f6f8)); /* Safari 4-5, Chrome 1-9*/
+
+            background: -webkit-linear-gradient(top, #b8c4cb, #f6f6f8); /*Safari5.1 Chrome 10+*/
+
+            background: -o-linear-gradient(top, #b8c4cb, #f6f6f8); /*Opera 11.10+*/
+
+        }
+
+        .guanpeipaihang_header {
+            margin-left: 80px;
+            margin-top: 10px;
+        }
+
+        .guanpeipaihang_content{
+            margin-left: 160px;
+            margin-top: 10px;
+        }
+
+        .guanpeipaihang_content  input{
+            width: 50px;
+        }
+
+        #guanpeipaihang {
+            height: auto;
+        }
+
+        #data_diy {
+            height: auto;
+        }
+
+        #result_download {
+            height: auto;
+        }
+
+        #special_data {
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+{include file="header.html"}
+
+<div class="">
+    <div class="row ">
+
+        <div class="col-sm-3">
+            {include file="left_nav.html"}
+
+        </div>
+
+        <div class="col-sm-9">
+            <div class="down">
+                <div id="guanpeipaihang">
+                    <div class="linear">馆配排行</div>
+                    <div>
+                        <div class="guanpeipaihang_header">
+                            <p><input type="radio" value="整体排行榜" name="gpph_radio_level1">整体排行榜</p>
+                            <p><input type="radio" value="学科排行榜" name="gpph_radio_level1">学科排行榜</p>
+                        </div>
+                        <div class="guanpeipaihang_content">
+                            <div>
+                                <input type="radio" value="社科人文" name="gpph_radio_level2">社科人文
+                                <input type="radio" value="社科人文" name="gpph_radio_level2">社科经营
+                                <input type="radio" value="社科人文" name="gpph_radio_level2">人文考古
+                                <input type="radio" value="社科人文" name="gpph_radio_level2">化学
+                            </div>
+                            <div>
+                                <input type="radio" value="社科人文" name="gpph_radio_level2">物理
+                                <input type="radio" value="社科人文" name="gpph_radio_level2">数学
+                                <input type="radio" value="社科人文" name="gpph_radio_level2">资源环境
+                                <input type="radio" value="社科人文" name="gpph_radio_level2">农业科学
+                            </div>
+                            <div>
+                                <input type="radio" value="社科人文" name="gpph_radio_level2">医药卫生
+                                <input type="radio" value="社科人文" name="gpph_radio_level2">生命科学
+                                <input type="radio" value="社科人文" name="gpph_radio_level2">科普通俗读物
+                            </div>
+                            <div>
+
+                                <input type="radio" value="社科人文" name="gpph_radio_level2">外语读物
+                                <input type="radio" value="社科人文" name="gpph_radio_level2">工业技术
+                                <input type="radio" value="社科人文" name="gpph_radio_level2">综合
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div id="data_diy">
+                    <div class="linear">数据定制</div>
+
+                </div>
+                <div id="result_download">
+                    <div class="linear">搜索结果下载</div>
+
+                </div>
+                <div id="special_data">
+                    <div class="linear">专题数据</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="../dist/js/jquery.min.js"></script>
+<script src="../dist/js/bootstrap.min.js"></script>
+<script src="../dist/js/holder.min.js"></script>
+<script src="../dist/js/application.js"></script>
+<!--<script src="../dist/js/jquery.icheck.min.js"></script>-->
+
+<script src="../dist/js/zzsc.js"></script>
+<script src="../dist/js/left_nav.js"></script>
+
+</html>

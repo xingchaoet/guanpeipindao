@@ -1,0 +1,19 @@
+<div id="yudingdan_marc" >
+    <span style="display: none" id="ydd_times">{$ydd_times}</span>
+    <h3>征订单编号:<span class="">{$sheet_no}</span></h3>
+    <h3>图书品种数:<span class="">{$type_num}</span></h3>
+
+    <h3><input name="marc" type="radio" value="excel"/>Excel格式下载 </h3>
+    <h3><input name="marc" type="radio" value="marc"/>Marc格式下载 </h3>
+
+    <input id="MARC" type="checkbox" name="MARC" value="T"/><span class="label label-warning">国图</span>
+    <input id="Calis" type="checkbox" name="Calis" value="T"/><span class="label label-info">Calis</span>
+    <input id="CF" type="checkbox" name="CF" value="T"/><span class="label label-success">采访</span>
+
+</div>
+<p>
+<h2><a id="{$sheet_no}"  class="download_yudingdan download_marc_btn btn btn-warning">下载</a></h2>
+<button class="btn btn-default btn-sm" id="return_to_my_yudingdan" onclick="return_to_my_yudingdan();" value="返回到我的预订单">返到我的预订单</button>
+
+
+

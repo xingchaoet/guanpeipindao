@@ -1,0 +1,8 @@
+<div class="your-position">
+    当前位置: {$first_level}  {if $second_level}   >{$second_level}{/if}
+</div>
+<div class="wrap-menu left-nav">
+</div>
+
+<div style="text-align:center;clear:both">
+</div>

@@ -1,0 +1,30 @@
+<!--<div id="show_yudingdan" class="content-2" onmouseover="show_ydd();" >-->
+    <table class='table table-bordered table-striped'>
+        <tr style="text-align: center">
+            <td>预订单编号</td>
+            <td>生成时间</td>
+            <td>品种数量</td>
+            <td>操作</td>
+        </tr>
+
+        {foreach $ydd_order_list as $order}
+        <tr>
+            <td id="{$order['ydd_pc_id']}">
+                {$order['ydd_pc_id']}
+            </td>
+            <td>
+                {$order['ydd_time']}
+            </td>
+            <td id="{$order['ydd_sum']}" style="text-align: center">
+                {$order['ydd_sum']}
+            </td>
+            <td>
+                <a id="view_ydd_detail" class="view_ydd_detail">查看详情</a>
+                <a class="yudingdan_download_marc"
+                   onmouseover="yudingdan_download_marc();">下载</a>
+            </td>
+        </tr>
+        {/foreach}
+    </table>
+
+<!--</div>-->

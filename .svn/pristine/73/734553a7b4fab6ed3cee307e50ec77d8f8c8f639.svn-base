@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+	<link rel="stylesheet" href="dist/css/bootstrap.min.css">
+	<script src="dist/js/jquery.min.js"></script>
+	<script src="dist/js/bootstrap.min.js"></script>
+	<script src="dist/js/holder.min.js"></script>
+	<script src="dist/js/application.js"></script>
+
+	<link rel="stylesheet" href="dist/css/header.css">
+
+</head>
+<body>
+
+{include file="header.html"}
+
+
+</body>
+</html>

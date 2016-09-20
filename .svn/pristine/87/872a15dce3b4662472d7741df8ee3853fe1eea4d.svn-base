@@ -1,0 +1,27 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2016/8/24
+ * Time: 15:29
+ */
+require_once("../config.php");
+require_once("../DB/con_mssql.php");
+require_once("../DB/DAO.php");
+header("Content-type: text/html; charset=utf-8");
+$ms = new con_mssql();
+$Query = "select gps_name,gps_no from gps_info order by gps_name";
+$AdminResult = $ms->sdb($Query);
+?>
+<select id='company_gps' name='company_gps' height='18' >
+    <option value='-1'>请选择馆配商名称</option>
+    <?php
+    while ($gps = odbc_fetch_row($AdminResult)) {
+        $gps1 = odbc_result($AdminResult, 1);
+        $gps2 = iconv('GBK', 'UTF-8', $gps1);
+        $gps_no = odbc_result($AdminResult, 2);
+        echo "<option value='" . trim($gps_no) . "'>" . trim($gps2) . "</option>";
+    }
+    echo "</select>";
+
+    ?>

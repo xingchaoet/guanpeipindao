@@ -1,0 +1,129 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2016/8/9
+ * Time: 16:59
+ */
+header("Content-Type: text/html;charset=UTF-8");
+ini_set("max_execution_time", "1800");
+require_once("../db/con_mssql.php");
+include("../db/dao.php");
+require_once("../config.php");
+include("../include/GuanCangSmarty.php");
+session_start();
+$order_list = array();
+
+$uid = $_REQUEST['usrn'];
+$sheet_no = $_REQUEST['sheet_no'];
+//print_r($_POST);
+
+//exit();
+
+$smarty = new GuanCangSmarty();
+$smarty->MySmarty();
+
+// 实例化SQLServer封装类
+$ms = new con_mssql();
+
+$page_size = 2; //每页显示数量
+
+$sql_info = ser(bs_zhengdingdan_mx, "count(*) as sum", "inputby='$uid' and sheet_no='$sheet_no' " );
+
+//echo $sql_info;
+
+$rs_info = $ms->sdb($sql_info);
+$data = odbc_fetch_array($rs_info);
+
+$rows = $data['sum'];
+
+//查询征订单
+// Page分页函数
+$page = isset($_REQUEST["page"]) ? $_REQUEST["page"] : 1;
+
+function Page($rows, $page_size)
+{
+    global $page, $select_from, $select_limit, $pagenav;
+
+
+    $page_count = ceil($rows / $page_size);
+
+//    echo $page. '|'.$select_from. '|'.$select_limit. '|'. $page_count.'|'. $rows. '|'. $page_size;
+//    echo '////////////////////////';
+
+    if ($page <= 1 || $page == '') $page = 1;
+    if ($page >= $page_count) $page = $page_count;
+    $select_limit = $page_size;
+    $select_from = ($page - 1) * $page_size;
+    $pre_page = ($page == 1) ? 1 : $page - 1;
+    $next_page = ($page == $page_count) ? $page_count : $page + 1;
+
+//    echo $page. '|'.$select_from. '|'.$select_limit. '|'. $page_count.'|'. $rows. '|'. $page_size;
+//    echo '////////////////////////';
+
+
+    $pagenav .= "<a page = '1'  id = 'firstpage' onclick='firstpagesend()'>首页</a>&nbsp;&nbsp; ";
+    $pagenav .= "<a page = $pre_page  id = 'prepage' onclick='prepagesend()'>前一页</a>&nbsp;&nbsp; ";
+    $pagenav .= "第 $page/$page_count 页 共 $rows 条记录 &nbsp;&nbsp;";
+    $pagenav .= "<a page = $next_page  id = 'nextpage' onclick='nextpagesend()'>后一页</a>&nbsp;&nbsp; ";
+    $pagenav .= "<a page = $page_count  id = 'lastpage' onclick='lastpagesend()'>末页</a>";
+//    将  放到id = 'jumptopage' 之前 ，当$show_type为undefined时，会成为showtype =''id = 'jumptopage' 这种格式
+//    使得函数jumptopagesend()找不到id为jumptopage的元素，取不到该元素的page值,使得page的值也是undefined
+    $pagenav .= "　跳到<select name='topage' id = 'jumptopage' size='1' onchange='jumptopagesend()'   >\n";
+    for ($i = 1; $i <= $page_count; $i++) {
+        if ($i == $page) $pagenav .= "<option value='$i' selected>$i</option>\n";
+        else $pagenav .= "<option value='$i'>$i</option>\n";
+    }
+}
+
+// Page分页函数
+// 使用示例
+// 用Page函数计算出 $select_from 从哪条记录开始检索、$pagenav 输出分页导航
+
+//if (isset($rows) and $rows > 0) {
+
+
+//echo "当前记录数2：".$rows;
+//echo "当前查询条件2：".$search_TJ;
+Page($rows, $page_size);
+
+$sql = "select top ($select_limit) amount,book_name, isbn,writer,kb,publish_date,price from bs_zhengdingdan_mx
+ where id not in (select top ($select_from) id from bs_zhengdingdan_mx) and inputby = '$uid' and sheet_no = '$sheet_no'  ";
+
+//$sql = ser("bs_zhengdingdan", "zdd_pc_id,zdd_detail, zdd_time", "zdd_user_id='$uid' ORDER BY zdd_time desc limit $select_from $select_limit");
+
+//echo $sql;
+
+$rs = $ms->sdb($sql);
+
+if (!$rs) {
+    echo "Error in query preparation/execution.<br />";
+    die(print_r(odbc_errormsg(), true));
+}
+while ($data = odbc_fetch_array($rs)) {
+//    print_r($data);
+    $zdd_order_detail[] = $data;
+}
+
+
+for($i = 0;$i < count($zdd_order_detail); $i ++){
+
+    $zdd_order_detail[$i]['book_name'] = iconv('GBK', 'UTF-8', $zdd_order_detail[$i]['writer']);
+
+    $zdd_order_detail[$i]['writer'] = iconv('GBK', 'UTF-8', $zdd_order_detail[$i]['writer']);
+
+}
+
+$relpostodist = '../';
+
+$smarty->assign("relpostodist", $relpostodist);
+
+$smarty->assign("pagenav", $pagenav);
+
+$smarty->assign("zdd_order_detail", $zdd_order_detail);
+//$page 有值说明是ajax请求
+//    echo 'test';
+$page_info = $smarty->display("zhengdingdan/zhengdingdan_detail.html");
+return $page_info;
+
+

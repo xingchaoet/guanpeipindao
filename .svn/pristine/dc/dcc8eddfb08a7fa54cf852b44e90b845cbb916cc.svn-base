@@ -1,0 +1,33 @@
+<?php
+
+include ("include/GuanCangSmarty.php");
+
+require_once("config.php");
+
+include  ("db/con_mysql2.php");
+
+
+session_start();
+
+$smarty = new GuanCangSmarty();
+//$smarty->caching = false; //设置缓存方式
+
+$con_mysql2 = new con_mysql2();
+//最新
+
+$sql = "SELECT * FROM ecs_book  ORDER BY cbrq DESC  LIMIT 0,8";
+$newbooks =  $con_mysql2->sdb($sql);
+
+//推荐
+$sql = "SELECT * FROM ecs_book WHERE bjtj IS NOT NULL ORDER BY cbrq DESC LIMIT 0,8";
+$recommendbooks =  $con_mysql2->sdb($sql);
+
+$smarty->assign("recommendbooks",$recommendbooks);
+$smarty->assign("newbooks",$newbooks);
+
+
+$smarty->display("guanpeipindao.html");
+
+
+?>
+

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
+
+    <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
+    <script src="../dist/js/jquery.min.js"></script>
+    <script src="../dist/js/bootstrap.min.js"></script>
+    <script src="../dist/js/holder.min.js"></script>
+    <script src="../dist/js/application.js"></script>
+    <link rel="stylesheet" href="../dist/css/header.css">
+
+    <title>馆藏导入历史</title>
+    <style>
+        .row {
+            margin-bottom: 10px;
+            font-family: 'Microsoft YaHei', 'Arial';
+            font-size: 10px;
+        }
+
+        .col-sm-3 {
+            background: #F0FFFF;
+            margin-bottom: 10px;
+        }
+
+        .col-sm-9 {
+            width: 770px;
+        }
+
+        .down {
+            padding-top: 45px;
+            width: 770px;
+        }
+
+        .toggle:hover {
+            background: olive;
+        }
+
+        .panel-body {
+            /*background-color: #00B83F;*/
+        }
+
+        .panel-default {
+            width: 620px;
+        }
+
+        .piciinfo {
+            float: left;
+        }
+
+
+    </style>
+</head>
+<body>
+{include file="header.html"}
+<div class="">
+    <div class="row ">
+
+        <div class="col-sm-3">
+            <img src="../../../dist/js/holder.js/263x800" alt="">
+        </div>
+
+        <div class="col-sm-9">
+            <div class="down">
+                <div class="">
+                    <a href="http://localhost/guanpeipindao/chachong/chachong.php">馆藏查重</a>
+                    <div class="panel-group" id="accordion">
+                        {foreach $pici_info_collection as $pici}
+
+                        <div id="" class="panel panel-default">
+                            <div class="piciinfo">
+                                <div class="">
+                                    <h5 class="panel-title">
+                                        <div class="toggle" data-parent="#accordion" href="#{$pici['gc_dr_pc']}">
+
+                                            <span class="label label-default">批次号:</span>
+                                            {$pici['gc_dr_pc']}
+                                            <span class="label label-default" style="margin-left: 50px">导入时间:</span>
+                                            {$pici['uptime']}
+                                        </div>
+                                    </h5>
+                                </div>
+
+                                <div id="{$pici['gc_dr_pc']}" class="panel-collapse collapse">
+                                    <!--<span class="label label-default">isbn:</span>-->
+                                    <div class="panel-body">
+
+                                        {foreach $pici[{$pici['gc_dr_pc']}] as $isbn}
+                                        <span class="label label-primary"> {$isbn} </span>
+                                        {/foreach}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <button class="btn btn-danger btn-xs">删除批次</button>
+                            </div>
+                        </div>
+
+                        {/foreach}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+
+    var delpici_url = 'http://localhost/guanpeipindao/chachong/delpici.php';
+
+    function creatXHR() {
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+            xhr = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        ;
+        return xhr;
+    }
+
+    var xhr = creatXHR();
+
+    $(".btn-danger").click(function () {
+//        alert($(this).parent().prev().children().eq(1).prop('id'));
+        var pici_id = $(this).parent().prev().children().eq(1).prop('id');
+        var pici = $(this).parent().parent();
+        xhr.open('POST', delpici_url, true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("pici_id=" + pici_id);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.responseText == "success") {
+//                    alert(this.responseText);
+                    alert('删除成功！');
+                    pici.remove();
+                } else {
+//                    alert(this.responseText);
+                    alert('删除失败！');
+                };
+            }
+        }
+
+    });
+
+    $('.toggle').click(function () {
+        val = $(this).attr('href');
+        $(val).slideToggle(500);
+    });
+</script>
+
+</html>

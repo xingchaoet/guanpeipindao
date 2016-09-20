@@ -1,0 +1,5 @@
+UPDATE lib_lxr_info SET user_pwd = 'e3ceb5881a0a1fdaad01296d7554868d' WHERE ID = '2151'
+UPDATE lib_lxr_info SET user_pwd = 'e3ceb5881a0a1fdaad01296d7554868d' WHERE ID = '2152'
+UPDATE lib_lxr_info SET user_pwd = 'e3ceb5881a0a1fdaad01296d7554868d' WHERE ID = '2152'
+UPDATE lib_lxr_info SET user_pwd = '1a100d2c0dab19c4430e7d73762b3423' WHERE ID = '2152'
+UPDATE lib_lxr_info SET user_pwd = '1a100d2c0dab19c4430e7d73762b3423' WHERE ID = '2152'

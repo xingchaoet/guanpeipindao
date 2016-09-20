@@ -1,0 +1,63 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2016/8/8
+ * Time: 8:06
+ */
+header("Content-Type: text/html;charset=UTF-8");
+ini_set("max_execution_time", "1800");
+require_once("../db/con_mssql.php");
+include("../db/dao.php");
+require_once("../config.php");
+include("../include/GuanCangSmarty.php");
+$order_list = array();
+
+$uid = $_REQUEST['usrn'];
+
+$smarty = new GuanCangSmarty();
+$smarty->MySmarty();
+
+// 实例化SQLServer封装类
+$ms = new con_mssql();
+//$book_info = new con_mysql2();
+
+
+$sql = ser("bs_zhengdingdan", "zdd_pc_id,zdd_detail, zdd_time", "zdd_user_id='$uid' ORDER BY zdd_time desc");
+
+$rs = $ms->sdb($sql);
+
+if (!$rs) {
+    echo "Error in query preparation/execution.<br />";
+    die(print_r(odbc_errormsg(), true));
+}
+while ($data = odbc_fetch_array($rs)) {
+//    print_r($data);
+    $zdd_order_list[] = $data;
+}
+
+
+
+
+$sql = ser("bs_yudingdan", "ydd_pc_id,ydd_detail, ydd_time", "ydd_user_id='$uid' ORDER BY ydd_time desc");
+
+$rs = $ms->sdb($sql);
+
+if (!$rs) {
+    echo "Error in query preparation/execution.<br />";
+    die(print_r(odbc_errormsg(), true));
+}
+while ($data = odbc_fetch_array($rs)) {
+//    print_r($data);
+    $ydd_order_list[] = $data;
+}
+
+//print_r($order_list);
+
+$relpostodist = '../';
+
+$smarty->assign("relpostodist", $relpostodist);
+$smarty->assign("zdd_order_list", $zdd_order_list);
+$smarty->assign("ydd_order_list", $ydd_order_list);
+
+$smarty->display("zhengdingdan/orders_view.html");
