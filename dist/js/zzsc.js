@@ -1,10 +1,36 @@
+var global_url = $('#global_url').html();
+var userid = $('#userid').html();
+var usertype = $('#usertype').html();
+
+// function check_auth(){
+//
+//     if ((typeof(userid) == "undefined" || (userid == null) || (userid == ''))) {
+//         alert('111');
+//         return;
+//         // alert('æ‚¨è¿˜æ²¡ç™»å½•!');
+//
+//     }
+//
+//     if(usertype == "gps_user"){
+//         // alert('è¯·ç»é”€å•†ç”¨æˆ·åˆ°â€œæ•°æ®ä¸‹è½½â€æ ç›®æŸ¥è¯¢ä¸‹è½½æ•°æ®ï¼');
+//         alert('2222');
+//     }
+// }
+
+function isnot_login() {
+    alert("æ‚¨è¿˜æ²¡ç™»å½•!");
+}
+function is_gps() {
+    alert('è¯·ç»é”€å•†ç”¨æˆ·åˆ°â€œæ•°æ®ä¸‹è½½â€æ ç›®æŸ¥è¯¢ä¸‹è½½æ•°æ®ï¼');
+}
+
 function AccordionMenu(options) {
     this.config = {
-        containerCls: '.wrap-menu', // Íâ²ãÈİÆ÷
-        menuArrs: '', //  JSON´«½øÀ´µÄÊı¾İ
-        type: 'click', // Ä¬ÈÏÎªclick Ò²¿ÉÒÔmouseover
-        renderCallBack: null, // äÖÈ¾html½á¹¹ºó»Øµ÷
-        clickItemCallBack: check_auth // Ã¿µã»÷Ä³Ò»ÏîÊ±ºò»Øµ÷
+        containerCls: '.wrap-menu', // å¤–å±‚å®¹å™¨
+        menuArrs: '', //  JSONä¼ è¿›æ¥çš„æ•°æ®
+        type: 'click', // é»˜è®¤ä¸ºclick ä¹Ÿå¯ä»¥mouseover
+        renderCallBack: null, // æ¸²æŸ“htmlç»“æ„åå›è°ƒ
+        clickItemCallBack: null // æ¯ç‚¹å‡»æŸä¸€é¡¹æ—¶å€™å›è°ƒ
     };
     this.cache = {};
     this.init(options);
@@ -21,12 +47,12 @@ AccordionMenu.prototype = {
             _config = self.config,
             _cache = self.cache;
 
-        // äÖÈ¾html½á¹¹
+        // æ¸²æŸ“htmlç»“æ„
         $(_config.containerCls).each(function (index, item) {
 
             self._renderHTML(item);
 
-            // ´¦Àíµã»÷ÊÂ¼ş
+            // å¤„ç†ç‚¹å‡»äº‹ä»¶
             self._bindEnv(item);
         });
     },
@@ -47,13 +73,13 @@ AccordionMenu.prototype = {
 
         _config.renderCallBack && $.isFunction(_config.renderCallBack) && _config.renderCallBack();
 
-        // ´¦Àí²ã¼¶Ëõ½ø
+        // å¤„ç†å±‚çº§ç¼©è¿›
         self._levelIndent(ulhtml);
     },
     /**
-     * ´´½¨×Ó²Ëµ¥
-     * @param {array} ×Ó²Ëµ¥
-     * @param {lihtml} liÏî
+     * åˆ›å»ºå­èœå•
+     * @param {array} å­èœå•
+     * @param {lihtml} lié¡¹
      */
     _createSubMenu: function (submenu, lihtml) {
         var self = this,
@@ -66,7 +92,20 @@ AccordionMenu.prototype = {
         $(submenu).each(function (index, item) {
             var url = item.url || 'javascript:void(0)';
 
-            subLi = $('<li><a href="' + url + '">' + item.name + '</a></li>');
+            if ((typeof(userid) == "undefined" || (userid == null) || (userid == ''))) {
+                url = 'javascript:void(0)';
+                subLi = $('<li><a onclick="isnot_login();" href="' + url + '">' + item.name + '</a></li>');
+            } else {
+                // alert(item.auth);
+                if (usertype == "gps_user" && item.auth == "chachong_auth") {
+                    // alert(0);
+                    url = 'javascript:void(0)';
+                    subLi = $('<li><a onclick="is_gps();" href="' + url + '">' + item.name + '</a></li>');
+                } else {
+                    // alert(1);
+                    subLi = $('<li><a href="' + url + '">' + item.name + '</a></li>');
+                }
+            }
             if (item.submenu && item.submenu.length > 0) {
 
                 $(subLi).children('a').prepend('<img src="images/blank.gif" alt=""/>');
@@ -77,7 +116,7 @@ AccordionMenu.prototype = {
         $(lihtml).append(subUl);
     },
     /**
-     * ´¦Àí²ã¼¶Ëõ½ø
+     * å¤„ç†å±‚çº§ç¼©è¿›
      */
     _levelIndent: function (ulList) {
         var self = this,
@@ -103,7 +142,7 @@ AccordionMenu.prototype = {
         $(ulList).find('ul:first').show();
     },
     /**
-     * °ó¶¨ÊÂ¼ş
+     * ç»‘å®šäº‹ä»¶
      */
     _bindEnv: function (container) {
         var self = this,
@@ -122,9 +161,3 @@ AccordionMenu.prototype = {
         });
     }
 };
-
-
-
-function check_auth(){
-    alert("check");
-}

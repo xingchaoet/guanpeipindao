@@ -12,15 +12,19 @@ var leftMenu = [{
     "name": "馆配服务",
     "submenu": [{
         "name": "在线订购",
+        "auth":"chachong_auth",
         "url": "http://"+global_url+"/guanpeipindao/chachong/chachong.php"
     }, {
         "name": "数据下载",
+        "auth":"data_download_auth",
         "url": "http://"+global_url+"/guanpeipindao/data_download/data_download.php"
     }, {
         "name": "社馆互动",
+        "auth":"hall_communication_auth",
         "url": "http://"+global_url+"/guanpeipindao/hall_communication/hall_communication.php"
     }, {
         "name": "会员空间",
+        "auth":"members_space_auth",
         "url": "http://"+global_url+"/guanpeipindao/zhengdingdan/orders_view.php"
     }
     ]

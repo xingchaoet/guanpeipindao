@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-09-19 14:25:42
+/* Smarty version 3.1.29, created on 2016-09-20 11:28:35
   from "D:\WWW\guanpeipindao\templates\chachong\chachong.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_57df84e630cc05_53127503',
+  'unifunc' => 'content_57e0ace3183761_79803041',
   'file_dependency' => 
   array (
     '89e3f9308503ae0e50d10afb339ed407b3846c85' => 
     array (
       0 => 'D:\\WWW\\guanpeipindao\\templates\\chachong\\chachong.html',
-      1 => 1473384638,
+      1 => 1474341904,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_57df84e630cc05_53127503 ($_smarty_tpl) {
+function content_57e0ace3183761_79803041 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -432,7 +432,7 @@ dist/picture/pic_list/pic_disable.gif" onclick="sendpic();"></a>
 >-->
 
 <?php echo '<script'; ?>
- src="../dist/js/zzsc.js"><?php echo '</script'; ?>
+ src="../dist/js/zzsc.js" charset="utf-8"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  src="../dist/js/left_nav.js"><?php echo '</script'; ?>
@@ -452,6 +452,14 @@ dist/picture/pic_list/pic_disable.gif" onclick="sendpic();"></a>
     var delpici_url = 'http://' + global_url + '/guanpeipindao/chachong/delpici.php';
     var generate_order_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/generate_order.php';
     var order_list_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/order_list.php';
+
+    var global_url = $('#global_url').html();
+    var userid = $('#userid').html();
+    var usertype = $('#usertype').html();
+
+//    function check_auth(){
+//        alert("check");
+//    }
 
     function creatXHR() {
         var xhr = null;

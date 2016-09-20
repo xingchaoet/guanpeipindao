@@ -379,7 +379,7 @@
 <script src="../dist/js/application.js"></script>
 <!--<script src="../dist/js/jquery.icheck.min.js"></script>-->
 
-<script src="../dist/js/zzsc.js"></script>
+<script src="../dist/js/zzsc.js" charset="utf-8"></script>
 <script src="../dist/js/left_nav.js"></script>
 
 <script>
@@ -395,6 +395,14 @@
     var delpici_url = 'http://' + global_url + '/guanpeipindao/chachong/delpici.php';
     var generate_order_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/generate_order.php';
     var order_list_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/order_list.php';
+
+    var global_url = $('#global_url').html();
+    var userid = $('#userid').html();
+    var usertype = $('#usertype').html();
+
+//    function check_auth(){
+//        alert("check");
+//    }
 
     function creatXHR() {
         var xhr = null;
