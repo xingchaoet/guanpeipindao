@@ -1,3 +1,28 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-09-20 18:44:05
+  from "D:\WWW\guanpeipindao\templates\chachong\chachong.html" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_57e112f55fa986_76692842',
+  'file_dependency' => 
+  array (
+    '89e3f9308503ae0e50d10afb339ed407b3846c85' => 
+    array (
+      0 => 'D:\\WWW\\guanpeipindao\\templates\\chachong\\chachong.html',
+      1 => 1474368235,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:header.html' => 1,
+    'file:left_nav.html' => 1,
+  ),
+),false)) {
+function content_57e112f55fa986_76692842 ($_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +34,12 @@
     <link rel="stylesheet" href="../dist/css/header.css">
     <link rel="stylesheet" href="../dist/css/introduce.css">
 
-    <script src="../dist/js/jquery.min.js"></script>
-    <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
+    <?php echo '<script'; ?>
+ src="../dist/js/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"><?php echo '</script'; ?>
+>
 
     <title>馆藏查重</title>
     <style>
@@ -184,16 +213,21 @@
     </style>
 </head>
 <body>
-{include file="header.html"}
+<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 <div class="site">
     <div class="row ">
 
         <div class="col-sm-3">
             <!--<img src="../../../dist/js/holder.js/263x800" alt="">-->
-            {include file="left_nav.html"}
+            <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:left_nav.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 
             <div class="introduce">
-                {$introduce}
+                <?php echo $_smarty_tpl->tpl_vars['introduce']->value;?>
+
             </div>
         </div>
 
@@ -203,7 +237,8 @@
             </div>
             <div class="down">
                 <!--<form action="cc_index.php" method="post" enctype="multipart/form-data">-->
-                <input type="hidden" name="usrn" value="{$smarty.session.user_id}"/>
+                <input type="hidden" name="usrn" value="<?php echo $_SESSION['user_id'];?>
+"/>
                 <input type="hidden" name="leadExcel" value="true">
 
 
@@ -216,7 +251,8 @@
                             <a class="btn btn-sm btn-info" href="<?php echo PATH; ?>gc_moban.xlsx">模板下载</a>
 
                             <label class="upload_guancang">上传馆藏数据:</label>
-                            <input type="hidden" name="usrn" value="{$smarty.session.user_id}"/>
+                            <input type="hidden" name="usrn" value="<?php echo $_SESSION['user_id'];?>
+"/>
                             <input type="hidden" name="leadExcel" value="true">
                             <div class="form-group btn  btn-sm">
                                 <input class="btn btn-sm" type="file" name="inputExcel" id="inputExcel">
@@ -228,7 +264,8 @@
                             </div>
 
                             <div class="form-group btn  btn-sm">
-                                <!--<a href="gangcang_import_history.php?uid={$smarty.session.user_id}"  class="btn btn-sm btn-info " type="button" value="馆藏导入历史" >馆藏导入历史</a>-->
+                                <!--<a href="gangcang_import_history.php?uid=<?php echo $_SESSION['user_id'];?>
+"  class="btn btn-sm btn-info " type="button" value="馆藏导入历史" >馆藏导入历史</a>-->
                                 <button onclick="guan_cang_import_history()" class="btn btn-sm btn-info " type="button"
                                         value="馆藏导入历史">馆藏导入历史
                                 </button>
@@ -262,7 +299,8 @@
 
 
                 <form id="condition">
-                    <input type="hidden" name="usrn" value="{$smarty.session.user_id}"/>
+                    <input type="hidden" name="usrn" value="<?php echo $_SESSION['user_id'];?>
+"/>
                     <table>
 
                         <tr>
@@ -295,19 +333,19 @@
                             <td height=25 width='60' align='right'>书号</td>
                             <td><input maxlength="100" size="25" type="text" name="isbn" id="isbn" value=""></td>
                             <td height=25 align='right' name="zyfl_value" id="zyfl_value">图书分类</td>
-                            <td style='position: absolute;  z-index:2;'>{php} include('zyfl.php');{/php}</td>
+                            <td style='position: absolute;  z-index:2;'><?php  include('zyfl.php');?></td>
                         </tr>
                         <tr>
                             <td height=25 width='60' align='right'>作译者</td>
                             <td><input maxlength="100" size="25" type="text" name="writer" id="writer" value=""></td>
                             <td align='right' name="skfl_value">中图法-社会科学</td>
-                            <td style='position: absolute; z-index:1;'>{php} include('ztfl_sk.php');{/php}</td>
+                            <td style='position: absolute; z-index:1;'><?php  include('ztfl_sk.php');?></td>
                         </tr>
                         <tr>
                             <td height=25 width='60' align='right'>主题词</td>
                             <td><input maxlength="100" size="25" type="text" name="keyword" id="keyword" value=""></td>
                             <td align='right' name="zkfl_value" id="zkfl_value">中图法-自然科学</td>
-                            <td style='position: absolute; z-index:0;'>{php} include('ztfl_zk.php');{/php}</td>
+                            <td style='position: absolute; z-index:0;'><?php  include('ztfl_zk.php');?></td>
                         </tr>
                         <tr>
                             <td align='right'>定价</td>
@@ -345,13 +383,17 @@
                     <label style="margin-left: 550px">显示方式：</label>
 
                     <span id="list_disable_pic_enable" style="margin-left: 30px;">
-                            <a><img src="{$relpostodist}dist/picture/pic_list/list_disable.gif" onclick="send();"></a>
-                            <a><img src="{$relpostodist}dist/picture/pic_list/pic_enable.gif" onclick="sendpic();"></a>
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_disable.gif" onclick="send();"></a>
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_enable.gif" onclick="sendpic();"></a>
                         </span>
 
                     <span id="pic_disable_list_enable" style="margin-left: 30px; display: none">
-                            <a><img src="{$relpostodist}dist/picture/pic_list/list_enable.gif" onclick="send();"></a>
-                            <a><img src="{$relpostodist}dist/picture/pic_list/pic_disable.gif" onclick="sendpic();"></a>
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_enable.gif" onclick="send();"></a>
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_disable.gif" onclick="sendpic();"></a>
                         </span>
 
                 </div>
@@ -398,21 +440,36 @@
 
         </div>
     </div>
-    <!--<a id="userid" style="display: none ">{$smarty.session.user_id}</a>-->
-    <!--<a id="usertype" style=" display: none ">{$smarty.session.user_type}</a>-->
+    <!--<a id="userid" style="display: none "><?php echo $_SESSION['user_id'];?>
+</a>-->
+    <!--<a id="usertype" style=" display: none "><?php echo $_SESSION['user_type'];?>
+</a>-->
 </div>
 
 
 </body>
-<script src="../dist/js/bootstrap.min.js"></script>
-<script src="../dist/js/holder.min.js"></script>
-<script src="../dist/js/application.js"></script>
-<!--<script src="../dist/js/jquery.icheck.min.js"></script>-->
+<?php echo '<script'; ?>
+ src="../dist/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/holder.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/application.js"><?php echo '</script'; ?>
+>
+<!--<?php echo '<script'; ?>
+ src="../dist/js/jquery.icheck.min.js"><?php echo '</script'; ?>
+>-->
 
-<script src="../dist/js/zzsc.js"></script>
-<script src="../dist/js/left_nav.js"></script>
+<?php echo '<script'; ?>
+ src="../dist/js/zzsc.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/left_nav.js"><?php echo '</script'; ?>
+>
 
-<script>
+<?php echo '<script'; ?>
+>
 
 
     //    var global_url = "192.168.1.138";
@@ -673,7 +730,8 @@
 
 
     function guan_cang_import_history() {
-//        var uid = '{$smarty.session.user_id}';
+//        var uid = '<?php echo $_SESSION['user_id'];?>
+';
 
         var utp = $('#usertype').html();
 
@@ -847,5 +905,7 @@
         window.location.href = "http://" + global_url + "/guanpeipindao/zhengdingdan/orders_view.php?usrn=" + uid;
     }
 
-</script>
-</html>
+<?php echo '</script'; ?>
+>
+</html><?php }
+}

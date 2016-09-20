@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-09-20 13:50:04
+/* Smarty version 3.1.29, created on 2016-09-20 15:43:36
   from "D:\WWW\guanpeipindao\templates\header.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_57e0ce0cc1fa50_26715486',
+  'unifunc' => 'content_57e0e8a8462460_91750229',
   'file_dependency' => 
   array (
     '0ad32a6d75a2e009af653ca5cc135d475668c3b3' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_57e0ce0cc1fa50_26715486 ($_smarty_tpl) {
+function content_57e0e8a8462460_91750229 ($_smarty_tpl) {
 ?>
 <div class="site">
     <div class="login_register">

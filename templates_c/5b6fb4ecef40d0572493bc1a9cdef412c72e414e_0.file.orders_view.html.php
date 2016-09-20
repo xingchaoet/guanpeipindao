@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-09-20 15:09:43
+/* Smarty version 3.1.29, created on 2016-09-20 17:57:28
   from "D:\WWW\guanpeipindao\templates\zhengdingdan\orders_view.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_57e0e0b7838886_83635416',
+  'unifunc' => 'content_57e10808e9e7c4_53431995',
   'file_dependency' => 
   array (
     '5b6fb4ecef40d0572493bc1a9cdef412c72e414e' => 
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_57e0e0b7838886_83635416 ($_smarty_tpl) {
+function content_57e10808e9e7c4_53431995 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
