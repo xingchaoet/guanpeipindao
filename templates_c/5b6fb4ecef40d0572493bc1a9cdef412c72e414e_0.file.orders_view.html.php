@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-09-19 14:31:48
+/* Smarty version 3.1.29, created on 2016-09-20 15:09:43
   from "D:\WWW\guanpeipindao\templates\zhengdingdan\orders_view.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_57df86547a7889_24842259',
+  'unifunc' => 'content_57e0e0b7838886_83635416',
   'file_dependency' => 
   array (
     '5b6fb4ecef40d0572493bc1a9cdef412c72e414e' => 
     array (
       0 => 'D:\\WWW\\guanpeipindao\\templates\\zhengdingdan\\orders_view.html',
-      1 => 1474189979,
+      1 => 1474355376,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_57df86547a7889_24842259 ($_smarty_tpl) {
+function content_57e0e0b7838886_83635416 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +40,7 @@ function content_57df86547a7889_24842259 ($_smarty_tpl) {
     <link rel="stylesheet" href="../dist/css/header.css">
     <!--<link rel="stylesheet" href="../dist/css/demo.css">-->
     <link rel="stylesheet" href="../dist/css/style.css">
-    <link rel="stylesheet" href="../dist/css/normalize.css">
+    <!--<link rel="stylesheet" href="../dist/css/normalize.css">-->
 
 
     <link rel="stylesheet" href="../dist/css/header.css">
@@ -60,7 +60,7 @@ function content_57df86547a7889_24842259 ($_smarty_tpl) {
         .row {
             margin-bottom: 10px;
             font-family: 'Microsoft YaHei', 'Arial';
-            font-size: 11px;
+            font-size: 12px;
         }
 
         .col-sm-3 {
@@ -160,7 +160,9 @@ function content_57df86547a7889_24842259 ($_smarty_tpl) {
 
         .table {
             font-family: 'Microsoft YaHei', 'Arial';
-            font-size: 6px;
+            font-size: 12px;
+            /*font-size: 6px;*/
+
         }
 
         /*由jquery添加到该页面*/

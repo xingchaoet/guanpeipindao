@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-09-19 14:25:09
+/* Smarty version 3.1.29, created on 2016-09-20 13:50:04
   from "D:\WWW\guanpeipindao\templates\left_nav.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_57df84c56657d6_44235999',
+  'unifunc' => 'content_57e0ce0cc46d31_93842909',
   'file_dependency' => 
   array (
     'b60b901375755bbd0c623c769a67cb01336bbb32' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_57df84c56657d6_44235999 ($_smarty_tpl) {
+function content_57e0ce0cc46d31_93842909 ($_smarty_tpl) {
 ?>
 <div class="site-position">
     <?php if ($_smarty_tpl->tpl_vars['first_level']->value) {?>

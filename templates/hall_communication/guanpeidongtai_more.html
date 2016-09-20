@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../dist/css/left_nav.css">
     <link rel="stylesheet" href="../dist/css/header.css">
+    <link rel="stylesheet" href="../dist/css/introduce.css">
+
     <script src="../dist/js/jquery.min.js"></script>
     <style>
 
@@ -91,11 +93,14 @@
 
 
 {include file="header.html"}
-<div class="">
+<div class="site">
     <div class="row ">
 
         <div class="col-sm-3">
             {include file="left_nav.html"}
+            <div class="introduce">
+                {$introduce}
+            </div>
 
         </div>
 

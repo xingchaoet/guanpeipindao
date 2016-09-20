@@ -33,6 +33,25 @@ $smarty->MySmarty();
 
 
 $ms = new con_mssql();
+
+//介绍文字
+$sql = ser("bs_home_introduce", "introduce","");
+
+$rs = $ms->sdb($sql);
+if (!$rs) {
+    echo "Error in query preparation/execution.<br />";
+    die(print_r(iconv('GBK', 'UTF-8', odbc_errormsg()), true));
+}
+if (odbc_fetch_row($rs)) {
+    $introduce = odbc_result($rs, "introduce");
+}
+
+$introduce = iconv('gbk', 'utf-8//IGNORE', $introduce);
+$smarty->assign("introduce", $introduce);
+
+
+
+
 $sql_size="SET   TEXTSIZE   65536";
 $rs_size = $ms->sdb($sql_size);
 

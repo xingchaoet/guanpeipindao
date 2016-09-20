@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-09-20 10:46:11
+/* Smarty version 3.1.29, created on 2016-09-20 13:50:18
   from "D:\WWW\guanpeipindao\templates\hall_communication\hall_communication.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_57e0a2f3a879e4_85381678',
+  'unifunc' => 'content_57e0ce1aa4adf6_19737690',
   'file_dependency' => 
   array (
     '5718a7924456955daebd6c1be8114d06e3abed1d' => 
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_57e0a2f3a879e4_85381678 ($_smarty_tpl) {
+function content_57e0ce1aa4adf6_19737690 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!DOCTYPE html>
