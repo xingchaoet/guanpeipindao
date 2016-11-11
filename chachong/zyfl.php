@@ -137,17 +137,41 @@
     </SCRIPT>
 
     <?php
+    //    mysql
+    //    $zyfl = @$_REQUEST['zyfl_id_sel'];
+    //    if ($zyfl != '') {
+    //        $zyfl = substr(trim($zyfl), 0, strlen(trim($zyfl)) - 1);
+    //        $zyfl = explode(',', $zyfl);
+    //    }
+    //    $zNodes2 = "[ ";
+    //    $ms_tsfl2 = new con_mysql2();
+    //    $sql_tsfl2 = ser("v_ecs_category", "cat_id,parent_id,cat_name", "cat_desc='30'  order by cat_id ");
+    //    $rs_tsfl2 = $ms_tsfl2->sdb($sql_tsfl2);
+    //    while ($tsfl_data2 = mysqli_fetch_assoc($rs_tsfl2)) {
+    //        $zNodes2 = $zNodes2 . "{id:" . trim($tsfl_data2['cat_id']) . ", pId:" . trim($tsfl_data2['parent_id']) . ", name:'" . trim($tsfl_data2['cat_name']) . "'";
+    //        if ($zyfl != '') {
+    //            if (in_array($tsfl_data2[0], $zyfl)) {
+    //                $zNodes2 .= ", checked:true";
+    //            }
+    //        }
+    //        $zNodes2 .= "},";
+    //    }
+    //    $zNodes2 = substr(trim($zNodes2), 0, strlen(trim($zNodes2)) - 1);
+    //    $zNodes2 = $zNodes2 . " ]";
+    //    echo "<SCRIPT type='text/javascript'> var zNodes2=" . $zNodes2 . ";</SCRIPT>";
+    //exit;
     $zyfl = @$_REQUEST['zyfl_id_sel'];
     if ($zyfl != '') {
         $zyfl = substr(trim($zyfl), 0, strlen(trim($zyfl)) - 1);
         $zyfl = explode(',', $zyfl);
     }
     $zNodes2 = "[ ";
-    $ms_tsfl2 = new con_mysql2();
     $sql_tsfl2 = ser("v_ecs_category", "cat_id,parent_id,cat_name", "cat_desc='30'  order by cat_id ");
-    $rs_tsfl2 = $ms_tsfl2->sdb($sql_tsfl2);
-    while ($tsfl_data2 = mysqli_fetch_assoc($rs_tsfl2)) {
-        $zNodes2 = $zNodes2 . "{id:" . trim($tsfl_data2['cat_id']) . ", pId:" . trim($tsfl_data2['parent_id']) . ", name:'" . trim($tsfl_data2['cat_name']) . "'";
+    $ms = new con_mssql();
+
+    $rs_tsfl2 = $ms->sdb($sql_tsfl2);
+    while ($tsfl_data2 = odbc_fetch_array($rs_tsfl2)) {
+        $zNodes2 = $zNodes2 . "{id:" . trim($tsfl_data2['cat_id']) . ", pId:" . trim($tsfl_data2['parent_id']) . ", name:'" . trim(iconv('gbk', 'utf-8//IGNORE',$tsfl_data2['cat_name'])) . "'";
         if ($zyfl != '') {
             if (in_array($tsfl_data2[0], $zyfl)) {
                 $zNodes2 .= ", checked:true";

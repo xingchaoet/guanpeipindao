@@ -51,9 +51,9 @@
         }
 
         .hr {
-            height:0px;
-            border:none;
-            border-top:1px ridge green;
+            height: 0px;
+            border: none;
+            border-top: 1px ridge green;
             margin-bottom: 29px;
 
         }
@@ -64,18 +64,20 @@
             border: 0;
             /*border-top: 1px solid #eee;*/
         }
+
         hr {
             height: 0;
             -moz-box-sizing: content-box;
             box-sizing: content-box;
         }
+
         /**, *:before, *:after {*/
         /*}*/
 
         /**, *:before, *:after {*/
-            /*-webkit-box-sizing: border-box;*/
-            /*-moz-box-sizing: border-box;*/
-            /*box-sizing: border-box;*/
+        /*-webkit-box-sizing: border-box;*/
+        /*-moz-box-sizing: border-box;*/
+        /*box-sizing: border-box;*/
         /*}*/
         hr {
             display: block;
@@ -86,6 +88,15 @@
             border-style: inset;
             border-width: 0px;
         }
+
+        .col-sm-3 {
+            width: 190px;
+        }
+
+        .content_intro,.zhh_intro {
+            text-indent: 28px;
+        }
+
     </style>
 </head>
 
@@ -108,7 +119,7 @@
         <div class="col-sm-9">
 
             <div class="down">
-                <span class="">
+                <div class="">
                     <span class="detail_title">图书详情</span>
                     <hr class="hr"/>
                     {foreach $details as $val}
@@ -126,15 +137,14 @@
                         </div>
                         <div class="col-sm-9">
                             <table class="table table-striped ">
-
                                 <tr>
-                                    <td colspan="2"><img src="dist/images/icon.png">书名： {$val['sm']}</td>
+                                    <td colspan="2"><img src="dist/images/icon.png">书名： {'gbk'|iconv:'utf-8//IGNORE':$val['sm']}</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><img src="dist/images/icon.png">丛书名： {$val['csm']}</td>
+                                    <td colspan="2"><img src="dist/images/icon.png">丛书名： {'gbk'|iconv:'utf-8//IGNORE':$val['csm']}</td>
                                 </tr>
                                 <tr>
-                                    <td><img src="dist/images/icon.png">作者： {$val['zzh']}</td>
+                                    <td><img src="dist/images/icon.png">作者： {'gbk'|iconv:'utf-8//IGNORE':$val['zzh']}</td>
                                     <td><img src="dist/images/icon.png">ISBN: {$val['isbn']}</td>
                                 </tr>
                                 <tr>
@@ -142,7 +152,7 @@
                                     <td><img src="dist/images/icon.png">出版日期: {$val['cbrq']}</td>
                                 </tr>
                                 <tr>
-                                    <td><img src="dist/images/icon.png">装帧： {$val['zhzh']}</td>
+                                    <td><img src="dist/images/icon.png">装帧： {'gbk'|iconv:'utf-8//IGNORE':$val['zhzh']}</td>
                                     <td><img src="dist/images/icon.png">价格: ￥{$val['dj']|string_format:"%.2f"}</td>
                                 </tr>
                                 <tr>
@@ -150,10 +160,22 @@
                                     <td><img src="dist/images/icon.png">中图法分类: {$val['ztfl']}</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><img src="dist/images/icon.png">内容简介： {$val['nrjs']}</td>
+                                    <td><img src="dist/images/icon.png">语种： {'gbk'|iconv:'utf-8//IGNORE':$val['yz']}</td>
+                                    <td><img src="dist/images/icon.png">版次:</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><img src="dist/images/icon.png">作者简介： {$val['zzhjj']}</td>
+                                    <td colspan="2"><img src="dist/images/icon.png">内容简介： <p>
+                                        <div class="content_intro">
+                                            {'gbk'|iconv:'utf-8//IGNORE':$val['nrjs']}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><img src="dist/images/icon.png">作者简介： <p>
+                                        <div class="zhh_intro">
+                                            {'gbk'|iconv:'utf-8//IGNORE':$val['zzhjj']}
+                                        </div>
+                                    </td>
                                 </tr>
 
                             </table>

@@ -8,7 +8,7 @@
 require_once("include/GuanCangSmarty.php");
 require_once("config.php");
 include("db/con_mssql.php");
-include("db/con_mysql2.php");
+//include("db/con_mysql2.php");
 include("db/dao.php");
 
 $smarty = new GuanCangSmarty();

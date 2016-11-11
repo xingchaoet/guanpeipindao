@@ -17,6 +17,7 @@
 
         .col-sm-4 {
             background: #F0FFFF;
+            /*background: white;*/
             margin-bottom: 10px;
             padding-left: 1px;
             padding-right: 1px;
@@ -47,12 +48,24 @@
         }
 
         .btn-toolbar {
-            width: 400px;
-            margin-left: 530px;
+            margin-right: 10px;
+            float: right;
         }
 
         .show_title {
             margin-top: 10px;
+            background-color: #EBEBEB;
+            /*display: none;*/
+            width: 790px;
+            height: 32px;
+            font-size: 15px;
+            line-height: 32px;
+            border: 0px solid transparent;
+            box-shadow: 0px 1px 3px rgba(34, 25, 25, 0.2);
+
+            background: -moz-linear-gradient(top, #b8c4cb, #f6f6f8); /*火狐*/
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b8c4cb), to(#f6f6f8)); /*谷歌*/
+            margin-bottom: 4px;
         }
 
         .down {
@@ -65,12 +78,17 @@
         }
 
         #show_type {
+            margin-left: 10px;
             font-family: 'Microsoft YaHei', 'Arial';
             float: left;
         }
 
+        .show_type_style {
+            opacity: 0.5;
+        }
+
         .fen_mian {
-            width: 105px;
+            width: 125px;
             height: 168px;
         }
 
@@ -87,6 +105,32 @@
 
         .right_td {
             font-size: 5px;
+        }
+
+        .add_and_check {
+            /*margin-left:600px;*/
+            /*margin-bottom:40px;*/
+            margin-top: 60px;
+            margin-left: 620px;
+            margin-bottom: 20px;
+            position: absolute;
+        }
+
+        #pagination a {
+            text-decoration: none;
+        }
+
+        #pagination a:link {
+            color: black;
+        }
+
+        #pagination a:hover {
+            cursor: pointer;
+            color: purple;
+        }
+
+        #pagination a:visited {
+            color: red;
         }
     </style>
 </head>
@@ -108,19 +152,21 @@
 
         <div class="col-sm-9">
 
-            <div id="show_type">
-                <h4><b>{$sub_title}</b></h4>
-            </div>
-            <div class="btn-toolbar">
-                <div class="btn-group show_title">
-                    <a class="btn">显示方式：</a>
-                    <a><img id="list" src="{$relpostodist}dist/picture/pic_list/list_enable.gif"></a>
-                    <!--<img id="list" src="{$relpostodist}dist/picture/pic_list/list_disable.gif">-->
-                    <!--<a href="more.php?type=recommend&show=list" class='btn btn-info'>列表</a>-->
-                    <a><img id="picture" src="{$relpostodist}dist/picture/pic_list/pic_disable.gif"></a>
-                    <!--<img id="picture" src="{$relpostodist}dist/picture/pic_list/pic_enable.gif">-->
+            <div class="show_title">
+                <div id="show_type">
+                    <h4><b>{$sub_title}</b></h4>
                 </div>
-                </p>
+                <div class="btn-toolbar">
+                    <div class="show_type_style ">
+                        <label class="">显示方式：</label>
+                        <a><img id="list" src="{$relpostodist}dist/picture/pic_list/list_enable.gif"></a>
+                        <!--<img id="list" src="{$relpostodist}dist/picture/pic_list/list_disable.gif">-->
+                        <!--<a href="more.php?type=recommend&show=list" class='btn btn-info'>列表</a>-->
+                        <a><img id="picture" src="{$relpostodist}dist/picture/pic_list/pic_disable.gif"></a>
+                        <!--<img id="picture" src="{$relpostodist}dist/picture/pic_list/pic_enable.gif">-->
+                    </div>
+                    </p>
+                </div>
             </div>
 
             <div id="down" class="down" onmouseover="active_topagesend();">
@@ -137,8 +183,8 @@
                                 <tr>
                                     <td class="left_td">
                                         <!--<a href="detail.php?book_id={$val['book_id']}"><img-->
-                                                <!--src="http://www.ecsponline.com/{trim($val['slt'])}"-->
-                                                <!--class="fen_mian" alt=""></a>-->
+                                        <!--src="http://www.ecsponline.com/{trim($val['slt'])}"-->
+                                        <!--class="fen_mian" alt=""></a>-->
 
                                         {if trim($val['slt'])}
                                         <a href="detail.php?book_id={$val['book_id']}"><img
@@ -149,7 +195,6 @@
                                                 src="dist/images/nopicture.png"
                                                 class="fen_mian" alt=""></a>
                                         {/if}
-
 
 
                                     </td>
@@ -179,14 +224,16 @@
                         </div>
                         {/foreach}
                     </div>
-                    <div style="margin-left:700px;margin-bottom:40px;"><a id="buy" class="btn btn-default"
-                                                                          onclick="generate_order();">加入订单</a>
+
+                    <div class="add_and_check">
+                        <a id="buy" class="btn btn-default btn-xs" onclick="generate_order();">加入订单</a>
                         {if $smarty.session.user_type eq library_user}
-                        <a href='zhengdingdan/orders_view.php' class="btn  btn-default">查看订单</a>
+                        <a href='zhengdingdan/orders_view.php' class="btn  btn-default btn-xs">查看订单</a>
                         {/if}
                     </div>
 
                     {$page->show()}
+
                 </div>
             </div>
 
@@ -212,6 +259,8 @@
     var global_url = $('#global_url').html();
 
     var more_url = 'http://' + global_url + '/guanpeipindao/more.php';
+
+    var generate_order_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/generate_order.php';
 
     function creatXHR() {
         var xhr = null;
@@ -397,6 +446,13 @@
 
     $("#list").click(function () {
 
+                path = "{$relpostodist}dist/picture/pic_list/list_disable.gif";
+                path2 = "{$relpostodist}dist/picture/pic_list/pic_enable.gif";
+
+
+                if ($("#list").attr('src') == path) {
+                    return;
+                }
                 var fdata = new FormData();
 //推荐还是最新
                 var booktype = $("#booktype").text();
@@ -412,9 +468,7 @@
                 xhr.send(fdata);
                 xhr.onreadystatechange = function () {
                     if (this.readyState == 4) {
-                        path = "{$relpostodist}dist/picture/pic_list/list_disable.gif";
                         $("#list").attr('src', path);
-                        path2 = "{$relpostodist}dist/picture/pic_list/pic_enable.gif";
                         $("#picture").attr('src', path2);
                         document.getElementById('down').innerHTML = '';
                         document.getElementById('down').innerHTML = this.responseText;
@@ -424,6 +478,13 @@
     );
 
     $("#picture").click(function () {
+
+                path = "{$relpostodist}dist/picture/pic_list/pic_disable.gif";
+                path2 = "{$relpostodist}dist/picture/pic_list/list_enable.gif";
+
+                if ($("#picture").attr('src') == path) {
+                    return;
+                }
                 var fdata = new FormData();
 //推荐还是最新
                 var booktype = $("#booktype").text();
@@ -441,9 +502,7 @@
                 xhr.send(fdata);
                 xhr.onreadystatechange = function () {
                     if (this.readyState == 4) {
-                        path = "{$relpostodist}dist/picture/pic_list/pic_disable.gif";
                         $("#picture").attr('src', path);
-                        path2 = "{$relpostodist}dist/picture/pic_list/list_enable.gif";
                         $("#list").attr('src', path2);
                         document.getElementById('down').innerHTML = '';
                         document.getElementById('down').innerHTML = this.responseText;
@@ -514,10 +573,10 @@
 //            }
         })
 
-        alert(book_ids);
-        alert(book_nums);
+//        alert(book_ids);
+//        alert(book_nums);
 
-        return;
+//        return;
 
         xhr.open('POST', generate_order_url, true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -529,6 +588,24 @@
         }
 
     }
+
+    $('.down').on('mouseenter', function () {
+
+        var list = $('input[id^=sum_]');
+        $.each(list, function (index, domEle) {
+            domEle.onkeyup = function () {
+                this.value = this.value.replace(/\D/g, '');
+                if (domEle.value > 5) {
+                    domEle.value = 5;
+                }
+                if (domEle.value < 1) {
+                    domEle.value = 1;
+                }
+            }
+        });
+//
+    });
+
 
 </script>
 </html>

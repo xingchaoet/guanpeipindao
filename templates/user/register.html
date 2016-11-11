@@ -24,170 +24,325 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane active fade in" id='library_user'>
-            <div  class="">
-                <div class="container">
-                    <div id="rgbgdiv">
-                        <!--<div id='top_title'><font size="4">会员注册</font></div>-->
 
-                        <div id="regshengdiv"><span><b>所属省份 </b></span><?php include('sheng_select.php'); ?>
-                            <div id="shengdiv">工作单位所属省份</div>
-                        </div>
-                        <div id="reglibdiv">
-                            <span><b>工作单位 </b></span>
-                            <span id="libspan" width="200px;">
-                            <select id="lib" width="200px" name="lib">
-                                <option value='-1'>请先选择省份</option>
-                            </select>
-                            </span>
-                            <div id="libdiv">工作单位全称</div>
-                        </div>
+            <div id="rgbgdiv">
 
-                        <div id="regrealnamediv"><span><b>真实姓名 </b></span><span id="realname_span" name="realname_span"
-                                                                                width="200px;">
-                            <select id="realname" name="realname" width="200px;"><option
-                                    value='-1'>请先选择工作单位</option></select></span>
-                            <div id="realnamediv">用户的真实姓名</div>
-                        </div>
+                <!--<table>-->
+                    <!--<tr>-->
+                        <!--<td>-->
 
-                        <div id="regnamediv"><span><b>注册名称 </b></span><input id="regname" name="regname" type="text"/>
-                            <div id="namediv">请输入用户名</div>
-                        </div>
-                        <div id="regpwddiv1"><span><b>注册密码 </b></span><input id="regpwd1" name="regpwd1"
-                                                                             type="password"/>
-                            <div id="pwddiv1">请输入密码</div>
-                        </div>
-                        <div id="regpwddiv2"><span><b>确认密码 </b></span><input id="regpwd2" name="regpwd2"
-                                                                             type="password"/>
-                            <div id="pwddiv2">请输入确认密码</div>
-                        </div>
-                        <div id="regemaildiv"><span><b>电子邮箱 </b></span><input id="email" name="email" type="text"/>
-                            <div id="emaildiv">用户激活和找回密码使用</div>
-                        </div>
+                        <!--</td>-->
+                        <!--<td>-->
 
+                        <!--</td>-->
+                    <!--</tr>-->
 
-                        <div id="regaddressdiv"><span><b>通讯地址 </b></span><input id="address" name="address"
-                                                                                type="text"/>
-                            <div id="addressdiv">工作单位通讯地址</div>
-                        </div>
-                        <div id="regpostcodediv"><span><b>邮政编码 </b></span><input id="postcode" name="postcode"
-                                                                                 type="text"/>
-                            <div id="postcodediv">工作单位邮政编码</div>
-                        </div>
-                        <div id="regtelephonediv"><span><b>办公电话 </b></span><input id="telephone" name="telephone"
-                                                                                  type="text"/>
-                            <div id="telephonediv">您的固定联系电话</div>
-                        </div>
-                        <div id="regmobilediv"><span><b>移动电话 </b></span><input id="mobile" name="mobile" type="text"/>
-                            <div id="mobilediv">您的手机号码</div>
-                        </div>
-                        <div id="regquestiondiv"><span><b>密保问题 </b></span><input id="question" name="question"
-                                                                                 type="text"/>
-                            <div id="questiondiv">用户激活和找回密码使用</div>
-                        </div>
-                        <div id="reganswerdiv"><span><b>密保答案 </b></span><input id="answer" name="answer" type="text"/>
-                            <div id="answerdiv">用户激活和找回密码使用</div>
-                        </div>
+                    <!--<tr>-->
+                        <!--<td>-->
 
-                        <div id="regsexdiv"><span><b>性别 </b></span><select id="sex" name="sex">
-                            <option value="-1">请选择</option>
-                            <option value="男">男</option>
-                            <option value="女">女</option>
-                        </select>
-                            <div id="sexdiv">用户的性别</div>
-                        </div>
-                        <!--<div id="regzwdiv"><span><b>职务 </b></span><input id="zw" name="zw" type="text"/>-->
-                        <!--<div id="zwdiv">担任职务</div>-->
-                        <!--</div>-->
-                        <div id="regzwdiv"><span><b>职务 </b></span><?php include('zw_select.php'); ?>
-                            <div id="zwdiv">担任职务</div>
-                        </div>
-                        <div id="regbirthdaydiv"><span><b>出生日期 </b></span><input id="birthday" name="birthday"
-                                                                                 type="text" onClick="WdatePicker()"/>
-                            <div id="birthdaydiv">用户的出生日期。格式：YYYY-MM-DD</div>
-                        </div>
-                        <div id="regqqdiv"><span><b>QQ号码 </b></span><input id="qq" name="qq" type="text"/>
-                            <div id="qqdiv">用户QQ号</div>
-                        </div>
-                        <div id="regdata_datediv"><span><b>发送频率 </b></span><select id="data_date" name="data_date">
-                            <option value="-1">请选择</option>
-                            <option value="每周">每周</option>
-                            <option value="每月">每月</option>
-                            <option value="每季度">每季度</option>
-                            <option value="半年">半年</option>
-                        </select>
-                            <div id="data_datediv">征订单数据发送频率</div>
-                        </div>
-                        <div id="regdata_formatdiv"><span><b>数据格式 </b></span><select id="data_format"
-                                                                                     name="data_format">
-                            <option value="-1">请选择</option>
-                            <option value="EXCEL">EXCEL</option>
-                            <option value="MARC">MARC</option>
-                            <option value="EXCEL+MARC">EXCEL+MARC</option>
-                        </select>
-                            <div id="data_formatdiv">数据文件格式</div>
-                        </div>
-                        <div id="btndiv2">
-                            <button id="regbtn" disabled="disabled"></button>
-                            <button id="logbtn"></button>
-                        </div>
-                        <div id="imgdiv" style=" visibility: hidden;"></div>
-                    </div>
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+
+                    <!--<tr>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+
+                    <!--<tr>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                        <!--<td>-->
+
+                        <!--</td>-->
+                    <!--</tr>-->
+
+                <!--</table>-->
+
+                <!--<div id='top_title'><font size="4">会员注册</font></div>-->
+
+                <div id="regshengdiv"><span><b>所属省份 </b></span><?php include('sheng_select.php'); ?>
+                <div id="shengdiv">工作单位所属省份</div>
                 </div>
+                <div id="reglibdiv">
+                <span><b>工作单位 </b></span>
+                <span id="libspan" width="200px;">
+                <select id="lib" width="200px" name="lib">
+                <option value='-1'>请先选择省份</option>
+                </select>
+                </span>
+                <div id="libdiv">工作单位全称</div>
+                </div>
+
+                <div id="regrealnamediv"><span><b>真实姓名 </b></span><span id="realname_span" name="realname_span"
+                width="200px;">
+                <select id="realname" name="realname" width="200px;"><option
+                value='-1'>请先选择工作单位</option></select></span>
+                <div id="realnamediv">用户的真实姓名</div>
+                </div>
+
+
+                <div id="regnamediv"><span><b>注册名称 </b></span><input id="regname" name="regname" type="text"/>
+                <div id="namediv">请输入用户名</div>
+                </div>
+                <div id="regpwddiv1"><span><b>注册密码 </b></span><input id="regpwd1" name="regpwd1"
+                type="password"/>
+                <div id="pwddiv1">请输入密码</div>
+                </div>
+                <div id="regpwddiv2"><span><b>确认密码 </b></span><input id="regpwd2" name="regpwd2"
+                type="password"/>
+                <div id="pwddiv2">请输入确认密码</div>
+                </div>
+                <div id="regemaildiv"><span><b>电子邮箱 </b></span><input id="email" name="email" type="text"/>
+                <div id="emaildiv">用户激活和找回密码使用</div>
+                </div>
+
+
+                <div id="regaddressdiv"><span><b>通讯地址 </b></span><input id="address" name="address"
+                type="text"/>
+                <div id="addressdiv">工作单位通讯地址</div>
+                </div>
+                <div id="regpostcodediv"><span><b>邮政编码 </b></span><input id="postcode" name="postcode"
+                type="text"/>
+                <div id="postcodediv">工作单位邮政编码</div>
+                </div>
+                <div id="regtelephonediv"><span><b>办公电话 </b></span><input id="telephone" name="telephone"
+                type="text"/>
+                <div id="telephonediv">您的固定联系电话</div>
+                </div>
+                <div id="regmobilediv"><span><b>移动电话 </b></span><input id="mobile" name="mobile" type="text"/>
+                <div id="mobilediv">您的手机号码</div>
+                </div>
+                <div id="regquestiondiv"><span><b>密保问题 </b></span><input id="question" name="question"
+                type="text"/>
+                <div id="questiondiv">用户激活和找回密码使用</div>
+                </div>
+                <div id="reganswerdiv"><span><b>密保答案 </b></span><input id="answer" name="answer" type="text"/>
+                <div id="answerdiv">用户激活和找回密码使用</div>
+                </div>
+
+                <div id="regsexdiv"><span><b>性别 </b></span><select id="sex" name="sex">
+                <option value="-1">请选择</option>
+                <option value="男">男</option>
+                <option value="女">女</option>
+                </select>
+                <div id="sexdiv">用户的性别</div>
+                </div>
+                <!--<div id="regzwdiv"><span><b>职务 </b></span><input id="zw" name="zw" type="text"/>-->
+                <!--<div id="zwdiv">担任职务</div>-->
+                <!--</div>-->
+                <div id="regzwdiv"><span><b>职务 </b></span><?php include('zw_select.php'); ?>
+                <div id="zwdiv">担任职务</div>
+                </div>
+                <div id="regbirthdaydiv"><span><b>出生日期 </b></span><input id="birthday" name="birthday"
+                type="text" onClick="WdatePicker()"/>
+                <div id="birthdaydiv">用户的出生日期。格式：YYYY-MM-DD</div>
+                </div>
+                <div id="regqqdiv"><span><b>QQ号码 </b></span><input id="qq" name="qq" type="text"/>
+                <div id="qqdiv">用户QQ号</div>
+                </div>
+                <div id="regdata_datediv"><span><b>发送频率 </b></span><select id="data_date" name="data_date">
+                <option value="-1">请选择</option>
+                <option value="每周">每周</option>
+                <option value="每月">每月</option>
+                <option value="每季度">每季度</option>
+                <option value="半年">半年</option>
+                </select>
+                <div id="data_datediv">征订单数据发送频率</div>
+                </div>
+                <div id="regdata_formatdiv"><span><b>数据格式 </b></span><select id="data_format"
+                name="data_format">
+                <option value="-1">请选择</option>
+                <option value="EXCEL">EXCEL</option>
+                <option value="MARC">MARC</option>
+                <option value="EXCEL+MARC">EXCEL+MARC</option>
+                </select>
+                <div id="data_formatdiv">数据文件格式</div>
+                </div>
+                <div id="btndiv2">
+                <button id="regbtn" disabled="disabled"></button>
+                <button id="logbtn"></button>
+                </div>
+                <div id="imgdiv" style=" visibility: hidden;"></div>
             </div>
 
         </div>
         <div class="tab-pane fade" id='gps_user'>
-            <div class="">
-                <div class="container">
-                    <div id="rgbgdiv_gps">
-                        <!--<div id='top_title'><font size="4">会员注册</font></div>-->
-                        <div id="regcompanydiv_gps"><span><b>工作单位 </b></span><?php include('company_select.php'); ?>
-                            <div id="companydiv_gps">工作单位</div>
-                        </div>
 
-                        <div id="regnamediv_gps"><span><b>注册名称 </b></span><input id="regname_gps" name="regname_gps"
-                                                                                 type="text"/>
-                            <div id="namediv_gps">请输入用户名</div>
-                        </div>
-                        <div id="regpwddiv1_gps"><span><b>注册密码 </b></span><input id="regpwd1_gps" name="regpwd1_gps"
-                                                                                 type="password"/>
-                            <div id="pwddiv1_gps">请输入密码</div>
-                        </div>
-                        <div id="regpwddiv2_gps"><span><b>确认密码 </b></span><input id="regpwd2_gps" name="regpwd2_gps"
-                                                                                 type="password"/>
-                            <div id="pwddiv2_gps">请输入确认密码</div>
-                        </div>
-                        <div id="regemaildiv_gps"><span><b>电子邮箱 </b></span><input id="email_gps" name="email_gps"
-                                                                                  type="text"/>
-                            <div id="emaildiv_gps">用户激活和找回密码使用</div>
-                        </div>
-
-                        <div id="reglxrdiv_gps"><span><b>联系人 </b></span><input id="lxr_gps" name="lxr_gps" type="text"/>
-                            <div id="lxrdiv_gps">联系人</div>
-                        </div>
-
-                        <div id="regqqdiv_gps"><span><b>QQ号码 </b></span><input id="qq_gps" name="qq_gps" type="text"/>
-                            <div id="qqdiv_gps">用户QQ号</div>
-                        </div>
-
-                        <div id="regtelephonediv_gps"><span><b>办公电话 </b></span><input id="telephone_gps"
-                                                                                      name="telephone_gps"
-                                                                                      type="text"/>
-                            <div id="telephonediv_gps">您的固定联系电话</div>
-                        </div>
-
-                        <div id="regmobilediv_gps"><span><b>移动电话 </b></span><input id="mobile_gps" name="mobile_gps"
-                                                                                   type="text"/>
-                            <div id="mobilediv_gps">您的手机号码</div>
-                        </div>
-
-                        <div id="btndiv2_gps">
-                            <button id="regbtn_gps" disabled="disabled"></button>
-                            <button id="logbtn_gps"></button>
-                        </div>
-                        <div id="imgdiv_gps" style=" visibility: hidden;"></div>
-                    </div>
+            <div id="rgbgdiv_gps">
+                <!--<div id='top_title'><font size="4">会员注册</font></div>-->
+                <div id="regcompanydiv_gps"><span><b>工作单位 </b></span><?php include('company_select.php'); ?>
+                    <div id="companydiv_gps">工作单位</div>
                 </div>
+
+                <div id="regnamediv_gps"><span><b>注册名称 </b></span><input id="regname_gps" name="regname_gps"
+                                                                         type="text"/>
+                    <div id="namediv_gps">请输入用户名</div>
+                </div>
+                <div id="regpwddiv1_gps"><span><b>注册密码 </b></span><input id="regpwd1_gps" name="regpwd1_gps"
+                                                                         type="password"/>
+                    <div id="pwddiv1_gps">请输入密码</div>
+                </div>
+                <div id="regpwddiv2_gps"><span><b>确认密码 </b></span><input id="regpwd2_gps" name="regpwd2_gps"
+                                                                         type="password"/>
+                    <div id="pwddiv2_gps">请输入确认密码</div>
+                </div>
+                <div id="regemaildiv_gps"><span><b>电子邮箱 </b></span><input id="email_gps" name="email_gps"
+                                                                          type="text"/>
+                    <div id="emaildiv_gps">用户激活和找回密码使用</div>
+                </div>
+
+                <div id="reglxrdiv_gps"><span><b>联系人 </b></span><input id="lxr_gps" name="lxr_gps" type="text"/>
+                    <div id="lxrdiv_gps">联系人</div>
+                </div>
+
+                <div id="regqqdiv_gps"><span><b>QQ号码 </b></span><input id="qq_gps" name="qq_gps" type="text"/>
+                    <div id="qqdiv_gps">用户QQ号</div>
+                </div>
+
+                <div id="regtelephonediv_gps"><span><b>办公电话 </b></span><input id="telephone_gps"
+                                                                              name="telephone_gps"
+                                                                              type="text"/>
+                    <div id="telephonediv_gps">您的固定联系电话</div>
+                </div>
+
+                <div id="regmobilediv_gps"><span><b>移动电话 </b></span><input id="mobile_gps" name="mobile_gps"
+                                                                           type="text"/>
+                    <div id="mobilediv_gps">您的手机号码</div>
+                </div>
+
+                <div id="btndiv2_gps">
+                    <button id="regbtn_gps" disabled="disabled"></button>
+                    <button id="logbtn_gps"></button>
+                </div>
+                <div id="imgdiv_gps" style=" visibility: hidden;"></div>
             </div>
 
         </div>

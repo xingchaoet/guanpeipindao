@@ -98,7 +98,7 @@ if ($media != null) {
             break;
         case "按需印刷": //jz1=0 and jz3 is not null
 //                $l = " and jz = '2'";
-            $l = " and jz1 = '0' and jz3 is not null";
+            $l = " and (jz1 = '0' and jz1 is null) and jz3 is not null";
             break;
     }
 
@@ -117,18 +117,42 @@ if ($search_TJ == " (1=1)") {
     $search_TJ = " (1=0)";
 }
 
-$ms_tsfl30 = new con_mysql2();
 
-$sql_tsfl30 = ser("v_ecs_book", "isbn", $search_TJ);
 
-$rs_tsfl30 = $ms_tsfl30->sdb($sql_tsfl30);
-while ($tsfl_data3 = mysqli_fetch_assoc($rs_tsfl30)) {
+//
+//$sql_tsfl30 = ser("v_ecs_book", "isbn", $search_TJ);
+//
+//$rs_tsfl30 = $ms_tsfl30->sdb($sql_tsfl30);
+//
+//while ($tsfl_data3 = mysqli_fetch_assoc($rs_tsfl30)) {
+//    $tsfl_data3_array[] = $tsfl_data3;
+//}
+
+$ms = new con_mssql();
+$sql_tsfl30 = ser("v_ecs_book", "bid1,isbn", $search_TJ);
+
+$rs_tsfl30 = $ms->sdb($sql_tsfl30);
+while ($tsfl_data3 = odbc_fetch_array($rs_tsfl30)) {
     $tsfl_data3_array[] = $tsfl_data3;
+};
+
+for ($i = 0 ;$i < count($tsfl_data3_array); $i ++) {
+//    删去不规范的书号
+    if (strlen(trim( $tsfl_data3_array[$i]['isbn'])) < 10) {
+        array_splice($tsfl_data3_array, $i, 1);
+    }
+//    echo  $tsfl_data3_array[$i]['isbn']."_";
+//
+//    echo strlen(trim($tsfl_data3_array[$i]['isbn']))."|";
 }
+
+//print_r($tsfl_data3_array);
+
 $_SESSION[data_diy_isbns] = $tsfl_data3_array;
 //print_r($_SESSION[data_diy_isbns]);
 
-$rows = mysqli_num_rows($rs_tsfl30);
+//$rows = mysqli_num_rows($rs_tsfl30);
+$rows = count($tsfl_data3_array);
 echo "共搜索出" . $rows." 条记录";
 
 

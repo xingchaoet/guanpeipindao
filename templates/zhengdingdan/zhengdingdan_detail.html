@@ -1,40 +1,40 @@
 <table class='table table-bordered table-striped'>
     <tr style="text-align: center">
-        <td>数量</td>
+        <td width="50" align="center";>数量</td>
         <td>书名</td>
-        <td>书号</td>
-        <td>作者</td>
-        <td>开本</td>
-        <td>出版日期</td>
+        <td width="80" align="center";>书号</td>
+        <td width="100" align="center";>作者</td>
+        <td width="50" align="center";>开本</td>
+        <td width="90" align="center";>出版日期</td>
         <td>价格</td>
-        <td>库存</td>
+        <td width="70"  align="center";>库存</td>
     </tr>
 
     {foreach $zdd_order_detail as $order}
     <tr>
-        <td>
+        <td width="50" align="center";>
             {$order['amount']}
         </td>
         <td>
             {$order['book_name']}
         </td>
-        <td>
+        <td width="80" align="center";>
             {$order['isbn']}
         </td>
-        <td>
+        <td width="100" align="center";>
             {$order['writer']}
         </td>
-        <td>
+        <td width="50" align="center";>
             {$order['kb']}
         </td>
-        <td>
+        <td width="90" align="center";>
             {$order['publish_date']}
         </td>
 
         <td>
             {$order['price']}
         </td>
-        <td>
+        <td width="70"  align="center";>
             {$order['kc']}
         </td>
 

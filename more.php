@@ -15,6 +15,8 @@ include("class/Page.class.php");
 
 session_start();
 
+$uid = $_SESSION['user_id'];
+
 //echo $_REQUEST;
 //
 //echo 'test';
@@ -39,8 +41,9 @@ $relpostodist = './';
 $smarty->assign("relpostodist", $relpostodist);
 
 $ms = new con_mssql();
+$tot = '0';
 $con_mysql2 = new con_mysql2();
-$ms_tsfl4 = new con_mysql2();
+//$ms_tsfl4 = new con_mysql2();
 
 //介绍文字
 $sql = ser("bs_home_introduce", "introduce", "");
@@ -67,12 +70,18 @@ if ($_REQUEST['type'] == 'recommend') { //推荐
 
 //    $sql = "select count(*) as sum from v_ecs_book where bjtj != ''"; //写推荐条件
 
-    $sql = "SELECT count(*) as sum FROM v_ecs_book WHERE bjtj IS NOT NULL";
+    $sql = "SELECT count(*) as sum FROM v_ecs_book ";
+//    $sql = "SELECT count(*) as sum FROM ecs_book WHERE bjtj IS NOT NULL";
 
-    $recommendbooks_sum = $con_mysql2->sdb($sql);
-    $data = mysqli_fetch_assoc($recommendbooks_sum);
+//    $recommendbooks_sum = $con_mysql2->sdb($sql);
+//    $data = mysqli_fetch_assoc($recommendbooks_sum);
 
-    $tot = $data['sum'];
+    $recommendbooks_sum_rs = $ms->sdb($sql);
+
+    if (odbc_fetch_row($recommendbooks_sum_rs)) {
+        $tot = odbc_result($recommendbooks_sum_rs, "sum");
+    }
+//    $tot = $data['sum'];
 //
 //    echo $tot;
 //
@@ -80,18 +89,60 @@ if ($_REQUEST['type'] == 'recommend') { //推荐
 
     $page = new Page('more.php', $tot, $show_num_per_page, $_REQUEST['type'], $_REQUEST['show']);
 
+//    mysql
+//    $search_content = "(case
+//         when jz1>0 then bid1
+//         when jz1=0 and jz3 is not null then bid3
+//         when jz1=0 and jz3 is null then bid1
+//       end )as book_id ,
+//
+//     sm,isbn,zzh,kb,cbrq,
+//
+//      (case
+//         when jz1>0 then dj1
+//         when jz1=0 and jz3 is not null then dj3
+//         when jz1=0 and jz3 is null then dj1
+//       end )as dj ,
+//
+//       jz1,
+//
+//       jz3,
+//
+//       slt";
+//
+////    $search_TJ = "    ORDER BY cbrq DESC $page->limit";
+////    $sql = ser("v_ecs_book", $search_content, $search_TJ);
+//
+//    $sql = "select " . "$search_content" . "  from v_ecs_book  $page->limit";
+////    $sql = "select " . "$search_content" . "  from ecs_book WHERE bjtj IS NOT NULL $page->limit";
+
+
+//    $sql = "SELECT * FROM v_ecs_book WHERE bjtj IS NOT NULL $page->limit";
+//    $recommendbooksObject = $con_mysql2->sdb($sql);
+//    print_r($recommendbooksObject);
+//
+//    exit();
+//    while ($data = $recommendbooksObject->fetch_array(MYSQLI_ASSOC)) {
+
+
     $search_content = "(case
          when jz1>0 then bid1
-         when jz1=0 and jz3 is not null then bid3
-         when jz1=0 and jz3 is null then bid1
+         when (jz1=0 or jz1 is null) and jz3 is not null then bid3
+         when (jz1=0 or jz1 is null) and jz3 is null then bid1
        end )as book_id ,
 
-     sm,isbn,zzh,kb,cbrq,
+     sm,isbn,zzh,kb,
 
       (case
+         when jz1>0 then cbrq1
+         when (jz1=0 or jz1 is null) and jz3 is not null then cbrq3
+         when (jz1=0 or jz1 is null) and jz3 is null then cbrq1
+       end )as cbrq ,
+       
+      (case
          when jz1>0 then dj1
-         when jz1=0 and jz3 is not null then dj3
-         when jz1=0 and jz3 is null then dj1
+         when (jz1=0 or jz1 is null) and jz3 is not null then dj3
+         when (jz1=0 or jz1 is null) and jz3 is null then dj1
        end )as dj ,
 
        jz1,
@@ -100,19 +151,31 @@ if ($_REQUEST['type'] == 'recommend') { //推荐
 
        slt";
 
-//    $search_TJ = "    ORDER BY cbrq DESC $page->limit";
-//    $sql = ser("v_ecs_book", $search_content, $search_TJ);
+    $sql_tsfl3 = "SELECT rows, book_id,sm,isbn,zzh,kb,cbrq,dj,jz1,jz3,slt
+FROM (SELECT $search_content,rows,
+ROW_NUMBER() OVER (ORDER BY rows) AS RowNumber
+FROM v_ecs_book) a
+WHERE RowNumber > $page->offset AND RowNumber <= ($page->offset + $page->length)
+ORDER BY a.rows DESC";
 
-    $sql = "select " . "$search_content" . "  from v_ecs_book WHERE bjtj IS NOT NULL $page->limit";
-
-
-//    $sql = "SELECT * FROM v_ecs_book WHERE bjtj IS NOT NULL $page->limit";
-    $recommendbooksObject = $con_mysql2->sdb($sql);
-//    print_r($recommendbooksObject);
+//    echo "$sql_tsfl3";
 //
 //    exit();
 
-    while ($data = $recommendbooksObject->fetch_array(MYSQLI_ASSOC)) {
+//    $sql_tsfl3 = "SELECT top $page->length * from v_ecs_book";
+
+    $rs_tsfl3 = $ms->sdb($sql_tsfl3);
+
+    if (!$rs_tsfl3) {
+        echo "Error in query preparation/execution.<br />";
+        die(print_r(odbc_errormsg(), true));
+    }
+
+    while ($data = odbc_fetch_array($rs_tsfl3)) {
+
+
+        $data['sm'] = iconv('gbk', 'utf-8//IGNORE', $data['sm']);
+        $data['zzh'] = iconv('gbk', 'utf-8//IGNORE', $data['zzh']);
 
         $isbn = $data['isbn'];
         if ($data['jz1'] > 0) {
@@ -125,6 +188,24 @@ if ($_REQUEST['type'] == 'recommend') { //推荐
                 $data['kucun'] = "可预订";
             }
         }
+
+//        $sql = ser("bs_zhengdingdan_mx", "count(*) as yi_ding","isbn = $isbn AND inputby = $uid");
+        $sql = "SELECT count(*) as yi_ding FROM bs_zhengdingdan_mx WHERE isbn = '$isbn' AND inputby = '$uid' ";
+        $rs = $ms->sdb($sql);
+        if (!$rs) {
+            echo "Error in query preparation/execution.<br />";
+            die(print_r(iconv('GBK', 'UTF-8', odbc_errormsg()), true));
+        }
+        if (odbc_fetch_row($rs)) {
+            $yi_ding = odbc_result($rs, "yi_ding");
+        }
+        if ($yi_ding) {
+            $data['yi_ding'] = "已定";
+        } else {
+            $data['yi_ding'] = "未定";
+        }
+
+
         $recommendbooks[] = $data;
     }
 //    $recommendbooks = $recommendbooksObject->fetch_array(MYSQLI_ASSOC);
@@ -139,24 +220,39 @@ if ($_REQUEST['type'] == 'recommend') { //推荐
 
 } else {//新书
 
-    $sql = "select count(*) as sum from v_ecs_book where cbrq > '2015-01-01'";// 做个数量限制
-    $newbooks_sum = $con_mysql2->sdb($sql);
-    $data = mysqli_fetch_assoc($newbooks_sum);
-    $tot = $data['sum'];
+    $sql = "select count(*) as sum from v_ecs_book ";// 做个数量限制
+//    $sql = "select count(*) as sum from ecs_book where cbrq > '2015-01-01'";// 做个数量限制
+
+//    $newbooks_sum = $con_mysql2->sdb($sql);
+//    $data = mysqli_fetch_assoc($newbooks_sum);
+//    $tot = $data['sum'];
+
+    $newbooks_sum_rs = $ms->sdb($sql);
+
+    if (odbc_fetch_row($newbooks_sum_rs)) {
+        $tot = odbc_result($newbooks_sum_rs, "sum");
+    }
 
     $page = new Page('more.php', $tot, $show_num_per_page, $_REQUEST['type'], $_REQUEST['show']);
+
     $search_content = "(case
          when jz1>0 then bid1
-         when jz1=0 and jz3 is not null then bid3
-         when jz1=0 and jz3 is null then bid1
+         when (jz1=0 or jz1 is null) and jz3 is not null then bid3
+         when (jz1=0 or jz1 is null) and jz3 is null then bid1
        end )as book_id ,
 
-     sm,isbn,zzh,kb,cbrq,
+     sm,isbn,zzh,kb,
 
       (case
+         when jz1>0 then cbrq1
+         when (jz1=0 or jz1 is null) and jz3 is not null then cbrq3
+         when (jz1=0 or jz1 is null) and jz3 is null then cbrq1
+       end )as cbrq ,
+       
+      (case
          when jz1>0 then dj1
-         when jz1=0 and jz3 is not null then dj3
-         when jz1=0 and jz3 is null then dj1
+         when (jz1=0 or jz1 is null) and jz3 is not null then dj3
+         when (jz1=0 or jz1 is null) and jz3 is null then dj1
        end )as dj ,
 
        jz1,
@@ -165,16 +261,25 @@ if ($_REQUEST['type'] == 'recommend') { //推荐
 
        slt";
 
-//    $search_TJ = "    ORDER BY cbrq DESC $page->limit";
-//    $sql = ser("v_ecs_book", $search_content, $search_TJ);
+    $sql_tsfl3 = "SELECT rows, book_id,sm,isbn,zzh,kb,cbrq,dj,jz1,jz3,slt
+FROM (SELECT $search_content,rows,
+ROW_NUMBER() OVER (ORDER BY rows) AS RowNumber
+FROM v_ecs_book) a
+WHERE RowNumber > $page->offset AND RowNumber <= ($page->offset + $page->length)
+ORDER BY a.rows DESC";
 
-    $sql = "select " . "$search_content" . "  from v_ecs_book ORDER BY cbrq DESC $page->limit";
+    $rs_tsfl3 = $ms->sdb($sql_tsfl3);
 
-    $newbooksObject = $con_mysql2->sdb($sql);
-//    print_r($recommendbooksObject);
-//
-//    exit();
-    while ($data = $newbooksObject->fetch_array(MYSQLI_ASSOC)) {
+    if (!$rs_tsfl3) {
+        echo "Error in query preparation/execution.<br />";
+        die(print_r(odbc_errormsg(), true));
+    }
+
+    while ($data = odbc_fetch_array($rs_tsfl3)) {
+
+        $data['sm'] = iconv('gbk', 'utf-8//IGNORE', $data['sm']);
+        $data['zzh'] = iconv('gbk', 'utf-8//IGNORE', $data['zzh']);
+
         $isbn = $data['isbn'];
 
         if ($data['jz1'] > 0) {
@@ -186,6 +291,24 @@ if ($_REQUEST['type'] == 'recommend') { //推荐
             } else if (is_null($data['jz3'])) {
                 $data['kucun'] = "可预订";
             }
+        }
+
+
+//        $sql = ser("bs_zhengdingdan_mx", "count(*) as yi_ding","isbn = $isbn AND inputby = $uid");
+        $sql = "SELECT count(*) as yi_ding FROM bs_zhengdingdan_mx WHERE isbn = '$isbn' AND inputby = '$uid' ";
+
+        $rs = $ms->sdb($sql);
+        if (!$rs) {
+            echo "Error in query preparation/execution.<br />";
+            die(print_r(iconv('GBK', 'UTF-8', odbc_errormsg()), true));
+        }
+        if (odbc_fetch_row($rs)) {
+            $yi_ding = odbc_result($rs, "yi_ding");
+        }
+        if ($yi_ding) {
+            $data['yi_ding'] = "已定";
+        } else {
+            $data['yi_ding'] = "未定";
         }
 
         $newbooks[] = $data;

@@ -1,9 +1,13 @@
 .login_group {
     position: relative;
-    top: 25px;
+    top: 45px;
+
+    margin-top: 0px;
+    padding-top: 0px;
     /*left: 20px;*/
-    height: auto;
+    height: 0px;
     width: 1000px;
+    /*z-index: -1;*/
     /*text-align: left;*/
     margin: 0px auto;
     font-family: 'Microsoft YaHei', 'Arial';
@@ -20,8 +24,8 @@
     font-size: 16px;
     font-family: 'Microsoft YaHei', 'Arial';
     /*padding-left: 0;*/
-    margin-bottom: 0;
-    list-style: none;
+    /*margin-bottom: 0;*/
+    /*list-style: none;*/
     /*选项卡居中*/
     margin: 0px auto;
     margin-left: auto;
@@ -29,9 +33,16 @@
     /*MARGIN-RIGHT: auto;*/
     /*MARGIN-LEFT: 500px;*/
     /*border-bottom: 0px solid #ddd;*/
-    display: block;
+    /*display: block;*/
 }
 
+.nav-tabs {
+    height: 0px;
+}
+
+#login_group_title.nav.nav-tabs{
+    border-bottom: 0px ;
+}
 /*选项卡内部文字居中处理*/
 #library_user_login_title, #gps_user_login_title {
     width: 190px;
@@ -39,7 +50,7 @@
     display: block;
     padding: 0px 0px;
     line-height: 1.428571429;
-    border: 1px solid transparent;
+    /*border: 1px solid transparent;*/
     border-radius: 4px 4px 0 0;
     margin-left: auto;
     margin-right: auto;
@@ -93,7 +104,7 @@
 
 #lgbtn {
     position: relative;
-    top: 0px;
+    top: 20px;
     left: 10px;
     height: 20px;
     width: 48px;
@@ -105,7 +116,7 @@
 
 #rgbtn {
     position: relative;
-    top: 0px;
+    top: 20px;
     left: 20px;
     height: 20px;
     width: 59px;
@@ -117,7 +128,7 @@
 
 #fdbtn {
     position: relative;
-    top: 0px;
+    top: 20px;
     left: 30px;
     height: 20px;
     width: 59px;
@@ -181,7 +192,7 @@
 
 #lgbtn_gps {
     position: relative;
-    top: 0px;
+    top: 20px;
     left: 10px;
     height: 20px;
     width: 48px;
@@ -193,7 +204,7 @@
 
 #rgbtn_gps {
     position: relative;
-    top: 0px;
+    top: 20px;
     left: 20px;
     height: 20px;
     width: 59px;
@@ -205,7 +216,7 @@
 
 #fdbtn_gps {
     position: relative;
-    top: 0px;
+    top: 20px;
     left: 30px;
     height: 20px;
     width: 59px;

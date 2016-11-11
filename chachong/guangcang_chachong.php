@@ -3,7 +3,7 @@ header("Content-Type: text/html;charset=UTF-8");
 ini_set("max_execution_time", "1800");
 require_once('../PHPExcel.php');
 require_once("../db/con_mssql.php");
-require_once("../db/con_mysql2.php");
+//require_once("../db/con_mysql2.php");
 include("../db/dao.php");
 require_once("../config.php");
 
@@ -40,8 +40,8 @@ $xm = '';
 if ($_FILES["inputExcel"]["tmp_name"] == "") {
     echo '无文件';
     $_SESSION['err'] = "未上传文件！";
-    $url = PATH . "gc_dr.php";
-    Header("Location: $url");
+//    $url = PATH . "gc_dr.php";
+//    Header("Location: $url");
 } else {
 //    echo '有文件';
     $objPHPExcel = PHPExcel_IOFactory::load($_FILES["inputExcel"]["tmp_name"]);
@@ -58,7 +58,7 @@ if ($_FILES["inputExcel"]["tmp_name"] == "") {
 //    echo $un;
 //    echo $sql;
 
-    $book_info = new con_mysql2();
+//    $book_info = new con_mysql2();
 
     $rs = $ms->sdb($sql);
     if (!$rs) {
@@ -88,7 +88,9 @@ if ($_FILES["inputExcel"]["tmp_name"] == "") {
 
     for ($i = 1; $i < $highestRow; $i++) {
         $isbn = $indata[$i][0];
-        $amount = $indata[$i][1];
+//        从excel中得到字符数据，sqlserver中是int型
+        $indata[$i][1] = str_replace(PHP_EOL, '', $indata[$i][1]);
+        $amount = intval($indata[$i][1]);
 //        echo $isbn . " ";
 //        echo $amount;
         //用图书isbn号和用户id
@@ -114,31 +116,48 @@ if ($_FILES["inputExcel"]["tmp_name"] == "") {
 
 //            $sql_book_info = ser("ecs_book", "dj,csm,sm,zzh,cbrq,sl,kb", "isbn='$isbn'");
 //            $sql_book_info = "SELECT dj,csm,sm,zzh,str_to_date(cbrq, '%Y%m%d') as cbrqi,sl,kb FROM ecs_book WHERE isbn="."'$isbn'" ;
-            $sql_book_info = "SELECT dj,csm,sm,zzh,cbrq,sl,kb FROM ecs_book WHERE isbn=" . "'$isbn'";
+//            $sql_book_info = "SELECT dj,csm,sm,zzh,cbrq,sl,kb FROM ecs_book WHERE isbn=" . "'$isbn' ";
 
-            $rs_book_info = $book_info->sdb($sql_book_info);
+//            $rs_book_info = $book_info->sdb($sql_book_info);
+//            $book_data = $rs_book_info->fetch_array(MYSQLI_ASSOC);
 
-            $book_data = $rs_book_info->fetch_array(MYSQLI_ASSOC);
+            $sql_book_info = "SELECT TOP 1 dj,csm,sm,zzh,cbrq,sl,kb FROM ecs_book WHERE isbn=" . "'$isbn' ";
+
+            $rs_book_info = $ms->sdb($sql_book_info);
+
+            while ($book_info_data = odbc_fetch_array($rs_book_info)) {
+                $book_data[] = $book_info_data;
+            };
 //            $book_data = ($rs_book_info.fetch_row());
 
+
+//            print_r($book_data);
+
             if (strstr($book_data['cbrq'], "-")) {
-                if(substr_count($book_data['cbrq'],"-") == 1){
-                    $book_data['cbrq'] = $book_data['cbrq'].'-01';
+                if (substr_count($book_data['cbrq'], "-") == 1) {
+                    $book_data['cbrq'] = $book_data['cbrq'] . '-01';
                 }
                 str_replace("-", "/", $book_data['cbrq']);
             }
-            $book_data['cbrq'] = date('Y/m/d',strtotime($book_data['cbrq']));
+            $book_data['cbrq'] = date('Y/m/d', strtotime($book_data['cbrq']));
 
+            if (empty($book_data['dj'])) {
+                $book_data['dj'] = 0.00;
+            }
 
             $price1 = $book_data['dj'];
-            $bookcs_name1 = iconv('UTF-8', 'GBK', $book_data['csm']);
-            $book_name1 = iconv('UTF-8', 'GBK',  $book_data['sm']);
-            $writer1 = iconv('UTF-8', 'GBK',  $book_data['zzh']) ;
+//            $bookcs_name1 = iconv('UTF-8', 'GBK', $book_data['csm']);
+//            $book_name1 = iconv('UTF-8', 'GBK', $book_data['sm']);
+//            $writer1 = iconv('UTF-8', 'GBK', $book_data['zzh']);
+            $bookcs_name1 = $book_data['csm'];
+            $book_name1 = $book_data['sm'];
+            $writer1 = $book_data['zzh'];
 
             $publish_date1 = $book_data['cbrq'];
 
             $fenlei1 = $book_data['sl'];
-            $kb1 = iconv('UTF-8', 'GBK',  $book_data['kb']) ;
+//            $kb1 = iconv('UTF-8', 'GBK', $book_data['kb']);
+            $kb1 = $book_data['kb'];
 
             $lib_no1 = $lib_no;
             $gc_dr_pc = $gc_pc_time_prefix . $lib_no . $un;
@@ -146,10 +165,10 @@ if ($_FILES["inputExcel"]["tmp_name"] == "") {
             $amount1 = $amount;
             $inputby1 = $un;
             $uptime1 = $today;
+//FlagSource 先写0测试
+            $sql = ins("lib_gc_info", "lib_no,gc_pc,isbn,amount,inputby,uptime,price,bookcs_name,book_name,writer,publish_date,fenlei,kb,FlagSource", "'$lib_no1','$gc_dr_pc','$isbn1','$amount1','$inputby1','$uptime1','$price1','$bookcs_name1','$book_name1','$writer1','$publish_date1','$fenlei1','$kb1',0");
 
-            $sql = ins("lib_gc_info", "lib_no,gc_pc,isbn,amount,inputby,uptime,price,bookcs_name,book_name,writer,publish_date,fenlei,kb","'$lib_no1','$gc_dr_pc','$isbn1','$amount1','$inputby1','$uptime1','$price1','$bookcs_name1','$book_name1','$writer1','$publish_date1','$fenlei1','$kb1'");
-
-//            echo $sql;
+//           echo $sql;
 
             $rs = $ms->sdb($sql);
 
@@ -174,7 +193,7 @@ if ($_FILES["inputExcel"]["tmp_name"] == "") {
 
                 $sum = $data['sum'];
 
-                if($sum == '0'){
+                if ($sum == '0') {
                     $sql = ins("bs_gcdr_pc", "gc_dr_pc,lib_no,inputby,uptime", "'$gc_dr_pc','$lib_no1','$inputby1','$uptime1'");
 
                     echo $sql;

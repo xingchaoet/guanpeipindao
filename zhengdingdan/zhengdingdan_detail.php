@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Administrator
- * Date: 2016/8/9
- * Time: 16:59
+ * User: xc
+ * Date: 2016/9/28
+ * Time: 10:56
  */
 header("Content-Type: text/html;charset=UTF-8");
 ini_set("max_execution_time", "1800");
@@ -11,7 +11,6 @@ require_once("../db/con_mssql.php");
 include("../db/dao.php");
 require_once("../config.php");
 include("../include/GuanCangSmarty.php");
-include  ("../db/con_mysql2.php");
 
 session_start();
 $order_list = array();
@@ -33,9 +32,8 @@ $smarty->MySmarty();
 
 // 实例化SQLServer封装类
 $ms = new con_mssql();
-$con_mysql2 = new con_mysql2();
 
-$page_size = 2; //每页显示数量
+$page_size = 10; //每页显示数量
 
 $sql_info = ser(bs_zhengdingdan_mx, "count(*) as sum", "inputby='$uid' and sheet_no='$sheet_no' " );
 
@@ -96,8 +94,17 @@ function Page($rows, $page_size)
 //echo "当前查询条件2：".$search_TJ;
 Page($rows, $page_size);
 
-$sql = "select top ($select_limit) amount,book_name, isbn,writer,kb, CONVERT(varchar(10),publish_date,120) as publish_date ,price from bs_zhengdingdan_mx
- where (inputby = '$uid' and sheet_no = '$sheet_no' ) and  id not in (select top ($select_from) id from bs_zhengdingdan_mx where (inputby = '$uid' and sheet_no = '$sheet_no' ) )   ";
+$sql = "select top ($select_limit) amount,book_name, isbn,writer,kb, CONVERT(varchar(10),publish_date,120) 
+as publish_date ,price from bs_zhengdingdan_mx
+ where (inputby = '$uid' and sheet_no = '$sheet_no' ) and  id not in 
+ (select top ($select_from) id from bs_zhengdingdan_mx where (inputby = '$uid' and sheet_no = '$sheet_no' ) )   ";
+
+//$sql = "SELECT rows, book_id,sm,isbn,zzh,kb,cbrq,dj,jz1,jz3,slt
+//FROM (SELECT $search_content,rows,
+//ROW_NUMBER() OVER (ORDER BY rows) AS RowNumber
+//FROM v_ecs_book WHERE $search_TJ) a
+//WHERE RowNumber > $select_from AND RowNumber <= ($select_from + $page_size)
+//ORDER BY a.rows DESC";
 
 //$sql = ser("bs_zhengdingdan", "zdd_pc_id,zdd_detail, zdd_time", "zdd_user_id='$uid' ORDER BY zdd_time desc limit $select_from $select_limit");
 
@@ -126,25 +133,74 @@ for($i = 0;$i < count($zdd_order_detail); $i ++){
     $zdd_order_detail[$i]['kb'] = iconv('GBK', 'UTF-8', $zdd_order_detail[$i]['kb']);
 
     $isbn = $zdd_order_detail[$i]['isbn'];
+//    性能区别明显
 
-    $sql = ser("v_ecs_book", "jz1,jz3", "isbn = '$isbn'");
+    $sql = ser("ecs_book", "kc", "isbn = '$isbn' AND jz=1");
 
-    $books_temp =  $con_mysql2->sdb($sql);
+    $books_temp1 = $ms->sdb($sql);
 
-    while ($data2 = mysqli_fetch_array($books_temp,MYSQLI_ASSOC)) {
-        $books[] = $data2;
+    if (!$books_temp1) {
+        echo "Error in query preparation/execution.<br />";
+        die(print_r(odbc_errormsg(), true));
     }
 
-    if ($books[0]['jz1'] > 0) {
+    while ($data1 = odbc_fetch_array($books_temp1)) {
+        $books1[] = $data1;
+    }
+
+    $kc1 = $books1[0]['kc'];
+
+
+    $sql = ser("ecs_book", "kc", "isbn = '$isbn' AND jz=3");
+
+    $books_temp3 = $ms->sdb($sql);
+
+    if (!$books_temp3) {
+        echo "Error in query preparation/execution.<br />";
+        die(print_r(odbc_errormsg(), true));
+    }
+
+    while ($data3 = odbc_fetch_array($books_temp3)) {
+        $books3[] = $data3;
+    }
+
+    $kc3 = $books3[0]['kc'];
+
+    if ($kc1 > 0) {
         $zdd_order_detail[$i]['kc'] = '纸本可供';
     } else {
 
-        if (is_numeric($books[0]['jz3']) && ($books[0]['jz3'] >= 0)) {
+        if (is_numeric($kc3) && ($kc3 >= 0)) {
             $zdd_order_detail[$i]['kc'] = 'POD可供';
-        } else if (is_null($books[0]['jz3'])) {
+        } else if (is_null($kc3)) {
             $zdd_order_detail[$i]['kc'] = '可预订';
         }
     }
+
+
+//    $sql = ser("v_ecs_book", "jz1,jz3", "isbn = '$isbn'");
+//
+//    $books_temp =  $ms->sdb($sql);
+//
+//    if (!$books_temp) {
+//        echo "Error in query preparation/execution.<br />";
+//        die(print_r(odbc_errormsg(), true));
+//    }
+//
+//    while ($data = odbc_fetch_array($books_temp)) {
+//        $books[] = $data;
+//    }
+//
+//    if ($books[0]['jz1'] > 0) {
+//        $zdd_order_detail[$i]['kc'] = '纸本可供';
+//    } else {
+//
+//        if (is_numeric($books[0]['jz3']) && ($books[0]['jz3'] >= 0)) {
+//            $zdd_order_detail[$i]['kc'] = 'POD可供';
+//        } else if (is_null($books[0]['jz3'])) {
+//            $zdd_order_detail[$i]['kc'] = '可预订';
+//        }
+//    }
 
 }
 

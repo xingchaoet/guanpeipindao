@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-09-20 17:56:19
-  from "D:\WWW\guanpeipindao\templates\user\login.html" */
+/* Smarty version 3.1.29, created on 2016-11-07 08:21:16
+  from "D:\phpStudy\WWW\guanpeipindao\templates\user\login.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_57e107c3a3f0f8_52230098',
+  'unifunc' => 'content_581fc8fcb08e62_96284472',
   'file_dependency' => 
   array (
-    'c7b75faf8504b9de21a068f58254c5fdce406ae3' => 
+    '59e5ca12a9e2cd51565c756f8460f583d176b678' => 
     array (
-      0 => 'D:\\WWW\\guanpeipindao\\templates\\user\\login.html',
-      1 => 1474255162,
+      0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\user\\login.html',
+      1 => 1474598280,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:header.html' => 1,
   ),
 ),false)) {
-function content_57e107c3a3f0f8_52230098 ($_smarty_tpl) {
+function content_581fc8fcb08e62_96284472 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-09-20 15:47:45
-  from "D:\WWW\guanpeipindao\templates\hall_communication\hall_communication.html" */
+/* Smarty version 3.1.29, created on 2016-11-09 10:13:52
+  from "D:\phpStudy\WWW\guanpeipindao\templates\hall_communication\hall_communication.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_57e0e9a10bdb20_14718365',
+  'unifunc' => 'content_58228660d34a57_70524288',
   'file_dependency' => 
   array (
-    '5718a7924456955daebd6c1be8114d06e3abed1d' => 
+    'e2812993bcfacf111d19391720c085e96afd15f9' => 
     array (
-      0 => 'D:\\WWW\\guanpeipindao\\templates\\hall_communication\\hall_communication.html',
-      1 => 1473641081,
+      0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\hall_communication\\hall_communication.html',
+      1 => 1476758881,
       2 => 'file',
     ),
   ),
@@ -21,8 +21,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_57e0e9a10bdb20_14718365 ($_smarty_tpl) {
-if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
+function content_58228660d34a57_70524288 ($_smarty_tpl) {
+if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,8 +45,8 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\WWW\\guanpeipind
             /*padding-top: 25px;*/
             width: 770px;
         }
-
-        .hr {
+/*头部变动较小*/
+        .site .hr {
             height: 0px;
             border: none;
             border-top: 1px ridge darkgray;
@@ -54,20 +54,20 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\WWW\\guanpeipind
 
         }
 
-        hr {
+        .site hr {
             margin-top: 0px;
             margin-bottom: 0px;
             border: 0;
             /*border-top: 1px solid #eee;*/
         }
 
-        hr {
+        .site hr {
             height: 0;
             -moz-box-sizing: content-box;
             box-sizing: content-box;
         }
 
-        hr {
+        .site hr {
             display: block;
             -webkit-margin-before: 0em;
             -webkit-margin-after: 0em;
@@ -405,11 +405,11 @@ $_smarty_tpl->tpl_vars['value'] = $__foreach_value_1_saved_item;
 
     function send_message() {
         var message = $('#message_content').val();
-        alert(message);
+//        alert(message);
         var fdata = new FormData();
 
         fdata.append("message", message);
-        alert(message_url);
+//        alert(message_url);
 
         xhr.open('POST', message_url, true);
 

@@ -5,6 +5,7 @@
  * Date: 2016/8/11
  * Time: 9:06
  */
+header("Content-Type: text/html;charset=utf-8");
 require_once("../db/con_mssql.php");
 include("../db/dao.php");
 require_once("../config.php");
@@ -48,7 +49,7 @@ $EXCEL = $_REQUEST['EXCEL'];
 if ($MARC || $CALIS || $CF) { //采访类型
 
     $zip = new ZipArchive();
-    $zipname = date('YmdHis', time()) . '.zip';
+    $zipname = date('YmdHis', time()) . '_'.mt_rand(10000000, 99999999).'.zip';
 //$zipname_file = $zipname . '.zip';
 
     if ($zip->open($zipname, ZIPARCHIVE::CREATE) !== TRUE) {
@@ -234,24 +235,32 @@ if ($MARC || $CALIS || $CF) { //采访类型
 //fwrite($open, filesize($zipfile) . "\r\n");
 //fclose($open);
 
-    $size = filesize($zipfile);
+    if (file_exists($zipfile)) {
+//        if (file_exists($zipfile) && !@filesize($zipfile)) {
 
 //下面是输出下载;
-    header("Cache-Control: max-age=0");
-    header("Content-Description: File Transfer");
-    header("Accept-Ranges: bytes");
-    header('Content-disposition: attachment; filename=' . basename($zipname)); // 文件名
-    header("Content-Type: application/zip"); // zip格式的
-    header("Transfer-Encoding: binary"); // 告诉浏览器，这是二进制文件
-    header('Content-Length: ' . $size); // 告诉浏览器，文件大小
-    @readfile($zipfile);//输出文件;
+        header("Cache-Control: max-age=0");
+        header("Content-Description: File Transfer");
+        header("Accept-Ranges: bytes");
+        header('Content-disposition: attachment; filename=' . basename($zipname)); // 文件名
+        header("Content-Type: application/zip"); // zip格式的
+        header("Transfer-Encoding: binary"); // 告诉浏览器，这是二进制文件
+        header('Content-Length: ' . $size); // 告诉浏览器，文件大小
+        @readfile($zipfile);//输出文件;
 
-    unlink($zipfile); //下载完成后要进行删除
+        @unlink($zipfile); //下载完成后要进行删除
 
-    @unlink($MARC_file);
-    @unlink($CALIS_file);
-    @unlink($CF_file);
-    @unlink($EXCEL_file);
+        @unlink($MARC_file);
+        @unlink($CALIS_file);
+        @unlink($CF_file);
+        @unlink($EXCEL_file);
+    } else {
+        $global_url = GLOBAL_URL;
+        echo "<script type='text/javascript' charset='utf-8'>alert('无数据!');</script>";
+        echo "<script type='text/javascript'>window.location.href='http://'+\"$global_url\"+'/guanpeipindao/data_download/data_download.php';</script>";
+    }
+
+
     unset($MARC_filename);
     unset($CALIS_filename);
     unset($CF_filename);
@@ -289,14 +298,15 @@ if ($MARC || $CALIS || $CF) { //采访类型
 
     $excel_data = array();
 
-    // 查询订单
+    // 查询
     for ($index = 0; $index < count($indata); $index++) {
 
         $isbn_i = $indata[$index]['isbn'];
 
-        if (is_numeric($isbn_i) && ((strlen($isbn_i) == 11) || ((strlen($isbn_i) == 13)))) {
+        if ((strlen(trim ($isbn_i)) == 10) || ((strlen(trim ($isbn_i)) == 13))) {
 
-            $sql = ser("v_ecs_book", "*", "isbn='$isbn_i'");
+//            $sql = ser("v_ecs_book", "*", "isbn='$isbn_i'");
+            $sql = ser("ecs_book", "*", "isbn='$isbn_i'");
 
             $rs = $ms->sdb($sql);
 //
@@ -406,7 +416,7 @@ if ($MARC || $CALIS || $CF) { //采访类型
 //    }
 
     //关闭连接
-    $ms->clo();
+//    $ms->clo();
 
     // Rename worksheet
     $objPHPExcel->getActiveSheet()->setTitle('bookingsheet');

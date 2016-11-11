@@ -16,29 +16,74 @@ body, td, th {
     color: #1b578a;
 }
 
-#container {
-    margin: 0px;
+/*#container {*/
+    /*margin: 0px;*/
+    /*text-align: center;*/
+    /*width: 1000px;*/
+    /*height: 0px;*/
+/*}*/
+
+.register_group {
+    position: relative;
+    top: 45px;
+
+    margin-top: 0px;
+    padding-top: 0px;
+    /*left: 20px;*/
+    height: 0px;
+    width: 1000px;
+    /*z-index: -1;*/
+    /*text-align: left;*/
+    margin: 0px auto;
+    font-family: 'Microsoft YaHei', 'Arial';
     text-align: center;
+    MARGIN-RIGHT: auto;
+    MARGIN-LEFT: auto;
+}
+#register_group_title {
+    /*background-color: orangered;*/
+
+    width: 400px;
+    height: 0px;
+    font-size: 16px;
+    font-family: 'Microsoft YaHei', 'Arial';
+    /*padding-left: 0;*/
+    /*margin-bottom: 0;*/
+    /*list-style: none;*/
+    /*选项卡居中*/
+    margin: 0px auto;
+    margin-left: auto;
+    margin-right: auto;
+    /*MARGIN-RIGHT: auto;*/
+    /*MARGIN-LEFT: 500px;*/
+    /*border-bottom: 0px solid #ddd;*/
+    /*display: block;*/
 }
 
-/*#library_user_register_title, #gps_user_register_title {*/
-    /*width: 190px;*/
-    /*position: relative;*/
-    /*display: block;*/
-    /*padding: 0px 0px;*/
-    /*line-height: 1.428571429;*/
-    /*border: 1px solid transparent;*/
-    /*border-radius: 4px 4px 0 0;*/
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
-/*}*/
 
-/*#library_user, #gps_user {*/
-    /*position: relative;*/
-    /*width: 100%;*/
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
-/*}*/
+#register_group_title.nav.nav-tabs{
+    border-bottom: 0px ;
+}
+#library_user_register_title, #gps_user_register_title {
+    width: 190px;
+    position: relative;
+    display: block;
+    padding: 0px 0px;
+    line-height: 1.428571429;
+    /*border: 1px solid transparent;*/
+    text-align: center;
+    border-radius: 4px 4px 0 0;
+    margin-left: auto;
+    margin-right: auto;
+    /*z-index: 1000;*/
+}
+
+#library_user, #gps_user {
+    position: relative;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /*#gps_user{*/
 /*position: relative;*/
@@ -46,14 +91,14 @@ body, td, th {
 /*margin-left: auto;*/
 /*margin-right: auto;*/
 /*}*/
-/*#library_user_register, #gps_user_register {*/
-    /*margin-top: 200px;*/
+#library_user_register, #gps_user_register {
+    margin-top: 200px;
 
-    /*position: relative;*/
-    /*width: 100%;*/
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
-/*}*/
+    position: relative;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 #lgbtn {
     position: relative;
@@ -79,20 +124,41 @@ body, td, th {
     background-repeat: no-repeat;
 }
 
+.tab-content {
+    width: 1000px;
+    /*text-align: left;*/
+    margin: 0px auto;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+}
 
 /*	注册页面  */
-#rgbgdiv,#rgbgdiv_gps {
+#rgbgdiv{
+
+    position: relative;
     margin-top: 160px;
     text-align: center;
-    /*background-image: url(../images/bg.gif);*/
-    /*background-repeat: no-repeat;*/
+
     width: 770px;
-    height: auto;
+    height: 1000px;
     /*text-align: left;*/
     MARGIN-RIGHT: auto;
     MARGIN-LEFT: auto;
 }
+#rgbgdiv_gps {
 
+     position: relative;
+     margin-top: 160px;
+     text-align: center;
+
+     width: 770px;
+     height: 1000px;
+     /*text-align: left;*/
+     MARGIN-RIGHT: auto;
+     MARGIN-LEFT: auto;
+ }
 
 /*#regnamediv {*/
     /*position: relative;*/
@@ -105,31 +171,31 @@ body, td, th {
     /*padding-bottom: 5px;*/
 /*}*/
 
-#regnamediv,#regpwddiv1, #regpwddiv2, #regemaildiv, #reglibdiv, #regshengdiv, #regaddressdiv, #regpostcodediv, #regtelephonediv, #regmobilediv, #regquestiondiv, #reganswerdiv, #regrealnamediv, #regsexdiv, #regzwdiv, #regbirthdaydiv, #regqqdiv, #regdata_datediv, #regdata_formatdiv {
+#regshengdiv,#reglibdiv,#regrealnamediv, #regnamediv,#regpwddiv1, #regpwddiv2, #regemaildiv,  #regaddressdiv, #regpostcodediv, #regtelephonediv, #regmobilediv, #regquestiondiv, #reganswerdiv,  #regsexdiv, #regzwdiv, #regbirthdaydiv, #regqqdiv, #regdata_datediv, #regdata_formatdiv {
     position: relative;
     margin-top: 5px;
     top:50px;
     left: 150px;
-    width: 410px;
+    /*width: 410px;*/
     height: 18px;
     text-align: left;
     padding-bottom: 5px;
 }
 
-#regname, #regpwd1, #regpwd2, #email, #lib, #sheng, #address, #postcode, #telephone, #mobile, #question, #answer, #realname, #sex, #zw, #birthday, #qq, #data_date, #data_format {
+#sheng, #lib, #realname,#regname, #regpwd1, #regpwd2, #email, #address, #postcode, #telephone, #mobile, #question, #answer,  #sex, #zw, #birthday, #qq, #data_date, #data_format {
     /*border:1px #66CC00 solid;*/
     border: 1px dodgerblue solid;
     width: 200px;
     height: 18px;
 }
 
-#namediv, #pwddiv1, #pwddiv2, #emaildiv, #libdiv, #shengdiv, #addressdiv, #postcodediv, #telephonediv, #mobilediv, #questiondiv, #answerdiv, #realnamediv, #sexdiv, #zwdiv, #birthdaydiv, #qqdiv, #data_datediv, #data_formatdiv {
+#shengdiv,#libdiv,#realnamediv,#namediv, #pwddiv1, #pwddiv2, #emaildiv,  #addressdiv, #postcodediv, #telephonediv, #mobilediv, #questiondiv, #answerdiv,  #sexdiv, #zwdiv, #birthdaydiv, #qqdiv, #data_datediv, #data_formatdiv {
     position: absolute;
     top: 0px;
     left: 270px;
     border: 1px #f0f0f0 dashed;
     background-color: #FEFEE2;
-    width: 210px;
+    width: 230px;
     height: 20px;
     color: #ADADAD;
     line-height: 23px;
@@ -142,7 +208,7 @@ body, td, th {
     margin-top: 5px;
     top:50px;
     left: 150px;
-    width: 410px;
+    /*width: 410px;*/
     height: 18px;
     text-align: left;
     padding-bottom: 5px;
@@ -153,7 +219,7 @@ body, td, th {
     margin-top: 5px;
     top:50px;
     left: 150px;
-    width: 410px;
+    /*width: 410px;*/
     height: 18px;
     text-align: left;
     padding-bottom: 5px;
@@ -172,7 +238,7 @@ body, td, th {
     left: 270px;
     border: 1px #f0f0f0 dashed;
     background-color: #FEFEE2;
-    width: 200px;
+    width: 230px;
     height: 20px;
     color: #ADADAD;
     line-height: 23px;
@@ -278,7 +344,7 @@ body, td, th {
 }
 
 #qq {
-    margin-left: 7px;
+    margin-left: 5px;
 }
 
 #lxr_gps {
@@ -319,6 +385,7 @@ body, td, th {
 .nav-tabs {
     height: 0px;
 }
+
 /*#fdbtn {*/
 /*position: relative;*/
 /*top: 0px;*/

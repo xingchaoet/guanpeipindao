@@ -3,17 +3,23 @@
 require_once("include/GuanCangSmarty.php");
 require_once("config.php");
 include("db/con_mssql.php");
-include("db/con_mysql2.php");
+//include("db/con_mysql2.php");
 include("db/dao.php");
 
-
 session_start();
+
+//function fen_mian_exist($paras){
+//    extract($paras);
+//    $fileExists = @file_get_contents($file,null,null,-1,1) ? true : false;
+//    return $fileExists;
+//
+//}
 
 $smarty = new GuanCangSmarty();
 //$smarty->caching = false; //设置缓存方式
 $ms = new con_mssql();
 
-$con_mysql2 = new con_mysql2();
+//$con_mysql2 = new con_mysql2();
 
 //介绍文字
 $sql = ser("bs_home_introduce", "introduce", "");
@@ -68,15 +74,31 @@ $smarty->assign("introduce", $introduce);
 
 $smarty->assign("carousel_sum", $carousel_sum);
 
-
 //最新
 
-$sql = "SELECT * FROM ecs_book  ORDER BY cbrq DESC  LIMIT 0,8";
-$newbooks = $con_mysql2->sdb($sql);
+//$sql = "SELECT * FROM ecs_book  ORDER BY cbrq DESC  LIMIT 0,8";
+//$newbooks = $con_mysql2->sdb($sql);
+
+$sql = "SELECT TOP 8 * FROM ecs_book  ORDER BY cbrq DESC  ";
+
+$rs_newbooks = $ms->sdb($sql);
+
+while ($newbooks_data = odbc_fetch_array($rs_newbooks)) {
+    $newbooks[] = $newbooks_data;
+};
 
 //推荐
-$sql = "SELECT * FROM ecs_book WHERE bjtj IS NOT NULL ORDER BY cbrq DESC LIMIT 0,8";
-$recommendbooks = $con_mysql2->sdb($sql);
+//$sql = "SELECT * FROM ecs_book WHERE bjtj IS NOT NULL ORDER BY cbrq DESC LIMIT 0,8";
+$sql = "SELECT TOP 8 * FROM ecs_book WHERE bjtj IS NOT NULL ORDER BY cbrq DESC ";
+
+//$recommendbooks = $con_mysql2->sdb($sql);
+
+$rs_recommendbooks = $ms->sdb($sql);
+
+while ($recommendbooks_data = odbc_fetch_array($rs_recommendbooks)) {
+    $recommendbooks[] = $recommendbooks_data;
+};
+
 $relpostodist = './';
 $smarty->assign("relpostodist", $relpostodist);
 
@@ -86,6 +108,8 @@ $smarty->assign("recommendbooks", $recommendbooks);
 $smarty->assign("newbooks", $newbooks);
 
 
+
+//$smarty->registerPlugin('function','fen_mian_exist','fen_mian_exist');
 $smarty->display("guanpeipindao.html");
 
 

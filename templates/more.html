@@ -252,10 +252,12 @@
         var checkalllist = $('.checkall');
 
         if (checkallbox.prop("checked")) {
+
             $.each(checkalllist, function (index, domEle) {
                 domEle.checked = true;
             });
         } else {
+
             $.each(checkalllist, function (index, domEle) {
                 domEle.checked = false;
             });

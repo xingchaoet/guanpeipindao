@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-09-20 18:49:04
-  from "D:\WWW\guanpeipindao\templates\zhengdingdan\zhengdingdan_detail.html" */
+/* Smarty version 3.1.29, created on 2016-11-11 14:09:01
+  from "D:\phpStudy\WWW\guanpeipindao\templates\zhengdingdan\yudingdan_detail.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_57e11420a3e491_99707161',
+  'unifunc' => 'content_5825607d602250_92303978',
   'file_dependency' => 
   array (
-    '27cfaeaba4f83c253b2f553a3c2f4b8894ae482f' => 
+    'c88182dcd77a7211e7303d03a8798488796ed573' => 
     array (
-      0 => 'D:\\WWW\\guanpeipindao\\templates\\zhengdingdan\\zhengdingdan_detail.html',
-      1 => 1471422664,
+      0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\zhengdingdan\\yudingdan_detail.html',
+      1 => 1478138433,
       2 => 'file',
     ),
   ),
@@ -19,22 +19,22 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_57e11420a3e491_99707161 ($_smarty_tpl) {
+function content_5825607d602250_92303978 ($_smarty_tpl) {
 ?>
 <table class='table table-bordered table-striped'>
     <tr style="text-align: center">
-        <td>数量</td>
+        <td width="50" align="center";>数量</td>
         <td>书名</td>
-        <td>书号</td>
-        <td>作者</td>
-        <td>开本</td>
-        <td>出版日期</td>
+        <td width="80" align="center";>书号</td>
+        <td width="100" align="center";>作者</td>
+        <td width="50" align="center";>开本</td>
+        <td width="90" align="center";>出版日期</td>
         <td>价格</td>
-        <td>库存</td>
+        <td width="70"  align="center";>库存</td>
     </tr>
 
     <?php
-$_from = $_smarty_tpl->tpl_vars['zdd_order_detail']->value;
+$_from = $_smarty_tpl->tpl_vars['ydd_order_detail']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
@@ -46,7 +46,7 @@ $_smarty_tpl->tpl_vars['order']->_loop = true;
 $__foreach_order_0_saved_local_item = $_smarty_tpl->tpl_vars['order'];
 ?>
     <tr>
-        <td>
+        <td width="50" align="center";>
             <?php echo $_smarty_tpl->tpl_vars['order']->value['amount'];?>
 
         </td>
@@ -54,19 +54,19 @@ $__foreach_order_0_saved_local_item = $_smarty_tpl->tpl_vars['order'];
             <?php echo $_smarty_tpl->tpl_vars['order']->value['book_name'];?>
 
         </td>
-        <td>
+        <td width="80" align="center";>
             <?php echo $_smarty_tpl->tpl_vars['order']->value['isbn'];?>
 
         </td>
-        <td>
+        <td width="100" align="center";>
             <?php echo $_smarty_tpl->tpl_vars['order']->value['writer'];?>
 
         </td>
-        <td>
+        <td width="50" align="center";>
             <?php echo $_smarty_tpl->tpl_vars['order']->value['kb'];?>
 
         </td>
-        <td>
+        <td width="90" align="center";>
             <?php echo $_smarty_tpl->tpl_vars['order']->value['publish_date'];?>
 
         </td>
@@ -75,7 +75,7 @@ $__foreach_order_0_saved_local_item = $_smarty_tpl->tpl_vars['order'];
             <?php echo $_smarty_tpl->tpl_vars['order']->value['price'];?>
 
         </td>
-        <td>
+        <td width="70"  align="center";>
             <?php echo $_smarty_tpl->tpl_vars['order']->value['kc'];?>
 
         </td>
@@ -97,6 +97,6 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_0_saved_item;
 </table>
 
 <!--<a>回到我的征订单</a>-->
-<button class="btn btn-default btn-sm" id="return_to_my_zhengdingdan" onclick="return_to_my_zhengdingdan();" value="返回到我的征订单">返到我的征订单</button>
+    <button class="btn btn-default btn-sm" id="return_to_my_yudingdan" onclick="return_to_my_yudingdan();" value="返回到我的预订单">返到我的预订单</button>
 <?php }
 }

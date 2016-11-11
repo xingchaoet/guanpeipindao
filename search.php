@@ -8,42 +8,92 @@
 
 include("include/GuanCangSmarty.php");
 require_once("config.php");
-include("db/con_mysql2.php");
+//include("db/con_mysql2.php");
 require_once("db/con_mssql.php");
 include("db/dao.php");
+include("auth.php");
 
-//echo 'test';
-//
-//print_r($_POST) ;
-
-//exit();
-session_start();
 
 $smarty = new GuanCangSmarty();
 $smarty->MySmarty();
 
 $show_type = $_REQUEST["show_type"];
+$book_ids = $_REQUEST["book_ids"];
+$book_nums = $_REQUEST["book_nums"];
+$first_search = $_REQUEST["first_search"];
+
+$manipulate_session = $_REQUEST["manipulate_session"];
+//unset($_REQUEST["manipulate_session"]);
+
+//新批次
+if ($manipulate_session == "manipulate_session") {
+    echo "<script type='text/javascript'>alert('manipulate_session!');</script>";
+    $_SESSION['start_purchase'] = false;
+//    print_r($manipulate_session);
+
+}
+
+
+$origin_page = $_REQUEST["page"];
+
 $usrid = $_REQUEST["usrn"];
-$lib_no = "";
-$xm = "";
+//$lib_no = "";
+//$xm = "";
 $guancangisbns = array();
 $TJaddon = "";
+$temp_table_bids = array();
 
 //echo $show_type;
 //
 //exit();
 
 $tsfl_data3_array = array();
+$ms = new con_mssql();
+
+
+//无有选中书籍信息并且不是从分页过来，创建临时表
+//if (empty($book_ids) && empty($origin_page)) {
+//
+//    $temp_table_name = 'temp_' . $usrid . '_' . date('YmdHis', time());
+//
+//    $_SESSION['temp_table_name'] = $temp_table_name;
+//
+//    $sql_create_temp_table = "
+//    CREATE TABLE [dbo]." . $temp_table_name . " (
+//    Id int IDENTITY(1, 1) PRIMARY KEY  NOT NULL,
+//    BookId varchar(50) NULL,
+//    IsChecked varchar(10) NULL
+//    );
+//
+//    ALTER TABLE [dbo]." . $temp_table_name . " SET (LOCK_ESCALATION = TABLE);
+//    ";
+//
+//    $rs_create_temp_table = $ms->sdb($sql_create_temp_table);
+//
+//    if (!$rs_create_temp_table) {
+//        echo "Error in query preparation/execution.<br />";
+//        die(print_r(odbc_errormsg(), true));
+//    }
+//}
+//echo $sql_create_temp_table;
+
+//exit();
 
 //if (isset($_REQUEST['submit_cc'])) {
-if (1) {
+//if (1)
+//{
 
-    //注释1---接收cc_index.php通过post传递出的参数，分别存储入变量-----------
-    $bname = $_REQUEST["bname"];
+//注释1---接收cc_index.php通过post传递出的参数，分别存储入变量-----------
+//sqlsever iconv('utf-8', 'gbk//IGNORE', $introduce)
+
+//首次搜索
+if (!empty($first_search)) {
+
+    $bname = iconv('utf-8', 'gbk//IGNORE', $_REQUEST["bname"]);
     $isbn = $_REQUEST["isbn"];
-    $csbname = $_REQUEST["csbname"];
-    $writer = $_REQUEST["writer"];
-    $keyword = $_REQUEST["keyword"];
+    $csbname = iconv('utf-8', 'gbk//IGNORE', $_REQUEST["csbname"]);
+    $writer = iconv('utf-8', 'gbk//IGNORE', $_REQUEST["writer"]);
+    $keyword = iconv('utf-8', 'gbk//IGNORE', $_REQUEST["keyword"]);
     $price_low = $_REQUEST["price_low"];
     $price_high = $_REQUEST["price_high"];
     $sjdate_low = $_REQUEST["sjdate_low"];
@@ -55,9 +105,26 @@ if (1) {
     $zkfl_value = $_REQUEST["ztfl_zk_id_sel"];
     $media = $_REQUEST["media"];
 
-    //注释2---判断参数是否为空，如果为空，不作任何操作。如果有参数传出，则生成相应SQL语句。---------------------
+//mysql
+//$bname = $_REQUEST["bname"];
+//$isbn = $_REQUEST["isbn"];
+//$csbname = $_REQUEST["csbname"];
+//$writer = $_REQUEST["writer"];
+//$keyword = $_REQUEST["keyword"];
+//$price_low = $_REQUEST["price_low"];
+//$price_high = $_REQUEST["price_high"];
+//$sjdate_low = $_REQUEST["sjdate_low"];
+//$sjdate_high = $_REQUEST["sjdate_high"];
+//$cbdate_low = $_REQUEST["cbdate_low"];
+//$cbdate_high = $_REQUEST["cbdate_high"];
+//$zyfl_value = $_REQUEST["zyfl_id_sel"];
+//$skfl_value = $_REQUEST["ztfl_sk_id_sel"];
+//$zkfl_value = $_REQUEST["ztfl_zk_id_sel"];
+//$media = $_REQUEST["media"];
+
+//注释2---判断参数是否为空，如果为空，不作任何操作。如果有参数传出，则生成相应SQL语句。---------------------
     if ($bname != null) {
-        $a = " and sm like '%$bname%'";
+        $a = " and sm like '%" . trim($bname) . "%'";
     } else {
         $a = "";
     }
@@ -104,18 +171,28 @@ if (1) {
     } else {
         $g = "";
     }
+
+//    if ($cbdate_low != null and $cbdate_high != null) {
+//        $h = " and cbrq >= '$cbdate_low' and  cbrq <= '$cbdate_high'";
+//    } elseif ($cbdate_low != null and ($cbdate_high = null or $cbdate_high == "")) {
+//        $h = " and cbrq >= '$cbdate_low' ";
+//    } elseif (($cbdate_low = null or $cbdate_low == "") and $cbdate_high != null) {
+//        $h = " and cbrq <= '$cbdate_high' ";
+//    } else {
+//        $h = "";
+//    }
+
     if ($cbdate_low != null and $cbdate_high != null) {
-        $h = " and cbrq >= '$cbdate_low' and  cbrq <= '$cbdate_high'";
+        $h = " and cbrq1 >= '$cbdate_low' and  cbrq1 <= '$cbdate_high'";
     } elseif ($cbdate_low != null and ($cbdate_high = null or $cbdate_high == "")) {
-        $h = " and cbrq >= '$cbdate_low' ";
+        $h = " and cbrq1 >= '$cbdate_low' ";
     } elseif (($cbdate_low = null or $cbdate_low == "") and $cbdate_high != null) {
-        $h = " and cbrq <= '$cbdate_high' ";
+        $h = " and cbrq1 <= '$cbdate_high' ";
     } else {
         $h = "";
     }
 
-
-    //图书分类查询分类cat_ID条件生成
+//图书分类查询分类cat_ID条件生成
     if ($zyfl_value != null) {
         $i = "";
         $cat_id_array = explode(",", $zyfl_value);
@@ -127,7 +204,7 @@ if (1) {
         $i = "";
     }
 
-    //中图社科分类查询分类cat_ID条件生成
+//中图社科分类查询分类cat_ID条件生成
     if ($skfl_value != null) {
 
         $j = "";
@@ -140,7 +217,7 @@ if (1) {
         $j = "";
     }
 
-    //中图自科分类查询分类cat_ID条件生成
+//中图自科分类查询分类cat_ID条件生成
     if ($zkfl_value != null) {
         $k = "";
         $cat_id_array = explode(",", $zkfl_value);
@@ -162,14 +239,14 @@ if (1) {
                 break;
             case "按需印刷": //jz1=0 and jz3 is not null
 //                $l = " and jz = '2'";
-                $l = " and jz1 = '0' and jz3 is not null";
+                $l = " and (jz1 = '0' or jz1 is null)   and jz3 is not null";
                 break;
         }
 
     } else {
         $l = "";
     }
-    //注释3---用追加的方法生成SQL语句--------
+//注释3---用追加的方法生成SQL语句--------
     $search_TJ = " (1=1)";
     $search_TJ .= $a;
     $search_TJ .= $b;
@@ -187,12 +264,11 @@ if (1) {
         $search_TJ = " (1=0)";
     }
 
-    $ms_tsfl30 = new con_mysql2();
+//$ms_tsfl30 = new con_mysql2();
+//使用mssql
 
+//从这里写查重条件
 
-    //从这里写查重条件
-
-    $ms = new con_mssql();
 
 //    $sql = ser("lib_lxr_info", "xm,lib_no", "ID='$usrid'");
 ////    echo $un;
@@ -236,53 +312,174 @@ if (1) {
 
 
     for ($i = 0; $i < count($guancangisbns); $i++) {
-        $TJaddon .= '    AND isbn != ' . "'$guancangisbns[$i]'";
+        $TJaddon .= "    AND isbn != '" . $guancangisbns[$i] . "'";
     }
 
+//$TJaddon .= "    AND LENGTH(isbn) >= 11 ";
 
-    $TJaddon .= "    AND LENGTH(isbn) >= 11 "; //查询查重任何情况下都不出现电子书
+    $TJaddon .= "    AND DATALENGTH(isbn) >= 10 ";
 
 //    $TJaddon .=  "    AND jz !=  '2' "; //查询查重任何情况下都不出现电子书
 
 
     $search_TJ = $search_TJ . $TJaddon;
-//    echo $search_TJ;
 
-
-//
-//    exit();
-//    print_r($search_TJ);
+//print_r($search_TJ);
 
 //    $sql_tsfl30 = ser("ecs_book", "book_id ", $search_TJ);
 //得到总条数
-    $sql_tsfl30 = ser("v_ecs_book", "isbn", $search_TJ);
+//$sql_tsfl30 = ser("v_ecs_book", "count(*) as sum", $search_TJ);
+//    $sql_tsfl30 = ser("ecs_book", "isbn", $search_TJ);
 
-//    echo $sql_tsfl30;
+//    $sql_tsfl30 = "select bid1 from v_ecs_book where " . $search_TJ;
 
-//    echo "test";
-//    exit();
-    $rs_tsfl30 = $ms_tsfl30->sdb($sql_tsfl30);
-    $rows = mysqli_num_rows($rs_tsfl30);
-//    echo "当前记录数：".$rows;
+    $sql_tsfl30 = "select rows,bid1 from v_ecs_book where " . $search_TJ . "ORDER BY rows ";
+
+//$sql_tsfl30 = "select bid1 from v_ecs_book  ";
+
+//$sql_tsfl30 = "select count(*) as sum from v_ecs_book  " . " WHERE " . " $search_TJ";
+
+//echo $sql_tsfl30.chr(13).chr(10)."------------";
+
+//$ttt = "select bid1 from v_ecs_book where (1=1) ";
+//echo $sql_tsfl30;
+//$rows = '0';
+//$rs_tsfl30 = $ms_tsfl30->sdb($sql_tsfl30);
+//$ms00=new con_mssql();
+    $AdminResult = $ms->sdb($sql_tsfl30);
+    $rows = odbc_num_rows($AdminResult);
+    $_SESSION['rows'] = $rows;
 
 
+//$_SESSION['temp_table']  =  $AdminResult;
 
-    //session_start();
-    $_SESSION['search_TJ'] = $search_TJ;  // 少了不出结果
+//print_r($temp_table_bids);
+
+    if (!$AdminResult) {
+        echo "Error in query preparation/execution.<br />";
+        die(print_r(odbc_errormsg(), true));
+    }
+//存入session,供bs_temp_dingdan使用
+
+    while ($data = odbc_fetch_array($AdminResult)) {
+//        $tsfl_data3_array[] = $data;
+        $temp_table_bids[] = $data['bid1'];
+    }
+
+    $_SESSION['temp_table'] = $temp_table_bids;
+
+    $_SESSION['search_TJ'] = $search_TJ;
+
+} else {
+
+    $search_TJ = $_SESSION['search_TJ'];
+
+    $rows = $_SESSION['rows'];
+}
+
+//print_r($tsfl_data3_array);
+//exit();
+//print_r($data);
+//$rows = $data['sum'];
+
+//$rows = mysqli_num_rows($rs_tsfl30);
+//echo "当前记录数：" . $rows;
+if ($_SESSION['start_purchase']) {
+    echo "<button id='manipulate_session_btn' class='btn btn-default btn-sm' style='margin-top: 10px' disabled='true'>开始采购</button>";
+} else {
+    echo "<button id='manipulate_session_btn' class='btn btn-default btn-sm' style='margin-top: 10px' onclick='manipulate_session();'>开始采购</button>";
+}
+
+//exit();
+
+
+//有选中书籍信息，将临时表的选中书籍的IsChecked修改为订购数量，无，将结果中所有书籍写入临时表，IsChecked 默认为0
+//if (!empty($book_ids)) { //选中了书籍
+////        将当前页选中的书籍写入临时表
+//
+//    $book_id_s = explode(",", $book_ids);
+//    $book_num_s = explode(",", $book_nums);
+//    $temp_table_name = $_SESSION['temp_table_name'];
+//    for ($i = 0 ; $i < count($book_id_s); $i ++) {
+//        $book_id_temp = $book_id_s[$i];
+//        $book_num_temp = $book_num_s[$i];
+//
+//        //更新
+//        $sql_update_temp_table = "UPDATE [dbo]." . $temp_table_name . " SET  IsChecked = '$book_num_temp' WHERE BookId = '$book_id_temp' ";
+//
+//        echo $sql_update_temp_table;
+//        $rs_sql_update_temp_table = $ms->sdb($sql_update_temp_table);
+//
+//        try {
+//
+//            if (!$rs_sql_update_temp_table) {
+//
+//                echo "Error in query preparation/execution.<br />";
+////                die(print_r(odbc_errormsg(), true));
+//
+//                $error = "update $bid to $temp_table_name failed";
+//
+//                throw new Exception($error);      //创建一个异常对象，通过throw语句抛出
+//            }
+//
+//        } catch (Exception $e) {
+//
+//            echo 'Caught exception: ', $e->getMessage(), "\n";  //输出捕获的异常消息
+//
+//        }
+//
+//
+//    }
+//
+//} else if (empty($book_ids) && empty($origin_page)) { //不是从分页过来，也没选中书籍，就是直接的查询
+//
+//    while ($data = odbc_fetch_array($AdminResult)) {
+////        $tsfl_data3_array[] = $data;
+//        $bid = $data['bid1'];
+////        IsChecked 默认为0
+//        $sql_add_to_temp_table = "INSERT INTO [dbo]." . $temp_table_name . " (BookId, IsChecked) VALUES ('$bid', '0')";
+//
+//        $rs_sql_add_to_temp_table = $ms->sdb($sql_add_to_temp_table);
+//
+//        try {
+//
+//            if (!$rs_sql_add_to_temp_table) {
+//
+//                echo "Error in query preparation/execution.<br />";
+////                die(print_r(odbc_errormsg(), true));
+//
+//                $error = "insert $bid to $temp_table_name failed";
+//
+//                throw new Exception($error);      //创建一个异常对象，通过throw语句抛出
+//            }
+//
+//        } catch (Exception $e) {
+//
+//            echo 'Caught exception: ', $e->getMessage(), "\n";  //输出捕获的异常消息
+//
+//        }
+//
+//    }
+//
+//}
+
+//session_start();
+//$_SESSION['search_TJ'] = $search_TJ;  // 少了不出结果
 //因为分页函数里用到了
 
-    //echo "当前查询条件11：".$search_TJ;
-} else {
-    $rows = isset($_REQUEST["rows"]) ? $_REQUEST["rows"] : 0;
-    //echo "当前记录数：".$rows;
-    //session_start();
-    $search_TJ = $_SESSION['search_TJ'];
+//echo "当前查询条件11：".$search_TJ;
+//}
+//else {
+//    $rows = isset($_REQUEST["rows"]) ? $_REQUEST["rows"] : 0;
+//    //echo "当前记录数：".$rows;
+//    //session_start();
+//    $search_TJ = $_SESSION['search_TJ'];
 
 //    print_r($search_TJ);
 //    $_SESSION['search_TJ'] = $search_TJ;
 
-    //echo "当前查询条件12：".$search_TJ;
-}
+//echo "当前查询条件12：".$search_TJ;
+//}
 /* require_once('page.php');
 page($sql,'index.php');
 echo $pagenav;	 */
@@ -294,7 +491,7 @@ echo $pagenav;	 */
 
 
 //$page = isset($_GET["page"]) ? $_GET["page"] : 1;
-$page = isset($_REQUEST["page"]) ? $_REQUEST["page"] : 1;
+$page = isset($_REQUEST["page"]) ? $_REQUEST["page"] : 1; //不要改动这行代码的位置
 
 function Page($rows, $page_size, $show_type)
 {
@@ -303,7 +500,10 @@ function Page($rows, $page_size, $show_type)
     if ($page <= 1 || $page == '') $page = 1;
     if ($page >= $page_count) $page = $page_count;
     $select_limit = $page_size;
-    $select_from = ($page - 1) * $page_size . ',';
+//mssql 待查
+    $select_from = ($page - 1) * $page_size;
+//mysql 待查
+//    $select_from = ($page - 1) * $page_size . ',';
     $pre_page = ($page == 1) ? 1 : $page - 1;
     $next_page = ($page == $page_count) ? $page_count : $page + 1;
 //
@@ -334,10 +534,18 @@ function Page($rows, $page_size, $show_type)
 //        if ($i == $page) $pagenav .= "<option value='$i' selected>$i</option>\n";
 //        else $pagenav .= "<option value='$i'>$i</option>\n";
 //    }
+    $pagenav .= "<div style='margin-right: 3px;margin-top: 2px;float:right;'>";
     $pagenav .= "<a page = '1' showtype = $show_type id = 'firstpage' onclick='firstpagesend()'>首页</a>&nbsp;&nbsp; ";
-    $pagenav .= "<a page = $pre_page showtype = $show_type id = 'prepage' onclick='prepagesend()'>前一页</a>&nbsp;&nbsp; ";
+
+    if ($page != 1) {
+        $pagenav .= "<a page = $pre_page showtype = $show_type id = 'prepage' onclick='prepagesend()'>前一页</a>&nbsp;&nbsp; ";
+    }
+
     $pagenav .= "第 $page/$page_count 页 共 $rows 条记录 &nbsp;&nbsp;";
-    $pagenav .= "<a page = $next_page showtype = $show_type id = 'nextpage' onclick='nextpagesend()'>后一页</a>&nbsp;&nbsp; ";
+
+    if ($page != $page_count ) {
+        $pagenav .= "<a page = $next_page showtype = $show_type id = 'nextpage' onclick='nextpagesend()'>后一页</a>&nbsp;&nbsp; ";
+    }
     $pagenav .= "<a page = $page_count showtype = $show_type id = 'lastpage' onclick='lastpagesend()'>末页</a>";
 //    将 showtype = $show_type 放到id = 'jumptopage' 之前 ，当$show_type为undefined时，会成为showtype =''id = 'jumptopage' 这种格式
 //    使得函数jumptopagesend()找不到id为jumptopage的元素，取不到该元素的page值,使得page的值也是undefined
@@ -346,6 +554,7 @@ function Page($rows, $page_size, $show_type)
         if ($i == $page) $pagenav .= "<option value='$i' selected>$i</option>\n";
         else $pagenav .= "<option value='$i'>$i</option>\n";
     }
+    $pagenav .= "</div>";
 }
 
 // Page分页函数
@@ -359,7 +568,7 @@ if (isset($rows) and $rows > 0) {
         $page_size = 12; //每页显示数量
     }
 
-    $rows = mysqli_num_rows($rs_tsfl30);
+//    $rows = mysqli_num_rows($rs_tsfl30);
 //session_start();
     $search_TJ = $_SESSION['search_TJ'];
 //echo "当前记录数2：".$rows;
@@ -367,33 +576,45 @@ if (isset($rows) and $rows > 0) {
     Page($rows, $page_size, $show_type);
 
 
-    $search_TJ1 = $search_TJ . " limit $select_from $select_limit";
+//    $sql = "select top ($select_limit) zdd_pc_id,zdd_detail, zdd_time from bs_zhengdingdan
+// where zdd_id not in (select top ($select_from) zdd_id from bs_zhengdingdan where zdd_user_id = '$uid' ) and zdd_user_id = '$uid' ";
+
+//    $search_TJ1 = $search_TJ . " limit $select_from $select_limit";
+
+//    $search_TJ1 = $search_TJ . " limit $select_from $select_limit";
+
 
 //    echo $search_TJ1;
 
-    $ms_tsfl3 = new con_mysql2();
+//    $ms_tsfl3 = new con_mysql2();
 
 //    $sql_tsfl3 = ser("ecs_book", "book_id,sm,isbn,zzh,kb,cbrq,dj,kc,slt ", $search_TJ1);
 
 
-    $search_content = "(case
-         when jz1>0 then bid1
-         when jz1=0 and jz3 is not null then bid3
-         when jz1=0 and jz3 is null then bid1
-       end )as book_id ,
+//    (case
+//         when jz1>0 then bid1
+//         when (jz1=0 or jz1 is null) and jz3 is not null then bid3
+//         when (jz1=0 or jz1 is null) and jz3 is null then bid1
+//       end )as book_id ,
 
-     sm,isbn,zzh,kb,cbrq,
+//    统一使用bid1 这样不会和manipulate_session.php生成临时表 的语句 冲突
+    $search_content = "
+    
+     bid1 as book_id ,
 
+     sm,isbn,zzh,kb,
+
+      (case
+         when jz1>0 then cbrq1
+         when (jz1=0 or jz1 is null) and jz3 is not null then cbrq3
+         when (jz1=0 or jz1 is null) and jz3 is null then cbrq1
+       end )as cbrq ,
+       
       (case
          when jz1>0 then dj1
-         when jz1=0 and jz3 is not null then dj3
-         when jz1=0 and jz3 is null then dj1
+         when (jz1=0 or jz1 is null) and jz3 is not null then dj3
+         when (jz1=0 or jz1 is null) and jz3 is null then dj1
        end )as dj ,
-
-      (case
-         when jz1>0 then jz1
-         when jz1=0 then jz3
-       end )as kc ,
 
        jz1,
 
@@ -401,8 +622,38 @@ if (isset($rows) and $rows > 0) {
 
        slt";
 
-    $sql_tsfl3 = ser("v_ecs_book", $search_content, $search_TJ1);
+//    $sql_tsfl3 = ser("v_ecs_book", $search_content, $search_TJ1);
+//方案一
+//    $sql_tsfl3 = "select top ($select_limit) $search_content from v_ecs_book
+// where bid1 not in (select top ($select_from) bid1 from v_ecs_book where $search_TJ ) and $search_TJ ";
 
+//    $sql_tsfl3 = "select top ($select_limit) $search_content from (select row_number() over(order by rows) as rownumber1,  *  from v_ecs_book ) A where A.rownumber1 > $select_from and $search_TJ order by a.rows";
+//方案二
+//   如果视图中有多条记录的话， 这样搜索只会搜索出row 小的一行数据，如果依据此条数据判断出的库存状态是'可预定' 这样会和generate_order.php 会因为搜索 count(*) 搜出多条数据
+//    多条数据中如果有库存状态是其他的话 矛盾
+    $sql_tsfl3 = "SELECT rows, book_id,sm,isbn,zzh,kb,cbrq,dj,jz1,jz3,slt
+FROM (SELECT $search_content,rows,
+ROW_NUMBER() OVER (ORDER BY rows) AS RowNumber
+FROM v_ecs_book WHERE $search_TJ) a
+WHERE RowNumber > $select_from AND RowNumber <= ($select_from + $page_size)
+ORDER BY a.rows DESC";
+
+
+//    echo $sql_tsfl3;
+
+//方案3
+//    $sql_tsfl3 = "select *
+//from (
+//select row_number() over(order by tempcolumn) temprownumber,*
+//from (select top 开始位置+10 tempcolumn=0,* from table1)t
+//)tt
+//where temprownumber>开始位置";
+
+//    $sql_tsfl3 = "select top ($select_limit) bid1 from v_ecs_book
+// where bid1 not in (select top ($select_from) bid1 from v_ecs_book ) ";
+
+//    echo $select_from;
+//    echo $sql_tsfl3;
 //
 //    $sql = " select
 //
@@ -427,17 +678,30 @@ if (isset($rows) and $rows > 0) {
 //    ";
 //    echo $sql_tsfl3;
 
-    $rs_tsfl3 = $ms_tsfl3->sdb($sql_tsfl3);
-//    $tsfl_data3_array = array();
-    while ($tsfl_data3 = mysqli_fetch_assoc($rs_tsfl3)) {
-        $tsfl_data3_array[] = $tsfl_data3;
+//    $rs_tsfl3 = $ms_tsfl3->sdb($sql_tsfl3);
+    $rs_tsfl3 = $ms->sdb($sql_tsfl3);
+
+    if (!$rs_tsfl3) {
+        echo "Error in query preparation/execution.<br />";
+        die(print_r(odbc_errormsg(), true));
     }
+    while ($data = odbc_fetch_array($rs_tsfl3)) {
+//    print_r($data);
+        $tsfl_data3_array[] = $data;
+    }
+
+//    $tsfl_data3_array = array();
+//    while ($tsfl_data3 = mysqli_fetch_assoc($rs_tsfl3)) {
+//        $tsfl_data3_array[] = $tsfl_data3;
+//    }
+
 }
 
 //print_r($tsfl_data3_array);
 
 //return ""
-
+//print_r($tsfl_data3_array);
+//exit();
 if (!empty($tsfl_data3_array)) {
 
 
@@ -450,11 +714,9 @@ if (!empty($tsfl_data3_array)) {
 	  <div>
 
 		<tr>
-			<td width=70 bgcolor=\"#EDEDED\" align=center><b>序号</b></td>
-
 
 			<td height=30 width=20 bgcolor=\"#EDEDED\" >
-			<input type=\"checkbox\" name=\"all\" checked=\"checked\" id=\"checkall_box\" class=\"checkall_box\"  onclick='checkallbox_changed();'/>
+			<input type=\"checkbox\" name=\"all\"  id=\"checkall_box\" class=\"checkall_box\"  onclick='checkallbox_changed();'/>
 			</td>
 
 
@@ -478,6 +740,7 @@ if (!empty($tsfl_data3_array)) {
         //$n=0;
         //while($tsfl_data3=mysqli_fetch_array($rs_tsfl3))
 
+
         is_array($tsfl_data3_array) ? null : $tsfl_data3_array = array(); //如果该变量不是一个有效数组，则设置该变量为一个空数组即array()，
 
         echo "<div class=\"row\" name = \"row\">";
@@ -490,29 +753,29 @@ if (!empty($tsfl_data3_array)) {
 
 
             $n = $n + 1;
-            echo "<tr><td height=20 width=15 align=center></td>";
-            echo "<td class='list' height=20 width=15><input type='checkbox'  checked=\"checked\" name=\"$bid\" class=\"checkall\" value=$n /></td>";
-            echo "<td><input style='width:15px' name='amount1[]' id=\"amount1_$bid\" onmouseover='num_limit();'  type='text' maxlength='1' size='1' value=2 /></td>";
-            if (strlen(trim($tsfl_data3['sm'])) > 36) {
-                echo "<td align='left' width='280'>" . mb_substr(trim($tsfl_data3['sm']), 0, 18, 'utf8') . "</td>";
+            echo "<tr>";
+            echo "<td class='list' height=20 width=15><input type='checkbox'   name=\"$bid\" class=\"checkall get_book_info_and_update_db_class\" value=$n /></td>";
+            echo "<td style='text-align: center'><input style='width:15px;' name='amount1[]' id=\"amount1_$bid\" onmouseover='num_limit();'  type='text' maxlength='1' size='1' value=2 /></td>";
+            if (strlen(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['sm']))) > 36) {
+                echo "<td align='left' width='280'>" . mb_substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['sm'])), 0, 18, 'utf8') . "</td>";
             } else {
-                echo "<td  align='left'>" . trim($tsfl_data3['sm']) . "</td>";
+                echo "<td  align='left'>" . trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['sm'])) . "</td>";
             }
 
-            echo "<td  align='center'>" . trim($tsfl_data3['isbn']) . "</td>";
-            $isbn11 = trim($tsfl_data3['isbn']);
-            if (strlen(trim($tsfl_data3['zzh'])) > 20) {
-                echo "<td  align='left'>" . mb_substr(trim($tsfl_data3['zzh']), 0, 20) . "</td>";
+            echo "<td  align='center'>" . trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['isbn'])) . "</td>";
+//            $isbn11 = trim($tsfl_data3['isbn']);
+            if (strlen(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['zzh']))) > 20) {
+                echo "<td  align='left'>" . mb_substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['zzh'])), 0, 20) . "</td>";
             } else {
-                echo "<td  align='left'>" . trim($tsfl_data3['zzh']) . "</td>";
+                echo "<td  align='left'>" . trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['zzh'])) . "</td>";
             }
-            echo "<td align=center>" . trim($tsfl_data3['kb']) . "</td>";
-            if ($tsfl_data3['cbrq'] == '') {
+            echo "<td align=center>" . trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['kb'])) . "</td>";
+            if (iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['cbrq']) == '') {
                 echo "<td></td>";
             } else {
-                echo "<td align=center>" . substr(trim($tsfl_data3['cbrq']), 0, 4) . "年" . str_pad(str_replace('/', '', str_replace('-', '', substr(trim($tsfl_data3['cbrq']), 5, 2))), 2, '0', STR_PAD_LEFT) . "月</td>";
+                echo "<td align=center>" . substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['cbrq'])), 0, 4) . "年" . str_pad(str_replace('/', '', str_replace('-', '', substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['cbrq'])), 5, 2))), 2, '0', STR_PAD_LEFT) . "月</td>";
             }
-            echo "<td align=center>￥" . trim(sprintf('%.2f', $tsfl_data3['dj'])) . "</td>";
+            echo "<td align=center>￥" . trim(sprintf('%.2f', iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['dj']))) . "</td>";
             echo "<td align=center>";
 
 
@@ -543,7 +806,7 @@ if (!empty($tsfl_data3_array)) {
             echo "
     <div id=\"div_list\" name=\"div_list\" >
         <div>
-            	<input type=\"checkbox\" name=\"all\" checked=\"checked\" id=\"checkall_box\" class=\"checkall_box\"  onclick='checkallbox_changed();'/>
+            	<input type=\"checkbox\" name=\"all\"  id=\"checkall_box\" class=\"checkall_box \"  onclick='checkallbox_changed();'/>
                 <label>全选</label>
 
         </div>
@@ -576,31 +839,31 @@ if (!empty($tsfl_data3_array)) {
              <tr>
              <td rowspan=8><img src=http://www.ecsponline.com" . trim($tsfl_data3['slt']) . " width=120 height=120></td>
              <td height=20>
-            <input type='checkbox' class = 'checkall' checked = 'checked' name=\"$bid\"  value=$n />
+            <input type='checkbox' class = 'checkall get_book_info_and_update_db_class'  name=\"$bid\"  value=$n />
             <input style='width:15px' name='amount1[]' id=\"amount1_$bid\" onmouseover='num_limit();' type='text' maxlength='1' size='1' value=2 />
             </td>
             </tr>";
 
-                if (strlen(trim($tsfl_data3['sm'])) > 36) {
-                    echo "<tr><td width='280' height=15>书名：" . mb_substr(trim($tsfl_data3['sm']), 0, 18, 'utf8') . "</td></tr>";
+                if (strlen(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['sm']))) > 36) {
+                    echo "<tr><td width='280' height=15>书名：" . mb_substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['sm'])), 0, 18, 'utf8') . "</td></tr>";
                 } else {
-                    echo "<tr><td>书名：" . trim($tsfl_data3['sm']) . "</td></tr>";
+                    echo "<tr><td>书名：" . trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['sm'])) . "</td></tr>";
                 }
 
-                echo "<tr><td height=15>书号：" . trim($tsfl_data3['isbn']) . "</td></tr>";
-                $isbn11 = trim($tsfl_data3['isbn']);
-                if (strlen(trim($tsfl_data3['zzh'])) > 36) {
-                    echo "<tr><td>作者：" . mb_substr(trim($tsfl_data3['zzh']), 0, 18) . "</td></tr>";
+                echo "<tr><td height=15>书号：" . trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['isbn'])) . "</td></tr>";
+//                $isbn11 = trim($tsfl_data3['isbn']);
+                if (strlen(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['zzh']))) > 36) {
+                    echo "<tr><td>作者：" . mb_substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['zzh'])), 0, 18) . "</td></tr>";
                 } else {
-                    echo "<tr><td>作者：" . trim($tsfl_data3['zzh']) . "</td></tr>";
+                    echo "<tr><td>作者：" . trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['zzh'])) . "</td></tr>";
                 }
-                echo "<tr><td>开本：" . trim($tsfl_data3['kb']) . "</td></tr>";
-                if ($tsfl_data3['cbrq'] == '') {
+                echo "<tr><td>开本：" . trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['kb'])) . "</td></tr>";
+                if (iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['cbrq']) == '') {
                     echo "<tr><td></td></tr>";
                 } else {
-                    echo "<tr><td>出版年月：" . substr(trim($tsfl_data3['cbrq']), 0, 4) . "年" . str_pad(str_replace('/', '', str_replace('-', '', substr(trim($tsfl_data3['cbrq']), 5, 2))), 2, '0', STR_PAD_LEFT) . "月</td></tr>";
+                    echo "<tr><td>出版年月：" . substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['cbrq'])), 0, 4) . "年" . str_pad(str_replace('/', '', str_replace('-', '', substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['cbrq'])), 5, 2))), 2, '0', STR_PAD_LEFT) . "月</td></tr>";
                 }
-                echo "<tr><td>定价：￥" . trim(sprintf('%.2f', $tsfl_data3['dj'])) . "</td></tr>";
+                echo "<tr><td>定价：￥" . trim(sprintf('%.2f', iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['dj']))) . "</td></tr>";
                 echo "<tr><td>库存：";
 
 

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-09-20 18:49:08
-  from "D:\WWW\guanpeipindao\templates\zhengdingdan\zhengdingdan.html" */
+/* Smarty version 3.1.29, created on 2016-11-11 14:08:33
+  from "D:\phpStudy\WWW\guanpeipindao\templates\zhengdingdan\zhengdingdan.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_57e11424dfe443_92519258',
+  'unifunc' => 'content_58256061ee6e66_98654110',
   'file_dependency' => 
   array (
-    'e07db1a8ef8b7ff685409a184b25b723ffd1537f' => 
+    'd8b694de8f988c0d52e30e7ba5bd26c97512bc0f' => 
     array (
-      0 => 'D:\\WWW\\guanpeipindao\\templates\\zhengdingdan\\zhengdingdan.html',
-      1 => 1472643440,
+      0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\zhengdingdan\\zhengdingdan.html',
+      1 => 1476321737,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_57e11424dfe443_92519258 ($_smarty_tpl) {
+function content_58256061ee6e66_98654110 ($_smarty_tpl) {
 ?>
 <table  class='table table-bordered table-striped'>
     <span style="display: none" id="zdd_times"><?php echo $_smarty_tpl->tpl_vars['zdd_times']->value;?>
@@ -60,6 +60,7 @@ $__foreach_order_0_saved_local_item = $_smarty_tpl->tpl_vars['order'];
         </td>
         <td>
             <a id="view_zdd_detail"   class="view_zdd_detail">查看详情</a>
+            <!--<a id="view_zdd_detail_mssql"   class="view_zdd_detail_mssql">查看详情mssql</a>-->
             <a  class="zhengdingdan_download_marc" >下载</a>
         </td>
 

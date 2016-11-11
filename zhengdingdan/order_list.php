@@ -8,7 +8,6 @@
 header("Content-Type: text/html;charset=UTF-8");
 ini_set("max_execution_time", "1800");
 require_once("../db/con_mssql.php");
-require_once("../db/con_mysql2.php");
 include("../db/dao.php");
 require_once("../config.php");
 include("../include/GuanCangSmarty.php");

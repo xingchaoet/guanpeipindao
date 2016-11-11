@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-09-20 17:56:28
-  from "D:\WWW\guanpeipindao\templates\data_download\data_download.html" */
+/* Smarty version 3.1.29, created on 2016-11-07 10:42:03
+  from "D:\phpStudy\WWW\guanpeipindao\templates\data_download\data_download.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_57e107cc30f388_29654432',
+  'unifunc' => 'content_581fe9fbb3c621_76028395',
   'file_dependency' => 
   array (
-    'e14bcddf8b6a55041aac24261c569ba2bf4ef3df' => 
+    '64f8ca3379991b416ad506edbd629cf039c9ea13' => 
     array (
-      0 => 'D:\\WWW\\guanpeipindao\\templates\\data_download\\data_download.html',
-      1 => 1474265327,
+      0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\data_download\\data_download.html',
+      1 => 1476774379,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_57e107cc30f388_29654432 ($_smarty_tpl) {
+function content_581fe9fbb3c621_76028395 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,10 +59,7 @@ function content_57e107cc30f388_29654432 ($_smarty_tpl) {
             font-size: 11px;
         }
 
-        .col-sm-3 {
-            background: #F0FFFF;
-            margin-bottom: 10px;
-        }
+        /*.col-sm-3 */
 
         .col-sm-9 {
             width: 770px;
@@ -260,7 +257,6 @@ function content_57e107cc30f388_29654432 ($_smarty_tpl) {
             color: #F16D06;
         }
 
-        /*.list-group-item */
     </style>
 </head>
 <body>
@@ -594,6 +590,11 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
             return;
         }
 
+        if (($("input[type=radio][name=marc][value='marc']").attr("checked")) && (!($("#MARC").attr("checked") || $("#Calis").attr("checked") || $("#CF").attr("checked")))) {
+
+            alert('未选择文件类型！');
+            return;
+        }
 //        var sheet_no = $(this).prop('id');
         if ($("#MARC").attr("checked") || $("#Calis").attr("checked") || $("#CF").attr("checked")) {
 
@@ -728,6 +729,11 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
     });
     //    }
 
+    function data_diy_clear() {
+        $("#zyfl_sel").attr("value", "");
+        $("#ztfl_sk_sel").attr("value", "");
+        $("#ztfl_zk_sel").attr("value", "");
+    }
 <?php echo '</script'; ?>
 >
 </html><?php }

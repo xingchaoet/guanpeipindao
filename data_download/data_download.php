@@ -8,7 +8,7 @@
 require_once("../config.php");
 require_once("../db/con_mssql.php");
 include("../db/dao.php");
-require_once("../db/con_mysql2.php");
+//require_once("../db/con_mysql2.php");
 
 include("../include/GuanCangSmarty.php");
 

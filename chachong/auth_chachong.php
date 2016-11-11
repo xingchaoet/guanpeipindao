@@ -10,7 +10,6 @@ session_start();
 
 $global_url = GLOBAL_URL;
 $uid = $_SESSION['user_id'];
-$uid = $_SESSION['user_id'];
 
 if (empty($uid)) {
     echo "<script type='text/javascript'>alert('您还没登录!');</script>";

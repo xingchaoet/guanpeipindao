@@ -22,7 +22,7 @@ $smarty->MySmarty();
 // 实例化SQLServer封装类
 $ms = new con_mssql();
 
-$page_size = 2; //每页显示数量
+$page_size = 10; //每页显示数量
 
 //查询预订单
 $sql = ser("bs_yudingdan", "ydd_pc_id,ydd_detail, ydd_time", "ydd_user_id='$uid' ORDER BY ydd_time desc");

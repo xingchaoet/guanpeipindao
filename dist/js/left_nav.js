@@ -32,6 +32,7 @@ var leftMenu = [{
 
 ];
 $(function() {
+    // alert(1);
     new AccordionMenu({
         menuArrs: leftMenu
     });

@@ -55,7 +55,7 @@ if (odbc_fetch_row($rs)) {
 $introduce = iconv('gbk', 'utf-8//IGNORE', $introduce);
 $smarty->assign("introduce", $introduce);
 
-$page_size = 2; //每页显示数量
+$page_size = 10; //每页显示数量
 
 $sql_info = ser(bs_zhengdingdan, "count(*) as sum", "zdd_user_id='$uid'");
 
@@ -116,7 +116,7 @@ if ($rows) {
     Page($rows, $page_size);
 
     $sql = "select top ($select_limit) zdd_pc_id,zdd_detail, zdd_time from bs_zhengdingdan
- where zdd_id not in (select top ($select_from) zdd_id from bs_zhengdingdan) and zdd_user_id = '$uid' ";
+ where zdd_id not in (select top ($select_from) zdd_id from bs_zhengdingdan where zdd_user_id = '$uid' ) and zdd_user_id = '$uid' ";
 
 //$sql = ser("bs_zhengdingdan", "zdd_pc_id,zdd_detail, zdd_time", "zdd_user_id='$uid' ORDER BY zdd_time desc limit $select_from $select_limit");
 

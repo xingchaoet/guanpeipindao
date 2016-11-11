@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-09-20 17:55:55
-  from "D:\WWW\guanpeipindao\templates\index.html" */
+/* Smarty version 3.1.29, created on 2016-11-10 08:57:35
+  from "D:\phpStudy\WWW\guanpeipindao\templates\index.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_57e107ab90fb52_54256841',
+  'unifunc' => 'content_5823c5ff769461_13529282',
   'file_dependency' => 
   array (
-    'd631ac2198136cd056d4914f0e4a181cefce4552' => 
+    '5729e012a4e4eb4aebed0ebc971874f86c1f5785' => 
     array (
-      0 => 'D:\\WWW\\guanpeipindao\\templates\\index.html',
-      1 => 1472088228,
+      0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\index.html',
+      1 => 1474598280,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:header.html' => 1,
   ),
 ),false)) {
-function content_57e107ab90fb52_54256841 ($_smarty_tpl) {
+function content_5823c5ff769461_13529282 ($_smarty_tpl) {
 ?>
 <!doctype html>
 <html>

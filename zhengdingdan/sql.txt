@@ -264,3 +264,64 @@ INSERT INTO bs_yudingdan_mx (sheet_no,isbn,book_name,bookcs_name,writer,price,pu
 INSERT INTO bs_yudingdan_mx (sheet_no,isbn,book_name,bookcs_name,writer,price,publish_date,fenlei,kb,amount,inputby,uptime,state,lib_no,book_id) VALUES ('FJ00142151','9787030127938','ĞÂ±à´óÑ§ÎïÀí ÉÏ²á','21ÊÀ¼Í¸ßµÈÔºĞ£½Ì²Ä','Íõ¼ÃÃñ,ÂŞ´ºÈÙµÈ','24','2004/02/27','','B5','2','2151',GETDATE(),'10','FJ0014' ,'35024')
 INSERT INTO bs_zhengdingdan_mx (sheet_no,isbn,book_name,bookcs_name,writer,price,publish_date,fenlei,kb,amount,inputby,uptime,state,lib_no,book_id) VALUES ('FJ00142151_0eb7478b7ba8030d48f8fac32c3c546c','9787030127914','´óÑ§ÎïÀíÊµÑé','','Ñîºç','17.8','2004/02/22','','B5','2','2151',GETDATE(),'10','FJ0014','20489')
 INSERT INTO bs_zhengdingdan_mx (sheet_no,isbn,book_name,bookcs_name,writer,price,publish_date,fenlei,kb,amount,inputby,uptime,state,lib_no,book_id) VALUES ('FJ00142151_0eb7478b7ba8030d48f8fac32c3c546c','9787030127945','ĞÂ±à´óÑ§ÎïÀíÏ°Ìâ¼¯','21ÊÀ¼Í¸ßµÈÔºĞ£½Ì²Ä','Íõ¼ÃÃñµÈ','12','2004/02/27','','B5','2','2151',GETDATE(),'10','FJ0014','40792')
+select isbn ,kc from ecs_book where book_id = '42541' and jz = '1' 
+select isbn ,kc from ecs_book where book_id = '42541' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '42541' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '42541' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '6866' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '24990' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '40830' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '42541' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '6866' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '24990' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '40830' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '42541' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '6866' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '24990' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '40830' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '42541' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '6866' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '24990' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '40830' and jz = '3' 
+select isbn ,kc from ecs_book where book_id = '42541' and jz = '3' 
+
+select isbn ,kc from ecs_book where book_id = '6866' and jz = '3' 
+
+select isbn ,kc from ecs_book where book_id = '24990' and jz = '3' 
+
+select isbn ,kc from ecs_book where book_id = '40830' and jz = '3' 
+
+select isbn ,kc from ecs_book where book_id = '42541' and jz = '3' 
+
+select isbn ,kc from ecs_book where book_id = '6866' and jz = '3' 
+
+select isbn ,kc from ecs_book where book_id = '24990' and jz = '3' 
+
+select isbn ,kc from ecs_book where book_id = '40830' and jz = '3' 
+
+select isbn ,kc from ecs_book where book_id = '42541' and jz = '3' 
+
+select isbn ,kc from ecs_book where book_id = '13265' and jz = '3' 
+
+select isbn ,kc from ecs_book where book_id = '13265' and jz = '3' 
+
+select isbn ,kc from ecs_book where book_id = '13265' and jz = '3' 
+
+select isbn ,kc from ecs_book where book_id = '95121' and jz = '3' 
+PODå¯ä¾›
+select isbn ,kc from ecs_book where book_id = '30739' and jz = '3' 
+å¯é¢„è®¢
+select isbn ,kc from ecs_book where book_id = '30739' and jz = '3' 
+å¯é¢„è®¢
+å¯é¢„è®¢
+å¯é¢„è®¢
+å¯é¢„è®¢
+å¯é¢„è®¢
+å¯é¢„è®¢
+å¯é¢„è®¢
+å¯é¢„è®¢
+å¯é¢„è®¢
+å¯é¢„è®¢
+å¯é¢„è®¢
+å¯é¢„è®¢
+å¯é¢„è®¢

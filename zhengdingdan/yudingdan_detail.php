@@ -1,17 +1,17 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Administrator
- * Date: 2016/8/17
- * Time: 10:47
+ * User: xc
+ * Date: 2016/10/11
+ * Time: 15:03
  */
+
 header("Content-Type: text/html;charset=UTF-8");
 ini_set("max_execution_time", "1800");
 require_once("../db/con_mssql.php");
 include("../db/dao.php");
 require_once("../config.php");
 include("../include/GuanCangSmarty.php");
-include  ("../db/con_mysql2.php");
 
 session_start();
 
@@ -21,10 +21,10 @@ $uid = $_REQUEST['usrn'];
 
 //echo $uid;
 
-if(!empty($_REQUEST['sheet_no'])){
+if (!empty($_REQUEST['sheet_no'])) {
     $sheet_no = $_REQUEST['sheet_no'];
-    $_SESSION['sheet_no'] = $sheet_no ;
-}else{
+    $_SESSION['sheet_no'] = $sheet_no;
+} else {
     $sheet_no = $_SESSION['sheet_no'];
 }
 
@@ -36,12 +36,11 @@ $smarty->MySmarty();
 
 // 实例化SQLServer封装类
 $ms = new con_mssql();
-$con_mysql2 = new con_mysql2();
 
 
-$page_size = 2; //每页显示数量
+$page_size = 10; //每页显示数量
 
-$sql_info = ser(bs_yudingdan_mx, "count(*) as sum", "inputby='$uid' and sheet_no='$sheet_no' " );
+$sql_info = ser(bs_yudingdan_mx, "count(*) as sum", "inputby='$uid' and sheet_no='$sheet_no' ");
 
 //echo $sql_info;
 
@@ -100,9 +99,17 @@ function Page($rows, $page_size)
 //echo "当前查询条件2：".$search_TJ;
 Page($rows, $page_size);
 
-$sql = "select top ($select_limit) amount,book_name, isbn,writer,kb, CONVERT(varchar(10),publish_date,120) as publish_date ,price from bs_yudingdan_mx
- where (inputby = '$uid' and sheet_no = '$sheet_no' ) and  id not in (select top ($select_from) id from bs_yudingdan_mx where (inputby = '$uid' and sheet_no = '$sheet_no' ) )   ";
+$sql = "select top ($select_limit) amount,book_name, isbn,writer,kb, CONVERT(varchar(10),publish_date,120)
+as publish_date ,price,book_id from bs_yudingdan_mx
+ where (inputby = '$uid' and sheet_no = '$sheet_no' ) and  id not in
+ (select top ($select_from) id from bs_yudingdan_mx where (inputby = '$uid' and sheet_no = '$sheet_no' ) )  ORDER BY uptime  ";
 
+//$sql = "SELECT rows, amount,book_name, isbn,writer,kb, CONVERT(varchar(10),publish_date,120) as publish_date ,price
+//FROM (SELECT amount,book_name, isbn,writer,kb,publish_date, price ,rows,
+//ROW_NUMBER() OVER (ORDER BY rows) AS RowNumber
+//FROM bs_yudingdan_mx WHERE (inputby = '$uid' and sheet_no = '$sheet_no' )) a
+//WHERE RowNumber > $select_from AND RowNumber <= ($select_from + $page_size)
+//ORDER BY a.rows DESC";
 //$sql = ser("bs_yudingdan", "ydd_pc_id,ydd_detail, ydd_time", "ydd_user_id='$uid' ORDER BY ydd_time desc limit $select_from $select_limit");
 
 //echo $sql;
@@ -119,9 +126,7 @@ while ($data = odbc_fetch_array($rs)) {
 }
 
 
-
-
-for($i = 0;$i < count($ydd_order_detail); $i ++){
+for ($i = 0; $i < count($ydd_order_detail); $i++) {
 
     $ydd_order_detail[$i]['book_name'] = iconv('GBK', 'UTF-8', $ydd_order_detail[$i]['book_name']);
 
@@ -131,24 +136,79 @@ for($i = 0;$i < count($ydd_order_detail); $i ++){
 
     $isbn = $ydd_order_detail[$i]['isbn'];
 
-    $sql = ser("v_ecs_book", "jz1,jz3", "isbn = '$isbn'");
+    $book_id = $ydd_order_detail[$i]['book_id'];
 
-    $books_temp =  $con_mysql2->sdb($sql);
+    $sql = ser("ecs_book", "kc", "book_id = '$book_id' AND jz=1");
 
-    while ($data2 = mysqli_fetch_array($books_temp,MYSQLI_ASSOC)) {
-        $books[] = $data2;
+    $books_temp1 = $ms->sdb($sql);
+
+    if (!$books_temp1) {
+        echo "Error in query preparation/execution.<br />";
+        die(print_r(odbc_errormsg(), true));
     }
 
-    if ($books[0]['jz1'] > 0) {
+    while ($data1 = odbc_fetch_array($books_temp1)) {
+        $books1[] = $data1;
+    }
+
+    $kc1 = $books1[0]['kc'];
+
+
+    $sql = ser("ecs_book", "kc", "book_id = '$book_id' AND jz=3");
+
+    $books_temp3 = $ms->sdb($sql);
+
+    if (!$books_temp3) {
+        echo "Error in query preparation/execution.<br />";
+        die(print_r(odbc_errormsg(), true));
+    }
+
+    while ($data3 = odbc_fetch_array($books_temp3)) {
+        $books3[] = $data3;
+    }
+
+    $kc3 = $books3[0]['kc'];
+
+
+//    echo '(';
+//
+//    print_r($kc1);
+//
+//    echo '|';
+//
+//    print_r($kc3);
+//
+//    echo ')';
+
+
+    if ($kc1 > 0) {
         $ydd_order_detail[$i]['kc'] = '纸本可供';
     } else {
 
-        if (is_numeric($books[0]['jz3']) && ($books[0]['jz3'] >= 0)) {
+        if (is_numeric($kc3) && ($kc3 >= 0)) {
             $ydd_order_detail[$i]['kc'] = 'POD可供';
-        } else if (is_null($books[0]['jz3'])) {
+        } else if (is_null($kc3)) {
             $ydd_order_detail[$i]['kc'] = '可预订';
         }
     }
+//    $sql = ser("v_ecs_book", "jz1,jz3", "isbn = '$isbn'");
+//
+//    $books_temp =  $con_mysql2->sdb($sql);
+//
+//    while ($data2 = mysqli_fetch_array($books_temp,MYSQLI_ASSOC)) {
+//        $books[] = $data2;
+//    }
+//
+//    if ($books[0]['jz1'] > 0) {
+//        $ydd_order_detail[$i]['kc'] = '纸本可供';
+//    } else {
+//
+//        if (is_numeric($books[0]['jz3']) && ($books[0]['jz3'] >= 0)) {
+//            $ydd_order_detail[$i]['kc'] = 'POD可供';
+//        } else if (is_null($books[0]['jz3'])) {
+//            $ydd_order_detail[$i]['kc'] = '可预订';
+//        }
+//    }
 
 }
 

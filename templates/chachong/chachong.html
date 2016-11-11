@@ -21,11 +21,11 @@
             font-size: 11px;
         }
 
-        .col-sm-3 {
-            background: #F0FFFF;
-            margin-bottom: 10px;
-            width: 210px;
-        }
+        /*.col-sm-3 {*/
+        /*background: white;*/
+        /*margin-bottom: 10px;*/
+        /*width: 210px;*/
+        /*}*/
 
         .col-sm-9 {
             width: 770px;
@@ -76,12 +76,62 @@
 
         .list_pic {
             margin-top: 15px;
-            background-color: #1e51a4;
+            background-color: #EBEBEB;
             display: none;
+            height: 32px;
+            font-size: 15px;
+            line-height: 32px;
+            border: 0px solid transparent;
+            box-shadow: 0px 1px 3px rgba(34, 25, 25, 0.2);
+            margin-bottom: 0px;
+
+            background: -moz-linear-gradient(top, #b8c4cb, #f6f6f8); /*火狐*/
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b8c4cb), to(#f6f6f8)); /*谷歌*/
+
+        }
+
+        .list_pic_batch {
+            margin-top: 15px;
+            background-color: #EBEBEB;
+            display: none;
+            height: 32px;
+            font-size: 15px;
+            line-height: 32px;
+            border: 0px solid transparent;
+            box-shadow: 0px 1px 3px rgba(34, 25, 25, 0.2);
+            margin-bottom: 0px;
+
+            background: -moz-linear-gradient(top, #b8c4cb, #f6f6f8); /*火狐*/
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b8c4cb), to(#f6f6f8)); /*谷歌*/
+
+        }
+
+        #condition_title {
+            background-color: #EBEBEB;
+            /*display: none;*/
+            height: 32px;
+            font-size: 15px;
+            line-height: 32px;
+            border: 0px solid transparent;
+            box-shadow: 0px 1px 3px rgba(34, 25, 25, 0.2);
+
+            background: -moz-linear-gradient(top, #b8c4cb, #f6f6f8); /*火狐*/
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b8c4cb), to(#f6f6f8)); /*谷歌*/
+            margin-bottom: 4px;
+        }
+
+        #condition_content {
+        }
+
+        #div_list {
+            margin-top: 0px;
         }
 
         .bottom {
-            margin-left: 600px;
+            position: relative;
+            float: right;
+            /*margin-left: 500px;*/
+            margin-right: 10px;
             margin-top: 20px;
             display: none;
         }
@@ -166,19 +216,86 @@
         }
 
         .submit_clear {
+            /*position: relative;*/
             margin-top: 20px;
-            margin-left: auto;
-            margin-right: auto;
+            /*margin:0px auto;*/
+            margin-left: 0px;
+            margin-right: 0px;
+            text-align: center;
+
             width: 100%;
         }
 
-        .clear_tj{
+        .clear_tj {
             margin-left: 20px;
         }
 
-
-        #condition{
+        #condition {
             margin-top: 20px;
+        }
+
+        #condition_panel {
+            padding-top: 15px;
+            background-color: #FFFFFF;
+            padding-bottom: 16px;
+            border: 2px #EFEFEF solid;
+        }
+
+        .clear {
+            clear: both
+        }
+
+        a {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        a:hover, a:focus {
+            color: #2a6496;
+            text-decoration: none;
+        }
+
+        .need_op_batch {
+            margin-top: 10px;
+        }
+
+        .batch_ltd {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 300px;
+        }
+
+        .batch_mtd {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 300px;
+        }
+
+        .batch_rtd {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 50px;
+        }
+
+        .batch_table {
+            margin-bottom: 10px;
+        }
+
+        .batch_title {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .batch_icon {
+            /*margin-top: 10px;*/
+            margin-bottom: 10px;
+
+            float: right;
+            margin-right: 10px;
+        }
+
+        .batch_item {
+
         }
 
     </style>
@@ -227,14 +344,14 @@
                                 <!--<input class="btn btn-sm " type="submit" value="导入数据" >-->
                             </div>
 
-                            <div class="form-group btn  btn-sm">
-                                <!--<a href="gangcang_import_history.php?uid={$smarty.session.user_id}"  class="btn btn-sm btn-info " type="button" value="馆藏导入历史" >馆藏导入历史</a>-->
-                                <button onclick="guan_cang_import_history()" class="btn btn-sm btn-info " type="button"
-                                        value="馆藏导入历史">馆藏导入历史
-                                </button>
+                            <!--<div class="form-group btn  btn-sm">-->
+                            <!--&lt;!&ndash;<a href="gangcang_import_history.php?uid={$smarty.session.user_id}"  class="btn btn-sm btn-info " type="button" value="馆藏导入历史" >馆藏导入历史</a>&ndash;&gt;-->
+                            <!--<button onclick="guan_cang_import_history()" class="btn btn-sm btn-info " type="button"-->
+                            <!--value="馆藏导入历史">馆藏导入历史-->
+                            <!--</button>-->
 
-                                <!--<input class="btn btn-sm " type="submit" value="导入数据" >-->
-                            </div>
+                            <!--&lt;!&ndash;<input class="btn btn-sm " type="submit" value="导入数据" >&ndash;&gt;-->
+                            <!--</div>-->
 
                         </form>
 
@@ -263,137 +380,210 @@
 
                 <form id="condition">
                     <input type="hidden" name="usrn" value="{$smarty.session.user_id}"/>
-                    <table>
 
-                        <tr>
-                            <td height=30 colspan=4 bgcolor='EDEDED'><b>信息查询查重</b>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td height=25 width='60' align='right'>书名</td>
-                            <td width='200'><input maxlength="100" size="25" type="text" name="bname" id="bname"
-                                                   value=''></td>
-                            <td width='200' align='right'>上架时间</td>
-                            <td width='350'>
-                                <input class="Wdate" type="text" name="sjdate_low" id="sjdate_low" value=''
-                                       onClick="WdatePicker()">至
-                                <input class="Wdate" type="text" name="sjdate_high" id="sjdate_high" value=''
-                                       onClick="WdatePicker()">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td height=25 width='60' align='right'>丛书名</td>
-                            <td><input maxlength="100" size="25" type="text" name="csbname" id="csbname" value=""></td>
-                            <td align='right'>出版时间</td>
-                            <td><input class="Wdate" type="text" name="cbdate_low" id="cbdate_low" value=""
-                                       onClick="WdatePicker()">至
-                                <input class="Wdate" type="text" name="cbdate_high" id="cbdate_high" value=""
-                                       onClick="WdatePicker()">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td height=25 width='60' align='right'>书号</td>
-                            <td><input maxlength="100" size="25" type="text" name="isbn" id="isbn" value=""></td>
-                            <td height=25 align='right' name="zyfl_value" id="zyfl_value">图书分类</td>
-                            <td style='position: absolute;  z-index:2;'>{php} include('zyfl.php');{/php}</td>
-                        </tr>
-                        <tr>
-                            <td height=25 width='60' align='right'>作译者</td>
-                            <td><input maxlength="100" size="25" type="text" name="writer" id="writer" value=""></td>
-                            <td align='right' name="skfl_value">中图法-社会科学</td>
-                            <td style='position: absolute; z-index:1;'>{php} include('ztfl_sk.php');{/php}</td>
-                        </tr>
-                        <tr>
-                            <td height=25 width='60' align='right'>主题词</td>
-                            <td><input maxlength="100" size="25" type="text" name="keyword" id="keyword" value=""></td>
-                            <td align='right' name="zkfl_value" id="zkfl_value">中图法-自然科学</td>
-                            <td style='position: absolute; z-index:0;'>{php} include('ztfl_zk.php');{/php}</td>
-                        </tr>
-                        <tr>
-                            <td align='right'>定价</td>
-                            <td><input maxlength="18" size="8" type="text" name="price_low" id="price_low" value="">至
-                                <input maxlength="18" size="8" type="text" name="price_high" id="price_high" value="">
-                            </td>
-                            <td align='right'>产品介质</td>
-                            <td><select name="media" id="media">
-                                <option value="全部">全部</option>
-                                <option value="纸质书">纸质书</option>
-                                <option value="按需印刷">按需印刷</option>
-                            </select>
-                            </td>
-                        </tr>
-                    </table>
+                    <div id="condition_title" height=30 colspan=4 bgcolor='EDEDED'><b
+                            style="margin-left: 12px">信息查询查重</b></div>
+
+                    <div id="condition_panel">
+
+                        <table>
+                            <tr>
+                                <td height=25 width='60' align='right'>书名</td>
+                                <td width='200'><input maxlength="100" size="25" type="text" name="bname" id="bname"
+                                                       value=''></td>
+                                <td width='200' align='right'>上架时间</td>
+                                <td width='350'>
+                                    <input class="Wdate" type="text" name="sjdate_low" id="sjdate_low" value=''
+                                           onClick="WdatePicker()">至
+                                    <input class="Wdate" type="text" name="sjdate_high" id="sjdate_high" value=''
+                                           onClick="WdatePicker()">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height=25 width='60' align='right'>丛书名</td>
+                                <td><input maxlength="100" size="25" type="text" name="csbname" id="csbname" value="">
+                                </td>
+                                <td align='right'>出版时间</td>
+                                <td><input class="Wdate" type="text" name="cbdate_low" id="cbdate_low" value=""
+                                           onClick="WdatePicker()">至
+                                    <input class="Wdate" type="text" name="cbdate_high" id="cbdate_high" value=""
+                                           onClick="WdatePicker()">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height=25 width='60' align='right'>书号</td>
+                                <td><input maxlength="100" size="25" type="text" name="isbn" id="isbn" value=""></td>
+                                <td height=25 align='right' name="zyfl_value" id="zyfl_value">图书分类</td>
+                                <td style='position: absolute;  z-index:2;'>{php} include('zyfl.php');{/php}</td>
+                            </tr>
+                            <tr>
+                                <td height=25 width='60' align='right'>作译者</td>
+                                <td><input maxlength="100" size="25" type="text" name="writer" id="writer" value="">
+                                </td>
+                                <td align='right' name="skfl_value">中图法-社会科学</td>
+                                <td style='position: absolute; z-index:1;'>{php} include('ztfl_sk.php');{/php}</td>
+                            </tr>
+                            <tr>
+                                <td height=25 width='60' align='right'>主题词</td>
+                                <td><input maxlength="100" size="25" type="text" name="keyword" id="keyword" value="">
+                                </td>
+                                <td align='right' name="zkfl_value" id="zkfl_value">中图法-自然科学</td>
+                                <td style='position: absolute; z-index:0;'>{php} include('ztfl_zk.php');{/php}</td>
+                            </tr>
+                            <tr>
+                                <td align='right'>定价</td>
+                                <td><input maxlength="18" size="8" type="text" name="price_low" id="price_low" value="">至
+                                    <input maxlength="18" size="8" type="text" name="price_high" id="price_high"
+                                           value="">
+                                </td>
+                                <td align='right'>产品介质</td>
+                                <td><select name="media" id="media">
+                                    <option value="全部">全部</option>
+                                    <option value="纸质书">纸质书</option>
+                                    <option value="按需印刷">按需印刷</option>
+                                </select>
+                                </td>
+                            </tr>
+                        </table>
 
 
-                    <div class="form-group btn  btn-sm submit_clear">
-                        <!--<input type="hidden" name=t1 value="chaxunchachong">-->
-                        <input type="button" class="btn btn-sm " name="submit_cc"
-                               onclick="send('chaxunchachong');"
-                               value="查询查重"/>
-                        <input type="reset" class="btn btn-sm clear_tj" value="清空"/>
+                        <div class="submit_clear">
+                            <!--<input type="hidden" name=t1 value="chaxunchachong">-->
+                            <input type="button" class="btn btn-sm btn-default" name="submit_cc"
+                                   onclick="send('chaxunchachong');"
+                                   value="查询查重"/>
+                            <input onclick="category_clear();" type="reset" class="btn btn-sm btn-default clear_tj"
+                                   value="清空"/>
+                        </div>
+
+                        <!--<div class="form-group btn  btn-sm">-->
+                        <!--</div>-->
                     </div>
-
-                    <!--<div class="form-group btn  btn-sm">-->
-                    <!--</div>-->
 
                 </form>
 
-                <div id="list_pic" class="list_pic">
+                <div class="need_op_batch">
 
-                    <label style="margin-left: 10px">结果列表</label>
+                    <div class="batch_title">
+                        <span>
+                            你还有{$need_op_batch_num}条未处理批次
+                        </span>
+                        <span class="batch_icon">
+                            <img id="toggle_table" src="{$relpostodist}dist/picture/chachong/hide_table.png">
+                        </span>
+                    </div>
 
-                    <label style="margin-left: 550px">显示方式：</label>
 
-                    <span id="list_disable_pic_enable" style="margin-left: 30px;">
+                    <table id="batch_table" class="table table-condensed batch_table">
+
+                        {foreach $need_op_batch_detail as $val }
+                        <tr>
+                            <td class="batch_ltd">
+                                <a class="batch_item">{$val['PiCi_Num']}</a>
+                            </td>
+
+                            <td class="batch_mtd">
+                                {$val['Date_Time']}
+                            </td>
+
+                            <td class="batch_rtd">
+                                <a class="delete_batch"><img width="19" height="19" src="{$relpostodist}dist/picture/chachong/delete_batch.png" ></a>
+                            </td>
+
+                        </tr>
+                        {/foreach}
+                    </table>
+
+                </div>
+
+
+                <div id="second_floor">
+
+                    <div id="list_pic" class="list_pic">
+
+                        <label style="margin-left: 10px">结果列表</label>
+
+                        <label style="margin-left: 500px">显示方式：</label>
+
+                        <span id="list_disable_pic_enable" style="margin-left: 30px;">
                             <a><img src="{$relpostodist}dist/picture/pic_list/list_disable.gif" onclick="send();"></a>
                             <a><img src="{$relpostodist}dist/picture/pic_list/pic_enable.gif" onclick="sendpic();"></a>
                         </span>
 
-                    <span id="pic_disable_list_enable" style="margin-left: 30px; display: none">
+                        <span id="pic_disable_list_enable" style="margin-left: 30px; display: none">
                             <a><img src="{$relpostodist}dist/picture/pic_list/list_enable.gif" onclick="send();"></a>
                             <a><img src="{$relpostodist}dist/picture/pic_list/pic_disable.gif" onclick="sendpic();"></a>
                         </span>
 
-                </div>
+                    </div>
 
-                <!--导入模板及查重查询安钮--开始-->
+                    <div id="list_pic_batch" class="list_pic_batch">
 
+                        <label style="margin-left: 10px">结果列表:</label>
 
-                <div id="show">
+                        <div style="float:right; margin-right: 20px">显示方式：
 
+                            <span id="list_disable_pic_batch_enable" style="float:right; margin-right: 5px;">
+                            <a><img src="{$relpostodist}dist/picture/pic_list/list_disable.gif" onclick="send_batch();"></a>
+                            <a><img src="{$relpostodist}dist/picture/pic_list/pic_enable.gif"
+                                    onclick="sendpic_batch();"></a>
+                            </span>
 
-                </div>
+                            <span id="pic_disable_list_batch_enable"
+                                  style="float:right; margin-right: 5px; display: none">
+                            <a><img src="{$relpostodist}dist/picture/pic_list/list_enable.gif" onclick="send_batch();"></a>
+                            <a><img src="{$relpostodist}dist/picture/pic_list/pic_disable.gif"
+                                    onclick="sendpic_batch();"></a>
+                            </span>
 
-                <div id="light" class="white_content">
-                    <a href="#" onClick="document.getElementById('light').style.display='none';"
-                       style="color:blue;z-index:9999">关闭</a>
-                    <div style="width:715px;height:360px;border:#ccc solid 1px;" id="content">
+                        </div>
+
 
                     </div>
-                </div>
+                    <!--导入模板及查重查询安钮--开始-->
 
-                <div id="history" class="history">
-                    <a href="#" onClick="document.getElementById('history').style.display='none';"
-                       style="color:blue;z-index:9999">关闭</a>
-                    <div style="width:715px;height:360px;border:#ccc solid 1px;" id="history_content">
+
+                    <div id="show">
+
 
                     </div>
+
+                    <!--<div id="light" class="white_content">-->
+                    <!--<a href="#" onClick="document.getElementById('light').style.display='none';"-->
+                    <!--style="color:blue;z-index:9999">关闭</a>-->
+                    <!--<div style="width:715px;height:360px;border:#ccc solid 1px;" id="content">-->
+
+                    <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div id="history" class="history">-->
+                    <!--<a href="#" onClick="document.getElementById('history').style.display='none';"-->
+                    <!--style="color:blue;z-index:9999">关闭</a>-->
+                    <!--<div style="width:715px;height:360px;border:#ccc solid 1px;" id="history_content">-->
+
+                    <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="save">-->
+                    <!--勾选书目前请先保存该搜索结果列表-->
+                    <!--<input type="submit" value="保存搜索结果">保存批次号:-->
+                    <!--</div>-->
+                    <!--查询结果显示--结束-->
+
+                    <!--<tr><td colspan=4 align=center><?php echo $pagenav;?></td></tr>-->
+                    <div class="clear"></div>
+                    <div id="bottom" class="bottom">
+                        <button type="button" class="btn btn-sm btn-default" onclick="generate_order();"
+                                value="生成征订单和预订单">
+                            生成征订单和预订单
+                        </button>
+                        <button type="button" class="btn btn-sm btn-default" onclick="view_my_orders();" value=""
+                        >查看我的订单
+                        </button>
+                    </div>
+
                 </div>
 
-                <!--<div class="save">-->
-                <!--勾选书目前请先保存该搜索结果列表-->
-                <!--<input type="submit" value="保存搜索结果">保存批次号:-->
-                <!--</div>-->
-                <!--查询结果显示--结束-->
-
-                <!--<tr><td colspan=4 align=center><?php echo $pagenav;?></td></tr>-->
-                <div id="bottom" class="bottom">
-                    <button type="button" onclick="generate_order();" value="生成征订单和预订单">生成征订单和预订单
-                    </button>
-                    <button type="button" onclick="view_my_orders();" value=""
-                    >查看我的订单
-                    </button>
-                </div>
             </div>
 
         </div>
@@ -425,6 +615,12 @@
     var delpici_url = 'http://' + global_url + '/guanpeipindao/chachong/delpici.php';
     var generate_order_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/generate_order.php';
     var order_list_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/order_list.php';
+
+    var operate_temp_table_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/operate_temp_table.php';
+    var manipulate_session_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/manipulate_session.php';
+    var add_or_delete_this_page_temp_table_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/add_or_delete_this_page_temp_table.php';
+    var batch_item_url = 'http://' + global_url + '/guanpeipindao/chachong/batch_item.php';
+    var delete_batch_url  = 'http://' + global_url + '/guanpeipindao/chachong/batch_item.php';
 
     function creatXHR() {
         var xhr = null;
@@ -489,9 +685,13 @@
             var fdata = new FormData(fm);
             if (arg == "chaxunchachong") {
                 fdata.append("show_type", 'chaxunchachong');
+                fdata.append("first_search", 'first_search');
+                fdata.append("manipulate_session", 'manipulate_session');
+
             } else {
                 fdata.append("show_type", 'list');
             }
+
 
             xhr.open('POST', search_url, true);
             xhr.send(fdata);
@@ -500,6 +700,8 @@
 
                     $('#list_disable_pic_enable').show();
                     $('#pic_disable_list_enable').hide();
+
+                    $('#list_pic_batch').hide();
 
                     $('#list_pic').show();
                     $('#bottom').show();
@@ -520,10 +722,14 @@
             var fm = document.getElementById('condition');
             var fdata = new FormData(fm);
             fdata.append("show_type", 'pic');
+
             xhr.open('POST', search_url, true);
             xhr.send(fdata);
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4) {
+
+                    $('#list_pic_batch').hide();
+
                     $('#list_disable_pic_enable').hide();
                     $('#pic_disable_list_enable').show();
 
@@ -533,6 +739,11 @@
             }
         }
     }
+
+    function get_checked_bookid_and_num() {
+
+    }
+
     function firstpagesend() {
 
         var fm = document.getElementById('condition');
@@ -543,6 +754,7 @@
 
         var showtype = $("#firstpage").attr("showtype");
         fdata.append("show_type", showtype);
+
 
         xhr.open('POST', search_url, true);
         xhr.send(fdata);
@@ -565,6 +777,7 @@
         var showtype = $("#prepage").attr("showtype");
         fdata.append("show_type", showtype);
 
+
         xhr.open('POST', search_url, true);
         xhr.send(fdata);
         xhr.onreadystatechange = function () {
@@ -586,6 +799,12 @@
         var showtype = $("#nextpage").attr("showtype");
         fdata.append("show_type", showtype);
 
+
+//        alert(book_ids);
+
+//        var book_ids = [];
+//        var book_nums = [];
+
         xhr.open('POST', search_url, true);
         xhr.send(fdata);
         xhr.onreadystatechange = function () {
@@ -605,6 +824,7 @@
 
         var showtype = $("#lastpage").attr("showtype");
         fdata.append("show_type", showtype);
+
 
         xhr.open('POST', search_url, true);
         xhr.send(fdata);
@@ -626,6 +846,7 @@
 //        alert(page);
         var showtype = $("#jumptopage").attr("showtype");
         fdata.append("show_type", showtype);
+
 
         xhr.open('POST', search_url, true);
         xhr.send(fdata);
@@ -656,20 +877,109 @@
 
     $(document).on("change", checkboxes_sel, checkboxes_changed);
 
-    var checkallbox_changed = function () {
+    //    var checkallbox_changed = function () {
+
+    function checkallbox_changed() {
+
         var $div_list = $('#div_list');
         var $checkallbox = $div_list.find("input.checkall_box:checkbox");
         var checkalllist = $('.checkall');
+
+
         if ($checkallbox.prop("checked")) {
+
             $.each(checkalllist, function (index, domEle) {
                 domEle.checked = true;
+//                加入订单
+//                domEle.trigger("click");
             });
+//顺序不可变
+            add_or_delete_this_page_temp_table('add');
+
         } else {
+
+//顺序不可变
+            add_or_delete_this_page_temp_table('delete');
+
+//            alert(2);
             $.each(checkalllist, function (index, domEle) {
                 domEle.checked = false;
+//                取消订单
+//                domEle.trigger("click");
             });
         }
-    };
+    }
+    ;
+
+    //    var check_all_box = $('.checkall_box');
+    //
+    //    添加或删除一个页面的数据
+
+    function add_or_delete_this_page_temp_table(option) {
+
+        var user_id = $('#userid').html();
+
+        var book_ids = [];
+        var book_nums = [];
+        var $row = $('.row');
+        var checked_boxes = $row.find(checkboxes_sel + ":checked");
+        var total_num = 1;
+//        alert(checked_boxes.length);
+
+        $.each(checked_boxes, function (index, checkboxEle) {
+
+//            alert($(this).parent().attr('class'));
+
+            if ($(this).parent().attr('class') == 'list') {
+                book_nums.push($(this).parent().next().children().val());
+            } else {
+                book_nums.push($(this).next().val());
+            }
+            if (checkboxEle.name) {
+                book_ids.push(checkboxEle.name);
+            }
+        })
+
+        for (var i in book_nums) {
+            total_num = total_num && book_nums[i];
+        }
+
+        if (total_num == 0) {
+            alert("请填写数量");
+
+//保持原来选中状态
+            var $div_list = $('#div_list');
+            var $checkallbox = $div_list.find("input.checkall_box:checkbox");
+            var checkalllist = $('.checkall');
+
+            $.each(checkalllist, function (index, domEle) {
+//                domEle.checked = domEle.is(':checked');
+                domEle.checked = false;
+            });
+
+            $.each($checkallbox, function (index, domEle) {
+//                domEle.checked = domEle.is(':checked');
+                domEle.checked = false;
+            });
+//            $checkallbox.checked = false;
+
+//            alert($checkallbox.checked);
+
+            return;
+        }
+
+        xhr.open('POST', add_or_delete_this_page_temp_table_url, true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("user_id=" + user_id + "&book_ids=" + book_ids + "&book_nums=" + book_nums + "&option=" + option);
+//        xhr.send("user_id=" + user_id);
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                alert(this.responseText);
+            }
+        }
+
+    }
 
 
     function guan_cang_import_history() {
@@ -706,7 +1016,7 @@
 //        alert($(this).parent());
         var pici_id = $(this).parent().prev().children().eq(1).prop('id');
         var pici = $(this).parent().parent();
-        alert(pici_id);
+//        alert(pici_id);
         xhr.open('POST', delpici_url, true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("pici_id=" + pici_id);
@@ -797,6 +1107,7 @@
 
         user_id = $('#userid').html();
 
+//        alert(1);
 //        alert(user_id);
 
         var book_ids = [];
@@ -814,13 +1125,16 @@
                 book_ids.push(checkboxEle.name);
             }
         })
-
+//
 //        alert(book_ids);
 //        alert(book_nums);
+//return;
 
         xhr.open('POST', generate_order_url, true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("user_id=" + user_id + "&book_ids=" + book_ids + "&book_nums=" + book_nums);
+//        xhr.send("user_id=" + user_id);
+
         xhr.onreadystatechange = function () {
             if (this.readyState == 4) {
                 alert(this.responseText);
@@ -847,5 +1161,328 @@
         window.location.href = "http://" + global_url + "/guanpeipindao/zhengdingdan/orders_view.php?usrn=" + uid;
     }
 
+    function category_clear() {
+        $("#zyfl_sel").attr("value", "");
+        $("#ztfl_sk_sel").attr("value", "");
+        $("#ztfl_zk_sel").attr("value", "");
+    }
+
+    function get_book_info_and_update_db() {
+
+        $('.get_book_info_and_update_db_class').click(function () {
+//            alert(1);
+            if (this.checked)alert(this.value);//当前checkbox值
+        })
+//        if(this.checked)alert(this.value);//当前checkbox值
+
+    }
+    //    $(function(){
+    //        $('.get_book_info_and_update_db_class').click(function(){
+    //            alert(1);
+    //            if(this.checked)alert(this.value);//当前checkbox值
+    //        })
+    //    })
+
+    $('#show').on('mouseenter', function () {
+
+        $(".get_book_info_and_update_db_class").on("click", function () {
+
+            var add_one_book_to_order = 1;
+            var book_id = '';
+            var book_num = '';
+
+            var fdata = new FormData();
+
+            user_id = $('#userid').html();
+
+            book_id = this.name;
+
+            if ($(this).parent().attr('class') == 'list') {
+                book_num = $(this).parent().next().children().val();
+            } else {
+                book_num = $(this).next().val();
+            }
+
+            if (book_num == '0') {
+                alert("请选择数量！");
+                $(this).prop("checked", false);
+                return;
+            }
+
+            if (this.checked) {
+            } else {
+                add_one_book_to_order = 0;
+            }
+
+            fdata.append("book_id", book_id);
+            fdata.append("book_num", book_num);
+            fdata.append("user_id", user_id);
+            fdata.append("add_one_book_to_order", add_one_book_to_order);
+
+            xhr.open('POST', operate_temp_table_url, true);
+            xhr.send(fdata);
+
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    alert(this.responseText);
+                }
+            }
+
+        });
+
+    });
+
+    $('#second_floor').on('mouseleave', function () {
+
+//        alert(2);
+
+        $(".get_book_info_and_update_db_class").off("click");
+
+    });
+
+    function manipulate_session() {
+
+        var fdata = new FormData();
+        var user_id = $('#userid').html();
+
+
+        fdata.append("user_id", user_id);
+
+        xhr.open('POST', manipulate_session_url, true);
+        xhr.send(fdata);
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+//                alert(this.responseText);
+                document.getElementById("manipulate_session_btn").disabled = true;
+            }
+        }
+
+    }
+
+    $(".batch_item").on('click', function () {
+//        alert(1);
+
+        var batch_id = $(this).html();
+//        alert($(this).html());
+        var a_new = "a_new";
+        var list = "list";
+
+        var fdata = new FormData();
+        fdata.append("batch_id", batch_id);
+        fdata.append("from_url", a_new);
+        fdata.append("show_type", list);
+
+        xhr.open('POST', batch_item_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+
+                $('#list_pic').hide();
+
+//                $('#list_pic_batch').hide();
+
+                $('#list_pic_batch').show();
+                $('#bottom').show();
+
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+            }
+        }
+
+    });
+
+    $(".batch_icon").toggle(
+            function () {
+                $("#batch_table").hide();
+//                $("#toggle_table").attr('src');
+            },
+            function () {
+                $("#batch_table").show();
+//                $("#toggle_table").attr('src');
+            }
+    );
+
+
+    function firstpagesend_batch() {
+
+        var fdata = new FormData();
+
+        var page = $("#firstpage_batch").attr("page");
+        fdata.append("page", page);
+
+        var showtype = $("#firstpage_batch").attr("showtype");
+        fdata.append("show_type", showtype);
+
+
+        xhr.open('POST', batch_item_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+            }
+        }
+    }
+
+    function prepagesend_batch() {
+
+        var fdata = new FormData();
+
+        var page = $("#prepage_batch").attr("page");
+        fdata.append("page", page);
+
+        var showtype = $("#prepage_batch").attr("showtype");
+        fdata.append("show_type", showtype);
+
+
+        xhr.open('POST', batch_item_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+            }
+        }
+    }
+
+    function nextpagesend_batch() {
+
+        var fdata = new FormData();
+
+        var page = $("#nextpage_batch").attr("page");
+        fdata.append("page", page);
+
+        var showtype = $("#nextpage_batch").attr("showtype");
+        fdata.append("show_type", showtype);
+
+//        alert(page);
+//        alert(showtype);
+
+        xhr.open('POST', batch_item_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+            }
+        }
+    }
+
+    function lastpagesend_batch() {
+
+        var fdata = new FormData();
+        var page = $("#lastpage_batch").attr("page");
+        fdata.append("page", page);
+
+        var showtype = $("#lastpage_batch").attr("showtype");
+        fdata.append("show_type", showtype);
+
+
+        xhr.open('POST', batch_item_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+            }
+        }
+    }
+
+    function jumptopagesend_batch() {
+
+        var fdata = new FormData();
+
+        var page = $("#jumptopage_batch").val();
+        fdata.append("page", page);
+//        alert(page);
+        var showtype = $("#jumptopage_batch").attr("showtype");
+        fdata.append("show_type", showtype);
+
+
+        xhr.open('POST', batch_item_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                document.getElementById('show').innerHTML = '';
+                document.getElementById('show').innerHTML = this.responseText;
+            }
+        }
+    }
+
+
+    function send_batch(arg) {
+
+        if ($('#pic_disable_list_batch_enable').is(':visible')) {
+
+            var fdata = new FormData();
+
+            fdata.append("show_type", 'list');
+
+            xhr.open('POST', batch_item_url, true);
+            xhr.send(fdata);
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4) {
+
+                    $('#list_disable_pic_batch_enable').show();
+                    $('#pic_disable_list_batch_enable').hide();
+
+                    $('#list_pic').hide();
+                    $('#list_pic_batch').show();
+
+//                    $('#bottom').show();
+
+                    document.getElementById('show').innerHTML = '';
+                    document.getElementById('show').innerHTML = this.responseText;
+//                $("#show").load("../../guanpeipindao/chachong/cc_list.php");
+                }
+            }
+        }
+    }
+
+
+    function sendpic_batch() {
+
+        if ($('#list_disable_pic_batch_enable').is(':visible')) {
+
+            var fdata = new FormData();
+            fdata.append("show_type", 'pic');
+
+            xhr.open('POST', batch_item_url, true);
+            xhr.send(fdata);
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4) {
+
+                    $('#list_pic').hide();
+
+                    $('#list_disable_pic_batch_enable').hide();
+                    $('#pic_disable_list_batch_enable').show();
+
+                    document.getElementById('show').innerHTML = '';
+                    document.getElementById('show').innerHTML = this.responseText;
+                }
+            }
+        }
+    }
+
+    $(".delete_batch").on('click', function () {
+
+//        var batch_id = $(this).parent().parent().children().eq(1).children().eq(1).html();
+        var batch_id = $(this).parent().parent().children().eq(0).children().eq(0).html();
+//        alert(1);
+        alert(batch_id);
+
+        var fdata = new FormData();
+        fdata.append("batch_id", batch_id);
+
+        xhr.open('POST', delete_batch_url, true);
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                alert(this.responseText);
+            }
+        }
+
+    });
 </script>
 </html>

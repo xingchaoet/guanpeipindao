@@ -7,7 +7,7 @@
  */
 require_once("../config.php");
 require_once("../db/con_mssql.php");
-require_once("../db/con_mysql2.php");
+//require_once("../db/con_mysql2.php");
 include("../db/dao.php");
 
 include("../include/GuanCangSmarty.php");
@@ -41,16 +41,16 @@ $_SESSION['username'];
 $message = $_POST['message'];
 $message = iconv('UTF-8', 'GBK', $message);
 
-echo $message;
-echo $message_date;
-echo $_SESSION['zw'];
-echo $_SESSION['username'];
+//echo $message;
+//echo $message_date;
+//echo $_SESSION['zw'];
+//echo $_SESSION['username'];
 
 $sql = "insert into bs_message_board
 (UserName,CompanyName,Position,MessageContents,MessageTime,FlagAudit,FlagMask,FlagReply) 
 values
 ('" . trim($_SESSION['username']) . "','" . trim($_SESSION['lib_no']) . "','" . trim($zw) . "','" . $message . "','" . $message_date . "','" . 0 . "','" . 0 . "','" . 0 . "')";
-echo $sql;
+//echo $sql;
 
 //$open = fopen("D:/WWW/guanpeipindao/zhengdingdan/sql.txt", "a");
 //fwrite($open, $sql . "\r\n");
@@ -60,7 +60,9 @@ echo $sql;
 
 $MessageResult = $ms->sdb($sql);
 if ($MessageResult) {
-    $reback = '1';
+    $reback = '留言成功';
+}else{
+    $reback = '留言失败';
 }
 echo $reback;
 

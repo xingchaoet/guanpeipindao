@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-09-20 17:57:28
-  from "D:\WWW\guanpeipindao\templates\zhengdingdan\orders_view.html" */
+/* Smarty version 3.1.29, created on 2016-11-09 15:45:22
+  from "D:\phpStudy\WWW\guanpeipindao\templates\zhengdingdan\orders_view.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_57e10808e9e7c4_53431995',
+  'unifunc' => 'content_5822d41290c673_40887156',
   'file_dependency' => 
   array (
-    '5b6fb4ecef40d0572493bc1a9cdef412c72e414e' => 
+    '7413ca9d63fa0e11bb28aacad71c35bff69dcd9e' => 
     array (
-      0 => 'D:\\WWW\\guanpeipindao\\templates\\zhengdingdan\\orders_view.html',
-      1 => 1474355376,
+      0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\zhengdingdan\\orders_view.html',
+      1 => 1478137750,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_57e10808e9e7c4_53431995 ($_smarty_tpl) {
+function content_5822d41290c673_40887156 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +37,6 @@ function content_57e10808e9e7c4_53431995 ($_smarty_tpl) {
     <link rel="stylesheet" href="../dist/css/left_nav.css">
 
 
-    <link rel="stylesheet" href="../dist/css/header.css">
     <!--<link rel="stylesheet" href="../dist/css/demo.css">-->
     <link rel="stylesheet" href="../dist/css/style.css">
     <!--<link rel="stylesheet" href="../dist/css/normalize.css">-->
@@ -63,10 +62,7 @@ function content_57e10808e9e7c4_53431995 ($_smarty_tpl) {
             font-size: 12px;
         }
 
-        .col-sm-3 {
-            background: #F0FFFF;
-            margin-bottom: 10px;
-        }
+        /*.col-sm-3 */
 
         .col-sm-9 {
             width: 770px;
@@ -79,17 +75,23 @@ function content_57e10808e9e7c4_53431995 ($_smarty_tpl) {
         }
 
         .tabs label {
+
             width: 150px;
+            height: 0;
+            border-bottom: 30px solid grey;
+            border-right: 30px solid transparent;
             /*color: blue;*/
             /*background: blue;*/
             /*background: -moz-linear-gradient(top, blue 0%, lightblue 100%);*/
             /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,blue), color-stop(100%,lightblue));*/
             /*background: -webkit-linear-gradient(top, blue 0%,lightblue 100%);*/
             /*color: blue;*/
-            background: blue;
-            background: -moz-linear-gradient(top, blue 0%, lightblue 100%);
-            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, blue), color-stop(100%, lightblue));
-            background: -webkit-linear-gradient(top, blue 0%, lightblue 100%);
+            /*background: grey;*/
+            /*background: -moz-linear-gradient(top, grey 0%, grey 100%);*/
+            /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, grey), color-stop(100%, grey));*/
+            /*background: -webkit-linear-gradient(top, grey 0%, grey 100%);*/
+            color: white;
+            text-align: left;
         }
 
         .tabs input {
@@ -288,6 +290,34 @@ function content_57e10808e9e7c4_53431995 ($_smarty_tpl) {
             opacity: 1;
             display: none;
         }
+
+        #orders_view_nav_tab {
+            /*width: 770px;*/
+            /*height: 30px;*/
+            /*background: #C3C3C3;*/
+            /*background: -moz-linear-gradient(top, #C3C3C3 0%, #C3C3C3 100%);*/
+            /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #C3C3C3), color-stop(100%, #C3C3C3));*/
+            /*background: -webkit-linear-gradient(top, #C3C3C3 0%, #C3C3C3 100%);*/
+        }
+
+        .the_space {
+
+        }
+/*防止header样式错版*/
+        .site_header .search_size {
+            width: 290px;
+            height: 32px;
+        }
+
+        a {
+            cursor:pointer;
+            text-decoration:none;
+        }
+
+        a:hover, a:focus {
+            color: #2a6496;
+            text-decoration: none;
+        }
     </style>
 
 </head>
@@ -320,12 +350,13 @@ function content_57e10808e9e7c4_53431995 ($_smarty_tpl) {
 
                     </div>
                 </div>
-                <div class="">
+                <div class="the_space">
                     <!-- Codrops top bar -->
                     <section class="tabs">
 
                         <?php if ($_smarty_tpl->tpl_vars['user_type']->value == "library_user") {?>
 
+                        <!--<div id="orders_view_nav_tab">-->
                         <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked"/>
                         <label for="tab-1" class="tab-label-1">我的征订单</label>
 
@@ -339,8 +370,9 @@ function content_57e10808e9e7c4_53431995 ($_smarty_tpl) {
 
                         <input id="tab-4" type="radio" name="radio-set" class="tab-selector-4"/>
                         <label for="tab-4" class="tab-label-4">注册信息修改</label>
-                        <div class="clear-shadow"></div>
 
+                        <div class="clear-shadow"></div>
+                        <!--</div>-->
                         <?php if ($_smarty_tpl->tpl_vars['user_type']->value == "library_user") {?>
                         <div class="content">
                             <div id="show_zhengdingdan" class="content-1">
@@ -348,10 +380,10 @@ function content_57e10808e9e7c4_53431995 ($_smarty_tpl) {
 </span>
                                 <table class='table table-bordered table-striped'>
                                     <tr style="text-align: center">
-                                        <td>征订单编号</td>
-                                        <td>生成时间</td>
-                                        <td>品种数量</td>
-                                        <td>操作</td>
+                                        <td width="150">征订单编号</td>
+                                        <td width="150">生成时间</td>
+                                        <td width="100">品种数量</td>
+                                        <td width="150">操作</td>
                                     </tr>
 
                                     <?php
@@ -384,6 +416,7 @@ $__foreach_order_0_saved_local_item = $_smarty_tpl->tpl_vars['order'];
 
                                         <td>
                                             <a id="view_zdd_detail" class="view_zdd_detail">查看详情</a>
+                                            <!--<a id="view_zdd_detail_mssql"   class="view_zdd_detail_mssql">查看详情mssql</a>-->
                                             <a class="zhengdingdan_download_marc">下载</a>
                                         </td>
 
@@ -407,10 +440,10 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_0_saved_item;
 </span>
                                 <table id="show_yudingdan_table" class='table table-bordered table-striped'>
                                     <tr style="text-align: center">
-                                        <td>预订单编号</td>
-                                        <td>生成时间</td>
-                                        <td>品种数量</td>
-                                        <td>操作</td>
+                                        <td width="150">预订单编号</td>
+                                        <td width="150">生成时间</td>
+                                        <td width="100">品种数量</td>
+                                        <td width="150">操作</td>
                                     </tr>
 
                                     <?php
@@ -493,17 +526,17 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_item;
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="reg_left_td">确认密码：</td>
-                                            <td class="reg_right_td"><input type="text" id="repeat_password"
-                                                                            name="repeat_password">
-                                                <span id="repeat_password_span"></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
                                             <td class="reg_left_td">新密码：</td>
                                             <td class="reg_right_td"><input type="text" id="new_password"
                                                                             name="new_password">
                                                 <span id="new_password_span"></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="reg_left_td">确认密码：</td>
+                                            <td class="reg_right_td"><input type="text" id="repeat_password"
+                                                                            name="repeat_password">
+                                                <span id="repeat_password_span"></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -595,7 +628,7 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_item;
                                             <td class="reg_right_td">
                                                 <input type="checkbox" name="excel">Excel
                                                 <input type="checkbox" name="marc">Marc
-                                                <input type="checkbox" name="excel_marc">Excel+Marc
+                                                <!--<input type="checkbox" name="excel_marc">Excel+Marc-->
                                             </td>
                                         </tr>
                                         <tr>
@@ -725,6 +758,10 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_item;
 
     //    征订单查看详情
     var orders_view_detail_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/zhengdingdan_detail.php';
+
+    //    征订单查看详情 masql
+    var orders_view_detail_mssql_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/zhengdingdan_detail_mssql.php';
+
     //    预订单查看详情
     var orders_view_ydd_detail_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/yudingdan_detail.php';
 
@@ -885,7 +922,7 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_item;
 
         var showtype = $("#nextpage").attr("showtype");
         fdata.append("show_type", showtype);
-        alert(showtype);
+//        alert(showtype);
 
         if (showtype != 'detail') {
             xhr.open('POST', orders_view_url, true);
@@ -1057,6 +1094,25 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_item;
                 }
 
             });
+//测试
+//            $(".view_zdd_detail_mssql").one("click", function () {
+//                var fdata = new FormData();
+//                var uid = $("#userid").text();
+//                fdata.append("usrn", uid);
+//                var sheet_no = $(this).parent().parent().children().eq(0).prop('id');
+////                alert(sheet_no);
+//                fdata.append("sheet_no", sheet_no);
+//
+//                xhr.open('POST', orders_view_detail_mssql_url, true);
+//                xhr.send(fdata);
+//                xhr.onreadystatechange = function () {
+//                    if (this.readyState == 4) {
+//                        document.getElementById('show_zhengdingdan').innerHTML = '';
+//                        document.getElementById('show_zhengdingdan').innerHTML = this.responseText;
+//                    }
+//                }
+//
+//            });
 
             $(".zhengdingdan_download_marc").one("click", function () {
 
@@ -1213,6 +1269,12 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_item;
                 return;
             }
 
+            if (($("input[type=radio][name=marc][value='marc']").attr("checked")) && (!($("#MARC").attr("checked") || $("#Calis").attr("checked") || $("#CF").attr("checked")))) {
+
+                alert('未选择文件类型！');
+                return;
+            }
+
             var sheet_no = $(this).prop('id');
             if ($("#MARC").attr("checked") || $("#Calis").attr("checked") || $("#CF").attr("checked")) {
 
@@ -1247,6 +1309,12 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_item;
         $(".download_yudingdan").click(function () {
 
             if ((!$("input[type=radio][name=marc_ydd][value='excel_ydd']").attr("checked")) && (!$("input[type=radio][name=marc_ydd][value='marc_ydd']").attr("checked"))) {
+
+                alert('未选择文件类型！');
+                return;
+            }
+
+            if (($("input[type=radio][name=marc_ydd][value='marc_ydd']").attr("checked")) && (!($("#MARC_YDD").attr("checked") || $("#Calis_YDD").attr("checked") || $("#CF_YDD").attr("checked")))) {
 
                 alert('未选择文件类型！');
                 return;
@@ -1338,14 +1406,14 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_item;
 
     $(document).ready(function () {
 
-        var old_password_flag, repeat_password_flag, new_password_flag;
+        var old_password_flag, new_password_flag, repeat_password_flag;
 
         $('#old_password').on('blur', old_password_input_blur);
-        $('#repeat_password').on('blur', repeat_password_input_blur);
         $('#new_password').on('blur', new_password_input_blur);
+        $('#repeat_password').on('blur', repeat_password_input_blur);
 
         function chk_change_password() {
-            if ((old_password_flag == 'yes') && (repeat_password_flag == 'yes') && (new_password_flag == 'yes')) {
+            if ((old_password_flag == 'yes') && (new_password_flag == 'yes') && (repeat_password_flag == 'yes')) {
                 document.getElementById("change_password_btn").disabled = false;
             } else {
                 document.getElementById("change_password_btn").disabled = true;
@@ -1356,7 +1424,7 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_item;
         function old_password_input_blur() {
 //        alert(1);
             old_password = $('#old_password').val();
-//        alert(old_password);
+            //        alert(old_password);
             var fdata = new FormData();
             fdata.append("old_password", old_password);
             xhr.open('POST', check_old_password_url, true);
@@ -1380,19 +1448,6 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_item;
             }
         }
 
-        function repeat_password_input_blur() {
-            old_password = $('#old_password').val();
-            repeat_password = $('#repeat_password').val();
-            if (old_password != repeat_password) {
-                $("#repeat_password_span").show();
-                $('#repeat_password_span').html("<font color='red'>两次密码输入不一致</font>");
-                repeat_password_flag = '';
-            } else if (repeat_password != '' && old_password == repeat_password) {
-                $("#repeat_password_span").show();
-                $('#repeat_password_span').html("<font color='green'>两次密码输入一致</font>")
-                repeat_password_flag = 'yes';
-            }
-        }
 
         function new_password_input_blur() {
             new_password = $('#new_password').val();
@@ -1413,7 +1468,23 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_item;
                 new_password_flag = 'yes';
             }
 
+        }
+
+        function repeat_password_input_blur() {
+            new_password = $('#new_password').val();
+            repeat_password = $('#repeat_password').val();
+            if (new_password != repeat_password) {
+                $("#repeat_password_span").show();
+                $('#repeat_password_span').html("<font color='red'>两次密码输入不一致</font>");
+                repeat_password_flag = '';
+            } else if (repeat_password != '' && new_password == repeat_password) {
+                $("#repeat_password_span").show();
+                $('#repeat_password_span').html("<font color='green'>两次密码输入一致</font>")
+                repeat_password_flag = 'yes';
+            }
+
             chk_change_password();
+
         }
 
     });

@@ -1,12 +1,12 @@
-<div class="site">
+<div class="site_header">
     <div class="login_register">
 
         {if $smarty.session.islogin}
         <!--<a style="margin-left: 930px">欢迎{$smarty.session.username}</a>-->
-        <p style="margin-left: 900px">
+        <span class="welcome_logout">
             <a >欢迎{$smarty.session.username}</a>
             <a href="{$relpostodist}user/logout.php">退出</a>
-        </p>
+        </span>
 
         {else}
         <span style="margin-left: 680px">您好,欢迎来到科学出版社!</span>
@@ -21,17 +21,27 @@
     <div>
         <div>
             <a href="{$relpostodist}index.php" style="float:left; margin-right: 100px" href="javascript:scroll(0,0)">
-                <img height="56" width="238" src="{$relpostodist}dist/picture/logo.gif" alt="logo"></a>
-            <div style="float: left">
-                <form action="" class="navbar-form">
-                    <div class="form-group">
-                        <input  type="text" placeholder='书名、内容简介或作者' class='form-control search_size'>
+                <img height="53" width="290" src="{$relpostodist}dist/picture/logo.gif" alt="logo"></a>
+            <div id="header_middle" >
+                <div  class="">
+                    <div class="" style="float: left">
+                        <input  type="text" placeholder='书名、内容简介或作者' class='form-control search_size words'>
                     </div>
-                    <div class="form-group">
-                        <input type="submit" value="搜索" class='btn btn-primary'>
+                    <div class="">
+                        <input id="header_search" type="submit" value="搜索" class='btn btn-primary words'>
                     </div>
-                    <p class="keys">热门关键词 ：物理 科学 企业管理与培训</p>
-                </form>
+                </div>
+                <div class="keys words">热门关键词 ：物理 科学 企业管理</div>
+
+                <!--<form id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()"  >-->
+                    <!--<div class="B_input_box">-->
+                        <!--<input name="keywords" type="text" id="keyword" placeholder='书名、书号、丛书名、作者或内容简介' value="" class="B_input"/>-->
+                    <!--</div>-->
+                    <!--<input name="imageField" type="submit" value="" class="go" style="cursor:pointer;" />-->
+                    <!--&lt;!&ndash;<div style="margin-left:10px;float:left;width:40px"><a href="search.php?act=advanced_search">高级</br>搜索</a></div>&ndash;&gt;-->
+                <!--</form>-->
+                <!--<div class="keys">热门关键词 ：物理 科学 企业管理与培训</div>-->
+
             </div>
             <!--<div style=""><p class="gouwuche">去购物车结算</p></div>-->
 
@@ -49,25 +59,25 @@
                 <a id="first_all" href="guanpeipindao.php">全部商品分类</a>
             </li>
             <li class="nav_li_second">
-                <a href="other1.php">网上书店</a>
+                <a href="">网上书店</a>
             </li>
             <li class="nav_li">
-                <a href="other2.php">按需印刷</a>
+                <a href="">按需印刷</a>
             </li>
             <li class="nav_li">
-                <a href=".php">电子书</a>
+                <a href="">电子书</a>
             </li>
             <li class="nav_li">
-                <a href="other1.php">预出版</a>
+                <a href="">预出版</a>
             </li>
             <li class="nav_li">
                 <a href="/guanpeipindao/guanpeipindao.php">馆配服务</a>
             </li>
             <li class="nav_li">
-                <a href="other1.php">教学服务</a>
+                <a href="">教学服务</a>
             </li>
             <li class="nav_li">
-                <a href="other2.php">经销商服务</a>
+                <a href="">经销商服务</a>
             </li>
 
 

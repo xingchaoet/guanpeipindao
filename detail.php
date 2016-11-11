@@ -13,7 +13,7 @@ include ("include/GuanCangSmarty.php");
 require_once("config.php");
 include("db/con_mssql.php");
 include("db/dao.php");
-include  ("db/con_mysql2.php");
+//include  ("db/con_mysql2.php");
 
 //echo $_GET['book_id'];
 //exit();
@@ -24,7 +24,7 @@ $smarty = new GuanCangSmarty();
 
 $book_id = $_GET['book_id'];
 
-$con_mysql2 = new con_mysql2();
+//$con_mysql2 = new con_mysql2();
 
 $ms = new con_mssql();
 
@@ -34,9 +34,13 @@ $ms = new con_mssql();
 
 $sql = "select * from ecs_book where book_id = '$book_id'";
 
-$bookdetails =  $con_mysql2->sdb($sql);
-
-
+$rs_detail = $ms->sdb($sql);
+while ($detail_data = odbc_fetch_array($rs_detail)) {
+    $bookdetails[] = $detail_data;
+};
+//$bookdetails =  $con_mysql2->sdb($sql);
+//{'gbk'|iconv:'utf-8//IGNORE':$introduce}
+//iconv('gbk', 'utf-8//IGNORE', $introduce)
 //介绍文字
 $sql = ser("bs_home_introduce", "introduce", "");
 

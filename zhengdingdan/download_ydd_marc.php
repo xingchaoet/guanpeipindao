@@ -5,6 +5,7 @@
  * Date: 2016/8/11
  * Time: 9:06
  */
+header("Content-Type: text/html;charset=utf-8");
 require_once("../db/con_mssql.php");
 include("../db/dao.php");
 require_once("../config.php");
@@ -79,11 +80,11 @@ if ($MARC || $CALIS || $CF) { //采访类型
             }
             if (odbc_fetch_row($rs)) {
 //                if (!empty(odbc_result($rs, "marc"))) {
-                    $tmp_marc_ydd = $tmp_marc_ydd . odbc_result($rs, "marc") . chr(13) . chr(10);
+                $tmp_marc_ydd = $tmp_marc_ydd . odbc_result($rs, "marc") . chr(13) . chr(10);
 //                }
             }
         }
-// 下载CF数据
+// 下载MARC数据
         $MARC_FILENAME_ydd = 'marc_' . $sheet_no . '_ydd.iso';
         if (strlen($tmp_marc_ydd) == 0) {
         } else {
@@ -132,12 +133,12 @@ if ($MARC || $CALIS || $CF) { //采访类型
 
 //                if (!empty(odbc_result($rs, "marc"))) {
 
-                    $tmp_calis_ydd = $tmp_calis_ydd . odbc_result($rs, "marc") . chr(13) . chr(10);
+                $tmp_calis_ydd = $tmp_calis_ydd . odbc_result($rs, "marc") . chr(13) . chr(10);
 
 //                }
             }
         }
-// 下载CF数据
+// 下载CALIS数据
         $CALIS_FILENAME_ydd = 'calis_' . $sheet_no . '_ydd.iso';
         if (strlen($tmp_calis_ydd) == 0) {
         } else {
@@ -179,7 +180,7 @@ if ($MARC || $CALIS || $CF) { //采访类型
             if (odbc_fetch_row($rs)) {
 //                if (!empty(odbc_result($rs, "marc"))) {
 
-                    $tmp_cf_ydd = $tmp_cf_ydd . odbc_result($rs, "marc") . chr(13) . chr(10);
+                $tmp_cf_ydd = $tmp_cf_ydd . odbc_result($rs, "marc") . chr(13) . chr(10);
 
 //                }
             }
@@ -213,28 +214,35 @@ if ($MARC || $CALIS || $CF) { //采访类型
 //$open = fopen("D:/WWW/guanpeipindao/data_download/filesize.txt", "a");
 //fwrite($open, filesize($zipfile) . "\r\n");
 //fclose($open);
-
-    $size = filesize($zipfile);
+    if (file_exists($zipfile)) {
+//        if (file_exists($zipfile) && !@filesize($zipfile)) {
 
 //下面是输出下载;
-    header("Cache-Control: max-age=0");
-    header("Content-Description: File Transfer");
-    header("Accept-Ranges: bytes");
-    header('Content-disposition: attachment; filename=' . basename($zipname)); // 文件名
-    header("Content-Type: application/zip"); // zip格式的
-    header("Transfer-Encoding: binary"); // 告诉浏览器，这是二进制文件
-    header('Content-Length: ' . $size); // 告诉浏览器，文件大小
-    @readfile($zipfile);//输出文件;
+        header("Cache-Control: max-age=0");
+        header("Content-Description: File Transfer");
+        header("Accept-Ranges: bytes");
+        header('Content-disposition: attachment; filename=' . basename($zipname)); // 文件名
+        header("Content-Type: application/zip"); // zip格式的
+        header("Transfer-Encoding: binary"); // 告诉浏览器，这是二进制文件
+        header('Content-Length: ' . $size); // 告诉浏览器，文件大小
+        @readfile($zipfile);//输出文件;
 
-    unlink($zipfile); //下载完成后要进行删除
+        @unlink($zipfile); //下载完成后要进行删除
 
-    @unlink($MARC_file_ydd);
-    @unlink($CALIS_file_ydd);
-    @unlink($CF_file_ydd);
-    @unlink($EXCEL_file);
-    unset($MARC_FILENAME_ydd);
-    unset($CALIS_FILENAME_ydd);
-    unset($CF_FILENAME_ydd);
+        @unlink($MARC_file);
+        @unlink($CALIS_file);
+        @unlink($CF_file);
+        @unlink($EXCEL_file);
+    } else {
+        $global_url = GLOBAL_URL;
+        echo "<script type='text/javascript' charset='utf-8'>alert('无数据!');</script>";
+        echo "<script type='text/javascript'>window.location.href='http://'+\"$global_url\"+'/guanpeipindao/zhengdingdan/orders_view.php';</script>";
+    }
+
+
+    unset($MARC_filename);
+    unset($CALIS_filename);
+    unset($CF_filename);
     unset($EXCEL_filename);
 
 } else if ($EXCEL) {//下载EXCEL格式

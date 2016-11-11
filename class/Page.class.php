@@ -42,7 +42,7 @@ class Page
         }
     }
 
-     function pageList()
+    function pageList()
     {
 
         for ($i = $this->bothnum; $i >= 1; $i--) {
@@ -69,83 +69,61 @@ class Page
     function show()
     {
 
+
+        $this->pagebar = "<div id='pagination' style=\"margin-right:5px;float: right\"><p><b>";
+
+
         if ($this->page == 1) {
             if ($this->nextpage == 1) { //只有一页 不显示前一页与后一页
 
-                $this->pagebar = "<div style=\"margin-left:500px\"><p><b>
-                总计{$this->total}条记录 <a page = 1 show = {$this->show}  type={$this->type} id = 'firstpage' onclick='firstpagesend()'>首页</a>
+                $this->pagebar .= " 总计{$this->total}条记录 <a page = 1 show = {$this->show}  type={$this->type} id = 'firstpage' onclick='firstpagesend()'>首页</a>
                 |" . $this->pageList() . "
                 |<a page = {$this->pagenum} show = {$this->show}  type={$this->type}   id = 'lastpage'   onclick='lastpagesend()'>末页</a>
                 |跳到<select name='topage' id = 'jumptopage' size='1' onchange='jumptopagesend()'  show = $this->show >
-                </b></p></div>";
-
-                for ($i = 1; $i <= $this->pagenum; $i++) {
-                    if ($i == $this->page) $this->pagebar .= "<option value='$i' selected>$i</option>\n";
-                    else
-                        $this->pagebar .= "<option value='$i'>$i</option>\n";
-                }
-
-                echo $this->pagebar;
+                ";
 
             } else {//不显示前一页
 
-                $this->pagebar = "<div style=\"margin-left:500px\"><p><b>
-                总计{$this->total}条记录 <a page = 1 show = {$this->show}  type={$this->type} id = 'firstpage' onclick='firstpagesend()'>首页</a>
+                $this->pagebar .= " 总计{$this->total}条记录 <a page = 1 show = {$this->show}  type={$this->type} id = 'firstpage' onclick='firstpagesend()'>首页</a>
                 |" . $this->pageList() . "
                 |<a page = {$this->nextpage} show = {$this->show}  type={$this->type} id = 'nextpage' onclick='nextpagesend()'>下一页</a>
                 |<a page = {$this->pagenum} show = {$this->show}  type={$this->type}   id = 'lastpage'   onclick='lastpagesend()'>末页</a>
                 |跳到<select name='topage' id = 'jumptopage' size='1' onchange='jumptopagesend()'  show = $this->show >
-                </b></p></div>";
-
-
-                for ($i = 1; $i <= $this->pagenum; $i++) {
-                    if ($i == $this->page) $this->pagebar .= "<option value='$i' selected>$i</option>\n";
-                    else
-                        $this->pagebar .= "<option value='$i'>$i</option>\n";
-                }
-
-                echo $this->pagebar;
-
+                ";
             }
 
         } else if ($this->page * $this->length >= $this->total) { //不显示下一页
 
-            $this->pagebar = "<div style=\"margin-left:500px\"><p><b>
-            总计{$this->total}条记录 <a page = 1 show = {$this->show}  type={$this->type} id = 'firstpage' onclick='firstpagesend()'>首页</a>
+            $this->pagebar .= " 总计{$this->total}条记录 <a page = 1 show = {$this->show}  type={$this->type} id = 'firstpage' onclick='firstpagesend()'>首页</a>
             |<a page = {$this->prevpage} show = {$this->show}  type={$this->type}  id = 'prepage' onclick='prepagesend()'>上一页</a>
             |" . $this->pageList() . "
             |<a page = {$this->pagenum} show = {$this->show}  type={$this->type}   id = 'lastpage'   onclick='lastpagesend()'>末页</a>
             |跳到<select name='topage' id = 'jumptopage' size='1' onchange='jumptopagesend()'  show = $this->show >
-            </b></p></div>";
-
-            for ($i = 1; $i <= $this->pagenum; $i++) {
-                if ($i == $this->page) $this->pagebar .= "<option value='$i' selected>$i</option>\n";
-                else
-                    $this->pagebar .= "<option value='$i'>$i</option>\n";
-            }
-
-            echo $this->pagebar;
+            ";
 
         } else {//显示所有
 
-            $this->pagebar = "<div style=\"margin-left:500px\"><p><b>
-            总计{$this->total}条记录 <a page = 1 show = {$this->show}  type={$this->type} id = 'firstpage' onclick='firstpagesend()'>首页</a>
+            $this->pagebar .= " 总计{$this->total}条记录 <a page = 1 show = {$this->show}  type={$this->type} id = 'firstpage' onclick='firstpagesend()'>首页</a>
             |<a page = {$this->prevpage} show = {$this->show}  type={$this->type}  id = 'prepage' onclick='prepagesend()'>上一页</a>
             |" . $this->pageList() . "
             |<a page = {$this->nextpage} show = {$this->show}  type={$this->type} id = 'nextpage' onclick='nextpagesend()'>下一页</a>
             |<a page = {$this->pagenum} show = {$this->show}  type={$this->type}   id = 'lastpage'   onclick='lastpagesend()'>末页</a>
             |跳到<select name='topage' id = 'jumptopage' size='1' onchange='jumptopagesend()'  show = $this->show >
-            </b></p></div>";
-
-            for ($i = 1; $i <= $this->pagenum; $i++) {
-                if ($i == $this->page) $this->pagebar .= "<option value='$i' selected>$i</option>\n";
-                else
-                    $this->pagebar .= "<option value='$i'>$i</option>\n";
-            }
-
-            echo $this->pagebar;
+            ";
 
         }
+
+
+        for ($i = 1; $i <= $this->pagenum; $i++) {
+            if ($i == $this->page) $this->pagebar .= "<option value='$i' selected>$i</option>\n";
+            else
+                $this->pagebar .= "<option value='$i'>$i</option>\n";
+        }
+
+        $this->pagebar .= '</b></p></div>';
+
+        echo $this->pagebar;
+
     }
 }
 
