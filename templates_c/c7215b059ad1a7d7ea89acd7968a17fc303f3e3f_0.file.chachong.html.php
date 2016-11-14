@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-11 15:15:36
+/* Smarty version 3.1.29, created on 2016-11-14 19:20:17
   from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\chachong.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58257018d5ddc3_90950832',
+  'unifunc' => 'content_58299df174b8b4_04211069',
   'file_dependency' => 
   array (
     'c7215b059ad1a7d7ea89acd7968a17fc303f3e3f' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\chachong.html',
-      1 => 1478848512,
+      1 => 1479122231,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_58257018d5ddc3_90950832 ($_smarty_tpl) {
+function content_58299df174b8b4_04211069 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -536,8 +536,9 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                             </td>
 
                             <td class="batch_rtd">
-                                <a class="delete_batch"><img width="19" height="19" src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
-dist/picture/chachong/delete_batch.png" ></a>
+                                <a class="delete_batch"><img width="19" height="19"
+                                                             src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/chachong/delete_batch.png"></a>
                             </td>
 
                         </tr>
@@ -699,7 +700,7 @@ dist/picture/pic_list/pic_disable.gif"
     var manipulate_session_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/manipulate_session.php';
     var add_or_delete_this_page_temp_table_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/add_or_delete_this_page_temp_table.php';
     var batch_item_url = 'http://' + global_url + '/guanpeipindao/chachong/batch_item.php';
-    var delete_batch_url  = 'http://' + global_url + '/guanpeipindao/chachong/batch_item.php';
+    var delete_batch_url = 'http://' + global_url + '/guanpeipindao/chachong/batch_item.php';
 
     function creatXHR() {
         var xhr = null;
@@ -1152,24 +1153,6 @@ dist/picture/pic_list/pic_disable.gif"
         $('.down').show();
     }
 
-    //    var $flag_for_num_limit = 0;
-    function num_limit() {
-//        $flag_for_num_limit++;
-//        if ($flag_for_num_limit <= 1) {
-        var list = $('input[id^=amount1]');
-        $.each(list, function (index, domEle) {
-            domEle.onkeyup = function () {
-                this.value = this.value.replace(/\D/g, '');
-                if (domEle.value > 5) {
-                    domEle.value = 5;
-                }
-                if (domEle.value < 1) {
-                    domEle.value = 1;
-                }
-            }
-        });
-//        }
-    }
 
     function generate_order() {
 
@@ -1263,7 +1246,36 @@ dist/picture/pic_list/pic_disable.gif"
     //        })
     //    })
 
+    function isIE() { //ie?
+        if (!!window.ActiveXObject || "ActiveXObject" in window)
+            return true;
+        else
+            return false;
+    }
+
+
+    //    var $flag_for_num_limit = 0;
+    function num_limit() {
+//        $flag_for_num_limit++;
+//        if ($flag_for_num_limit <= 1) {
+        var list = $('input[id^=amount1]');
+        $.each(list, function (index, domEle) {
+            domEle.onkeyup = function () {
+                this.value = this.value.replace(/\D/g, '');
+                if (domEle.value > 5) {
+                    domEle.value = 5;
+                }
+                if (domEle.value < 1) {
+                    domEle.value = 1;
+                }
+            }
+        });
+//        }
+    }
+
+
     $('#show').on('mouseenter', function () {
+
 
         $(".get_book_info_and_update_db_class").on("click", function () {
 
@@ -1283,14 +1295,17 @@ dist/picture/pic_list/pic_disable.gif"
                 book_num = $(this).next().val();
             }
 
-            if (book_num == '0') {
-                alert("请选择数量！");
-                $(this).prop("checked", false);
-                return;
-            }
+//            if (book_num == '0') {
+//                alert("请选择数量！");
+//                $(this).prop("checked", false);
+//                return;
+//            }
 
             if (this.checked) {
             } else {
+
+                $(this).parent().next().children().attr('value', 0);
+
                 add_one_book_to_order = 0;
             }
 
@@ -1310,15 +1325,83 @@ dist/picture/pic_list/pic_disable.gif"
 
         });
 
+        $("body").on("propertychange input", ".get_book_num_and_update_db_class", function () {
+
+//            alert("i m change");
+//            alert($(this).val());
+
+            var add_one_book_to_order = 1;
+
+            var fdata = new FormData();
+
+            user_id = $('#userid').html();
+
+            book_id = $(this).parent().prev().children().attr('name');
+            book_num = $(this).val();
+
+//            alert(book_id);
+//            alert(book_num);
+//
+//
+            if (book_num == '0') {
+                $(this).attr('value', 1);
+                book_num = 1;
+
+//                add_one_book_to_order = 1;
+//                $(this).parent().prev().children().prop("checked", false);
+//                add_one_book_to_order = 0;
+            } else {
+                if (book_num > '5') {
+                    $(this).attr('value', 5);
+                    book_num = 5;
+                }
+//                add_one_book_to_order = 1;
+            }
+
+            $(this).parent().prev().children().prop("checked", true);
+
+//            if ($(this).parent().prev().children().prop("checked")) {
+//            } else {
+//                add_one_book_to_order = 0;
+//            }
+
+            fdata.append("book_id", book_id);
+            fdata.append("book_num", book_num);
+            fdata.append("user_id", user_id);
+            fdata.append("add_one_book_to_order", add_one_book_to_order);
+
+            xhr.open('POST', operate_temp_table_url, true);
+            xhr.send(fdata);
+
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    alert(this.responseText);
+                }
+            }
+
+        });
+
+//        if (isIE()) {
+////            $(".get_book_num_and_update_db_class").on("propertychange",function () {
+////            $(".get_book_num_and_update_db_class").attr("onpropertychange", "changeValue()");
+//            $("body").on("propertychange input", ".get_book_num_and_update_db_class", function () { alert("i m change"); });
+////            alert('1');
+//        } else { // 其他浏览器
+////            $(".get_book_num_and_update_db_class").on("change",changeValue());
+////            $(".get_book_num_and_update_db_class").attr("onpropertychange", "changeValue()");
+//            $("body").on("propertychange input", ".get_book_num_and_update_db_class", function () { alert("i m change"); });
+//        }
+
+
     });
 
-    $('#second_floor').on('mouseleave', function () {
-
-//        alert(2);
+    $('#show').on('mouseleave', function () {
 
         $(".get_book_info_and_update_db_class").off("click");
+        $("body").off("propertychange input");
 
     });
+
 
     function manipulate_session() {
 
