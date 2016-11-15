@@ -35,10 +35,10 @@ $error_appear = false;
 
 if ($add_one_book_to_order) {//添加书籍
 
-    if (!$book_num) {
-        echo "数量不可为0";
-        exit();
-    }
+//    if (!$book_num) {
+//        echo "数量不可为0";
+//        exit();
+//    }
 //    $sql_add_to_temp_table = "INSERT INTO [dbo]." . $table_name . " (Book_Id,Book_Num, State,User_Id,Pi_Ci_No,Date_Time) VALUES ('$book_id',$book_num, '0','$user_id','$zdd_pc',GETDATE())";
     $sql_update_temp_table = "UPDATE [dbo]." . $table_name . " SET  Book_Num = '$book_num'     WHERE Book_Id = '$book_id' AND Pi_Ci_No = '$dd_pc'";
 

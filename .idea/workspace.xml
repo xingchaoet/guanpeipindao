@@ -148,11 +148,11 @@
       <file leaf-file-name="operate_temp_table.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/zhengdingdan/operate_temp_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-315">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="735">
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding>
-                <marker date="1479119718558" expanded="true" signature="952:1108" ph="INSERT INTO " />
-                <marker date="1479119718558" expanded="true" signature="2108:2162" ph="delete from " />
+                <marker date="1479173255283" expanded="true" signature="960:1116" ph="INSERT INTO " />
+                <marker date="1479173255283" expanded="true" signature="2116:2170" ph="delete from " />
               </folding>
             </state>
           </provider>
@@ -238,9 +238,11 @@
       <file leaf-file-name="chachong.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/chachong/chachong.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
-              <caret line="1247" column="77" selection-start-line="1247" selection-start-column="77" selection-end-line="1247" selection-end-column="77" />
-              <folding />
+            <state relative-caret-position="-231">
+              <caret line="1056" column="0" selection-start-line="1056" selection-start-column="0" selection-end-line="1056" selection-end-column="0" />
+              <folding>
+                <element signature="e#38017#38135#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -428,8 +430,8 @@
         <option value="$PROJECT_DIR$/zhengdingdan/generate_order.php" />
         <option value="$PROJECT_DIR$/zhengdingdan/add_or_delete_this_page_temp_table.php" />
         <option value="$PROJECT_DIR$/search.php" />
-        <option value="$PROJECT_DIR$/zhengdingdan/operate_temp_table.php" />
         <option value="$PROJECT_DIR$/chachong/batch_item.php" />
+        <option value="$PROJECT_DIR$/zhengdingdan/operate_temp_table.php" />
         <option value="$PROJECT_DIR$/templates/chachong/chachong.html" />
       </list>
     </option>
@@ -526,6 +528,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches">
+        <subPane />
+      </pane>
       <pane id="Scope">
         <subPane subId="Problems" />
         <subPane subId="Changed Files">
@@ -596,9 +601,6 @@
         </subPane>
         <subPane subId="Default" />
         <subPane subId="Tests" />
-      </pane>
-      <pane id="Scratches">
-        <subPane />
       </pane>
     </panes>
   </component>
@@ -815,15 +817,16 @@
       <workItem from="1479083072277" duration="27000" />
       <workItem from="1479092456283" duration="614000" />
       <workItem from="1479105461688" duration="16112000" />
+      <workItem from="1479170096259" duration="5719000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="973216000" />
+    <option name="totallyTimeSpent" value="978935000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15260416" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1238,33 +1241,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/con_mssql.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="28" column="25" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chachong/chachong.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="76" column="43" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zhengdingdan/manipulate_session.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-          <folding>
-            <marker date="1478856955012" expanded="true" signature="792:931" ph="INSERT INTO " />
-            <marker date="1478856955012" expanded="true" signature="1699:1886" ph="INSERT INTO " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chachong/batch_item.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="283">
@@ -1302,6 +1278,44 @@
             <marker date="1479120687918" expanded="true" signature="13735:14208" ph="..." />
             <marker date="1479120687918" expanded="true" signature="13884:14190" ph="..." />
             <marker date="1479120687918" expanded="false" signature="14036:14046" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/con_mssql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="28" column="25" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chachong/chachong.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="76" column="43" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhengdingdan/manipulate_session.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+          <folding>
+            <marker date="1478856955012" expanded="true" signature="792:931" ph="INSERT INTO " />
+            <marker date="1478856955012" expanded="true" signature="1699:1886" ph="INSERT INTO " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhengdingdan/operate_temp_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <marker date="1479173255283" expanded="true" signature="960:1116" ph="INSERT INTO " />
+            <marker date="1479173255283" expanded="true" signature="2116:2170" ph="delete from " />
           </folding>
         </state>
       </provider>
@@ -1381,22 +1395,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zhengdingdan/operate_temp_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-315">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <marker date="1479119718558" expanded="true" signature="952:1108" ph="INSERT INTO " />
-            <marker date="1479119718558" expanded="true" signature="2108:2162" ph="delete from " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/chachong/chachong.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="1247" column="77" selection-start-line="1247" selection-start-column="77" selection-end-line="1247" selection-end-column="77" />
-          <folding />
+        <state relative-caret-position="-231">
+          <caret line="1056" column="0" selection-start-line="1056" selection-start-column="0" selection-end-line="1056" selection-end-column="0" />
+          <folding>
+            <element signature="e#38017#38135#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
