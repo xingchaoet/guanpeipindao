@@ -122,227 +122,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="chachong.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chachong/chachong.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="76" column="43" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manipulate_session.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zhengdingdan/manipulate_session.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-              <folding>
-                <marker date="1478856955012" expanded="true" signature="792:931" ph="INSERT INTO " />
-                <marker date="1478856955012" expanded="true" signature="1699:1886" ph="INSERT INTO " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="operate_temp_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zhengdingdan/operate_temp_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding>
-                <marker date="1479173255283" expanded="true" signature="960:1116" ph="INSERT INTO " />
-                <marker date="1479173255283" expanded="true" signature="2116:2170" ph="delete from " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/search.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="759" column="146" selection-start-line="759" selection-start-column="146" selection-end-line="759" selection-end-column="146" />
-              <folding>
-                <marker date="1479112019902" expanded="true" signature="1479:1551" ph="ALTER TABLE " />
-                <marker date="1479112019902" expanded="true" signature="9089:9122" ph="select count... " />
-                <marker date="1479112019902" expanded="true" signature="9089:9123" ph="select count... " />
-                <marker date="1479112019902" expanded="true" signature="9159:9198" ph="select rows " />
-                <marker date="1479112019902" expanded="true" signature="9159:9229" ph="select rows,... " />
-                <marker date="1479112019902" expanded="true" signature="9159:9231" ph="select rows " />
-                <marker date="1479112019902" expanded="true" signature="9301:9339" ph="select count... " />
-                <marker date="1479112019902" expanded="true" signature="9301:9341" ph="select count... " />
-                <marker date="1479112019902" expanded="true" signature="9301:9343" ph="select count... " />
-                <marker date="1479112019902" expanded="true" signature="9301:9359" ph="select count... " />
-                <marker date="1479112019902" expanded="true" signature="9435:9474" ph="select bid1 v_ecs_book" />
-                <marker date="1479112019902" expanded="true" signature="10528:10544" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="10671:10687" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="12235:12307" ph="INSERT INTO ${$temp_table_name}... " />
-                <marker date="1479112019902" expanded="true" signature="12235:12318" ph="INSERT INTO Persons... " />
-                <marker date="1479112019902" expanded="true" signature="15591:15597" ph=" " />
-                <marker date="1479112019902" expanded="true" signature="15597:15603" ph=" " />
-                <marker date="1479112019902" expanded="true" signature="15679:15685" ph=" " />
-                <marker date="1479112019902" expanded="true" signature="15685:15691" ph=" " />
-                <marker date="1479112019902" expanded="true" signature="15748:15754" ph=" " />
-                <marker date="1479112019902" expanded="true" signature="15754:15760" ph=" " />
-                <marker date="1479112019902" expanded="true" signature="15836:15842" ph=" " />
-                <marker date="1479112019902" expanded="true" signature="15842:15848" ph=" " />
-                <marker date="1479112019902" expanded="true" signature="16285:16319" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="16285:16331" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="16438:16444" ph=" " />
-                <marker date="1479112019902" expanded="true" signature="16444:16450" ph=" " />
-                <marker date="1479112019902" expanded="true" signature="16586:16592" ph=" " />
-                <marker date="1479112019902" expanded="true" signature="16592:16598" ph=" " />
-                <marker date="1479112019902" expanded="true" signature="16821:16827" ph=" " />
-                <marker date="1479112019902" expanded="true" signature="16827:16833" ph=" " />
-                <marker date="1479112019902" expanded="true" signature="17937:18147" ph="select top (... bs_zhengdingdan" />
-                <marker date="1479112019902" expanded="true" signature="18040:18120" ph="select top (... bs_zhengdingdan" />
-                <marker date="1479112019902" expanded="true" signature="19315:19373" ph="select top (... v_ecs_book" />
-                <marker date="1479112019902" expanded="true" signature="19315:19377" ph="select top (... bs_zhengdingdan" />
-                <marker date="1479112019902" expanded="true" signature="19315:19461" ph="select top (... v_ecs_book" />
-                <marker date="1479112019902" expanded="true" signature="19315:19466" ph="select top (... v_ecs_book" />
-                <marker date="1479112019902" expanded="true" signature="19396:19442" ph="select top (... v_ecs_book" />
-                <marker date="1479112019902" expanded="true" signature="19396:19449" ph="select top (... v_ecs_book" />
-                <marker date="1479112019902" expanded="true" signature="19501:19693" ph="select top 1... row_number" />
-                <marker date="1479112019902" expanded="true" signature="19550:19624" ph="select row_n... v_ecs_book" />
-                <marker date="1479112019902" expanded="true" signature="19854:20119" ph="SELECT book_... *" />
-                <marker date="1479112019902" expanded="true" signature="19854:20124" ph="SELECT rows,... " />
-                <marker date="1479112019902" expanded="true" signature="19916:20007" ph="SELECT * , R... v_ecs_book" />
-                <marker date="1479112019902" expanded="true" signature="20179:20349" ph="select * fro... row_number" />
-                <marker date="1479112019902" expanded="true" signature="20199:20316" ph="select row_n... top" />
-                <marker date="1479112019902" expanded="true" signature="20269:20314" ph="select top 开... table1" />
-                <marker date="1479112019902" expanded="true" signature="20373:20491" ph="select top (... v_ecs_book" />
-                <marker date="1479112019902" expanded="true" signature="20373:20492" ph="select top (... v_ecs_book" />
-                <marker date="1479112019902" expanded="true" signature="20443:20489" ph="select top (... v_ecs_book" />
-                <marker date="1479112019902" expanded="true" signature="21721:22509" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="21769:22509" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="21780:22505" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="21788:22495" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="21836:21967" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="23351:23369" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="23385:23395" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="23385:23396" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="25741:26079" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="25756:25938" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="25987:26079" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="25996:26074" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="26600:27108" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="26618:27108" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="26767:27090" ph="..." />
-                <marker date="1479112019902" expanded="true" signature="26911:26921" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chachong.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/chachong/chachong.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-483">
-              <caret line="1056" column="0" selection-start-line="1056" selection-start-column="0" selection-end-line="1056" selection-end-column="0" />
-              <folding>
-                <element signature="e#38017#38135#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="con_mssql.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/con_mssql.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="28" column="25" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="batch_item.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chachong/batch_item.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="428" column="117" selection-start-line="428" selection-start-column="117" selection-end-line="428" selection-end-column="117" />
-              <folding>
-                <element signature="e#6#83#0#PHP" expanded="true" />
-                <marker date="1479120687918" expanded="true" signature="686:702" ph="..." />
-                <marker date="1479120687918" expanded="true" signature="1088:1131" ph="SELECT Book_... bs_temp_dingdan" />
-                <marker date="1479120687918" expanded="true" signature="2740:2786" ph="..." />
-                <marker date="1479120687918" expanded="true" signature="2905:2911" ph=" " />
-                <marker date="1479120687918" expanded="true" signature="2911:2917" ph=" " />
-                <marker date="1479120687918" expanded="true" signature="3065:3071" ph=" " />
-                <marker date="1479120687918" expanded="true" signature="3071:3077" ph=" " />
-                <marker date="1479120687918" expanded="true" signature="3139:3145" ph=" " />
-                <marker date="1479120687918" expanded="true" signature="3145:3151" ph=" " />
-                <marker date="1479120687918" expanded="true" signature="3311:3317" ph=" " />
-                <marker date="1479120687918" expanded="true" signature="3317:3323" ph=" " />
-                <marker date="1479120687918" expanded="true" signature="4427:4704" ph="SELECT Book_... ROW_NUMBER" />
-                <marker date="1479120687918" expanded="true" signature="4427:4709" ph="SELECT Book_... ROW_NUMBER" />
-                <marker date="1479120687918" expanded="true" signature="4474:4589" ph="SELECT ${$se... bs_temp_dingdan" />
-                <marker date="1479120687918" expanded="true" signature="6390:6492" ph="SELECT '$' F... v_ecs_book" />
-                <marker date="1479120687918" expanded="true" signature="7714:8518" ph="..." />
-                <marker date="1479120687918" expanded="true" signature="7762:8518" ph="..." />
-                <marker date="1479120687918" expanded="true" signature="7773:8514" ph="..." />
-                <marker date="1479120687918" expanded="true" signature="7781:8504" ph="..." />
-                <marker date="1479120687918" expanded="true" signature="7829:7925" ph="..." />
-                <marker date="1479120687918" expanded="true" signature="7829:7976" ph="..." />
-                <marker date="1479120687918" expanded="true" signature="9721:9739" ph="..." />
-                <marker date="1479120687918" expanded="true" signature="9755:9766" ph="..." />
-                <marker date="1479120687918" expanded="true" signature="12428:12781" ph="..." />
-                <marker date="1479120687918" expanded="true" signature="12443:12640" ph="..." />
-                <marker date="1479120687918" expanded="true" signature="12689:12781" ph="..." />
-                <marker date="1479120687918" expanded="true" signature="12698:12776" ph="..." />
-                <marker date="1479120687918" expanded="true" signature="13717:14208" ph="..." />
-                <marker date="1479120687918" expanded="true" signature="13735:14208" ph="..." />
-                <marker date="1479120687918" expanded="true" signature="13884:14190" ph="..." />
-                <marker date="1479120687918" expanded="false" signature="14036:14046" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="orders_view.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zhengdingdan/orders_view.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="188" column="26" selection-start-line="188" selection-start-column="26" selection-end-line="188" selection-end-column="26" />
-              <folding>
-                <marker date="1476406584753" expanded="true" signature="2626:2632" ph=" " />
-                <marker date="1476406584753" expanded="true" signature="2632:2638" ph=" " />
-                <marker date="1476406584753" expanded="true" signature="2730:2736" ph=" " />
-                <marker date="1476406584753" expanded="true" signature="2736:2742" ph=" " />
-                <marker date="1476406584753" expanded="true" signature="2907:2913" ph=" " />
-                <marker date="1476406584753" expanded="true" signature="2913:2919" ph=" " />
-                <marker date="1476406584753" expanded="true" signature="3723:3931" ph="select top (... bs_zhengdingdan" />
-                <marker date="1476406584753" expanded="true" signature="3824:3904" ph="select top (... bs_zhengdingdan" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="yudingdan_detail.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zhengdingdan/yudingdan_detail.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="104" column="123" selection-start-line="104" selection-start-column="123" selection-end-line="104" selection-end-column="123" />
-              <folding>
-                <marker date="1478856857524" expanded="true" signature="1842:1848" ph=" " />
-                <marker date="1478856857524" expanded="true" signature="1848:1854" ph=" " />
-                <marker date="1478856857524" expanded="true" signature="1974:1980" ph=" " />
-                <marker date="1478856857524" expanded="true" signature="1980:1986" ph=" " />
-                <marker date="1478856857524" expanded="true" signature="2174:2180" ph=" " />
-                <marker date="1478856857524" expanded="true" signature="2180:2186" ph=" " />
-                <marker date="1478856857524" expanded="true" signature="3016:3359" ph="select top (... bs_yudingdan_mx" />
-                <marker date="1478856857524" expanded="true" signature="3238:3340" ph="select top (... bs_yudingdan_mx" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="generate_order.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/zhengdingdan/generate_order.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="821" column="109" selection-start-line="821" selection-start-column="109" selection-end-line="821" selection-end-column="109" />
+            <state relative-caret-position="462">
+              <caret line="425" column="11" selection-start-line="425" selection-start-column="11" selection-end-line="425" selection-end-column="11" />
               <folding>
                 <element signature="e#12855#24952#0#PHP" expanded="false" />
                 <marker date="1478861854174" expanded="true" signature="1215:1285" ph="SELECT * FRO... bs_temp_dingdan" />
@@ -358,6 +142,16 @@
                 <marker date="1478861854174" expanded="true" signature="18907:18969" ph="delete from " />
                 <marker date="1478861854174" expanded="true" signature="21522:21595" ph="SELECT isbn,... ecs_book" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chachong.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/chachong/chachong.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="15" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="15" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -508,7 +302,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="zhengdingdan" />
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -519,6 +313,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="guanpeipindao" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -610,7 +408,7 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="DefaultHtmlFileTemplate" value="HTML4 File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../temp/guanpeipindao" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../xcache" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -817,15 +615,15 @@
       <workItem from="1479083072277" duration="27000" />
       <workItem from="1479092456283" duration="614000" />
       <workItem from="1479105461688" duration="16112000" />
-      <workItem from="1479170096259" duration="6488000" />
+      <workItem from="1479170096259" duration="15626000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="979704000" />
+    <option name="totallyTimeSpent" value="988842000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15260416" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1185,103 +983,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zhengdingdan/orders_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="188" column="26" selection-start-line="188" selection-start-column="26" selection-end-line="188" selection-end-column="26" />
-          <folding>
-            <marker date="1476406584753" expanded="true" signature="2626:2632" ph=" " />
-            <marker date="1476406584753" expanded="true" signature="2632:2638" ph=" " />
-            <marker date="1476406584753" expanded="true" signature="2730:2736" ph=" " />
-            <marker date="1476406584753" expanded="true" signature="2736:2742" ph=" " />
-            <marker date="1476406584753" expanded="true" signature="2907:2913" ph=" " />
-            <marker date="1476406584753" expanded="true" signature="2913:2919" ph=" " />
-            <marker date="1476406584753" expanded="true" signature="3723:3931" ph="select top (... bs_zhengdingdan" />
-            <marker date="1476406584753" expanded="true" signature="3824:3904" ph="select top (... bs_zhengdingdan" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zhengdingdan/yudingdan_detail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="104" column="123" selection-start-line="104" selection-start-column="123" selection-end-line="104" selection-end-column="123" />
-          <folding>
-            <marker date="1478856857524" expanded="true" signature="1842:1848" ph=" " />
-            <marker date="1478856857524" expanded="true" signature="1848:1854" ph=" " />
-            <marker date="1478856857524" expanded="true" signature="1974:1980" ph=" " />
-            <marker date="1478856857524" expanded="true" signature="1980:1986" ph=" " />
-            <marker date="1478856857524" expanded="true" signature="2174:2180" ph=" " />
-            <marker date="1478856857524" expanded="true" signature="2180:2186" ph=" " />
-            <marker date="1478856857524" expanded="true" signature="3016:3359" ph="select top (... bs_yudingdan_mx" />
-            <marker date="1478856857524" expanded="true" signature="3238:3340" ph="select top (... bs_yudingdan_mx" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zhengdingdan/generate_order.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="821" column="109" selection-start-line="821" selection-start-column="109" selection-end-line="821" selection-end-column="109" />
-          <folding>
-            <element signature="e#12855#24952#0#PHP" expanded="false" />
-            <marker date="1478861854174" expanded="true" signature="1215:1285" ph="SELECT * FRO... bs_temp_dingdan" />
-            <marker date="1478861854174" expanded="true" signature="1215:1317" ph="SELECT Book_... bs_temp_dingdan" />
-            <marker date="1478861854174" expanded="true" signature="5952:6016" ph="select isbn ecs_book" />
-            <marker date="1478861854174" expanded="true" signature="6236:6300" ph="select isbn ecs_book" />
-            <marker date="1478861854174" expanded="true" signature="9380:9453" ph="SELECT isbn,... ecs_book" />
-            <marker date="1478861854174" expanded="true" signature="13126:13200" ph="select book_... bs_yudingdan_mx" />
-            <marker date="1478861854174" expanded="true" signature="15762:15850" ph="SELECT count... " />
-            <marker date="1478861854174" expanded="true" signature="16086:16180" ph="SELECT count... " />
-            <marker date="1478861854174" expanded="true" signature="18817:18858" ph="delete from " />
-            <marker date="1478861854174" expanded="true" signature="18907:18948" ph="delete from " />
-            <marker date="1478861854174" expanded="true" signature="18907:18969" ph="delete from " />
-            <marker date="1478861854174" expanded="true" signature="21522:21595" ph="SELECT isbn,... ecs_book" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chachong/batch_item.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="428" column="117" selection-start-line="428" selection-start-column="117" selection-end-line="428" selection-end-column="117" />
-          <folding>
-            <element signature="e#6#83#0#PHP" expanded="true" />
-            <marker date="1479120687918" expanded="true" signature="686:702" ph="..." />
-            <marker date="1479120687918" expanded="true" signature="1088:1131" ph="SELECT Book_... bs_temp_dingdan" />
-            <marker date="1479120687918" expanded="true" signature="2740:2786" ph="..." />
-            <marker date="1479120687918" expanded="true" signature="2905:2911" ph=" " />
-            <marker date="1479120687918" expanded="true" signature="2911:2917" ph=" " />
-            <marker date="1479120687918" expanded="true" signature="3065:3071" ph=" " />
-            <marker date="1479120687918" expanded="true" signature="3071:3077" ph=" " />
-            <marker date="1479120687918" expanded="true" signature="3139:3145" ph=" " />
-            <marker date="1479120687918" expanded="true" signature="3145:3151" ph=" " />
-            <marker date="1479120687918" expanded="true" signature="3311:3317" ph=" " />
-            <marker date="1479120687918" expanded="true" signature="3317:3323" ph=" " />
-            <marker date="1479120687918" expanded="true" signature="4427:4704" ph="SELECT Book_... ROW_NUMBER" />
-            <marker date="1479120687918" expanded="true" signature="4427:4709" ph="SELECT Book_... ROW_NUMBER" />
-            <marker date="1479120687918" expanded="true" signature="4474:4589" ph="SELECT ${$se... bs_temp_dingdan" />
-            <marker date="1479120687918" expanded="true" signature="6390:6492" ph="SELECT '$' F... v_ecs_book" />
-            <marker date="1479120687918" expanded="true" signature="7714:8518" ph="..." />
-            <marker date="1479120687918" expanded="true" signature="7762:8518" ph="..." />
-            <marker date="1479120687918" expanded="true" signature="7773:8514" ph="..." />
-            <marker date="1479120687918" expanded="true" signature="7781:8504" ph="..." />
-            <marker date="1479120687918" expanded="true" signature="7829:7925" ph="..." />
-            <marker date="1479120687918" expanded="true" signature="7829:7976" ph="..." />
-            <marker date="1479120687918" expanded="true" signature="9721:9739" ph="..." />
-            <marker date="1479120687918" expanded="true" signature="9755:9766" ph="..." />
-            <marker date="1479120687918" expanded="true" signature="12428:12781" ph="..." />
-            <marker date="1479120687918" expanded="true" signature="12443:12640" ph="..." />
-            <marker date="1479120687918" expanded="true" signature="12689:12781" ph="..." />
-            <marker date="1479120687918" expanded="true" signature="12698:12776" ph="..." />
-            <marker date="1479120687918" expanded="true" signature="13717:14208" ph="..." />
-            <marker date="1479120687918" expanded="true" signature="13735:14208" ph="..." />
-            <marker date="1479120687918" expanded="true" signature="13884:14190" ph="..." />
-            <marker date="1479120687918" expanded="false" signature="14036:14046" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/con_mssql.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="588">
@@ -1292,7 +993,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chachong/chachong.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
+        <state relative-caret-position="1491">
           <caret line="76" column="43" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
           <folding />
         </state>
@@ -1300,8 +1001,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zhengdingdan/manipulate_session.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+        <state relative-caret-position="84">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
           <folding>
             <marker date="1478856955012" expanded="true" signature="792:931" ph="INSERT INTO " />
             <marker date="1478856955012" expanded="true" signature="1699:1886" ph="INSERT INTO " />
@@ -1311,7 +1012,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zhengdingdan/operate_temp_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
+        <state relative-caret-position="861">
           <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
             <marker date="1479173255283" expanded="true" signature="960:1116" ph="INSERT INTO " />
@@ -1322,8 +1023,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/search.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="759" column="146" selection-start-line="759" selection-start-column="146" selection-end-line="759" selection-end-column="146" />
+        <state relative-caret-position="808">
+          <caret line="767" column="17" selection-start-line="767" selection-start-column="17" selection-end-line="767" selection-end-column="17" />
           <folding>
             <marker date="1479112019902" expanded="true" signature="1479:1551" ph="ALTER TABLE " />
             <marker date="1479112019902" expanded="true" signature="9089:9122" ph="select count... " />
@@ -1395,13 +1096,108 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/chachong/batch_item.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="422" column="17" selection-start-line="422" selection-start-column="17" selection-end-line="422" selection-end-column="17" />
+          <folding>
+            <element signature="e#6#83#0#PHP" expanded="true" />
+            <marker date="1479120687918" expanded="true" signature="686:702" ph="..." />
+            <marker date="1479120687918" expanded="true" signature="1088:1131" ph="SELECT Book_... bs_temp_dingdan" />
+            <marker date="1479120687918" expanded="true" signature="2740:2786" ph="..." />
+            <marker date="1479120687918" expanded="true" signature="2905:2911" ph=" " />
+            <marker date="1479120687918" expanded="true" signature="2911:2917" ph=" " />
+            <marker date="1479120687918" expanded="true" signature="3065:3071" ph=" " />
+            <marker date="1479120687918" expanded="true" signature="3071:3077" ph=" " />
+            <marker date="1479120687918" expanded="true" signature="3139:3145" ph=" " />
+            <marker date="1479120687918" expanded="true" signature="3145:3151" ph=" " />
+            <marker date="1479120687918" expanded="true" signature="3311:3317" ph=" " />
+            <marker date="1479120687918" expanded="true" signature="3317:3323" ph=" " />
+            <marker date="1479120687918" expanded="true" signature="4427:4704" ph="SELECT Book_... ROW_NUMBER" />
+            <marker date="1479120687918" expanded="true" signature="4427:4709" ph="SELECT Book_... ROW_NUMBER" />
+            <marker date="1479120687918" expanded="true" signature="4474:4589" ph="SELECT ${$se... bs_temp_dingdan" />
+            <marker date="1479120687918" expanded="true" signature="6390:6492" ph="SELECT '$' F... v_ecs_book" />
+            <marker date="1479120687918" expanded="true" signature="7714:8518" ph="..." />
+            <marker date="1479120687918" expanded="true" signature="7762:8518" ph="..." />
+            <marker date="1479120687918" expanded="true" signature="7773:8514" ph="..." />
+            <marker date="1479120687918" expanded="true" signature="7781:8504" ph="..." />
+            <marker date="1479120687918" expanded="true" signature="7829:7925" ph="..." />
+            <marker date="1479120687918" expanded="true" signature="7829:7976" ph="..." />
+            <marker date="1479120687918" expanded="true" signature="9721:9739" ph="..." />
+            <marker date="1479120687918" expanded="true" signature="9755:9766" ph="..." />
+            <marker date="1479120687918" expanded="true" signature="12428:12781" ph="..." />
+            <marker date="1479120687918" expanded="true" signature="12443:12640" ph="..." />
+            <marker date="1479120687918" expanded="true" signature="12689:12781" ph="..." />
+            <marker date="1479120687918" expanded="true" signature="12698:12776" ph="..." />
+            <marker date="1479120687918" expanded="true" signature="13717:14208" ph="..." />
+            <marker date="1479120687918" expanded="true" signature="13735:14208" ph="..." />
+            <marker date="1479120687918" expanded="true" signature="13884:14190" ph="..." />
+            <marker date="1479120687918" expanded="false" signature="14036:14046" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhengdingdan/orders_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-63">
+          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <folding>
+            <marker date="1476406584753" expanded="true" signature="2626:2632" ph=" " />
+            <marker date="1476406584753" expanded="true" signature="2632:2638" ph=" " />
+            <marker date="1476406584753" expanded="true" signature="2730:2736" ph=" " />
+            <marker date="1476406584753" expanded="true" signature="2736:2742" ph=" " />
+            <marker date="1476406584753" expanded="true" signature="2907:2913" ph=" " />
+            <marker date="1476406584753" expanded="true" signature="2913:2919" ph=" " />
+            <marker date="1476406584753" expanded="true" signature="3723:3931" ph="select top (... bs_zhengdingdan" />
+            <marker date="1476406584753" expanded="true" signature="3824:3904" ph="select top (... bs_zhengdingdan" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhengdingdan/yudingdan_detail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="73" column="7" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="7" />
+          <folding>
+            <marker date="1478856857524" expanded="true" signature="1842:1848" ph=" " />
+            <marker date="1478856857524" expanded="true" signature="1848:1854" ph=" " />
+            <marker date="1478856857524" expanded="true" signature="1974:1980" ph=" " />
+            <marker date="1478856857524" expanded="true" signature="1980:1986" ph=" " />
+            <marker date="1478856857524" expanded="true" signature="2174:2180" ph=" " />
+            <marker date="1478856857524" expanded="true" signature="2180:2186" ph=" " />
+            <marker date="1478856857524" expanded="true" signature="3016:3359" ph="select top (... bs_yudingdan_mx" />
+            <marker date="1478856857524" expanded="true" signature="3238:3340" ph="select top (... bs_yudingdan_mx" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhengdingdan/generate_order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="425" column="11" selection-start-line="425" selection-start-column="11" selection-end-line="425" selection-end-column="11" />
+          <folding>
+            <element signature="e#12855#24952#0#PHP" expanded="false" />
+            <marker date="1478861854174" expanded="true" signature="1215:1285" ph="SELECT * FRO... bs_temp_dingdan" />
+            <marker date="1478861854174" expanded="true" signature="1215:1317" ph="SELECT Book_... bs_temp_dingdan" />
+            <marker date="1478861854174" expanded="true" signature="5952:6016" ph="select isbn ecs_book" />
+            <marker date="1478861854174" expanded="true" signature="6236:6300" ph="select isbn ecs_book" />
+            <marker date="1478861854174" expanded="true" signature="9380:9453" ph="SELECT isbn,... ecs_book" />
+            <marker date="1478861854174" expanded="true" signature="13126:13200" ph="select book_... bs_yudingdan_mx" />
+            <marker date="1478861854174" expanded="true" signature="15762:15850" ph="SELECT count... " />
+            <marker date="1478861854174" expanded="true" signature="16086:16180" ph="SELECT count... " />
+            <marker date="1478861854174" expanded="true" signature="18817:18858" ph="delete from " />
+            <marker date="1478861854174" expanded="true" signature="18907:18948" ph="delete from " />
+            <marker date="1478861854174" expanded="true" signature="18907:18969" ph="delete from " />
+            <marker date="1478861854174" expanded="true" signature="21522:21595" ph="SELECT isbn,... ecs_book" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/chachong/chachong.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-483">
-          <caret line="1056" column="0" selection-start-line="1056" selection-start-column="0" selection-end-line="1056" selection-end-column="0" />
-          <folding>
-            <element signature="e#38017#38135#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="15" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>

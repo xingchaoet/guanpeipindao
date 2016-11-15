@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-15 10:14:09
+/* Smarty version 3.1.29, created on 2016-11-15 16:18:07
   from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\chachong.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_582a6f7112a039_52845127',
+  'unifunc' => 'content_582ac4bfb25230_77761308',
   'file_dependency' => 
   array (
     'c7215b059ad1a7d7ea89acd7968a17fc303f3e3f' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\chachong.html',
-      1 => 1479176042,
+      1 => 1479197871,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_582a6f7112a039_52845127 ($_smarty_tpl) {
+function content_582ac4bfb25230_77761308 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -950,9 +950,9 @@ dist/picture/pic_list/pic_disable.gif"
         var total_boxes = $row.find(checkboxes_sel).length;
         var checked_boxes = $row.find(checkboxes_sel + ":checked").length;
 
-        alert(total_boxes);
+//        alert(total_boxes);
 
-        alert(checked_boxes);
+//        alert(checked_boxes);
 
         if (total_boxes == checked_boxes) {
             $checkallbox.prop("checked", true);
@@ -1007,12 +1007,12 @@ dist/picture/pic_list/pic_disable.gif"
     function add_or_delete_this_page_temp_table(option) {
 
         var user_id = $('#userid').html();
-
+        var book_index = [];
         var book_ids = [];
         var book_nums = [];
         var $row = $('.row');
         var checked_boxes = $row.find(checkboxes_sel + ":checked");
-        var total_num = 1;
+//        var total_num = 1;
 //        alert(checked_boxes.length);
 
         $.each(checked_boxes, function (index, checkboxEle) {
@@ -1030,34 +1030,76 @@ dist/picture/pic_list/pic_disable.gif"
         })
 
 
+//        alert(option);
+
         if (option == 'add') {
 
             for (var i in book_nums) {
-                total_num = total_num && book_nums[i];
-            }
 
-            if (total_num == 0) {
-                alert("请填写数量");
+//                total_num = total_num && book_nums[i];
+
+                if (book_nums[i] == 0) {
+
+                    alert("请填写数量");
 
 //保持原来选中状态
-                var $div_list = $('#div_list');
-                var $checkallbox = $div_list.find("input.checkall_box:checkbox");
-                var checkalllist = $('.checkall');
+                    var $div_list = $('#div_list');
+                    var $checkallbox = $div_list.find("input.get_book_num_and_update_db_class:checkbox");
+                    var get_book_num_and_update_db_class_list = $('.get_book_num_and_update_db_class');
+                    var checkalllist = $('.checkall');
 
-                $.each(checkalllist, function (index, domEle) {
-//                domEle.checked = domEle.is(':checked');
-                    domEle.checked = false;
-                });
 
-                $.each($checkallbox, function (index, domEle) {
+                    var count = 0;
+                    $.each(get_book_num_and_update_db_class_list, function (index, domEle) {
+
+                        if (this.value == 0) {
+//                            domEle.checked = false;
+                            book_index.push(count);
+                        }
+
+                        count = count + 1;
 //                domEle.checked = domEle.is(':checked');
-                    domEle.checked = false;
-                });
+
+                    });
+
+//                    alert(book_index.length);
+//                    alert(book_index);
+
+                    for (var j = 0; j < book_index.length; j++) {
+
+                        $.each(checkalllist, function (index, domEle) {
+
+                            if (index ==  book_index[j]) {
+//                                book_index.push(index);
+                                domEle.checked = false;
+
+                            }
+
+                        });
+                    }
+
+                    checkboxes_changed();
+
+
+//                    $.each(checkalllist, function (index, domEle) {
+//
+//                        if (domEle.val()  == 0) {
+////                            domEle.checked = false;
+//                            book_index.push(index);
+//                        }
+//
+//                        index = index + 1;
+////                domEle.checked = domEle.is(':checked');
+//                    });
+
 //            $checkallbox.checked = false;
 //            alert($checkallbox.checked);
 
-                return;
+                    return;
+                }
+
             }
+
         }
 
         if (option == 'delete') {
@@ -1231,7 +1273,7 @@ dist/picture/pic_list/pic_disable.gif"
     $('#show').on('mouseleave', function () {
 
         $(".get_book_info_and_update_db_class").off("click");
-        $("body").off("propertychange input");
+//        $("body").off("propertychange input");
 
     });
 

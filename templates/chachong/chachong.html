@@ -871,9 +871,9 @@
         var total_boxes = $row.find(checkboxes_sel).length;
         var checked_boxes = $row.find(checkboxes_sel + ":checked").length;
 
-        alert(total_boxes);
+//        alert(total_boxes);
 
-        alert(checked_boxes);
+//        alert(checked_boxes);
 
         if (total_boxes == checked_boxes) {
             $checkallbox.prop("checked", true);
@@ -928,12 +928,12 @@
     function add_or_delete_this_page_temp_table(option) {
 
         var user_id = $('#userid').html();
-
+        var book_index = [];
         var book_ids = [];
         var book_nums = [];
         var $row = $('.row');
         var checked_boxes = $row.find(checkboxes_sel + ":checked");
-        var total_num = 1;
+//        var total_num = 1;
 //        alert(checked_boxes.length);
 
         $.each(checked_boxes, function (index, checkboxEle) {
@@ -951,34 +951,76 @@
         })
 
 
+//        alert(option);
+
         if (option == 'add') {
 
             for (var i in book_nums) {
-                total_num = total_num && book_nums[i];
-            }
 
-            if (total_num == 0) {
-                alert("请填写数量");
+//                total_num = total_num && book_nums[i];
+
+                if (book_nums[i] == 0) {
+
+                    alert("请填写数量");
 
 //保持原来选中状态
-                var $div_list = $('#div_list');
-                var $checkallbox = $div_list.find("input.checkall_box:checkbox");
-                var checkalllist = $('.checkall');
+                    var $div_list = $('#div_list');
+                    var $checkallbox = $div_list.find("input.get_book_num_and_update_db_class:checkbox");
+                    var get_book_num_and_update_db_class_list = $('.get_book_num_and_update_db_class');
+                    var checkalllist = $('.checkall');
 
-                $.each(checkalllist, function (index, domEle) {
-//                domEle.checked = domEle.is(':checked');
-                    domEle.checked = false;
-                });
 
-                $.each($checkallbox, function (index, domEle) {
+                    var count = 0;
+                    $.each(get_book_num_and_update_db_class_list, function (index, domEle) {
+
+                        if (this.value == 0) {
+//                            domEle.checked = false;
+                            book_index.push(count);
+                        }
+
+                        count = count + 1;
 //                domEle.checked = domEle.is(':checked');
-                    domEle.checked = false;
-                });
+
+                    });
+
+//                    alert(book_index.length);
+//                    alert(book_index);
+
+                    for (var j = 0; j < book_index.length; j++) {
+
+                        $.each(checkalllist, function (index, domEle) {
+
+                            if (index ==  book_index[j]) {
+//                                book_index.push(index);
+                                domEle.checked = false;
+
+                            }
+
+                        });
+                    }
+
+                    checkboxes_changed();
+
+
+//                    $.each(checkalllist, function (index, domEle) {
+//
+//                        if (domEle.val()  == 0) {
+////                            domEle.checked = false;
+//                            book_index.push(index);
+//                        }
+//
+//                        index = index + 1;
+////                domEle.checked = domEle.is(':checked');
+//                    });
+
 //            $checkallbox.checked = false;
 //            alert($checkallbox.checked);
 
-                return;
+                    return;
+                }
+
             }
+
         }
 
         if (option == 'delete') {
@@ -1152,7 +1194,7 @@
     $('#show').on('mouseleave', function () {
 
         $(".get_book_info_and_update_db_class").off("click");
-        $("body").off("propertychange input");
+//        $("body").off("propertychange input");
 
     });
 
