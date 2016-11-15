@@ -238,7 +238,7 @@
       <file leaf-file-name="chachong.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/chachong/chachong.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-231">
+            <state relative-caret-position="-483">
               <caret line="1056" column="0" selection-start-line="1056" selection-start-column="0" selection-end-line="1056" selection-end-column="0" />
               <folding>
                 <element signature="e#38017#38135#0" expanded="false" />
@@ -817,15 +817,15 @@
       <workItem from="1479083072277" duration="27000" />
       <workItem from="1479092456283" duration="614000" />
       <workItem from="1479105461688" duration="16112000" />
-      <workItem from="1479170096259" duration="5719000" />
+      <workItem from="1479170096259" duration="6488000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="978935000" />
+    <option name="totallyTimeSpent" value="979704000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15260416" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1397,7 +1397,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/chachong/chachong.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-231">
+        <state relative-caret-position="-483">
           <caret line="1056" column="0" selection-start-line="1056" selection-start-column="0" selection-end-line="1056" selection-end-column="0" />
           <folding>
             <element signature="e#38017#38135#0" expanded="false" />
