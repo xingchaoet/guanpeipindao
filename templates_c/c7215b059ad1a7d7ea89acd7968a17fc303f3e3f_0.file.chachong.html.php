@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-15 16:18:07
+/* Smarty version 3.1.29, created on 2016-11-16 19:18:00
   from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\chachong.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_582ac4bfb25230_77761308',
+  'unifunc' => 'content_582c4068366c15_82672580',
   'file_dependency' => 
   array (
     'c7215b059ad1a7d7ea89acd7968a17fc303f3e3f' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\chachong.html',
-      1 => 1479197871,
+      1 => 1479295075,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_582ac4bfb25230_77761308 ($_smarty_tpl) {
+function content_582c4068366c15_82672580 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -187,10 +187,10 @@ function content_582ac4bfb25230_77761308 ($_smarty_tpl) {
         .white_content {
             display: none;
             position: absolute;
-            top: 25%;
+            top: 95%;
             left: 5%;
-            width: 90%;
-            height: 90%;
+            width: 10%;
+            height: 10%;
             padding: 16px;
             /*border: 16px solid black;*/
             background-color: white;
@@ -323,6 +323,23 @@ function content_582ac4bfb25230_77761308 ($_smarty_tpl) {
 
         }
 
+        .default_num_span {
+            height: 25px;
+            width: 20px;
+        }
+
+        .default_num_input {
+            height: 25px;
+            width: 20px;
+        }
+
+        .hide_before_purchase {
+            display: none;
+        }
+
+        .flow {
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -613,13 +630,13 @@ dist/picture/pic_list/pic_disable.gif"
 
                     </div>
 
-                    <!--<div id="light" class="white_content">-->
-                    <!--<a href="#" onClick="document.getElementById('light').style.display='none';"-->
-                    <!--style="color:blue;z-index:9999">关闭</a>-->
-                    <!--<div style="width:715px;height:360px;border:#ccc solid 1px;" id="content">-->
-
-                    <!--</div>-->
-                    <!--</div>-->
+                    <div id="light" class="white_content">
+                        <a href="#" onClick="document.getElementById('light').style.display='none';"
+                           style="color:blue;z-index:9999">关闭</a>
+                        <div style="width:150px;height:36px;" id="content">
+                            <span>默认数量</span> <input class="default_num" type="text" value="1">
+                        </div>
+                    </div>
 
                     <!--<div id="history" class="history">-->
                     <!--<a href="#" onClick="document.getElementById('history').style.display='none';"-->
@@ -701,6 +718,8 @@ dist/picture/pic_list/pic_disable.gif"
     var add_or_delete_this_page_temp_table_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/add_or_delete_this_page_temp_table.php';
     var batch_item_url = 'http://' + global_url + '/guanpeipindao/chachong/batch_item.php';
     var delete_batch_url = 'http://' + global_url + '/guanpeipindao/chachong/batch_item.php';
+
+    var default_num_url = 'http://' + global_url + '/guanpeipindao/chachong/default_num.php';
 
     function creatXHR() {
         var xhr = null;
@@ -972,6 +991,7 @@ dist/picture/pic_list/pic_disable.gif"
         var $checkallbox = $div_list.find("input.checkall_box:checkbox");
         var checkalllist = $('.checkall');
 
+//        alert($checkallbox.prop("checked"));
 
         if ($checkallbox.prop("checked")) {
 
@@ -1037,7 +1057,7 @@ dist/picture/pic_list/pic_disable.gif"
             for (var i in book_nums) {
 
 //                total_num = total_num && book_nums[i];
-
+//有一本书数量为0
                 if (book_nums[i] == 0) {
 
                     alert("请填写数量");
@@ -1069,7 +1089,7 @@ dist/picture/pic_list/pic_disable.gif"
 
                         $.each(checkalllist, function (index, domEle) {
 
-                            if (index ==  book_index[j]) {
+                            if (index == book_index[j]) {
 //                                book_index.push(index);
                                 domEle.checked = false;
 
@@ -1104,13 +1124,15 @@ dist/picture/pic_list/pic_disable.gif"
 
         if (option == 'delete') {
 
-            var list = $('input[class=get_book_num_and_update_db_class]');
-            $.each(list, function (index, domEle) {
-//                domEle.onkeyup = function () {
-//                    this.value = this.value.replace(/\D/g, '');
-                domEle.value = 0;
-//                }
-            });
+//            不改变输入框的值
+
+//            var list = $('input[class=get_book_num_and_update_db_class]');
+//            $.each(list, function (index, domEle) {
+////                domEle.onkeyup = function () {
+////                    this.value = this.value.replace(/\D/g, '');
+//                domEle.value = 0;
+////                }
+//            });
 
         }
 
@@ -1149,6 +1171,7 @@ dist/picture/pic_list/pic_disable.gif"
             } else {
                 book_num = $(this).next().val();
             }
+
 
             if (book_num == '0') {
                 alert("请填写数量");
@@ -1494,7 +1517,33 @@ dist/picture/pic_list/pic_disable.gif"
 
         var fdata = new FormData();
         var user_id = $('#userid').html();
+        var list = $('.hide_before_purchase');
+//        alert("默认数量");
+        var content = $('#white_content');
 
+        var content = "<span class='default_num_span'>默认数量</span> <input class=\"default_num_input\" type=\"text\" value=\"1\">";
+        var flow = $('.flow');
+        $('.flow').append(content);
+
+        $('.default_num_input').on('change', function () {
+            var default_num = $('.default_num_input').val();
+            alert(default_num);
+            var fdata_d_num = new FormData();
+            fdata_d_num.append("default_num", default_num);
+
+            xhr.open('POST', default_num_url, true);
+            xhr.send(fdata_d_num);
+
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    alert(this.responseText);
+                }
+            }
+        });
+
+//        document.getElementById('light').style.display = 'block';
+
+        return;
 
         fdata.append("user_id", user_id);
 
@@ -1504,6 +1553,12 @@ dist/picture/pic_list/pic_disable.gif"
         xhr.onreadystatechange = function () {
             if (this.readyState == 4) {
 //                alert(this.responseText);
+//                $('.hide_before_purchase').css("display","block");
+//                $.each(list, function (index, domEle) {
+//                    domEle.onkeyup = function () {
+                list.css("display", "block");
+
+//                });
                 document.getElementById("manipulate_session_btn").disabled = true;
             }
         }

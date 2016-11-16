@@ -385,9 +385,9 @@ if (!empty($first_search)) {
 //$rows = mysqli_num_rows($rs_tsfl30);
 //echo "当前记录数：" . $rows;
 if ($_SESSION['start_purchase']) {
-    echo "<button id='manipulate_session_btn' class='btn btn-default btn-sm' style='margin-top: 10px' disabled='true'>开始采购</button>";
+    echo "<div class='flow'> <button id='manipulate_session_btn' class='btn btn-default btn-sm'  disabled='true'>开始采购</button> </div>";
 } else {
-    echo "<button id='manipulate_session_btn' class='btn btn-default btn-sm' style='margin-top: 10px' onclick='manipulate_session();'>开始采购</button>";
+    echo "<div class='flow'> <button id='manipulate_session_btn' class='btn btn-default btn-sm'  onclick='manipulate_session();'>开始采购</button> </div>";
 }
 
 //exit();
@@ -715,12 +715,12 @@ if (!empty($tsfl_data3_array)) {
 
 		<tr>
 
-			<td height=30 width=20 bgcolor=\"#EDEDED\" >
-			<input type=\"checkbox\" name=\"all\"  id=\"checkall_box\" class=\"checkall_box\"  onclick='checkallbox_changed();'/>
+			<td  height=30 width=20 bgcolor=\"#EDEDED\" >
+			<input  type=\"checkbox\" name=\"all\"  id=\"checkall_box\" class=\"checkall_box hide_before_purchase\"  onclick='checkallbox_changed();'/>
 			</td>
 
 
-			<td width=30 bgcolor=\"#EDEDED\" align=center ><b>数量</b></td>
+			<td width=30 bgcolor=\"#EDEDED\" align=center> <span class='hide_before_purchase'> <b>数量</b> </span> </td>
 			<td width=230 bgcolor=\"#EDEDED\" align=center><b>书名</b></td>
 			<td width=110 bgcolor=\"#EDEDED\" align=center><b>书号</b></td>
 			<td width=120 bgcolor=\"#EDEDED\" align=center><b>作者</b></td>
@@ -754,12 +754,12 @@ if (!empty($tsfl_data3_array)) {
 
             $n = $n + 1;
             echo "<tr>";
-            echo "<td class='list' height=20 width=15><input type='checkbox'   name=\"$bid\" class=\"checkall get_book_info_and_update_db_class\" value=$n /></td>";
-            echo "<td style='text-align: center'><input style='width:15px;' name='amount1[]' id=\"amount1_$bid\" class='get_book_num_and_update_db_class' onmouseover='num_limit();'  type='text' maxlength='1' size='1' value=2 /></td>";
+            echo "<td class='list' height=20 width=15><input type='checkbox'   name=\"$bid\" class=\"checkall get_book_info_and_update_db_class hide_before_purchase\" value=$n /></td>";
+            echo "<td style='text-align: center'><input style='width:15px;' name='amount1[]' id=\"amount1_$bid\" class='get_book_num_and_update_db_class hide_before_purchase' onmouseover='num_limit();'  type='text' maxlength='1' size='1' value=2 /></td>";
             if (strlen(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['sm']))) > 36) {
-                echo "<td align='left' width='280'>" . mb_substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['sm'])), 0, 18, 'utf8') . "</td>";
+                echo "<td align='center' width='280' height='28'>" . mb_substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['sm'])), 0, 18, 'utf8') . "</td>";
             } else {
-                echo "<td  align='left'>" . trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['sm'])) . "</td>";
+                echo "<td  align='center' width='280' height='28'>" . trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['sm'])) . "</td>";
             }
 
             echo "<td  align='center'>" . trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['isbn'])) . "</td>";
@@ -767,7 +767,7 @@ if (!empty($tsfl_data3_array)) {
             if (strlen(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['zzh']))) > 20) {
                 echo "<td  align='left'>" . mb_substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['zzh'])), 0, 20) . "</td>";
             } else {
-                echo "<td  align='left'>" . trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['zzh'])) . "</td>";
+                echo "<td  align='center'>" . trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['zzh'])) . "</td>";
             }
             echo "<td align=center>" . trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['kb'])) . "</td>";
             if (iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['cbrq']) == '') {
@@ -805,7 +805,7 @@ if (!empty($tsfl_data3_array)) {
 
             echo "
     <div id=\"div_list\" name=\"div_list\" >
-        <div>
+        <div class='hide_before_purchase'>
             	<input type=\"checkbox\" name=\"all\"  id=\"checkall_box\" class=\"checkall_box \"  onclick='checkallbox_changed();'/>
                 <label>全选</label>
 
@@ -839,8 +839,8 @@ if (!empty($tsfl_data3_array)) {
              <tr>
              <td rowspan=8><img src=http://www.ecsponline.com" . trim($tsfl_data3['slt']) . " width=120 height=120></td>
              <td height=20>
-            <input type='checkbox' class = 'checkall get_book_info_and_update_db_class'  name=\"$bid\"  value=$n />
-            <input style='width:15px' name='amount1[]' id=\"amount1_$bid\" class='get_book_num_and_update_db_class' onmouseover='num_limit();' type='text' maxlength='1' size='1' value=2 />
+            <input type='checkbox' class = 'checkall get_book_info_and_update_db_class hide_before_purchase'  name=\"$bid\"  value=$n />
+            <input style='width:15px' name='amount1[]' id=\"amount1_$bid\" class='get_book_num_and_update_db_class hide_before_purchase' onmouseover='num_limit();' type='text' maxlength='1' size='1' value=2 />
             </td>
             </tr>";
 
