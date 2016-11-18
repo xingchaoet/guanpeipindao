@@ -22,6 +22,7 @@ $smarty->MySmarty();
 $from_url = $_REQUEST["from_url"];
 
 
+
 if ($from_url == 'a_new') {
     $batch_id = $_REQUEST["batch_id"];
     $_SESSION['batch_id'] = $batch_id;
@@ -30,7 +31,6 @@ if ($from_url == 'a_new') {
 } else {
     $batch_id = $_SESSION['batch_id'];
 }
-
 
 //echo "$$$$$$$$$$$$$$$$$$$$$$";
 echo "<div style='margin-top: 4px;'>";
@@ -426,7 +426,7 @@ if (!empty($batch_book_data_array)) {
              <td rowspan=8><img src=http://www.ecsponline.com" . trim($tsfl_data3['slt']) . " width=120 height=120></td>
              <td height=20>
             <input type='checkbox' class = 'checkall get_book_info_and_update_db_class'  name=\"$bid\"  value=$n $checked/>
-            <input style='width:15px' name='amount1[]' id=\"amount1_$bid\" class='get_book_num_and_update_db_class'   type='text' maxlength='1' size='1' value=2 />
+            <input style='width:15px' name='amount1[]' id=\"amount1_$bid\" class='get_book_num_and_update_db_class'   type='text' maxlength='1' size='1' value=$book_num />
             </td>
             </tr>";
 

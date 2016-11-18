@@ -58,8 +58,13 @@ try {
 }
 //$sequence_number = 1;
 
+//progressbar
+$progress_num = 1;
 //while ($data = odbc_fetch_array($temp_table)) {
-for ($i = 0; $i < count($temp_table); $i++) {
+
+$sum = count($temp_table);
+
+for ($i = 0; $i < $sum; $i++) {
 
 //        $tsfl_data3_array[] = $data;
     $bid = $temp_table[$i];
@@ -84,17 +89,20 @@ for ($i = 0; $i < count($temp_table); $i++) {
         }
 
     } catch (Exception $e) {
-
 //        echo 'Caught exception: ', $e->getMessage(), "\n";  //输出捕获的异常消息
-
     }
 
-    $sequence_number++;
+//    $sequence_number++;
+    $progress_num++;
+
+    $_SESSION['progress'] = $progress_num/$sum;
+
+//    echo $progress;
 }
 
 //}
 
 //echo $sequence_number ;
 //
-print_r($dd_pc);
+//print_r($dd_pc);
 

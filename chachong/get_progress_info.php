@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: xc
- * Date: 2016/11/16
- * Time: 19:02
+ * Date: 2016/11/18
+ * Time: 18:47
  */
 include("../include/GuanCangSmarty.php");
 require_once("../config.php");
@@ -15,8 +15,5 @@ require '../plog/classes/plog.php';
 Plog::set_config(include '../plog/config.php');
 $log = Plog::factory(__FILE__);
 
-$default_num = $_POST["default_num"];
-$_SESSION['default_num'] = $default_num;
-
-
-print_r($_SESSION['default_num']);
+$progress = $_SESSION["progress"];
+echo $progress;

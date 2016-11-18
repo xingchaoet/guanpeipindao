@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-16 19:18:00
+/* Smarty version 3.1.29, created on 2016-11-18 19:00:44
   from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\chachong.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_582c4068366c15_82672580',
+  'unifunc' => 'content_582edf5cf0c580_25566074',
   'file_dependency' => 
   array (
     'c7215b059ad1a7d7ea89acd7968a17fc303f3e3f' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\chachong.html',
-      1 => 1479295075,
+      1 => 1479466799,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_582c4068366c15_82672580 ($_smarty_tpl) {
+function content_582edf5cf0c580_25566074 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -304,6 +304,7 @@ function content_582c4068366c15_82672580 ($_smarty_tpl) {
 
         .batch_table {
             margin-bottom: 10px;
+            display: none;
         }
 
         .batch_title {
@@ -334,6 +335,10 @@ function content_582c4068366c15_82672580 ($_smarty_tpl) {
         }
 
         .hide_before_purchase {
+            display: none;
+        }
+
+        .hide_before_purchase_session {
             display: none;
         }
 
@@ -670,6 +675,10 @@ dist/picture/pic_list/pic_disable.gif"
 
         </div>
     </div>
+    <a id="default_num" style="display: none "><?php if ($_SESSION['default_num']) {?> <?php echo $_SESSION['default_num'];?>
+ <?php } else { ?> 2
+        <?php }?></a>
+
     <!--<a id="userid" style="display: none "><?php echo $_SESSION['user_id'];?>
 </a>-->
     <!--<a id="usertype" style=" display: none "><?php echo $_SESSION['user_type'];?>
@@ -705,7 +714,7 @@ dist/picture/pic_list/pic_disable.gif"
     //    var global_url = "192.168.1.138";
     var global_url = $('#global_url').html();
 
-
+    var progress = 0;
     var search_url = 'http://' + global_url + '/guanpeipindao/search.php';
     var guangcangimport_url = 'http://' + global_url + '/guanpeipindao/chachong/guangcang_chachong.php';
     var guan_cang_import_history_url = 'http://' + global_url + '/guanpeipindao/chachong/gangcang_import_history.php';
@@ -720,6 +729,8 @@ dist/picture/pic_list/pic_disable.gif"
     var delete_batch_url = 'http://' + global_url + '/guanpeipindao/chachong/batch_item.php';
 
     var default_num_url = 'http://' + global_url + '/guanpeipindao/chachong/default_num.php';
+    var get_progress_info_url = 'http://' + global_url + '/guanpeipindao/chachong/get_progress_info.php';
+
 
     function creatXHR() {
         var xhr = null;
@@ -1517,17 +1528,20 @@ dist/picture/pic_list/pic_disable.gif"
 
         var fdata = new FormData();
         var user_id = $('#userid').html();
+        var default_num = $('#default_num').html();
         var list = $('.hide_before_purchase');
+        var list_session = $('.hide_before_purchase_session');
+
 //        alert("默认数量");
         var content = $('#white_content');
 
-        var content = "<span class='default_num_span'>默认数量</span> <input class=\"default_num_input\" type=\"text\" value=\"1\">";
+        var content = "<span class='default_num_span'>默认数量</span> <input class=\"default_num_input\" type=\"text\" value= " + default_num + ">";
         var flow = $('.flow');
         $('.flow').append(content);
 
         $('.default_num_input').on('change', function () {
             var default_num = $('.default_num_input').val();
-            alert(default_num);
+//            alert(default_num);
             var fdata_d_num = new FormData();
             fdata_d_num.append("default_num", default_num);
 
@@ -1537,13 +1551,19 @@ dist/picture/pic_list/pic_disable.gif"
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4) {
                     alert(this.responseText);
+
+                    var list_a = $('.get_book_num_and_update_db_class');
+                    $.each(list_a, function (index, domEle) {
+                        domEle.value = default_num;
+                    });
+
                 }
             }
         });
 
 //        document.getElementById('light').style.display = 'block';
 
-        return;
+//        return;
 
         fdata.append("user_id", user_id);
 
@@ -1551,18 +1571,47 @@ dist/picture/pic_list/pic_disable.gif"
         xhr.send(fdata);
 
         xhr.onreadystatechange = function () {
-            if (this.readyState == 4) {
+//            if (this.readyState == 3) {
 //                alert(this.responseText);
+//                document.getElementById("manipulate_session_btn").disabled = true;
+//            }
+
+            if (this.readyState == 4) {
+                alert(this.responseText);
 //                $('.hide_before_purchase').css("display","block");
 //                $.each(list, function (index, domEle) {
 //                    domEle.onkeyup = function () {
-                list.css("display", "block");
 
+                handle = setInterval(get_progress_info, 100);
+
+                if (progress < 1) {
+                    alert(progress);
+                } else {
+                    clearInterval(handle);
+                }
+
+                list.css("display", "block");
+                list_session.css("display", "block");
 //                });
                 document.getElementById("manipulate_session_btn").disabled = true;
             }
         }
 
+    }
+
+    function get_progress_info() {
+
+        var fdata_progress = new FormData();
+
+        xhr.open('POST', get_progress_info_url, true);
+        xhr.send(fdata_progress);
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+//                alert(this.responseText);
+                progress = this.responseText;
+            }
+        }
     }
 
     $(".batch_item").on('click', function () {
@@ -1599,11 +1648,11 @@ dist/picture/pic_list/pic_disable.gif"
 
     $(".batch_icon").toggle(
             function () {
-                $("#batch_table").hide();
+                $("#batch_table").show();
 //                $("#toggle_table").attr('src');
             },
             function () {
-                $("#batch_table").show();
+                $("#batch_table").hide();
 //                $("#toggle_table").attr('src');
             }
     );

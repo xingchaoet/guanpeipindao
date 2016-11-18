@@ -279,6 +279,7 @@
 
         .batch_table {
             margin-bottom: 10px;
+            display: none;
         }
 
         .batch_title {
@@ -309,6 +310,10 @@
         }
 
         .hide_before_purchase {
+            display: none;
+        }
+
+        .hide_before_purchase_session {
             display: none;
         }
 
@@ -606,6 +611,9 @@
 
         </div>
     </div>
+    <a id="default_num" style="display: none ">{if $smarty.session.default_num} {$smarty.session.default_num} {else} 2
+        {/if}</a>
+
     <!--<a id="userid" style="display: none ">{$smarty.session.user_id}</a>-->
     <!--<a id="usertype" style=" display: none ">{$smarty.session.user_type}</a>-->
 </div>
@@ -626,7 +634,7 @@
     //    var global_url = "192.168.1.138";
     var global_url = $('#global_url').html();
 
-
+    var progress = 0;
     var search_url = 'http://' + global_url + '/guanpeipindao/search.php';
     var guangcangimport_url = 'http://' + global_url + '/guanpeipindao/chachong/guangcang_chachong.php';
     var guan_cang_import_history_url = 'http://' + global_url + '/guanpeipindao/chachong/gangcang_import_history.php';
@@ -641,6 +649,8 @@
     var delete_batch_url = 'http://' + global_url + '/guanpeipindao/chachong/batch_item.php';
 
     var default_num_url = 'http://' + global_url + '/guanpeipindao/chachong/default_num.php';
+    var get_progress_info_url = 'http://' + global_url + '/guanpeipindao/chachong/get_progress_info.php';
+
 
     function creatXHR() {
         var xhr = null;
@@ -1437,11 +1447,14 @@
 
         var fdata = new FormData();
         var user_id = $('#userid').html();
+        var default_num = $('#default_num').html();
         var list = $('.hide_before_purchase');
+        var list_session = $('.hide_before_purchase_session');
+
 //        alert("默认数量");
         var content = $('#white_content');
 
-        var content = "<span class='default_num_span'>默认数量</span> <input class=\"default_num_input\" type=\"text\" value=\"1\">";
+        var content = "<span class='default_num_span'>默认数量</span> <input class=\"default_num_input\" type=\"text\" value= " + default_num + ">";
         var flow = $('.flow');
         $('.flow').append(content);
 
@@ -1457,13 +1470,19 @@
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4) {
                     alert(this.responseText);
+
+                    var list_a = $('.get_book_num_and_update_db_class');
+                    $.each(list_a, function (index, domEle) {
+                        domEle.value = default_num;
+                    });
+
                 }
             }
         });
 
 //        document.getElementById('light').style.display = 'block';
 
-        return;
+//        return;
 
         fdata.append("user_id", user_id);
 
@@ -1471,18 +1490,48 @@
         xhr.send(fdata);
 
         xhr.onreadystatechange = function () {
+//            if (this.readyState == 3) {
+//                alert(this.responseText);
+//                document.getElementById("manipulate_session_btn").disabled = true;
+//            }
+
             if (this.readyState == 4) {
 //                alert(this.responseText);
 //                $('.hide_before_purchase').css("display","block");
 //                $.each(list, function (index, domEle) {
 //                    domEle.onkeyup = function () {
-                list.css("display", "block");
 
+                handle = setInterval(get_progress_info, 100);
+
+                
+                if (progress < 1) {
+                    alert(progress);
+                } else {
+                    clearInterval(handle);
+                }
+
+                list.css("display", "block");
+                list_session.css("display", "block");
 //                });
                 document.getElementById("manipulate_session_btn").disabled = true;
             }
         }
 
+    }
+
+    function get_progress_info() {
+
+        var fdata_progress = new FormData();
+
+        xhr.open('POST', get_progress_info_url, true);
+        xhr.send(fdata_progress);
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+//                alert(this.responseText);
+                progress = this.responseText;
+            }
+        }
     }
 
     $(".batch_item").on('click', function () {
@@ -1519,11 +1568,11 @@
 
     $(".batch_icon").toggle(
             function () {
-                $("#batch_table").hide();
+                $("#batch_table").show();
 //                $("#toggle_table").attr('src');
             },
             function () {
-                $("#batch_table").show();
+                $("#batch_table").hide();
 //                $("#toggle_table").attr('src');
             }
     );
