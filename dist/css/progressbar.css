@@ -1,0 +1,16 @@
+#progressbar{
+    width:397px;
+    height:49px;
+    background-image:url(../picture/chachong/progress_background.png);
+
+}
+#progressbar div{
+    width:0px;
+    height:48px;
+    background-image:url(../picture/chachong/progress_foreground.png);
+    color:#fff;
+    text-align:center;
+    font-family:Tahoma;
+    font-size:18px;
+    line-height:48px;
+}

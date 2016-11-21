@@ -19,7 +19,6 @@ $_SESSION['start_purchase'] = true;
 
 $temp_table = $_SESSION['temp_table'];
 
-
 $user_id = $_POST['user_id'];
 $lib_no = $_SESSION['lib_no'];
 
@@ -56,16 +55,14 @@ try {
 //    echo 'Caught exception: ', $e->getMessage(), "\n";  //输出捕获的异常消息
 
 }
-//$sequence_number = 1;
 
-//progressbar
-$progress_num = 1;
+$progress_num = 0;
 //while ($data = odbc_fetch_array($temp_table)) {
 
 $sum = count($temp_table);
 
 for ($i = 0; $i < $sum; $i++) {
-
+    session_start();
 //        $tsfl_data3_array[] = $data;
     $bid = $temp_table[$i];
 //        IsChecked 默认为0
@@ -94,10 +91,19 @@ for ($i = 0; $i < $sum; $i++) {
 
 //    $sequence_number++;
     $progress_num++;
+//    if (!$progress_num%10) {
 
-    $_SESSION['progress'] = $progress_num/$sum;
+    $_SESSION['progress'] = floor($progress_num * 100 / $sum);
+//    $progress = floor($progress_num * 100/ $sum);
+    session_write_close();
+//    }
 
-//    echo $progress;
+
+//    $open = fopen("D:/phpStudy/WWW/guanpeipindao/zhengdingdan/log.txt", "a");
+//    fwrite($open, $_SESSION['progress'] . "\r\n");
+//    fclose($open);
+
+//    echo $progress_num;
 }
 
 //}

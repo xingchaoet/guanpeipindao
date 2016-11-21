@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-18 19:00:44
+/* Smarty version 3.1.29, created on 2016-11-21 15:29:56
   from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\chachong.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_582edf5cf0c580_25566074',
+  'unifunc' => 'content_5832a274c76f79_05044108',
   'file_dependency' => 
   array (
     'c7215b059ad1a7d7ea89acd7968a17fc303f3e3f' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\chachong.html',
-      1 => 1479466799,
+      1 => 1479713352,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_582edf5cf0c580_25566074 ($_smarty_tpl) {
+function content_5832a274c76f79_05044108 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +33,7 @@ function content_582edf5cf0c580_25566074 ($_smarty_tpl) {
 
     <link rel="stylesheet" href="../dist/css/header.css">
     <link rel="stylesheet" href="../dist/css/introduce.css">
+    <link rel="stylesheet" href="../dist/css/progressbar.css">
 
     <?php echo '<script'; ?>
  src="../dist/js/jquery.min.js"><?php echo '</script'; ?>
@@ -345,6 +346,7 @@ function content_582edf5cf0c580_25566074 ($_smarty_tpl) {
         .flow {
             margin-top: 5px;
         }
+
     </style>
 </head>
 <body>
@@ -715,6 +717,7 @@ dist/picture/pic_list/pic_disable.gif"
     var global_url = $('#global_url').html();
 
     var progress = 0;
+    var progress_id = "progressbar";
     var search_url = 'http://' + global_url + '/guanpeipindao/search.php';
     var guangcangimport_url = 'http://' + global_url + '/guanpeipindao/chachong/guangcang_chachong.php';
     var guan_cang_import_history_url = 'http://' + global_url + '/guanpeipindao/chachong/gangcang_import_history.php';
@@ -1524,6 +1527,58 @@ dist/picture/pic_list/pic_disable.gif"
     }
 
 
+    function get_progress_info() {
+
+        var fdata_progress = new FormData();
+
+        xhr.open('POST', get_progress_info_url, true);
+        xhr.send(fdata_progress);
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+//                alert(this.responseText);
+                progress = this.responseText;
+            }
+        }
+    }
+
+    function SetProgress(progress) {
+//        alert('set_progress');
+//        alert(progress);
+        if (progress) {
+            $("#" + progress_id + " > div").css("width", String(progress) + "%"); //控制#loading div宽度
+            $("#" + progress_id + " > div").html(String(progress) + "%"); //显示百分比
+        }
+    }
+
+    function doProgress() {
+//        alert('do_progress');
+//        alert(progress);
+        var list = $('.hide_before_purchase');
+        var list_session = $('.hide_before_purchase_session');
+
+
+        if (progress >= 100) {
+//            $("#message").html("加载完毕！").fadeIn("slow");//加载完毕提示
+            alert('加载完毕!');
+//            clearInterval(handle);
+            SetProgress(progress);
+            list.css("display", "block");
+            list_session.css("display", "block");
+//            progress = 0;
+            return;
+        }
+        if (progress < 100) {
+            setTimeout("doProgress()", 1000);
+//            handle = setInterval(doProgress(), 1000);
+            SetProgress(progress);
+            get_progress_info();
+//            progress++;
+
+        }
+    }
+
+
     function manipulate_session() {
 
         var fdata = new FormData();
@@ -1550,7 +1605,7 @@ dist/picture/pic_list/pic_disable.gif"
 
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4) {
-                    alert(this.responseText);
+//                    alert(this.responseText);
 
                     var list_a = $('.get_book_num_and_update_db_class');
                     $.each(list_a, function (index, domEle) {
@@ -1564,55 +1619,75 @@ dist/picture/pic_list/pic_disable.gif"
 //        document.getElementById('light').style.display = 'block';
 
 //        return;
+//        doProgress();
 
-        fdata.append("user_id", user_id);
+//        fdata.append("user_id", user_id);
+//
+//
+//        xhr.open('POST', manipulate_session_url, true);
+//        xhr.send(fdata);
 
-        xhr.open('POST', manipulate_session_url, true);
-        xhr.send(fdata);
+        $.ajax({
+            url: manipulate_session_url,
+            type: "post",
+            data: { "user_id": user_id },
+            //async:true,
+            beforeSend: function() {
+                //这里是开始执行方法，显示效果，效果自己写
+                doProgress();
 
-        xhr.onreadystatechange = function () {
-//            if (this.readyState == 3) {
-//                alert(this.responseText);
+            },
+            complete: function() {
+                //方法执行完毕，效果自己可以关闭，或者隐藏效果
+
+            },
+            success: function(a) {
+                //alert(a);
+                //以下是效果进度条
+            },
+            error: function() {
+                //数据加载失败
+            }
+        });
+
+//        xhr.onreadystatechange = function () {
+////            if (this.readyState == 3) {
+////                doProgress();
+//
+////                alert(this.responseText);
+////                document.getElementById("manipulate_session_btn").disabled = true;
+////            }
+//
+//            if (this.readyState == 4) {
+//
+////                alert(this.responseText);
+////                $('.hide_before_purchase').css("display","block");
+////                $.each(list, function (index, domEle) {
+////                    domEle.onkeyup = function () {
+//
+////                handle = setInterval(get_progress_info, 100);
+//
+////
+////                if (progress < 1) {
+////                    alert(progress);
+////                    setTimeout("doProgress()", 100);
+////                    SetProgress(i);
+//////                    i++;
+////                } else {
+//////                    clearInterval(handle);
+////                    $("#message").html("加载完毕！").fadeIn("slow");//加载完毕提示
+////                    return;
+////                }
+////                doProgress();
+////                list.css("display", "block");
+////                list_session.css("display", "block");
+////                });
 //                document.getElementById("manipulate_session_btn").disabled = true;
 //            }
-
-            if (this.readyState == 4) {
-                alert(this.responseText);
-//                $('.hide_before_purchase').css("display","block");
-//                $.each(list, function (index, domEle) {
-//                    domEle.onkeyup = function () {
-
-                handle = setInterval(get_progress_info, 100);
-
-                if (progress < 1) {
-                    alert(progress);
-                } else {
-                    clearInterval(handle);
-                }
-
-                list.css("display", "block");
-                list_session.css("display", "block");
-//                });
-                document.getElementById("manipulate_session_btn").disabled = true;
-            }
-        }
+//        }
 
     }
 
-    function get_progress_info() {
-
-        var fdata_progress = new FormData();
-
-        xhr.open('POST', get_progress_info_url, true);
-        xhr.send(fdata_progress);
-
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4) {
-//                alert(this.responseText);
-                progress = this.responseText;
-            }
-        }
-    }
 
     $(".batch_item").on('click', function () {
 //        alert(1);

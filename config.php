@@ -15,4 +15,5 @@ define('FPATH', '../zdd/');
 //    define('GLOBAL_URL','124.193.66.106:8080');
 
 define('GLOBAL_URL', '192.168.1.138');
+//$GLOBALS['progress'] = 0;
 ?>

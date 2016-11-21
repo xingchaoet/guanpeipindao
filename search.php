@@ -391,9 +391,15 @@ if (!empty($first_search)) {
 //$rows = mysqli_num_rows($rs_tsfl30);
 //echo "当前记录数：" . $rows;
 if ($_SESSION['start_purchase']) {
-    echo "<div class='flow'> <button id='manipulate_session_btn' class='btn btn-default btn-sm'  disabled='true'>开始采购</button> </div>";
+    echo "<div class='flow'> 
+             <button id='manipulate_session_btn' class='btn btn-default btn-sm'  disabled='true'>开始采购</button> 
+             <div id='progressbar'><div></div></div>
+          </div>";
 } else {
-    echo "<div class='flow'> <button id='manipulate_session_btn' class='btn btn-default btn-sm'  onclick='manipulate_session();'>开始采购</button> </div>";
+    echo "<div class='flow'> 
+                <button id='manipulate_session_btn' class='btn btn-default btn-sm'  onclick='manipulate_session();'>开始采购</button>  
+                <div id='progressbar'><div></div></div>
+          </div>";
 }
 
 //exit();
