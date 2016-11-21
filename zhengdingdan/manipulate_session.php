@@ -63,7 +63,6 @@ $sum = count($temp_table);
 
 for ($i = 0; $i < $sum; $i++) {
     session_start();
-//        $tsfl_data3_array[] = $data;
     $bid = $temp_table[$i];
 //        IsChecked 默认为0
     $sql_add_to_temp_table = "
@@ -89,7 +88,6 @@ for ($i = 0; $i < $sum; $i++) {
 //        echo 'Caught exception: ', $e->getMessage(), "\n";  //输出捕获的异常消息
     }
 
-//    $sequence_number++;
     $progress_num++;
 //    if (!$progress_num%10) {
 
@@ -103,12 +101,5 @@ for ($i = 0; $i < $sum; $i++) {
 //    fwrite($open, $_SESSION['progress'] . "\r\n");
 //    fclose($open);
 
-//    echo $progress_num;
 }
-
-//}
-
-//echo $sequence_number ;
-//
-//print_r($dd_pc);
 

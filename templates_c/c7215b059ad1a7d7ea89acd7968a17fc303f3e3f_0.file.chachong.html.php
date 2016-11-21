@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-21 15:29:56
+/* Smarty version 3.1.29, created on 2016-11-21 18:25:35
   from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\chachong.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5832a274c76f79_05044108',
+  'unifunc' => 'content_5832cb9febac99_96619544',
   'file_dependency' => 
   array (
     'c7215b059ad1a7d7ea89acd7968a17fc303f3e3f' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\chachong.html',
-      1 => 1479713352,
+      1 => 1479723918,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_5832a274c76f79_05044108 ($_smarty_tpl) {
+function content_5832cb9febac99_96619544 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -328,6 +328,7 @@ function content_5832a274c76f79_05044108 ($_smarty_tpl) {
         .default_num_span {
             height: 25px;
             width: 20px;
+            /*float: left;*/
         }
 
         .default_num_input {
@@ -345,6 +346,7 @@ function content_5832a274c76f79_05044108 ($_smarty_tpl) {
 
         .flow {
             margin-top: 5px;
+            float: left;
         }
 
     </style>
@@ -1560,16 +1562,16 @@ dist/picture/pic_list/pic_disable.gif"
 
         if (progress >= 100) {
 //            $("#message").html("加载完毕！").fadeIn("slow");//加载完毕提示
-            alert('加载完毕!');
+//            alert('加载完毕!');
 //            clearInterval(handle);
             SetProgress(progress);
             list.css("display", "block");
             list_session.css("display", "block");
-//            progress = 0;
+            progress = 0;
             return;
         }
         if (progress < 100) {
-            setTimeout("doProgress()", 1000);
+            setTimeout("doProgress()", 100);
 //            handle = setInterval(doProgress(), 1000);
             SetProgress(progress);
             get_progress_info();
@@ -1581,19 +1583,25 @@ dist/picture/pic_list/pic_disable.gif"
 
     function manipulate_session() {
 
+        document.getElementById('manipulate_session_btn').disabled = true;
+
         var fdata = new FormData();
         var user_id = $('#userid').html();
         var default_num = $('#default_num').html();
         var list = $('.hide_before_purchase');
         var list_session = $('.hide_before_purchase_session');
-
 //        alert("默认数量");
         var content = $('#white_content');
 
         var content = "<span class='default_num_span'>默认数量</span> <input class=\"default_num_input\" type=\"text\" value= " + default_num + ">";
         var flow = $('.flow');
+
+
+
         $('.flow').append(content);
 
+        $('#progressbar').show();
+        $('#progressbar').children().eq(0).show();
         $('.default_num_input').on('change', function () {
             var default_num = $('.default_num_input').val();
 //            alert(default_num);
@@ -1616,16 +1624,6 @@ dist/picture/pic_list/pic_disable.gif"
             }
         });
 
-//        document.getElementById('light').style.display = 'block';
-
-//        return;
-//        doProgress();
-
-//        fdata.append("user_id", user_id);
-//
-//
-//        xhr.open('POST', manipulate_session_url, true);
-//        xhr.send(fdata);
 
         $.ajax({
             url: manipulate_session_url,
@@ -1633,58 +1631,19 @@ dist/picture/pic_list/pic_disable.gif"
             data: { "user_id": user_id },
             //async:true,
             beforeSend: function() {
-                //这里是开始执行方法，显示效果，效果自己写
-                doProgress();
-
+//                sleep(1000);
+//                doProgress();
+                setTimeout( "doProgress()" , 500);
             },
             complete: function() {
-                //方法执行完毕，效果自己可以关闭，或者隐藏效果
 
             },
             success: function(a) {
-                //alert(a);
-                //以下是效果进度条
             },
             error: function() {
-                //数据加载失败
             }
         });
 
-//        xhr.onreadystatechange = function () {
-////            if (this.readyState == 3) {
-////                doProgress();
-//
-////                alert(this.responseText);
-////                document.getElementById("manipulate_session_btn").disabled = true;
-////            }
-//
-//            if (this.readyState == 4) {
-//
-////                alert(this.responseText);
-////                $('.hide_before_purchase').css("display","block");
-////                $.each(list, function (index, domEle) {
-////                    domEle.onkeyup = function () {
-//
-////                handle = setInterval(get_progress_info, 100);
-//
-////
-////                if (progress < 1) {
-////                    alert(progress);
-////                    setTimeout("doProgress()", 100);
-////                    SetProgress(i);
-//////                    i++;
-////                } else {
-//////                    clearInterval(handle);
-////                    $("#message").html("加载完毕！").fadeIn("slow");//加载完毕提示
-////                    return;
-////                }
-////                doProgress();
-////                list.css("display", "block");
-////                list_session.css("display", "block");
-////                });
-//                document.getElementById("manipulate_session_btn").disabled = true;
-//            }
-//        }
 
     }
 

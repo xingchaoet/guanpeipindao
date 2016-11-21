@@ -21,7 +21,8 @@ $show_type = $_REQUEST["show_type"];
 $book_ids = $_REQUEST["book_ids"];
 $book_nums = $_REQUEST["book_nums"];
 $first_search = $_REQUEST["first_search"];
-
+//重置进度
+//unset($_SESSION['progress']);
 if (!empty($_SESSION['default_num'])) {
     $default_num = $_SESSION['default_num'];
 } else {
@@ -392,14 +393,18 @@ if (!empty($first_search)) {
 //echo "当前记录数：" . $rows;
 if ($_SESSION['start_purchase']) {
     echo "<div class='flow'> 
-             <button id='manipulate_session_btn' class='btn btn-default btn-sm'  disabled='true'>开始采购</button> 
-             <div id='progressbar'><div></div></div>
-          </div>";
+             <button id='manipulate_session_btn' class='btn btn-default btn-sm'  style='float: left' disabled='true'>开始采购</button> 
+             
+          </div>
+          <div id='progressbar' style='float: left'><div></div></div>
+          ";
 } else {
     echo "<div class='flow'> 
-                <button id='manipulate_session_btn' class='btn btn-default btn-sm'  onclick='manipulate_session();'>开始采购</button>  
-                <div id='progressbar'><div></div></div>
-          </div>";
+                <button id='manipulate_session_btn' class='btn btn-default btn-sm' style='float: left'  onclick='manipulate_session();'>开始采购</button>  
+          </div>
+          <div id='progressbar'><div></div></div>
+
+          ";
 }
 
 //exit();
