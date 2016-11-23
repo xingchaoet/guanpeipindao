@@ -27,8 +27,8 @@ while (odbc_fetch_row($AdminResult)) {
 }
 echo "</select>";
 //right
-echo "<input id=\"realname_input\" name=\"realname_input\" onblur='get_user_info();'
-style=\"position:absolute;width:170px;height:14px;left:52px;top:2px;
+echo "<input id=\"realname_input\" name=\"realname_input\"  onblur='get_user_info();'
+style=\"position:absolute;width:171px;height:15px;left:56px;top:2px;
 border-bottom:0px;border-right:0px;border-left:0px;border-top:0px;\">";
 //right
 

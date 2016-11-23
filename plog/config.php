@@ -1,7 +1,7 @@
 <?php
 return array(
 	'loggers' => array(
-		'base' => dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'demo'.DIRECTORY_SEPARATOR,
+		'base' => dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'log'.DIRECTORY_SEPARATOR,
 		'system' => 'system',
 		'app' => 'app'
 	),

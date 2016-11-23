@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-23 13:49:45
+/* Smarty version 3.1.29, created on 2016-11-23 14:03:11
   from "D:\phpStudy\WWW\guanpeipindao\templates\user\register.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58352df9d1a409_44603698',
+  'unifunc' => 'content_5835311fe4e8c4_95228751',
   'file_dependency' => 
   array (
     'fa040048ea77c1ed4beecfe9def2959920636b00' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\user\\register.html',
-      1 => 1479880170,
+      1 => 1479880526,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:header.html' => 1,
   ),
 ),false)) {
-function content_58352df9d1a409_44603698 ($_smarty_tpl) {
+function content_5835311fe4e8c4_95228751 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -397,20 +397,7 @@ function content_58352df9d1a409_44603698 ($_smarty_tpl) {
     var xmlHttp;
     //取xmlhttprequest对象
     function GetXmlHttpObject() {
-//        var xmlHttp = null;
-//        try {
-//            // Firefox, Opera 8.0+, Safari
-//            xmlHttp = new XMLHttpRequest();
-//        }
-//        catch (e) {
-//            // Internet Explorer
-//            try {
-//                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
-//            }
-//            catch (e) {
-//                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-//            }
-//        }
+
         var xmlHttp = null;
         if (window.XMLHttpRequest) {
             xmlHttp = new XMLHttpRequest();
@@ -433,20 +420,12 @@ function content_58352df9d1a409_44603698 ($_smarty_tpl) {
         if (select_sheng != '' && select_sheng != null && select_sheng != 0 && select_sheng != -1) {
             //将省份名称值提交lib_select.php
 
-//            alert(select_sheng);
             var fdata = new FormData();
             fdata.append("sheng", select_sheng);
             xmlHttp.open('POST', 'lib_select.php', true);
 
-//            xmlHttp.open('GET', 'lib_select.php?sheng=' + select_sheng, true);
-
-//            xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-
-//            xmlHttp.send("sheng=" + select_sheng);
             xmlHttp.send(fdata);
 
-//            xmlHttp.send(null);
             xmlHttp.onreadystatechange = function () {
                 if (xmlHttp.readyState != 4) {
                     cObj.innerHTML = '<option value="loading">loading……</option>';

@@ -360,20 +360,7 @@
     var xmlHttp;
     //取xmlhttprequest对象
     function GetXmlHttpObject() {
-//        var xmlHttp = null;
-//        try {
-//            // Firefox, Opera 8.0+, Safari
-//            xmlHttp = new XMLHttpRequest();
-//        }
-//        catch (e) {
-//            // Internet Explorer
-//            try {
-//                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
-//            }
-//            catch (e) {
-//                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-//            }
-//        }
+
         var xmlHttp = null;
         if (window.XMLHttpRequest) {
             xmlHttp = new XMLHttpRequest();
@@ -396,20 +383,12 @@
         if (select_sheng != '' && select_sheng != null && select_sheng != 0 && select_sheng != -1) {
             //将省份名称值提交lib_select.php
 
-//            alert(select_sheng);
             var fdata = new FormData();
             fdata.append("sheng", select_sheng);
             xmlHttp.open('POST', 'lib_select.php', true);
 
-//            xmlHttp.open('GET', 'lib_select.php?sheng=' + select_sheng, true);
-
-//            xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-
-//            xmlHttp.send("sheng=" + select_sheng);
             xmlHttp.send(fdata);
 
-//            xmlHttp.send(null);
             xmlHttp.onreadystatechange = function () {
                 if (xmlHttp.readyState != 4) {
                     cObj.innerHTML = '<option value="loading">loading……</option>';

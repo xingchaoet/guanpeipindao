@@ -10,7 +10,7 @@ require_once("../DB/con_mssql.php");
 require_once("../DB/DAO.php");
 header("Content-type: text/html; charset=utf-8");
 $ms=new con_mssql();
-$Query = "select zw_name from xzzw_info order by zw_name";
+$Query = "select zw_name from xzzw_info order by id";
 $AdminResult=$ms->sdb($Query);
 ?>
 <select id='zw' name='zw' height='18'>
