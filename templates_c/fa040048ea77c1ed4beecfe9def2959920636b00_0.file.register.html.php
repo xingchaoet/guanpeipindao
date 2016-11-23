@@ -1,3 +1,27 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-11-23 13:49:45
+  from "D:\phpStudy\WWW\guanpeipindao\templates\user\register.html" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_58352df9d1a409_44603698',
+  'file_dependency' => 
+  array (
+    'fa040048ea77c1ed4beecfe9def2959920636b00' => 
+    array (
+      0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\user\\register.html',
+      1 => 1479880170,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:header.html' => 1,
+  ),
+),false)) {
+function content_58352df9d1a409_44603698 ($_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +39,9 @@
 <body>
 <!---<form action="#" method="post" name="myform">---->
 
-{include file="header.html"}
+<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 
 <div class="register_group">
     <ul id="register_group_title" class="nav nav-tabs ">
@@ -350,13 +376,24 @@
 </div>
 <!-----</form>----->
 </body>
-<script src="../dist/js/jquery.min.js"></script>
-<script src="../dist/js/bootstrap.min.js"></script>
-<script language="javascript" src="../dist/js/xmlhttprequest.js"></script>
-<script language="javascript" src="../dist/js/register.js"></script>
-<script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
+<?php echo '<script'; ?>
+ src="../dist/js/jquery.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ language="javascript" src="../dist/js/xmlhttprequest.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ language="javascript" src="../dist/js/register.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"><?php echo '</script'; ?>
+>
 
-<script type="text/javascript">
+<?php echo '<script'; ?>
+ type="text/javascript">
     var xmlHttp;
     //取xmlhttprequest对象
     function GetXmlHttpObject() {
@@ -540,8 +577,13 @@
         get_user_info();
     }
 
-</script>
+<?php echo '</script'; ?>
+>
 
-<!--<script language="javascript" src="../dist/js/register_gps.js"></script>-->
+<!--<?php echo '<script'; ?>
+ language="javascript" src="../dist/js/register_gps.js"><?php echo '</script'; ?>
+>-->
 
 </html>
+<?php }
+}

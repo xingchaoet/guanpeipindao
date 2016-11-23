@@ -18,7 +18,8 @@ require_once("../db/con_mssql.php");
 require_once("../db/con_mysql2.php");
 require_once("../db/con_mysql3.php");
 include("../db/dao.php");
-session_start();
+include("auth_chachong.php");
+//session_start();
 
 //var_dump($_POST);
 
