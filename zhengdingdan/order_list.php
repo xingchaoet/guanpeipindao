@@ -11,6 +11,8 @@ require_once("../db/con_mssql.php");
 include("../db/dao.php");
 require_once("../config.php");
 include("../include/GuanCangSmarty.php");
+include ("auth_zhengdingdan.php");
+
 $order_list = array();
 $uid = $_REQUEST['uid'];
 

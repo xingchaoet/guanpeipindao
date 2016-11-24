@@ -12,8 +12,9 @@ include("../db/dao.php");
 require_once("../config.php");
 include("../include/GuanCangSmarty.php");
 include  ("../db/con_mysql2.php");
+include ("auth_zhengdingdan.php");
 
-session_start();
+//session_start();
 
 $order_list = array();
 

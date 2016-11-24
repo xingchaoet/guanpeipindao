@@ -14,8 +14,9 @@ require_once("../config.php");
 require '../plog/classes/plog.php';
 Plog::set_config(include '../plog/config.php');
 $log = Plog::factory(__FILE__);
+include("auth_chachong.php");
 
-session_start();
+//session_start();
 
 
 $ms = new con_mssql();

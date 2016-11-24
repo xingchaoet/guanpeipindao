@@ -8,8 +8,9 @@
 require_once("../db/con_mssql.php");
 include("../db/dao.php");
 require_once("../config.php");
+include ("auth_zhengdingdan.php");
 
-session_start();
+//session_start();
 
 // 实例化SQLServer封装类
 $ms = new con_mssql();

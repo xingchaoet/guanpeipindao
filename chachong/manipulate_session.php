@@ -10,7 +10,8 @@ require_once("../config.php");
 //include("db/con_mysql2.php");
 require_once("../db/con_mssql.php");
 include("../db/dao.php");
-include("auth_zhengdingdan.php");
+include("auth_chachong.php");
+
 require '../plog/classes/plog.php';
 Plog::set_config(include '../plog/config.php');
 $log = Plog::factory(__FILE__);
@@ -24,6 +25,8 @@ $lib_no = $_SESSION['lib_no'];
 
 $dd_pc = $lib_no . '_' . $user_id . '_' . date('YmdHis', time());
 $_SESSION['dd_pc'] = $dd_pc;
+//选择创建新批次时使用
+$_SESSION['dd_pc_create'] = $dd_pc;
 
 $temp_table_pici_name = 'bs_temp_dingdan_pici';
 

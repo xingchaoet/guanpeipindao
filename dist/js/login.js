@@ -75,7 +75,6 @@ window.onload = function(){
 						alert('用户名输入错误');
 						$('lgname').select();
 					}else if(msg == '-1'){
-						alert('登录成功');
 						// location = 'main.php';
 						//这里跳转
 						location = '../guanpeipindao.php';
@@ -207,7 +206,6 @@ window.onload = function(){
 						alert('用户名输入错误');
 						$('lgname_gps').select();
 					}else if(msg == '-1'){
-						alert('登录成功');
 						// location = 'main.php';
 						//这里跳转
 						location = '../guanpeipindao.php';

@@ -11,6 +11,7 @@ include("db/con_mssql.php");
 //include("db/con_mysql2.php");
 include("db/dao.php");
 
+
 $smarty = new GuanCangSmarty();
 
 //轮播图片

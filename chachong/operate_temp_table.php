@@ -9,7 +9,8 @@ include("../include/GuanCangSmarty.php");
 require_once("../config.php");
 require_once("../db/con_mssql.php");
 include("../db/dao.php");
-include("auth_zhengdingdan.php");
+include("auth_chachong.php");
+
 require '../plog/classes/plog.php';
 Plog::set_config(include '../plog/config.php');
 $log = Plog::factory(__FILE__);

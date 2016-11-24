@@ -392,18 +392,28 @@ if (!empty($first_search)) {
 //$rows = mysqli_num_rows($rs_tsfl30);
 //echo "当前记录数：" . $rows;
 if ($_SESSION['start_purchase']) {
-    echo "<div class='flow'> 
+    echo "
+          <div id='batch_option'>
+               <input id='batch_option_create_radio' type=\"radio\" name=\"batch_option_radio\" value=\"创建新批次\" />创建新批次 
+               <input id='batch_option_add_radio' type=\"radio\" name=\"batch_option_radio\" value=\"添加到原有批次\" />添加到原有批次 
+          </div>
+          <div class='flow'> 
              <button id='manipulate_session_btn' class='btn btn-default btn-sm'  style='float: left' disabled='true'>开始采购</button> 
              
           </div>
           <div id='progressbar' style='float: left'><div></div></div>
+  
           ";
 } else {
-    echo "<div class='flow'> 
+    echo "
+          <div id='batch_option'>
+               <input id='batch_option_create_radio' type=\"radio\" name=\"batch_option_radio\" value=\"创建新批次\" />创建新批次 
+               <input id='batch_option_add_radio' type=\"radio\" name=\"batch_option_radio\" value=\"添加到原有批次\" />添加到原有批次 
+          </div>
+          <div class='flow'> 
                 <button id='manipulate_session_btn' class='btn btn-default btn-sm' style='float: left'  onclick='manipulate_session();'>开始采购</button>  
           </div>
           <div id='progressbar'><div></div></div>
-
           ";
 }
 
@@ -648,7 +658,7 @@ if (isset($rows) and $rows > 0) {
 //方案二
 //   如果视图中有多条记录的话， 这样搜索只会搜索出row 小的一行数据，如果依据此条数据判断出的库存状态是'可预定' 这样会和generate_order.php 会因为搜索 count(*) 搜出多条数据
 //    多条数据中如果有库存状态是其他的话 矛盾
-    $sql_tsfl3 = "SELECT rows, book_id,sm,isbn,zzh,kb,cbrq,dj,jz1,jz3,slt
+    $sql_tsfl3 = "SELECT rows, book_id,sm,isbn,zzh,isnull(kb,'16K') as kb,cbrq,dj,jz1,jz3,slt
 FROM (SELECT $search_content,rows,
 ROW_NUMBER() OVER (ORDER BY rows) AS RowNumber
 FROM v_ecs_book WHERE $search_TJ) a

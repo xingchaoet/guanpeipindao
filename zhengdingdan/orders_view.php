@@ -11,7 +11,9 @@ require_once("../db/con_mssql.php");
 include("../db/dao.php");
 require_once("../config.php");
 include("../include/GuanCangSmarty.php");
-session_start();
+include ("auth_zhengdingdan.php");
+
+//session_start();
 $order_list = array();
 $user_type = $_SESSION['user_type'];
 

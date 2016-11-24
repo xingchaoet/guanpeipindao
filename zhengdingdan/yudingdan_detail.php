@@ -12,21 +12,21 @@ require_once("../db/con_mssql.php");
 include("../db/dao.php");
 require_once("../config.php");
 include("../include/GuanCangSmarty.php");
+include ("auth_zhengdingdan.php");
 
-session_start();
+//session_start();
 
 $order_list = array();
 
 $uid = $_REQUEST['usrn'];
 
 //echo $uid;
+$lib_no = $_SESSION['lib_no'];
 
-if (!empty($_REQUEST['sheet_no'])) {
-    $sheet_no = $_REQUEST['sheet_no'];
-    $_SESSION['sheet_no'] = $sheet_no;
-} else {
-    $sheet_no = $_SESSION['sheet_no'];
-}
+
+//预订单批次
+//不要与征订单混淆
+$sheet_no = $lib_no . $uid;
 
 //print_r($_POST);
 //exit();

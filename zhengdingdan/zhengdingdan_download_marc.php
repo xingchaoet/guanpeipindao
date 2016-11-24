@@ -6,7 +6,9 @@
  * Time: 16:16
  */
 include("../include/GuanCangSmarty.php");
-session_start();
+include ("auth_zhengdingdan.php");
+
+//session_start();
 
 $sheet_no = $_POST['sheet_no'];
 $type_num = $_POST['type_num'];

@@ -125,7 +125,7 @@ window.onload = function(){
 		url += '&ddate='+$('data_date').value+'&dformat='+$('data_format').value;
 		url += '&xb='+$('sex').value+'&lib_no='+$('lib').value;
 		url += '&mobile='+$('mobile').value;
-		alert(url);
+		// alert(url);
 		xmlhttp.open('get',url,true);
 		xmlhttp.onreadystatechange = function(){
 			if(xmlhttp.readyState == 4){
@@ -259,13 +259,13 @@ window.onload = function(){
 	//正式注册
 	$('regbtn_gps').onclick = function(){
 
-		alert(1);
+		// alert(1);
 		$('imgdiv_gps').style.visibility = 'visible';
 		url = 'register_check_gps.php?name='+$('regname_gps').value+'&pwd='+$('regpwd1_gps').value+'&email='+$('email_gps').value;
 		url += '&lxr=' +$('lxr_gps').value+'&company='+$('company_gps').value;
 		url += '&telephone='+$('telephone_gps').value+'&qq='+$('qq_gps').value;
 		url += '&mobile='+$('mobile_gps').value;
-		alert(url);
+		// alert(url);
 		xmlhttp.open('get',url,true);
 		xmlhttp.onreadystatechange = function(){
 			if(xmlhttp.readyState == 4){

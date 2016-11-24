@@ -11,8 +11,10 @@ require_once("../db/con_mssql.php");
 require_once("../db/con_mysql2.php");
 include("../db/dao.php");
 require_once("../config.php");
+include("auth_chachong.php");
 
-session_start();
+
+//session_start();
 
 $search_TJ = $_SESSION['search_TJ'];
 
