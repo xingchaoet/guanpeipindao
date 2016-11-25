@@ -161,7 +161,7 @@ FROM (SELECT $search_content_first,
 ROW_NUMBER() OVER (ORDER BY Sequence_Number) AS RowNumber
 FROM bs_temp_dingdan WHERE $batch_TJ) a
 WHERE RowNumber > $select_from AND RowNumber <= ($select_from + $page_size)
-ORDER BY a.Sequence_Number DESC ";
+ORDER BY a.Sequence_Number ASC ";
 
 //    echo $sql_batch_book3;
 

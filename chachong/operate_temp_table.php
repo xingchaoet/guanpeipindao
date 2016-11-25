@@ -40,23 +40,50 @@ if ($add_one_book_to_order) {//添加书籍
 //        echo "数量不可为0";
 //        exit();
 //    }
-//    $sql_add_to_temp_table = "INSERT INTO [dbo]." . $table_name . " (Book_Id,Book_Num, State,User_Id,Pi_Ci_No,Date_Time) VALUES ('$book_id',$book_num, '0','$user_id','$zdd_pc',GETDATE())";
-    $sql_update_temp_table = "UPDATE [dbo]." . $table_name . " SET  Book_Num = '$book_num'     WHERE Book_Id = '$book_id' AND Pi_Ci_No = '$dd_pc'";
 
-    echo $sql_update_temp_table;
+//    if (empty($_SESSION['add_to_new_so_insert'])) {//更新
+    $sql_temp_table = "UPDATE [dbo]." . $table_name . " SET  Book_Num = '$book_num'     WHERE Book_Id = '$book_id' AND Pi_Ci_No = '$dd_pc'";
 
-    $rs_sql_update_temp_table = $ms->sdb($sql_update_temp_table);
+//    } else {//添加
+//
+//        $max_sequence_number = 1;
+//
+//        $sql_get_sequence_number = "select max(Sequence_Number) as Max_Sequence_Number from  ".$table_name." WHERE Pi_Ci_No = '$dd_pc'";
+////        $open = fopen("D:/phpStudy/WWW/guanpeipindao/zhengdingdan/log.txt", "a");
+////        fwrite($open, $sql_get_sequence_number . "\r\n");
+////        fclose($open);
+////        echo $sql_get_sequence_number;
+//
+//        $rs = $ms->sdb($sql_get_sequence_number);
+//        if (!$rs) {
+//            echo "Error in query preparation/execution.<br />";
+//            die(print_r(iconv('GBK', 'UTF-8', odbc_errormsg()), true));
+//        }
+//        if (odbc_fetch_row($rs)) {
+//            $max_sequence_number = odbc_result($rs, "Max_Sequence_Number");
+//        }
+////        echo '1';
+////        exit();
+//        $sql_temp_table = "INSERT INTO [dbo]." . $table_name . " (Book_Id,Book_Num, State,User_Id,Pi_Ci_No,Date_Time,Sequence_Number)
+//                                                               VALUES ('$book_id',$book_num, '0','$user_id','$dd_pc',GETDATE(),'$max_sequence_number')";
+//    }
+
+
+//    echo $max_sequence_number;
+//    echo $sql_temp_table;
+
+    $rs_sql_temp_table = $ms->sdb($sql_temp_table);
 
     try {
 
-        if (!$rs_sql_update_temp_table) {
+        if (!$rs_sql_temp_table) {
 
             $error = true;
 
             echo "Error in query preparation/execution.<br />";
 //                die(print_r(odbc_errormsg(), true));
 
-            $error = "update $book_id in $table_name failed";
+            $error = " $book_id in $table_name failed";
 
             $log->debug($error);
 

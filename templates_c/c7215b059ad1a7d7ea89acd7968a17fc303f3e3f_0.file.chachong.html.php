@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-24 11:29:00
+/* Smarty version 3.1.29, created on 2016-11-25 18:16:50
   from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\chachong.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58365e7c50c175_12106862',
+  'unifunc' => 'content_58380f921207b8_17097879',
   'file_dependency' => 
   array (
     'c7215b059ad1a7d7ea89acd7968a17fc303f3e3f' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\chachong.html',
-      1 => 1479958092,
+      1 => 1480068998,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_58365e7c50c175_12106862 ($_smarty_tpl) {
+function content_58380f921207b8_17097879 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -288,15 +288,20 @@ function content_58365e7c50c175_12106862 ($_smarty_tpl) {
         .batch_ltd {
             margin-top: 5px;
             margin-bottom: 5px;
-            width: 300px;
+            width: 260px;
         }
 
         .batch_mtd {
             margin-top: 5px;
             margin-bottom: 5px;
-            width: 300px;
+            width: 260px;
         }
-
+        .batch_r_f_td{
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 260px;
+            display: none;
+        }
         .batch_rtd {
             margin-top: 5px;
             margin-bottom: 5px;
@@ -326,12 +331,13 @@ function content_58365e7c50c175_12106862 ($_smarty_tpl) {
         }
 
         .default_num_span {
+            display: none;
             height: 25px;
             width: 20px;
-            /*float: left;*/
         }
 
         .default_num_input {
+            display: none;
             height: 25px;
             width: 20px;
         }
@@ -347,6 +353,7 @@ function content_58365e7c50c175_12106862 ($_smarty_tpl) {
         .flow {
             margin-top: 5px;
             float: left;
+            display: none;
         }
 
         #batch_option {
@@ -540,9 +547,25 @@ dist/picture/chachong/hide_table.png">
                         </span>
                     </div>
 
+                    <table id="batch_table" class="">
+                        <tr>
+                            <td align="center" class="batch_ltd">
+                                批次号
+                            </td>
 
-                    <table id="batch_table" class="table table-condensed batch_table">
+                            <td  class="batch_mtd">
+                                批次产生时间
+                            </td>
 
+                            <td  class="batch_r_f_td">
+                                添加到此批次
+                            </td>
+
+                            <td  class="batch_rtd">
+                                删除
+                            </td>
+
+                        </tr>
                         <?php
 $_from = $_smarty_tpl->tpl_vars['need_op_batch_detail']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -564,6 +587,10 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                             <td class="batch_mtd">
                                 <?php echo $_smarty_tpl->tpl_vars['val']->value['Date_Time'];?>
 
+                            </td>
+
+                            <td class="batch_r_f_td">
+                                <input id='' type="radio" name="add_to_batch" value="" />
                             </td>
 
                             <td class="batch_rtd">

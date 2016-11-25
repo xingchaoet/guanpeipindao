@@ -263,15 +263,20 @@
         .batch_ltd {
             margin-top: 5px;
             margin-bottom: 5px;
-            width: 300px;
+            width: 260px;
         }
 
         .batch_mtd {
             margin-top: 5px;
             margin-bottom: 5px;
-            width: 300px;
+            width: 260px;
         }
-
+        .batch_r_f_td{
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 260px;
+            display: none;
+        }
         .batch_rtd {
             margin-top: 5px;
             margin-bottom: 5px;
@@ -301,12 +306,13 @@
         }
 
         .default_num_span {
+            display: none;
             height: 25px;
             width: 20px;
-            /*float: left;*/
         }
 
         .default_num_input {
+            display: none;
             height: 25px;
             width: 20px;
         }
@@ -505,9 +511,25 @@
                         </span>
                     </div>
 
+                    <table id="batch_table" class="">
+                        <tr>
+                            <td align="center" class="batch_ltd">
+                                批次号
+                            </td>
 
-                    <table id="batch_table" class="table table-condensed batch_table">
+                            <td  class="batch_mtd">
+                                批次产生时间
+                            </td>
 
+                            <td  class="batch_r_f_td">
+                                添加到此批次
+                            </td>
+
+                            <td  class="batch_rtd">
+                                删除
+                            </td>
+
+                        </tr>
                         {foreach $need_op_batch_detail as $val }
                         <tr>
                             <td class="batch_ltd">
@@ -516,6 +538,10 @@
 
                             <td class="batch_mtd">
                                 {$val['Date_Time']}
+                            </td>
+
+                            <td class="batch_r_f_td">
+                                <input id='' type="radio" name="add_to_batch" value="" />
                             </td>
 
                             <td class="batch_rtd">

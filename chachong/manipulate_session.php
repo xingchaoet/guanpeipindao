@@ -16,17 +16,6 @@ require '../plog/classes/plog.php';
 Plog::set_config(include '../plog/config.php');
 $log = Plog::factory(__FILE__);
 
-$_SESSION['start_purchase'] = true;
-
-$temp_table = $_SESSION['temp_table'];
-
-$user_id = $_POST['user_id'];
-$lib_no = $_SESSION['lib_no'];
-
-$dd_pc = $lib_no . '_' . $user_id . '_' . date('YmdHis', time());
-$_SESSION['dd_pc'] = $dd_pc;
-//选择创建新批次时使用
-$_SESSION['dd_pc_create'] = $dd_pc;
 
 $temp_table_pici_name = 'bs_temp_dingdan_pici';
 
@@ -34,75 +23,156 @@ $temp_table_name = 'bs_temp_dingdan';
 
 $ms = new con_mssql();
 
-$sql_add_to_temp_table_batch = "
+$previous_max_sequence_number = 0;
+
+$_SESSION['start_purchase'] = true;
+
+$temp_table = $_SESSION['temp_table'];
+$table_name = 'bs_temp_dingdan';
+
+$user_id = $_POST['user_id'];
+$batch_option = $_POST['batch_option'];
+
+//$open = fopen("D:/phpStudy/WWW/guanpeipindao/zhengdingdan/log.txt", "a");
+//fwrite($open, $batch_option . "\r\n");
+//fclose($open);
+
+$lib_no = $_SESSION['lib_no'];
+
+if ($batch_option == "create_new_batch") {
+
+    $dd_pc = $lib_no . '_' . $user_id . '_' . date('YmdHis', time());
+    $_SESSION['dd_pc'] = $dd_pc;
+//选择创建新批次时使用
+    $_SESSION['dd_pc_create'] = $dd_pc;
+
+
+//批次号表
+    $sql_add_to_temp_table_batch = "
         INSERT INTO [dbo]." . $temp_table_pici_name
-    . " (User_Id, PiCi_Num,State,Date_Time)
+        . " (User_Id, PiCi_Num,State,Date_Time)
         VALUES ('$user_id', '$dd_pc','0',GETDATE())";
 
-$rs_sql_add_to_temp_table_batch = $ms->sdb($sql_add_to_temp_table_batch);
+    $rs_sql_add_to_temp_table_batch = $ms->sdb($sql_add_to_temp_table_batch);
 
-try {
+    try {
 
-    if (!$rs_sql_add_to_temp_table_batch) {
+        if (!$rs_sql_add_to_temp_table_batch) {
 
-//        echo "Error in query preparation/execution.<br />";
-//                die(print_r(odbc_errormsg(), true));
+            $error = "insert $dd_pc to $temp_table_pici_name failed";
+            $log->debug($error);
+            throw new Exception($error);      //创建一个异常对象，通过throw语句抛出
+        }
 
-        $error = "insert $dd_pc to $temp_table_pici_name failed";
-        $log->debug($error);
-        throw new Exception($error);      //创建一个异常对象，通过throw语句抛出
+    } catch (Exception $e) {
+//    echo 'Caught exception: ', $e->getMessage(), "\n";  //输出捕获的异常消息
     }
 
-} catch (Exception $e) {
+} else if ($batch_option == "add_to_previous_batch") {
 
-//    echo 'Caught exception: ', $e->getMessage(), "\n";  //输出捕获的异常消息
+    $dd_pc = $_SESSION['dd_pc'];
+
+    $sql_get_sequence_number = "select max(Sequence_Number) as Max_Sequence_Number from  " . $table_name . " WHERE Pi_Ci_No = '$dd_pc'";
+
+    $rs = $ms->sdb($sql_get_sequence_number);
+    if (!$rs) {
+        echo "Error in query preparation/execution.<br />";
+        die(print_r(iconv('GBK', 'UTF-8', odbc_errormsg()), true));
+    }
+
+    if (odbc_fetch_row($rs)) {
+        $previous_max_sequence_number = odbc_result($rs, "Max_Sequence_Number");
+    }
+
+//    $open = fopen("D:/phpStudy/WWW/guanpeipindao/zhengdingdan/log.txt", "a");
+//    fwrite($open, $previous_max_sequence_number . "\r\n");
+//    fclose($open);
 
 }
+
 
 $progress_num = 0;
 //while ($data = odbc_fetch_array($temp_table)) {
 
 $sum = count($temp_table);
 
-for ($i = 0; $i < $sum; $i++) {
-    session_start();
-    $bid = $temp_table[$i];
+
+if ($batch_option == "create_new_batch") {
+    for ($i = 0; $i < $sum; $i++) {
+        session_start();
+        $bid = $temp_table[$i];
 //        IsChecked 默认为0
-    $sql_add_to_temp_table = "
+
+        $sql_add_to_temp_table = "
         INSERT INTO [dbo]." . $temp_table_name
-        . " (Book_Id,Book_Num, State,User_Id,Pi_Ci_No,Date_Time,Sequence_Number)
+            . " (Book_Id,Book_Num, State,User_Id,Pi_Ci_No,Date_Time,Sequence_Number)
         VALUES ('$bid', '0','0','$user_id','$dd_pc',GETDATE(),'$i')";
 
-    $rs_sql_add_to_temp_table = $ms->sdb($sql_add_to_temp_table);
+//        $open = fopen("D:/phpStudy/WWW/guanpeipindao/zhengdingdan/log.txt", "a");
+//        fwrite($open, $sql_add_to_temp_table . "\r\n");
+//        fclose($open);
 
-    try {
+        $rs_sql_add_to_temp_table = $ms->sdb($sql_add_to_temp_table);
 
-        if (!$rs_sql_add_to_temp_table) {
+        try {
 
-//            echo "Error in query preparation/execution.<br />";
-//                die(print_r(odbc_errormsg(), true));
+            if (!$rs_sql_add_to_temp_table) {
 
-            $error = "insert $bid to $temp_table_name failed";
-            $log->debug($error);
-            throw new Exception($error);      //创建一个异常对象，通过throw语句抛出
+                $error = "insert $bid to $temp_table_name failed";
+                $log->debug($error);
+                throw new Exception($error);      //创建一个异常对象，通过throw语句抛出
+            }
+
+        } catch (Exception $e) {
+//        echo 'Caught exception: ', $e->getMessage(), "\n";  //输出捕获的异常消息
         }
 
-    } catch (Exception $e) {
-//        echo 'Caught exception: ', $e->getMessage(), "\n";  //输出捕获的异常消息
+        $progress_num++;
+
+        $_SESSION['progress'] = floor($progress_num * 100 / $sum);
+        session_write_close();
+
     }
+} else if ($batch_option == "add_to_previous_batch") {
 
-    $progress_num++;
-//    if (!$progress_num%10) {
+    for ($i = 0; $i < $sum; $i++) {
+        session_start();
+        $bid = $temp_table[$i];
+//        IsChecked 默认为0
 
-    $_SESSION['progress'] = floor($progress_num * 100 / $sum);
-//    $progress = floor($progress_num * 100/ $sum);
-    session_write_close();
-//    }
+        $sequence_number = $previous_max_sequence_number + $i + 1;
+        $sql_add_to_temp_table = "
+        INSERT INTO [dbo]." . $temp_table_name
+            . " (Book_Id,Book_Num, State,User_Id,Pi_Ci_No,Date_Time,Sequence_Number)
+        VALUES ('$bid', '0','0','$user_id','$dd_pc',GETDATE(),'$sequence_number')";
+
+        $rs_sql_add_to_temp_table = $ms->sdb($sql_add_to_temp_table);
+
+//        $open = fopen("D:/phpStudy/WWW/guanpeipindao/zhengdingdan/log.txt", "a");
+//        fwrite($open, $sql_add_to_temp_table . "\r\n");
+//        fclose($open);
 
 
-//    $open = fopen("D:/phpStudy/WWW/guanpeipindao/zhengdingdan/log.txt", "a");
-//    fwrite($open, $_SESSION['progress'] . "\r\n");
-//    fclose($open);
+        try {
 
+            if (!$rs_sql_add_to_temp_table) {
+
+                $error = "insert $bid to $temp_table_name failed";
+                $log->debug($error);
+                throw new Exception($error);      //创建一个异常对象，通过throw语句抛出
+            }
+
+        } catch (Exception $e) {
+//        echo 'Caught exception: ', $e->getMessage(), "\n";  //输出捕获的异常消息
+        }
+
+        $progress_num++;
+
+        $_SESSION['progress'] = floor($progress_num * 100 / $sum);
+        session_write_close();
+
+    }
 }
+
+
 

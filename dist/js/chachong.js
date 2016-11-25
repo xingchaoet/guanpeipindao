@@ -3,7 +3,7 @@
  */
 //    var global_url = "192.168.1.138";
 var global_url = $('#global_url').html();
-
+var batch_option = '';
 var progress = 0;
 var progress_id = "progressbar";
 var search_url = 'http://' + global_url + '/guanpeipindao/search.php';
@@ -22,7 +22,7 @@ var delete_batch_url = 'http://' + global_url + '/guanpeipindao/chachong/batch_i
 var default_num_url = 'http://' + global_url + '/guanpeipindao/chachong/default_num.php';
 var get_progress_info_url = 'http://' + global_url + '/guanpeipindao/chachong/get_progress_info.php';
 var batch_option_create_url = 'http://' + global_url + '/guanpeipindao/chachong/batch_option_create.php';
-
+var add_to_batch_url = 'http://' + global_url + '/guanpeipindao/chachong/add_to_batch.php';
 
 
 function creatXHR() {
@@ -485,8 +485,8 @@ $('#show').on('mouseenter', function () {
 
         if (this.checked) {
         } else {
-
-            $(this).parent().next().children().attr('value', 0);
+            //delete数据库中条目时不在置为0
+            // $(this).parent().next().children().attr('value', 0);
 
             add_one_book_to_order = 0;
         }
@@ -613,22 +613,45 @@ $('#show').on('mouseleave', function () {
 
 function create_or_add() {
 
-    var fdata = new FormData();
+    // var fdata = new FormData();
+    $('#progressbar').hide();
 
     switch ($("input[name=batch_option_radio]:checked").attr("id")) {
         case "batch_option_create_radio":
             // alert("batch_option_create_radio");
 
-            xhr.open('POST', batch_option_create_url, true);
-            xhr.send(fdata);
-            xhr.onreadystatechange = function () {
-                if (this.readyState == 4) {
-                    alert(this.responseText);
-                }
-            }
+            batch_option = 'create_new_batch';
 
+            var list = $('.hide_before_purchase');
+            var list_session = $('.hide_before_purchase_session');
+
+            // alert('hide');
+            list.css("display", "none");
+            list_session.css("display", "none");
+
+            $('.flow').show();
+            // $("#manipulate_session_btn").show();
+
+            document.getElementById('manipulate_session_btn').disabled = false;
+
+
+            $('.batch_r_f_td').hide();
+            $("#batch_table").hide();
             break;
         case "batch_option_add_radio":
+
+            var list = $('.hide_before_purchase');
+            var list_session = $('.hide_before_purchase_session');
+
+            batch_option = 'add_to_previous_batch';
+
+            // alert('hide');
+            list.css("display", "none");
+            list_session.css("display", "none");
+
+            $('.batch_r_f_td').show();
+            $("#batch_table").show();
+
             // alert("batch_option_add_radio");
             break;
         default:
@@ -665,7 +688,6 @@ function guan_cang_import_history() {
     }
 }
 
-
 function delpici() {
 //        alert($(this).parent());
     var pici_id = $(this).parent().prev().children().eq(1).prop('id');
@@ -685,6 +707,27 @@ function delpici() {
         }
     }
 }
+
+$("input[name=add_to_batch]").on("click", function () {
+
+
+    $('.flow').show();
+    document.getElementById('manipulate_session_btn').disabled = false;
+
+
+    var batch_id = $(this).parent().parent().children().eq(0).children().eq(0).html();
+
+    var fdata = new FormData();
+    fdata.append("batch_id", batch_id);
+
+    xhr.open('POST', add_to_batch_url, true);
+    xhr.send(fdata);
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            // alert(this.responseText);
+        }
+    }
+});
 
 var flag = 0;
 
@@ -911,11 +954,15 @@ function manipulate_session() {
 //        alert("默认数量");
 //     var content = $('#white_content');
 
-    var content = "<span class='default_num_span'>默认数量</span> <input class=\"default_num_input\" type=\"text\" value= " + default_num + ">";
+    // var content = "<span class='default_num_span'>默认数量</span> <input class=\"default_num_input\" type=\"text\" value= " + default_num + ">";
     // var flow = $('.flow');
 
+    $('.default_num_span').show();
 
-    $('#batch_option').append(content);
+    $('.default_num_input').show();
+    $('.default_num_input').val(default_num);
+
+    // $('#batch_option').append(content);
 
     $('#progressbar').show();
     $('#progressbar').children().eq(0).show();
@@ -944,11 +991,14 @@ function manipulate_session() {
         }
     });
 
+    //新建或添加到原有
+
+    // alert(batch_option);
 
     $.ajax({
         url: manipulate_session_url,
         type: "post",
-        data: {"user_id": user_id},
+        data: {"user_id": user_id, "batch_option": batch_option},
         //async:true,
         beforeSend: function () {
 //                sleep(1000);

@@ -391,11 +391,15 @@ if (!empty($first_search)) {
 
 //$rows = mysqli_num_rows($rs_tsfl30);
 //echo "当前记录数：" . $rows;
+//<span style='color:#ff6c77'> 保存采购结果中..........</span>
 if ($_SESSION['start_purchase']) {
     echo "
           <div id='batch_option'>
                <input id='batch_option_create_radio' type=\"radio\" name=\"batch_option_radio\" value=\"创建新批次\" />创建新批次 
                <input id='batch_option_add_radio' type=\"radio\" name=\"batch_option_radio\" value=\"添加到原有批次\" />添加到原有批次 
+          
+               <span class='default_num_span'>默认数量</span> <input class='default_num_input' type='text'>
+ 
           </div>
           <div class='flow'> 
              <button id='manipulate_session_btn' class='btn btn-default btn-sm'  style='float: left' disabled='true'>开始采购</button> 
@@ -409,11 +413,14 @@ if ($_SESSION['start_purchase']) {
           <div id='batch_option'>
                <input id='batch_option_create_radio' type=\"radio\" name=\"batch_option_radio\" value=\"创建新批次\" />创建新批次 
                <input id='batch_option_add_radio' type=\"radio\" name=\"batch_option_radio\" value=\"添加到原有批次\" />添加到原有批次 
+     
+               <span class='default_num_span'>默认数量</span> <input class='default_num_input' type='text'>
+     
           </div>
           <div class='flow'> 
                 <button id='manipulate_session_btn' class='btn btn-default btn-sm' style='float: left'  onclick='manipulate_session();'>开始采购</button>  
           </div>
-          <div id='progressbar'><div></div></div>
+          <div id='progressbar' style='float: left;'><div></div></div>
           ";
 }
 
@@ -663,7 +670,7 @@ FROM (SELECT $search_content,rows,
 ROW_NUMBER() OVER (ORDER BY rows) AS RowNumber
 FROM v_ecs_book WHERE $search_TJ) a
 WHERE RowNumber > $select_from AND RowNumber <= ($select_from + $page_size)
-ORDER BY a.rows DESC";
+ORDER BY a.rows ASC";
 
 
 //    echo $sql_tsfl3;
