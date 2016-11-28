@@ -15,15 +15,11 @@ include("class/Page.class.php");
 
 session_start();
 
+$smarty = new GuanCangSmarty();
+include("include/introduce.php");
+
+
 $uid = $_SESSION['user_id'];
-
-//echo $_REQUEST;
-//
-//echo 'test';
-
-//echo $_REQUEST['page'];
-//echo $_REQUEST['type'];
-//echo $_REQUEST['show'];
 
 if (empty($_REQUEST['type'])) {
     $_REQUEST['type'] = 'recommend';
@@ -33,34 +29,57 @@ if (empty($_REQUEST['show'])) {
     $_REQUEST['show'] = 'picture';
 }
 
-//exit();
 $page_num = $_REQUEST['page'];
-$smarty = new GuanCangSmarty();
+
+
 
 $relpostodist = './';
 $smarty->assign("relpostodist", $relpostodist);
 
-$ms = new con_mssql();
+//$ms = new con_mssql();
+
+
 $tot = '0';
 $con_mysql2 = new con_mysql2();
 //$ms_tsfl4 = new con_mysql2();
 
-//介绍文字
-$sql = ser("bs_home_introduce", "introduce", "");
+////介绍文字
+//$sql = ser("bs_home_introduce", "introduce", "");
+//
+//// 查询数据
+//$rs = $ms->sdb($sql);
+//if (!$rs) {
+//    echo "Error in query preparation/execution.<br />";
+//    die(print_r(iconv('GBK', 'UTF-8', odbc_errormsg()), true));
+//}
+//if (odbc_fetch_row($rs)) {
+//    $introduce = odbc_result($rs, "introduce");
+//}
+//
+//$introduce = iconv('gbk', 'utf-8//IGNORE', $introduce);
+//$smarty->assign("introduce", $introduce);
 
-// 查询数据
-$rs = $ms->sdb($sql);
-if (!$rs) {
+//未处理批次
+
+$sql_batch = ser("bs_temp_dingdan_pici", "*","User_Id = '$uid' AND State = '0'");
+//echo $sql_batch;
+$rs_sql_batch = $ms->sdb($sql_batch);
+
+if (!$rs_sql_batch) {
     echo "Error in query preparation/execution.<br />";
-    die(print_r(iconv('GBK', 'UTF-8', odbc_errormsg()), true));
-}
-if (odbc_fetch_row($rs)) {
-    $introduce = odbc_result($rs, "introduce");
+    die(print_r(odbc_errormsg(), true));
 }
 
-$introduce = iconv('gbk', 'utf-8//IGNORE', $introduce);
-$smarty->assign("introduce", $introduce);
+$need_op_batch_num = 0;
 
+while ($data = odbc_fetch_array($rs_sql_batch)) {
+    $need_op_batch_detail[] = $data;
+    $need_op_batch_num = $need_op_batch_num + 1;
+}
+//print_r($need_op_batch_detail);
+
+$smarty->assign("need_op_batch_num", $need_op_batch_num);
+$smarty->assign("need_op_batch_detail", $need_op_batch_detail);
 
 $show_num_per_page = 21; //一页显示的数量
 

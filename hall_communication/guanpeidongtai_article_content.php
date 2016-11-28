@@ -31,23 +31,23 @@ $smarty = new GuanCangSmarty();
 //$smarty->caching = false; //设置缓存方式
 $smarty->MySmarty();
 
+include("../include/introduce.php");
+//$ms = new con_mssql();
 
-$ms = new con_mssql();
-
-//介绍文字
-$sql = ser("bs_home_introduce", "introduce","");
-
-$rs = $ms->sdb($sql);
-if (!$rs) {
-    echo "Error in query preparation/execution.<br />";
-    die(print_r(iconv('GBK', 'UTF-8', odbc_errormsg()), true));
-}
-if (odbc_fetch_row($rs)) {
-    $introduce = odbc_result($rs, "introduce");
-}
-
-$introduce = iconv('gbk', 'utf-8//IGNORE', $introduce);
-$smarty->assign("introduce", $introduce);
+////介绍文字
+//$sql = ser("bs_home_introduce", "introduce","");
+//
+//$rs = $ms->sdb($sql);
+//if (!$rs) {
+//    echo "Error in query preparation/execution.<br />";
+//    die(print_r(iconv('GBK', 'UTF-8', odbc_errormsg()), true));
+//}
+//if (odbc_fetch_row($rs)) {
+//    $introduce = odbc_result($rs, "introduce");
+//}
+//
+//$introduce = iconv('gbk', 'utf-8//IGNORE', $introduce);
+//$smarty->assign("introduce", $introduce);
 
 
 

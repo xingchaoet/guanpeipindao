@@ -11,7 +11,7 @@ require_once("../db/con_mssql.php");
 include("../db/dao.php");
 require_once("../config.php");
 include("../include/GuanCangSmarty.php");
-include ("auth_zhengdingdan.php");
+include("auth_zhengdingdan.php");
 
 //session_start();
 $order_list = array();
@@ -25,37 +25,16 @@ if (empty($uid)) {
     echo "<script type='text/javascript'>alert('您还没登录!');</script>";
     echo "<script type='text/javascript'>window.location.href='http://'+\"$global_url\"+'/guanpeipindao/user/login.php';</script>";
 }
-//
-//if($_SESSION['user_type'] == "gps_user"){
-//    echo "<script type='text/javascript'>alert('请经销商用户到“数据下载”栏目查询下载数据！');</script>";
-//    echo "<script type='text/javascript'>window.location.href='http://'+\"$global_url\"+'/guanpeipindao/guanpeipindao.php';</script>";
-//}
 
-
-//print_r($_POST);
-
-//exit();
 
 $smarty = new GuanCangSmarty();
 $smarty->MySmarty();
 
+include("../include/introduce.php");
+
 // 实例化SQLServer封装类
-$ms = new con_mssql();
+//$ms = new con_mssql();
 
-//介绍文字
-$sql = ser("bs_home_introduce", "introduce","");
-
-$rs = $ms->sdb($sql);
-if (!$rs) {
-    echo "Error in query preparation/execution.<br />";
-    die(print_r(iconv('GBK', 'UTF-8', odbc_errormsg()), true));
-}
-if (odbc_fetch_row($rs)) {
-    $introduce = odbc_result($rs, "introduce");
-}
-
-$introduce = iconv('gbk', 'utf-8//IGNORE', $introduce);
-$smarty->assign("introduce", $introduce);
 
 $page_size = 10; //每页显示数量
 
@@ -68,7 +47,7 @@ $rows = $data['sum'];
 
 if ($rows) {
     //查询征订单
-// Page分页函数
+    // Page分页函数
     $page = isset($_REQUEST["page"]) ? $_REQUEST["page"] : 1;
 
     function Page($rows, $page_size)
@@ -122,8 +101,6 @@ if ($rows) {
 
 //$sql = ser("bs_zhengdingdan", "zdd_pc_id,zdd_detail, zdd_time", "zdd_user_id='$uid' ORDER BY zdd_time desc limit $select_from $select_limit");
 
-//echo $sql;
-
     $rs = $ms->sdb($sql);
 
     if (!$rs) {
@@ -131,12 +108,11 @@ if ($rows) {
         die(print_r(odbc_errormsg(), true));
     }
     while ($data = odbc_fetch_array($rs)) {
-//    print_r($data);
         $zdd_order_list[] = $data;
     }
 
     for ($i = 0; $i < count($zdd_order_list); $i++) {
-//    echo $zdd_order_list[$i]['zdd_detail'];
+
         $zdd_pc_id = $zdd_order_list[$i]['zdd_pc_id'];
 
         $sql_info = ser(bs_zhengdingdan_mx, "count(*) as sum", "sheet_no='$zdd_pc_id' ");
@@ -149,9 +125,6 @@ if ($rows) {
 
     }
 
-//print_r($zdd_order_list);
-
-//}
 }
 
 
@@ -165,12 +138,10 @@ if (!$rs) {
     die(print_r(odbc_errormsg(), true));
 }
 while ($data = odbc_fetch_array($rs)) {
-//    print_r($data);
     $ydd_order_list[] = $data;
 }
 
 for ($i = 0; $i < count($ydd_order_list); $i++) {
-//    echo $zdd_order_list[$i]['zdd_detail'];
     $ydd_pc_id = $ydd_order_list[$i]['ydd_pc_id'];
 
     $sql_info = ser(bs_yudingdan_mx, "count(*) as sum", "sheet_no='$ydd_pc_id' ");
@@ -192,7 +163,6 @@ $zdd_times = 1; //防止多次绑定函数
 $smarty->assign("zdd_times", $zdd_times);
 
 
-//print_r($ydd_order_list);
 //guanpeipindao.php与dist的相对此处位置相同
 $smarty->assign("first_level", "<a href={$relpostodist}guanpeipindao.php>馆配服务</a>");
 $smarty->assign("second_level", "<a href=orders_view.php?usrn=$uid>会员空间</a>");
@@ -207,7 +177,6 @@ $smarty->assign("user_type", $user_type);
 
 //$page 有值说明是ajax请求
 if (isset($_REQUEST["page"])) {
-//    echo 'test';
     $page_info = $smarty->display("zhengdingdan/zhengdingdan.html");
     return $page_info;
 } else {

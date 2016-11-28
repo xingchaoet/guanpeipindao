@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-21 17:24:41
+/* Smarty version 3.1.29, created on 2016-11-28 15:58:53
   from "D:\phpStudy\WWW\guanpeipindao\templates\header.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5832bd59b8df29_21488641',
+  'unifunc' => 'content_583be3bdcaca20_85168379',
   'file_dependency' => 
   array (
     '5a3e5c548f7b552d5dce93e00a4b713edbdfa0d0' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\header.html',
-      1 => 1478050196,
+      1 => 1480303201,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5832bd59b8df29_21488641 ($_smarty_tpl) {
+function content_583be3bdcaca20_85168379 ($_smarty_tpl) {
 ?>
 <div class="site_header">
     <div class="login_register">

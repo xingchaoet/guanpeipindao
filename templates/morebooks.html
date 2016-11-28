@@ -13,10 +13,11 @@
             padding-top: 10px;
             margin-left: 30px;
             margin-right: 30px;
+
         }
 
         .col-sm-4 {
-            background: #F0FFFF;
+            background: #FFF;
             /*background: white;*/
             margin-bottom: 10px;
             padding-left: 1px;
@@ -88,7 +89,9 @@
         }
 
         .fen_mian {
-            width: 125px;
+            /*width: 125px;*/
+            /*height: 168px;*/
+            width: 150px;
             height: 168px;
         }
 
@@ -105,6 +108,8 @@
 
         .right_td {
             font-size: 5px;
+            width: 115px;
+            height: 201px;
         }
 
         .add_and_check {
@@ -131,6 +136,51 @@
 
         #pagination a:visited {
             color: red;
+        }
+
+        .need_op_batch {
+            margin-top: 10px;
+        }
+
+        .batch_ltd {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 260px;
+        }
+
+        .batch_mtd {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 260px;
+        }
+        .batch_r_f_td{
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 260px;
+            display: none;
+        }
+        .batch_rtd {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 50px;
+        }
+
+        .batch_table {
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .batch_title {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .batch_icon {
+            /*margin-top: 10px;*/
+            margin-bottom: 10px;
+
+            float: right;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -206,13 +256,13 @@
                                         </p>
                                         <div class="tooltip-demo">
                                             <p data-toggle="tooltip" title="{$val['sm']}">书名：
-                                                {$val['sm']|truncate:8:"...":true}</p>
+                                                {$val['sm']|truncate:5:"...":true}</p>
                                         </div>
                                         <p>ISBN: {$val['isbn']}</p>
 
                                         <div class="tooltip-demo">
                                             <p data-toggle="tooltip" title="{$val['zzh']}">作者：
-                                                {$val['zzh']|truncate:9:"...":true}</p>
+                                                {$val['zzh']|truncate:5:"...":true}</p>
                                         </div>
                                         <p>出版日期: {$val['cbrq']}</p>
                                         <p>价格: ￥{$val['dj']|string_format:"%.2f"}</p>
@@ -226,6 +276,8 @@
                     </div>
 
                     <div class="add_and_check">
+
+
                         <a id="buy" class="btn btn-default btn-xs" onclick="generate_order();">加入订单</a>
                         {if $smarty.session.user_type eq library_user}
                         <a href='zhengdingdan/orders_view.php' class="btn  btn-default btn-xs">查看订单</a>
@@ -235,11 +287,69 @@
                     {$page->show()}
 
                 </div>
+
             </div>
 
 
         </div>
     </div>
+
+
+</div>
+
+<div class="need_op_batch">
+
+    <div class="batch_title">
+                        <span>
+                            你还有{$need_op_batch_num}条未处理批次
+                        </span>
+        <span class="batch_icon">
+                            <img id="toggle_table" src="{$relpostodist}dist/picture/chachong/hide_table.png">
+                        </span>
+    </div>
+
+    <table id="batch_table" class="batch_table">
+        <tr>
+            <td align="center" class="batch_ltd">
+                批次号
+            </td>
+
+            <td  class="batch_mtd">
+                批次产生时间
+            </td>
+
+            <td  class="batch_r_f_td">
+                添加到此批次
+            </td>
+
+            <td  class="batch_rtd">
+                删除
+            </td>
+
+        </tr>
+        {foreach $need_op_batch_detail as $val }
+        <tr>
+            <td class="batch_ltd">
+                <a class="batch_item">{$val['PiCi_Num']}</a>
+            </td>
+
+            <td class="batch_mtd">
+                {$val['Date_Time']}
+            </td>
+
+            <td class="batch_r_f_td">
+                <input id='' type="radio" name="add_to_batch" value="" />
+            </td>
+
+            <td class="batch_rtd">
+                <a class="delete_batch"><img width="19" height="19"
+                                             src="{$relpostodist}dist/picture/chachong/delete_batch.png"></a>
+            </td>
+
+        </tr>
+        {/foreach}
+    </table>
+
 </div>
 
 
@@ -546,6 +656,7 @@
     };
 
     function generate_order() {
+        return;
         user_id = $('#userid').html();
         var utp = $('#usertype').html();
         if (utp == null || utp == undefined || utp == '') {

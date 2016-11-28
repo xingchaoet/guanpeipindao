@@ -32,13 +32,13 @@
                         </p>
                         <div class="tooltip-demo">
                             <p data-toggle="tooltip" title="{$val['sm']}">书名：
-                                {$val['sm']|truncate:10:"...":true}</p>
+                                {$val['sm']|truncate:5:"...":true}</p>
                         </div>
                         <p>ISBN: {$val['isbn']}</p>
 
                         <div class="tooltip-demo">
                             <p data-toggle="tooltip" title="{$val['zzh']}">作者：
-                                {$val['zzh']|truncate:9:"...":true}</p>
+                                {$val['zzh']|truncate:5:"...":true}</p>
                         </div>
                         <p>出版日期: {$val['cbrq']}</p>
                         <p>价格: ￥{$val['dj']|string_format:"%.2f"}</p>

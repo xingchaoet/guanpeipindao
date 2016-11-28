@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-25 18:16:50
+/* Smarty version 3.1.29, created on 2016-11-28 18:24:27
   from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\chachong.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58380f921207b8_17097879',
+  'unifunc' => 'content_583c05db314542_00404793',
   'file_dependency' => 
   array (
     'c7215b059ad1a7d7ea89acd7968a17fc303f3e3f' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\chachong.html',
-      1 => 1480068998,
+      1 => 1480301559,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_58380f921207b8_17097879 ($_smarty_tpl) {
+function content_583c05db314542_00404793 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -547,7 +547,7 @@ dist/picture/chachong/hide_table.png">
                         </span>
                     </div>
 
-                    <table id="batch_table" class="">
+                    <table id="batch_table" class="batch_table">
                         <tr>
                             <td align="center" class="batch_ltd">
                                 批次号

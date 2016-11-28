@@ -21,25 +21,28 @@ include("auth_chachong.php");
 $user_id = $_SESSION['user_id'];
 $smarty = new GuanCangSmarty();
 $smarty->MySmarty();
+
+include("../include/introduce.php");
+
 //$smarty->php_handling = SMARTY::PHP_ALLOW;
 // 实例化SQLServer封装类
-$ms = new con_mssql();
+//$ms = new con_mssql();
 
 
-//介绍文字
-$sql = ser("bs_home_introduce", "introduce","");
-
-// 查询数据
-$rs = $ms->sdb($sql);
-if (!$rs) {
-    echo "Error in query preparation/execution.<br />";
-    die(print_r(iconv('GBK', 'UTF-8', odbc_errormsg()), true));
-}
-if (odbc_fetch_row($rs)) {
-    $introduce = odbc_result($rs, "introduce");
-}
-
-$introduce = iconv('gbk', 'utf-8//IGNORE', $introduce);
+////介绍文字
+//$sql = ser("bs_home_introduce", "introduce","");
+//
+//// 查询数据
+//$rs = $ms->sdb($sql);
+//if (!$rs) {
+//    echo "Error in query preparation/execution.<br />";
+//    die(print_r(iconv('GBK', 'UTF-8', odbc_errormsg()), true));
+//}
+//if (odbc_fetch_row($rs)) {
+//    $introduce = odbc_result($rs, "introduce");
+//}
+//
+//$introduce = iconv('gbk', 'utf-8//IGNORE', $introduce);
 
 //$sql = ser("fx_book_info","distinct qtfl","1=1");
 //$rs = $ms->sdb($sql);
@@ -70,7 +73,7 @@ $relpostodist = '../';
 $smarty->assign("first_level","<a href={$relpostodist}guanpeipindao.php>馆配服务</a>");
 $smarty->assign("second_level","<a href='chachong.php'>在线订购</a>");
 $smarty->assign("relpostodist", $relpostodist);
-$smarty->assign("introduce", $introduce);
+//$smarty->assign("introduce", $introduce);
 
 //echo CSSJS_ROOT;
 //exit();

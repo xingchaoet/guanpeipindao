@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-23 15:15:47
+/* Smarty version 3.1.29, created on 2016-11-28 15:58:53
   from "D:\phpStudy\WWW\guanpeipindao\templates\morebooks.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_583542237f94c5_10087535',
+  'unifunc' => 'content_583be3bdb9dab1_64624261',
   'file_dependency' => 
   array (
     'bc5e33c064d89c5076c6c4b89ee61990df348e57' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\morebooks.html',
-      1 => 1476929813,
+      1 => 1480319852,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_583542237f94c5_10087535 ($_smarty_tpl) {
+function content_583be3bdb9dab1_64624261 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!DOCTYPE html>
@@ -39,10 +39,11 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
             padding-top: 10px;
             margin-left: 30px;
             margin-right: 30px;
+
         }
 
         .col-sm-4 {
-            background: #F0FFFF;
+            background: #FFF;
             /*background: white;*/
             margin-bottom: 10px;
             padding-left: 1px;
@@ -114,7 +115,9 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
         }
 
         .fen_mian {
-            width: 125px;
+            /*width: 125px;*/
+            /*height: 168px;*/
+            width: 150px;
             height: 168px;
         }
 
@@ -131,6 +134,8 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
 
         .right_td {
             font-size: 5px;
+            width: 115px;
+            height: 201px;
         }
 
         .add_and_check {
@@ -157,6 +162,51 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
 
         #pagination a:visited {
             color: red;
+        }
+
+        .need_op_batch {
+            margin-top: 10px;
+        }
+
+        .batch_ltd {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 260px;
+        }
+
+        .batch_mtd {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 260px;
+        }
+        .batch_r_f_td{
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 260px;
+            display: none;
+        }
+        .batch_rtd {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 50px;
+        }
+
+        .batch_table {
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .batch_title {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .batch_icon {
+            /*margin-top: 10px;*/
+            margin-bottom: 10px;
+
+            float: right;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -261,7 +311,7 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                                         <div class="tooltip-demo">
                                             <p data-toggle="tooltip" title="<?php echo $_smarty_tpl->tpl_vars['val']->value['sm'];?>
 ">书名：
-                                                <?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['val']->value['sm'],8,"...",true);?>
+                                                <?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['val']->value['sm'],5,"...",true);?>
 </p>
                                         </div>
                                         <p>ISBN: <?php echo $_smarty_tpl->tpl_vars['val']->value['isbn'];?>
@@ -270,7 +320,7 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                                         <div class="tooltip-demo">
                                             <p data-toggle="tooltip" title="<?php echo $_smarty_tpl->tpl_vars['val']->value['zzh'];?>
 ">作者：
-                                                <?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['val']->value['zzh'],9,"...",true);?>
+                                                <?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['val']->value['zzh'],5,"...",true);?>
 </p>
                                         </div>
                                         <p>出版日期: <?php echo $_smarty_tpl->tpl_vars['val']->value['cbrq'];?>
@@ -294,6 +344,8 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
                     </div>
 
                     <div class="add_and_check">
+
+
                         <a id="buy" class="btn btn-default btn-xs" onclick="generate_order();">加入订单</a>
                         <?php if ($_SESSION['user_type'] == 'library_user') {?>
                         <a href='zhengdingdan/orders_view.php' class="btn  btn-default btn-xs">查看订单</a>
@@ -304,11 +356,91 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
 
 
                 </div>
+
             </div>
 
 
         </div>
     </div>
+
+
+</div>
+
+<div class="need_op_batch">
+
+    <div class="batch_title">
+                        <span>
+                            你还有<?php echo $_smarty_tpl->tpl_vars['need_op_batch_num']->value;?>
+条未处理批次
+                        </span>
+        <span class="batch_icon">
+                            <img id="toggle_table" src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/chachong/hide_table.png">
+                        </span>
+    </div>
+
+    <table id="batch_table" class="batch_table">
+        <tr>
+            <td align="center" class="batch_ltd">
+                批次号
+            </td>
+
+            <td  class="batch_mtd">
+                批次产生时间
+            </td>
+
+            <td  class="batch_r_f_td">
+                添加到此批次
+            </td>
+
+            <td  class="batch_rtd">
+                删除
+            </td>
+
+        </tr>
+        <?php
+$_from = $_smarty_tpl->tpl_vars['need_op_batch_detail']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_val_1_saved_item = isset($_smarty_tpl->tpl_vars['val']) ? $_smarty_tpl->tpl_vars['val'] : false;
+$_smarty_tpl->tpl_vars['val'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['val']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['val']->value) {
+$_smarty_tpl->tpl_vars['val']->_loop = true;
+$__foreach_val_1_saved_local_item = $_smarty_tpl->tpl_vars['val'];
+?>
+        <tr>
+            <td class="batch_ltd">
+                <a class="batch_item"><?php echo $_smarty_tpl->tpl_vars['val']->value['PiCi_Num'];?>
+</a>
+            </td>
+
+            <td class="batch_mtd">
+                <?php echo $_smarty_tpl->tpl_vars['val']->value['Date_Time'];?>
+
+            </td>
+
+            <td class="batch_r_f_td">
+                <input id='' type="radio" name="add_to_batch" value="" />
+            </td>
+
+            <td class="batch_rtd">
+                <a class="delete_batch"><img width="19" height="19"
+                                             src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/chachong/delete_batch.png"></a>
+            </td>
+
+        </tr>
+        <?php
+$_smarty_tpl->tpl_vars['val'] = $__foreach_val_1_saved_local_item;
+}
+if ($__foreach_val_1_saved_item) {
+$_smarty_tpl->tpl_vars['val'] = $__foreach_val_1_saved_item;
+}
+?>
+    </table>
+
 </div>
 
 
@@ -634,6 +766,7 @@ dist/picture/pic_list/list_enable.gif";
     };
 
     function generate_order() {
+        return;
         user_id = $('#userid').html();
         var utp = $('#usertype').html();
         if (utp == null || utp == undefined || utp == '') {
