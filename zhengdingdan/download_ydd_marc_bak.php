@@ -71,7 +71,7 @@ if ($CF) { //采访类型
         $uid = $_SESSION['user_id'];
         $global_url = GLOBAL_URL;
 
-        echo "<script type='text/javascript'>window.location.href='http://$global_url/guanpeipindao/zhengdingdan/orders_view.php?usrn='+$uid;</script>";
+        echo "<script type='text/javascript'>window.location.href='http://$global_url/zhengdingdan/orders_view.php?usrn='+$uid;</script>";
 
 
 //        echo $_SESSION['err'];

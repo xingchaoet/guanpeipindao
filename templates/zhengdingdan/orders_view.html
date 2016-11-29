@@ -673,35 +673,29 @@
     var global_url = $('#global_url').html();
 
 
-    var orders_view_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/orders_view.php';
+    var orders_view_url = 'http://' + global_url + '/zhengdingdan/orders_view.php';
 
-    var guangcangimport_url = 'http://' + global_url + '/guanpeipindao/chachong/guangcang_chachong.php';
+    var guangcangimport_url = 'http://' + global_url + '/chachong/guangcang_chachong.php';
 
     //    征订单查看详情
-    var orders_view_detail_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/zhengdingdan_detail.php';
+    var orders_view_detail_url = 'http://' + global_url + '/zhengdingdan/zhengdingdan_detail.php';
 
     //    征订单查看详情 masql
-    var orders_view_detail_mssql_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/zhengdingdan_detail_mssql.php';
+    var orders_view_detail_mssql_url = 'http://' + global_url + '/zhengdingdan/zhengdingdan_detail_mssql.php';
 
     //    预订单查看详情
-    var orders_view_ydd_detail_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/yudingdan_detail.php';
-
-    //    征订单下载文件产生
-    //    var download_zhengdingdan_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/download_marc.php';
-
-    //    预订单下载文件产生
-    //    var download_yudingdan_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/download_ydd_marc.php';
+    var orders_view_ydd_detail_url = 'http://' + global_url + '/zhengdingdan/yudingdan_detail.php';
 
     //    征订单下载文件产生子页面
-    var zhengdingdan_download_marc_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/zhengdingdan_download_marc.php';
+    var zhengdingdan_download_marc_url = 'http://' + global_url + '/zhengdingdan/zhengdingdan_download_marc.php';
     //    预订单下载文件产生子页面
-    var yudingdan_download_marc_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/yudingdan_download_marc.php';
+    var yudingdan_download_marc_url = 'http://' + global_url + '/zhengdingdan/yudingdan_download_marc.php';
     //返回到我的预订单
-    var orders_view_ydd_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/return_yudingdan.php';
+    var orders_view_ydd_url = 'http://' + global_url + '/zhengdingdan/return_yudingdan.php';
     //修改密码
-    var change_password_url = 'http://' + global_url + '/guanpeipindao/members_space/change_password.php';
+    var change_password_url = 'http://' + global_url + '/members_space/change_password.php';
 
-    var check_old_password_url = 'http://' + global_url + '/guanpeipindao/members_space/check_old_password.php';
+    var check_old_password_url = 'http://' + global_url + '/members_space/check_old_password.php';
 
     function creatXHR() {
         var xhr = null;
@@ -1214,12 +1208,12 @@
                 }
 
                 document.location.href =
-                        "http://" + global_url + "/guanpeipindao/zhengdingdan/download_marc.php?sheet_no=" + sheet_no + '&MARC=' + marc + '&CALIS=' + calis + '&CF=' + cf;
+                        "http://" + global_url + "/zhengdingdan/download_marc.php?sheet_no=" + sheet_no + '&MARC=' + marc + '&CALIS=' + calis + '&CF=' + cf;
             }
 
             if (($("input[type=radio][name=marc][value='excel']").attr("checked"))) {
                 document.location.href =
-                        "http://" + global_url + "/guanpeipindao/zhengdingdan/download_marc.php?sheet_no=" + sheet_no + '&EXCEL=1';
+                        "http://" + global_url + "/zhengdingdan/download_marc.php?sheet_no=" + sheet_no + '&EXCEL=1';
             }
         });
     }
@@ -1260,12 +1254,12 @@
 //                alert(sheet_no);
 
                 document.location.href =
-                        "http://" + global_url + "/guanpeipindao/zhengdingdan/download_ydd_marc.php?sheet_no=" + sheet_no + '&MARC=' + marc + '&CALIS=' + calis + '&CF=' + cf;
+                        "http://" + global_url + "/zhengdingdan/download_ydd_marc.php?sheet_no=" + sheet_no + '&MARC=' + marc + '&CALIS=' + calis + '&CF=' + cf;
             }
 
             if (($("input[type=radio][name=marc_ydd][value='excel_ydd']").attr("checked"))) {
                 document.location.href =
-                        "http://" + global_url + "/guanpeipindao/zhengdingdan/download_ydd_marc.php?sheet_no=" + sheet_no + '&EXCEL=1';
+                        "http://" + global_url + "/zhengdingdan/download_ydd_marc.php?sheet_no=" + sheet_no + '&EXCEL=1';
             }
         });
     }

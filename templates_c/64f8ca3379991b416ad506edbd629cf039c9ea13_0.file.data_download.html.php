@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-28 18:25:42
+/* Smarty version 3.1.29, created on 2016-11-29 10:30:10
   from "D:\phpStudy\WWW\guanpeipindao\templates\data_download\data_download.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_583c06263012b2_13561837',
+  'unifunc' => 'content_583ce832382b69_44284336',
   'file_dependency' => 
   array (
     '64f8ca3379991b416ad506edbd629cf039c9ea13' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\data_download\\data_download.html',
-      1 => 1476774379,
+      1 => 1480383858,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_583c06263012b2_13561837 ($_smarty_tpl) {
+function content_583ce832382b69_44284336 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -548,7 +548,7 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
 
     var global_url = $('#global_url').html();
 
-    var data_diy_url = 'http://' + global_url + '/guanpeipindao/data_download/shjdzh_search.php';
+    var data_diy_url = 'http://' + global_url + '/data_download/shjdzh_search.php';
 
     function creatXHR() {
         var xhr = null;
@@ -616,13 +616,13 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
 //            alert(cf);
 
             document.location.href =
-                    "http://" + global_url + "/guanpeipindao/data_download/diy_result_download.php?" + 'MARC=' + marc + '&CALIS=' + calis + '&CF=' + cf;
+                    "http://" + global_url + "/data_download/diy_result_download.php?" + 'MARC=' + marc + '&CALIS=' + calis + '&CF=' + cf;
         }
 
         if (($("input[type=radio][name=marc][value='excel']").attr("checked"))) {
 //            alert(1);
             document.location.href =
-                    "http://" + global_url + "/guanpeipindao/data_download/diy_result_download.php?" + 'EXCEL=1';
+                    "http://" + global_url + "/data_download/diy_result_download.php?" + 'EXCEL=1';
         }
     });
 
@@ -691,35 +691,23 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
         }
 
         if ($("#" + marc_download).attr("checked")) {
-//            alert(1);
             MARC = 1;
-//            document.location.href =
-//                    "http://" + global_url + "/guanpeipindao/data_download/zhtshj_download_pcl.php?zhtshj_no=" + zhtshj_no + '&MARC=1';
         }
 
         if ($("#" + calis_download).attr("checked")) {
-//            alert(2);
             CALIS = 1;
-//            document.location.href =
-//                    "http://" + global_url + "/guanpeipindao/data_download/zhtshj_download_pcl.php?zhtshj_no=" + zhtshj_no + '&CALIS=1';
         }
 
         if ($("#" + cf_download).attr("checked")) {
-//            alert(3);
             CF = 1;
-//            document.location.href =
-//                    "http://" + global_url + "/guanpeipindao/data_download/zhtshj_download_pcl.php?zhtshj_no=" + zhtshj_no + '&CF=1';
         }
 
         if ($("#" + excel_download).attr("checked")) {
-//            alert(4);
             EXCEL = 1;
-//            document.location.href =
-//                    "http://" + global_url + "/guanpeipindao/data_download/zhtshj_download_pcl.php?zhtshj_no=" + zhtshj_no + '&EXCEL=1';
         }
 
         document.location.href =
-                "http://" + global_url + "/guanpeipindao/data_download/zhtshj_download.php?zhtshj_no=" + zhtshj_no
+                "http://" + global_url + "/data_download/zhtshj_download.php?zhtshj_no=" + zhtshj_no
                 + '&MARC=' + MARC
                 + '&CALIS=' + CALIS
                 + '&CF=' + CF

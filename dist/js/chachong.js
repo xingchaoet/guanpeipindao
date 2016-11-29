@@ -6,23 +6,23 @@ var global_url = $('#global_url').html();
 var batch_option = '';
 var progress = 0;
 var progress_id = "progressbar";
-var search_url = 'http://' + global_url + '/guanpeipindao/search.php';
-var guangcangimport_url = 'http://' + global_url + '/guanpeipindao/chachong/guangcang_chachong.php';
-var guan_cang_import_history_url = 'http://' + global_url + '/guanpeipindao/chachong/gangcang_import_history.php';
-var delpici_url = 'http://' + global_url + '/guanpeipindao/chachong/delpici.php';
-var generate_order_url = 'http://' + global_url + '/guanpeipindao/chachong/generate_order.php';
-var order_list_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/order_list.php';
+var search_url = 'http://' + global_url + '/search.php';
+var guangcangimport_url = 'http://' + global_url + '/chachong/guangcang_chachong.php';
+var guan_cang_import_history_url = 'http://' + global_url + '/chachong/gangcang_import_history.php';
+var delpici_url = 'http://' + global_url + '/chachong/delpici.php';
+var generate_order_url = 'http://' + global_url + '/chachong/generate_order.php';
+var order_list_url = 'http://' + global_url + '/zhengdingdan/order_list.php';
 
-var operate_temp_table_url = 'http://' + global_url + '/guanpeipindao/chachong/operate_temp_table.php';
-var manipulate_session_url = 'http://' + global_url + '/guanpeipindao/chachong/manipulate_session.php';
-var add_or_delete_this_page_temp_table_url = 'http://' + global_url + '/guanpeipindao/chachong/add_or_delete_this_page_temp_table.php';
-var batch_item_url = 'http://' + global_url + '/guanpeipindao/chachong/batch_item.php';
-var delete_batch_url = 'http://' + global_url + '/guanpeipindao/chachong/batch_item.php';
+var operate_temp_table_url = 'http://' + global_url + '/chachong/operate_temp_table.php';
+var manipulate_session_url = 'http://' + global_url + '/chachong/manipulate_session.php';
+var add_or_delete_this_page_temp_table_url = 'http://' + global_url + '/chachong/add_or_delete_this_page_temp_table.php';
+var batch_item_url = 'http://' + global_url + '/chachong/batch_item.php';
+var delete_batch_url = 'http://' + global_url + '/chachong/batch_item.php';
 
-var default_num_url = 'http://' + global_url + '/guanpeipindao/chachong/default_num.php';
-var get_progress_info_url = 'http://' + global_url + '/guanpeipindao/chachong/get_progress_info.php';
-var batch_option_create_url = 'http://' + global_url + '/guanpeipindao/chachong/batch_option_create.php';
-var add_to_batch_url = 'http://' + global_url + '/guanpeipindao/chachong/add_to_batch.php';
+var default_num_url = 'http://' + global_url + '/chachong/default_num.php';
+var get_progress_info_url = 'http://' + global_url + '/chachong/get_progress_info.php';
+var batch_option_create_url = 'http://' + global_url + '/chachong/batch_option_create.php';
+var add_to_batch_url = 'http://' + global_url + '/chachong/add_to_batch.php';
 
 
 function creatXHR() {
@@ -111,7 +111,7 @@ function send(arg) {
 
                 document.getElementById('show').innerHTML = '';
                 document.getElementById('show').innerHTML = this.responseText;
-//                $("#show").load("../../guanpeipindao/chachong/cc_list.php");
+//                $("#show").load("../../chachong/cc_list.php");
             }
         }
     }
@@ -837,7 +837,7 @@ function view_my_orders() {
 
     var uid = $('#userid').html();
 
-    window.location.href = "http://" + global_url + "/guanpeipindao/zhengdingdan/orders_view.php?usrn=" + uid;
+    window.location.href = "http://" + global_url + "/zhengdingdan/orders_view.php?usrn=" + uid;
 }
 
 function category_clear() {
@@ -1192,7 +1192,7 @@ function send_batch(arg) {
 
                 document.getElementById('show').innerHTML = '';
                 document.getElementById('show').innerHTML = this.responseText;
-//                $("#show").load("../../guanpeipindao/chachong/cc_list.php");
+//                $("#show").load("../../chachong/cc_list.php");
             }
         }
     }

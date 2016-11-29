@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-28 18:15:55
+/* Smarty version 3.1.29, created on 2016-11-29 10:27:52
   from "D:\phpStudy\WWW\guanpeipindao\templates\guanpeipindao.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_583c03db149371_62118153',
+  'unifunc' => 'content_583ce7a81fdb13_00217116',
   'file_dependency' => 
   array (
     'bd1538b3724d041036d3f11dba8677e6b2c848f4' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\guanpeipindao.html',
-      1 => 1478675683,
+      1 => 1480383858,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_583c03db149371_62118153 ($_smarty_tpl) {
+function content_583ce7a81fdb13_00217116 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!doctype html>
@@ -505,7 +505,7 @@ dist/picture/guanpeipindao/more.png" alt=""></a></div>
 
     var global_url = $('#global_url').html();
 
-    var generate_order_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/generate_order.php';
+    var generate_order_url = 'http://' + global_url + '/zhengdingdan/generate_order.php';
     function creatXHR() {
         var xhr = null;
         if (window.XMLHttpRequest) {

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-28 18:43:37
+/* Smarty version 3.1.29, created on 2016-11-29 10:30:14
   from "D:\phpStudy\WWW\guanpeipindao\templates\zhengdingdan\orders_view.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_583c0a59e98046_24342740',
+  'unifunc' => 'content_583ce836168b69_62128261',
   'file_dependency' => 
   array (
     '7413ca9d63fa0e11bb28aacad71c35bff69dcd9e' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\zhengdingdan\\orders_view.html',
-      1 => 1478137750,
+      1 => 1480383916,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_583c0a59e98046_24342740 ($_smarty_tpl) {
+function content_583ce836168b69_62128261 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -752,35 +752,29 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_item;
     var global_url = $('#global_url').html();
 
 
-    var orders_view_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/orders_view.php';
+    var orders_view_url = 'http://' + global_url + '/zhengdingdan/orders_view.php';
 
-    var guangcangimport_url = 'http://' + global_url + '/guanpeipindao/chachong/guangcang_chachong.php';
+    var guangcangimport_url = 'http://' + global_url + '/chachong/guangcang_chachong.php';
 
     //    征订单查看详情
-    var orders_view_detail_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/zhengdingdan_detail.php';
+    var orders_view_detail_url = 'http://' + global_url + '/zhengdingdan/zhengdingdan_detail.php';
 
     //    征订单查看详情 masql
-    var orders_view_detail_mssql_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/zhengdingdan_detail_mssql.php';
+    var orders_view_detail_mssql_url = 'http://' + global_url + '/zhengdingdan/zhengdingdan_detail_mssql.php';
 
     //    预订单查看详情
-    var orders_view_ydd_detail_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/yudingdan_detail.php';
-
-    //    征订单下载文件产生
-    //    var download_zhengdingdan_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/download_marc.php';
-
-    //    预订单下载文件产生
-    //    var download_yudingdan_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/download_ydd_marc.php';
+    var orders_view_ydd_detail_url = 'http://' + global_url + '/zhengdingdan/yudingdan_detail.php';
 
     //    征订单下载文件产生子页面
-    var zhengdingdan_download_marc_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/zhengdingdan_download_marc.php';
+    var zhengdingdan_download_marc_url = 'http://' + global_url + '/zhengdingdan/zhengdingdan_download_marc.php';
     //    预订单下载文件产生子页面
-    var yudingdan_download_marc_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/yudingdan_download_marc.php';
+    var yudingdan_download_marc_url = 'http://' + global_url + '/zhengdingdan/yudingdan_download_marc.php';
     //返回到我的预订单
-    var orders_view_ydd_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/return_yudingdan.php';
+    var orders_view_ydd_url = 'http://' + global_url + '/zhengdingdan/return_yudingdan.php';
     //修改密码
-    var change_password_url = 'http://' + global_url + '/guanpeipindao/members_space/change_password.php';
+    var change_password_url = 'http://' + global_url + '/members_space/change_password.php';
 
-    var check_old_password_url = 'http://' + global_url + '/guanpeipindao/members_space/check_old_password.php';
+    var check_old_password_url = 'http://' + global_url + '/members_space/check_old_password.php';
 
     function creatXHR() {
         var xhr = null;
@@ -1293,12 +1287,12 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_item;
                 }
 
                 document.location.href =
-                        "http://" + global_url + "/guanpeipindao/zhengdingdan/download_marc.php?sheet_no=" + sheet_no + '&MARC=' + marc + '&CALIS=' + calis + '&CF=' + cf;
+                        "http://" + global_url + "/zhengdingdan/download_marc.php?sheet_no=" + sheet_no + '&MARC=' + marc + '&CALIS=' + calis + '&CF=' + cf;
             }
 
             if (($("input[type=radio][name=marc][value='excel']").attr("checked"))) {
                 document.location.href =
-                        "http://" + global_url + "/guanpeipindao/zhengdingdan/download_marc.php?sheet_no=" + sheet_no + '&EXCEL=1';
+                        "http://" + global_url + "/zhengdingdan/download_marc.php?sheet_no=" + sheet_no + '&EXCEL=1';
             }
         });
     }
@@ -1339,12 +1333,12 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_item;
 //                alert(sheet_no);
 
                 document.location.href =
-                        "http://" + global_url + "/guanpeipindao/zhengdingdan/download_ydd_marc.php?sheet_no=" + sheet_no + '&MARC=' + marc + '&CALIS=' + calis + '&CF=' + cf;
+                        "http://" + global_url + "/zhengdingdan/download_ydd_marc.php?sheet_no=" + sheet_no + '&MARC=' + marc + '&CALIS=' + calis + '&CF=' + cf;
             }
 
             if (($("input[type=radio][name=marc_ydd][value='excel_ydd']").attr("checked"))) {
                 document.location.href =
-                        "http://" + global_url + "/guanpeipindao/zhengdingdan/download_ydd_marc.php?sheet_no=" + sheet_no + '&EXCEL=1';
+                        "http://" + global_url + "/zhengdingdan/download_ydd_marc.php?sheet_no=" + sheet_no + '&EXCEL=1';
             }
         });
     }

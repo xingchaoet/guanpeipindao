@@ -28,17 +28,11 @@ include("auth_chachong.php");
 //    $progress = $_SESSION["progress"];
 //}
 //$progress = $_SESSION["progress"];
-//$fp = file("D:/phpStudy/WWW/guanpeipindao/zhengdingdan/log.txt");
 //$progress = $fp[count($fp)-1];
 ////$progressbar = $progress * 100 ;
 //
 //global $progress;
-//$open=fopen("D:/phpStudy/WWW/guanpeipindao/zhengdingdan/log2.txt","a" );
-//fwrite($open,  $_SESSION["progress"]."\r\n");
-//fclose($open);
 
-//echo $progress;
-//echo $progress;
 echo $_SESSION["progress"];
 //print_r($GLOBALS);
 //$_SESSION["progress"] = 0;

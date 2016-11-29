@@ -795,11 +795,6 @@ if (!empty($tsfl_data3_array)) {
         foreach ($tsfl_data3_array as $key => $tsfl_data3) {
             $bid = $tsfl_data3['book_id'];
 
-//            $open=fopen("D:/xampps/htdocs/guanpeipindao/book_id.txt","a" );
-//            fwrite($open, $bid."\r\n");
-//            fclose($open);
-
-
             $n = $n + 1;
             echo "<tr>";
 

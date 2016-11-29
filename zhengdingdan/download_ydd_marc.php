@@ -9,7 +9,7 @@ header("Content-Type: text/html;charset=utf-8");
 require_once("../db/con_mssql.php");
 include("../db/dao.php");
 require_once("../config.php");
-include ("auth_zhengdingdan.php");
+include("auth_zhengdingdan.php");
 
 //session_start();
 
@@ -212,9 +212,7 @@ if ($MARC || $CALIS || $CF) { //采访类型
 //    echo filesize ( $zipfile );
 //}
 
-//$open = fopen("D:/WWW/guanpeipindao/data_download/filesize.txt", "a");
-//fwrite($open, filesize($zipfile) . "\r\n");
-//fclose($open);
+
     if (file_exists($zipfile)) {
 //        if (file_exists($zipfile) && !@filesize($zipfile)) {
 
@@ -237,7 +235,7 @@ if ($MARC || $CALIS || $CF) { //采访类型
     } else {
         $global_url = GLOBAL_URL;
         echo "<script type='text/javascript' charset='utf-8'>alert('无数据!');</script>";
-        echo "<script type='text/javascript'>window.location.href='http://'+\"$global_url\"+'/guanpeipindao/zhengdingdan/orders_view.php';</script>";
+        echo "<script type='text/javascript'>window.location.href='http://'+\"$global_url\"+'/zhengdingdan/orders_view.php';</script>";
     }
 
 

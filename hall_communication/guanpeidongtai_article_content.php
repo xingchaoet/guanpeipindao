@@ -19,12 +19,6 @@ $id = $_REQUEST['id'];
 
 //$global_url = GLOBAL_URL;
 //
-//if ($_SESSION['user_type'] == "gps_user") {
-//    echo "<script type='text/javascript'>alert('您是馆配商用户，只有图书馆用户才可以访问此栏目!');</script>";
-//    echo "<script type='text/javascript'>window.location.href='http://'+\"$global_url\"+'/guanpeipindao/';</script>";
-//}
-
-
 $gpdt = array();
 
 $smarty = new GuanCangSmarty();
@@ -33,24 +27,6 @@ $smarty->MySmarty();
 
 include("../include/introduce.php");
 //$ms = new con_mssql();
-
-////介绍文字
-//$sql = ser("bs_home_introduce", "introduce","");
-//
-//$rs = $ms->sdb($sql);
-//if (!$rs) {
-//    echo "Error in query preparation/execution.<br />";
-//    die(print_r(iconv('GBK', 'UTF-8', odbc_errormsg()), true));
-//}
-//if (odbc_fetch_row($rs)) {
-//    $introduce = odbc_result($rs, "introduce");
-//}
-//
-//$introduce = iconv('gbk', 'utf-8//IGNORE', $introduce);
-//$smarty->assign("introduce", $introduce);
-
-
-
 
 $sql_size="SET   TEXTSIZE   65536";
 $rs_size = $ms->sdb($sql_size);
@@ -81,10 +57,6 @@ for ($i = 0; $i < count($gpdt); $i++) {
     $gpdt[$i]['Writer'] = iconv('gbk', 'utf-8//IGNORE', $gpdt[$i]['Writer']);
 
 }
-
-//print_r($gpdt);
-//
-//exit();
 
 $smarty->assign("gpdt", $gpdt);
 

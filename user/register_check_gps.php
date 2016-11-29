@@ -25,10 +25,6 @@ values
 ('" . trim($_GET['name']) . "','" . md5(trim($_GET['pwd'])) . "','" . $_GET['email'] . "','" . $_GET['telephone'] . "','" . $_GET['mobile'] . "','" . $_GET['qq'] . "','1','" . $regdate . "','" . $_GET['lxr'] . "','" . $_GET['company'] . "','" . out . "')";
 //echo $sql;
 
-//$open = fopen("D:/WWW/guanpeipindao/zhengdingdan/sql.txt", "a");
-//fwrite($open, $sql . "\r\n");
-//fclose($open);
-
 
 $AdminResult = $ms->sdb($sql);
 $sql1 = "select * from gps_lxr_info where ltrim(rtrim(user_id))='" . trim($_GET['name']) . "'";

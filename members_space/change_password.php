@@ -31,15 +31,6 @@ if ($user_type == 'library_user') {
     $sql = upd("gps_lxr_info", "user_pwd = '$user_pwd'", "ID = '$user_id'");
 }
 
-//$sql = "UPDATE lib_lxr_info SET user_pwd = $user_pwd WHERE ID = $user_id";
-
-//echo $sql;
-//$open = fopen("D:/WWW/guanpeipindao/members_space/sql.txt", "a");
-//fwrite($open, $sql . "\r\n");
-//fclose($open);
-
-//exit();
-
 $rs = $ms->sdb($sql);
 
 if ($rs) {

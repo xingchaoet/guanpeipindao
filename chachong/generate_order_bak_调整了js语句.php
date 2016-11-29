@@ -446,11 +446,9 @@ if (!empty($book_ids)) {
                 $sql = ins("bs_yudingdan_mx", "sheet_no,isbn,book_name,bookcs_name,writer,price,publish_date,fenlei,kb,amount,inputby,uptime,state,lib_no,book_id",
                     "'$ydd_pc','$isbn','$sm','$csm','$zzh','$dj',null,'$sl','$kb','$yudingdan_nums[$i]','$uid',GETDATE(),'$state','$lib_no' ,'$id'");
             }
-            echo $sql;
+//            echo $sql;
 
-            $open = fopen("D:/xampps/htdocs/guanpeipindao/zhengdingdan/sql.txt", "a");
-            fwrite($open, $sql . "\r\n");
-            fclose($open);
+
 
 //添加到预订单明细表
             $rs = $ms->sdb($sql);

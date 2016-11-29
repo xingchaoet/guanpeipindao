@@ -21,4 +21,4 @@ setcookie('tsgqc',"");
 setcookie('zw',"");
 setcookie('gps_no',"");
 $global_url = GLOBAL_URL;
-header("location:http://".$global_url."/guanpeipindao/guanpeipindao.php");
+header("location:http://".$global_url."/guanpeipindao.php");

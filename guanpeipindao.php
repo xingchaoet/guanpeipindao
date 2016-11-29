@@ -84,7 +84,6 @@ while ($recommendbooks_data = odbc_fetch_array($rs_recommendbooks)) {
 $relpostodist = './';
 $smarty->assign("relpostodist", $relpostodist);
 
-//$smarty->assign("first_level", "<a href='guanpeipindao.php'>馆配服务</a>");
 
 $smarty->assign("recommendbooks", $recommendbooks);
 $smarty->assign("newbooks", $newbooks);

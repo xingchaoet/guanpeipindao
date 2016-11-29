@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-28 18:27:10
+/* Smarty version 3.1.29, created on 2016-11-29 10:30:12
   from "D:\phpStudy\WWW\guanpeipindao\templates\hall_communication\hall_communication.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_583c067e2361f2_57815176',
+  'unifunc' => 'content_583ce8340fa613_52371433',
   'file_dependency' => 
   array (
     'e2812993bcfacf111d19391720c085e96afd15f9' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\hall_communication\\hall_communication.html',
-      1 => 1476758881,
+      1 => 1480383916,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_583c067e2361f2_57815176 ($_smarty_tpl) {
+function content_583ce8340fa613_52371433 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!DOCTYPE html>
@@ -388,7 +388,7 @@ $_smarty_tpl->tpl_vars['value'] = $__foreach_value_1_saved_item;
 >
     var global_url = $('#global_url').html();
 
-    var message_url = 'http://' + global_url + '/guanpeipindao/hall_communication/send_message.php';
+    var message_url = 'http://' + global_url + '/hall_communication/send_message.php';
 
     function creatXHR() {
         var xhr = null;

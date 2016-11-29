@@ -477,7 +477,7 @@
 
     var global_url = $('#global_url').html();
 
-    var data_diy_url = 'http://' + global_url + '/guanpeipindao/data_download/shjdzh_search.php';
+    var data_diy_url = 'http://' + global_url + '/data_download/shjdzh_search.php';
 
     function creatXHR() {
         var xhr = null;
@@ -545,13 +545,13 @@
 //            alert(cf);
 
             document.location.href =
-                    "http://" + global_url + "/guanpeipindao/data_download/diy_result_download.php?" + 'MARC=' + marc + '&CALIS=' + calis + '&CF=' + cf;
+                    "http://" + global_url + "/data_download/diy_result_download.php?" + 'MARC=' + marc + '&CALIS=' + calis + '&CF=' + cf;
         }
 
         if (($("input[type=radio][name=marc][value='excel']").attr("checked"))) {
 //            alert(1);
             document.location.href =
-                    "http://" + global_url + "/guanpeipindao/data_download/diy_result_download.php?" + 'EXCEL=1';
+                    "http://" + global_url + "/data_download/diy_result_download.php?" + 'EXCEL=1';
         }
     });
 
@@ -620,35 +620,23 @@
         }
 
         if ($("#" + marc_download).attr("checked")) {
-//            alert(1);
             MARC = 1;
-//            document.location.href =
-//                    "http://" + global_url + "/guanpeipindao/data_download/zhtshj_download_pcl.php?zhtshj_no=" + zhtshj_no + '&MARC=1';
         }
 
         if ($("#" + calis_download).attr("checked")) {
-//            alert(2);
             CALIS = 1;
-//            document.location.href =
-//                    "http://" + global_url + "/guanpeipindao/data_download/zhtshj_download_pcl.php?zhtshj_no=" + zhtshj_no + '&CALIS=1';
         }
 
         if ($("#" + cf_download).attr("checked")) {
-//            alert(3);
             CF = 1;
-//            document.location.href =
-//                    "http://" + global_url + "/guanpeipindao/data_download/zhtshj_download_pcl.php?zhtshj_no=" + zhtshj_no + '&CF=1';
         }
 
         if ($("#" + excel_download).attr("checked")) {
-//            alert(4);
             EXCEL = 1;
-//            document.location.href =
-//                    "http://" + global_url + "/guanpeipindao/data_download/zhtshj_download_pcl.php?zhtshj_no=" + zhtshj_no + '&EXCEL=1';
         }
 
         document.location.href =
-                "http://" + global_url + "/guanpeipindao/data_download/zhtshj_download.php?zhtshj_no=" + zhtshj_no
+                "http://" + global_url + "/data_download/zhtshj_download.php?zhtshj_no=" + zhtshj_no
                 + '&MARC=' + MARC
                 + '&CALIS=' + CALIS
                 + '&CF=' + CF

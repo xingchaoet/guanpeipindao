@@ -16,10 +16,6 @@ include ("auth_hall_communication.php");
 //session_start();
 //$global_url = GLOBAL_URL;
 //
-//if ($_SESSION['user_type'] == "gps_user") {
-//    echo "<script type='text/javascript'>alert('您是馆配商用户，只有图书馆用户才可以访问此栏目!');</script>";
-//    echo "<script type='text/javascript'>window.location.href='http://'+\"$global_url\"+'/guanpeipindao/';</script>";
-//}
 
 $liuyan = array();
 
@@ -41,22 +37,13 @@ $_SESSION['username'];
 $message = $_POST['message'];
 $message = iconv('UTF-8', 'GBK', $message);
 
-//echo $message;
-//echo $message_date;
-//echo $_SESSION['zw'];
-//echo $_SESSION['username'];
+
 
 $sql = "insert into bs_message_board
 (UserName,CompanyName,Position,MessageContents,MessageTime,FlagAudit,FlagMask,FlagReply) 
 values
 ('" . trim($_SESSION['username']) . "','" . trim($_SESSION['lib_no']) . "','" . trim($zw) . "','" . $message . "','" . $message_date . "','" . 0 . "','" . 0 . "','" . 0 . "')";
-//echo $sql;
 
-//$open = fopen("D:/WWW/guanpeipindao/zhengdingdan/sql.txt", "a");
-//fwrite($open, $sql . "\r\n");
-//fclose($open);
-
-//exit();
 
 $MessageResult = $ms->sdb($sql);
 if ($MessageResult) {
@@ -66,7 +53,5 @@ if ($MessageResult) {
 }
 echo $reback;
 
-//print_r($liuyan);
-//
-//exit();
+
 

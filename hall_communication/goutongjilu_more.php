@@ -18,7 +18,7 @@ include ("auth_hall_communication.php");
 //
 if($_SESSION['user_type'] == "gps_user"){
     echo "<script type='text/javascript'>alert('请经销商用户到“数据下载”栏目查询下载数据！');</script>";
-    echo "<script type='text/javascript'>window.location.href='http://'+\"$global_url\"+'/guanpeipindao/';</script>";
+    echo "<script type='text/javascript'>window.location.href='http://'+\"$global_url\"+'/';</script>";
 }
 
 $gtjl = array();

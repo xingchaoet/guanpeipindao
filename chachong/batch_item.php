@@ -312,11 +312,6 @@ if (!empty($batch_book_data_array)) {
                 $checked = "";
             }
 
-//            $open=fopen("D:/xampps/htdocs/guanpeipindao/book_id.txt","a" );
-//            fwrite($open, $bid."\r\n");
-//            fclose($open);
-
-
             $n = $n + 1;
             echo "<tr>";
             echo "<td class='list' height=20 width=15><input type='checkbox'   name=\"$bid\" class=\"checkall get_book_info_and_update_db_class\" value=$n $checked/></td>";

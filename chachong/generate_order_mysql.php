@@ -157,10 +157,6 @@ if (!empty($book_ids)) {
 
         }
 //        print_r($flag);
-//        $open = fopen("D:/WWW/guanpeipindao/zhengdingdan/sql.txt", "a");
-//        fwrite($open, $flag . "\r\n");
-//        fclose($open);
-
 
     }
 
@@ -273,10 +269,7 @@ if (!empty($book_ids)) {
 
 //
 //            echo $sql;
-//
-//            $open = fopen("D:/WWW/guanpeipindao/zhengdingdan/sql.txt", "a");
-//            fwrite($open, $sql . "\r\n");
-//            fclose($open);
+
 
 //添加到预订单明细表
             $rs = $ms->sdb($sql);
@@ -577,9 +570,6 @@ if (!empty($book_ids)) {
 
 //            echo $sql;
 
-//            $open = fopen("D:/WWW/guanpeipindao/zhengdingdan/sql.txt", "a");
-//            fwrite($open, $sql . "\r\n");
-//            fclose($open);
 
 //添加到预订单明细表
             $rs = $ms->sdb($sql);

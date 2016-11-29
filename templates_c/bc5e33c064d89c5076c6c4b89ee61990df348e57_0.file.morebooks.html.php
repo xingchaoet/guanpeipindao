@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-28 15:58:53
+/* Smarty version 3.1.29, created on 2016-11-29 10:30:28
   from "D:\phpStudy\WWW\guanpeipindao\templates\morebooks.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_583be3bdb9dab1_64624261',
+  'unifunc' => 'content_583ce844296941_57819381',
   'file_dependency' => 
   array (
     'bc5e33c064d89c5076c6c4b89ee61990df348e57' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\morebooks.html',
-      1 => 1480319852,
+      1 => 1480383858,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_583be3bdb9dab1_64624261 ($_smarty_tpl) {
+function content_583ce844296941_57819381 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!DOCTYPE html>
@@ -474,9 +474,9 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_1_saved_item;
 
     var global_url = $('#global_url').html();
 
-    var more_url = 'http://' + global_url + '/guanpeipindao/more.php';
+    var more_url = 'http://' + global_url + '/more.php';
 
-    var generate_order_url = 'http://' + global_url + '/guanpeipindao/zhengdingdan/generate_order.php';
+    var generate_order_url = 'http://' + global_url + '/zhengdingdan/generate_order.php';
 
     function creatXHR() {
         var xhr = null;

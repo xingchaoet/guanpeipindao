@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-28 15:58:53
+/* Smarty version 3.1.29, created on 2016-11-29 10:31:27
   from "D:\phpStudy\WWW\guanpeipindao\templates\header.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_583be3bdcaca20_85168379',
+  'unifunc' => 'content_583ce87fc24c31_40698512',
   'file_dependency' => 
   array (
     '5a3e5c548f7b552d5dce93e00a4b713edbdfa0d0' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\header.html',
-      1 => 1480303201,
+      1 => 1480386680,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_583be3bdcaca20_85168379 ($_smarty_tpl) {
+function content_583ce87fc24c31_40698512 ($_smarty_tpl) {
 ?>
 <div class="site_header">
     <div class="login_register">
@@ -88,7 +88,7 @@ dist/picture/logo.gif" alt="logo"></a>
     <div id="thenavbar">
         <ul class="nav navbar-nav">
             <li class="active">
-                <a id="first_all" href="guanpeipindao.php">全部商品分类</a>
+                <a id="first_all" href="/<?php echo WEB_DIR; ?>/guanpeipindao.php">全部商品分类</a>
             </li>
             <li class="nav_li_second">
                 <a href="">网上书店</a>
@@ -103,7 +103,7 @@ dist/picture/logo.gif" alt="logo"></a>
                 <a href="">预出版</a>
             </li>
             <li class="nav_li">
-                <a href="/guanpeipindao/guanpeipindao.php">馆配服务</a>
+                <a href="/<?php echo WEB_DIR; ?>/guanpeipindao.php">馆配服务</a>
             </li>
             <li class="nav_li">
                 <a href="">教学服务</a>

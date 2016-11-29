@@ -213,9 +213,7 @@ if (!empty($book_id_s)) {
 //
 //        }
 //        print_r($flag);
-//        $open = fopen("D:/WWW/guanpeipindao/zhengdingdan/sql.txt", "a");
-//        fwrite($open, $flag . "\r\n");
-//        fclose($open);
+
 
 //        sqlserver
         $kuncun1 = null;
@@ -420,9 +418,7 @@ if (!empty($book_id_s)) {
 //
 //            echo $sql;
 //
-//            $open = fopen("D:/WWW/guanpeipindao/zhengdingdan/sql.txt", "a");
-//            fwrite($open, $sql . "\r\n");
-//            fclose($open);
+
 
 //添加到预订单明细表
             $rs = $ms->sdb($sql);
@@ -797,12 +793,6 @@ if (!empty($book_id_s)) {
                 $sql = ins("bs_zhengdingdan_mx", "sheet_no,isbn,book_name,bookcs_name,writer,price,publish_date,fenlei,kb,amount,inputby,uptime,state,lib_no,book_id",
                     "'$zdd_pc','$isbn','$sm','$csm','$zzh','$dj',null,'$sl','$kb','$zhengdingdan_nums[$i]','$uid',GETDATE(),'$state','$lib_no','$id'");
             }
-
-//            echo $sql;
-
-//            $open = fopen("D:/WWW/guanpeipindao/zhengdingdan/sql.txt", "a");
-//            fwrite($open, $sql . "\r\n");
-//            fclose($open);
 
 //添加到预订单明细表
             $rs = $ms->sdb($sql);

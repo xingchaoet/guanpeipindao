@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-29 10:30:37
-  from "D:\phpStudy\WWW\guanpeipindao\templates\zhengdingdan\zhengdingdan_detail.html" */
+/* Smarty version 3.1.29, created on 2016-11-29 10:30:43
+  from "D:\phpStudy\WWW\guanpeipindao\templates\zhengdingdan\yudingdan_detail.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_583ce84d5a7b56_82659550',
+  'unifunc' => 'content_583ce8533ca147_54007693',
   'file_dependency' => 
   array (
-    'b04d9689f3d2f34d56a4b173407d3b462a64595e' => 
+    'c88182dcd77a7211e7303d03a8798488796ed573' => 
     array (
-      0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\zhengdingdan\\zhengdingdan_detail.html',
-      1 => 1478138540,
+      0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\zhengdingdan\\yudingdan_detail.html',
+      1 => 1478138433,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_583ce84d5a7b56_82659550 ($_smarty_tpl) {
+function content_583ce8533ca147_54007693 ($_smarty_tpl) {
 ?>
 <table class='table table-bordered table-striped'>
     <tr style="text-align: center">
@@ -34,7 +34,7 @@ function content_583ce84d5a7b56_82659550 ($_smarty_tpl) {
     </tr>
 
     <?php
-$_from = $_smarty_tpl->tpl_vars['zdd_order_detail']->value;
+$_from = $_smarty_tpl->tpl_vars['ydd_order_detail']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
@@ -97,6 +97,6 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_0_saved_item;
 </table>
 
 <!--<a>回到我的征订单</a>-->
-<button class="btn btn-default btn-sm" id="return_to_my_zhengdingdan" onclick="return_to_my_zhengdingdan();" value="返回到我的征订单">返到我的征订单</button>
+    <button class="btn btn-default btn-sm" id="return_to_my_yudingdan" onclick="return_to_my_yudingdan();" value="返回到我的预订单">返到我的预订单</button>
 <?php }
 }

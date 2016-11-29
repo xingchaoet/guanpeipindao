@@ -33,9 +33,6 @@ $table_name = 'bs_temp_dingdan';
 $user_id = $_POST['user_id'];
 $batch_option = $_POST['batch_option'];
 
-//$open = fopen("D:/phpStudy/WWW/guanpeipindao/zhengdingdan/log.txt", "a");
-//fwrite($open, $batch_option . "\r\n");
-//fclose($open);
 
 $lib_no = $_SESSION['lib_no'];
 
@@ -84,10 +81,6 @@ if ($batch_option == "create_new_batch") {
         $previous_max_sequence_number = odbc_result($rs, "Max_Sequence_Number");
     }
 
-//    $open = fopen("D:/phpStudy/WWW/guanpeipindao/zhengdingdan/log.txt", "a");
-//    fwrite($open, $previous_max_sequence_number . "\r\n");
-//    fclose($open);
-
 }
 
 
@@ -108,9 +101,6 @@ if ($batch_option == "create_new_batch") {
             . " (Book_Id,Book_Num, State,User_Id,Pi_Ci_No,Date_Time,Sequence_Number)
         VALUES ('$bid', '0','0','$user_id','$dd_pc',GETDATE(),'$i')";
 
-//        $open = fopen("D:/phpStudy/WWW/guanpeipindao/zhengdingdan/log.txt", "a");
-//        fwrite($open, $sql_add_to_temp_table . "\r\n");
-//        fclose($open);
 
         $rs_sql_add_to_temp_table = $ms->sdb($sql_add_to_temp_table);
 
@@ -147,11 +137,6 @@ if ($batch_option == "create_new_batch") {
         VALUES ('$bid', '0','0','$user_id','$dd_pc',GETDATE(),'$sequence_number')";
 
         $rs_sql_add_to_temp_table = $ms->sdb($sql_add_to_temp_table);
-
-//        $open = fopen("D:/phpStudy/WWW/guanpeipindao/zhengdingdan/log.txt", "a");
-//        fwrite($open, $sql_add_to_temp_table . "\r\n");
-//        fclose($open);
-
 
         try {
 

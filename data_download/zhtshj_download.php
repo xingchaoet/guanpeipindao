@@ -72,7 +72,7 @@ if ($MARC) {
 
         $global_url = GLOBAL_URL;
 
-        echo "<script type='text/javascript'>window.location.href='http://$global_url/guanpeipindao/data_download/data_download.php';</script>";
+        echo "<script type='text/javascript'>window.location.href='http://$global_url/data_download/data_download.php';</script>";
 
     } else {
         unset($_SESSION['err']);
@@ -118,10 +118,6 @@ if ($CALIS) { //采访类型
     if (strlen($tmp_calis) == 0) {
 //        $_SESSION['err'] = "无此批书CALIS数据!";
 //        echo "<script type='text/javascript'>alert('无此批书CALIS数据!');</script>";
-//
-//        $global_url = GLOBAL_URL;
-//
-//        echo "<script type='text/javascript'>window.location.href='http://$global_url/guanpeipindao/data_download/data_download.php';</script>";
 
     } else {
         unset($_SESSION['err']);
@@ -165,7 +161,7 @@ if ($CF) { //采访类型
 
         $global_url = GLOBAL_URL;
 
-        echo "<script type='text/javascript'>window.location.href='http://$global_url/guanpeipindao/data_download/data_download.php';</script>";
+        echo "<script type='text/javascript'>window.location.href='http://$global_url/data_download/data_download.php';</script>";
 
     } else {
         unset($_SESSION['err']);
@@ -208,7 +204,7 @@ if ($EXCEL) {
 
         $global_url = GLOBAL_URL;
 
-        echo "<script type='text/javascript'>window.location.href='http://$global_url/guanpeipindao/data_download/data_download.php';</script>";
+        echo "<script type='text/javascript'>window.location.href='http://$global_url/data_download/data_download.php';</script>";
 
     } else {
         unset($_SESSION['err']);
@@ -233,10 +229,6 @@ $zipfile = dirname(__FILE__) . '\\' . $zipname;
 //if (file_exists($zipfile)) {
 //    echo filesize ( $zipfile );
 //}
-
-//$open = fopen("D:/WWW/guanpeipindao/data_download/filesize.txt", "a");
-//fwrite($open, filesize($zipfile) . "\r\n");
-//fclose($open);
 
 $size = filesize($zipfile);
 

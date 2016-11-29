@@ -49,9 +49,7 @@ if ($add_one_book_to_order) {//添加书籍
 //        $max_sequence_number = 1;
 //
 //        $sql_get_sequence_number = "select max(Sequence_Number) as Max_Sequence_Number from  ".$table_name." WHERE Pi_Ci_No = '$dd_pc'";
-////        $open = fopen("D:/phpStudy/WWW/guanpeipindao/zhengdingdan/log.txt", "a");
-////        fwrite($open, $sql_get_sequence_number . "\r\n");
-////        fclose($open);
+
 ////        echo $sql_get_sequence_number;
 //
 //        $rs = $ms->sdb($sql_get_sequence_number);

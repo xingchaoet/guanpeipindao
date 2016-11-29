@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-28 18:30:10
+/* Smarty version 3.1.29, created on 2016-11-29 10:31:04
   from "D:\phpStudy\WWW\guanpeipindao\templates\hall_communication\guanpeidongtai_article_content.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_583c073253e2b4_95010137',
+  'unifunc' => 'content_583ce8684d78b9_60988767',
   'file_dependency' => 
   array (
     'ffcf76ae4d08f7f28d08e23aa667af76f32c2b78' => 
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_583c073253e2b4_95010137 ($_smarty_tpl) {
+function content_583ce8684d78b9_60988767 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
