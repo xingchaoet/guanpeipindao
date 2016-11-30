@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-29 10:30:14
+/* Smarty version 3.1.29, created on 2016-11-30 11:17:18
   from "D:\phpStudy\WWW\guanpeipindao\templates\zhengdingdan\orders_view.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_583ce836168b69_62128261',
+  'unifunc' => 'content_583e44bec250e9_22704034',
   'file_dependency' => 
   array (
     '7413ca9d63fa0e11bb28aacad71c35bff69dcd9e' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\zhengdingdan\\orders_view.html',
-      1 => 1480383916,
+      1 => 1480474066,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_583ce836168b69_62128261 ($_smarty_tpl) {
+function content_583e44bec250e9_22704034 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,8 +69,8 @@ function content_583ce836168b69_62128261 ($_smarty_tpl) {
         }
 
         .down {
-            margin-top: 2px;
-            padding-top: 2px;
+            margin-top: -23px;
+            /*padding-top: 2px;*/
             width: 770px;
         }
 

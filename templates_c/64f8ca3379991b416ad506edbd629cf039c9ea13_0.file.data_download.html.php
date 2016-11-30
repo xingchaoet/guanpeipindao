@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-29 10:30:10
+/* Smarty version 3.1.29, created on 2016-11-30 11:17:14
   from "D:\phpStudy\WWW\guanpeipindao\templates\data_download\data_download.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_583ce832382b69_44284336',
+  'unifunc' => 'content_583e44baec36d0_37782032',
   'file_dependency' => 
   array (
     '64f8ca3379991b416ad506edbd629cf039c9ea13' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\data_download\\data_download.html',
-      1 => 1480383858,
+      1 => 1480473892,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_583ce832382b69_44284336 ($_smarty_tpl) {
+function content_583e44baec36d0_37782032 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +65,10 @@ function content_583ce832382b69_44284336 ($_smarty_tpl) {
             width: 770px;
         }
 
-        /*.down */
+        .down {
+            padding-top: 10px;
+            /*width: 770px;*/
+        }
 
         .linear {
             margin-top: 20px;

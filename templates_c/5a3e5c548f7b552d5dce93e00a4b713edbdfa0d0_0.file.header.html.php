@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-29 10:31:27
+/* Smarty version 3.1.29, created on 2016-11-30 11:03:47
   from "D:\phpStudy\WWW\guanpeipindao\templates\header.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_583ce87fc24c31_40698512',
+  'unifunc' => 'content_583e4193697270_15847254',
   'file_dependency' => 
   array (
     '5a3e5c548f7b552d5dce93e00a4b713edbdfa0d0' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\header.html',
-      1 => 1480386680,
+      1 => 1480474529,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_583ce87fc24c31_40698512 ($_smarty_tpl) {
+function content_583e4193697270_15847254 ($_smarty_tpl) {
 ?>
 <div class="site_header">
     <div class="login_register">
@@ -76,7 +76,6 @@ dist/picture/logo.gif" alt="logo"></a>
             <!--<div style=""><p class="gouwuche">去购物车结算</p></div>-->
 
         </div>
-
 
     </div>
     <a id="global_url" style="display: none"><?php echo GLOBAL_URL;?></a>

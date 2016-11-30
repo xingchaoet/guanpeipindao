@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-29 10:27:52
+/* Smarty version 3.1.29, created on 2016-11-30 11:17:01
   from "D:\phpStudy\WWW\guanpeipindao\templates\guanpeipindao.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_583ce7a81fdb13_00217116',
+  'unifunc' => 'content_583e44ad54cb67_62565664',
   'file_dependency' => 
   array (
     'bd1538b3724d041036d3f11dba8677e6b2c848f4' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\guanpeipindao.html',
-      1 => 1480383858,
+      1 => 1480475811,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_583ce7a81fdb13_00217116 ($_smarty_tpl) {
+function content_583e44ad54cb67_62565664 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!doctype html>
@@ -74,6 +74,10 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
             width: 180px;
         }
 
+        .filling{
+            height: 8px;
+            width: 6px;
+        }
         .feng_mian {
             height: 160px;
             width: 140px;
@@ -255,7 +259,7 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
         .content a:active, a:hover {
         }
 
-        .content_tab{
+        .content_tab {
             width: 150px;
             color: #C8C8C8;
             border-bottom: 30px solid #C8C8C8;
@@ -286,7 +290,6 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
 
 <div class="site">
     <div class="row ">
-
         <div class="col-sm-3">
             <!--<img src="../dist/js/holder.js/263x800" alt="">-->
             <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:left_nav.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -296,7 +299,6 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
                 <?php echo $_smarty_tpl->tpl_vars['introduce']->value;?>
 
             </div>
-
         </div>
 
         <div class="col-sm-9">
@@ -305,6 +307,7 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
                     <div id="carousel_tab" class="carousel-indicators">
                         <span data-target="#mycarousel" data-slide-to="0" class="active">1</span>
                         <span data-target="#mycarousel" data-slide-to="1">2</span>
+                        <span data-target="#mycarousel" data-slide-to="2">3</span>
                         <!--<li data-target="#mycarousel" data-slide-to="2"></li>-->
                     </div>
                     <div id="shade" class="shade carousel-indicators">
@@ -318,6 +321,11 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
                         </div>
                         <div class="item">
                             <img src="dist/picture/gg/gg_1.jpg" alt="" style="width:770px;height:290px;">
+                            <div class="carousel-caption">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="dist/picture/gg/gg_2.jpg" alt="" style="width:770px;height:290px;">
                             <div class="carousel-caption">
                             </div>
                         </div>
@@ -340,8 +348,10 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
 
             <div class="content">
                 <ul class="nav nav-tabs">
-                    <li class='active'><a class="content_tab" href="#recommend" data-toggle='tab' onFocus="this.blur()"><span>重点推荐</span></a></li>
-                    <li class=''><a class="content_tab" href="#newbooks" data-toggle='tab' onFocus="this.blur()"><span>本期新书</span></a></li>
+                    <li class='active'><a class="content_tab" href="#recommend" data-toggle='tab'
+                                          onFocus="this.blur()"><span>重点推荐</span></a></li>
+                    <li class=''><a class="content_tab" href="#newbooks" data-toggle='tab'
+                                    onFocus="this.blur()"><span>本期新书</span></a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active fade in" id='recommend'>
@@ -375,7 +385,8 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
 
                                 <div class="tooltip-demo">
                                     <p data-toggle="tooltip" title="<?php echo iconv('gbk','utf-8//IGNORE',$_smarty_tpl->tpl_vars['val']->value['sm']);?>
-" style="text-align: center">
+"
+                                       style="text-align: center">
                                         <?php echo smarty_modifier_truncate(iconv('gbk','utf-8//IGNORE',$_smarty_tpl->tpl_vars['val']->value['sm']),8,"...",true);?>
 </p>
                                 </div>
@@ -383,7 +394,8 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                                     <a id="buy_<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "><img
                                             src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
-dist/picture/guanpeipindao/add_order.png" alt=""></a>
+dist/picture/guanpeipindao/add_order.png"
+                                            alt=""></a>
                                     <a style="text-align: center; display: none"><?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 </a>
                                 </p>
@@ -398,8 +410,9 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
                             <!--<div class="clearfix"></div>-->
                         </div>
                         <?php if ($_SESSION['user_type'] == 2) {?>
-                        <div style="text-align:right;margin-right: 20px ;margin-bottom: 10px; "><a href='showorder.php'
-                                                                                                   class="btn  ">查看订单</a>
+                        <div style="text-align:right;margin-right: 20px ;margin-bottom: 10px; "><a
+                                href='showorder.php'
+                                class="btn  ">查看订单</a>
                         </div>
                         <?php }?>
                         <div style="text-align:right; margin-right: 20px"><a href='more.php?type=recommend'><img
@@ -435,7 +448,8 @@ $__foreach_val_1_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                                 <?php }?>
                                 <div class="tooltip-demo">
                                     <p data-toggle="tooltip" title="<?php echo iconv('gbk','utf-8//IGNORE',$_smarty_tpl->tpl_vars['val']->value['sm']);?>
-" style="text-align: center">
+"
+                                       style="text-align: center">
                                         <?php echo smarty_modifier_truncate(iconv('gbk','utf-8//IGNORE',$_smarty_tpl->tpl_vars['val']->value['sm']),8,"...",true);?>
 </p>
                                 </div>
@@ -443,7 +457,8 @@ $__foreach_val_1_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                                     <a id="buy_<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "><img
                                             src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
-dist/picture/guanpeipindao/add_order.png" alt=""></a>
+dist/picture/guanpeipindao/add_order.png"
+                                            alt=""></a>
                                     <a style="text-align: center; display: none"><?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 </a>
                                 </p>
@@ -458,8 +473,9 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_1_saved_item;
                             <!--<div class="clearfix"></div>-->
                         </div>
                         <?php if ($_SESSION['user_type'] == 2) {?>
-                        <div style="text-align:right;margin-right: 20px ;margin-bottom: 10px; "><a href='showorder.php'
-                                                                                                   class="btn  ">查看订单</a>
+                        <div style="text-align:right;margin-right: 20px ;margin-bottom: 10px; "><a
+                                href='showorder.php'
+                                class="btn  ">查看订单</a>
                         </div>
                         <?php }?>
                         <div style="text-align:right;margin-right: 20px "><a href='more.php?type=new'><img

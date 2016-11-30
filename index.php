@@ -1,7 +1,7 @@
 <?php
 
 include ("include/GuanCangSmarty.php");
-
+include ("config.php");
 session_start();
 
 $smarty = new GuanCangSmarty();
