@@ -18,9 +18,9 @@ define('FPATH', '../zdd/');
 //define('GLOBAL_URL', '192.168.1.138');
 
 $url=$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].'/'.basename(dirname(__FILE__));
-$web_url = basename(dirname(__FILE__));
+$web_dir = basename(dirname(__FILE__));
 
-define('WEB_DIR',$web_url);
+define('WEB_DIR',$web_dir);
 define('GLOBAL_URL',$url);
 
 //$GLOBALS['progress'] = 0;

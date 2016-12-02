@@ -17,7 +17,9 @@
                         {if trim($val['slt'])}
                         <a href="detail.php?book_id={$val['book_id']}"><img
                                 src="http://www.ecsponline.com/{trim($val['slt'])}"
-                                class="fen_mian" alt=""></a>
+                                class="fen_mian"
+                                onerror="javascript:this.src='dist/images/nopicture.png';"
+                                alt=""></a>
                         {else}
                         <a href="detail.php?book_id={$val['book_id']}"><img
                                 src="dist/images/nopicture.png"
@@ -51,12 +53,12 @@
         {/foreach}
     </div>
 
-    <div class="add_and_check">
-        <a id="buy" class="btn btn-default btn-xs" onclick="generate_order();">加入订单</a>
-        {if $smarty.session.user_type eq library_user}
-        <a href='zhengdingdan/orders_view.php' class="btn  btn-default btn-xs">查看订单</a>
-        {/if}
-    </div>
+    <!--<div class="add_and_check">-->
+        <!--<a id="buy" class="btn btn-default btn-xs" onclick="generate_order();">加入订单</a>-->
+        <!--{if $smarty.session.user_type eq library_user}-->
+        <!--<a href='zhengdingdan/orders_view.php' class="btn  btn-default btn-xs">查看订单</a>-->
+        <!--{/if}-->
+    <!--</div>-->
 
     {$page->show()}
 

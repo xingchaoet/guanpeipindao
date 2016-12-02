@@ -331,6 +331,7 @@
                                 {if trim($val['slt']) }
                                 <a href="detail.php?book_id={$val['book_id']}"><img class="feng_mian"
                                                                                     src="http://www.ecsponline.com/{trim($val['slt'])}"
+                                                                                    onerror="no_find();"
                                                                                     alt=""></a>
                                 {else}
                                 <a href="detail.php?book_id={$val['book_id']}"><img class="feng_mian"
@@ -369,6 +370,7 @@
                                 {if trim($val['slt'])}
                                 <a href="detail.php?book_id={$val['book_id']}"><img class="feng_mian"
                                                                                     src="http://www.ecsponline.com/{trim($val['slt'])}"
+                                                                                    onerror="no_find();"
                                                                                     alt=""></a>
                                 {else}
                                 <a href="detail.php?book_id={$val['book_id']}"><img class="feng_mian"
@@ -422,6 +424,7 @@
 <script type="text/javascript">
 
     var global_url = $('#global_url').html();
+    var web_dir = $('#web_dir').html();
 
     var generate_order_url = 'http://' + global_url + '/zhengdingdan/generate_order.php';
     function creatXHR() {
@@ -471,6 +474,14 @@
         }
 
     });
+
+    function no_find(){
+
+        var img=event.srcElement;
+        img.src="/" + web_dir + "/dist/images/nopicture.png";
+        img.onerror=null; 控制不要一直跳动
+
+    }
 </script>
 
 </html>

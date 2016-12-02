@@ -45,32 +45,34 @@ class Page
     function pageList()
     {
 
+        $_pagelist = '';
         for ($i = $this->bothnum; $i >= 1; $i--) {
             $_page = $this->page - $i;
+
             if ($_page < 1) continue;
-            $_pagelist .= " <a class='topagesend' id='topage_'{$_page} page = {$_page} show = {$this->show}  type={$this->type} >" . $_page . '</a> ';
+            $_pagelist .= " <a class='topagesend' id='topage_{$_page}' page = {$_page} show = {$this->show}  type={$this->type}  onclick='to_page();'>" . $_page . '</a> ';
         }
-        $_pagelist .= ' <span class="active">' . $this->page . '</span> ';
+
+        $_pagelist .= ' <span >' . $this->page . '</span> ';
+
         for ($i = 1; $i <= $this->bothnum; $i++) {
             $_page = $this->page + $i;
             if ($_page > $this->pagenum) break;
-            $_pagelist .= " <a class='topagesend' id='topage_'{$_page} page = {$_page} show = {$this->show}  type={$this->type} >" . $_page . '</a> ';
+            $_pagelist .= " <a class='topagesend' id='topage_{$_page}' page = {$_page} show = {$this->show}  type={$this->type}  onclick='to_page();'>" . $_page . '</a> ';
         }
         return $_pagelist;
     }
 
     function page()
     {
-
         return $this->page;
-
     }
 
     function show()
     {
 
 
-        $this->pagebar = "<div id='pagination' style=\"margin-right:5px;float: right\"><p><b>";
+        $this->pagebar = "<div id='pagination' ><p><b>";
 
 
         if ($this->page == 1) {

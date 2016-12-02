@@ -1,17 +1,22 @@
 /**
- * Created by xc on 2016/11/24.
+ * Created by xc on 2016/11/30.
  */
-//    var global_url = "192.168.1.138";
 var global_url = $('#global_url').html();
+
+var more_url = 'http://' + global_url + '/more.php';
 var batch_option = '';
+
+//    var generate_order_url = 'http://' + global_url + '/zhengdingdan/generate_order.php';
+//    var batch_option_create_url = 'http://' + global_url + '/chachong/batch_option_create.php';
+
 var progress = 0;
 var progress_id = "progressbar";
-var search_url = 'http://' + global_url + '/search.php';
-var guangcangimport_url = 'http://' + global_url + '/chachong/guangcang_chachong.php';
-var guan_cang_import_history_url = 'http://' + global_url + '/chachong/gangcang_import_history.php';
-var delpici_url = 'http://' + global_url + '/chachong/delpici.php';
+//    var search_url = 'http://' + global_url + '/search.php';
+//    var guangcangimport_url = 'http://' + global_url + '/chachong/guangcang_chachong.php';
+//    var guan_cang_import_history_url = 'http://' + global_url + '/chachong/gangcang_import_history.php';
+//    var delpici_url = 'http://' + global_url + '/chachong/delpici.php';
 var generate_order_url = 'http://' + global_url + '/chachong/generate_order.php';
-// var order_list_url = 'http://' + global_url + '/zhengdingdan/order_list.php';
+//    var order_list_url = 'http://' + global_url + '/zhengdingdan/order_list.php';
 
 var operate_temp_table_url = 'http://' + global_url + '/chachong/operate_temp_table.php';
 var manipulate_session_url = 'http://' + global_url + '/chachong/manipulate_session.php';
@@ -21,9 +26,8 @@ var delete_batch_url = 'http://' + global_url + '/chachong/batch_item.php';
 
 var default_num_url = 'http://' + global_url + '/chachong/default_num.php';
 var get_progress_info_url = 'http://' + global_url + '/chachong/get_progress_info.php';
-// var batch_option_create_url = 'http://' + global_url + '/chachong/batch_option_create.php';
+var batch_option_create_url = 'http://' + global_url + '/chachong/batch_option_create.php';
 var add_to_batch_url = 'http://' + global_url + '/chachong/add_to_batch.php';
-
 
 function creatXHR() {
     var xhr = null;
@@ -36,233 +40,360 @@ function creatXHR() {
 }
 
 var xhr = creatXHR();
-//
-//    function check_user() {
-//
-//        var utp = $('#usertype').html();
-//
-//        if (utp == null || utp == undefined || utp == '') {
-//            alert("您还没登录");
-//            return false;
-//        }
-//
-//        if (utp != "library_user") {
-//            alert("您不是图书馆用户");
-//        }
-//
-//    }
-
-function gangcangimport() {
-
-
-    var utp = $('#usertype').html();
-
-    if (utp == null || utp == undefined || utp == '') {
-        alert("您还没登录");
-        return false;
-    }
-
-    if (utp != "library_user") {
-        alert("您不是图书馆用户");
-    }
-
-    var fm = document.getElementById('guangcangexcel');
-    var fdata = new FormData(fm);
-
-    xhr.open('POST', guangcangimport_url, true);
-    xhr.send(fdata);
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4) {
-            document.getElementById('content').innerHTML = '';
-            document.getElementById('light').style.display = 'block';
-            document.getElementById('content').innerHTML = this.responseText;
-        }
-    }
-}
-
-function send(arg) {
-
-    if (arg == "chaxunchachong" || $('#pic_disable_list_enable').is(':visible')) {
-
-        var fm = document.getElementById('condition');
-        var fdata = new FormData(fm);
-        if (arg == "chaxunchachong") {
-            fdata.append("show_type", 'chaxunchachong');
-            fdata.append("first_search", 'first_search');
-            fdata.append("manipulate_session", 'manipulate_session');
-
-        } else {
-            fdata.append("show_type", 'list');
-        }
-
-
-        xhr.open('POST', search_url, true);
-        xhr.send(fdata);
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4) {
-
-                $('#list_disable_pic_enable').show();
-                $('#pic_disable_list_enable').hide();
-
-                $('#list_pic_batch').hide();
-
-                $('#list_pic').show();
-                $('#bottom').show();
-
-                document.getElementById('show').innerHTML = '';
-                document.getElementById('show').innerHTML = this.responseText;
-//                $("#show").load("../../chachong/cc_list.php");
-            }
-        }
-    }
-}
-
-
-function sendpic() {
-
-    if ($('#list_disable_pic_enable').is(':visible')) {
-
-        var fm = document.getElementById('condition');
-        var fdata = new FormData(fm);
-        fdata.append("show_type", 'pic');
-
-        xhr.open('POST', search_url, true);
-        xhr.send(fdata);
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4) {
-
-                $('#list_pic_batch').hide();
-
-                $('#list_disable_pic_enable').hide();
-                $('#pic_disable_list_enable').show();
-
-                document.getElementById('show').innerHTML = '';
-                document.getElementById('show').innerHTML = this.responseText;
-            }
-        }
-    }
-}
-
-function get_checked_bookid_and_num() {
-
-}
 
 function firstpagesend() {
+    //首页显示不判断用户id
 
-    var fm = document.getElementById('condition');
-    var fdata = new FormData(fm);
+    var fdata = new FormData();
 
     var page = $("#firstpage").attr("page");
     fdata.append("page", page);
 
-    var showtype = $("#firstpage").attr("showtype");
-    fdata.append("show_type", showtype);
+    var type = $("#firstpage").attr("type");
+    fdata.append("type", type);
 
+    var show = $("#firstpage").attr("show");
+    fdata.append("show", show);
 
-    xhr.open('POST', search_url, true);
+    xhr.open('POST', more_url, true);
+
     xhr.send(fdata);
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
-            document.getElementById('show').innerHTML = '';
-            document.getElementById('show').innerHTML = this.responseText;
+            document.getElementById('down').innerHTML = '';
+            document.getElementById('down').innerHTML = this.responseText;
         }
     }
 }
 
+
 function prepagesend() {
 
-    var fm = document.getElementById('condition');
-    var fdata = new FormData(fm);
+    var fdata = new FormData();
 
     var page = $("#prepage").attr("page");
     fdata.append("page", page);
 
-    var showtype = $("#prepage").attr("showtype");
-    fdata.append("show_type", showtype);
+    var type = $("#prepage").attr("type");
+    fdata.append("type", type);
 
+    var show = $("#prepage").attr("show");
+    fdata.append("show", show);
 
-    xhr.open('POST', search_url, true);
+    xhr.open('POST', more_url, true);
+
     xhr.send(fdata);
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
-            document.getElementById('show').innerHTML = '';
-            document.getElementById('show').innerHTML = this.responseText;
+            document.getElementById('down').innerHTML = '';
+            document.getElementById('down').innerHTML = this.responseText;
         }
     }
 }
 
+
 function nextpagesend() {
 
-    var fm = document.getElementById('condition');
-    var fdata = new FormData(fm);
+    var fdata = new FormData();
 
     var page = $("#nextpage").attr("page");
     fdata.append("page", page);
 
-    var showtype = $("#nextpage").attr("showtype");
-    fdata.append("show_type", showtype);
+    var type = $("#nextpage").attr("type");
+    fdata.append("type", type);
 
+    var show = $("#nextpage").attr("show");
+    fdata.append("show", show);
 
-//        alert(book_ids);
+//        alert(page);
+//        alert(type);
+//        alert(show);
 
-//        var book_ids = [];
-//        var book_nums = [];
+    xhr.open('POST', more_url, true);
 
-    xhr.open('POST', search_url, true);
     xhr.send(fdata);
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
-            document.getElementById('show').innerHTML = '';
-            document.getElementById('show').innerHTML = this.responseText;
+            document.getElementById('down').innerHTML = '';
+            document.getElementById('down').innerHTML = this.responseText;
         }
     }
 }
+
 
 function lastpagesend() {
 
-    var fm = document.getElementById('condition');
-    var fdata = new FormData(fm);
+//        var fm = document.getElementById('condition');
+    var fdata = new FormData();
+
     var page = $("#lastpage").attr("page");
     fdata.append("page", page);
 
-    var showtype = $("#lastpage").attr("showtype");
-    fdata.append("show_type", showtype);
+    var type = $("#lastpage").attr("type");
+    fdata.append("type", type);
 
+    var show = $("#lastpage").attr("show");
+    fdata.append("show", show);
 
-    xhr.open('POST', search_url, true);
+    xhr.open('POST', more_url, true);
+
     xhr.send(fdata);
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
-            document.getElementById('show').innerHTML = '';
-            document.getElementById('show').innerHTML = this.responseText;
+            document.getElementById('down').innerHTML = '';
+            document.getElementById('down').innerHTML = this.responseText;
         }
     }
 }
+
+function to_page() {
+
+    var page_a_tag_id = event.srcElement.id;
+    var fdata = new FormData();
+
+    var page = document.getElementById(page_a_tag_id).getAttribute("page");
+    fdata.append("page", page);
+
+    var type = document.getElementById(page_a_tag_id).getAttribute("type");
+    fdata.append("type", type);
+
+    var show = document.getElementById(page_a_tag_id).getAttribute("show");
+    fdata.append("show", show);
+
+    xhr.open('POST', more_url, true);
+
+    xhr.send(fdata);
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            document.getElementById('down').innerHTML = '';
+            document.getElementById('down').innerHTML = this.responseText;
+        }
+    }
+}
+
+//    var flag = 0;
+
+// function active_topagesend() {
+//        alert(flag);
+//        if(flag <= 1){
+// $('#pagination').on('mouseenter', function () {
+// // alert(1);
+//     $(".topagesend").click(function () {
+//
+//             alert(1);
+//             // var fdata = new FormData();
+//             //
+//             // var page = $(this).attr("page");
+//             // fdata.append("page", page);
+//             //
+//             // var type = $(this).attr("type");
+//             // fdata.append("type", type);
+//             //
+//             // var show = $(this).attr("show");
+//             // fdata.append("show", show);
+//             //
+//             //            alert(page);
+//             //            alert(type);
+//             //            alert(show);
+//             //
+//             // xhr.open('POST', more_url, true);
+//             //
+//             // xhr.send(fdata);
+//             // xhr.onreadystatechange = function () {
+//             //     if (this.readyState == 4) {
+//             //         document.getElementById('down').innerHTML = '';
+//             //         document.getElementById('down').innerHTML = this.responseText;
+//             //     }
+//             // }
+//         }
+//     );
+//
+// });
+//
+// $('#pagination').on('mouseenter', function () {
+//
+//     // alert(1);
+//     var list = $('.topagesend');
+//     list.each(function (i) {
+//
+//         // alert($(this).attr('id'));
+//
+//         $(this).click(function () {
+//
+//             var fdata = new FormData();
+//
+//             var page = $(this).attr("page");
+//             fdata.append("page", page);
+//
+//             var type = $(this).attr("type");
+//             fdata.append("type", type);
+//
+//             var show = $(this).attr("show");
+//             fdata.append("show", show);
+//
+//             alert(page);
+//             alert(type);
+//             alert(show);
+//
+//             xhr.open('POST', more_url, true);
+//
+//             xhr.send(fdata);
+//             xhr.onreadystatechange = function () {
+//                 if (this.readyState == 4) {
+//                     document.getElementById('down').innerHTML = '';
+//                     document.getElementById('down').innerHTML = this.responseText;
+//                 }
+//             }
+//         });
+//
+//     });
+    // alert(list.length);
+    // $.each(list, function (index, domEle) {
+    //     alert($(domEle).attr('id'));
+    //     //
+    //     // $(this).on('click', function () {
+    //     //     alert(1);
+    //     // })
+    //
+    //     $(this).click(function(){
+    //         alert(1);
+    //     })
+    //
+    //     // $(domEle).click = function () {
+    //     //
+    //     //     var fdata = new FormData();
+    //     //
+    //     //     var page = $(this).attr("page");
+    //     //     fdata.append("page", page);
+    //     //
+    //     //     var type = $(this).attr("type");
+    //     //     fdata.append("type", type);
+    //     //
+    //     //     var show = $(this).attr("show");
+    //     //     fdata.append("show", show);
+    //     //
+    //     //     alert(page);
+    //     //     alert(type);
+    //     //     alert(show);
+    //     //
+    //     //     xhr.open('POST', more_url, true);
+    //     //
+    //     //     xhr.send(fdata);
+    //     //     xhr.onreadystatechange = function () {
+    //     //         if (this.readyState == 4) {
+    //     //             document.getElementById('down').innerHTML = '';
+    //     //             document.getElementById('down').innerHTML = this.responseText;
+    //     //         }
+    //     //     }
+    //     // };
+    //
+    //
+    // });
+// });
+
+
+// $('#pagination').on('mouseenter', function () {
+//     $(".topagesend").off("click");
+// });
+//            flag = flag + 1;
+//        }
+
+// }
+
 
 function jumptopagesend() {
 
-    var fm = document.getElementById('condition');
-    var fdata = new FormData(fm);
+    var fdata = new FormData();
 
     var page = $("#jumptopage").val();
     fdata.append("page", page);
-//        alert(page);
-    var showtype = $("#jumptopage").attr("showtype");
-    fdata.append("show_type", showtype);
 
+    var type = $("#jumptopage").attr("type");
+    fdata.append("type", type);
 
-    xhr.open('POST', search_url, true);
+    var show = $("#jumptopage").attr("show");
+    fdata.append("show", show);
+
+    xhr.open('POST', more_url, true);
+
     xhr.send(fdata);
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
-            document.getElementById('show').innerHTML = '';
-            document.getElementById('show').innerHTML = this.responseText;
+            document.getElementById('down').innerHTML = '';
+            document.getElementById('down').innerHTML = this.responseText;
         }
     }
 }
 
+$("#list").click(function () {
 
-//多关联一
+        path = "{$relpostodist}dist/picture/pic_list/list_disable.gif";
+        path2 = "{$relpostodist}dist/picture/pic_list/pic_enable.gif";
+
+
+        if ($("#list").attr('src') == path) {
+            return;
+        }
+        var fdata = new FormData();
+//推荐还是最新
+        var booktype = $("#booktype").text();
+        fdata.append("type", booktype);
+
+        var page_num = $("#page_num").text();
+        fdata.append("page", page_num);
+
+        fdata.append("show", 'list');
+
+        xhr.open('POST', more_url, true);
+
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                $("#list").attr('src', path);
+                $("#picture").attr('src', path2);
+                document.getElementById('down').innerHTML = '';
+                document.getElementById('down').innerHTML = this.responseText;
+            }
+        }
+    }
+);
+
+$("#picture").click(function () {
+
+        path = "{$relpostodist}dist/picture/pic_list/pic_disable.gif";
+        path2 = "{$relpostodist}dist/picture/pic_list/list_enable.gif";
+
+        if ($("#picture").attr('src') == path) {
+            return;
+        }
+        var fdata = new FormData();
+//推荐还是最新
+        var booktype = $("#booktype").text();
+        fdata.append("type", booktype);
+
+        var page_num = $("#page_num").text();
+        fdata.append("page", page_num);
+
+        fdata.append("show", 'picture');
+
+        fdata.append("toggle", 'picture');
+
+        xhr.open('POST', more_url, true);
+
+        xhr.send(fdata);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                $("#picture").attr('src', path);
+                $("#list").attr('src', path2);
+                document.getElementById('down').innerHTML = '';
+                document.getElementById('down').innerHTML = this.responseText;
+            }
+        }
+    }
+);
+
+
 var checkboxes_sel = "input.checkall:checkbox:enabled";
 
 var checkboxes_changed = function () {
@@ -272,11 +403,6 @@ var checkboxes_changed = function () {
 
     var total_boxes = $row.find(checkboxes_sel).length;
     var checked_boxes = $row.find(checkboxes_sel + ":checked").length;
-
-//        alert(total_boxes);
-
-//        alert(checked_boxes);
-
     if (total_boxes == checked_boxes) {
         $checkallbox.prop("checked", true);
     } else {
@@ -284,48 +410,97 @@ var checkboxes_changed = function () {
     }
 };
 
-$(document).on("propertychange input", checkboxes_sel, checkboxes_changed);
+$(document).on("change", checkboxes_sel, checkboxes_changed);
 
-//    var checkallbox_changed = function () {
-
-//一关联多
-function checkallbox_changed() {
-
+var checkallbox_changed = function () {
     var $div_list = $('#div_list');
     var $checkallbox = $div_list.find("input.checkall_box:checkbox");
     var checkalllist = $('.checkall');
-
-//        alert($checkallbox.prop("checked"));
-
     if ($checkallbox.prop("checked")) {
-
         $.each(checkalllist, function (index, domEle) {
             domEle.checked = true;
-//                加入订单
-//                domEle.trigger("click");
         });
-//顺序不可变
-        add_or_delete_this_page_temp_table('add');
-
     } else {
-
-//顺序不可变
-        add_or_delete_this_page_temp_table('delete');
-
-//            alert(2);
         $.each(checkalllist, function (index, domEle) {
             domEle.checked = false;
-//                取消订单
-//                domEle.trigger("click");
         });
-
-
     }
-}
-;
+};
 
-//    var check_all_box = $('.checkall_box');
+function generate_order() {
+    return;
+    user_id = $('#userid').html();
+    var utp = $('#usertype').html();
+    if (utp == null || utp == undefined || utp == '') {
+        alert("您还没登录");
+        return false;
+    }
+    if (utp != "library_user") {
+        alert("您不是图书馆用户");
+    }
+    var book_ids = [];
+    var book_nums = [];
+    var $row = $('.row');
+    var checked_boxes = $row.find(checkboxes_sel + ":checked");
+
+//        alert(checked_boxes.length);
+
+    $.each(checked_boxes, function (index, checkboxEle) {
+        if ($(this).parent().attr('class') == 'list') {
+            book_nums.push($(this).parent().next().children().val());
+        } else {
+            book_nums.push($(this).next().children().val());
+        }
+//            if (checkboxEle.name) {
+        book_ids.push(checkboxEle.name);
+//            }
+    })
+
+//        alert(book_ids);
+//        alert(book_nums);
+
+//        return;
+
+    xhr.open('POST', generate_order_url, true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("user_id=" + user_id + "&book_ids=" + book_ids + "&book_nums=" + book_nums);
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            alert(this.responseText);
+        }
+    }
+
+}
+
+// $('.down').on('mouseenter', function () {
 //
+//     var list = $('input[id^=sum_]');
+//     $.each(list, function (index, domEle) {
+//         domEle.onkeyup = function () {
+//             this.value = this.value.replace(/\D/g, '');
+//             if (domEle.value > 5) {
+//                 domEle.value = 5;
+//             }
+//             if (domEle.value < 1) {
+//                 domEle.value = 1;
+//             }
+//         }
+//     });
+// //
+// });
+
+
+$(".batch_icon").toggle(
+    function () {
+        $("#batch_table").show();
+//                $("#toggle_table").attr('src');
+    },
+    function () {
+        $("#batch_table").hide();
+//                $("#toggle_table").attr('src');
+    }
+);
+
 //    添加或删除一个页面的数据
 
 function add_or_delete_this_page_temp_table(option) {
@@ -456,7 +631,7 @@ function add_or_delete_this_page_temp_table(option) {
 
 //    已保存现场的修改
 
-$('#show').on('mouseenter', function () {
+$('#down').on('mouseenter', function () {
 
     $(".get_book_info_and_update_db_class").on("click", function () {
 
@@ -603,7 +778,7 @@ $('#show').on('mouseenter', function () {
 });
 
 
-$('#show').on('mouseleave', function () {
+$('#down').on('mouseleave', function () {
 
     $(".get_book_info_and_update_db_class").off("click");
 //        $("body").off("propertychange input");
@@ -657,55 +832,6 @@ function create_or_add() {
     }
 }
 
-function guan_cang_import_history() {
-//        var uid = '{$smarty.session.user_id}';
-
-    var utp = $('#usertype').html();
-
-    if (utp == null || utp == undefined || utp == '') {
-        alert("您还没登录");
-        return false;
-    }
-
-    if (utp != "library_user") {
-        alert("您不是图书馆用户");
-    }
-
-    var uid = $('#userid').html();
-
-
-    xhr.open('POST', guan_cang_import_history_url, true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("uid=" + uid);
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4) {
-            document.getElementById('history_content').innerHTML = '';
-            document.getElementById('history').style.display = 'block';
-            document.getElementById('history_content').innerHTML = this.responseText;
-        }
-    }
-}
-
-function delpici() {
-//        alert($(this).parent());
-    var pici_id = $(this).parent().prev().children().eq(1).prop('id');
-    var pici = $(this).parent().parent();
-//        alert(pici_id);
-    xhr.open('POST', delpici_url, true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("pici_id=" + pici_id);
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4) {
-            if (this.responseText == "success") {
-                alert('删除成功！');
-                pici.remove();
-            } else {
-                alert('删除失败！');
-            }
-        }
-    }
-}
-
 $("input[name=add_to_batch]").on("click", function () {
 
 
@@ -727,123 +853,6 @@ $("input[name=add_to_batch]").on("click", function () {
     }
 });
 
-var flag = 0;
-
-function toggle_click() {
-
-    if (flag <= 0) {
-        $('.toggle').click(function () {
-            val = $(this).attr('href');
-            $(val).slideToggle(500);
-        });
-
-        $(".delpici").click(function () {
-            var pici_id = $(this).parent().prev().children().eq(1).prop('id');
-            var pici = $(this).parent().parent();
-            xhr.open('POST', delpici_url, true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.send("pici_id=" + pici_id);
-            xhr.onreadystatechange = function () {
-                if (this.readyState == 4) {
-                    if (this.responseText == "success") {
-                        alert('删除成功！');
-                        pici.remove();
-                    } else {
-                        alert('删除失败！');
-                    }
-                }
-            }
-
-        });
-
-        flag = flag + 1;
-    }
-}
-
-function return_to_guancangchachong() {
-    $('.history').hide();
-    $('.history').empty();
-
-    $('.down').show();
-}
-
-
-function generate_order() {
-
-
-    var utp = $('#usertype').html();
-
-    if (utp == null || utp == undefined || utp == '') {
-        alert("您还没登录");
-        return false;
-    }
-
-    if (utp != "library_user") {
-        alert("您不是图书馆用户");
-    }
-
-    user_id = $('#userid').html();
-
-//        alert(1);
-//        alert(user_id);
-
-    var book_ids = [];
-    var book_nums = [];
-    var $row = $('.row');
-    var checked_boxes = $row.find(checkboxes_sel + ":checked");
-
-    $.each(checked_boxes, function (index, checkboxEle) {
-        if ($(this).parent().attr('class') == 'list') {
-            book_nums.push($(this).parent().next().children().val());
-        } else {
-            book_nums.push($(this).next().val());
-        }
-        if (checkboxEle.name) {
-            book_ids.push(checkboxEle.name);
-        }
-    })
-//
-//        alert(book_ids);
-//        alert(book_nums);
-//return;
-
-    xhr.open('POST', generate_order_url, true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("user_id=" + user_id + "&book_ids=" + book_ids + "&book_nums=" + book_nums);
-//        xhr.send("user_id=" + user_id);
-
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4) {
-            alert(this.responseText);
-        }
-    }
-
-}
-
-function view_my_orders() {
-
-    var utp = $('#usertype').html();
-
-    if (utp == null || utp == undefined || utp == '') {
-        alert("您还没登录");
-        return false;
-    }
-
-    if (utp != "library_user") {
-        alert("您不是图书馆用户");
-    }
-
-    var uid = $('#userid').html();
-
-    window.location.href = "http://" + global_url + "/zhengdingdan/orders_view.php?usrn=" + uid;
-}
-
-function category_clear() {
-    $("#zyfl_sel").attr("value", "");
-    $("#ztfl_sk_sel").attr("value", "");
-    $("#ztfl_zk_sel").attr("value", "");
-}
-
 function get_book_info_and_update_db() {
 
     $('.get_book_info_and_update_db_class').click(function () {
@@ -852,39 +861,6 @@ function get_book_info_and_update_db() {
     })
 //        if(this.checked)alert(this.value);//当前checkbox值
 
-}
-//    $(function(){
-//        $('.get_book_info_and_update_db_class').click(function(){
-//            alert(1);
-//            if(this.checked)alert(this.value);//当前checkbox值
-//        })
-//    })
-
-//    function isIE() { //ie?
-//        if (!!window.ActiveXObject || "ActiveXObject" in window)
-//            return true;
-//        else
-//            return false;
-//    }
-//
-
-//    var $flag_for_num_limit = 0;
-function num_limit() {
-//        $flag_for_num_limit++;
-//        if ($flag_for_num_limit <= 1) {
-    var list = $('input[id^=amount1]');
-    $.each(list, function (index, domEle) {
-        domEle.onkeyup = function () {
-            this.value = this.value.replace(/\D/g, '');
-            if (domEle.value > 5) {
-                domEle.value = 5;
-            }
-            if (domEle.value < 1) {
-                domEle.value = 1;
-            }
-        }
-    });
-//        }
 }
 
 
@@ -1039,8 +1015,8 @@ $(".batch_item").on('click', function () {
             $('#list_pic_batch').show();
             $('#bottom').show();
 
-            document.getElementById('show').innerHTML = '';
-            document.getElementById('show').innerHTML = this.responseText;
+            document.getElementById('down').innerHTML = '';
+            document.getElementById('down').innerHTML = this.responseText;
         }
     }
 
@@ -1094,8 +1070,8 @@ function prepagesend_batch() {
     xhr.send(fdata);
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
-            document.getElementById('show').innerHTML = '';
-            document.getElementById('show').innerHTML = this.responseText;
+            document.getElementById('down').innerHTML = '';
+            document.getElementById('down').innerHTML = this.responseText;
         }
     }
 }
@@ -1117,8 +1093,8 @@ function nextpagesend_batch() {
     xhr.send(fdata);
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
-            document.getElementById('show').innerHTML = '';
-            document.getElementById('show').innerHTML = this.responseText;
+            document.getElementById('down').innerHTML = '';
+            document.getElementById('down').innerHTML = this.responseText;
         }
     }
 }
@@ -1137,8 +1113,8 @@ function lastpagesend_batch() {
     xhr.send(fdata);
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
-            document.getElementById('show').innerHTML = '';
-            document.getElementById('show').innerHTML = this.responseText;
+            document.getElementById('down').innerHTML = '';
+            document.getElementById('down').innerHTML = this.responseText;
         }
     }
 }
@@ -1158,8 +1134,8 @@ function jumptopagesend_batch() {
     xhr.send(fdata);
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
-            document.getElementById('show').innerHTML = '';
-            document.getElementById('show').innerHTML = this.responseText;
+            document.getElementById('down').innerHTML = '';
+            document.getElementById('down').innerHTML = this.responseText;
         }
     }
 }
@@ -1186,8 +1162,8 @@ function send_batch(arg) {
 
 //                    $('#bottom').show();
 
-                document.getElementById('show').innerHTML = '';
-                document.getElementById('show').innerHTML = this.responseText;
+                document.getElementById('down').innerHTML = '';
+                document.getElementById('down').innerHTML = this.responseText;
 //                $("#show").load("../../chachong/cc_list.php");
             }
         }
@@ -1212,8 +1188,8 @@ function sendpic_batch() {
                 $('#list_disable_pic_batch_enable').hide();
                 $('#pic_disable_list_batch_enable').show();
 
-                document.getElementById('show').innerHTML = '';
-                document.getElementById('show').innerHTML = this.responseText;
+                document.getElementById('down').innerHTML = '';
+                document.getElementById('down').innerHTML = this.responseText;
             }
         }
     }

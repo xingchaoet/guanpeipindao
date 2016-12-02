@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-30 11:24:16
+/* Smarty version 3.1.29, created on 2016-12-02 15:59:24
   from "D:\phpStudy\WWW\guanpeipindao\templates\morebooks.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_583e46607a45b5_84504235',
+  'unifunc' => 'content_584129dc23b2f7_24575287',
   'file_dependency' => 
   array (
     'bc5e33c064d89c5076c6c4b89ee61990df348e57' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\morebooks.html',
-      1 => 1480383858,
+      1 => 1480664925,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_583e46607a45b5_84504235 ($_smarty_tpl) {
+function content_584129dc23b2f7_24575287 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!DOCTYPE html>
@@ -33,18 +33,17 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
     <link rel="stylesheet" href="dist/css/left_nav.css">
     <link rel="stylesheet" href="dist/css/header.css">
     <link rel="stylesheet" href="dist/css/introduce.css">
+    <link rel="stylesheet" href="dist/css/progressbar.css">
 
     <style>
         body {
             padding-top: 10px;
             margin-left: 30px;
             margin-right: 30px;
-
         }
 
         .col-sm-4 {
             background: #FFF;
-            /*background: white;*/
             margin-bottom: 10px;
             padding-left: 1px;
             padding-right: 1px;
@@ -61,13 +60,14 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
         p {
             font-family: 'Microsoft YaHei', 'Arial';
             /*font-size: smaller;*/
-            font-size: xx-small;
+            /*ie*/
+            /*font-size: xx-small;*/
+            font-size: 10px;
             display: block;
             -webkit-margin-before: 0em;
             -webkit-margin-after: 1px;
             -webkit-margin-start: 0px;
             -webkit-margin-end: 0px;
-
         }
 
         button {
@@ -98,6 +98,13 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
         .down {
             padding-top: 10px;
             width: 770px;
+        }
+
+        .op_batch {
+            width: 770px;
+            font-family: 'Microsoft YaHei', 'Arial';
+            margin-top: -5px;
+            font-size: 12px;
         }
 
         .navbar {
@@ -141,10 +148,18 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
         .add_and_check {
             /*margin-left:600px;*/
             /*margin-bottom:40px;*/
-            margin-top: 60px;
-            margin-left: 620px;
-            margin-bottom: 20px;
-            position: absolute;
+            /*float: right;*/
+            /*margin-right: 10px;*/
+            /*margin-top: 60px;*/
+            /*margin-left: 620px;*/
+            /*margin-bottom: 20px;*/
+            /*position: absolute;*/
+        }
+
+        #pagination {
+
+            float: right;
+            margin-right: 5px;
         }
 
         #pagination a {
@@ -179,12 +194,14 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
             margin-bottom: 5px;
             width: 260px;
         }
-        .batch_r_f_td{
+
+        .batch_r_f_td {
             margin-top: 5px;
             margin-bottom: 5px;
             width: 260px;
             display: none;
         }
+
         .batch_rtd {
             margin-top: 5px;
             margin-bottom: 5px;
@@ -208,6 +225,26 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
             float: right;
             margin-right: 10px;
         }
+
+        .default_num_span {
+            display: none;
+            height: 25px;
+            width: 20px;
+        }
+
+        .default_num_input {
+            display: none;
+            height: 25px;
+            width: 20px;
+        }
+
+        .flow {
+            margin-top: 5px;
+            float: left;
+            display: none;
+        }
+
+
     </style>
 </head>
 <body>
@@ -230,8 +267,86 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
             </div>
 
         </div>
-
         <div class="col-sm-9">
+
+            <div class="op_batch">
+                <div class="need_op_batch">
+
+                    <div class="batch_title">
+            <span>
+            你还有<?php echo $_smarty_tpl->tpl_vars['need_op_batch_num']->value;?>
+条未处理批次
+            </span>
+                        <span class="batch_icon">
+            <img id="toggle_table" src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/chachong/hide_table.png">
+            </span>
+                    </div>
+
+                    <table id="batch_table" class="batch_table">
+                        <tr>
+                            <td align="center" class="batch_ltd">
+                                批次号
+                            </td>
+
+                            <td class="batch_mtd">
+                                批次产生时间
+                            </td>
+
+                            <td class="batch_r_f_td">
+                                添加到此批次
+                            </td>
+
+                            <td class="batch_rtd">
+                                删除
+                            </td>
+
+                        </tr>
+                        <?php
+$_from = $_smarty_tpl->tpl_vars['need_op_batch_detail']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_val_0_saved_item = isset($_smarty_tpl->tpl_vars['val']) ? $_smarty_tpl->tpl_vars['val'] : false;
+$_smarty_tpl->tpl_vars['val'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['val']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['val']->value) {
+$_smarty_tpl->tpl_vars['val']->_loop = true;
+$__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
+?>
+                        <tr>
+                            <td class="batch_ltd">
+                                <a class="batch_item"><?php echo $_smarty_tpl->tpl_vars['val']->value['PiCi_Num'];?>
+</a>
+                            </td>
+
+                            <td class="batch_mtd">
+                                <?php echo $_smarty_tpl->tpl_vars['val']->value['Date_Time'];?>
+
+                            </td>
+
+                            <td class="batch_r_f_td">
+                                <input id='' type="radio" name="add_to_batch" value=""/>
+                            </td>
+
+                            <td class="batch_rtd">
+                                <a class="delete_batch"><img width="19" height="19"
+                                                             src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/chachong/delete_batch.png"></a>
+                            </td>
+
+                        </tr>
+                        <?php
+$_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_local_item;
+}
+if ($__foreach_val_0_saved_item) {
+$_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
+}
+?>
+                    </table>
+
+                </div>
+            </div>
 
             <div class="show_title">
                 <div id="show_type">
@@ -255,7 +370,27 @@ dist/picture/pic_list/pic_enable.gif">-->
                 </div>
             </div>
 
-            <div id="down" class="down" onmouseover="active_topagesend();">
+            <div class="wrap_add_and_check">
+                <div id='batch_option'>
+                    <input id='batch_option_create_radio' type="radio" name="batch_option_radio" value="创建新批次"/>创建新批次
+                    <input id='batch_option_add_radio' type="radio" name="batch_option_radio" value="添加到原有批次"/>添加到原有批次
+
+                    <span class='default_num_span'>默认数量</span> <input class='default_num_input' type='text'>
+
+                </div>
+                <div class='flow'>
+                    <button id='manipulate_session_btn' class='btn btn-default btn-sm' style='float: left'
+                            disabled='true'>开始采购
+                    </button>
+
+                </div>
+                <div id='progressbar' style='float: left'>
+                    <div></div>
+                </div>
+
+            </div>
+
+            <div id="down" class="down" >
                 <div id="div_list" name="div_list">
                     <div>
                         <input type="checkbox" checked="checked" id="checkall_box" onclick='checkallbox_changed();'
@@ -268,12 +403,12 @@ $_from = $_smarty_tpl->tpl_vars['books']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
-$__foreach_val_0_saved_item = isset($_smarty_tpl->tpl_vars['val']) ? $_smarty_tpl->tpl_vars['val'] : false;
+$__foreach_val_1_saved_item = isset($_smarty_tpl->tpl_vars['val']) ? $_smarty_tpl->tpl_vars['val'] : false;
 $_smarty_tpl->tpl_vars['val'] = new Smarty_Variable();
 $_smarty_tpl->tpl_vars['val']->_loop = false;
 foreach ($_from as $_smarty_tpl->tpl_vars['val']->value) {
 $_smarty_tpl->tpl_vars['val']->_loop = true;
-$__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
+$__foreach_val_1_saved_local_item = $_smarty_tpl->tpl_vars['val'];
 ?>
                         <div class="col-sm-4">
                             <table id="table">
@@ -290,7 +425,9 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
 "><img
                                                 src="http://www.ecsponline.com/<?php echo trim($_smarty_tpl->tpl_vars['val']->value['slt']);?>
 "
-                                                class="fen_mian" alt=""></a>
+                                                class="fen_mian"
+                                                onerror="javascript:this.src='dist/images/nopicture.png';"
+                                                alt=""></a>
                                         <?php } else { ?>
                                         <a href="detail.php?book_id=<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "><img
@@ -303,7 +440,7 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                                     <td class="right_td">
                                         <input type="checkbox" checked="checked" name="<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "
-                                               class="checkall"/>
+                                               class="checkall get_book_info_and_update_db_class"/>
                                         <p>数量：
                                             <input type="text" id="sum_<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 " class="sum" value="2"/>
@@ -335,111 +472,29 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                             </table>
                         </div>
                         <?php
-$_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_local_item;
-}
-if ($__foreach_val_0_saved_item) {
-$_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
-}
-?>
-                    </div>
-
-                    <div class="add_and_check">
-
-
-                        <a id="buy" class="btn btn-default btn-xs" onclick="generate_order();">加入订单</a>
-                        <?php if ($_SESSION['user_type'] == 'library_user') {?>
-                        <a href='zhengdingdan/orders_view.php' class="btn  btn-default btn-xs">查看订单</a>
-                        <?php }?>
-                    </div>
-
-                    <?php echo $_smarty_tpl->tpl_vars['page']->value->show();?>
-
-
-                </div>
-
-            </div>
-
-
-        </div>
-    </div>
-
-
-</div>
-
-<div class="need_op_batch">
-
-    <div class="batch_title">
-                        <span>
-                            你还有<?php echo $_smarty_tpl->tpl_vars['need_op_batch_num']->value;?>
-条未处理批次
-                        </span>
-        <span class="batch_icon">
-                            <img id="toggle_table" src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
-dist/picture/chachong/hide_table.png">
-                        </span>
-    </div>
-
-    <table id="batch_table" class="batch_table">
-        <tr>
-            <td align="center" class="batch_ltd">
-                批次号
-            </td>
-
-            <td  class="batch_mtd">
-                批次产生时间
-            </td>
-
-            <td  class="batch_r_f_td">
-                添加到此批次
-            </td>
-
-            <td  class="batch_rtd">
-                删除
-            </td>
-
-        </tr>
-        <?php
-$_from = $_smarty_tpl->tpl_vars['need_op_batch_detail']->value;
-if (!is_array($_from) && !is_object($_from)) {
-settype($_from, 'array');
-}
-$__foreach_val_1_saved_item = isset($_smarty_tpl->tpl_vars['val']) ? $_smarty_tpl->tpl_vars['val'] : false;
-$_smarty_tpl->tpl_vars['val'] = new Smarty_Variable();
-$_smarty_tpl->tpl_vars['val']->_loop = false;
-foreach ($_from as $_smarty_tpl->tpl_vars['val']->value) {
-$_smarty_tpl->tpl_vars['val']->_loop = true;
-$__foreach_val_1_saved_local_item = $_smarty_tpl->tpl_vars['val'];
-?>
-        <tr>
-            <td class="batch_ltd">
-                <a class="batch_item"><?php echo $_smarty_tpl->tpl_vars['val']->value['PiCi_Num'];?>
-</a>
-            </td>
-
-            <td class="batch_mtd">
-                <?php echo $_smarty_tpl->tpl_vars['val']->value['Date_Time'];?>
-
-            </td>
-
-            <td class="batch_r_f_td">
-                <input id='' type="radio" name="add_to_batch" value="" />
-            </td>
-
-            <td class="batch_rtd">
-                <a class="delete_batch"><img width="19" height="19"
-                                             src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
-dist/picture/chachong/delete_batch.png"></a>
-            </td>
-
-        </tr>
-        <?php
 $_smarty_tpl->tpl_vars['val'] = $__foreach_val_1_saved_local_item;
 }
 if ($__foreach_val_1_saved_item) {
 $_smarty_tpl->tpl_vars['val'] = $__foreach_val_1_saved_item;
 }
 ?>
-    </table>
+                    </div>
+
+
+                    <?php echo $_smarty_tpl->tpl_vars['page']->value->show();?>
+
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
 
 </div>
 
@@ -470,365 +525,8 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_1_saved_item;
  src="dist/js/left_nav.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
+ src="dist/js/morebooks.js"><?php echo '</script'; ?>
 >
 
-    var global_url = $('#global_url').html();
-
-    var more_url = 'http://' + global_url + '/more.php';
-
-    var generate_order_url = 'http://' + global_url + '/zhengdingdan/generate_order.php';
-
-    function creatXHR() {
-        var xhr = null;
-        if (window.XMLHttpRequest) {
-            xhr = new XMLHttpRequest();
-        } else if (window.ActiveXObject) {
-            xhr = new ActiveXObject('Microsoft.XMLHTTP');
-        }
-        return xhr;
-    }
-
-    var xhr = creatXHR();
-
-    function firstpagesend() {
-        //首页显示不判断用户id
-
-        var fdata = new FormData();
-
-        var page = $("#firstpage").attr("page");
-        fdata.append("page", page);
-
-        var type = $("#firstpage").attr("type");
-        fdata.append("type", type);
-
-        var show = $("#firstpage").attr("show");
-        fdata.append("show", show);
-
-        xhr.open('POST', more_url, true);
-
-        xhr.send(fdata);
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                document.getElementById('down').innerHTML = '';
-                document.getElementById('down').innerHTML = this.responseText;
-            }
-        }
-    }
-
-
-    function prepagesend() {
-
-        var fdata = new FormData();
-
-        var page = $("#prepage").attr("page");
-        fdata.append("page", page);
-
-        var type = $("#prepage").attr("type");
-        fdata.append("type", type);
-
-        var show = $("#prepage").attr("show");
-        fdata.append("show", show);
-
-        xhr.open('POST', more_url, true);
-
-        xhr.send(fdata);
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                document.getElementById('down').innerHTML = '';
-                document.getElementById('down').innerHTML = this.responseText;
-            }
-        }
-    }
-
-
-    function nextpagesend() {
-
-        var fdata = new FormData();
-
-        var page = $("#nextpage").attr("page");
-        fdata.append("page", page);
-
-        var type = $("#nextpage").attr("type");
-        fdata.append("type", type);
-
-        var show = $("#nextpage").attr("show");
-        fdata.append("show", show);
-
-//        alert(page);
-//        alert(type);
-//        alert(show);
-
-        xhr.open('POST', more_url, true);
-
-        xhr.send(fdata);
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                document.getElementById('down').innerHTML = '';
-                document.getElementById('down').innerHTML = this.responseText;
-            }
-        }
-    }
-
-
-    function lastpagesend() {
-
-//        var fm = document.getElementById('condition');
-        var fdata = new FormData();
-
-        var page = $("#lastpage").attr("page");
-        fdata.append("page", page);
-
-        var type = $("#lastpage").attr("type");
-        fdata.append("type", type);
-
-        var show = $("#lastpage").attr("show");
-        fdata.append("show", show);
-
-        xhr.open('POST', more_url, true);
-
-        xhr.send(fdata);
-
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                document.getElementById('down').innerHTML = '';
-                document.getElementById('down').innerHTML = this.responseText;
-            }
-        }
-    }
-
-    //    var flag = 0;
-
-    function active_topagesend() {
-//        alert(flag);
-//        if(flag <= 1){
-
-        $(".topagesend").click(function () {
-
-                    var fdata = new FormData();
-
-                    var page = $(this).attr("page");
-                    fdata.append("page", page);
-
-                    var type = $(this).attr("type");
-                    fdata.append("type", type);
-
-                    var show = $(this).attr("show");
-                    fdata.append("show", show);
-
-//                        alert(page);
-//                        alert(type);
-//                        alert(show);
-
-                    xhr.open('POST', more_url, true);
-
-                    xhr.send(fdata);
-                    xhr.onreadystatechange = function () {
-                        if (this.readyState == 4) {
-                            document.getElementById('down').innerHTML = '';
-                            document.getElementById('down').innerHTML = this.responseText;
-                        }
-                    }
-                }
-        );
-//            flag = flag + 1;
-//        }
-
-    }
-
-
-    function jumptopagesend() {
-
-        var fdata = new FormData();
-
-        var page = $("#jumptopage").val();
-        fdata.append("page", page);
-
-        var type = $("#jumptopage").attr("type");
-        fdata.append("type", type);
-
-        var show = $("#jumptopage").attr("show");
-        fdata.append("show", show);
-
-        xhr.open('POST', more_url, true);
-
-        xhr.send(fdata);
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                document.getElementById('down').innerHTML = '';
-                document.getElementById('down').innerHTML = this.responseText;
-            }
-        }
-    }
-
-    $("#list").click(function () {
-
-                path = "<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
-dist/picture/pic_list/list_disable.gif";
-                path2 = "<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
-dist/picture/pic_list/pic_enable.gif";
-
-
-                if ($("#list").attr('src') == path) {
-                    return;
-                }
-                var fdata = new FormData();
-//推荐还是最新
-                var booktype = $("#booktype").text();
-                fdata.append("type", booktype);
-
-                var page_num = $("#page_num").text();
-                fdata.append("page", page_num);
-
-                fdata.append("show", 'list');
-
-                xhr.open('POST', more_url, true);
-
-                xhr.send(fdata);
-                xhr.onreadystatechange = function () {
-                    if (this.readyState == 4) {
-                        $("#list").attr('src', path);
-                        $("#picture").attr('src', path2);
-                        document.getElementById('down').innerHTML = '';
-                        document.getElementById('down').innerHTML = this.responseText;
-                    }
-                }
-            }
-    );
-
-    $("#picture").click(function () {
-
-                path = "<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
-dist/picture/pic_list/pic_disable.gif";
-                path2 = "<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
-dist/picture/pic_list/list_enable.gif";
-
-                if ($("#picture").attr('src') == path) {
-                    return;
-                }
-                var fdata = new FormData();
-//推荐还是最新
-                var booktype = $("#booktype").text();
-                fdata.append("type", booktype);
-
-                var page_num = $("#page_num").text();
-                fdata.append("page", page_num);
-
-                fdata.append("show", 'picture');
-
-                fdata.append("toggle", 'picture');
-
-                xhr.open('POST', more_url, true);
-
-                xhr.send(fdata);
-                xhr.onreadystatechange = function () {
-                    if (this.readyState == 4) {
-                        $("#picture").attr('src', path);
-                        $("#list").attr('src', path2);
-                        document.getElementById('down').innerHTML = '';
-                        document.getElementById('down').innerHTML = this.responseText;
-                    }
-                }
-            }
-    );
-
-
-    var checkboxes_sel = "input.checkall:checkbox:enabled";
-
-    var checkboxes_changed = function () {
-        var $row = $('.row');
-        var $div_list = $('#div_list');
-        var $checkallbox = $div_list.find("input.checkall_box:checkbox");
-
-        var total_boxes = $row.find(checkboxes_sel).length;
-        var checked_boxes = $row.find(checkboxes_sel + ":checked").length;
-        if (total_boxes == checked_boxes) {
-            $checkallbox.prop("checked", true);
-        } else {
-            $checkallbox.prop("checked", false);
-        }
-    };
-
-    $(document).on("change", checkboxes_sel, checkboxes_changed);
-
-    var checkallbox_changed = function () {
-        var $div_list = $('#div_list');
-        var $checkallbox = $div_list.find("input.checkall_box:checkbox");
-        var checkalllist = $('.checkall');
-        if ($checkallbox.prop("checked")) {
-            $.each(checkalllist, function (index, domEle) {
-                domEle.checked = true;
-            });
-        } else {
-            $.each(checkalllist, function (index, domEle) {
-                domEle.checked = false;
-            });
-        }
-    };
-
-    function generate_order() {
-        return;
-        user_id = $('#userid').html();
-        var utp = $('#usertype').html();
-        if (utp == null || utp == undefined || utp == '') {
-            alert("您还没登录");
-            return false;
-        }
-        if (utp != "library_user") {
-            alert("您不是图书馆用户");
-        }
-        var book_ids = [];
-        var book_nums = [];
-        var $row = $('.row');
-        var checked_boxes = $row.find(checkboxes_sel + ":checked");
-
-//        alert(checked_boxes.length);
-
-        $.each(checked_boxes, function (index, checkboxEle) {
-            if ($(this).parent().attr('class') == 'list') {
-                book_nums.push($(this).parent().next().children().val());
-            } else {
-                book_nums.push($(this).next().children().val());
-            }
-//            if (checkboxEle.name) {
-            book_ids.push(checkboxEle.name);
-//            }
-        })
-
-//        alert(book_ids);
-//        alert(book_nums);
-
-//        return;
-
-        xhr.open('POST', generate_order_url, true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send("user_id=" + user_id + "&book_ids=" + book_ids + "&book_nums=" + book_nums);
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                alert(this.responseText);
-            }
-        }
-
-    }
-
-    $('.down').on('mouseenter', function () {
-
-        var list = $('input[id^=sum_]');
-        $.each(list, function (index, domEle) {
-            domEle.onkeyup = function () {
-                this.value = this.value.replace(/\D/g, '');
-                if (domEle.value > 5) {
-                    domEle.value = 5;
-                }
-                if (domEle.value < 1) {
-                    domEle.value = 1;
-                }
-            }
-        });
-//
-    });
-
-
-<?php echo '</script'; ?>
->
 </html><?php }
 }

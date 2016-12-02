@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-30 11:15:22
+/* Smarty version 3.1.29, created on 2016-12-02 13:13:36
   from "D:\phpStudy\WWW\guanpeipindao\templates\left_nav.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_583e444a06d770_90535757',
+  'unifunc' => 'content_5841030059afc5_58796096',
   'file_dependency' => 
   array (
     '6f433d23cae4f7de86a0fe761988e90a022a63e8' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_583e444a06d770_90535757 ($_smarty_tpl) {
+function content_5841030059afc5_58796096 ($_smarty_tpl) {
 ?>
 <div class="filling"></div>
 <div class="site-position">

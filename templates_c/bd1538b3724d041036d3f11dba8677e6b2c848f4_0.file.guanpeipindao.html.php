@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-11-30 11:17:01
+/* Smarty version 3.1.29, created on 2016-12-02 14:20:08
   from "D:\phpStudy\WWW\guanpeipindao\templates\guanpeipindao.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_583e44ad54cb67_62565664',
+  'unifunc' => 'content_58411298785b69_81073624',
   'file_dependency' => 
   array (
     'bd1538b3724d041036d3f11dba8677e6b2c848f4' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\guanpeipindao.html',
-      1 => 1480475811,
+      1 => 1480659582,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_583e44ad54cb67_62565664 ($_smarty_tpl) {
+function content_58411298785b69_81073624 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!doctype html>
@@ -375,6 +375,7 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
 "><img class="feng_mian"
                                                                                     src="http://www.ecsponline.com/<?php echo trim($_smarty_tpl->tpl_vars['val']->value['slt']);?>
 "
+                                                                                    onerror="no_find();"
                                                                                     alt=""></a>
                                 <?php } else { ?>
                                 <a href="detail.php?book_id=<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
@@ -439,6 +440,7 @@ $__foreach_val_1_saved_local_item = $_smarty_tpl->tpl_vars['val'];
 "><img class="feng_mian"
                                                                                     src="http://www.ecsponline.com/<?php echo trim($_smarty_tpl->tpl_vars['val']->value['slt']);?>
 "
+                                                                                    onerror="no_find();"
                                                                                     alt=""></a>
                                 <?php } else { ?>
                                 <a href="detail.php?book_id=<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
@@ -520,6 +522,7 @@ dist/picture/guanpeipindao/more.png" alt=""></a></div>
  type="text/javascript">
 
     var global_url = $('#global_url').html();
+    var web_dir = $('#web_dir').html();
 
     var generate_order_url = 'http://' + global_url + '/zhengdingdan/generate_order.php';
     function creatXHR() {
@@ -569,6 +572,14 @@ dist/picture/guanpeipindao/more.png" alt=""></a></div>
         }
 
     });
+
+    function no_find(){
+
+        var img=event.srcElement;
+        img.src="/" + web_dir + "/dist/images/nopicture.png";
+        img.onerror=null; 控制不要一直跳动
+
+    }
 <?php echo '</script'; ?>
 >
 
