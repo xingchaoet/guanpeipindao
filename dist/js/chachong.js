@@ -657,54 +657,54 @@ function create_or_add() {
     }
 }
 
-function guan_cang_import_history() {
-//        var uid = '{$smarty.session.user_id}';
-
-    var utp = $('#usertype').html();
-
-    if (utp == null || utp == undefined || utp == '') {
-        alert("您还没登录");
-        return false;
-    }
-
-    if (utp != "library_user") {
-        alert("您不是图书馆用户");
-    }
-
-    var uid = $('#userid').html();
-
-
-    xhr.open('POST', guan_cang_import_history_url, true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("uid=" + uid);
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4) {
-            document.getElementById('history_content').innerHTML = '';
-            document.getElementById('history').style.display = 'block';
-            document.getElementById('history_content').innerHTML = this.responseText;
-        }
-    }
-}
-
-function delpici() {
-//        alert($(this).parent());
-    var pici_id = $(this).parent().prev().children().eq(1).prop('id');
-    var pici = $(this).parent().parent();
-//        alert(pici_id);
-    xhr.open('POST', delpici_url, true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("pici_id=" + pici_id);
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4) {
-            if (this.responseText == "success") {
-                alert('删除成功！');
-                pici.remove();
-            } else {
-                alert('删除失败！');
-            }
-        }
-    }
-}
+// function guan_cang_import_history() {
+// //        var uid = '{$smarty.session.user_id}';
+//
+//     var utp = $('#usertype').html();
+//
+//     if (utp == null || utp == undefined || utp == '') {
+//         alert("您还没登录");
+//         return false;
+//     }
+//
+//     if (utp != "library_user") {
+//         alert("您不是图书馆用户");
+//     }
+//
+//     var uid = $('#userid').html();
+//
+//
+//     xhr.open('POST', guan_cang_import_history_url, true);
+//     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//     xhr.send("uid=" + uid);
+//     xhr.onreadystatechange = function () {
+//         if (this.readyState == 4) {
+//             document.getElementById('history_content').innerHTML = '';
+//             document.getElementById('history').style.display = 'block';
+//             document.getElementById('history_content').innerHTML = this.responseText;
+//         }
+//     }
+// }
+//
+// function delpici() {
+// //        alert($(this).parent());
+//     var pici_id = $(this).parent().prev().children().eq(1).prop('id');
+//     var pici = $(this).parent().parent();
+// //        alert(pici_id);
+//     xhr.open('POST', delpici_url, true);
+//     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//     xhr.send("pici_id=" + pici_id);
+//     xhr.onreadystatechange = function () {
+//         if (this.readyState == 4) {
+//             if (this.responseText == "success") {
+//                 alert('删除成功！');
+//                 pici.remove();
+//             } else {
+//                 alert('删除失败！');
+//             }
+//         }
+//     }
+// }
 
 $("input[name=add_to_batch]").on("click", function () {
 

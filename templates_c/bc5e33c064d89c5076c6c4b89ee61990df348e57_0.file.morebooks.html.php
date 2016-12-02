@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-02 15:59:24
+/* Smarty version 3.1.29, created on 2016-12-02 16:32:13
   from "D:\phpStudy\WWW\guanpeipindao\templates\morebooks.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_584129dc23b2f7_24575287',
+  'unifunc' => 'content_5841318d8e3cd0_68687412',
   'file_dependency' => 
   array (
     'bc5e33c064d89c5076c6c4b89ee61990df348e57' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\morebooks.html',
-      1 => 1480664925,
+      1 => 1480667515,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_584129dc23b2f7_24575287 ($_smarty_tpl) {
+function content_5841318d8e3cd0_68687412 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!DOCTYPE html>
@@ -527,6 +527,80 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_1_saved_item;
 <?php echo '<script'; ?>
  src="dist/js/morebooks.js"><?php echo '</script'; ?>
 >
+<?php echo '<script'; ?>
+>
 
+    $("#list").click(function () {
+
+                path = "<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_disable.gif";
+                path2 = "<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_enable.gif";
+
+
+                if ($("#list").attr('src') == path) {
+                    return;
+                }
+                var fdata = new FormData();
+//推荐还是最新
+                var booktype = $("#booktype").text();
+                fdata.append("type", booktype);
+
+                var page_num = $("#page_num").text();
+                fdata.append("page", page_num);
+
+                fdata.append("show", 'list');
+
+                xhr.open('POST', more_url, true);
+
+                xhr.send(fdata);
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        $("#list").attr('src', path);
+                        $("#picture").attr('src', path2);
+                        document.getElementById('down').innerHTML = '';
+                        document.getElementById('down').innerHTML = this.responseText;
+                    }
+                }
+            }
+    );
+
+    $("#picture").click(function () {
+
+                path = "<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_disable.gif";
+                path2 = "<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_enable.gif";
+
+                if ($("#picture").attr('src') == path) {
+                    return;
+                }
+                var fdata = new FormData();
+//推荐还是最新
+                var booktype = $("#booktype").text();
+                fdata.append("type", booktype);
+
+                var page_num = $("#page_num").text();
+                fdata.append("page", page_num);
+
+                fdata.append("show", 'picture');
+
+                fdata.append("toggle", 'picture');
+
+                xhr.open('POST', more_url, true);
+
+                xhr.send(fdata);
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        $("#picture").attr('src', path);
+                        $("#list").attr('src', path2);
+                        document.getElementById('down').innerHTML = '';
+                        document.getElementById('down').innerHTML = this.responseText;
+                    }
+                }
+            }
+    );
+<?php echo '</script'; ?>
+>
 </html><?php }
 }

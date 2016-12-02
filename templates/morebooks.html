@@ -420,5 +420,73 @@
 <script src="dist/js/zzsc.js"></script>
 <script src="dist/js/left_nav.js"></script>
 <script src="dist/js/morebooks.js"></script>
+<script>
 
+    $("#list").click(function () {
+
+                path = "{$relpostodist}dist/picture/pic_list/list_disable.gif";
+                path2 = "{$relpostodist}dist/picture/pic_list/pic_enable.gif";
+
+
+                if ($("#list").attr('src') == path) {
+                    return;
+                }
+                var fdata = new FormData();
+//推荐还是最新
+                var booktype = $("#booktype").text();
+                fdata.append("type", booktype);
+
+                var page_num = $("#page_num").text();
+                fdata.append("page", page_num);
+
+                fdata.append("show", 'list');
+
+                xhr.open('POST', more_url, true);
+
+                xhr.send(fdata);
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        $("#list").attr('src', path);
+                        $("#picture").attr('src', path2);
+                        document.getElementById('down').innerHTML = '';
+                        document.getElementById('down').innerHTML = this.responseText;
+                    }
+                }
+            }
+    );
+
+    $("#picture").click(function () {
+
+                path = "{$relpostodist}dist/picture/pic_list/pic_disable.gif";
+                path2 = "{$relpostodist}dist/picture/pic_list/list_enable.gif";
+
+                if ($("#picture").attr('src') == path) {
+                    return;
+                }
+                var fdata = new FormData();
+//推荐还是最新
+                var booktype = $("#booktype").text();
+                fdata.append("type", booktype);
+
+                var page_num = $("#page_num").text();
+                fdata.append("page", page_num);
+
+                fdata.append("show", 'picture');
+
+                fdata.append("toggle", 'picture');
+
+                xhr.open('POST', more_url, true);
+
+                xhr.send(fdata);
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        $("#picture").attr('src', path);
+                        $("#list").attr('src', path2);
+                        document.getElementById('down').innerHTML = '';
+                        document.getElementById('down').innerHTML = this.responseText;
+                    }
+                }
+            }
+    );
+</script>
 </html>
