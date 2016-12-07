@@ -22,7 +22,8 @@ class GuanCangSmarty extends SmartyBC {
         $this->config_dir = WEB_ROOT.'/configs/';
         $this->cache_dir = WEB_ROOT.'/caches/';
         $this->caching = false;
-
+//        $this->caching = true;
+//        $this->cache_lifetime = 60; //缓存时间
 
         //加载引用当前类的文件所在的目录到根目录的相对地址
 //        require_once("./url_root.php");

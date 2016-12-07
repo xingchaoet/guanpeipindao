@@ -16,6 +16,13 @@ Plog::set_config(include '../plog/config.php');
 $log = Plog::factory(__FILE__);
 
 $default_num = $_POST["default_num"];
+
+if ($default_num > 5) {
+    $default_num = 5;
+} else if ($default_num < 1) {
+    $default_num = 1;
+}
+
 $_SESSION['default_num'] = $default_num;
 
 

@@ -30,7 +30,7 @@
 			if(!$rs)
 			{
 				echo "Error in query preparation/execution.<br />";
-//				$open=fopen("D:/xampps/htdocs/guanpeipindao/db/log.txt","a" );
+//              $open = fopen("D:/phpStudy/WWW/guanpeipindao/db/log.txt", "a");
 //				fwrite($open, print_r(iconv('GBK', 'UTF-8', odbc_errormsg()) , true)."\r\n");
 //				fclose($open);
 				die( print_r( iconv('GBK', 'UTF-8', odbc_errormsg()), true));
@@ -39,6 +39,7 @@
 			{
 				return $rs;
 			}
+
 			$this->clo();
 		}
 	}

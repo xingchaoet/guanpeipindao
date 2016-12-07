@@ -72,13 +72,17 @@ if ($add_one_book_to_order) {//添加书籍
 
     $rs_sql_temp_table = $ms->sdb($sql_temp_table);
 
+//    $open = fopen("D:/phpStudy/WWW/guanpeipindao/db/log.txt", "a");
+//    fwrite($open, $sql_temp_table . "\r\n");
+//    fclose($open);
+
     try {
 
-        if (!$rs_sql_temp_table) {
+        if (odbc_num_rows($rs_sql_temp_table) <= 0 ) {
 
-            $error = true;
+            $error_appear = true;
 
-            echo "Error in query preparation/execution.<br />";
+//            echo "Error in query preparation/execution.<br />";
 //                die(print_r(odbc_errormsg(), true));
 
             $error = " $book_id in $table_name failed";
@@ -90,10 +94,9 @@ if ($add_one_book_to_order) {//添加书籍
 
     } catch (Exception $e) {
 
-        echo 'Caught exception: ', $e->getMessage(), "\n";  //输出捕获的异常消息
+//        echo 'Caught exception: ', $e->getMessage(), "\n";  //输出捕获的异常消息
 
     }
-
 
     if (!$error_appear) {
         echo "添加成功";
@@ -111,10 +114,10 @@ if ($add_one_book_to_order) {//添加书籍
 
     try {
 
-        if (!$rs) {
-            $error = true;
+        if (odbc_num_rows($rs) <= 0 ) {
+            $error_appear = true;
 
-            echo "Error in query preparation/execution.<br />";
+//            echo "Error in query preparation/execution.<br />";
 //                die(print_r(odbc_errormsg(), true));
 
             $error = "delete $book_id from $table_name failed";
@@ -126,7 +129,7 @@ if ($add_one_book_to_order) {//添加书籍
 
     } catch (Exception $e) {
 
-        echo 'Caught exception: ', $e->getMessage(), "\n";  //输出捕获的异常消息
+//        echo 'Caught exception: ', $e->getMessage(), "\n";  //输出捕获的异常消息
 
     }
 

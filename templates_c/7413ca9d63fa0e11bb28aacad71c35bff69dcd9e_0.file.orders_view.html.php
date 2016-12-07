@@ -1,10 +1,37 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-12-06 16:22:58
+  from "D:\phpStudy\WWW\guanpeipindao\templates\zhengdingdan\orders_view.html" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_58467562a52cf8_80012248',
+  'file_dependency' => 
+  array (
+    '7413ca9d63fa0e11bb28aacad71c35bff69dcd9e' => 
+    array (
+      0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\zhengdingdan\\orders_view.html',
+      1 => 1480920267,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:header.html' => 1,
+    'file:left_nav.html' => 1,
+  ),
+),false)) {
+function content_58467562a52cf8_80012248 ($_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
-    <!--<script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>-->
+    <!--<?php echo '<script'; ?>
+ language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"><?php echo '</script'; ?>
+>-->
 
     <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../dist/css/left_nav.css">
@@ -35,10 +62,7 @@
             font-size: 12px;
         }
 
-        /*.col-sm-3 {*/
-        /*background: #F0FFFF;*/
-        /*margin-bottom: 10px;*/
-        /*}*/
+        /*.col-sm-3 */
 
         .col-sm-9 {
             width: 770px;
@@ -93,23 +117,8 @@
             color: #9B410E;
         }
 
-        /*.btn:hover, .btn:focus {*/
-        /*color: #333;*/
-        /*text-decoration: none;*/
-        /*}*/
-        /*.content div {*/
-        /*position: absolute;*/
-        /*top: 0;*/
-        /*left: 0;*/
-        /*padding: 10px 40px;*/
-        /*z-index: 1;*/
-        /*opacity: 0;*/
-        /*-webkit-transition: opacity linear 0.1s;*/
-        /*-moz-transition: opacity linear 0.1s;*/
-        /*-o-transition: opacity linear 0.1s;*/
-        /*-ms-transition: opacity linear 0.1s;*/
-        /*transition: opacity linear 0.1s;*/
-        /*}*/
+        /*.btn:hover, .btn:focus */
+        /*.content div */
         #scgc {
             position: relative;
             margin-left: 20px;
@@ -313,15 +322,20 @@
 
 </head>
 <body>
-{include file="header.html"}
+<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 <div class="site">
     <div class="row ">
 
         <div class="col-sm-3">
             <!--<img src="../dist/js/holder.js/263x800" alt="">-->
-            {include file="left_nav.html"}
+            <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:left_nav.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
             <div class="introduce">
-                {$introduce}
+                <?php echo $_smarty_tpl->tpl_vars['introduce']->value;?>
+
             </div>
 
         </div>
@@ -340,7 +354,7 @@
                     <!-- Codrops top bar -->
                     <section class="tabs">
 
-                        {if $user_type eq "library_user"}
+                        <?php if ($_smarty_tpl->tpl_vars['user_type']->value == "library_user") {?>
 
                         <!--<div id="orders_view_nav_tab">-->
                         <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked"/>
@@ -352,17 +366,18 @@
                         <input id="tab-3" type="radio" name="radio-set" class="tab-selector-3"/>
                         <label for="tab-3" class="tab-label-3">上传馆藏</label>
 
-                        {/if}
+                        <?php }?>
 
                         <input id="tab-4" type="radio" name="radio-set" class="tab-selector-4"/>
                         <label for="tab-4" class="tab-label-4">注册信息修改</label>
 
                         <div class="clear-shadow"></div>
                         <!--</div>-->
-                        {if $user_type eq "library_user"}
+                        <?php if ($_smarty_tpl->tpl_vars['user_type']->value == "library_user") {?>
                         <div class="content">
                             <div id="show_zhengdingdan" class="content-1">
-                                <span style="display: none" id="zdd_times">{$zdd_times}</span>
+                                <span style="display: none" id="zdd_times"><?php echo $_smarty_tpl->tpl_vars['zdd_times']->value;?>
+</span>
                                 <table class='table table-bordered table-striped'>
                                     <tr style="text-align: center">
                                         <td width="150">征订单编号</td>
@@ -371,16 +386,32 @@
                                         <td width="150">操作</td>
                                     </tr>
 
-                                    {foreach $zdd_order_list as $order}
+                                    <?php
+$_from = $_smarty_tpl->tpl_vars['zdd_order_list']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_order_0_saved_item = isset($_smarty_tpl->tpl_vars['order']) ? $_smarty_tpl->tpl_vars['order'] : false;
+$_smarty_tpl->tpl_vars['order'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['order']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['order']->value) {
+$_smarty_tpl->tpl_vars['order']->_loop = true;
+$__foreach_order_0_saved_local_item = $_smarty_tpl->tpl_vars['order'];
+?>
                                     <tr>
-                                        <td id="{$order['zdd_pc_id']}">
-                                            {$order['zdd_pc_id']}
+                                        <td id="<?php echo $_smarty_tpl->tpl_vars['order']->value['zdd_pc_id'];?>
+">
+                                            <?php echo $_smarty_tpl->tpl_vars['order']->value['zdd_pc_id'];?>
+
                                         </td>
                                         <td>
-                                            {$order['zdd_time']}
+                                            <?php echo $_smarty_tpl->tpl_vars['order']->value['zdd_time'];?>
+
                                         </td>
-                                        <td id="{$order['zdd_sum']}" style="text-align: center">
-                                            {$order['zdd_sum']}
+                                        <td id="<?php echo $_smarty_tpl->tpl_vars['order']->value['zdd_sum'];?>
+" style="text-align: center">
+                                            <?php echo $_smarty_tpl->tpl_vars['order']->value['zdd_sum'];?>
+
                                         </td>
 
                                         <td>
@@ -390,15 +421,23 @@
                                         </td>
 
                                     </tr>
-                                    {/foreach}
-                                    {$pagenav}
+                                    <?php
+$_smarty_tpl->tpl_vars['order'] = $__foreach_order_0_saved_local_item;
+}
+if ($__foreach_order_0_saved_item) {
+$_smarty_tpl->tpl_vars['order'] = $__foreach_order_0_saved_item;
+}
+?>
+                                    <?php echo $_smarty_tpl->tpl_vars['pagenav']->value;?>
+
 
                                 </table>
 
                             </div>
                             <!--<div id="show_yudingdan" class="content-2" onmouseover="show_ydd();">-->
                             <div id="show_yudingdan" class="content-2">
-                                <span style="display: none" id="ydd_times">{$ydd_times}</span>
+                                <span style="display: none" id="ydd_times"><?php echo $_smarty_tpl->tpl_vars['ydd_times']->value;?>
+</span>
                                 <table id="show_yudingdan_table" class='table table-bordered table-striped'>
                                     <tr style="text-align: center">
                                         <td width="150">预订单编号</td>
@@ -407,23 +446,45 @@
                                         <td width="150">操作</td>
                                     </tr>
 
-                                    {foreach $ydd_order_list as $order}
+                                    <?php
+$_from = $_smarty_tpl->tpl_vars['ydd_order_list']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_order_1_saved_item = isset($_smarty_tpl->tpl_vars['order']) ? $_smarty_tpl->tpl_vars['order'] : false;
+$_smarty_tpl->tpl_vars['order'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['order']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['order']->value) {
+$_smarty_tpl->tpl_vars['order']->_loop = true;
+$__foreach_order_1_saved_local_item = $_smarty_tpl->tpl_vars['order'];
+?>
                                     <tr>
-                                        <td id="{$order['ydd_pc_id']}">
-                                            {$order['ydd_pc_id']}
+                                        <td id="<?php echo $_smarty_tpl->tpl_vars['order']->value['ydd_pc_id'];?>
+">
+                                            <?php echo $_smarty_tpl->tpl_vars['order']->value['ydd_pc_id'];?>
+
                                         </td>
                                         <td>
-                                            {$order['ydd_time']}
+                                            <?php echo $_smarty_tpl->tpl_vars['order']->value['ydd_time'];?>
+
                                         </td>
-                                        <td id="{$order['ydd_sum']}" style="text-align: center">
-                                            {$order['ydd_sum']}
+                                        <td id="<?php echo $_smarty_tpl->tpl_vars['order']->value['ydd_sum'];?>
+" style="text-align: center">
+                                            <?php echo $_smarty_tpl->tpl_vars['order']->value['ydd_sum'];?>
+
                                         </td>
                                         <td>
                                             <a id="view_ydd_detail" class="view_ydd_detail">查看详情</a>
                                             <a class="yudingdan_download_marc">下载</a>
                                         </td>
                                     </tr>
-                                    {/foreach}
+                                    <?php
+$_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_local_item;
+}
+if ($__foreach_order_1_saved_item) {
+$_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_item;
+}
+?>
                                 </table>
 
                             </div>
@@ -432,7 +493,8 @@
 
                                     <a style="float: left" class="btn btn-sm btn-info"
                                        href="<?php echo PATH; ?>gc_moban.xlsx">模板下载</a>
-                                    <input type="hidden" name="usrn" value="{$smarty.session.user_id}"/>
+                                    <input type="hidden" name="usrn" value="<?php echo $_SESSION['user_id'];?>
+"/>
                                     <input type="hidden" name="leadExcel" value="true">
 
                                     <div>div</div>
@@ -451,7 +513,7 @@
                                 </form>
                             </div>
 
-                            {/if}
+                            <?php }?>
 
                             <div class="content-4">
                                 <form id="change_password_form">
@@ -486,7 +548,7 @@
                                             </td>
                                         </tr>
 
-                                        {if $user_type eq "library_user"}
+                                        <?php if ($_smarty_tpl->tpl_vars['user_type']->value == "library_user") {?>
                                         <tr>
                                             <td class="reg_left_td">图书馆名称：</td>
                                             <td class="reg_right_td"><input type="text" id="library"
@@ -499,7 +561,7 @@
                                                                             name="province">
                                             </td>
                                         </tr>
-                                        {/if}
+                                        <?php }?>
 
                                         <tr>
                                             <td class="reg_left_td">工作地址：</td>
@@ -651,24 +713,41 @@
             </div>
         </div>
 
-        <a id="userid" style="display: none ">{$smarty.session.user_id}</a>
-        <a id="usertype" style=" display: none ">{$smarty.session.user_type}</a>
+        <a id="userid" style="display: none "><?php echo $_SESSION['user_id'];?>
+</a>
+        <a id="usertype" style=" display: none "><?php echo $_SESSION['user_type'];?>
+</a>
 
     </div>
 </div>
 
 </body>
-<script src="../dist/js/jquery.min.js"></script>
-<script src="../dist/js/bootstrap.min.js"></script>
-<script src="../dist/js/holder.min.js"></script>
-<script src="../dist/js/application.js"></script>
+<?php echo '<script'; ?>
+ src="../dist/js/jquery.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/holder.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/application.js"><?php echo '</script'; ?>
+>
 
 <!--<link rel="shortcut icon" href="../favicon.ico">-->
-<script src="../dist/js/zzsc.js"></script>
-<script src="../dist/js/left_nav.js"></script>
-<script src="../dist/js/modernizr.custom.04022.js"></script>
+<?php echo '<script'; ?>
+ src="../dist/js/zzsc.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/left_nav.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/modernizr.custom.04022.js"><?php echo '</script'; ?>
+>
 
-<script>
+<?php echo '<script'; ?>
+>
 
     var global_url = $('#global_url').html();
 
@@ -1429,5 +1508,8 @@
     });
 
 
-</script>
+<?php echo '</script'; ?>
+>
 </html>
+<?php }
+}

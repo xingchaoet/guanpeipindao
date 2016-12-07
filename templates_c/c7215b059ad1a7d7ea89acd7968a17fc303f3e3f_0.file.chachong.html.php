@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-02 16:07:01
+/* Smarty version 3.1.29, created on 2016-12-07 08:50:51
   from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\chachong.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58412ba58d1737_65253501',
+  'unifunc' => 'content_58475cebecff17_85364900',
   'file_dependency' => 
   array (
     'c7215b059ad1a7d7ea89acd7968a17fc303f3e3f' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\chachong.html',
-      1 => 1480497939,
+      1 => 1481071846,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_58412ba58d1737_65253501 ($_smarty_tpl) {
+function content_58475cebecff17_85364900 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -185,6 +185,12 @@ function content_58412ba58d1737_65253501 ($_smarty_tpl) {
             filter: alpha(opacity=80);
         }
 
+        #show {
+            /*width: auto;*/
+            /*height: auto;*/
+            /*text-align:center*/
+        }
+
         .white_content {
             display: none;
             position: absolute;
@@ -267,7 +273,9 @@ function content_58412ba58d1737_65253501 ($_smarty_tpl) {
             border: 2px #EFEFEF solid;
         }
 
-        /*.clear */
+        .clear {
+            clear: both
+        }
 
         a {
             cursor: pointer;
@@ -294,12 +302,14 @@ function content_58412ba58d1737_65253501 ($_smarty_tpl) {
             margin-bottom: 5px;
             width: 260px;
         }
-        .batch_r_f_td{
+
+        .batch_r_f_td {
             margin-top: 5px;
             margin-bottom: 5px;
             width: 260px;
             display: none;
         }
+
         .batch_rtd {
             margin-top: 5px;
             margin-bottom: 5px;
@@ -369,7 +379,6 @@ function content_58412ba58d1737_65253501 ($_smarty_tpl) {
     <div class="row ">
 
         <div class="col-sm-3">
-            <!--<img src="../../../dist/js/holder.js/263x800" alt="">-->
             <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:left_nav.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -390,11 +399,9 @@ function content_58412ba58d1737_65253501 ($_smarty_tpl) {
 "/>
                 <input type="hidden" name="leadExcel" value="true">
 
-
                 <div id="mid" class='mid'>
 
                     <div class="form-inline">
-                        <!--<form action="guangcang_chachong.php" method="post" enctype="multipart/form-data">-->
                         <form id="guangcangexcel">
 
                             <a class="btn btn-sm btn-info" href="<?php echo PATH; ?>gc_moban.xlsx">模板下载</a>
@@ -424,28 +431,9 @@ function content_58412ba58d1737_65253501 ($_smarty_tpl) {
 
                         </form>
 
-
                     </div>
 
-                    <!--<div id="option">-->
-                    <!--<label>-->
-                    <!--<input class="option" type="radio" name='rname' value="tianjiadaoyiyoupici"> 添加到已有批次-->
-                    <!--</label>-->
-                    <!--<label>-->
-                    <!--<input class="option" type="radio" name='rname' value="xinjianpici"> 新建批次-->
-                    <!--</label>-->
-                    <!--</div>-->
-
-                    <!--<div id="pici_list">-->
-
-                    <!--</div>-->
-
-
-                    <!--导入模板及查重查询安钮--结束-->
-                    <!--<?php include("cc_search.php");?>-->
-                    <!--查询结果显示--开始-->
                 </div>
-
 
                 <form id="condition">
                     <input type="hidden" name="usrn" value="<?php echo $_SESSION['user_id'];?>
@@ -516,7 +504,6 @@ function content_58412ba58d1737_65253501 ($_smarty_tpl) {
                             </tr>
                         </table>
 
-
                         <div class="submit_clear">
                             <!--<input type="hidden" name=t1 value="chaxunchachong">-->
                             <input type="button" class="btn btn-sm btn-default" name="submit_cc"
@@ -525,11 +512,7 @@ function content_58412ba58d1737_65253501 ($_smarty_tpl) {
                             <input onclick="category_clear();" type="reset" class="btn btn-sm btn-default clear_tj"
                                    value="清空"/>
                         </div>
-
-                        <!--<div class="form-group btn  btn-sm">-->
-                        <!--</div>-->
                     </div>
-
                 </form>
 
                 <div class="need_op_batch">
@@ -551,15 +534,15 @@ dist/picture/chachong/hide_table.png">
                                 批次号
                             </td>
 
-                            <td  class="batch_mtd">
+                            <td class="batch_mtd">
                                 批次产生时间
                             </td>
 
-                            <td  class="batch_r_f_td">
+                            <td class="batch_r_f_td">
                                 添加到此批次
                             </td>
 
-                            <td  class="batch_rtd">
+                            <td class="batch_rtd">
                                 删除
                             </td>
 
@@ -588,7 +571,7 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                             </td>
 
                             <td class="batch_r_f_td">
-                                <input id='' type="radio" name="add_to_batch" value="" />
+                                <input id='' type="radio" name="add_to_batch" value=""/>
                             </td>
 
                             <td class="batch_rtd">
@@ -608,7 +591,6 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
                     </table>
 
                 </div>
-
 
                 <div id="second_floor">
 
@@ -656,16 +638,10 @@ dist/picture/pic_list/list_enable.gif" onclick="send_batch();"></a>
 dist/picture/pic_list/pic_disable.gif"
                                     onclick="sendpic_batch();"></a>
                             </span>
-
                         </div>
-
-
                     </div>
-                    <!--导入模板及查重查询安钮--开始-->
-
 
                     <div id="show">
-
 
                     </div>
 
@@ -684,14 +660,6 @@ dist/picture/pic_list/pic_disable.gif"
 
                     <!--</div>-->
                     <!--</div>-->
-
-                    <!--<div class="save">-->
-                    <!--勾选书目前请先保存该搜索结果列表-->
-                    <!--<input type="submit" value="保存搜索结果">保存批次号:-->
-                    <!--</div>-->
-                    <!--查询结果显示--结束-->
-
-                    <!--<tr><td colspan=4 align=center><?php echo $pagenav;?></td></tr>-->
                     <div class="clear"></div>
                     <div id="bottom" class="bottom">
                         <button type="button" class="btn btn-sm btn-default" onclick="generate_order();"
@@ -702,23 +670,20 @@ dist/picture/pic_list/pic_disable.gif"
                         >查看我的订单
                         </button>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     </div>
     <a id="default_num" style="display: none "><?php if ($_SESSION['default_num']) {?> <?php echo $_SESSION['default_num'];?>
  <?php } else { ?> 2
         <?php }?></a>
-
+    <!--<a id="waiting" style="display: none "><?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/chachong/waiting.gif</a>-->
     <!--<a id="userid" style="display: none "><?php echo $_SESSION['user_id'];?>
 </a>-->
     <!--<a id="usertype" style=" display: none "><?php echo $_SESSION['user_type'];?>
 </a>-->
 </div>
-
 
 </body>
 <?php echo '<script'; ?>
@@ -743,7 +708,16 @@ dist/picture/pic_list/pic_disable.gif"
 <?php echo '<script'; ?>
  src="../dist/js/chachong.js"><?php echo '</script'; ?>
 >
+<?php echo '<script'; ?>
+>
 
+//    var waiting_gif = $('#waiting').html();
+
+    var waiting =  "<div style='height: auto;width:inherit'><div style='margin :0px auto;margin-top: 20px;  width:320px'><a><img src="+"'<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/chachong/waiting.gif'"+" ></a></div></div>";
+
+<?php echo '</script'; ?>
+>
 
 </html><?php }
 }

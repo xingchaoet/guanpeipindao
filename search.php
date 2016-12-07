@@ -813,11 +813,11 @@ if (!empty($tsfl_data3_array)) {
 
             echo "<td style='text-align: center'>";
             if ($first_search) {
-                echo "<input style='width:15px;' name='amount1[]' id=\"amount1_$bid\" class='get_book_num_and_update_db_class hide_before_purchase' onmouseover='num_limit();'  type='text' maxlength='1' size='1' value=$default_num />";
+                echo "<input style='width:15px;' name='$bid' id=\"amount1_$bid\" class='get_book_num_and_update_db_class hide_before_purchase' onmouseover='num_limit();'  type='text' maxlength='1' size='1' value=$default_num />";
             }else if ($_SESSION['start_purchase']) {
-                echo "<input style='width:15px;' name='amount1[]' id=\"amount1_$bid\" class='get_book_num_and_update_db_class' onmouseover='num_limit();'  type='text' maxlength='1' size='1' value=$default_num />";
+                echo "<input style='width:15px;' name='$bid' id=\"amount1_$bid\" class='get_book_num_and_update_db_class' onmouseover='num_limit();'  type='text' maxlength='1' size='1' value=$default_num />";
             }else{
-                echo "<input style='width:15px;' name='amount1[]' id=\"amount1_$bid\" class='get_book_num_and_update_db_class hide_before_purchase_session' onmouseover='num_limit();'  type='text' maxlength='1' size='1' value=$default_num />";
+                echo "<input style='width:15px;' name='$bid' id=\"amount1_$bid\" class='get_book_num_and_update_db_class hide_before_purchase_session' onmouseover='num_limit();'  type='text' maxlength='1' size='1' value=$default_num />";
             }
             echo "</td>";
 
@@ -928,18 +928,18 @@ if (!empty($tsfl_data3_array)) {
                 if ($first_search) {
                     echo "
                          <input type='checkbox' class = 'checkall get_book_info_and_update_db_class hide_before_purchase'  name=\"$bid\"  value=$n />
-                         <input style='width:15px' name='amount1[]' id=\"amount1_$bid\" class='get_book_num_and_update_db_class hide_before_purchase' onmouseover='num_limit();' type='text' maxlength='1' size='1' value=$default_num />
+                         <input style='width:15px' name='$bid' id=\"amount1_$bid\" class='get_book_num_and_update_db_class hide_before_purchase' onmouseover='num_limit();' type='text' maxlength='1' size='1' value=$default_num />
                          ";
                 }else if ($_SESSION['start_purchase']) {
 
                     echo "
                          <input type='checkbox' class = 'checkall get_book_info_and_update_db_class'  name=\"$bid\"  value=$n />
-                         <input style='width:15px' name='amount1[]' id=\"amount1_$bid\" class='get_book_num_and_update_db_class' onmouseover='num_limit();' type='text' maxlength='1' size='1' value=$default_num />
+                         <input style='width:15px' name='$bid' id=\"amount1_$bid\" class='get_book_num_and_update_db_class' onmouseover='num_limit();' type='text' maxlength='1' size='1' value=$default_num />
                          ";
                 }else{
                     echo "
                          <input type='checkbox' class = 'checkall get_book_info_and_update_db_class hide_before_purchase_session'  name=\"$bid\"  value=$n />
-                         <input style='width:15px' name='amount1[]' id=\"amount1_$bid\" class='get_book_num_and_update_db_class hide_before_purchase_session' onmouseover='num_limit();' type='text' maxlength='1' size='1' value=$default_num />
+                         <input style='width:15px' name='$bid' id=\"amount1_$bid\" class='get_book_num_and_update_db_class hide_before_purchase_session' onmouseover='num_limit();' type='text' maxlength='1' size='1' value=$default_num />
                          ";
                 }
 

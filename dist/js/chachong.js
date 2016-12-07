@@ -25,6 +25,9 @@ var get_progress_info_url = 'http://' + global_url + '/chachong/get_progress_inf
 var add_to_batch_url = 'http://' + global_url + '/chachong/add_to_batch.php';
 
 
+
+// var waiting = '<span style="margin :0px auto; text-align:center; width:160px">查询中请耐心等待！</span>';
+
 function creatXHR() {
     var xhr = null;
     if (window.XMLHttpRequest) {
@@ -95,10 +98,14 @@ function send(arg) {
             fdata.append("show_type", 'list');
         }
 
-
         xhr.open('POST', search_url, true);
         xhr.send(fdata);
+
+        $('#bottom').hide();
+        document.getElementById('show').innerHTML = waiting;
+
         xhr.onreadystatechange = function () {
+
             if (this.readyState == 4) {
 
                 $('#list_disable_pic_enable').show();
@@ -112,6 +119,7 @@ function send(arg) {
                 document.getElementById('show').innerHTML = '';
                 document.getElementById('show').innerHTML = this.responseText;
 //                $("#show").load("../../chachong/cc_list.php");
+                $('#bottom').show();
             }
         }
     }
@@ -128,7 +136,12 @@ function sendpic() {
 
         xhr.open('POST', search_url, true);
         xhr.send(fdata);
+
+        $('#bottom').hide();
+        document.getElementById('show').innerHTML = waiting;
+
         xhr.onreadystatechange = function () {
+
             if (this.readyState == 4) {
 
                 $('#list_pic_batch').hide();
@@ -138,6 +151,7 @@ function sendpic() {
 
                 document.getElementById('show').innerHTML = '';
                 document.getElementById('show').innerHTML = this.responseText;
+                $('#bottom').show();
             }
         }
     }
@@ -158,13 +172,17 @@ function firstpagesend() {
     var showtype = $("#firstpage").attr("showtype");
     fdata.append("show_type", showtype);
 
-
     xhr.open('POST', search_url, true);
     xhr.send(fdata);
+
+    $('#bottom').hide();
+    document.getElementById('show').innerHTML = waiting;
     xhr.onreadystatechange = function () {
+
         if (this.readyState == 4) {
             document.getElementById('show').innerHTML = '';
             document.getElementById('show').innerHTML = this.responseText;
+            $('#bottom').show();
         }
     }
 }
@@ -183,10 +201,15 @@ function prepagesend() {
 
     xhr.open('POST', search_url, true);
     xhr.send(fdata);
+
+    $('#bottom').hide();
+    document.getElementById('show').innerHTML = waiting;
     xhr.onreadystatechange = function () {
+
         if (this.readyState == 4) {
             document.getElementById('show').innerHTML = '';
             document.getElementById('show').innerHTML = this.responseText;
+            $('#bottom').show();
         }
     }
 }
@@ -210,10 +233,15 @@ function nextpagesend() {
 
     xhr.open('POST', search_url, true);
     xhr.send(fdata);
+
+    $('#bottom').hide();
+    document.getElementById('show').innerHTML = waiting;
     xhr.onreadystatechange = function () {
+
         if (this.readyState == 4) {
             document.getElementById('show').innerHTML = '';
             document.getElementById('show').innerHTML = this.responseText;
+            $('#bottom').show();
         }
     }
 }
@@ -231,10 +259,16 @@ function lastpagesend() {
 
     xhr.open('POST', search_url, true);
     xhr.send(fdata);
+
+    $('#bottom').hide();
+    document.getElementById('show').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
+
         if (this.readyState == 4) {
             document.getElementById('show').innerHTML = '';
             document.getElementById('show').innerHTML = this.responseText;
+            $('#bottom').show();
         }
     }
 }
@@ -253,10 +287,16 @@ function jumptopagesend() {
 
     xhr.open('POST', search_url, true);
     xhr.send(fdata);
+
+    $('#bottom').hide();
+    document.getElementById('show').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
+
         if (this.readyState == 4) {
             document.getElementById('show').innerHTML = '';
             document.getElementById('show').innerHTML = this.responseText;
+            $('#bottom').show();
         }
     }
 }
@@ -460,6 +500,7 @@ $('#show').on('mouseenter', function () {
 
     $(".get_book_info_and_update_db_class").on("click", function () {
 
+        var save = $(this);
         var add_one_book_to_order = 1;
         var book_id = '';
         var book_num = '';
@@ -468,6 +509,7 @@ $('#show').on('mouseenter', function () {
 
         user_id = $('#userid').html();
 
+        // book_id = null;
         book_id = this.name;
 
         if ($(this).parent().attr('class') == 'list') {
@@ -501,8 +543,14 @@ $('#show').on('mouseenter', function () {
 
         xhr.onreadystatechange = function () {
             if (this.readyState == 4) {
-                checkboxes_changed();
+
+                if (this.responseText == '添加失败') {
+                    save.prop("checked", false);
+                }
+
                 alert(this.responseText);
+
+                checkboxes_changed();
             }
         }
 
@@ -512,6 +560,7 @@ $('#show').on('mouseenter', function () {
 
 //            alert("i m change");
 //            alert($(this).val());
+        var save_num = $(this);
 
         var add_one_book_to_order = 1;
 
@@ -519,7 +568,12 @@ $('#show').on('mouseenter', function () {
 
         user_id = $('#userid').html();
 
-        book_id = $(this).parent().prev().children().attr('name');
+        // book_id = $(this).parent().prev().children().attr('name');
+
+        // book_id = null;
+        //
+        book_id = this.name;
+
         book_num = $(this).val();
 
 //            alert(book_id);
@@ -541,7 +595,14 @@ $('#show').on('mouseenter', function () {
 //                add_one_book_to_order = 1;
         }
 
-        $(this).parent().prev().children().prop("checked", true);
+        // alert($(this).parent().prev().children().length);
+        // alert($(this).prev().length);
+
+        if ($(this).prev().length == 0) {
+            $(this).parent().prev().children().prop("checked", true);
+        } else if ($(this).prev().length == 1) {
+            $(this).prev().prop("checked", true);
+        }
 
 //            if ($(this).parent().prev().children().prop("checked")) {
 //            } else {
@@ -558,7 +619,6 @@ $('#show').on('mouseenter', function () {
 
         xhr.onreadystatechange = function () {
             if (this.readyState == 4) {
-                checkboxes_changed();
 
 //                    var $row = $('.row');
 //                    var $div_list = $('#div_list');
@@ -577,7 +637,18 @@ $('#show').on('mouseenter', function () {
 //                        $checkallbox.prop("checked", false);
 //                    }
 
+                if (this.responseText == '添加失败') {
+                    if (save_num.prev().length == 0) {
+                        save_num.parent().prev().children().prop("checked", false);
+                    } else if (save_num.prev().length == 1) {
+                        save_num.prev().prop("checked", false);
+                    }
+
+                }
                 alert(this.responseText);
+
+                checkboxes_changed();
+
             }
         }
 
@@ -876,6 +947,9 @@ function num_limit() {
     $.each(list, function (index, domEle) {
         domEle.onkeyup = function () {
             this.value = this.value.replace(/\D/g, '');
+
+            // alert(domEle.value);
+
             if (domEle.value > 5) {
                 domEle.value = 5;
             }
@@ -958,6 +1032,13 @@ function manipulate_session() {
     $('.default_num_span').show();
 
     $('.default_num_input').show();
+
+    if (default_num > 5) {
+        default_num = 5;
+    } else if (default_num < 1) {
+        default_num = 1;
+    }
+
     $('.default_num_input').val(default_num);
 
     // $('#batch_option').append(content);
@@ -971,6 +1052,14 @@ function manipulate_session() {
         var default_num = $('.default_num_input').val();
 //            alert(default_num);
         var fdata_d_num = new FormData();
+
+        if (default_num > 5) {
+            default_num = 5;
+        } else if (default_num < 1) {
+            default_num = 1;
+        }
+        $('.default_num_input').val(default_num);
+
         fdata_d_num.append("default_num", default_num);
 
         xhr.open('POST', default_num_url, true);
@@ -1029,6 +1118,11 @@ $(".batch_item").on('click', function () {
 
     xhr.open('POST', batch_item_url, true);
     xhr.send(fdata);
+
+    $('#bottom').hide();
+    document.getElementById('show').innerHTML = '';
+    document.getElementById('show').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
 
@@ -1037,10 +1131,10 @@ $(".batch_item").on('click', function () {
 //                $('#list_pic_batch').hide();
 
             $('#list_pic_batch').show();
-            $('#bottom').show();
 
             document.getElementById('show').innerHTML = '';
             document.getElementById('show').innerHTML = this.responseText;
+            $('#bottom').show();
         }
     }
 
@@ -1071,10 +1165,16 @@ function firstpagesend_batch() {
 
     xhr.open('POST', batch_item_url, true);
     xhr.send(fdata);
+
+    $('#bottom').hide();
+    document.getElementById('show').innerHTML = '';
+    document.getElementById('show').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             document.getElementById('show').innerHTML = '';
             document.getElementById('show').innerHTML = this.responseText;
+            $('#bottom').show();
         }
     }
 }
@@ -1092,10 +1192,16 @@ function prepagesend_batch() {
 
     xhr.open('POST', batch_item_url, true);
     xhr.send(fdata);
+
+    $('#bottom').hide();
+    document.getElementById('show').innerHTML = '';
+    document.getElementById('show').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             document.getElementById('show').innerHTML = '';
             document.getElementById('show').innerHTML = this.responseText;
+            $('#bottom').show();
         }
     }
 }
@@ -1115,10 +1221,16 @@ function nextpagesend_batch() {
 
     xhr.open('POST', batch_item_url, true);
     xhr.send(fdata);
+
+    $('#bottom').hide();
+    document.getElementById('show').innerHTML = '';
+    document.getElementById('show').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             document.getElementById('show').innerHTML = '';
             document.getElementById('show').innerHTML = this.responseText;
+            $('#bottom').show();
         }
     }
 }
@@ -1135,10 +1247,16 @@ function lastpagesend_batch() {
 
     xhr.open('POST', batch_item_url, true);
     xhr.send(fdata);
+
+    $('#bottom').hide();
+    document.getElementById('show').innerHTML = '';
+    document.getElementById('show').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             document.getElementById('show').innerHTML = '';
             document.getElementById('show').innerHTML = this.responseText;
+            $('#bottom').show();
         }
     }
 }
@@ -1156,10 +1274,16 @@ function jumptopagesend_batch() {
 
     xhr.open('POST', batch_item_url, true);
     xhr.send(fdata);
+
+    $('#bottom').hide();
+    document.getElementById('show').innerHTML = '';
+    document.getElementById('show').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             document.getElementById('show').innerHTML = '';
             document.getElementById('show').innerHTML = this.responseText;
+            $('#bottom').show();
         }
     }
 }
@@ -1175,6 +1299,11 @@ function send_batch(arg) {
 
         xhr.open('POST', batch_item_url, true);
         xhr.send(fdata);
+
+        $('#bottom').hide();
+        document.getElementById('show').innerHTML = '';
+        document.getElementById('show').innerHTML = waiting;
+
         xhr.onreadystatechange = function () {
             if (this.readyState == 4) {
 
@@ -1189,6 +1318,7 @@ function send_batch(arg) {
                 document.getElementById('show').innerHTML = '';
                 document.getElementById('show').innerHTML = this.responseText;
 //                $("#show").load("../../chachong/cc_list.php");
+                $('#bottom').show();
             }
         }
     }
@@ -1204,6 +1334,11 @@ function sendpic_batch() {
 
         xhr.open('POST', batch_item_url, true);
         xhr.send(fdata);
+
+        $('#bottom').hide();
+        document.getElementById('show').innerHTML = '';
+        document.getElementById('show').innerHTML = waiting;
+
         xhr.onreadystatechange = function () {
             if (this.readyState == 4) {
 
@@ -1214,6 +1349,8 @@ function sendpic_batch() {
 
                 document.getElementById('show').innerHTML = '';
                 document.getElementById('show').innerHTML = this.responseText;
+
+                $('#bottom').show();
             }
         }
     }

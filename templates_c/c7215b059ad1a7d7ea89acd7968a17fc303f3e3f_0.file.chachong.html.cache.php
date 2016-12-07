@@ -1,3 +1,29 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-12-06 14:47:18
+  from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\chachong.html" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_58465ef6533831_21103568',
+  'file_dependency' => 
+  array (
+    'c7215b059ad1a7d7ea89acd7968a17fc303f3e3f' => 
+    array (
+      0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\chachong.html',
+      1 => 1480924368,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:header.html' => 1,
+    'file:left_nav.html' => 1,
+  ),
+),false)) {
+function content_58465ef6533831_21103568 ($_smarty_tpl) {
+$_smarty_tpl->compiled->nocache_hash = '283358465ef64864e4_80953832';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +36,12 @@
     <link rel="stylesheet" href="../dist/css/introduce.css">
     <link rel="stylesheet" href="../dist/css/progressbar.css">
 
-    <script src="../dist/js/jquery.min.js"></script>
-    <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
+    <?php echo '<script'; ?>
+ src="../dist/js/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"><?php echo '</script'; ?>
+>
 
     <title>馆藏查重</title>
     <style>
@@ -22,11 +52,7 @@
             font-size: 11px;
         }
 
-        /*.col-sm-3 {*/
-        /*background: white;*/
-        /*margin-bottom: 10px;*/
-        /*width: 210px;*/
-        /*}*/
+        /*.col-sm-3 */
 
         .col-sm-9 {
             width: 770px;
@@ -160,12 +186,11 @@
             filter: alpha(opacity=80);
         }
 
-        #show {
+        #show{
             /*width: auto;*/
             /*height: auto;*/
             /*text-align:center*/
         }
-
         .white_content {
             display: none;
             position: absolute;
@@ -277,14 +302,12 @@
             margin-bottom: 5px;
             width: 260px;
         }
-
-        .batch_r_f_td {
+        .batch_r_f_td{
             margin-top: 5px;
             margin-bottom: 5px;
             width: 260px;
             display: none;
         }
-
         .batch_rtd {
             margin-top: 5px;
             margin-bottom: 5px;
@@ -347,15 +370,21 @@
     </style>
 </head>
 <body>
-{include file="header.html"}
+<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 <div class="site">
     <div class="row ">
 
         <div class="col-sm-3">
-            {include file="left_nav.html"}
+            <!--<img src="../../../dist/js/holder.js/263x800" alt="">-->
+            <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:left_nav.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 
             <div class="introduce">
-                {$introduce}
+                <?php echo $_smarty_tpl->tpl_vars['introduce']->value;?>
+
             </div>
         </div>
 
@@ -365,18 +394,22 @@
             </div>
             <div class="down">
                 <!--<form action="cc_index.php" method="post" enctype="multipart/form-data">-->
-                <input type="hidden" name="usrn" value="{$smarty.session.user_id}"/>
+                <input type="hidden" name="usrn" value="<?php echo $_SESSION['user_id'];?>
+"/>
                 <input type="hidden" name="leadExcel" value="true">
+
 
                 <div id="mid" class='mid'>
 
                     <div class="form-inline">
+                        <!--<form action="guangcang_chachong.php" method="post" enctype="multipart/form-data">-->
                         <form id="guangcangexcel">
 
                             <a class="btn btn-sm btn-info" href="<?php echo PATH; ?>gc_moban.xlsx">模板下载</a>
 
                             <label class="upload_guancang">上传馆藏数据:</label>
-                            <input type="hidden" name="usrn" value="{$smarty.session.user_id}"/>
+                            <input type="hidden" name="usrn" value="<?php echo $_SESSION['user_id'];?>
+"/>
                             <input type="hidden" name="leadExcel" value="true">
                             <div class="form-group btn  btn-sm">
                                 <input class="btn btn-sm" type="file" name="inputExcel" id="inputExcel">
@@ -388,7 +421,8 @@
                             </div>
 
                             <!--<div class="form-group btn  btn-sm">-->
-                            <!--&lt;!&ndash;<a href="gangcang_import_history.php?uid={$smarty.session.user_id}"  class="btn btn-sm btn-info " type="button" value="馆藏导入历史" >馆藏导入历史</a>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<a href="gangcang_import_history.php?uid=<?php echo $_SESSION['user_id'];?>
+"  class="btn btn-sm btn-info " type="button" value="馆藏导入历史" >馆藏导入历史</a>&ndash;&gt;-->
                             <!--<button onclick="guan_cang_import_history()" class="btn btn-sm btn-info " type="button"-->
                             <!--value="馆藏导入历史">馆藏导入历史-->
                             <!--</button>-->
@@ -398,12 +432,32 @@
 
                         </form>
 
+
                     </div>
 
+                    <!--<div id="option">-->
+                    <!--<label>-->
+                    <!--<input class="option" type="radio" name='rname' value="tianjiadaoyiyoupici"> 添加到已有批次-->
+                    <!--</label>-->
+                    <!--<label>-->
+                    <!--<input class="option" type="radio" name='rname' value="xinjianpici"> 新建批次-->
+                    <!--</label>-->
+                    <!--</div>-->
+
+                    <!--<div id="pici_list">-->
+
+                    <!--</div>-->
+
+
+                    <!--导入模板及查重查询安钮--结束-->
+                    <!--<?php include("cc_search.php");?>-->
+                    <!--查询结果显示--开始-->
                 </div>
 
+
                 <form id="condition">
-                    <input type="hidden" name="usrn" value="{$smarty.session.user_id}"/>
+                    <input type="hidden" name="usrn" value="<?php echo $_SESSION['user_id'];?>
+"/>
 
                     <div id="condition_title" height=30 colspan=4 bgcolor='EDEDED'><b
                             style="margin-left: 12px">信息查询查重</b></div>
@@ -438,21 +492,21 @@
                                 <td height=25 width='60' align='right'>书号</td>
                                 <td><input maxlength="100" size="25" type="text" name="isbn" id="isbn" value=""></td>
                                 <td height=25 align='right' name="zyfl_value" id="zyfl_value">图书分类</td>
-                                <td style='position: absolute;  z-index:2;'>{php} include('zyfl.php');{/php}</td>
+                                <td style='position: absolute;  z-index:2;'><?php  include('zyfl.php');?></td>
                             </tr>
                             <tr>
                                 <td height=25 width='60' align='right'>作译者</td>
                                 <td><input maxlength="100" size="25" type="text" name="writer" id="writer" value="">
                                 </td>
                                 <td align='right' name="skfl_value">中图法-社会科学</td>
-                                <td style='position: absolute; z-index:1;'>{php} include('ztfl_sk.php');{/php}</td>
+                                <td style='position: absolute; z-index:1;'><?php  include('ztfl_sk.php');?></td>
                             </tr>
                             <tr>
                                 <td height=25 width='60' align='right'>主题词</td>
                                 <td><input maxlength="100" size="25" type="text" name="keyword" id="keyword" value="">
                                 </td>
                                 <td align='right' name="zkfl_value" id="zkfl_value">中图法-自然科学</td>
-                                <td style='position: absolute; z-index:0;'>{php} include('ztfl_zk.php');{/php}</td>
+                                <td style='position: absolute; z-index:0;'><?php  include('ztfl_zk.php');?></td>
                             </tr>
                             <tr>
                                 <td align='right'>定价</td>
@@ -470,6 +524,7 @@
                             </tr>
                         </table>
 
+
                         <div class="submit_clear">
                             <!--<input type="hidden" name=t1 value="chaxunchachong">-->
                             <input type="button" class="btn btn-sm btn-default" name="submit_cc"
@@ -478,17 +533,23 @@
                             <input onclick="category_clear();" type="reset" class="btn btn-sm btn-default clear_tj"
                                    value="清空"/>
                         </div>
+
+                        <!--<div class="form-group btn  btn-sm">-->
+                        <!--</div>-->
                     </div>
+
                 </form>
 
                 <div class="need_op_batch">
 
                     <div class="batch_title">
                         <span>
-                            你还有{$need_op_batch_num}条未处理批次
+                            你还有<?php echo $_smarty_tpl->tpl_vars['need_op_batch_num']->value;?>
+条未处理批次
                         </span>
                         <span class="batch_icon">
-                            <img id="toggle_table" src="{$relpostodist}dist/picture/chachong/hide_table.png">
+                            <img id="toggle_table" src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/chachong/hide_table.png">
                         </span>
                     </div>
 
@@ -498,43 +559,64 @@
                                 批次号
                             </td>
 
-                            <td class="batch_mtd">
+                            <td  class="batch_mtd">
                                 批次产生时间
                             </td>
 
-                            <td class="batch_r_f_td">
+                            <td  class="batch_r_f_td">
                                 添加到此批次
                             </td>
 
-                            <td class="batch_rtd">
+                            <td  class="batch_rtd">
                                 删除
                             </td>
 
                         </tr>
-                        {foreach $need_op_batch_detail as $val }
+                        <?php
+$_from = $_smarty_tpl->tpl_vars['need_op_batch_detail']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_val_0_saved_item = isset($_smarty_tpl->tpl_vars['val']) ? $_smarty_tpl->tpl_vars['val'] : false;
+$_smarty_tpl->tpl_vars['val'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['val']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['val']->value) {
+$_smarty_tpl->tpl_vars['val']->_loop = true;
+$__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
+?>
                         <tr>
                             <td class="batch_ltd">
-                                <a class="batch_item">{$val['PiCi_Num']}</a>
+                                <a class="batch_item"><?php echo $_smarty_tpl->tpl_vars['val']->value['PiCi_Num'];?>
+</a>
                             </td>
 
                             <td class="batch_mtd">
-                                {$val['Date_Time']}
+                                <?php echo $_smarty_tpl->tpl_vars['val']->value['Date_Time'];?>
+
                             </td>
 
                             <td class="batch_r_f_td">
-                                <input id='' type="radio" name="add_to_batch" value=""/>
+                                <input id='' type="radio" name="add_to_batch" value="" />
                             </td>
 
                             <td class="batch_rtd">
                                 <a class="delete_batch"><img width="19" height="19"
-                                                             src="{$relpostodist}dist/picture/chachong/delete_batch.png"></a>
+                                                             src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/chachong/delete_batch.png"></a>
                             </td>
 
                         </tr>
-                        {/foreach}
+                        <?php
+$_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_local_item;
+}
+if ($__foreach_val_0_saved_item) {
+$_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
+}
+?>
                     </table>
 
                 </div>
+
 
                 <div id="second_floor">
 
@@ -545,13 +627,17 @@
                         <label style="margin-left: 500px">显示方式：</label>
 
                         <span id="list_disable_pic_enable" style="margin-left: 30px;">
-                            <a><img src="{$relpostodist}dist/picture/pic_list/list_disable.gif" onclick="send();"></a>
-                            <a><img src="{$relpostodist}dist/picture/pic_list/pic_enable.gif" onclick="sendpic();"></a>
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_disable.gif" onclick="send();"></a>
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_enable.gif" onclick="sendpic();"></a>
                         </span>
 
                         <span id="pic_disable_list_enable" style="margin-left: 30px; display: none">
-                            <a><img src="{$relpostodist}dist/picture/pic_list/list_enable.gif" onclick="send();"></a>
-                            <a><img src="{$relpostodist}dist/picture/pic_list/pic_disable.gif" onclick="sendpic();"></a>
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_enable.gif" onclick="send();"></a>
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_disable.gif" onclick="sendpic();"></a>
                         </span>
 
                     </div>
@@ -563,21 +649,31 @@
                         <div style="float:right; margin-right: 20px">显示方式：
 
                             <span id="list_disable_pic_batch_enable" style="float:right; margin-right: 5px;">
-                            <a><img src="{$relpostodist}dist/picture/pic_list/list_disable.gif" onclick="send_batch();"></a>
-                            <a><img src="{$relpostodist}dist/picture/pic_list/pic_enable.gif"
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_disable.gif" onclick="send_batch();"></a>
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_enable.gif"
                                     onclick="sendpic_batch();"></a>
                             </span>
 
                             <span id="pic_disable_list_batch_enable"
                                   style="float:right; margin-right: 5px; display: none">
-                            <a><img src="{$relpostodist}dist/picture/pic_list/list_enable.gif" onclick="send_batch();"></a>
-                            <a><img src="{$relpostodist}dist/picture/pic_list/pic_disable.gif"
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_enable.gif" onclick="send_batch();"></a>
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_disable.gif"
                                     onclick="sendpic_batch();"></a>
                             </span>
+
                         </div>
+
+
                     </div>
+                    <!--导入模板及查重查询安钮--开始-->
+
 
                     <div id="show">
+
 
                     </div>
 
@@ -596,6 +692,14 @@
 
                     <!--</div>-->
                     <!--</div>-->
+
+                    <!--<div class="save">-->
+                    <!--勾选书目前请先保存该搜索结果列表-->
+                    <!--<input type="submit" value="保存搜索结果">保存批次号:-->
+                    <!--</div>-->
+                    <!--查询结果显示--结束-->
+
+                    <!--<tr><td colspan=4 align=center><?php echo $pagenav;?></td></tr>-->
                     <div class="clear"></div>
                     <div id="bottom" class="bottom">
                         <button type="button" class="btn btn-sm btn-default" onclick="generate_order();"
@@ -606,32 +710,48 @@
                         >查看我的订单
                         </button>
                     </div>
+
                 </div>
+
             </div>
+
         </div>
     </div>
-    <a id="default_num" style="display: none ">{if $smarty.session.default_num} {$smarty.session.default_num} {else} 2
-        {/if}</a>
-    <!--<a id="waiting" style="display: none ">{$relpostodist}dist/picture/chachong/waiting.gif</a>-->
-    <!--<a id="userid" style="display: none ">{$smarty.session.user_id}</a>-->
-    <!--<a id="usertype" style=" display: none ">{$smarty.session.user_type}</a>-->
+    <a id="default_num" style="display: none "><?php if ($_SESSION['default_num']) {?> <?php echo $_SESSION['default_num'];?>
+ <?php } else { ?> 2
+        <?php }?></a>
+
+    <!--<a id="userid" style="display: none "><?php echo $_SESSION['user_id'];?>
+</a>-->
+    <!--<a id="usertype" style=" display: none "><?php echo $_SESSION['user_type'];?>
+</a>-->
 </div>
 
+
 </body>
-<script src="../dist/js/bootstrap.min.js"></script>
-<script src="../dist/js/holder.min.js"></script>
-<script src="../dist/js/application.js"></script>
-<!--<script src="../dist/js/jquery.icheck.min.js"></script>-->
+<?php echo '<script'; ?>
+ src="../dist/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/holder.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/application.js"><?php echo '</script'; ?>
+>
+<!--<?php echo '<script'; ?>
+ src="../dist/js/jquery.icheck.min.js"><?php echo '</script'; ?>
+>-->
 
-<script src="../dist/js/zzsc.js"></script>
-<script src="../dist/js/left_nav.js"></script>
-<script src="../dist/js/chachong.js"></script>
-<script>
+<?php echo '<script'; ?>
+ src="../dist/js/zzsc.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/left_nav.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/chachong.js"><?php echo '</script'; ?>
+>
 
-//    var waiting_gif = $('#waiting').html();
 
-    var waiting =  "<div style='height: auto;width:inherit'><div style='margin :0px auto;margin-top: 20px;  width:320px'><a><img src="+"'{$relpostodist}dist/picture/chachong/waiting.gif'"+" ></a></div></div>";
-
-</script>
-
-</html>
+</html><?php }
+}

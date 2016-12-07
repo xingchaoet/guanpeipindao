@@ -38,7 +38,7 @@ $dd_pc = $_SESSION['dd_pc'];
 
 $book_id_s = explode(",", $book_ids);
 
-print_r($book_id_s);
+//print_r($book_id_s);
 
 $total = count($book_id_s);
 
@@ -62,22 +62,22 @@ if ($option == 'add') {//添加书籍
         //    $sql_add_to_temp_table = "INSERT INTO [dbo]." . $table_name . " (Book_Id,Book_Num, State,User_Id,Pi_Ci_No,Date_Time) VALUES ('$book_id',$book_num, '0','$user_id','$zdd_pc',GETDATE())";
         $sql_update_temp_table = "UPDATE [dbo]." . $table_name . " SET  Book_Num = '$book_num'     WHERE Book_Id = '$book_id' AND Pi_Ci_No = '$dd_pc'";
 
-        echo $sql_update_temp_table;
-
-        echo '<br>';
+//        echo $sql_update_temp_table;
+//
+//        echo '<br>';
 
         $rs_sql_update_temp_table = $ms->sdb($sql_update_temp_table);
 
         try {
 
-            if (!$rs_sql_update_temp_table) {
+            if (odbc_num_rows($rs_sql_update_temp_table) <= 0) {
 
                 $error_place[] = $i;
 
                 echo "Error in query preparation/execution.<br />";
 //                die(print_r(odbc_errormsg(), true));
 
-                $error = "add $book_id to $table_name failed";
+                $error = "add $book_id to $dd_pc failed";
 
                 $log->debug($error);
 
@@ -121,13 +121,13 @@ if ($option == 'add') {//添加书籍
 
         try {
 
-            if (!$rs_sql_update_temp_table) {
+            if (odbc_num_rows($rs_sql_update_temp_table) <= 0) {
 
                 $error_place[] = $i;
 
                 echo "Error in query preparation/execution.<br />";
 //                die(print_r(odbc_errormsg(), true));
-                $error = "delete $book_id from $table_name failed";
+                $error = "delete $book_id from $dd_pc failed";
 
                 $log->debug($error);
 
