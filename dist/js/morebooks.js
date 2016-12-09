@@ -805,9 +805,9 @@ function manipulate_session_two_types() {
 
     alert(default_num_two_types);
 
-    $('.default_num_two_types_span').show();
+    $('span.default_num_two_types_span').show();
 
-    $('.default_num_two_types_input').show();
+    $('input.default_num_two_types_input').show();
 
     if (default_num_two_types > 5) {
         default_num_two_types = 5;
@@ -815,7 +815,7 @@ function manipulate_session_two_types() {
         default_num_two_types = 1;
     }
 
-    $('.default_num_two_types_input').val(default_num_two_types);
+    $('input.default_num_two_types_input').val(default_num_two_types);
 
 
     $('#progressbar').show();

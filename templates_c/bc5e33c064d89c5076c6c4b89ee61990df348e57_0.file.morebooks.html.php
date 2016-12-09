@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-09 18:29:28
+/* Smarty version 3.1.29, created on 2016-12-09 20:02:06
   from "D:\phpStudy\WWW\guanpeipindao\templates\morebooks.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_584a8788011a19_54302686',
+  'unifunc' => 'content_584a9d3e3b7d21_62472142',
   'file_dependency' => 
   array (
     'bc5e33c064d89c5076c6c4b89ee61990df348e57' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\morebooks.html',
-      1 => 1481278672,
+      1 => 1481284918,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_584a8788011a19_54302686 ($_smarty_tpl) {
+function content_584a9d3e3b7d21_62472142 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!DOCTYPE html>
@@ -243,6 +243,8 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
             display: none;
             height: 25px;
             width: 20px;
+            text-align: left;
+
         }
 
         .hide_before_purchase {
@@ -253,12 +255,21 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
             display: none;
         }
 
+        #batch_option {
+            margin-top: 5px;
+            float: left;
+        }
+
         .flow {
             margin-top: 5px;
+            margin-left: 5px;
             float: left;
             display: none;
         }
 
+        .clear{
+            clear: both;
+        }
 
     </style>
 </head>
@@ -268,9 +279,9 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
 ?>
 
 <div class="site">
-    <a id="default_num_two_types" style="display: none "><?php if ($_SESSION['default_num_two_types']) {?> <?php echo $_SESSION['default_num_two_types'];?>
- <?php } else { ?> 2
-        <?php }?></a>
+    <a id="default_num_two_types" style="display: none "><?php if ($_SESSION['default_num_two_types']) {
+echo $_SESSION['default_num_two_types'];
+} else { ?>2<?php }?></a>
     <div class="row ">
 
         <div class="col-sm-3">
@@ -396,7 +407,7 @@ dist/picture/pic_list/pic_enable.gif">-->
                     <input id='batch_option_create_radio' type="radio" name="batch_option_radio" value="创建新批次"/>创建新批次
                     <input id='batch_option_add_radio' type="radio" name="batch_option_radio" value="添加到原有批次"/>添加到原有批次
 
-                    <span class='default_num_two_types_span'>默认数量</span> <input class='default_num_two_types_input'
+                    <span class='default_num_two_types_span'>默认数量</span> <input class=' default_num_two_types_input'
                                                                                 type='text'>
 
                 </div>
@@ -416,7 +427,7 @@ dist/picture/pic_list/pic_enable.gif">-->
                     <input id='batch_option_create_radio' type="radio" name="batch_option_radio" value="创建新批次"/>创建新批次
                     <input id='batch_option_add_radio' type="radio" name="batch_option_radio" value="添加到原有批次"/>添加到原有批次
 
-                    <span class='default_num_two_types_span'>默认数量</span> <input class='default_num_two_types_input'
+                    <span class='default_num_two_types_span'>默认数量</span> <input class=' default_num_two_types_input'
                                                                                 type='text'>
 
                 </div>
@@ -434,6 +445,8 @@ dist/picture/pic_list/pic_enable.gif">-->
 
             </div>
 
+            <div class="clear"></div>
+
             <div id="down" class="down">
                 <div id="div_list" name="div_list">
 
@@ -445,14 +458,14 @@ dist/picture/pic_list/pic_enable.gif">-->
 
                     <?php if ($_SESSION['first_search_two_types']) {?>
                     <div class='hide_before_purchase'>
-                        <input type="checkbox"  id="checkall_box" onclick='checkallbox_changed();'
+                        <input type="checkbox" id="checkall_box" onclick='checkallbox_changed();'
                                name="all" class="checkall_box">
                         <label>全选</label>
                     </div>
                     <?php } elseif ($_SESSION['start_purchase_two_types']) {?>
 
                     <div class=''>
-                        <input type="checkbox"  id="checkall_box" onclick='checkallbox_changed();'
+                        <input type="checkbox" id="checkall_box" onclick='checkallbox_changed();'
                                name="all" class="checkall_box">
                         <label>全选</label>
 
@@ -460,7 +473,7 @@ dist/picture/pic_list/pic_enable.gif">-->
                     <?php } else { ?>
 
                     <div class='hide_before_purchase_session'>
-                        <input type="checkbox"  id="checkall_box" onclick='checkallbox_changed();'
+                        <input type="checkbox" id="checkall_box" onclick='checkallbox_changed();'
                                name="all" class="checkall_box">
                         <label>全选</label>
                     </div>
@@ -507,7 +520,7 @@ $__foreach_val_1_saved_local_item = $_smarty_tpl->tpl_vars['val'];
 
                                         <?php if ($_SESSION['first_search_two_types']) {?>
 
-                                        <input type="checkbox" 
+                                        <input type="checkbox"
                                                name="<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "
                                                class="checkall get_book_info_and_update_db_class hide_before_purchase"/>
@@ -524,11 +537,11 @@ $__foreach_val_1_saved_local_item = $_smarty_tpl->tpl_vars['val'];
 
                                         <?php } elseif ($_SESSION['start_purchase_two_types']) {?>
 
-                                        <input type="checkbox" 
+                                        <input type="checkbox"
                                                name="<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "
                                                class="checkall get_book_info_and_update_db_class"/>
-                                        <p >数量：
+                                        <p>数量：
                                             <input type="text" name="<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "
                                                    id="sum_<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
@@ -542,7 +555,7 @@ $__foreach_val_1_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                                         <?php } else { ?>
 
 
-                                        <input type="checkbox" 
+                                        <input type="checkbox"
                                                name="<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "
                                                class="checkall get_book_info_and_update_db_class hide_before_purchase_session"/>

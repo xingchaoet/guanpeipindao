@@ -217,6 +217,8 @@
             display: none;
             height: 25px;
             width: 20px;
+            text-align: left;
+
         }
 
         .hide_before_purchase {
@@ -227,12 +229,21 @@
             display: none;
         }
 
+        #batch_option {
+            margin-top: 5px;
+            float: left;
+        }
+
         .flow {
             margin-top: 5px;
+            margin-left: 5px;
             float: left;
             display: none;
         }
 
+        .clear{
+            clear: both;
+        }
 
     </style>
 </head>
@@ -240,8 +251,7 @@
 
 {include file="header.html"}
 <div class="site">
-    <a id="default_num_two_types" style="display: none ">{if $smarty.session.default_num_two_types} {$smarty.session.default_num_two_types} {else} 2
-        {/if}</a>
+    <a id="default_num_two_types" style="display: none ">{if $smarty.session.default_num_two_types}{$smarty.session.default_num_two_types}{else}2{/if}</a>
     <div class="row ">
 
         <div class="col-sm-3">
@@ -337,7 +347,7 @@
                     <input id='batch_option_create_radio' type="radio" name="batch_option_radio" value="创建新批次"/>创建新批次
                     <input id='batch_option_add_radio' type="radio" name="batch_option_radio" value="添加到原有批次"/>添加到原有批次
 
-                    <span class='default_num_two_types_span'>默认数量</span> <input class='default_num_two_types_input'
+                    <span class='default_num_two_types_span'>默认数量</span> <input class=' default_num_two_types_input'
                                                                                 type='text'>
 
                 </div>
@@ -357,7 +367,7 @@
                     <input id='batch_option_create_radio' type="radio" name="batch_option_radio" value="创建新批次"/>创建新批次
                     <input id='batch_option_add_radio' type="radio" name="batch_option_radio" value="添加到原有批次"/>添加到原有批次
 
-                    <span class='default_num_two_types_span'>默认数量</span> <input class='default_num_two_types_input'
+                    <span class='default_num_two_types_span'>默认数量</span> <input class=' default_num_two_types_input'
                                                                                 type='text'>
 
                 </div>
@@ -375,6 +385,8 @@
 
             </div>
 
+            <div class="clear"></div>
+
             <div id="down" class="down">
                 <div id="div_list" name="div_list">
 
@@ -384,16 +396,16 @@
                     <!--<label>全选</label>-->
                     <!--</div>-->
 
-                    {if  $smarty.session.first_search_two_types}
+                    {if $smarty.session.first_search_two_types}
                     <div class='hide_before_purchase'>
-                        <input type="checkbox"  id="checkall_box" onclick='checkallbox_changed();'
+                        <input type="checkbox" id="checkall_box" onclick='checkallbox_changed();'
                                name="all" class="checkall_box">
                         <label>全选</label>
                     </div>
                     {elseif $smarty.session.start_purchase_two_types}
 
                     <div class=''>
-                        <input type="checkbox"  id="checkall_box" onclick='checkallbox_changed();'
+                        <input type="checkbox" id="checkall_box" onclick='checkallbox_changed();'
                                name="all" class="checkall_box">
                         <label>全选</label>
 
@@ -401,7 +413,7 @@
                     {else}
 
                     <div class='hide_before_purchase_session'>
-                        <input type="checkbox"  id="checkall_box" onclick='checkallbox_changed();'
+                        <input type="checkbox" id="checkall_box" onclick='checkallbox_changed();'
                                name="all" class="checkall_box">
                         <label>全选</label>
                     </div>
@@ -433,7 +445,7 @@
 
                                         {if $smarty.session.first_search_two_types}
 
-                                        <input type="checkbox" 
+                                        <input type="checkbox"
                                                name="{$val['book_id']}"
                                                class="checkall get_book_info_and_update_db_class hide_before_purchase"/>
                                         <p class="hide_before_purchase">数量：
@@ -446,10 +458,10 @@
 
                                         {elseif $smarty.session.start_purchase_two_types}
 
-                                        <input type="checkbox" 
+                                        <input type="checkbox"
                                                name="{$val['book_id']}"
                                                class="checkall get_book_info_and_update_db_class"/>
-                                        <p >数量：
+                                        <p>数量：
                                             <input type="text" name="{$val['book_id']}"
                                                    id="sum_{$val['book_id']}"
                                                    class="get_book_num_and_update_db_class"
@@ -460,7 +472,7 @@
                                         {else}
 
 
-                                        <input type="checkbox" 
+                                        <input type="checkbox"
                                                name="{$val['book_id']}"
                                                class="checkall get_book_info_and_update_db_class hide_before_purchase_session"/>
                                         <p class="hide_before_purchase">数量：

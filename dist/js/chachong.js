@@ -1001,9 +1001,9 @@ function manipulate_session() {
     // var content = "<span class='default_num_span'>默认数量</span> <input class=\"default_num_input\" type=\"text\" value= " + default_num + ">";
     // var flow = $('.flow');
 
-    $('.default_num_span').show();
+    $('span.default_num_span').show();
 
-    $('.default_num_input').show();
+    $('input.default_num_input').show();
 
     if (default_num > 5) {
         default_num = 5;
@@ -1011,7 +1011,7 @@ function manipulate_session() {
         default_num = 1;
     }
 
-    $('.default_num_input').val(default_num);
+    $('input.default_num_input').val(default_num);
 
     // $('#batch_option').append(content);
 
