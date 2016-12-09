@@ -494,192 +494,67 @@ function add_or_delete_this_page_temp_table(option) {
 }
 
 //    已保存现场的修改
+$('#show').delegate('.get_book_info_and_update_db_class', 'click', get_book_info_and_update_db_class_click);
 
-$('#show').on('mouseenter', function () {
+function get_book_info_and_update_db_class_click() {
 
-    $(".get_book_info_and_update_db_class").on("click", function () {
+    var save = $(this);
+    var add_one_book_to_order = 1;
+    var book_id = '';
+    var book_num = '';
 
-        var save = $(this);
-        var add_one_book_to_order = 1;
-        var book_id = '';
-        var book_num = '';
+    var fdata = new FormData();
 
-        var fdata = new FormData();
+    user_id = $('#userid').html();
 
-        user_id = $('#userid').html();
+    // book_id = null;
+    book_id = this.name;
 
-        // book_id = null;
-        book_id = this.name;
-
-        if ($(this).parent().attr('class') == 'list') {
-            book_num = $(this).parent().next().children().val();
-        } else {
-            book_num = $(this).next().val();
-        }
+    if ($(this).parent().attr('class') == 'list') {
+        book_num = $(this).parent().next().children().val();
+    } else {
+        book_num = $(this).next().val();
+    }
 
 
-        if (book_num == '0') {
-            alert("请填写数量");
-            $(this).prop("checked", false);
-            return;
-        }
+    if (book_num == '0') {
+        alert("请填写数量");
+        $(this).prop("checked", false);
+        return;
+    }
 
-        if (this.checked) {
-        } else {
-            //delete数据库中条目时不在置为0
-            // $(this).parent().next().children().attr('value', 0);
+    if (this.checked) {
+    } else {
+        //delete数据库中条目时不在置为0
+        // $(this).parent().next().children().attr('value', 0);
 
-            add_one_book_to_order = 0;
-        }
+        add_one_book_to_order = 0;
+    }
 
-        fdata.append("book_id", book_id);
-        fdata.append("book_num", book_num);
-        fdata.append("user_id", user_id);
-        fdata.append("add_one_book_to_order", add_one_book_to_order);
+    fdata.append("book_id", book_id);
+    fdata.append("book_num", book_num);
+    fdata.append("user_id", user_id);
+    fdata.append("add_one_book_to_order", add_one_book_to_order);
 
-        xhr.open('POST', operate_temp_table_url, true);
-        xhr.send(fdata);
+    xhr.open('POST', operate_temp_table_url, true);
+    xhr.send(fdata);
 
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4) {
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {
 
-                if (this.responseText == '添加失败') {
-                    save.prop("checked", false);
-                }
-
-                alert(this.responseText);
-
-                checkboxes_changed();
+            if (this.responseText == '添加失败') {
+                save.prop("checked", false);
             }
+
+            alert(this.responseText);
+
+            checkboxes_changed();
         }
+    }
 
-    });
+}
 
-    $("body").on("propertychange input", ".get_book_num_and_update_db_class", function () {
-
-//            alert("i m change");
-//            alert($(this).val());
-        var save_num = $(this);
-
-        var add_one_book_to_order = 1;
-
-        var fdata = new FormData();
-
-        user_id = $('#userid').html();
-
-        // book_id = $(this).parent().prev().children().attr('name');
-
-        // book_id = null;
-        //
-        book_id = this.name;
-
-        book_num = $(this).val();
-
-//            alert(book_id);
-//            alert(book_num);
-//
-//
-        if (book_num == '0') {
-            $(this).attr('value', 1);
-            book_num = 1;
-
-//                add_one_book_to_order = 1;
-//                $(this).parent().prev().children().prop("checked", false);
-//                add_one_book_to_order = 0;
-        } else {
-            if (book_num > '5') {
-                $(this).attr('value', 5);
-                book_num = 5;
-            }
-//                add_one_book_to_order = 1;
-        }
-
-        // alert($(this).parent().prev().children().length);
-        // alert($(this).prev().length);
-
-        if ($(this).prev().length == 0) {
-            $(this).parent().prev().children().prop("checked", true);
-        } else if ($(this).prev().length == 1) {
-            $(this).prev().prop("checked", true);
-        }
-
-//            if ($(this).parent().prev().children().prop("checked")) {
-//            } else {
-//                add_one_book_to_order = 0;
-//            }
-
-        fdata.append("book_id", book_id);
-        fdata.append("book_num", book_num);
-        fdata.append("user_id", user_id);
-        fdata.append("add_one_book_to_order", add_one_book_to_order);
-
-        xhr.open('POST', operate_temp_table_url, true);
-        xhr.send(fdata);
-
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4) {
-
-//                    var $row = $('.row');
-//                    var $div_list = $('#div_list');
-//                    var $checkallbox = $div_list.find("input.checkall_box:checkbox");
-//
-//                    var total_boxes = $row.find(checkboxes_sel).length;
-//                    var checked_boxes = $row.find(checkboxes_sel + ":checked").length;
-//
-//                    alert(total_boxes);
-//
-//                    alert(checked_boxes);
-//
-//                    if (total_boxes == checked_boxes) {
-//                        $checkallbox.prop("checked", true);
-//                    } else {
-//                        $checkallbox.prop("checked", false);
-//                    }
-
-                if (this.responseText == '添加失败') {
-                    if (save_num.prev().length == 0) {
-                        save_num.parent().prev().children().prop("checked", false);
-                    } else if (save_num.prev().length == 1) {
-                        save_num.prev().prop("checked", false);
-                    }
-
-                }
-                alert(this.responseText);
-
-                checkboxes_changed();
-
-            }
-        }
-
-    });
-
-
-    $("input[name=batch_option_radio]").on("click", function () {
-        create_or_add();
-    });
-
-//        if (isIE()) {
-////            $(".get_book_num_and_update_db_class").on("propertychange",function () {
-////            $(".get_book_num_and_update_db_class").attr("onpropertychange", "changeValue()");
-//            $("body").on("propertychange input", ".get_book_num_and_update_db_class", function () { alert("i m change"); });
-////            alert('1');
-//        } else { // 其他浏览器
-////            $(".get_book_num_and_update_db_class").on("change",changeValue());
-////            $(".get_book_num_and_update_db_class").attr("onpropertychange", "changeValue()");
-//            $("body").on("propertychange input", ".get_book_num_and_update_db_class", function () { alert("i m change"); });
-//        }
-
-
-});
-
-
-$('#show').on('mouseleave', function () {
-
-    $(".get_book_info_and_update_db_class").off("click");
-    $("body").off("propertychange input");
-    $("input[name=batch_option_radio]").off("click");
-
-});
+$('#show').delegate('input[name=batch_option_radio]', 'click', create_or_add);
 
 function create_or_add() {
 
@@ -725,6 +600,104 @@ function create_or_add() {
         default:
             break;
     }
+}
+
+$('body').delegate('.get_book_num_and_update_db_class', 'propertychange input', get_book_num_and_update_db_class_propertychange);
+
+function get_book_num_and_update_db_class_propertychange() {
+
+    var save_num = $(this);
+
+    var add_one_book_to_order = 1;
+
+    var fdata = new FormData();
+
+    user_id = $('#userid').html();
+
+    // book_id = $(this).parent().prev().children().attr('name');
+
+    // book_id = null;
+    //
+    book_id = this.name;
+
+    book_num = $(this).val();
+
+//            alert(book_id);
+//            alert(book_num);
+//
+//
+    if (book_num == '0') {
+        $(this).attr('value', 1);
+        book_num = 1;
+
+//                add_one_book_to_order = 1;
+//                $(this).parent().prev().children().prop("checked", false);
+//                add_one_book_to_order = 0;
+    } else {
+        if (book_num > '5') {
+            $(this).attr('value', 5);
+            book_num = 5;
+        }
+//                add_one_book_to_order = 1;
+    }
+
+    // alert($(this).parent().prev().children().length);
+    // alert($(this).prev().length);
+
+    if ($(this).prev().length == 0) {
+        $(this).parent().prev().children().prop("checked", true);
+    } else if ($(this).prev().length == 1) {
+        $(this).prev().prop("checked", true);
+    }
+
+//            if ($(this).parent().prev().children().prop("checked")) {
+//            } else {
+//                add_one_book_to_order = 0;
+//            }
+
+    fdata.append("book_id", book_id);
+    fdata.append("book_num", book_num);
+    fdata.append("user_id", user_id);
+    fdata.append("add_one_book_to_order", add_one_book_to_order);
+
+    xhr.open('POST', operate_temp_table_url, true);
+    xhr.send(fdata);
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {
+
+//                    var $row = $('.row');
+//                    var $div_list = $('#div_list');
+//                    var $checkallbox = $div_list.find("input.checkall_box:checkbox");
+//
+//                    var total_boxes = $row.find(checkboxes_sel).length;
+//                    var checked_boxes = $row.find(checkboxes_sel + ":checked").length;
+//
+//                    alert(total_boxes);
+//
+//                    alert(checked_boxes);
+//
+//                    if (total_boxes == checked_boxes) {
+//                        $checkallbox.prop("checked", true);
+//                    } else {
+//                        $checkallbox.prop("checked", false);
+//                    }
+
+            if (this.responseText == '添加失败') {
+                if (save_num.prev().length == 0) {
+                    save_num.parent().prev().children().prop("checked", false);
+                } else if (save_num.prev().length == 1) {
+                    save_num.prev().prop("checked", false);
+                }
+
+            }
+            alert(this.responseText);
+
+            checkboxes_changed();
+
+        }
+    }
+
 }
 
 // function guan_cang_import_history() {

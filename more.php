@@ -17,29 +17,6 @@ session_start();
 
 $smarty = new GuanCangSmarty();
 include("include/introduce.php");
-$first_search_two_types = true;
-
-$smarty->assign("first_search_two_types", $first_search_two_types);
-
-if (!empty($_SESSION['default_num_two_types'])) {
-    $default_num_two_types = $_SESSION['default_num_two_types'];
-} else {
-    $default_num_two_types = 2;
-}
-
-$date_low = '2015';
-$search_TJ = "cbrq1 >= '$date_low'";
-//$manipulate_session_two_types = $_REQUEST["manipulate_session_two_types"];
-//unset($_REQUEST["manipulate_session_two_types"]);
-//
-////新批次
-//if ($manipulate_session_two_types == "manipulate_session_two_types") {
-//    echo "<script type='text/javascript'>alert('manipulate_session_two_types!');</script>";
-//    $_SESSION['start_purchase_two_types'] = false;
-////    print_r($manipulate_session_two_types);
-//
-//}
-
 
 $uid = $_SESSION['user_id'];
 
@@ -54,6 +31,34 @@ if (empty($_REQUEST['show'])) {
 $page_num = $_REQUEST['page'];
 
 
+//echo "/////////////////////////////////";
+//print_r(empty($page_num));
+
+if (empty($page_num)) {
+    $_SESSION['first_search_two_types'] = true;
+}
+
+$smarty->assign("first_search_two_types", $first_search_two_types);
+
+if (!empty($_SESSION['default_num_two_types'])) {
+    $default_num_two_types = $_SESSION['default_num_two_types'];
+} else {
+    $default_num_two_types = 2;
+}
+
+$date_low = '2015-03';
+$search_TJ = "cbrq1 >= '$date_low'";
+//$manipulate_session_two_types = $_REQUEST["manipulate_session_two_types"];
+//unset($_REQUEST["manipulate_session_two_types"]);
+//
+////新批次
+//if ($manipulate_session_two_types == "manipulate_session_two_types") {
+//    echo "<script type='text/javascript'>alert('manipulate_session_two_types!');</script>";
+//    $_SESSION['start_purchase_two_types'] = false;
+////    print_r($manipulate_session_two_types);
+//
+//}
+
 
 $relpostodist = './';
 $smarty->assign("relpostodist", $relpostodist);
@@ -67,7 +72,7 @@ $tot = '0';
 
 //未处理批次
 
-$sql_batch = ser("bs_temp_dingdan_pici", "*","User_Id = '$uid' AND State = '0'");
+$sql_batch = ser("bs_temp_dingdan_pici", "*", "User_Id = '$uid' AND State = '0'");
 //echo $sql_batch;
 $rs_sql_batch = $ms->sdb($sql_batch);
 
@@ -95,7 +100,7 @@ if ($_REQUEST['type'] == 'recommend') { //推荐
 
 //    $sql = "select count(*) as sum from v_ecs_book where bjtj != ''"; //写推荐条件
 
-    $sql = "SELECT count(*) as sum FROM v_ecs_book where " . $search_TJ ;
+    $sql = "SELECT count(*) as sum FROM v_ecs_book where " . $search_TJ;
 //    $sql = "SELECT count(*) as sum FROM ecs_book WHERE bjtj IS NOT NULL";
 
 //    $recommendbooks_sum = $con_mysql2->sdb($sql);
@@ -149,12 +154,14 @@ if ($_REQUEST['type'] == 'recommend') { //推荐
 //    exit();
 //    while ($data = $recommendbooksObject->fetch_array(MYSQLI_ASSOC)) {
 
-
-    $search_content = "(case
-         when jz1>0 then bid1
-         when (jz1=0 or jz1 is null) and jz3 is not null then bid3
-         when (jz1=0 or jz1 is null) and jz3 is null then bid1
-       end )as book_id ,
+//    (case
+//         when jz1>0 then bid1
+//         when (jz1=0 or jz1 is null) and jz3 is not null then bid3
+//         when (jz1=0 or jz1 is null) and jz3 is null then bid1
+//       end )as book_id ,
+    $search_content = "
+    
+     bid1 as book_id ,
 
      sm,isbn,zzh,kb,
 
@@ -194,13 +201,15 @@ if ($_REQUEST['type'] == 'recommend') { //推荐
 
     $_SESSION['temp_table_two_types'] = $temp_table_bids;
 
+//    print_r($_SESSION['temp_table_two_types']);
 
     $sql_tsfl3 = "SELECT rows, book_id,sm,isbn,zzh,kb,cbrq,dj,jz1,jz3,slt
 FROM (SELECT $search_content,rows,
 ROW_NUMBER() OVER (ORDER BY rows) AS RowNumber
-FROM v_ecs_book) a
-WHERE RowNumber > $page->offset AND RowNumber <= ($page->offset + $page->length)
-ORDER BY a.rows DESC";
+FROM v_ecs_book where " . $search_TJ . ") a
+WHERE RowNumber > $page->offset AND RowNumber <= ($page->offset + $page->length) AND 
+ cbrq > '$date_low'
+ORDER BY a.rows ASC";
 
 //    echo "$sql_tsfl3";
 //
@@ -256,6 +265,9 @@ ORDER BY a.rows DESC";
 //    print_r($recommendbooks);
 //
 //    exit();
+
+//    print_r($recommendbooks);
+
     $smarty->assign("type", "recommend");
     $smarty->assign("page_num", $page_num);
     $smarty->assign("sub_title", "重点推荐");
@@ -264,7 +276,7 @@ ORDER BY a.rows DESC";
 
 } else {//新书
 
-    $sql = "select count(*) as sum from v_ecs_book where " . $search_TJ ;// 做个数量限制
+    $sql = "select count(*) as sum from v_ecs_book where " . $search_TJ;// 做个数量限制
 //    $sql = "select count(*) as sum from ecs_book where cbrq > '2015-01-01'";// 做个数量限制
 
 //    $newbooks_sum = $con_mysql2->sdb($sql);
@@ -298,12 +310,14 @@ ORDER BY a.rows DESC";
 
     $_SESSION['temp_table_two_types'] = $temp_table_bids;
 
-
-    $search_content = "(case
-         when jz1>0 then bid1
-         when (jz1=0 or jz1 is null) and jz3 is not null then bid3
-         when (jz1=0 or jz1 is null) and jz3 is null then bid1
-       end )as book_id ,
+//    (case
+//         when jz1>0 then bid1
+//         when (jz1=0 or jz1 is null) and jz3 is not null then bid3
+//         when (jz1=0 or jz1 is null) and jz3 is null then bid1
+//       end )as book_id ,
+    $search_content = "
+    
+     bid1 as book_id ,
 
      sm,isbn,zzh,kb,
 
@@ -328,9 +342,16 @@ ORDER BY a.rows DESC";
     $sql_tsfl3 = "SELECT rows, book_id,sm,isbn,zzh,kb,cbrq,dj,jz1,jz3,slt
 FROM (SELECT $search_content,rows,
 ROW_NUMBER() OVER (ORDER BY rows) AS RowNumber
-FROM v_ecs_book) a
-WHERE RowNumber > $page->offset AND RowNumber <= ($page->offset + $page->length)
-ORDER BY a.rows DESC";
+FROM v_ecs_book where " . $search_TJ . ") a
+WHERE RowNumber > $page->offset AND RowNumber <= ($page->offset + $page->length) AND 
+ cbrq > '$date_low'
+ORDER BY a.rows ASC";
+//    $sql_tsfl3 = "SELECT rows, book_id,sm,isbn,zzh,kb,cbrq,dj,jz1,jz3,slt
+//FROM (SELECT $search_content,rows,
+//ROW_NUMBER() OVER (ORDER BY rows) AS RowNumber
+//FROM v_ecs_book) a
+//WHERE RowNumber > $page->offset AND RowNumber <= ($page->offset + $page->length)
+//ORDER BY a.rows DESC";
 
     $rs_tsfl3 = $ms->sdb($sql_tsfl3);
 

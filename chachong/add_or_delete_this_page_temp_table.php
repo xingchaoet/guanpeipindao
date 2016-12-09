@@ -64,9 +64,9 @@ if ($option == 'add') {//添加书籍
         //    $sql_add_to_temp_table = "INSERT INTO [dbo]." . $table_name . " (Book_Id,Book_Num, State,User_Id,Pi_Ci_No,Date_Time) VALUES ('$book_id',$book_num, '0','$user_id','$zdd_pc',GETDATE())";
         $sql_update_temp_table = "UPDATE [dbo]." . $table_name . " SET  Book_Num = '$book_num'     WHERE Book_Id = '$book_id' AND Pi_Ci_No = '$dd_pc'";
 
-//        echo $sql_update_temp_table;
-//
-//        echo '<br>';
+//        $open = fopen("D:/phpStudy/WWW/guanpeipindao/db/log.txt", "a");
+//        fwrite($open, $sql_update_temp_table . "\r\n");
+//        fclose($open);
 
         $rs_sql_update_temp_table = $ms->sdb($sql_update_temp_table);
 
@@ -78,6 +78,7 @@ if ($option == 'add') {//添加书籍
 
                 echo "Error in query preparation/execution.<br />";
 //                die(print_r(odbc_errormsg(), true));
+                $error_appear = $error_appear + 1;
 
                 $error = "add $book_id to $dd_pc failed";
 
@@ -92,21 +93,27 @@ if ($option == 'add') {//添加书籍
 
         }
 
-        $error_appear = $error_appear + 1;
 
     }
 
-    if ($error_appear == $total) {
-        echo "添加成功";
-    } else {
-        $count_error_place = count($error_place);
-        $error_msg = "第";
-        for ($j = 0; $j < $count_error_place; $j++) {
-            $error_msg .= $j . ',';
-        }
-        $error_msg .= "本书添加失败";
+    if ($error_appear == 0) {
 
-        echo $error_msg;
+        echo '添加成功';
+
+    } else {
+
+        if ($error_appear == $total) {
+            echo "无一添加成功";
+        } else {
+            $count_error_place = count($error_place);
+            $error_msg = "第";
+            for ($j = 0; $j < $count_error_place; $j++) {
+                $error_msg .= $j . ',';
+            }
+            $error_msg .= "本书添加失败";
+
+            echo $error_msg;
+        }
     }
 
 } else if ($option == 'delete') { //删除书籍
@@ -116,10 +123,11 @@ if ($option == 'add') {//添加书籍
     for ($i = 0; $i < $count_book_id_s; $i++) {
 
         $book_id = $book_id_s[$i];
-//        $book_num = $book_num_s[$i];
         $sql_update_temp_table = "UPDATE [dbo]." . $table_name . " SET  Book_Num = '0'  WHERE Book_Id = '$book_id' AND Pi_Ci_No = '$dd_pc'";
 
-//    $sql = "delete from [dbo]." . $table_name . " WHERE Book_Id = " . $book_id;
+//        $open = fopen("D:/phpStudy/WWW/guanpeipindao/db/log.txt", "a");
+//        fwrite($open, $sql_update_temp_table . "\r\n");
+//        fclose($open);
 
         $rs_sql_update_temp_table = $ms->sdb($sql_update_temp_table);
 
@@ -130,8 +138,11 @@ if ($option == 'add') {//添加书籍
                 $error_place[] = $i;
 
                 echo "Error in query preparation/execution.<br />";
+
 //                die(print_r(odbc_errormsg(), true));
                 $error = "delete $book_id from $dd_pc failed";
+
+                $error_appear = $error_appear + 1;
 
                 $log->debug($error);
 
@@ -144,20 +155,26 @@ if ($option == 'add') {//添加书籍
 
         }
 
-        $error_appear++;
-
     }
 
-    if ($error_appear == $total) {
-        echo "删除成功";
+    if ($error_appear == 0) {
+
+        echo '删除成功';
+
     } else {
-        $count_error_place = count($error_place);
-        $error_msg = "第";
-        for ($j = 0; $j < $count_error_place; $j++) {
-            $error_msg .= $j . ',';
-        }
-        $error_msg .= "本书删除失败";
 
-        echo $error_msg;
+        if ($error_appear == $total) {
+            echo "无一删除成功";
+        } else {
+            $count_error_place = count($error_place);
+            $error_msg = "第";
+            for ($j = 0; $j < $count_error_place; $j++) {
+                $error_msg .= $j . ',';
+            }
+            $error_msg .= "本书删除失败";
+
+            echo $error_msg;
+        }
     }
+
 }

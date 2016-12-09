@@ -25,6 +25,9 @@ $ms = new con_mssql();
 
 $previous_max_sequence_number = 0;
 
+//控制显示
+$_SESSION['first_search_two_types'] = false;
+
 $_SESSION['start_purchase_two_types'] = true;
 
 //写入数据库的数据
@@ -102,6 +105,9 @@ if ($batch_option == "create_new_batch") {
             . " (Book_Id,Book_Num, State,User_Id,Pi_Ci_No,Date_Time,Sequence_Number)
         VALUES ('$bid', '0','0','$user_id','$dd_pc',GETDATE(),'$i')";
 
+//        $open = fopen("D:/phpStudy/WWW/guanpeipindao/db/log.txt", "a");
+//        fwrite($open, $sql_add_to_temp_table . "\r\n");
+//        fclose($open);
 
         $rs_sql_add_to_temp_table = $ms->sdb($sql_add_to_temp_table);
 

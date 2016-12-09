@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-08 16:26:03
+/* Smarty version 3.1.29, created on 2016-12-09 18:29:28
   from "D:\phpStudy\WWW\guanpeipindao\templates\morebooks.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5849191b2f4ff3_59015885',
+  'unifunc' => 'content_584a8788011a19_54302686',
   'file_dependency' => 
   array (
     'bc5e33c064d89c5076c6c4b89ee61990df348e57' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\morebooks.html',
-      1 => 1481185554,
+      1 => 1481278672,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_5849191b2f4ff3_59015885 ($_smarty_tpl) {
+function content_584a8788011a19_54302686 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!DOCTYPE html>
@@ -268,6 +268,9 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
 ?>
 
 <div class="site">
+    <a id="default_num_two_types" style="display: none "><?php if ($_SESSION['default_num_two_types']) {?> <?php echo $_SESSION['default_num_two_types'];?>
+ <?php } else { ?> 2
+        <?php }?></a>
     <div class="row ">
 
         <div class="col-sm-3">
@@ -429,28 +432,27 @@ dist/picture/pic_list/pic_enable.gif">-->
 
                 <?php }?>
 
-
             </div>
 
             <div id="down" class="down">
                 <div id="div_list" name="div_list">
 
                     <!--<div>-->
-                    <!--<input type="checkbox" checked="checked" id="checkall_box" onclick='checkallbox_changed();'-->
+                    <!--<input type="checkbox"  id="checkall_box" onclick='checkallbox_changed();'-->
                     <!--name="all" class="checkall_box">-->
                     <!--<label>全选</label>-->
                     <!--</div>-->
 
-                    <?php if ($_smarty_tpl->tpl_vars['first_search_two_types']->value) {?>
+                    <?php if ($_SESSION['first_search_two_types']) {?>
                     <div class='hide_before_purchase'>
-                        <input type="checkbox" checked="checked" id="checkall_box" onclick='checkallbox_changed();'
+                        <input type="checkbox"  id="checkall_box" onclick='checkallbox_changed();'
                                name="all" class="checkall_box">
                         <label>全选</label>
                     </div>
                     <?php } elseif ($_SESSION['start_purchase_two_types']) {?>
 
                     <div class=''>
-                        <input type="checkbox" checked="checked" id="checkall_box" onclick='checkallbox_changed();'
+                        <input type="checkbox"  id="checkall_box" onclick='checkallbox_changed();'
                                name="all" class="checkall_box">
                         <label>全选</label>
 
@@ -458,12 +460,11 @@ dist/picture/pic_list/pic_enable.gif">-->
                     <?php } else { ?>
 
                     <div class='hide_before_purchase_session'>
-                        <input type="checkbox" checked="checked" id="checkall_box" onclick='checkallbox_changed();'
+                        <input type="checkbox"  id="checkall_box" onclick='checkallbox_changed();'
                                name="all" class="checkall_box">
                         <label>全选</label>
                     </div>
                     <?php }?>
-
 
                     <div class="row">
                         <?php
@@ -484,9 +485,6 @@ $__foreach_val_1_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                                     <td class="left_td">
                                         <!--<a href="detail.php?book_id=<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "><img-->
-                                        <!--src="http://www.ecsponline.com/<?php echo trim($_smarty_tpl->tpl_vars['val']->value['slt']);?>
-"-->
-                                        <!--class="fen_mian" alt=""></a>-->
 
                                         <?php if (trim($_smarty_tpl->tpl_vars['val']->value['slt'])) {?>
                                         <a href="detail.php?book_id=<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
@@ -507,56 +505,55 @@ $__foreach_val_1_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                                     </td>
                                     <td class="right_td">
 
-                                        <?php if ($_smarty_tpl->tpl_vars['first_search_two_types']->value) {?>
+                                        <?php if ($_SESSION['first_search_two_types']) {?>
 
-                                        <input type="checkbox" checked="checked"
+                                        <input type="checkbox" 
                                                name="<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "
                                                class="checkall get_book_info_and_update_db_class hide_before_purchase"/>
-                                        <p>数量：
+                                        <p class="hide_before_purchase">数量：
                                             <input type="text" name="<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "
                                                    id="sum_<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "
                                                    class="sum get_book_num_and_update_db_class hide_before_purchase"
                                                    onmouseover='num_limit();'
-                                                   value="<?php echo $_smarty_tpl->tpl_vars['default_num_two_types']->value;?>
+                                                   value="<?php echo $_SESSION['default_num_two_types'];?>
 "/>
                                         </p>
 
                                         <?php } elseif ($_SESSION['start_purchase_two_types']) {?>
 
-
-                                        <input type="checkbox" checked="checked"
+                                        <input type="checkbox" 
                                                name="<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "
                                                class="checkall get_book_info_and_update_db_class"/>
-                                        <p>数量：
+                                        <p >数量：
                                             <input type="text" name="<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "
                                                    id="sum_<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "
                                                    class="get_book_num_and_update_db_class"
                                                    onmouseover='num_limit();'
-                                                   value="<?php echo $_smarty_tpl->tpl_vars['default_num_two_types']->value;?>
+                                                   value="<?php echo $_SESSION['default_num_two_types'];?>
 "/>
                                         </p>
 
                                         <?php } else { ?>
 
 
-                                        <input type="checkbox" checked="checked"
+                                        <input type="checkbox" 
                                                name="<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "
                                                class="checkall get_book_info_and_update_db_class hide_before_purchase_session"/>
-                                        <p>数量：
+                                        <p class="hide_before_purchase">数量：
                                             <input type="text" name="<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "
                                                    id="sum_<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
 "
                                                    class="get_book_num_and_update_db_class hide_before_purchase_session"
                                                    onmouseover='num_limit();'
-                                                   value="<?php echo $_smarty_tpl->tpl_vars['default_num_two_types']->value;?>
+                                                   value="<?php echo $_SESSION['default_num_two_types'];?>
 "/>
                                         </p>
 

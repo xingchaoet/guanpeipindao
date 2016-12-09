@@ -240,6 +240,8 @@
 
 {include file="header.html"}
 <div class="site">
+    <a id="default_num_two_types" style="display: none ">{if $smarty.session.default_num_two_types} {$smarty.session.default_num_two_types} {else} 2
+        {/if}</a>
     <div class="row ">
 
         <div class="col-sm-3">
@@ -371,28 +373,27 @@
 
                 {/if}
 
-
             </div>
 
             <div id="down" class="down">
                 <div id="div_list" name="div_list">
 
                     <!--<div>-->
-                    <!--<input type="checkbox" checked="checked" id="checkall_box" onclick='checkallbox_changed();'-->
+                    <!--<input type="checkbox"  id="checkall_box" onclick='checkallbox_changed();'-->
                     <!--name="all" class="checkall_box">-->
                     <!--<label>全选</label>-->
                     <!--</div>-->
 
-                    {if $first_search_two_types}
+                    {if  $smarty.session.first_search_two_types}
                     <div class='hide_before_purchase'>
-                        <input type="checkbox" checked="checked" id="checkall_box" onclick='checkallbox_changed();'
+                        <input type="checkbox"  id="checkall_box" onclick='checkallbox_changed();'
                                name="all" class="checkall_box">
                         <label>全选</label>
                     </div>
                     {elseif $smarty.session.start_purchase_two_types}
 
                     <div class=''>
-                        <input type="checkbox" checked="checked" id="checkall_box" onclick='checkallbox_changed();'
+                        <input type="checkbox"  id="checkall_box" onclick='checkallbox_changed();'
                                name="all" class="checkall_box">
                         <label>全选</label>
 
@@ -400,12 +401,11 @@
                     {else}
 
                     <div class='hide_before_purchase_session'>
-                        <input type="checkbox" checked="checked" id="checkall_box" onclick='checkallbox_changed();'
+                        <input type="checkbox"  id="checkall_box" onclick='checkallbox_changed();'
                                name="all" class="checkall_box">
                         <label>全选</label>
                     </div>
                     {/if}
-
 
                     <div class="row">
                         {foreach $books as $val }
@@ -414,8 +414,6 @@
                                 <tr>
                                     <td class="left_td">
                                         <!--<a href="detail.php?book_id={$val['book_id']}"><img-->
-                                        <!--src="http://www.ecsponline.com/{trim($val['slt'])}"-->
-                                        <!--class="fen_mian" alt=""></a>-->
 
                                         {if trim($val['slt'])}
                                         <a href="detail.php?book_id={$val['book_id']}"><img
@@ -433,45 +431,44 @@
                                     </td>
                                     <td class="right_td">
 
-                                        {if $first_search_two_types}
+                                        {if $smarty.session.first_search_two_types}
 
-                                        <input type="checkbox" checked="checked"
+                                        <input type="checkbox" 
                                                name="{$val['book_id']}"
                                                class="checkall get_book_info_and_update_db_class hide_before_purchase"/>
-                                        <p>数量：
+                                        <p class="hide_before_purchase">数量：
                                             <input type="text" name="{$val['book_id']}"
                                                    id="sum_{$val['book_id']}"
                                                    class="sum get_book_num_and_update_db_class hide_before_purchase"
                                                    onmouseover='num_limit();'
-                                                   value="{$default_num_two_types}"/>
+                                                   value="{$smarty.session.default_num_two_types}"/>
                                         </p>
 
                                         {elseif $smarty.session.start_purchase_two_types}
 
-
-                                        <input type="checkbox" checked="checked"
+                                        <input type="checkbox" 
                                                name="{$val['book_id']}"
                                                class="checkall get_book_info_and_update_db_class"/>
-                                        <p>数量：
+                                        <p >数量：
                                             <input type="text" name="{$val['book_id']}"
                                                    id="sum_{$val['book_id']}"
                                                    class="get_book_num_and_update_db_class"
                                                    onmouseover='num_limit();'
-                                                   value="{$default_num_two_types}"/>
+                                                   value="{$smarty.session.default_num_two_types}"/>
                                         </p>
 
                                         {else}
 
 
-                                        <input type="checkbox" checked="checked"
+                                        <input type="checkbox" 
                                                name="{$val['book_id']}"
                                                class="checkall get_book_info_and_update_db_class hide_before_purchase_session"/>
-                                        <p>数量：
+                                        <p class="hide_before_purchase">数量：
                                             <input type="text" name="{$val['book_id']}"
                                                    id="sum_{$val['book_id']}"
                                                    class="get_book_num_and_update_db_class hide_before_purchase_session"
                                                    onmouseover='num_limit();'
-                                                   value="{$default_num_two_types}"/>
+                                                   value="{$smarty.session.default_num_two_types}"/>
                                         </p>
 
                                         {/if}

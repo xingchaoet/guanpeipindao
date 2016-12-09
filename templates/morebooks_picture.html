@@ -1,9 +1,28 @@
 <div id="div_list" name="div_list">
-    <div>
-        <input type="checkbox" checked="checked" id="checkall_box" onclick='checkallbox_changed();'
+
+    {if $smarty.session.first_search_two_types}
+    <div class='hide_before_purchase'>
+        <input type="checkbox"  id="checkall_box" onclick='checkallbox_changed();'
                name="all" class="checkall_box">
         <label>全选</label>
     </div>
+    {elseif $smarty.session.start_purchase_two_types}
+
+    <div class=''>
+        <input type="checkbox"  id="checkall_box" onclick='checkallbox_changed();'
+               name="all" class="checkall_box">
+        <label>全选</label>
+
+    </div>
+    {else}
+
+    <div class='hide_before_purchase_session'>
+        <input type="checkbox"  id="checkall_box" onclick='checkallbox_changed();'
+               name="all" class="checkall_box">
+        <label>全选</label>
+    </div>
+    {/if}
+
     <div class="row">
         {foreach $books as $val }
         <div class="col-sm-4">
@@ -11,9 +30,9 @@
                 <tr>
                     <td class="left_td">
                         <!--<a href="detail.php?book_id={$val['book_id']}"><img-->
-                                <!--src="http://www.ecsponline.com/{trim($val['slt'])}"-->
-                                <!--class="fen_mian" alt=""></a>-->
-<!---->
+                        <!--src="http://www.ecsponline.com/{trim($val['slt'])}"-->
+                        <!--class="fen_mian" alt=""></a>-->
+                        <!---->
                         {if trim($val['slt'])}
                         <a href="detail.php?book_id={$val['book_id']}"><img
                                 src="http://www.ecsponline.com/{trim($val['slt'])}"
@@ -28,10 +47,54 @@
 
                     </td>
                     <td class="right_td">
-                        <input type="checkbox" checked="checked" name="{$val['book_id']}" class="checkall"/>
-                        <p>数量：
-                            <input type="text" id="sum_{$val['book_id']}" class="sum" value="2"/>
+
+                        <!--<input type="checkbox" checked="checked" name="{$val['book_id']}" class="checkall"/>-->
+                        <!--<p>数量：-->
+                        <!--<input type="text" id="sum_{$val['book_id']}" class="sum" value="2"/>-->
+                        <!--</p>-->
+
+                        {if $smarty.session.first_search_two_types}
+
+                        <input type="checkbox"
+                               name="{$val['book_id']}"
+                               class="checkall get_book_info_and_update_db_class hide_before_purchase"/>
+                        <p class="hide_before_purchase">数量：
+                            <input type="text" name="{$val['book_id']}"
+                                   id="sum_{$val['book_id']}"
+                                   class="sum get_book_num_and_update_db_class hide_before_purchase"
+                                   onmouseover='num_limit();'
+                                   value="{$smarty.session.default_num_two_types}"/>
                         </p>
+
+                        {elseif $smarty.session.start_purchase_two_types}
+
+                        <input type="checkbox"
+                               name="{$val['book_id']}"
+                               class="checkall get_book_info_and_update_db_class"/>
+                        <p class="">数量：
+                            <input type="text" name="{$val['book_id']}"
+                                   id="sum_{$val['book_id']}"
+                                   class="sum get_book_num_and_update_db_class"
+                                   onmouseover='num_limit();'
+                                   value="{$smarty.session.default_num_two_types}"/>
+                        </p>
+
+                        {else}
+
+
+                        <input type="checkbox"
+                               name="{$val['book_id']}"
+                               class="checkall get_book_info_and_update_db_class hide_before_purchase_session"/>
+                        <p class="hide_before_purchase">数量：
+                            <input type="text" name="{$val['book_id']}"
+                                   id="sum_{$val['book_id']}"
+                                   class="get_book_num_and_update_db_class hide_before_purchase_session"
+                                   onmouseover='num_limit();'
+                                   value="{$smarty.session.default_num_two_types}"/>
+                        </p>
+
+                        {/if}
+
                         <div class="tooltip-demo">
                             <p data-toggle="tooltip" title="{$val['sm']}">书名：
                                 {$val['sm']|truncate:5:"...":true}</p>
@@ -54,10 +117,10 @@
     </div>
 
     <!--<div class="add_and_check">-->
-        <!--<a id="buy" class="btn btn-default btn-xs" onclick="generate_order();">加入订单</a>-->
-        <!--{if $smarty.session.user_type eq library_user}-->
-        <!--<a href='zhengdingdan/orders_view.php' class="btn  btn-default btn-xs">查看订单</a>-->
-        <!--{/if}-->
+    <!--<a id="buy" class="btn btn-default btn-xs" onclick="generate_order();">加入订单</a>-->
+    <!--{if $smarty.session.user_type eq library_user}-->
+    <!--<a href='zhengdingdan/orders_view.php' class="btn  btn-default btn-xs">查看订单</a>-->
+    <!--{/if}-->
     <!--</div>-->
 
     {$page->show()}
