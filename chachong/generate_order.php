@@ -128,8 +128,9 @@ if (!empty($book_id_s)) {
 
     $gc_pc_time_prefix = date('YmdHis');
 
+    $count_book_id_s = count($book_id_s);
 
-    for ($i = 0; $i < count($book_id_s); $i++) {
+    for ($i = 0; $i < $count_book_id_s; $i++) {
         $id = $book_id_s[$i];
 
 
@@ -333,7 +334,9 @@ if (!empty($book_id_s)) {
         }
 
 //添加到明细表
-        for ($i = 0; $i < count($yudingdan_ids); $i++) {
+
+        $count_yudingdan_ids = count($yudingdan_ids);
+        for ($i = 0; $i < $count_yudingdan_ids; $i++) {
 
             $isbn = '';
             $sm = '';
@@ -469,7 +472,8 @@ if (!empty($book_id_s)) {
 
         if (!empty($ydd_isbn_list)) {
 
-            for ($i = 0; $i < count($ydd_isbn_list); $i++) {
+            $count_ydd_isbn_list = count($ydd_isbn_list);
+            for ($i = 0; $i < $count_ydd_isbn_list; $i++) {
 
                 $ydd_isbn = $ydd_isbn_list[$i];
 
@@ -610,14 +614,15 @@ if (!empty($book_id_s)) {
             }
 
 
-
             //    删除预订单明细表的内容
-            for ($i = 0; $i < count($transfer_isbn); $i++) {
+            $count_transfer_isbn = count($transfer_isbn);
+
+            for ($i = 0; $i < $count_transfer_isbn; $i++) {
 
 //               删除时出现字段类型错误
 //                $sql = "delete from bs_yudingdan_mx WHERE isbn = " . $transfer_isbn[$i];
 
-                $sql = "delete from bs_yudingdan_mx WHERE isbn =  '$transfer_isbn[$i]' " ;
+                $sql = "delete from bs_yudingdan_mx WHERE isbn =  '$transfer_isbn[$i]' ";
 
                 print_r($sql);
 
@@ -705,7 +710,9 @@ if (!empty($book_id_s)) {
 
         //    写入征订单明细表
 
-        for ($i = 0; $i < count($zhengdingdan_ids); $i++) {
+        $count_zhengdingdan_ids = count($zhengdingdan_ids);
+
+        for ($i = 0; $i < $count_zhengdingdan_ids; $i++) {
 
             $isbn = '';
             $sm = '';
@@ -805,7 +812,6 @@ if (!empty($book_id_s)) {
         }
 
     }
-
 
 
 //    将已生成订单的状态更改为1

@@ -22,7 +22,6 @@ $smarty->MySmarty();
 $from_url = $_REQUEST["from_url"];
 
 
-
 if ($from_url == 'a_new') {
     $batch_id = $_REQUEST["batch_id"];
     $_SESSION['batch_id'] = $batch_id;
@@ -34,7 +33,7 @@ if ($from_url == 'a_new') {
 
 //echo "$$$$$$$$$$$$$$$$$$$$$$";
 echo "<div style='margin-top: 4px;'>";
-echo "批次号：".($_SESSION['dd_pc']);
+echo "批次号：" . ($_SESSION['dd_pc']);
 //echo "$$$$$$$$$$$$$$$$$$$$$$";
 echo "</div>";
 
@@ -206,8 +205,9 @@ ORDER BY a.Sequence_Number ASC ";
     }
 
 //    print_r($temp_batch_book_data3_array);
+    $count_temp_batch_book_data_array = count($temp_batch_book_data_array);
 
-    for ($i = 0; $i <= count($temp_batch_book_data_array); $i++) {
+    for ($i = 0; $i <= $count_temp_batch_book_data_array; $i++) {
         $temp_book_id = $temp_batch_book_data_array[$i]['Book_Id'];
         $temp_book_num = $temp_batch_book_data_array[$i]['Book_Num'];
         $temp_sequence_number = $temp_batch_book_data_array[$i]['Sequence_Number'];

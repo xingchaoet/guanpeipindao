@@ -14,9 +14,15 @@
     <link rel="stylesheet" href="../dist/css/style.css">
     <!--<link rel="stylesheet" href="../dist/css/normalize.css">-->
 
+    <?php $style_css = '../dist/css/style.css' ?>
+    <link rel="stylesheet" href="<?php echo $style_css .'?v='. filemtime( $style_css ); ?>">
 
-    <link rel="stylesheet" href="../dist/css/header.css">
-    <link rel="stylesheet" href="../dist/css/introduce.css">
+    <?php $header_css = '../dist/css/header.css' ?>
+    <link rel="stylesheet" href="<?php echo $header_css .'?v='. filemtime( $header_css ); ?>">
+
+    <?php $introduce_css = '../dist/css/introduce.css' ?>
+    <link rel="stylesheet" href="<?php echo $introduce_css .'?v='. filemtime( $introduce_css ); ?>">
+
 
     <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300,300italic' rel='stylesheet'-->
     <!--type='text/css'>-->

@@ -136,7 +136,9 @@ while ($tsfl_data3 = odbc_fetch_array($rs_tsfl30)) {
     $tsfl_data3_array[] = $tsfl_data3;
 };
 
-for ($i = 0 ;$i < count($tsfl_data3_array); $i ++) {
+$count_tsfl_data3_array = count($tsfl_data3_array);
+
+for ($i = 0 ;$i < $count_tsfl_data3_array; $i ++) {
 //    删去不规范的书号
     if (strlen(trim( $tsfl_data3_array[$i]['isbn'])) < 10) {
         array_splice($tsfl_data3_array, $i, 1);

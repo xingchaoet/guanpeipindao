@@ -6,8 +6,12 @@
 
     <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../dist/css/left_nav.css">
-    <link rel="stylesheet" href="../dist/css/header.css">
-    <link rel="stylesheet" href="../dist/css/introduce.css">
+
+    <?php $header_css = '../dist/css/header.css' ?>
+    <link rel="stylesheet" href="<?php echo $header_css .'?v='. filemtime( $header_css ); ?>">
+
+    <?php $introduce_css = '../dist/css/introduce.css' ?>
+    <link rel="stylesheet" href="<?php echo $introduce_css .'?v='. filemtime( $introduce_css ); ?>">
 
     <!--<script src="../dist/js/jquery.min.js"></script>-->
     <script src="../dist/js/jquery.min.js"></script>

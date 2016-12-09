@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-06 11:36:06
+/* Smarty version 3.1.29, created on 2016-12-08 15:46:30
   from "D:\phpStudy\WWW\guanpeipindao\templates\index.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58463226bafd93_33551243',
+  'unifunc' => 'content_58490fd6d8c4d8_14874195',
   'file_dependency' => 
   array (
     '5729e012a4e4eb4aebed0ebc971874f86c1f5785' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\index.html',
-      1 => 1474598280,
+      1 => 1481094261,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:header.html' => 1,
   ),
 ),false)) {
-function content_58463226bafd93_33551243 ($_smarty_tpl) {
+function content_58490fd6d8c4d8_14874195 ($_smarty_tpl) {
 ?>
 <!doctype html>
 <html>
@@ -29,8 +29,8 @@ function content_58463226bafd93_33551243 ($_smarty_tpl) {
     <title>首页</title>
     <link rel="stylesheet" href="dist/css/bootstrap.min.css">
 
-
-    <link rel="stylesheet" href="dist/css/header.css">
+    <?php $header_css = 'dist/css/header.css' ?>
+    <link rel="stylesheet" href="<?php echo $header_css .'?v='. filemtime( $header_css ); ?>">
 
 </head>
 <body>
@@ -47,9 +47,9 @@ function content_58463226bafd93_33551243 ($_smarty_tpl) {
 <?php echo '<script'; ?>
  src="dist/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
-<?php echo '<script'; ?>
+<!--<?php echo '<script'; ?>
  src="dist/js/holder.min.js"><?php echo '</script'; ?>
->
+>-->
 <?php echo '<script'; ?>
  src="dist/js/application.js"><?php echo '</script'; ?>
 >

@@ -123,9 +123,9 @@ while ($data = odbc_fetch_array($rs)) {
 }
 
 
+$count_zdd_order_detail = count($zdd_order_detail);
 
-
-for($i = 0;$i < count($zdd_order_detail); $i ++){
+for($i = 0;$i < $count_zdd_order_detail; $i ++){
 
     $zdd_order_detail[$i]['book_name'] = iconv('GBK', 'UTF-8', $zdd_order_detail[$i]['book_name']);
 

@@ -55,7 +55,9 @@ $book_num_s = explode(",", $book_nums);
 
 if ($option == 'add') {//添加书籍
 
-    for ($i = 0; $i < count($book_id_s); $i++) {
+    $count_book_id_s = count($book_id_s);
+
+    for ($i = 0; $i < $count_book_id_s; $i++) {
 
         $book_id = $book_id_s[$i];
         $book_num = $book_num_s[$i];
@@ -97,8 +99,9 @@ if ($option == 'add') {//添加书籍
     if ($error_appear == $total) {
         echo "添加成功";
     } else {
+        $count_error_place = count($error_place);
         $error_msg = "第";
-        for ($j = 0; $j < count($error_place); $j++) {
+        for ($j = 0; $j < $count_error_place; $j++) {
             $error_msg .= $j . ',';
         }
         $error_msg .= "本书添加失败";
@@ -108,8 +111,9 @@ if ($option == 'add') {//添加书籍
 
 } else if ($option == 'delete') { //删除书籍
 
+    $count_book_id_s = count($book_id_s);
 
-    for ($i = 0; $i < count($book_id_s); $i++) {
+    for ($i = 0; $i < $count_book_id_s; $i++) {
 
         $book_id = $book_id_s[$i];
 //        $book_num = $book_num_s[$i];
@@ -147,8 +151,9 @@ if ($option == 'add') {//添加书籍
     if ($error_appear == $total) {
         echo "删除成功";
     } else {
+        $count_error_place = count($error_place);
         $error_msg = "第";
-        for ($j = 0; $j < count($error_place); $j++) {
+        for ($j = 0; $j < $count_error_place; $j++) {
             $error_msg .= $j . ',';
         }
         $error_msg .= "本书删除失败";

@@ -21,7 +21,6 @@ $carousel = array();
 
 $sql_carousel = "SELECT TOP 3 ggPhoto FROM bs_home_gg ORDER BY uptime DESC ";
 
-//echo  $sql_carousel;
 $rs_carousel = $ms->sdb($sql_carousel);
 //$carousel_data = odbc_fetch_array($rs_carousel);
 
@@ -30,9 +29,10 @@ while ($carousel_data = odbc_fetch_array($rs_carousel)) {
 };
 
 //$carousel_sum = array();
-//$dir = ;
-for ($i = 0; $i < count($carousel); $i++) {
-//    print_r($carousel[$i]);
+
+$count_carousel =count($carousel);
+
+for ($i = 0; $i < $count_carousel; $i++) {
 
 //    $carousel_sum[] = gg_ . "$i" . jpg;
 
@@ -55,5 +55,3 @@ for ($i = 0; $i < count($carousel); $i++) {
 }
 header("Content-Type:text/html;charset=utf-8");
 $smarty->display("create_gg_success_page.html");
-
-//exit();

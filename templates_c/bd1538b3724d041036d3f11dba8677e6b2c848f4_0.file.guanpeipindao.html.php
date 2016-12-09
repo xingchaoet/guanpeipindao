@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-06 11:36:18
+/* Smarty version 3.1.29, created on 2016-12-08 09:00:32
   from "D:\phpStudy\WWW\guanpeipindao\templates\guanpeipindao.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58463232cfc0a3_64417810',
+  'unifunc' => 'content_5848b0b0338988_09039092',
   'file_dependency' => 
   array (
     'bd1538b3724d041036d3f11dba8677e6b2c848f4' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\guanpeipindao.html',
-      1 => 1480659582,
+      1 => 1481090505,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_58463232cfc0a3_64417810 ($_smarty_tpl) {
+function content_5848b0b0338988_09039092 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!doctype html>
@@ -33,8 +33,12 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
     <link rel="stylesheet" href="dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="dist/css/left_nav.css">
 
-    <link rel="stylesheet" href="dist/css/header.css">
-    <link rel="stylesheet" href="dist/css/introduce.css">
+    <?php $header_css = 'dist/css/header.css' ?>
+    <link rel="stylesheet" href="<?php echo $header_css .'?v='. filemtime( $header_css ); ?>">
+
+    <?php $introduce_css = 'dist/css/introduce.css' ?>
+    <link rel="stylesheet" href="<?php echo $introduce_css .'?v='. filemtime( $introduce_css ); ?>">
+
     <!--<link rel="stylesheet" href="dist/css/carousel.css">-->
 
     <style>
@@ -504,9 +508,9 @@ dist/picture/guanpeipindao/more.png" alt=""></a></div>
 <?php echo '<script'; ?>
  src="dist/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
-<?php echo '<script'; ?>
+<!--<?php echo '<script'; ?>
  src="dist/js/holder.min.js"><?php echo '</script'; ?>
->
+>-->
 <?php echo '<script'; ?>
  src="dist/js/application.js"><?php echo '</script'; ?>
 >

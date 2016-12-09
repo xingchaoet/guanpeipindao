@@ -6,6 +6,7 @@
  * Time: 22:25
  */
 include ("../include/GuanCangSmarty.php");
+include ("../config.php");
 
 //include ("db/db.php");
 

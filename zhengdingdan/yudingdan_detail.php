@@ -125,8 +125,8 @@ while ($data = odbc_fetch_array($rs)) {
     $ydd_order_detail[] = $data;
 }
 
-
-for ($i = 0; $i < count($ydd_order_detail); $i++) {
+$count_ydd_order_detail = count($ydd_order_detail);
+for ($i = 0; $i < $count_ydd_order_detail; $i++) {
 
     $ydd_order_detail[$i]['book_name'] = iconv('GBK', 'UTF-8', $ydd_order_detail[$i]['book_name']);
 

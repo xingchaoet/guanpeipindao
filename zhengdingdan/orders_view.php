@@ -111,7 +111,9 @@ if ($rows) {
         $zdd_order_list[] = $data;
     }
 
-    for ($i = 0; $i < count($zdd_order_list); $i++) {
+    $count_zdd_order_list = count($zdd_order_list);
+
+    for ($i = 0; $i < $count_zdd_order_list; $i++) {
 
         $zdd_pc_id = $zdd_order_list[$i]['zdd_pc_id'];
 
@@ -141,7 +143,9 @@ while ($data = odbc_fetch_array($rs)) {
     $ydd_order_list[] = $data;
 }
 
-for ($i = 0; $i < count($ydd_order_list); $i++) {
+$count_ydd_order_list = count($ydd_order_list);
+
+for ($i = 0; $i < $count_ydd_order_list; $i++) {
     $ydd_pc_id = $ydd_order_list[$i]['ydd_pc_id'];
 
     $sql_info = ser(bs_yudingdan_mx, "count(*) as sum", "sheet_no='$ydd_pc_id' ");

@@ -28,7 +28,8 @@ while ($gpdt_data = odbc_fetch_array($rs_gpdt)) {
     $gpdt[] = $gpdt_data;
 };
 
-for ($i = 0;$i < count($gpdt) ; $i ++) {
+$count_gpdt = count($gpdt);
+for ($i = 0;$i < $count_gpdt; $i ++) {
     $gpdt[$i]['Title'] = iconv( 'gbk','utf-8',$gpdt[$i]['Title']);
     $gpdt[$i]['NewsType'] = iconv( 'gbk','utf-8',$gpdt[$i]['NewsType']);
 

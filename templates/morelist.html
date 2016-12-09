@@ -8,7 +8,9 @@
 
     <link rel="stylesheet" href="dist/css/left_nav.css">
 
-    <link rel="stylesheet" href="dist/css/header.css">
+    <?php $header_css = 'dist/css/header.css' ?>
+    <link rel="stylesheet" href="<?php echo $header_css .'?v='. filemtime( $header_css ); ?>">
+
     <style>
         body {
             padding-top: 10px;
@@ -208,7 +210,7 @@
 </body>
 <script src="dist/js/jquery.min.js"></script>
 <script src="dist/js/bootstrap.min.js"></script>
-<script src="dist/js/holder.min.js"></script>
+<!--<script src="dist/js/holder.min.js"></script>-->
 <script src="dist/js/application.js"></script>
 
 

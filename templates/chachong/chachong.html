@@ -6,9 +6,14 @@
     <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../dist/css/left_nav.css">
 
-    <link rel="stylesheet" href="../dist/css/header.css">
-    <link rel="stylesheet" href="../dist/css/introduce.css">
-    <link rel="stylesheet" href="../dist/css/progressbar.css">
+    <?php $header_css = '../dist/css/header.css' ?>
+    <link rel="stylesheet" href="<?php echo $header_css .'?v='. filemtime( $header_css ); ?>">
+
+    <?php $introduce_css = '../dist/css/introduce.css' ?>
+    <link rel="stylesheet" href="<?php echo $introduce_css .'?v='. filemtime( $introduce_css ); ?>">
+
+    <?php $progressbar_css = '../dist/css/progressbar.css' ?>
+    <link rel="stylesheet" href="<?php echo $progressbar_css .'?v='. filemtime( $progressbar_css ); ?>">
 
     <script src="../dist/js/jquery.min.js"></script>
     <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
@@ -612,23 +617,20 @@
     </div>
     <a id="default_num" style="display: none ">{if $smarty.session.default_num} {$smarty.session.default_num} {else} 2
         {/if}</a>
-    <!--<a id="waiting" style="display: none ">{$relpostodist}dist/picture/chachong/waiting.gif</a>-->
     <!--<a id="userid" style="display: none ">{$smarty.session.user_id}</a>-->
     <!--<a id="usertype" style=" display: none ">{$smarty.session.user_type}</a>-->
 </div>
 
 </body>
 <script src="../dist/js/bootstrap.min.js"></script>
-<script src="../dist/js/holder.min.js"></script>
+<!--<script src="../dist/js/holder.min.js"></script>-->
 <script src="../dist/js/application.js"></script>
-<!--<script src="../dist/js/jquery.icheck.min.js"></script>-->
-
 <script src="../dist/js/zzsc.js"></script>
 <script src="../dist/js/left_nav.js"></script>
-<script src="../dist/js/chachong.js"></script>
-<script>
 
-//    var waiting_gif = $('#waiting').html();
+<?php $chachong_js = '../dist/js/chachong.js' ;?>
+<script src='../dist/js/chachong.js?v=<?php echo filemtime( $chachong_js );?>'></script>
+<script>
 
     var waiting =  "<div style='height: auto;width:inherit'><div style='margin :0px auto;margin-top: 20px;  width:320px'><a><img src="+"'{$relpostodist}dist/picture/chachong/waiting.gif'"+" ></a></div></div>";
 

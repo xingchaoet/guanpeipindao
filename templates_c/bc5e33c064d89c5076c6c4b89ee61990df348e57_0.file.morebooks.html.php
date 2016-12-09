@@ -1,3 +1,29 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-12-08 16:26:03
+  from "D:\phpStudy\WWW\guanpeipindao\templates\morebooks.html" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_5849191b2f4ff3_59015885',
+  'file_dependency' => 
+  array (
+    'bc5e33c064d89c5076c6c4b89ee61990df348e57' => 
+    array (
+      0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\morebooks.html',
+      1 => 1481185554,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:header.html' => 1,
+    'file:left_nav.html' => 1,
+  ),
+),false)) {
+function content_5849191b2f4ff3_59015885 ($_smarty_tpl) {
+if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -238,16 +264,21 @@
 </head>
 <body>
 
-{include file="header.html"}
+<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 <div class="site">
     <div class="row ">
 
         <div class="col-sm-3">
             <!--<img src="../dist/js/holder.js/263x800" alt="">-->
-            {include file="left_nav.html"}
+            <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:left_nav.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 
             <div class="introduce">
-                {$introduce}
+                <?php echo $_smarty_tpl->tpl_vars['introduce']->value;?>
+
             </div>
 
         </div>
@@ -258,10 +289,12 @@
 
                     <div class="batch_title">
             <span>
-            你还有{$need_op_batch_num}条未处理批次
+            你还有<?php echo $_smarty_tpl->tpl_vars['need_op_batch_num']->value;?>
+条未处理批次
             </span>
                         <span class="batch_icon">
-            <img id="toggle_table" src="{$relpostodist}dist/picture/chachong/hide_table.png">
+            <img id="toggle_table" src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/chachong/hide_table.png">
             </span>
                     </div>
 
@@ -284,14 +317,27 @@
                             </td>
 
                         </tr>
-                        {foreach $need_op_batch_detail as $val }
+                        <?php
+$_from = $_smarty_tpl->tpl_vars['need_op_batch_detail']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_val_0_saved_item = isset($_smarty_tpl->tpl_vars['val']) ? $_smarty_tpl->tpl_vars['val'] : false;
+$_smarty_tpl->tpl_vars['val'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['val']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['val']->value) {
+$_smarty_tpl->tpl_vars['val']->_loop = true;
+$__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
+?>
                         <tr>
                             <td class="batch_ltd">
-                                <a class="batch_item">{$val['PiCi_Num']}</a>
+                                <a class="batch_item"><?php echo $_smarty_tpl->tpl_vars['val']->value['PiCi_Num'];?>
+</a>
                             </td>
 
                             <td class="batch_mtd">
-                                {$val['Date_Time']}
+                                <?php echo $_smarty_tpl->tpl_vars['val']->value['Date_Time'];?>
+
                             </td>
 
                             <td class="batch_r_f_td">
@@ -300,11 +346,18 @@
 
                             <td class="batch_rtd">
                                 <a class="delete_batch"><img width="19" height="19"
-                                                             src="{$relpostodist}dist/picture/chachong/delete_batch.png"></a>
+                                                             src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/chachong/delete_batch.png"></a>
                             </td>
 
                         </tr>
-                        {/foreach}
+                        <?php
+$_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_local_item;
+}
+if ($__foreach_val_0_saved_item) {
+$_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
+}
+?>
                     </table>
 
                 </div>
@@ -312,16 +365,21 @@
 
             <div class="show_title">
                 <div id="show_type">
-                    <h4><b>{$sub_title}</b></h4>
+                    <h4><b><?php echo $_smarty_tpl->tpl_vars['sub_title']->value;?>
+</b></h4>
                 </div>
                 <div class="btn-toolbar">
                     <div class="show_type_style ">
                         <label class="">显示方式：</label>
-                        <a><img id="list" src="{$relpostodist}dist/picture/pic_list/list_enable.gif"></a>
-                        <!--<img id="list" src="{$relpostodist}dist/picture/pic_list/list_disable.gif">-->
+                        <a><img id="list" src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_enable.gif"></a>
+                        <!--<img id="list" src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_disable.gif">-->
                         <!--<a href="more.php?type=recommend&show=list" class='btn btn-info'>列表</a>-->
-                        <a><img id="picture" src="{$relpostodist}dist/picture/pic_list/pic_disable.gif"></a>
-                        <!--<img id="picture" src="{$relpostodist}dist/picture/pic_list/pic_enable.gif">-->
+                        <a><img id="picture" src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_disable.gif"></a>
+                        <!--<img id="picture" src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_enable.gif">-->
                     </div>
                     </p>
                 </div>
@@ -329,7 +387,7 @@
 
             <div class="wrap_add_and_check">
 
-                {if $smarty.session.start_purchase_two_types}
+                <?php if ($_SESSION['start_purchase_two_types']) {?>
 
                 <div id='batch_option'>
                     <input id='batch_option_create_radio' type="radio" name="batch_option_radio" value="创建新批次"/>创建新批次
@@ -349,7 +407,7 @@
                     <div></div>
                 </div>
 
-                {else}
+                <?php } else { ?>
 
                 <div id='batch_option'>
                     <input id='batch_option_create_radio' type="radio" name="batch_option_radio" value="创建新批次"/>创建新批次
@@ -369,7 +427,7 @@
                     <div></div>
                 </div>
 
-                {/if}
+                <?php }?>
 
 
             </div>
@@ -383,13 +441,13 @@
                     <!--<label>全选</label>-->
                     <!--</div>-->
 
-                    {if $first_search_two_types}
+                    <?php if ($_smarty_tpl->tpl_vars['first_search_two_types']->value) {?>
                     <div class='hide_before_purchase'>
                         <input type="checkbox" checked="checked" id="checkall_box" onclick='checkallbox_changed();'
                                name="all" class="checkall_box">
                         <label>全选</label>
                     </div>
-                    {elseif $smarty.session.start_purchase_two_types}
+                    <?php } elseif ($_SESSION['start_purchase_two_types']) {?>
 
                     <div class=''>
                         <input type="checkbox" checked="checked" id="checkall_box" onclick='checkallbox_changed();'
@@ -397,107 +455,150 @@
                         <label>全选</label>
 
                     </div>
-                    {else}
+                    <?php } else { ?>
 
                     <div class='hide_before_purchase_session'>
                         <input type="checkbox" checked="checked" id="checkall_box" onclick='checkallbox_changed();'
                                name="all" class="checkall_box">
                         <label>全选</label>
                     </div>
-                    {/if}
+                    <?php }?>
 
 
                     <div class="row">
-                        {foreach $books as $val }
+                        <?php
+$_from = $_smarty_tpl->tpl_vars['books']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_val_1_saved_item = isset($_smarty_tpl->tpl_vars['val']) ? $_smarty_tpl->tpl_vars['val'] : false;
+$_smarty_tpl->tpl_vars['val'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['val']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['val']->value) {
+$_smarty_tpl->tpl_vars['val']->_loop = true;
+$__foreach_val_1_saved_local_item = $_smarty_tpl->tpl_vars['val'];
+?>
                         <div class="col-sm-4">
                             <table id="table">
                                 <tr>
                                     <td class="left_td">
-                                        <!--<a href="detail.php?book_id={$val['book_id']}"><img-->
-                                        <!--src="http://www.ecsponline.com/{trim($val['slt'])}"-->
+                                        <!--<a href="detail.php?book_id=<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
+"><img-->
+                                        <!--src="http://www.ecsponline.com/<?php echo trim($_smarty_tpl->tpl_vars['val']->value['slt']);?>
+"-->
                                         <!--class="fen_mian" alt=""></a>-->
 
-                                        {if trim($val['slt'])}
-                                        <a href="detail.php?book_id={$val['book_id']}"><img
-                                                src="http://www.ecsponline.com/{trim($val['slt'])}"
+                                        <?php if (trim($_smarty_tpl->tpl_vars['val']->value['slt'])) {?>
+                                        <a href="detail.php?book_id=<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
+"><img
+                                                src="http://www.ecsponline.com/<?php echo trim($_smarty_tpl->tpl_vars['val']->value['slt']);?>
+"
                                                 class="fen_mian"
                                                 onerror="javascript:this.src='dist/images/nopicture.png';"
                                                 alt=""></a>
-                                        {else}
-                                        <a href="detail.php?book_id={$val['book_id']}"><img
+                                        <?php } else { ?>
+                                        <a href="detail.php?book_id=<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
+"><img
                                                 src="dist/images/nopicture.png"
                                                 class="fen_mian" alt=""></a>
-                                        {/if}
+                                        <?php }?>
 
 
                                     </td>
                                     <td class="right_td">
 
-                                        {if $first_search_two_types}
+                                        <?php if ($_smarty_tpl->tpl_vars['first_search_two_types']->value) {?>
 
                                         <input type="checkbox" checked="checked"
-                                               name="{$val['book_id']}"
+                                               name="<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
+"
                                                class="checkall get_book_info_and_update_db_class hide_before_purchase"/>
                                         <p>数量：
-                                            <input type="text" name="{$val['book_id']}"
-                                                   id="sum_{$val['book_id']}"
+                                            <input type="text" name="<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
+"
+                                                   id="sum_<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
+"
                                                    class="sum get_book_num_and_update_db_class hide_before_purchase"
                                                    onmouseover='num_limit();'
-                                                   value="{$default_num_two_types}"/>
+                                                   value="<?php echo $_smarty_tpl->tpl_vars['default_num_two_types']->value;?>
+"/>
                                         </p>
 
-                                        {elseif $smarty.session.start_purchase_two_types}
+                                        <?php } elseif ($_SESSION['start_purchase_two_types']) {?>
 
 
                                         <input type="checkbox" checked="checked"
-                                               name="{$val['book_id']}"
+                                               name="<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
+"
                                                class="checkall get_book_info_and_update_db_class"/>
                                         <p>数量：
-                                            <input type="text" name="{$val['book_id']}"
-                                                   id="sum_{$val['book_id']}"
+                                            <input type="text" name="<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
+"
+                                                   id="sum_<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
+"
                                                    class="get_book_num_and_update_db_class"
                                                    onmouseover='num_limit();'
-                                                   value="{$default_num_two_types}"/>
+                                                   value="<?php echo $_smarty_tpl->tpl_vars['default_num_two_types']->value;?>
+"/>
                                         </p>
 
-                                        {else}
+                                        <?php } else { ?>
 
 
                                         <input type="checkbox" checked="checked"
-                                               name="{$val['book_id']}"
+                                               name="<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
+"
                                                class="checkall get_book_info_and_update_db_class hide_before_purchase_session"/>
                                         <p>数量：
-                                            <input type="text" name="{$val['book_id']}"
-                                                   id="sum_{$val['book_id']}"
+                                            <input type="text" name="<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
+"
+                                                   id="sum_<?php echo $_smarty_tpl->tpl_vars['val']->value['book_id'];?>
+"
                                                    class="get_book_num_and_update_db_class hide_before_purchase_session"
                                                    onmouseover='num_limit();'
-                                                   value="{$default_num_two_types}"/>
+                                                   value="<?php echo $_smarty_tpl->tpl_vars['default_num_two_types']->value;?>
+"/>
                                         </p>
 
-                                        {/if}
+                                        <?php }?>
 
 
                                         <div class="tooltip-demo">
-                                            <p data-toggle="tooltip" title="{$val['sm']}">书名：
-                                                {$val['sm']|truncate:5:"...":true}</p>
+                                            <p data-toggle="tooltip" title="<?php echo $_smarty_tpl->tpl_vars['val']->value['sm'];?>
+">书名：
+                                                <?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['val']->value['sm'],5,"...",true);?>
+</p>
                                         </div>
-                                        <p>ISBN: {$val['isbn']}</p>
+                                        <p>ISBN: <?php echo $_smarty_tpl->tpl_vars['val']->value['isbn'];?>
+</p>
 
                                         <div class="tooltip-demo">
-                                            <p data-toggle="tooltip" title="{$val['zzh']}">作者：
-                                                {$val['zzh']|truncate:5:"...":true}</p>
+                                            <p data-toggle="tooltip" title="<?php echo $_smarty_tpl->tpl_vars['val']->value['zzh'];?>
+">作者：
+                                                <?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['val']->value['zzh'],5,"...",true);?>
+</p>
                                         </div>
-                                        <p>出版日期: {$val['cbrq']}</p>
-                                        <p>价格: ￥{$val['dj']|string_format:"%.2f"}</p>
-                                        <p>库存:{$val['kucun']}</p>
+                                        <p>出版日期: <?php echo $_smarty_tpl->tpl_vars['val']->value['cbrq'];?>
+</p>
+                                        <p>价格: ￥<?php echo sprintf("%.2f",$_smarty_tpl->tpl_vars['val']->value['dj']);?>
+</p>
+                                        <p>库存:<?php echo $_smarty_tpl->tpl_vars['val']->value['kucun'];?>
+</p>
 
                                     </td>
                                 </tr>
                             </table>
                         </div>
-                        {/foreach}
+                        <?php
+$_smarty_tpl->tpl_vars['val'] = $__foreach_val_1_saved_local_item;
+}
+if ($__foreach_val_1_saved_item) {
+$_smarty_tpl->tpl_vars['val'] = $__foreach_val_1_saved_item;
+}
+?>
                     </div>
-                    {$page->show()}
+                    <?php echo $_smarty_tpl->tpl_vars['page']->value->show();?>
+
                 </div>
             </div>
         </div>
@@ -505,28 +606,49 @@
 </div>
 
 
-<a id="booktype" style="display: none ">{$type}</a>
-<a id="page_num" style="display: none ">{$page_num}</a>
+<a id="booktype" style="display: none "><?php echo $_smarty_tpl->tpl_vars['type']->value;?>
+</a>
+<a id="page_num" style="display: none "><?php echo $_smarty_tpl->tpl_vars['page_num']->value;?>
+</a>
 
 </body>
-<script src="dist/js/jquery.min.js"></script>
-<script src="dist/js/bootstrap.min.js"></script>
-<!--<script src="dist/js/holder.min.js"></script>-->
-<script src="dist/js/application.js"></script>
+<?php echo '<script'; ?>
+ src="dist/js/jquery.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="dist/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+<!--<?php echo '<script'; ?>
+ src="dist/js/holder.min.js"><?php echo '</script'; ?>
+>-->
+<?php echo '<script'; ?>
+ src="dist/js/application.js"><?php echo '</script'; ?>
+>
 
-<script src="dist/js/zzsc.js"></script>
-<script src="dist/js/left_nav.js"></script>
+<?php echo '<script'; ?>
+ src="dist/js/zzsc.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="dist/js/left_nav.js"><?php echo '</script'; ?>
+>
 
-<?php $morebooks_js = 'dist/js/morebooks.js' ;?>
-<script src='dist/js/morebooks.js?v=<?php echo filemtime( $morebooks_js );?>'></script>
+<?php $morebooks_js = 'dist/js/morebooks.js' ;
+echo '<script'; ?>
+ src='dist/js/morebooks.js?v=<?php echo filemtime( $morebooks_js );?>'><?php echo '</script'; ?>
+>
 
-<!--<script src="dist/js/morebooks.js?+Math.random()"></script>-->
-<script>
+<!--<?php echo '<script'; ?>
+ src="dist/js/morebooks.js?+Math.random()"><?php echo '</script'; ?>
+>-->
+<?php echo '<script'; ?>
+>
 
     $("#list").click(function () {
 
-                path = "{$relpostodist}dist/picture/pic_list/list_disable.gif";
-                path2 = "{$relpostodist}dist/picture/pic_list/pic_enable.gif";
+                path = "<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_disable.gif";
+                path2 = "<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_enable.gif";
 
 
                 if ($("#list").attr('src') == path) {
@@ -558,8 +680,10 @@
 
     $("#picture").click(function () {
 
-                path = "{$relpostodist}dist/picture/pic_list/pic_disable.gif";
-                path2 = "{$relpostodist}dist/picture/pic_list/list_enable.gif";
+                path = "<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_disable.gif";
+                path2 = "<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_enable.gif";
 
                 if ($("#picture").attr('src') == path) {
                     return;
@@ -589,5 +713,7 @@
                 }
             }
     );
-</script>
-</html>
+<?php echo '</script'; ?>
+>
+</html><?php }
+}

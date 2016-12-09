@@ -25,7 +25,6 @@ var get_progress_info_url = 'http://' + global_url + '/chachong/get_progress_inf
 var add_to_batch_url = 'http://' + global_url + '/chachong/add_to_batch.php';
 
 
-
 // var waiting = '<span style="margin :0px auto; text-align:center; width:160px">查询中请耐心等待！</span>';
 
 function creatXHR() {
@@ -54,7 +53,7 @@ var xhr = creatXHR();
 //        }
 //
 //    }
-
+// alert('cache');
 function gangcangimport() {
 
 
@@ -677,7 +676,7 @@ $('#show').on('mouseenter', function () {
 $('#show').on('mouseleave', function () {
 
     $(".get_book_info_and_update_db_class").off("click");
-//        $("body").off("propertychange input");
+    $("body").off("propertychange input");
     $("input[name=batch_option_radio]").off("click");
 
 });

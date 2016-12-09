@@ -224,7 +224,7 @@ if ($CF) { //采访类型
     // Redirect output to a client’s web browser (Excel5)
     header('Content-Type: application/vnd.ms-excel;charset=gb2312');
     header("Content-Disposition: attachment;filename={$sheet_no}.xls");
-    header('Cache-Control: max-age=0');
+//    header('Cache-Control: max-age=0');
     // If you're serving to IE 9, then the following may be needed
     header('Cache-Control: max-age=1');
     // If you're serving to IE over SSL, then the following may be needed

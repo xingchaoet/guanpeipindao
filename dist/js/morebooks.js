@@ -8,26 +8,21 @@ var batch_option = '';
 
 //    var generate_order_url = 'http://' + global_url + '/zhengdingdan/generate_order.php';
 //    var batch_option_create_url = 'http://' + global_url + '/chachong/batch_option_create.php';
-
 var progress = 0;
 var progress_id = "progressbar";
-//    var search_url = 'http://' + global_url + '/search.php';
-//    var guangcangimport_url = 'http://' + global_url + '/chachong/guangcang_chachong.php';
-//    var guan_cang_import_history_url = 'http://' + global_url + '/chachong/gangcang_import_history.php';
-//    var delpici_url = 'http://' + global_url + '/chachong/delpici.php';
 var generate_order_url = 'http://' + global_url + '/chachong/generate_order.php';
-//    var order_list_url = 'http://' + global_url + '/zhengdingdan/order_list.php';
 
 var operate_temp_table_url = 'http://' + global_url + '/chachong/operate_temp_table.php';
-var manipulate_session_url = 'http://' + global_url + '/chachong/manipulate_session.php';
+var manipulate_session_two_types_url = 'http://' + global_url + '/manipulate_session_two_types.php';
 var add_or_delete_this_page_temp_table_url = 'http://' + global_url + '/chachong/add_or_delete_this_page_temp_table.php';
 var batch_item_url = 'http://' + global_url + '/chachong/batch_item.php';
 var delete_batch_url = 'http://' + global_url + '/chachong/batch_item.php';
 
-var default_num_url = 'http://' + global_url + '/chachong/default_num.php';
-var get_progress_info_url = 'http://' + global_url + '/chachong/get_progress_info.php';
+var default_num_two_types_url = 'http://' + global_url + '/default_num_two_types.php';
+var get_progress_info_two_types_url = 'http://' + global_url + '/get_progress_info_two_types.php';
 var batch_option_create_url = 'http://' + global_url + '/chachong/batch_option_create.php';
 var add_to_batch_url = 'http://' + global_url + '/chachong/add_to_batch.php';
+var reset_start_purchase_two_types_url = 'http://' + global_url + '/reset_start_purchase_two_types.php';
 
 function creatXHR() {
     var xhr = null;
@@ -248,48 +243,48 @@ function to_page() {
 //         });
 //
 //     });
-    // alert(list.length);
-    // $.each(list, function (index, domEle) {
-    //     alert($(domEle).attr('id'));
-    //     //
-    //     // $(this).on('click', function () {
-    //     //     alert(1);
-    //     // })
-    //
-    //     $(this).click(function(){
-    //         alert(1);
-    //     })
-    //
-    //     // $(domEle).click = function () {
-    //     //
-    //     //     var fdata = new FormData();
-    //     //
-    //     //     var page = $(this).attr("page");
-    //     //     fdata.append("page", page);
-    //     //
-    //     //     var type = $(this).attr("type");
-    //     //     fdata.append("type", type);
-    //     //
-    //     //     var show = $(this).attr("show");
-    //     //     fdata.append("show", show);
-    //     //
-    //     //     alert(page);
-    //     //     alert(type);
-    //     //     alert(show);
-    //     //
-    //     //     xhr.open('POST', more_url, true);
-    //     //
-    //     //     xhr.send(fdata);
-    //     //     xhr.onreadystatechange = function () {
-    //     //         if (this.readyState == 4) {
-    //     //             document.getElementById('down').innerHTML = '';
-    //     //             document.getElementById('down').innerHTML = this.responseText;
-    //     //         }
-    //     //     }
-    //     // };
-    //
-    //
-    // });
+// alert(list.length);
+// $.each(list, function (index, domEle) {
+//     alert($(domEle).attr('id'));
+//     //
+//     // $(this).on('click', function () {
+//     //     alert(1);
+//     // })
+//
+//     $(this).click(function(){
+//         alert(1);
+//     })
+//
+//     // $(domEle).click = function () {
+//     //
+//     //     var fdata = new FormData();
+//     //
+//     //     var page = $(this).attr("page");
+//     //     fdata.append("page", page);
+//     //
+//     //     var type = $(this).attr("type");
+//     //     fdata.append("type", type);
+//     //
+//     //     var show = $(this).attr("show");
+//     //     fdata.append("show", show);
+//     //
+//     //     alert(page);
+//     //     alert(type);
+//     //     alert(show);
+//     //
+//     //     xhr.open('POST', more_url, true);
+//     //
+//     //     xhr.send(fdata);
+//     //     xhr.onreadystatechange = function () {
+//     //         if (this.readyState == 4) {
+//     //             document.getElementById('down').innerHTML = '';
+//     //             document.getElementById('down').innerHTML = this.responseText;
+//     //         }
+//     //     }
+//     // };
+//
+//
+// });
 // });
 
 
@@ -325,8 +320,6 @@ function jumptopagesend() {
         }
     }
 }
-
-
 
 
 var checkboxes_sel = "input.checkall:checkbox:enabled";
@@ -567,156 +560,148 @@ function add_or_delete_this_page_temp_table(option) {
 //    已保存现场的修改
 
 $('#down').on('mouseenter', function () {
-
-    $(".get_book_info_and_update_db_class").on("click", function () {
-
-        var add_one_book_to_order = 1;
-        var book_id = '';
-        var book_num = '';
-
-        var fdata = new FormData();
-
-        user_id = $('#userid').html();
-
-        book_id = this.name;
-
-        if ($(this).parent().attr('class') == 'list') {
-            book_num = $(this).parent().next().children().val();
-        } else {
-            book_num = $(this).next().val();
-        }
-
-
-        if (book_num == '0') {
-            alert("请填写数量");
-            $(this).prop("checked", false);
-            return;
-        }
-
-        if (this.checked) {
-        } else {
-            //delete数据库中条目时不在置为0
-            // $(this).parent().next().children().attr('value', 0);
-
-            add_one_book_to_order = 0;
-        }
-
-        fdata.append("book_id", book_id);
-        fdata.append("book_num", book_num);
-        fdata.append("user_id", user_id);
-        fdata.append("add_one_book_to_order", add_one_book_to_order);
-
-        xhr.open('POST', operate_temp_table_url, true);
-        xhr.send(fdata);
-
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                checkboxes_changed();
-                alert(this.responseText);
-            }
-        }
-
-    });
-
-    $("body").on("propertychange input", ".get_book_num_and_update_db_class", function () {
-
-//            alert("i m change");
-//            alert($(this).val());
-
-        var add_one_book_to_order = 1;
-
-        var fdata = new FormData();
-
-        user_id = $('#userid').html();
-
-        book_id = $(this).parent().prev().children().attr('name');
-        book_num = $(this).val();
-
-//            alert(book_id);
-//            alert(book_num);
+//
+//     $(".get_book_info_and_update_db_class").on("click", function () {
+//
+//         var add_one_book_to_order = 1;
+//         var book_id = '';
+//         var book_num = '';
+//
+//         var fdata = new FormData();
+//
+//         user_id = $('#userid').html();
+//
+//         book_id = this.name;
+//
+//         if ($(this).parent().attr('class') == 'list') {
+//             book_num = $(this).parent().next().children().val();
+//         } else {
+//             book_num = $(this).next().val();
+//         }
 //
 //
-        if (book_num == '0') {
-            $(this).attr('value', 1);
-            book_num = 1;
-
-//                add_one_book_to_order = 1;
-//                $(this).parent().prev().children().prop("checked", false);
-//                add_one_book_to_order = 0;
-        } else {
-            if (book_num > '5') {
-                $(this).attr('value', 5);
-                book_num = 5;
-            }
-//                add_one_book_to_order = 1;
-        }
-
-        $(this).parent().prev().children().prop("checked", true);
-
-//            if ($(this).parent().prev().children().prop("checked")) {
-//            } else {
-//                add_one_book_to_order = 0;
-//            }
-
-        fdata.append("book_id", book_id);
-        fdata.append("book_num", book_num);
-        fdata.append("user_id", user_id);
-        fdata.append("add_one_book_to_order", add_one_book_to_order);
-
-        xhr.open('POST', operate_temp_table_url, true);
-        xhr.send(fdata);
-
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                checkboxes_changed();
-
-//                    var $row = $('.row');
-//                    var $div_list = $('#div_list');
-//                    var $checkallbox = $div_list.find("input.checkall_box:checkbox");
+//         if (book_num == '0') {
+//             alert("请填写数量");
+//             $(this).prop("checked", false);
+//             return;
+//         }
 //
-//                    var total_boxes = $row.find(checkboxes_sel).length;
-//                    var checked_boxes = $row.find(checkboxes_sel + ":checked").length;
+//         if (this.checked) {
+//         } else {
+//             //delete数据库中条目时不在置为0
+//             // $(this).parent().next().children().attr('value', 0);
 //
-//                    alert(total_boxes);
+//             add_one_book_to_order = 0;
+//         }
 //
-//                    alert(checked_boxes);
+//         fdata.append("book_id", book_id);
+//         fdata.append("book_num", book_num);
+//         fdata.append("user_id", user_id);
+//         fdata.append("add_one_book_to_order", add_one_book_to_order);
 //
-//                    if (total_boxes == checked_boxes) {
-//                        $checkallbox.prop("checked", true);
-//                    } else {
-//                        $checkallbox.prop("checked", false);
-//                    }
-
-                alert(this.responseText);
-            }
-        }
-
-    });
-
-
-    $("input[name=batch_option_radio]").on("click", function () {
-        create_or_add();
-    });
-
-//        if (isIE()) {
-////            $(".get_book_num_and_update_db_class").on("propertychange",function () {
-////            $(".get_book_num_and_update_db_class").attr("onpropertychange", "changeValue()");
-//            $("body").on("propertychange input", ".get_book_num_and_update_db_class", function () { alert("i m change"); });
-////            alert('1');
-//        } else { // 其他浏览器
-////            $(".get_book_num_and_update_db_class").on("change",changeValue());
-////            $(".get_book_num_and_update_db_class").attr("onpropertychange", "changeValue()");
-//            $("body").on("propertychange input", ".get_book_num_and_update_db_class", function () { alert("i m change"); });
-//        }
-
+//         xhr.open('POST', operate_temp_table_url, true);
+//         xhr.send(fdata);
+//
+//         xhr.onreadystatechange = function () {
+//             if (this.readyState == 4) {
+//                 checkboxes_changed();
+//                 alert(this.responseText);
+//             }
+//         }
+//
+//     });
+//
+//     $("body").on("propertychange input", ".get_book_num_and_update_db_class", function () {
+//
+// //            alert("i m change");
+// //            alert($(this).val());
+//
+//         var add_one_book_to_order = 1;
+//
+//         var fdata = new FormData();
+//
+//         user_id = $('#userid').html();
+//
+//         book_id = $(this).parent().prev().children().attr('name');
+//         book_num = $(this).val();
+//
+// //            alert(book_id);
+// //            alert(book_num);
+// //
+// //
+//         if (book_num == '0') {
+//             $(this).attr('value', 1);
+//             book_num = 1;
+//
+// //                add_one_book_to_order = 1;
+// //                $(this).parent().prev().children().prop("checked", false);
+// //                add_one_book_to_order = 0;
+//         } else {
+//             if (book_num > '5') {
+//                 $(this).attr('value', 5);
+//                 book_num = 5;
+//             }
+// //                add_one_book_to_order = 1;
+//         }
+//
+//         $(this).parent().prev().children().prop("checked", true);
+//
+// //            if ($(this).parent().prev().children().prop("checked")) {
+// //            } else {
+// //                add_one_book_to_order = 0;
+// //            }
+//
+//         fdata.append("book_id", book_id);
+//         fdata.append("book_num", book_num);
+//         fdata.append("user_id", user_id);
+//         fdata.append("add_one_book_to_order", add_one_book_to_order);
+//
+//         xhr.open('POST', operate_temp_table_url, true);
+//         xhr.send(fdata);
+//
+//         xhr.onreadystatechange = function () {
+//             if (this.readyState == 4) {
+//                 checkboxes_changed();
+//
+// //                    var $row = $('.row');
+// //                    var $div_list = $('#div_list');
+// //                    var $checkallbox = $div_list.find("input.checkall_box:checkbox");
+// //
+// //                    var total_boxes = $row.find(checkboxes_sel).length;
+// //                    var checked_boxes = $row.find(checkboxes_sel + ":checked").length;
+// //
+// //                    alert(total_boxes);
+// //
+// //                    alert(checked_boxes);
+// //
+// //                    if (total_boxes == checked_boxes) {
+// //                        $checkallbox.prop("checked", true);
+// //                    } else {
+// //                        $checkallbox.prop("checked", false);
+// //                    }
+//
+//                 alert(this.responseText);
+//             }
+//         }
+//
+//     });
 
 });
 
-
 $('#down').on('mouseleave', function () {
-
     $(".get_book_info_and_update_db_class").off("click");
-//        $("body").off("propertychange input");
+    $("body").off("propertychange input");
+    $("input[name=batch_option_radio]").off("click");
+});
+
+$('#batch_option').on('mouseenter', function () {
+    $("input[name=batch_option_radio]").on("click", function () {
+        create_or_add();
+    });
+});
+
+$('#batch_option').on('mouseleave', function () {
+
     $("input[name=batch_option_radio]").off("click");
 
 });
@@ -730,6 +715,7 @@ function create_or_add() {
         case "batch_option_create_radio":
 
             batch_option = 'create_new_batch';
+            alert(batch_option);
 
             var list = $('.hide_before_purchase');
             var list_session = $('.hide_before_purchase_session');
@@ -739,9 +725,9 @@ function create_or_add() {
             list_session.css("display", "none");
 
             $('.flow').show();
-            // $("#manipulate_session_btn").show();
+            // $("#manipulate_session_two_types_btn").show();
 
-            document.getElementById('manipulate_session_btn').disabled = false;
+            document.getElementById('manipulate_session_two_types_btn').disabled = false;
 
 
             $('.batch_r_f_td').hide();
@@ -754,7 +740,8 @@ function create_or_add() {
 
             batch_option = 'add_to_previous_batch';
 
-            // alert('hide');
+            alert(batch_option);
+
             list.css("display", "none");
             list_session.css("display", "none");
 
@@ -765,13 +752,25 @@ function create_or_add() {
         default:
             break;
     }
+
+    // var fdata = new FormData();
+    // // fdata.append("first_search", 'first_search');
+    // fdata.append("manipulate_session_two_types", 'manipulate_session_two_types');
+    //
+    // xhr.open('POST', reset_start_purchase_two_types_url, true);
+    // xhr.send(fdata);
+    // xhr.onreadystatechange = function () {
+    //     if (this.readyState == 4) {
+    //         alert(this.responseText);
+    //     }
+    // }
 }
 
 $("input[name=add_to_batch]").on("click", function () {
 
 
     $('.flow').show();
-    document.getElementById('manipulate_session_btn').disabled = false;
+    document.getElementById('manipulate_session_two_types_btn').disabled = false;
 
 
     var batch_id = $(this).parent().parent().children().eq(0).children().eq(0).html();
@@ -799,11 +798,11 @@ function get_book_info_and_update_db() {
 }
 
 
-function get_progress_info() {
+function get_progress_info_two_types() {
 
     var fdata_progress = new FormData();
 
-    xhr.open('POST', get_progress_info_url, true);
+    xhr.open('POST', get_progress_info_two_types_url, true);
     xhr.send(fdata_progress);
 
     xhr.onreadystatechange = function () {
@@ -844,32 +843,40 @@ function doProgress() {
         setTimeout("doProgress()", 100);
 //            handle = setInterval(doProgress(), 1000);
         SetProgress(progress);
-        get_progress_info();
+        get_progress_info_two_types();
 //            progress++;
 
     }
 }
 
 
-function manipulate_session() {
+function manipulate_session_two_types() {
 
-    document.getElementById('manipulate_session_btn').disabled = true;
+    document.getElementById('manipulate_session_two_types_btn').disabled = true;
 
     var fdata = new FormData();
     var user_id = $('#userid').html();
-    var default_num = $('#default_num').html();
+    var default_num_two_types = $('#default_num_two_types').html();
     var list = $('.hide_before_purchase');
     var list_session = $('.hide_before_purchase_session');
 //        alert("默认数量");
 //     var content = $('#white_content');
 
-    // var content = "<span class='default_num_span'>默认数量</span> <input class=\"default_num_input\" type=\"text\" value= " + default_num + ">";
+
+    // var content = "<span class='default_num_two_types_span'>默认数量</span> <input class=\"default_num_two_types_input\" type=\"text\" value= " + default_num_two_types + ">";
     // var flow = $('.flow');
 
-    $('.default_num_span').show();
+    $('.default_num_two_types_span').show();
 
-    $('.default_num_input').show();
-    $('.default_num_input').val(default_num);
+    $('.default_num_two_types_input').show();
+
+    if (default_num_two_types > 5) {
+        default_num_two_types = 5;
+    } else if (default_num_two_types < 1) {
+        default_num_two_types = 1;
+    }
+
+    $('.default_num_two_types_input').val(default_num_two_types);
 
     // $('#batch_option').append(content);
 
@@ -878,13 +885,21 @@ function manipulate_session() {
 
 //        $('#batch_option').show();
 
-    $('.default_num_input').on('change', function () {
-        var default_num = $('.default_num_input').val();
-//            alert(default_num);
+    $('.default_num_two_types_input').on('change', function () {
+        var default_num_two_types = $('.default_num_two_types_input').val();
+//            alert(default_num_two_types);
         var fdata_d_num = new FormData();
-        fdata_d_num.append("default_num", default_num);
 
-        xhr.open('POST', default_num_url, true);
+        if (default_num_two_types > 5) {
+            default_num_two_types = 5;
+        } else if (default_num_two_types < 1) {
+            default_num_two_types = 1;
+        }
+        $('.default_num_two_types_input').val(default_num_two_types);
+
+        fdata_d_num.append("default_num_two_types", default_num_two_types);
+
+        xhr.open('POST', default_num_two_types_url, true);
         xhr.send(fdata_d_num);
 
         xhr.onreadystatechange = function () {
@@ -893,7 +908,7 @@ function manipulate_session() {
 
                 var list_a = $('.get_book_num_and_update_db_class');
                 $.each(list_a, function (index, domEle) {
-                    domEle.value = default_num;
+                    domEle.value = default_num_two_types;
                 });
 
             }
@@ -901,9 +916,10 @@ function manipulate_session() {
     });
 
     //新建或添加到原有
-
+    alert(user_id);
+    alert(batch_option);
     $.ajax({
-        url: manipulate_session_url,
+        url: manipulate_session_two_types_url,
         type: "post",
         data: {"user_id": user_id, "batch_option": batch_option},
         //async:true,
@@ -968,7 +984,6 @@ $(".batch_icon").toggle(
     }
 );
 
-
 function firstpagesend_batch() {
 
     var fdata = new FormData();
@@ -979,13 +994,12 @@ function firstpagesend_batch() {
     var showtype = $("#firstpage_batch").attr("showtype");
     fdata.append("show_type", showtype);
 
-
     xhr.open('POST', batch_item_url, true);
     xhr.send(fdata);
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
-            document.getElementById('show').innerHTML = '';
-            document.getElementById('show').innerHTML = this.responseText;
+            document.getElementById('down').innerHTML = '';
+            document.getElementById('down').innerHTML = this.responseText;
         }
     }
 }

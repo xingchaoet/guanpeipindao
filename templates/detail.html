@@ -6,8 +6,12 @@
     <title>图书详情</title>
     <link rel="stylesheet" href="dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="dist/css/left_nav.css">
-    <link rel="stylesheet" href="dist/css/introduce.css">
-    <link rel="stylesheet" href="dist/css/header.css">
+
+    <?php $header_css = 'dist/css/header.css' ?>
+    <link rel="stylesheet" href="<?php echo $header_css .'?v='. filemtime( $header_css ); ?>">
+
+    <?php $introduce_css = 'dist/css/introduce.css' ?>
+    <link rel="stylesheet" href="<?php echo $introduce_css .'?v='. filemtime( $introduce_css ); ?>">
 
     <style>
         body {
@@ -127,10 +131,11 @@
                     <!--<p></p>-->
                     <div class="row">
                         <div class="col-sm-3">
-                            <!--<img src="http://www.ecsponline.com/{trim($val['slt'])}" alt="">-->
 
                             {if trim($val['slt'])}
-                            <img src="http://www.ecsponline.com/{trim($val['slt'])}" class="fen_mian" alt="">
+                            <img src="http://www.ecsponline.com/{trim($val['slt'])}" class="fen_mian"
+                                 onerror="javascript:this.src='dist/images/nopicture.png';"
+                                 alt="">
                             {else}
                             <img src="dist/images/nopicture.png" class="fen_mian" alt="">
                             {/if}
@@ -194,10 +199,11 @@
 </body>
 <script src="dist/js/jquery.min.js"></script>
 <script src="dist/js/bootstrap.min.js"></script>
-<script src="dist/js/holder.min.js"></script>
+<!--<script src="dist/js/holder.min.js"></script>-->
 <script src="dist/js/application.js"></script>
-
-
 <script src="dist/js/zzsc.js"></script>
 <script src="dist/js/left_nav.js"></script>
+
+<!--<?php $left_nav_js = 'dist/js/left_nav.js' ;?>-->
+<!--<script src='dist/js/left_nav.js?v=<?php echo filemtime( $left_nav_js );?>'></script>-->
 </html>

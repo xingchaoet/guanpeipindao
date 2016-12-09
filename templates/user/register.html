@@ -5,8 +5,11 @@
     <title>注册</title>
     <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
     <!--jquery会冲突-->
-    <link rel="stylesheet" href="../dist/css/header.css">
-    <link rel="stylesheet" type="text/css" href="../dist/css/register.css"/>
+    <?php $header_css = '../dist/css/header.css' ?>
+    <link rel="stylesheet" href="<?php echo $header_css .'?v='. filemtime( $header_css ); ?>">
+
+    <?php $register_css = '../dist/css/register.css' ?>
+    <link rel="stylesheet" href="<?php echo $register_css .'?v='. filemtime( $register_css ); ?>">
     <style>
     </style>
 

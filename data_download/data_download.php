@@ -38,7 +38,9 @@ while ($zhtshj_data = odbc_fetch_array($rs_zhtshj)) {
     $zhtshj[] = $zhtshj_data;
 };
 
-for ($i = 0; $i < count($zhtshj); $i++) {
+$count_zhtshj = count($zhtshj);
+
+for ($i = 0; $i < $count_zhtshj; $i++) {
     $zhtshj[$i]['Title'] = iconv('gbk', 'utf-8//IGNORE', $zhtshj[$i]['Title']);
 }
 

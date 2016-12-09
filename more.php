@@ -17,6 +17,28 @@ session_start();
 
 $smarty = new GuanCangSmarty();
 include("include/introduce.php");
+$first_search_two_types = true;
+
+$smarty->assign("first_search_two_types", $first_search_two_types);
+
+if (!empty($_SESSION['default_num_two_types'])) {
+    $default_num_two_types = $_SESSION['default_num_two_types'];
+} else {
+    $default_num_two_types = 2;
+}
+
+$date_low = '2015';
+$search_TJ = "cbrq1 >= '$date_low'";
+//$manipulate_session_two_types = $_REQUEST["manipulate_session_two_types"];
+//unset($_REQUEST["manipulate_session_two_types"]);
+//
+////新批次
+//if ($manipulate_session_two_types == "manipulate_session_two_types") {
+//    echo "<script type='text/javascript'>alert('manipulate_session_two_types!');</script>";
+//    $_SESSION['start_purchase_two_types'] = false;
+////    print_r($manipulate_session_two_types);
+//
+//}
 
 
 $uid = $_SESSION['user_id'];
@@ -73,7 +95,7 @@ if ($_REQUEST['type'] == 'recommend') { //推荐
 
 //    $sql = "select count(*) as sum from v_ecs_book where bjtj != ''"; //写推荐条件
 
-    $sql = "SELECT count(*) as sum FROM v_ecs_book ";
+    $sql = "SELECT count(*) as sum FROM v_ecs_book where " . $search_TJ ;
 //    $sql = "SELECT count(*) as sum FROM ecs_book WHERE bjtj IS NOT NULL";
 
 //    $recommendbooks_sum = $con_mysql2->sdb($sql);
@@ -154,6 +176,25 @@ if ($_REQUEST['type'] == 'recommend') { //推荐
 
        slt";
 
+    $sql_tsfl30 = "select rows,bid1 from v_ecs_book where " . $search_TJ . "ORDER BY rows ";
+
+    $AdminResult = $ms->sdb($sql_tsfl30);
+//    $rows = odbc_num_rows($AdminResult);
+//    $_SESSION['rows'] = $rows;
+
+    if (!$AdminResult) {
+        echo "Error in query preparation/execution.<br />";
+        die(print_r(odbc_errormsg(), true));
+    }
+//存入session,供bs_temp_dingdan使用
+
+    while ($data = odbc_fetch_array($AdminResult)) {
+        $temp_table_bids[] = $data['bid1'];
+    }
+
+    $_SESSION['temp_table_two_types'] = $temp_table_bids;
+
+
     $sql_tsfl3 = "SELECT rows, book_id,sm,isbn,zzh,kb,cbrq,dj,jz1,jz3,slt
 FROM (SELECT $search_content,rows,
 ROW_NUMBER() OVER (ORDER BY rows) AS RowNumber
@@ -223,7 +264,7 @@ ORDER BY a.rows DESC";
 
 } else {//新书
 
-    $sql = "select count(*) as sum from v_ecs_book ";// 做个数量限制
+    $sql = "select count(*) as sum from v_ecs_book where " . $search_TJ ;// 做个数量限制
 //    $sql = "select count(*) as sum from ecs_book where cbrq > '2015-01-01'";// 做个数量限制
 
 //    $newbooks_sum = $con_mysql2->sdb($sql);
@@ -237,6 +278,26 @@ ORDER BY a.rows DESC";
     }
 
     $page = new Page('more.php', $tot, $show_num_per_page, $_REQUEST['type'], $_REQUEST['show']);
+
+
+    $sql_tsfl30 = "select rows,bid1 from v_ecs_book where " . $search_TJ . "ORDER BY rows ";
+
+    $AdminResult = $ms->sdb($sql_tsfl30);
+//    $rows = odbc_num_rows($AdminResult);
+//    $_SESSION['rows'] = $rows;
+
+    if (!$AdminResult) {
+        echo "Error in query preparation/execution.<br />";
+        die(print_r(odbc_errormsg(), true));
+    }
+//存入session,供bs_temp_dingdan使用
+
+    while ($data = odbc_fetch_array($AdminResult)) {
+        $temp_table_bids[] = $data['bid1'];
+    }
+
+    $_SESSION['temp_table_two_types'] = $temp_table_bids;
+
 
     $search_content = "(case
          when jz1>0 then bid1

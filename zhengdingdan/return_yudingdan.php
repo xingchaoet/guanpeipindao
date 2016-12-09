@@ -40,7 +40,9 @@ while ($data = odbc_fetch_array($rs)) {
     $ydd_order_list[] = $data;
 }
 
-for ($i = 0; $i < count($ydd_order_list); $i++) {
+$count_ydd_order_list = count($ydd_order_list);
+
+for ($i = 0; $i < $count_ydd_order_list; $i++) {
 //    echo $zdd_order_list[$i]['zdd_detail'];
     $ydd_pc_id = $ydd_order_list[$i]['ydd_pc_id'];
 

@@ -6,11 +6,11 @@
 
     <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
 
+    <?php $header_css = '../dist/css/header.css' ?>
+    <link rel="stylesheet" href="<?php echo $header_css .'?v='. filemtime( $header_css ); ?>">
 
-    <link rel="stylesheet" href="../dist/css/header.css">
-
-
-    <link rel="stylesheet" type="text/css" href="../dist/css/login.css"/>
+    <?php $login_css = '../dist/css/login.css' ?>
+    <link rel="stylesheet" href="<?php echo $login_css .'?v='. filemtime( $login_css ); ?>">
 
     <style>
 

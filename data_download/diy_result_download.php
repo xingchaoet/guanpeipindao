@@ -297,7 +297,9 @@ if ($MARC || $CALIS || $CF) { //采访类型
     $excel_data = array();
 
     // 查询
-    for ($index = 0; $index < count($indata); $index++) {
+    $count_indata = count($indata);
+
+    for ($index = 0; $index < $count_indata; $index++) {
 
         $isbn_i = $indata[$index]['isbn'];
 
@@ -394,7 +396,9 @@ if ($MARC || $CALIS || $CF) { //采访类型
     $objPHPExcel->getActiveSheet()->getStyle('B')->getNumberFormat()->setFormatCode('0000000000000');
     $i = 2;
 //    while ($data = odbc_fetch_array($rs)) {
-    for ($index = 0; $index < count($excel_data); $index++) {
+    $count_excel_data = count($excel_data);
+
+    for ($index = 0; $index < $count_excel_data; $index++) {
         $objPHPExcel->getActiveSheet()
 //            ->setCellValue('A' . $i, iconv($strin, $strout, trim($data['sheet_no'])))
             ->setCellValue('A' . $i, iconv($strin, $strout, trim($excel_data[$index]['isbn'])))
@@ -425,7 +429,7 @@ if ($MARC || $CALIS || $CF) { //采访类型
     // Redirect output to a client’s web browser (Excel5)
     header('Content-Type: application/vnd.ms-excel;charset=gb2312');
     header("Content-Disposition: attachment;filename={$sheet_no}.xls");
-    header('Cache-Control: max-age=0');
+//    header('Cache-Control: max-age=0');
     // If you're serving to IE 9, then the following may be needed
     header('Cache-Control: max-age=1');
     // If you're serving to IE over SSL, then the following may be needed

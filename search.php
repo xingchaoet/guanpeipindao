@@ -317,8 +317,9 @@ if (!empty($first_search)) {
 
 //    print_r($guancangisbns);
 
+$count_guancangisbns = count($guancangisbns);
 
-    for ($i = 0; $i < count($guancangisbns); $i++) {
+    for ($i = 0; $i < $count_guancangisbns; $i++) {
         $TJaddon .= "    AND isbn != '" . $guancangisbns[$i] . "'";
     }
 

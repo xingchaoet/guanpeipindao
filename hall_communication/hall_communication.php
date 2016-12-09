@@ -27,7 +27,8 @@ while ($gpdt_data = odbc_fetch_array($rs_gpdt)) {
     $gpdt[] = $gpdt_data;
 };
 
-for ($i = 0; $i < count($gpdt); $i++) {
+$count_gpdt = count($gpdt);
+for ($i = 0; $i < $count_gpdt; $i++) {
     $gpdt[$i]['Title'] = iconv('gbk', 'utf-8', $gpdt[$i]['Title']);
     $gpdt[$i]['NewsType'] = iconv('gbk', 'utf-8', $gpdt[$i]['NewsType']);
 }
@@ -47,7 +48,8 @@ while ($gtjl_data = odbc_fetch_array($rs_gtjl)) {
     $gtjl[] = $gtjl_data;
 };
 
-for ($i = 0; $i < count($gtjl); $i++) {
+$count_gtjl = count($gtjl);
+for ($i = 0; $i < $count_gtjl; $i++) {
     $gtjl[$i]['UserName'] = iconv('gbk', 'utf-8//IGNORE', $gtjl[$i]['UserName']);
     $gtjl[$i]['MessageContents'] = iconv('gbk', 'utf-8//IGNORE', $gtjl[$i]['MessageContents']);
 
@@ -61,7 +63,8 @@ for ($i = 0; $i < count($gtjl); $i++) {
     };
 
     //    注意索引
-    for ($j = 0; $j < count($gtjl_reply); $j++) {
+    $count_gtjl_reply = count($gtjl_reply);
+    for ($j = 0; $j < $count_gtjl_reply; $j++) {
 //    注意索引
         $gtjl_reply[$j]['ReplyUserName'] = iconv('gbk', 'utf-8//IGNORE', $gtjl_reply[$j]['ReplyUserName']);
         $gtjl_reply[$j]['ReplyContents'] = iconv('gbk', 'utf-8//IGNORE', $gtjl_reply[$j]['ReplyContents']);
@@ -88,8 +91,9 @@ while ($ywlxfsh_data = odbc_fetch_array($rs_ywlxfsh)) {
     $ywlxfsh[] = $ywlxfsh_data;
 };
 
+$count_ywlxfsh = count($ywlxfsh);
 
-for ($i = 0; $i < count($ywlxfsh); $i++) {
+for ($i = 0; $i < $count_ywlxfsh; $i++) {
     $ywlxfsh[$i]['Contents'] = iconv('gbk', 'utf-8//IGNORE', $ywlxfsh[$i]['Contents']);
 }
 

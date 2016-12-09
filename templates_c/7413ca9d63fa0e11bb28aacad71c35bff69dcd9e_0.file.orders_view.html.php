@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-06 16:22:58
+/* Smarty version 3.1.29, created on 2016-12-08 08:59:51
   from "D:\phpStudy\WWW\guanpeipindao\templates\zhengdingdan\orders_view.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58467562a52cf8_80012248',
+  'unifunc' => 'content_5848b0874b9a72_55304482',
   'file_dependency' => 
   array (
     '7413ca9d63fa0e11bb28aacad71c35bff69dcd9e' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\zhengdingdan\\orders_view.html',
-      1 => 1480920267,
+      1 => 1481082149,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_58467562a52cf8_80012248 ($_smarty_tpl) {
+function content_5848b0874b9a72_55304482 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,9 +41,15 @@ function content_58467562a52cf8_80012248 ($_smarty_tpl) {
     <link rel="stylesheet" href="../dist/css/style.css">
     <!--<link rel="stylesheet" href="../dist/css/normalize.css">-->
 
+    <?php $style_css = '../dist/css/style.css' ?>
+    <link rel="stylesheet" href="<?php echo $style_css .'?v='. filemtime( $style_css ); ?>">
 
-    <link rel="stylesheet" href="../dist/css/header.css">
-    <link rel="stylesheet" href="../dist/css/introduce.css">
+    <?php $header_css = '../dist/css/header.css' ?>
+    <link rel="stylesheet" href="<?php echo $header_css .'?v='. filemtime( $header_css ); ?>">
+
+    <?php $introduce_css = '../dist/css/introduce.css' ?>
+    <link rel="stylesheet" href="<?php echo $introduce_css .'?v='. filemtime( $introduce_css ); ?>">
+
 
     <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300,300italic' rel='stylesheet'-->
     <!--type='text/css'>-->
