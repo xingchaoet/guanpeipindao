@@ -53,6 +53,10 @@ function firstpagesend() {
     xhr.open('POST', more_url, true);
 
     xhr.send(fdata);
+
+    document.getElementById('show').innerHTML = '';
+    document.getElementById('show').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             document.getElementById('down').innerHTML = '';
@@ -78,6 +82,10 @@ function prepagesend() {
     xhr.open('POST', more_url, true);
 
     xhr.send(fdata);
+
+    document.getElementById('show').innerHTML = '';
+    document.getElementById('show').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             document.getElementById('down').innerHTML = '';
@@ -103,6 +111,10 @@ function nextpagesend() {
     xhr.open('POST', more_url, true);
 
     xhr.send(fdata);
+
+    document.getElementById('down').innerHTML = '';
+    document.getElementById('down').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             document.getElementById('down').innerHTML = '';
@@ -130,6 +142,9 @@ function lastpagesend() {
 
     xhr.send(fdata);
 
+    document.getElementById('down').innerHTML = '';
+    document.getElementById('down').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             document.getElementById('down').innerHTML = '';
@@ -155,6 +170,10 @@ function to_page() {
     xhr.open('POST', more_url, true);
 
     xhr.send(fdata);
+
+    document.getElementById('down').innerHTML = '';
+    document.getElementById('down').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             document.getElementById('down').innerHTML = '';
@@ -180,6 +199,10 @@ function jumptopagesend() {
     xhr.open('POST', more_url, true);
 
     xhr.send(fdata);
+
+    document.getElementById('down').innerHTML = '';
+    document.getElementById('down').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             document.getElementById('down').innerHTML = '';
@@ -248,7 +271,7 @@ function checkallbox_changed() {
 
 
     }
-};
+}
 
 function num_limit() {
 //        $flag_for_num_limit++;
@@ -391,13 +414,11 @@ function add_or_delete_this_page_temp_table(option) {
     var $row = $('.row');
     var checked_boxes = $row.find(checkboxes_sel + ":checked");
 //        var total_num = 1;
-//        alert(checked_boxes.length);
+       alert(checked_boxes.length);
 
     $.each(checked_boxes, function (index, checkboxEle) {
-
-//            alert($(this).parent().attr('class'));
-
-        if ($(this).parent().attr('class') == 'list') {
+//这里用的是name
+        if ($(this).parent().attr('name') == 'list') {
             book_nums.push($(this).parent().next().children().val());
         } else {
             book_nums.push($(this).next().children().val());
@@ -406,7 +427,6 @@ function add_or_delete_this_page_temp_table(option) {
             book_ids.push(checkboxEle.name);
         }
     })
-
 
 //        alert(option);
 
@@ -526,7 +546,7 @@ function get_book_info_and_update_db_class_click() {
     // book_id = null;
     book_id = this.name;
 
-    if ($(this).parent().attr('class') == 'list') {
+    if ($(this).parent().attr('name') == 'list') {
         book_num = $(this).parent().next().children().val();
     } else {
         book_num = $(this).next().children().val();
@@ -591,6 +611,8 @@ function create_or_add() {
             $('.flow').show();
             // $("#manipulate_session_two_types_btn").show();
 
+            $('.add_to_batch').removeAttr('checked');
+
             document.getElementById('manipulate_session_two_types_btn').disabled = false;
 
             $('.batch_r_f_td').hide();
@@ -603,9 +625,11 @@ function create_or_add() {
             var list_session = $('.hide_before_purchase_session');
 
             batch_option = 'add_to_previous_batch';
+            $('.flow').hide();
 
             list.css("display", "none");
             list_session.css("display", "none");
+            $('.add_to_batch').removeAttr('checked');
 
             $('.batch_r_f_td').show();
             $("#batch_table").show();
@@ -777,8 +801,11 @@ function doProgress() {
     if (progress >= 100) {
 
         SetProgress(progress);
-        list.css("display", "block");
-        list_session.css("display", "block");
+        // list.css("display", "block");
+        // list_session.css("display", "block");
+
+        list.show();
+        list_session.show();
         progress = 0;
         return;
 
@@ -889,15 +916,21 @@ $(".batch_item").on('click', function () {
 
     xhr.open('POST', batch_item_url, true);
     xhr.send(fdata);
+
+    document.getElementById('down').innerHTML = '';
+    document.getElementById('down').innerHTML = waiting;
+
+    $('#show_title').hide();
+    $('#show_title_batch').show();
+    $('#batch_option').hide();
+    $('.flow').hide();
+    $('#progressbar').hide();
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
 
-            $('#list_pic').hide();
-
-//                $('#list_pic_batch').hide();
-
-            $('#list_pic_batch').show();
-            $('#bottom').show();
+            //显示方式切换
+            // $('#bottom').show();
 
             document.getElementById('down').innerHTML = '';
             document.getElementById('down').innerHTML = this.responseText;
@@ -927,6 +960,10 @@ function firstpagesend_batch() {
 
     xhr.open('POST', batch_item_url, true);
     xhr.send(fdata);
+
+    document.getElementById('down').innerHTML = '';
+    document.getElementById('down').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             document.getElementById('down').innerHTML = '';
@@ -948,6 +985,10 @@ function prepagesend_batch() {
 
     xhr.open('POST', batch_item_url, true);
     xhr.send(fdata);
+
+    document.getElementById('down').innerHTML = '';
+    document.getElementById('down').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             document.getElementById('down').innerHTML = '';
@@ -966,12 +1007,15 @@ function nextpagesend_batch() {
     var showtype = $("#nextpage_batch").attr("showtype");
     fdata.append("show_type", showtype);
 
-//        alert(page);
-//        alert(showtype);
-
     xhr.open('POST', batch_item_url, true);
     xhr.send(fdata);
+
+
+    document.getElementById('down').innerHTML = '';
+    document.getElementById('down').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
+
         if (this.readyState == 4) {
             document.getElementById('down').innerHTML = '';
             document.getElementById('down').innerHTML = this.responseText;
@@ -991,6 +1035,10 @@ function lastpagesend_batch() {
 
     xhr.open('POST', batch_item_url, true);
     xhr.send(fdata);
+
+    document.getElementById('down').innerHTML = '';
+    document.getElementById('down').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             document.getElementById('down').innerHTML = '';
@@ -1009,9 +1057,12 @@ function jumptopagesend_batch() {
     var showtype = $("#jumptopage_batch").attr("showtype");
     fdata.append("show_type", showtype);
 
-
     xhr.open('POST', batch_item_url, true);
     xhr.send(fdata);
+
+    document.getElementById('down').innerHTML = '';
+    document.getElementById('down').innerHTML = waiting;
+
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             document.getElementById('down').innerHTML = '';
@@ -1031,14 +1082,18 @@ function send_batch(arg) {
 
         xhr.open('POST', batch_item_url, true);
         xhr.send(fdata);
+
+        document.getElementById('down').innerHTML = '';
+        document.getElementById('down').innerHTML = waiting;
+
         xhr.onreadystatechange = function () {
             if (this.readyState == 4) {
 
                 $('#list_disable_pic_batch_enable').show();
                 $('#pic_disable_list_batch_enable').hide();
 
-                $('#list_pic').hide();
-                $('#list_pic_batch').show();
+                $('#show_title').hide();
+                $('#show_title_batch').show();
 
 //                    $('#bottom').show();
 
@@ -1060,10 +1115,17 @@ function sendpic_batch() {
 
         xhr.open('POST', batch_item_url, true);
         xhr.send(fdata);
+
+        document.getElementById('down').innerHTML = '';
+        document.getElementById('down').innerHTML = waiting;
+
         xhr.onreadystatechange = function () {
             if (this.readyState == 4) {
 
-                $('#list_pic').hide();
+                // $('#list_pic').hide();
+
+                $('#show_title').hide();
+                // $('#show_title_batch').show();
 
                 $('#list_disable_pic_batch_enable').hide();
                 $('#pic_disable_list_batch_enable').show();

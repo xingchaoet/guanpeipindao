@@ -314,7 +314,7 @@ if (!empty($batch_book_data_array)) {
 
             $n = $n + 1;
             echo "<tr>";
-            echo "<td class='list' height=20 width=15><input type='checkbox'   name=\"$bid\" class=\"checkall get_book_info_and_update_db_class\" value=$n $checked/></td>";
+            echo "<td class='list' name='list'  height=20 width=15><input type='checkbox'   name=\"$bid\" class=\"checkall get_book_info_and_update_db_class\" value=$n $checked/></td>";
             echo "<td style='text-align: center'><input style='width:15px;' name='$bid' id=\"amount1_$bid\" class='get_book_num_and_update_db_class'    type='text' maxlength='1' size='1' value=\"$book_num\" /></td>";
             if (strlen(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['sm']))) > 36) {
                 echo "<td align='left' width='280'>" . mb_substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['sm'])), 0, 18, 'utf8') . "</td>";
@@ -421,7 +421,9 @@ if (!empty($batch_book_data_array)) {
              <td rowspan=8><img src=http://www.ecsponline.com" . trim($tsfl_data3['slt']) . " width=120 height=120></td>
              <td height=20>
             <input type='checkbox' class = 'checkall get_book_info_and_update_db_class'  name=\"$bid\"  value=$n $checked/>
+            <p>数量:
             <input style='width:15px' name='$bid' id=\"amount1_$bid\" class='get_book_num_and_update_db_class'   type='text' maxlength='1' size='1' value=$book_num />
+            </p>
             </td>
             </tr>";
 

@@ -43,7 +43,8 @@ $smarty->assign("first_search_two_types", $first_search_two_types);
 if (!empty($_SESSION['default_num_two_types'])) {
     $default_num_two_types = $_SESSION['default_num_two_types'];
 } else {
-    $default_num_two_types = 2;
+    $_SESSION['default_num_two_types'] = 2;
+//    $default_num_two_types = 2;
 }
 
 $date_low = '2015-03';

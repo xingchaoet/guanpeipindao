@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-09 20:02:06
+/* Smarty version 3.1.29, created on 2016-12-12 17:58:37
   from "D:\phpStudy\WWW\guanpeipindao\templates\morebooks.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_584a9d3e3b7d21_62472142',
+  'unifunc' => 'content_584e74cd4c7583_73477713',
   'file_dependency' => 
   array (
     'bc5e33c064d89c5076c6c4b89ee61990df348e57' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\morebooks.html',
-      1 => 1481284918,
+      1 => 1481536707,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_584a9d3e3b7d21_62472142 ($_smarty_tpl) {
+function content_584e74cd4c7583_73477713 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!DOCTYPE html>
@@ -267,8 +267,35 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
             display: none;
         }
 
-        .clear{
+        .clear {
             clear: both;
+        }
+
+        .show_title_batch {
+            margin-top: 10px;
+            background-color: #EBEBEB;
+            /*display: none;*/
+            width: 790px;
+            height: 32px;
+            font-size: 15px;
+            line-height: 32px;
+            border: 0px solid transparent;
+            box-shadow: 0px 1px 3px rgba(34, 25, 25, 0.2);
+
+            background: -moz-linear-gradient(top, #b8c4cb, #f6f6f8); /*火狐*/
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b8c4cb), to(#f6f6f8)); /*谷歌*/
+            margin-bottom: 4px;
+            display: none;
+        }
+
+        a {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        a:hover, a:focus {
+            color: #2a6496;
+            text-decoration: none;
         }
 
     </style>
@@ -298,6 +325,7 @@ echo $_SESSION['default_num_two_types'];
         </div>
         <div class="col-sm-9">
 
+            <?php if ($_SESSION['islogin']) {?>
             <div class="op_batch">
                 <div class="need_op_batch">
 
@@ -355,7 +383,7 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                             </td>
 
                             <td class="batch_r_f_td">
-                                <input id='' type="radio" name="add_to_batch" value=""/>
+                                <input class='add_to_batch' type="radio" name="add_to_batch" value=""/>
                             </td>
 
                             <td class="batch_rtd">
@@ -376,8 +404,9 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
 
                 </div>
             </div>
+            <?php }?>
 
-            <div class="show_title">
+            <div class="show_title" id="show_title">
                 <div id="show_type">
                     <h4><b><?php echo $_smarty_tpl->tpl_vars['sub_title']->value;?>
 </b></h4>
@@ -399,6 +428,54 @@ dist/picture/pic_list/pic_enable.gif">-->
                 </div>
             </div>
 
+            <div id="show_title_batch" class="show_title_batch">
+
+                <label style="margin-left: 10px">结果列表:</label>
+
+                <div style="float:right; margin-right: 20px">显示方式：
+
+                    <span id="list_disable_pic_batch_enable" style="float:right; margin-right: 5px;">
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_disable.gif" onclick="send_batch();"></a>
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_enable.gif"
+                                    onclick="sendpic_batch();"></a>
+                            </span>
+
+                    <span id="pic_disable_list_batch_enable"
+                          style="float:right; margin-right: 5px; display: none">
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_enable.gif" onclick="send_batch();"></a>
+                            <a><img src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_disable.gif"
+                                    onclick="sendpic_batch();"></a>
+                            </span>
+                </div>
+            </div>
+
+            <!--<div class="show_title_batch" id="show_title_batch">-->
+            <!--<div id="show_type_batch">-->
+            <!--<h4><b></b></h4>-->
+            <!--</div>-->
+            <!--<div class="btn-toolbar">-->
+            <!--<div class="show_type_style ">-->
+            <!--<label class="">显示方式：</label>-->
+            <!--<a><img id="list_batch" src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_enable.gif"></a>-->
+            <!--&lt;!&ndash;<img id="list" src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/list_disable.gif">&ndash;&gt;-->
+            <!--&lt;!&ndash;<a href="more.php?type=recommend&show=list" class='btn btn-info'>列表</a>&ndash;&gt;-->
+            <!--<a><img id="picture_batch" src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_disable.gif"></a>-->
+            <!--&lt;!&ndash;<img id="picture" src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/pic_list/pic_enable.gif">&ndash;&gt;-->
+            <!--</div>-->
+            <!--</p>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <?php if ($_SESSION['islogin']) {?>
+
             <div class="wrap_add_and_check">
 
                 <?php if ($_SESSION['start_purchase_two_types']) {?>
@@ -406,12 +483,10 @@ dist/picture/pic_list/pic_enable.gif">-->
                 <div id='batch_option'>
                     <input id='batch_option_create_radio' type="radio" name="batch_option_radio" value="创建新批次"/>创建新批次
                     <input id='batch_option_add_radio' type="radio" name="batch_option_radio" value="添加到原有批次"/>添加到原有批次
-
-                    <span class='default_num_two_types_span'>默认数量</span> <input class=' default_num_two_types_input'
-                                                                                type='text'>
-
                 </div>
                 <div class='flow'>
+                    <span class='default_num_two_types_span'>默认数量</span> <input class=' default_num_two_types_input'
+                                                                                type='text'>
                     <button id='manipulate_session_two_types_btn' class='btn btn-default btn-sm' style='float: left'
                             disabled='true' onclick='manipulate_session_two_types();'>开始采购
                     </button>
@@ -427,11 +502,10 @@ dist/picture/pic_list/pic_enable.gif">-->
                     <input id='batch_option_create_radio' type="radio" name="batch_option_radio" value="创建新批次"/>创建新批次
                     <input id='batch_option_add_radio' type="radio" name="batch_option_radio" value="添加到原有批次"/>添加到原有批次
 
-                    <span class='default_num_two_types_span'>默认数量</span> <input class=' default_num_two_types_input'
-                                                                                type='text'>
-
                 </div>
                 <div class='flow'>
+                    <span class='default_num_two_types_span'>默认数量</span> <input class=' default_num_two_types_input'
+                                                                                type='text'>
                     <button id='manipulate_session_two_types_btn' class='btn btn-default btn-sm' style='float: left'
                             disabled='true' onclick='manipulate_session_two_types();'>开始采购
                     </button>
@@ -446,6 +520,7 @@ dist/picture/pic_list/pic_enable.gif">-->
             </div>
 
             <div class="clear"></div>
+            <?php }?>
 
             <div id="down" class="down">
                 <div id="div_list" name="div_list">
@@ -652,6 +727,8 @@ echo '<script'; ?>
 >-->
 <?php echo '<script'; ?>
 >
+    var waiting = "<div style='height: auto;width:inherit'><div style='margin :0px auto;margin-top: 20px;  width:320px'><a><img src=" + "'<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/chachong/waiting.gif'" + " ></a></div></div>";
 
     $("#list").click(function () {
 
@@ -659,7 +736,6 @@ echo '<script'; ?>
 dist/picture/pic_list/list_disable.gif";
                 path2 = "<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
 dist/picture/pic_list/pic_enable.gif";
-
 
                 if ($("#list").attr('src') == path) {
                     return;
@@ -677,8 +753,20 @@ dist/picture/pic_list/pic_enable.gif";
                 xhr.open('POST', more_url, true);
 
                 xhr.send(fdata);
+
+                document.getElementById('down').innerHTML = '';
+                document.getElementById('down').innerHTML = waiting;
+
                 xhr.onreadystatechange = function () {
                     if (this.readyState == 4) {
+
+                        $('#batch_option_create_radio').removeAttr('checked');
+                        $('#batch_option_add_radio').removeAttr('checked');
+                        $('.add_to_batch').removeAttr('checked');
+
+                        $('#progressbar').hide();
+                        $('.flow').hide();
+
                         $("#list").attr('src', path);
                         $("#picture").attr('src', path2);
                         document.getElementById('down').innerHTML = '';
@@ -694,6 +782,7 @@ dist/picture/pic_list/pic_enable.gif";
 dist/picture/pic_list/pic_disable.gif";
                 path2 = "<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
 dist/picture/pic_list/list_enable.gif";
+
 
                 if ($("#picture").attr('src') == path) {
                     return;
@@ -713,8 +802,20 @@ dist/picture/pic_list/list_enable.gif";
                 xhr.open('POST', more_url, true);
 
                 xhr.send(fdata);
+
+                document.getElementById('down').innerHTML = '';
+                document.getElementById('down').innerHTML = waiting;
+
                 xhr.onreadystatechange = function () {
                     if (this.readyState == 4) {
+
+                        $('#batch_option_create_radio').removeAttr('checked');
+                        $('#batch_option_add_radio').removeAttr('checked');
+                        $('.add_to_batch').removeAttr('checked');
+
+                        $('#progressbar').hide();
+                        $('.flow').hide();
+
                         $("#picture").attr('src', path);
                         $("#list").attr('src', path2);
                         document.getElementById('down').innerHTML = '';

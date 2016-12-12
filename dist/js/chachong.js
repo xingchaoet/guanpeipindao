@@ -115,6 +115,8 @@ function send(arg) {
                 $('#list_pic').show();
                 $('#bottom').show();
 
+                $('.add_to_batch').removeAttr('checked');
+
                 document.getElementById('show').innerHTML = '';
                 document.getElementById('show').innerHTML = this.responseText;
 //                $("#show").load("../../chachong/cc_list.php");
@@ -147,6 +149,8 @@ function sendpic() {
 
                 $('#list_disable_pic_enable').hide();
                 $('#pic_disable_list_enable').show();
+
+                $('.add_to_batch').removeAttr('checked');
 
                 document.getElementById('show').innerHTML = '';
                 document.getElementById('show').innerHTML = this.responseText;
@@ -385,7 +389,7 @@ function add_or_delete_this_page_temp_table(option) {
         if ($(this).parent().attr('class') == 'list') {
             book_nums.push($(this).parent().next().children().val());
         } else {
-            book_nums.push($(this).next().val());
+            book_nums.push($(this).next().children().val());
         }
         if (checkboxEle.name) {
             book_ids.push(checkboxEle.name);
@@ -588,6 +592,7 @@ function create_or_add() {
             var list_session = $('.hide_before_purchase_session');
 
             batch_option = 'add_to_previous_batch';
+            $('.flow').hide();
 
             // alert('hide');
             list.css("display", "none");

@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-09 19:05:28
+/* Smarty version 3.1.29, created on 2016-12-12 14:24:15
   from "D:\phpStudy\WWW\guanpeipindao\templates\morebooks_picture.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_584a8ff8bde9c6_63760332',
+  'unifunc' => 'content_584e428f6a9e29_07147352',
   'file_dependency' => 
   array (
     '7aa41d7b95157de377f7e1b877405221c3930603' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_584a8ff8bde9c6_63760332 ($_smarty_tpl) {
+function content_584e428f6a9e29_07147352 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <div id="div_list" name="div_list">

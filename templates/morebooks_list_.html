@@ -1,21 +1,23 @@
 <div id="div_list" name="div_list">
     <div class="row">
         <div class="col-sm-12">
-            <table id="table" class="table  table-striped table-hover">
+            <div id="table" class="table  table-striped table-hover">
                 <tr>
 
                     {if $smarty.session.first_search_two_types}
 
                     <th class='hide_before_purchase'>
-                        <input type="checkbox" id="checkall_box" onclick='checkallbox_changed();'
+                        <input type="checkbox" checked="checked" id="checkall_box" onclick='checkallbox_changed();'
                                name="all" class="checkall_box">
                     </th>
                     <th class='hide_before_purchase' style="width:50px;">数量</th>
 
+
+
                     {elseif $smarty.session.start_purchase_two_types}
 
                     <th>
-                        <input type="checkbox" id="checkall_box" onclick='checkallbox_changed();'
+                        <input type="checkbox" checked="checked" id="checkall_box" onclick='checkallbox_changed();'
                                name="all" class="checkall_box">
                     </th>
                     <th style="width:50px;">数量</th>
@@ -48,44 +50,45 @@
                 {foreach $books as $val }
                 <tr>
 
+
                     {if $smarty.session.first_search_two_types}
 
-                    <td class='hide_before_purchase' name="list">
-                        <input type="checkbox"  name="{$val['book_id']}"
-                               class="checkall get_book_info_and_update_db_class">
-                    </td>
                     <td class='hide_before_purchase'>
-                        <input type="text" id="sum_{$val['book_id']}" name="{$val['book_id']}"  class="get_book_num_and_update_db_class sum" value="2"/>
+                        <input type="checkbox" checked="checked" name="{$val['book_id']}"
+                               class="checkall">
+                    </td>
+                    <td >
+                        <input type="text" id="sum_{$val['book_id']}" class="sum" value="2"/>
                     </td>
 
                     {elseif $smarty.session.start_purchase_two_types}
 
-                    <td class="list" name="list">
-                        <input type="checkbox" name="{$val['book_id']}"
-                               class="checkall get_book_info_and_update_db_class">
+                    <td >
+                        <input type="checkbox" checked="checked" name="{$val['book_id']}"
+                               class="checkall">
                     </td>
                     <td>
-                        <input type="text" id="sum_{$val['book_id']}" name="{$val['book_id']}"  class="get_book_num_and_update_db_class sum" value="2"/>
+                        <input type="text" id="sum_{$val['book_id']}" class="sum" value="2"/>
                     </td>
 
                     {else}
 
-                    <td class='hide_before_purchase_session' name="list">
-                        <input type="checkbox" name="{$val['book_id']}"
-                               class="checkall get_book_info_and_update_db_class">
+                    <td class='hide_before_purchase_session'>
+                        <input type="checkbox" checked="checked" name="{$val['book_id']}"
+                               class="checkall">
                     </td>
                     <td class='hide_before_purchase_session'>
-                        <input type="text" id="sum_{$val['book_id']}"  name="{$val['book_id']}" class="get_book_num_and_update_db_class sum" value="2"/>
+                        <input type="text" id="sum_{$val['book_id']}" class="sum" value="2"/>
                     </td>
 
                     {/if}
 
                     <!--<td class='list'>-->
-                    <!--<input type="checkbox" checked="checked" name="{$val['book_id']}"-->
-                    <!--class="checkall">-->
+                        <!--<input type="checkbox" checked="checked" name="{$val['book_id']}"-->
+                               <!--class="checkall">-->
                     <!--</td>-->
                     <!--<td>-->
-                    <!--<input type="text" id="sum_{$val['book_id']}" class="sum" value="2"/>-->
+                        <!--<input type="text" id="sum_{$val['book_id']}" class="sum" value="2"/>-->
                     <!--</td>-->
 
 
@@ -112,7 +115,7 @@
                     </td>
                 </tr>
                 {/foreach}
-            </table>
+            </div>
         </div>
     </div>
 
