@@ -16,7 +16,7 @@ var operate_temp_table_url = 'http://' + global_url + '/chachong/operate_temp_ta
 var manipulate_session_two_types_url = 'http://' + global_url + '/manipulate_session_two_types.php';
 var add_or_delete_this_page_temp_table_url = 'http://' + global_url + '/chachong/add_or_delete_this_page_temp_table.php';
 var batch_item_url = 'http://' + global_url + '/chachong/batch_item.php';
-var delete_batch_url = 'http://' + global_url + '/chachong/batch_item.php';
+var delete_batch_url = 'http://' + global_url + '/chachong/delete_batch.php';
 
 var default_num_two_types_url = 'http://' + global_url + '/default_num_two_types.php';
 var get_progress_info_two_types_url = 'http://' + global_url + '/get_progress_info_two_types.php';
@@ -414,7 +414,7 @@ function add_or_delete_this_page_temp_table(option) {
     var $row = $('.row');
     var checked_boxes = $row.find(checkboxes_sel + ":checked");
 //        var total_num = 1;
-       alert(checked_boxes.length);
+//        alert(checked_boxes.length);
 
     $.each(checked_boxes, function (index, checkboxEle) {
 //这里用的是name
@@ -1136,13 +1136,10 @@ function sendpic_batch() {
         }
     }
 }
-
 $(".delete_batch").on('click', function () {
 
-//        var batch_id = $(this).parent().parent().children().eq(1).children().eq(1).html();
+    var save = $(this);
     var batch_id = $(this).parent().parent().children().eq(0).children().eq(0).html();
-//        alert(1);
-    alert(batch_id);
 
     var fdata = new FormData();
     fdata.append("batch_id", batch_id);
@@ -1152,6 +1149,7 @@ $(".delete_batch").on('click', function () {
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             alert(this.responseText);
+            save.parent().parent().remove();
         }
     }
 

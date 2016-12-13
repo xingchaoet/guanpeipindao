@@ -40,9 +40,9 @@ if ($add_one_book_to_order) {//添加书籍
 
     $rs_sql_temp_table = $ms->sdb($sql_temp_table);
 
-    $open = fopen("D:/phpStudy/WWW/guanpeipindao/db/log.txt", "a");
-    fwrite($open, $sql_temp_table . "\r\n");
-    fclose($open);
+//    $open = fopen("D:/phpStudy/WWW/guanpeipindao/db/log.txt", "a");
+//    fwrite($open, $sql_temp_table . "\r\n");
+//    fclose($open);
 
     try {
 

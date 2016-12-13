@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-12 17:59:01
+/* Smarty version 3.1.29, created on 2016-12-12 18:40:42
   from "D:\phpStudy\WWW\guanpeipindao\templates\guanpeipindao.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_584e74e5477819_37576200',
+  'unifunc' => 'content_584e7eaac02c15_11010144',
   'file_dependency' => 
   array (
     'bd1538b3724d041036d3f11dba8677e6b2c848f4' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\guanpeipindao.html',
-      1 => 1481090505,
+      1 => 1481539239,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_584e74e5477819_37576200 ($_smarty_tpl) {
+function content_584e7eaac02c15_11010144 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!doctype html>
@@ -285,12 +285,31 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
         }
 
     </style>
+    <?php echo '<script'; ?>
+ src="dist/js/jquery.min.js"><?php echo '</script'; ?>
+>
+
 </head>
 
 <body>
 <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
+
+<?php echo '<script'; ?>
+>
+
+    var web_dir = $('#web_dir').html();
+
+    function no_find(){
+
+        var img=event.srcElement;
+        img.src="/" + web_dir + "/dist/images/nopicture.png";
+        img.onerror=null; //控制不要一直跳动
+
+    }
+<?php echo '</script'; ?>
+>
 
 <div class="site">
     <div class="row ">
@@ -503,9 +522,6 @@ dist/picture/guanpeipindao/more.png" alt=""></a></div>
 </div>
 </body>
 <?php echo '<script'; ?>
- src="dist/js/jquery.min.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
  src="dist/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
 <!--<?php echo '<script'; ?>
@@ -526,7 +542,6 @@ dist/picture/guanpeipindao/more.png" alt=""></a></div>
  type="text/javascript">
 
     var global_url = $('#global_url').html();
-    var web_dir = $('#web_dir').html();
 
     var generate_order_url = 'http://' + global_url + '/zhengdingdan/generate_order.php';
     function creatXHR() {
@@ -577,13 +592,7 @@ dist/picture/guanpeipindao/more.png" alt=""></a></div>
 
     });
 
-    function no_find(){
 
-        var img=event.srcElement;
-        img.src="/" + web_dir + "/dist/images/nopicture.png";
-        img.onerror=null; 控制不要一直跳动
-
-    }
 <?php echo '</script'; ?>
 >
 

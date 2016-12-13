@@ -259,10 +259,25 @@
         }
 
     </style>
+    <script src="dist/js/jquery.min.js"></script>
+
 </head>
 
 <body>
 {include file="header.html"}
+
+<script>
+
+    var web_dir = $('#web_dir').html();
+
+    function no_find(){
+
+        var img=event.srcElement;
+        img.src="/" + web_dir + "/dist/images/nopicture.png";
+        img.onerror=null; //控制不要一直跳动
+
+    }
+</script>
 
 <div class="site">
     <div class="row ">
@@ -417,7 +432,6 @@
 
 </div>
 </body>
-<script src="dist/js/jquery.min.js"></script>
 <script src="dist/js/bootstrap.min.js"></script>
 <!--<script src="dist/js/holder.min.js"></script>-->
 <script src="dist/js/application.js"></script>
@@ -428,7 +442,6 @@
 <script type="text/javascript">
 
     var global_url = $('#global_url').html();
-    var web_dir = $('#web_dir').html();
 
     var generate_order_url = 'http://' + global_url + '/zhengdingdan/generate_order.php';
     function creatXHR() {
@@ -479,13 +492,7 @@
 
     });
 
-    function no_find(){
 
-        var img=event.srcElement;
-        img.src="/" + web_dir + "/dist/images/nopicture.png";
-        img.onerror=null; 控制不要一直跳动
-
-    }
 </script>
 
 </html>
