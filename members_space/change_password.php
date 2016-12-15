@@ -10,7 +10,7 @@ require_once("../config.php");
 require_once("../db/con_mssql.php");
 include("../db/dao.php");
 
-include("../include/GuanCangSmarty.php");
+//include("../include/GuanCangSmarty.php");
 
 include("auth_members_space.php");
 
@@ -33,7 +33,7 @@ if ($user_type == 'library_user') {
 
 $rs = $ms->sdb($sql);
 
-if ($rs) {
+if (odbc_num_rows($rs) == 1) {
     echo "更新密码成功";
 } else {
     echo "更新密码失败";

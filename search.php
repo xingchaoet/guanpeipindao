@@ -6,7 +6,7 @@
  * Time: 9:51
  */
 
-include("include/GuanCangSmarty.php");
+//include("include/GuanCangSmarty.php");
 require_once("config.php");
 //include("db/con_mysql2.php");
 require_once("db/con_mssql.php");
@@ -14,8 +14,8 @@ include("db/dao.php");
 include("auth.php");
 
 
-$smarty = new GuanCangSmarty();
-$smarty->MySmarty();
+//$smarty = new GuanCangSmarty();
+//$smarty->MySmarty();
 
 $show_type = $_REQUEST["show_type"];
 $book_ids = $_REQUEST["book_ids"];
@@ -922,7 +922,8 @@ if (!empty($tsfl_data3_array)) {
                 }
                 echo "<table border=0 cellspacing=0>
              <tr>
-             <td rowspan=8><img src=http://www.ecsponline.com" . trim($tsfl_data3['slt']) . " width=120 height=120></td>
+             <td rowspan=8><img src=http://www.ecsponline.com" . trim($tsfl_data3['slt']) . " onerror=\"no_find();\"
+              width=120 height=120></td>
              <td height=20>
              
            ";

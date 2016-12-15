@@ -1,3 +1,29 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-12-15 18:00:13
+  from "D:\phpStudy\WWW\guanpeipindao\templates\hall_communication\hall_communication.html" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_585269ad1b8e51_71281538',
+  'file_dependency' => 
+  array (
+    'e2812993bcfacf111d19391720c085e96afd15f9' => 
+    array (
+      0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\hall_communication\\hall_communication.html',
+      1 => 1481796007,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:header.html' => 1,
+    'file:left_nav.html' => 1,
+  ),
+),false)) {
+function content_585269ad1b8e51_71281538 ($_smarty_tpl) {
+if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +40,9 @@
     <?php $introduce_css = '../dist/css/introduce.css' ?>
     <link rel="stylesheet" href="<?php echo $introduce_css .'?v='. filemtime( $introduce_css ); ?>">
 
-    <script src="../dist/js/jquery.min.js"></script>
+    <?php echo '<script'; ?>
+ src="../dist/js/jquery.min.js"><?php echo '</script'; ?>
+>
 
 
     <style>
@@ -55,9 +83,7 @@
             border-width: 0px;
         }
 
-        /*#guanpeidongtai:before,#communication_record:before,#communication_method:before {*/
-        /*content:""*/
-        /*}*/
+        /*#guanpeidongtai:before,#communication_record:before,#communication_method:before */
 
         .gpdt_table {
             width: 750px;
@@ -185,14 +211,19 @@
     </style>
 </head>
 <body>
-{include file="header.html"}
+<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 <div class="site">
     <div class="row ">
 
         <div class="col-sm-3">
-            {include file="left_nav.html"}
+            <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:left_nav.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
             <div class="introduce">
-                {$introduce}
+                <?php echo $_smarty_tpl->tpl_vars['introduce']->value;?>
+
             </div>
 
         </div>
@@ -209,60 +240,122 @@
                     <hr class="hr"/>
                     <div class="guanpeidongtai_content">
                         <table class="gpdt_table">
-                            {foreach $gpdt as $value}
+                            <?php
+$_from = $_smarty_tpl->tpl_vars['gpdt']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_value_0_saved_item = isset($_smarty_tpl->tpl_vars['value']) ? $_smarty_tpl->tpl_vars['value'] : false;
+$_smarty_tpl->tpl_vars['value'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['value']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
+$_smarty_tpl->tpl_vars['value']->_loop = true;
+$__foreach_value_0_saved_local_item = $_smarty_tpl->tpl_vars['value'];
+?>
                             <tr class=" gpdt_tr">
-                                <td class="gpdt_m_td">[{$value['NewsType']}]</td>
-                                <td class="gpdt_l_td"><a href="guanpeidongtai_article_content.php?id={$value['Id']}">
-                                    {$value['Title']} </a></td>
-                                <td><span class="gpdt_r_td">{$value['UpTime']}</span></td>
-                                <!--<td><span class="gpdt_r_td">{$value['UpTime']|truncate:11:"":true}</span></td>-->
+                                <td class="gpdt_m_td">[<?php echo $_smarty_tpl->tpl_vars['value']->value['NewsType'];?>
+]</td>
+                                <td class="gpdt_l_td"><a href="guanpeidongtai_article_content.php?id=<?php echo $_smarty_tpl->tpl_vars['value']->value['Id'];?>
+">
+                                    <?php echo $_smarty_tpl->tpl_vars['value']->value['Title'];?>
+ </a></td>
+                                <td><span class="gpdt_r_td"><?php echo $_smarty_tpl->tpl_vars['value']->value['UpTime'];?>
+</span></td>
+                                <!--<td><span class="gpdt_r_td"><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['value']->value['UpTime'],11,'',true);?>
+</span></td>-->
                             </tr>
-                            {/foreach}
+                            <?php
+$_smarty_tpl->tpl_vars['value'] = $__foreach_value_0_saved_local_item;
+}
+if ($__foreach_value_0_saved_item) {
+$_smarty_tpl->tpl_vars['value'] = $__foreach_value_0_saved_item;
+}
+?>
 
                         </table>
                     </div>
                 </div>
 
-                {if $user_type eq "library_user"}
+                <?php if ($_smarty_tpl->tpl_vars['user_type']->value == "library_user") {?>
                 <div id="communication_record">
                     <div class="square"></div>
                     <div><label>沟通记录</label> <span style="margin-left: 650px"><a
                             href="goutongjilu_more.php"> MORE </a></span></div>
                     <hr class="hr"/>
                     <div class="communication_record_content">
-                        {foreach $gtjl as $value}
+                        <?php
+$_from = $_smarty_tpl->tpl_vars['gtjl']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_value_1_saved_item = isset($_smarty_tpl->tpl_vars['value']) ? $_smarty_tpl->tpl_vars['value'] : false;
+$_smarty_tpl->tpl_vars['value'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['value']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
+$_smarty_tpl->tpl_vars['value']->_loop = true;
+$__foreach_value_1_saved_local_item = $_smarty_tpl->tpl_vars['value'];
+?>
                         <div class="list-group">
                             <a class="list-group-item ">
                                 <img class="people_thumbnail" src="../dist/picture/question.png">
                                 <div class="answer_question">
                                     <h4 class="list-group-item-heading ">
-                                        <span class="question">{$value['UserName']}:{$value['MessageContents']}</span>
+                                        <span class="question"><?php echo $_smarty_tpl->tpl_vars['value']->value['UserName'];?>
+:<?php echo $_smarty_tpl->tpl_vars['value']->value['MessageContents'];?>
+</span>
                                         <!--留言一-->
                                     </h4>
                                     <p class="list-group-item-text message_time">
                                         <!--2016-8-30-->
-                                        {$value['MessageTime']}
+                                        <?php echo $_smarty_tpl->tpl_vars['value']->value['MessageTime'];?>
+
                                     </p>
                                 </div>
                             </a>
-                            {foreach $value['reply'] as $val}
+                            <?php
+$_from = $_smarty_tpl->tpl_vars['value']->value['reply'];
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_val_2_saved_item = isset($_smarty_tpl->tpl_vars['val']) ? $_smarty_tpl->tpl_vars['val'] : false;
+$_smarty_tpl->tpl_vars['val'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['val']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['val']->value) {
+$_smarty_tpl->tpl_vars['val']->_loop = true;
+$__foreach_val_2_saved_local_item = $_smarty_tpl->tpl_vars['val'];
+?>
                             <a class="list-group-item">
 
                                 <img class="people_thumbnail" src="../dist/picture/answer.png">
                                 <div class="answer_question">
                                     <p class="list-group-item-text answer">
                                         <!--留言回复一-->
-                                        留言回复 : {$val['ReplyContents']}
+                                        留言回复 : <?php echo $_smarty_tpl->tpl_vars['val']->value['ReplyContents'];?>
+
                                     </p>
                                     <p class="list-group-item-text message_time">
                                         <!--2016-8-30-->
-                                        {$val['ReplyUserName']} {$val['ReplyTime']}
+                                        <?php echo $_smarty_tpl->tpl_vars['val']->value['ReplyUserName'];?>
+ <?php echo $_smarty_tpl->tpl_vars['val']->value['ReplyTime'];?>
+
                                     </p>
                                 </div>
                             </a>
-                            {/foreach}
+                            <?php
+$_smarty_tpl->tpl_vars['val'] = $__foreach_val_2_saved_local_item;
+}
+if ($__foreach_val_2_saved_item) {
+$_smarty_tpl->tpl_vars['val'] = $__foreach_val_2_saved_item;
+}
+?>
                         </div>
-                        {/foreach}
+                        <?php
+$_smarty_tpl->tpl_vars['value'] = $__foreach_value_1_saved_local_item;
+}
+if ($__foreach_value_1_saved_item) {
+$_smarty_tpl->tpl_vars['value'] = $__foreach_value_1_saved_item;
+}
+?>
                         <div class="message">
                             <label class="message_title">留言</label>
                             <div>
@@ -275,14 +368,15 @@
                         </div>
                     </div>
                 </div>
-                {/if}
+                <?php }?>
 
                 <div class="communication_method">
                     <div class="square"></div>
                     <div><label>业务联系方式</label></div>
                     <hr class="hr"/>
                     <div class="ywlxfsh">
-                        {$ywlxfsh[0]['Contents']}
+                        <?php echo $_smarty_tpl->tpl_vars['ywlxfsh']->value[0]['Contents'];?>
+
                     </div>
                 </div>
 
@@ -293,12 +387,23 @@
 </div>
 
 </body>
-<script src="../dist/js/bootstrap.min.js"></script>
-<!--<script src="../dist/js/holder.min.js"></script>-->
-<script src="../dist/js/application.js"></script>
-<script src="../dist/js/zzsc.js"></script>
-<script src="../dist/js/left_nav.js"></script>
-<script>
+<?php echo '<script'; ?>
+ src="../dist/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+<!--<?php echo '<script'; ?>
+ src="../dist/js/holder.min.js"><?php echo '</script'; ?>
+>-->
+<?php echo '<script'; ?>
+ src="../dist/js/application.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/zzsc.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/left_nav.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+>
     var global_url = $('#global_url').html();
 
     var message_url = 'http://' + global_url + '/hall_communication/send_message.php';
@@ -352,5 +457,7 @@
         }
 
     }
-</script>
-</html>
+<?php echo '</script'; ?>
+>
+</html><?php }
+}

@@ -54,7 +54,7 @@ include("include/introduce.php");
 
 //exit();
 
-$smarty->assign("carousel_sum", $carousel_sum);
+//$smarty->assign("carousel_sum", $carousel_sum);
 
 //最新
 

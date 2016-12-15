@@ -23,6 +23,7 @@ var default_num_url = 'http://' + global_url + '/chachong/default_num.php';
 var get_progress_info_url = 'http://' + global_url + '/chachong/get_progress_info.php';
 // var batch_option_create_url = 'http://' + global_url + '/chachong/batch_option_create.php';
 var add_to_batch_url = 'http://' + global_url + '/chachong/add_to_batch.php';
+var order_list_for_generate_url = 'http://' + global_url + '/chachong/order_list_for_generate.php';
 
 
 // var waiting = '<span style="margin :0px auto; text-align:center; width:160px">查询中请耐心等待！</span>';
@@ -166,8 +167,10 @@ function get_checked_bookid_and_num() {
 
 function firstpagesend() {
 
-    var fm = document.getElementById('condition');
-    var fdata = new FormData(fm);
+    var fdata = new FormData();
+
+    // var fm = document.getElementById('condition');
+    // var fdata = new FormData(fm);
 
     var page = $("#firstpage").attr("page");
     fdata.append("page", page);
@@ -192,8 +195,10 @@ function firstpagesend() {
 
 function prepagesend() {
 
-    var fm = document.getElementById('condition');
-    var fdata = new FormData(fm);
+    var fdata = new FormData();
+
+    // var fm = document.getElementById('condition');
+    // var fdata = new FormData(fm);
 
     var page = $("#prepage").attr("page");
     fdata.append("page", page);
@@ -218,9 +223,10 @@ function prepagesend() {
 }
 
 function nextpagesend() {
+    var fdata = new FormData();
 
-    var fm = document.getElementById('condition');
-    var fdata = new FormData(fm);
+    // var fm = document.getElementById('condition');
+    // var fdata = new FormData(fm);
 
     var page = $("#nextpage").attr("page");
     fdata.append("page", page);
@@ -251,8 +257,11 @@ function nextpagesend() {
 
 function lastpagesend() {
 
-    var fm = document.getElementById('condition');
-    var fdata = new FormData(fm);
+    var fdata = new FormData();
+
+    // var fm = document.getElementById('condition');
+    // var fdata = new FormData(fm);
+
     var page = $("#lastpage").attr("page");
     fdata.append("page", page);
 
@@ -278,8 +287,10 @@ function lastpagesend() {
 
 function jumptopagesend() {
 
-    var fm = document.getElementById('condition');
-    var fdata = new FormData(fm);
+    var fdata = new FormData();
+
+    // var fm = document.getElementById('condition');
+    // var fdata = new FormData(fm);
 
     var page = $("#jumptopage").val();
     fdata.append("page", page);
@@ -816,57 +827,74 @@ function return_to_guancangchachong() {
 }
 
 
+
 function generate_order() {
+    $('.down').hide();
 
+    var fdata_generate_order = new FormData();
 
-    var utp = $('#usertype').html();
-
-    if (utp == null || utp == undefined || utp == '') {
-        alert("您还没登录");
-        return false;
-    }
-
-    if (utp != "library_user") {
-        alert("您不是图书馆用户");
-    }
-
-    user_id = $('#userid').html();
-
-//        alert(1);
-//        alert(user_id);
-
-    var book_ids = [];
-    var book_nums = [];
-    var $row = $('.row');
-    var checked_boxes = $row.find(checkboxes_sel + ":checked");
-
-    $.each(checked_boxes, function (index, checkboxEle) {
-        if ($(this).parent().attr('class') == 'list') {
-            book_nums.push($(this).parent().next().children().val());
-        } else {
-            book_nums.push($(this).next().val());
-        }
-        if (checkboxEle.name) {
-            book_ids.push(checkboxEle.name);
-        }
-    })
-//
-//        alert(book_ids);
-//        alert(book_nums);
-//return;
-
-    xhr.open('POST', generate_order_url, true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("user_id=" + user_id + "&book_ids=" + book_ids + "&book_nums=" + book_nums);
-//        xhr.send("user_id=" + user_id);
+    xhr.open('POST', order_list_for_generate_url, true);
+    xhr.send(fdata_generate_order);
 
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
-            alert(this.responseText);
+//                alert(this.responseText);
+            $('.generate_order').html(this.responseText);
         }
     }
 
 }
+// function generate_order() {
+//
+//
+//     var utp = $('#usertype').html();
+//
+//     if (utp == null || utp == undefined || utp == '') {
+//         alert("您还没登录");
+//         return false;
+//     }
+//
+//     if (utp != "library_user") {
+//         alert("您不是图书馆用户");
+//     }
+//
+//     user_id = $('#userid').html();
+//
+// //        alert(1);
+// //        alert(user_id);
+//
+//     var book_ids = [];
+//     var book_nums = [];
+//     var $row = $('.row');
+//     var checked_boxes = $row.find(checkboxes_sel + ":checked");
+//
+//     $.each(checked_boxes, function (index, checkboxEle) {
+//         if ($(this).parent().attr('class') == 'list') {
+//             book_nums.push($(this).parent().next().children().val());
+//         } else {
+//             book_nums.push($(this).next().val());
+//         }
+//         if (checkboxEle.name) {
+//             book_ids.push(checkboxEle.name);
+//         }
+//     })
+// //
+// //        alert(book_ids);
+// //        alert(book_nums);
+// //return;
+//
+//     xhr.open('POST', generate_order_url, true);
+//     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//     xhr.send("user_id=" + user_id + "&book_ids=" + book_ids + "&book_nums=" + book_nums);
+// //        xhr.send("user_id=" + user_id);
+//
+//     xhr.onreadystatechange = function () {
+//         if (this.readyState == 4) {
+//             alert(this.responseText);
+//         }
+//     }
+//
+// }
 
 function view_my_orders() {
 

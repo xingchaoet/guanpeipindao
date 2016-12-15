@@ -89,7 +89,7 @@ if ($MARC || $CALIS || $CF) { //采访类型
         $MARC_FILENAME_ydd = 'marc_' . $sheet_no . '_ydd.iso';
         if (strlen($tmp_marc_ydd) == 0) {
         } else {
-            unset($_SESSION['err']);
+//            unset($_SESSION['err']);
             $open = fopen("$MARC_FILENAME_ydd", "a+");
             fwrite($open, $tmp_marc_ydd);
             fclose($open);
@@ -143,7 +143,7 @@ if ($MARC || $CALIS || $CF) { //采访类型
         $CALIS_FILENAME_ydd = 'calis_' . $sheet_no . '_ydd.iso';
         if (strlen($tmp_calis_ydd) == 0) {
         } else {
-            unset($_SESSION['err']);
+//            unset($_SESSION['err']);
             $open = fopen("$CALIS_FILENAME_ydd", "a+");
             fwrite($open, $tmp_calis_ydd);
             fclose($open);
@@ -190,7 +190,7 @@ if ($MARC || $CALIS || $CF) { //采访类型
         $CF_FILENAME_ydd = 'cf_' . $sheet_no . '_ydd.iso';
         if (strlen($tmp_cf_ydd) == 0) {
         } else {
-            unset($_SESSION['err']);
+//            unset($_SESSION['err']);
             $open = fopen("$CF_FILENAME_ydd", "a+");
             fwrite($open, $tmp_cf_ydd);
             fclose($open);

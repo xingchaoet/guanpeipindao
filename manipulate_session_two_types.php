@@ -5,7 +5,7 @@
  * Date: 2016/12/8
  * Time: 9:46
  */
-include("include/GuanCangSmarty.php");
+//include("include/GuanCangSmarty.php");
 require_once("config.php");
 //include("db/con_mysql2.php");
 require_once("db/con_mssql.php");
@@ -37,7 +37,6 @@ $table_name = 'bs_temp_dingdan';
 $user_id = $_POST['user_id'];
 $batch_option = $_POST['batch_option'];
 
-
 $lib_no = $_SESSION['lib_no'];
 
 if ($batch_option == "create_new_batch") {
@@ -58,7 +57,7 @@ if ($batch_option == "create_new_batch") {
 
     try {
 
-        if (!$rs_sql_add_to_temp_table_batch) {
+        if (odbc_num_rows($rs_sql_add_to_temp_table_batch) <= 0) {
 
             $error = "insert $dd_pc to $temp_table_pici_name failed";
             $log->debug($error);
@@ -113,7 +112,7 @@ if ($batch_option == "create_new_batch") {
 
         try {
 
-            if (!$rs_sql_add_to_temp_table) {
+            if (odbc_num_rows($rs_sql_add_to_temp_table) <= 0) {
 
                 $error = "insert $bid to $temp_table_name failed";
                 $log->debug($error);
@@ -147,7 +146,7 @@ if ($batch_option == "create_new_batch") {
 
         try {
 
-            if (!$rs_sql_add_to_temp_table) {
+            if (odbc_num_rows($rs_sql_add_to_temp_table) <= 0) {
 
                 $error = "insert $bid to $temp_table_name failed";
                 $log->debug($error);

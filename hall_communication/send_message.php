@@ -46,7 +46,7 @@ values
 
 
 $MessageResult = $ms->sdb($sql);
-if ($MessageResult) {
+if (odbc_num_rows($MessageResult) == 1) {
     $reback = '留言成功';
 }else{
     $reback = '留言失败';

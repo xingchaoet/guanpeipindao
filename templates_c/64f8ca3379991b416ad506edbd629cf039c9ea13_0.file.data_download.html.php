@@ -1,3 +1,28 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-12-15 17:59:14
+  from "D:\phpStudy\WWW\guanpeipindao\templates\data_download\data_download.html" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_58526972ba0f43_02652087',
+  'file_dependency' => 
+  array (
+    '64f8ca3379991b416ad506edbd629cf039c9ea13' => 
+    array (
+      0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\data_download\\data_download.html',
+      1 => 1481795935,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:header.html' => 1,
+    'file:left_nav.html' => 1,
+  ),
+),false)) {
+function content_58526972ba0f43_02652087 ($_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +38,15 @@
     <?php $introduce_css = '../dist/css/introduce.css' ?>
     <link rel="stylesheet" href="<?php echo $introduce_css .'?v='. filemtime( $introduce_css ); ?>">
 
-    <!--<script src="../dist/js/jquery.min.js"></script>-->
-    <script src="../dist/js/jquery.min.js"></script>
-    <script language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
+    <!--<?php echo '<script'; ?>
+ src="../dist/js/jquery.min.js"><?php echo '</script'; ?>
+>-->
+    <?php echo '<script'; ?>
+ src="../dist/js/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ language="javascript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"><?php echo '</script'; ?>
+>
     <style>
         /*<!--header.html css-->*/
         #thenavbar {
@@ -32,10 +63,7 @@
             font-size: 11px;
         }
 
-        /*.col-sm-3 {*/
-        /*background: #F0FFFF;*/
-        /*margin-bottom: 10px;*/
-        /*}*/
+        /*.col-sm-3 */
 
         .col-sm-9 {
             width: 770px;
@@ -246,15 +274,20 @@
     </style>
 </head>
 <body>
-{include file="header.html"}
+<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 
 <div class="site">
     <div class="row ">
 
         <div class="col-sm-3">
-            {include file="left_nav.html"}
+            <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:left_nav.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
             <div class="introduce">
-                {$introduce}
+                <?php echo $_smarty_tpl->tpl_vars['introduce']->value;?>
+
             </div>
 
         </div>
@@ -364,7 +397,7 @@
                                     </td>
                                     <td
                                             style='margin-top: 1px;margin-bottom: 5px;padding-top: 1px;padding-bottom: 1px;;position: absolute;  z-index:2;'>
-                                        {php} include('zyfl.php');{/php}
+                                        <?php  include('zyfl.php');?>
                                     </td>
                                 </tr>
                                 <tr>
@@ -372,7 +405,7 @@
                                         align='right' name="skfl_value">中图法-社会科学
                                     </td>
                                     <td style='position: absolute; z-index:1;margin-top: 3px;margin-bottom: 1px;padding-top: 3px;padding-bottom: 1px;'>
-                                        {php} include('ztfl_sk.php');{/php}
+                                        <?php  include('ztfl_sk.php');?>
                                     </td>
                                 </tr>
                                 <tr>
@@ -380,7 +413,7 @@
                                         align='right' name="zkfl_value" id="zkfl_value">中图法-自然科学
                                     </td>
                                     <td style='position: absolute; z-index:0;margin-top:  3px;margin-bottom: 2px;padding-top: 3px;padding-bottom: 2px;'>
-                                        {php} include('ztfl_zk.php');{/php}
+                                        <?php  include('ztfl_zk.php');?>
                                     </td>
                                 </tr>
                                 <tr>
@@ -443,33 +476,61 @@
                     <div class="special_data_content">
                         <table class="table special_data_content_table">
 
-                            {foreach $zhtshj as $val}
+                            <?php
+$_from = $_smarty_tpl->tpl_vars['zhtshj']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_val_0_saved_item = isset($_smarty_tpl->tpl_vars['val']) ? $_smarty_tpl->tpl_vars['val'] : false;
+$_smarty_tpl->tpl_vars['val'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['val']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['val']->value) {
+$_smarty_tpl->tpl_vars['val']->_loop = true;
+$__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
+?>
                             <tr class="">
-                                <td class="ztsj_title">{$val['Title']}</td>
-                                <td>{$val['uptime']}</td>
+                                <td class="ztsj_title"><?php echo $_smarty_tpl->tpl_vars['val']->value['Title'];?>
+</td>
+                                <td><?php echo $_smarty_tpl->tpl_vars['val']->value['uptime'];?>
+</td>
 
-                                {if $val['MarcGt']}
-                                <td><input type="checkbox" id="MARC_zhtshj_{$val['id']}"
-                                           name="MARC_zhtshj_{$val['id']}"/><span>国图</span></td>
-                                {/if}
+                                <?php if ($_smarty_tpl->tpl_vars['val']->value['MarcGt']) {?>
+                                <td><input type="checkbox" id="MARC_zhtshj_<?php echo $_smarty_tpl->tpl_vars['val']->value['id'];?>
+"
+                                           name="MARC_zhtshj_<?php echo $_smarty_tpl->tpl_vars['val']->value['id'];?>
+"/><span>国图</span></td>
+                                <?php }?>
 
-                                {if $val['MarcCalis']}
-                                <td><input type="checkbox" id="CALIS_zhtshj_{$val['id']}"
-                                           name="CALIS_zhtshj_{$val['id']}"/><span>Calis</span></td>
-                                {/if}
+                                <?php if ($_smarty_tpl->tpl_vars['val']->value['MarcCalis']) {?>
+                                <td><input type="checkbox" id="CALIS_zhtshj_<?php echo $_smarty_tpl->tpl_vars['val']->value['id'];?>
+"
+                                           name="CALIS_zhtshj_<?php echo $_smarty_tpl->tpl_vars['val']->value['id'];?>
+"/><span>Calis</span></td>
+                                <?php }?>
 
-                                {if $val['MarcCf']}
-                                <td><input type="checkbox" id="CF_zhtshj_{$val['id']}"
-                                           name="CF_zhtshj_{$val['id']}"/><span>采访</span></td>
-                                {/if}
+                                <?php if ($_smarty_tpl->tpl_vars['val']->value['MarcCf']) {?>
+                                <td><input type="checkbox" id="CF_zhtshj_<?php echo $_smarty_tpl->tpl_vars['val']->value['id'];?>
+"
+                                           name="CF_zhtshj_<?php echo $_smarty_tpl->tpl_vars['val']->value['id'];?>
+"/><span>采访</span></td>
+                                <?php }?>
 
-                                {if $val['MarcExcel']}
-                                <td><input type="checkbox" id="EXCEL_zhtshj_{$val['id']}"
-                                           name="EXCEL_zhtshj_{$val['id']}"/><span>EXCEL</span></td>
-                                {/if}
-                                <td><span id="{$val['id']}" class="download_zhuantishuju">[下载]</span></td>
+                                <?php if ($_smarty_tpl->tpl_vars['val']->value['MarcExcel']) {?>
+                                <td><input type="checkbox" id="EXCEL_zhtshj_<?php echo $_smarty_tpl->tpl_vars['val']->value['id'];?>
+"
+                                           name="EXCEL_zhtshj_<?php echo $_smarty_tpl->tpl_vars['val']->value['id'];?>
+"/><span>EXCEL</span></td>
+                                <?php }?>
+                                <td><span id="<?php echo $_smarty_tpl->tpl_vars['val']->value['id'];?>
+" class="download_zhuantishuju">[下载]</span></td>
                             </tr>
-                            {/foreach}
+                            <?php
+$_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_local_item;
+}
+if ($__foreach_val_0_saved_item) {
+$_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
+}
+?>
                         </table>
                     </div>
                 </div>
@@ -480,14 +541,27 @@
 
 
 </body>
-<script src="../dist/js/bootstrap.min.js"></script>
-<script src="../dist/js/holder.min.js"></script>
-<script src="../dist/js/application.js"></script>
-<!--<script src="../dist/js/jquery.icheck.min.js"></script>-->
+<?php echo '<script'; ?>
+ src="../dist/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/holder.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/application.js"><?php echo '</script'; ?>
+>
+<!--<?php echo '<script'; ?>
+ src="../dist/js/jquery.icheck.min.js"><?php echo '</script'; ?>
+>-->
 
-<script src="../dist/js/zzsc.js"></script>
-<script src="../dist/js/left_nav.js"></script>
-<script>
+<?php echo '<script'; ?>
+ src="../dist/js/zzsc.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/left_nav.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+>
 
     var global_url = $('#global_url').html();
 
@@ -684,5 +758,7 @@
         }
 
     }
-</script>
-</html>
+<?php echo '</script'; ?>
+>
+</html><?php }
+}

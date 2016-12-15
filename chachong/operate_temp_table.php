@@ -5,7 +5,7 @@
  * Date: 2016/11/4
  * Time: 14:38
  */
-include("../include/GuanCangSmarty.php");
+//include("../include/GuanCangSmarty.php");
 require_once("../config.php");
 require_once("../db/con_mssql.php");
 include("../db/dao.php");

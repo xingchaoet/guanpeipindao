@@ -64,9 +64,8 @@ if ($option == 'add') {//添加书籍
         //    $sql_add_to_temp_table = "INSERT INTO [dbo]." . $table_name . " (Book_Id,Book_Num, State,User_Id,Pi_Ci_No,Date_Time) VALUES ('$book_id',$book_num, '0','$user_id','$zdd_pc',GETDATE())";
         $sql_update_temp_table = "UPDATE [dbo]." . $table_name . " SET  Book_Num = '$book_num'     WHERE Book_Id = '$book_id' AND Pi_Ci_No = '$dd_pc'";
 
-        $open = fopen("D:/phpStudy/WWW/guanpeipindao/db/log.txt", "a");
-        fwrite($open, $sql_update_temp_table . "\r\n");
-        fclose($open);
+//
+
 
         $rs_sql_update_temp_table = $ms->sdb($sql_update_temp_table);
 

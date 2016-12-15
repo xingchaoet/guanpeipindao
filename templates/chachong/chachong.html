@@ -37,6 +37,13 @@
             width: 770px;
         }
 
+        .generate_order {
+            padding-top: 12px;
+            width: 770px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
         .down {
             padding-top: 12px;
             width: 770px;
@@ -290,6 +297,12 @@
             display: none;
         }
 
+        .batch_r_f_g_td {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 260px;
+        }
+
         .batch_rtd {
             margin-top: 5px;
             margin-bottom: 5px;
@@ -299,6 +312,10 @@
         .batch_table {
             margin-bottom: 10px;
             display: none;
+        }
+
+        .batch_table_generate {
+            margin-bottom: 10px;
         }
 
         .batch_title {
@@ -353,6 +370,20 @@
 </head>
 <body>
 {include file="header.html"}
+
+<script>
+
+    var web_dir = $('#web_dir').html();
+
+    function no_find(){
+
+        var img=event.srcElement;
+        img.src="/" + web_dir + "/dist/images/nopicture.png";
+        img.onerror=null; //控制不要一直跳动
+
+    }
+</script>
+
 <div class="site">
     <div class="row ">
 
@@ -368,6 +399,8 @@
             <div class="history">
 
             </div>
+
+            <div class="generate_order"></div>
             <div class="down">
                 <!--<form action="cc_index.php" method="post" enctype="multipart/form-data">-->
                 <input type="hidden" name="usrn" value="{$smarty.session.user_id}"/>
@@ -613,6 +646,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
     <a id="default_num" style="display: none ">{if $smarty.session.default_num} {$smarty.session.default_num} {else} 2
@@ -623,17 +657,16 @@
 
 </body>
 <script src="../dist/js/bootstrap.min.js"></script>
-<!--<script src="../dist/js/holder.min.js"></script>-->
 <script src="../dist/js/application.js"></script>
 <script src="../dist/js/zzsc.js"></script>
-<script src="../dist/js/left_nav.js"></script>
 
 <?php $chachong_js = '../dist/js/chachong.js' ;?>
 <script src='../dist/js/chachong.js?v=<?php echo filemtime( $chachong_js );?>'></script>
 <script>
 
-    var waiting =  "<div style='height: auto;width:inherit'><div style='margin :0px auto;margin-top: 20px;  width:320px'><a><img src="+"'{$relpostodist}dist/picture/chachong/waiting.gif'"+" ></a></div></div>";
+    var waiting = "<div style='height: auto;width:inherit'><div style='margin :0px auto;margin-top: 20px;  width:320px'><a><img src=" + "'{$relpostodist}dist/picture/chachong/waiting.gif'" + " ></a></div></div>";
 
 </script>
+<script src="../dist/js/left_nav.js"></script>
 
 </html>

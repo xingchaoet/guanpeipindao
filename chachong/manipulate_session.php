@@ -7,7 +7,6 @@
  */
 include("../include/GuanCangSmarty.php");
 require_once("../config.php");
-//include("db/con_mysql2.php");
 require_once("../db/con_mssql.php");
 include("../db/dao.php");
 include("auth_chachong.php");

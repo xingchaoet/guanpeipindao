@@ -107,7 +107,7 @@ if ($MARC || $CALIS || $CF) { //采访类型
         $MARC_filename = 'marc_' . $sheet_no . '.iso';
         if (strlen($tmp_marc) == 0) {
         } else {
-            unset($_SESSION['err']);
+//            unset($_SESSION['err']);
             $open = fopen("$MARC_filename", "a+");
             fwrite($open, $tmp_marc);
             fclose($open);
@@ -161,7 +161,7 @@ if ($MARC || $CALIS || $CF) { //采访类型
         $CALIS_filename = 'calis_' . $sheet_no . '.iso';
         if (strlen($tmp_calis) == 0) {
         } else {
-            unset($_SESSION['err']);
+//            unset($_SESSION['err']);
             $open = fopen("$CALIS_filename", "a+");
             fwrite($open, $tmp_calis);
             fclose($open);
@@ -208,7 +208,7 @@ if ($MARC || $CALIS || $CF) { //采访类型
         $CF_filename = 'cf_' . $sheet_no . '.iso';
         if (strlen($tmp_cf) == 0) {
         } else {
-            unset($_SESSION['err']);
+//            unset($_SESSION['err']);
             $open = fopen("$CF_filename", "a+");
             fwrite($open, $tmp_cf);
             fclose($open);

@@ -6,7 +6,7 @@
  * Time: 16:31
  */
 //print_r($_POST);
-include("../include/GuanCangSmarty.php");
+//include("../include/GuanCangSmarty.php");
 require_once("../config.php");
 require_once("../db/con_mssql.php");
 include("../db/dao.php");
@@ -15,8 +15,8 @@ include("auth_chachong.php");
 $show_type = $_REQUEST["show_type"];
 //$show_type = 'list';
 
-$smarty = new GuanCangSmarty();
-$smarty->MySmarty();
+//$smarty = new GuanCangSmarty();
+//$smarty->MySmarty();
 //$batch_id = '';
 
 $from_url = $_REQUEST["from_url"];

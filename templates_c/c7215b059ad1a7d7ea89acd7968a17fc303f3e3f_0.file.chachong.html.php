@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-13 09:25:00
+/* Smarty version 3.1.29, created on 2016-12-15 16:33:58
   from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\chachong.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_584f4decbade96_02256301',
+  'unifunc' => 'content_58525576afe8f1_04824893',
   'file_dependency' => 
   array (
     'c7215b059ad1a7d7ea89acd7968a17fc303f3e3f' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\chachong.html',
-      1 => 1481093962,
+      1 => 1481790772,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_584f4decbade96_02256301 ($_smarty_tpl) {
+function content_58525576afe8f1_04824893 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,6 +60,13 @@ function content_584f4decbade96_02256301 ($_smarty_tpl) {
 
         .col-sm-9 {
             width: 770px;
+        }
+
+        .generate_order {
+            padding-top: 12px;
+            width: 770px;
+            margin-left: 10px;
+            margin-right: 10px;
         }
 
         .down {
@@ -315,6 +322,12 @@ function content_584f4decbade96_02256301 ($_smarty_tpl) {
             display: none;
         }
 
+        .batch_r_f_g_td {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 260px;
+        }
+
         .batch_rtd {
             margin-top: 5px;
             margin-bottom: 5px;
@@ -324,6 +337,10 @@ function content_584f4decbade96_02256301 ($_smarty_tpl) {
         .batch_table {
             margin-bottom: 10px;
             display: none;
+        }
+
+        .batch_table_generate {
+            margin-bottom: 10px;
         }
 
         .batch_title {
@@ -380,6 +397,22 @@ function content_584f4decbade96_02256301 ($_smarty_tpl) {
 <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
+
+<?php echo '<script'; ?>
+>
+
+    var web_dir = $('#web_dir').html();
+
+    function no_find(){
+
+        var img=event.srcElement;
+        img.src="/" + web_dir + "/dist/images/nopicture.png";
+        img.onerror=null; //控制不要一直跳动
+
+    }
+<?php echo '</script'; ?>
+>
+
 <div class="site">
     <div class="row ">
 
@@ -398,6 +431,8 @@ function content_584f4decbade96_02256301 ($_smarty_tpl) {
             <div class="history">
 
             </div>
+
+            <div class="generate_order"></div>
             <div class="down">
                 <!--<form action="cc_index.php" method="post" enctype="multipart/form-data">-->
                 <input type="hidden" name="usrn" value="<?php echo $_SESSION['user_id'];?>
@@ -677,6 +712,7 @@ dist/picture/pic_list/pic_disable.gif"
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
     <a id="default_num" style="display: none "><?php if ($_SESSION['default_num']) {?> <?php echo $_SESSION['default_num'];?>
@@ -692,17 +728,11 @@ dist/picture/pic_list/pic_disable.gif"
 <?php echo '<script'; ?>
  src="../dist/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
-<!--<?php echo '<script'; ?>
- src="../dist/js/holder.min.js"><?php echo '</script'; ?>
->-->
 <?php echo '<script'; ?>
  src="../dist/js/application.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  src="../dist/js/zzsc.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
- src="../dist/js/left_nav.js"><?php echo '</script'; ?>
 >
 
 <?php $chachong_js = '../dist/js/chachong.js' ;
@@ -712,10 +742,13 @@ echo '<script'; ?>
 <?php echo '<script'; ?>
 >
 
-    var waiting =  "<div style='height: auto;width:inherit'><div style='margin :0px auto;margin-top: 20px;  width:320px'><a><img src="+"'<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
-dist/picture/chachong/waiting.gif'"+" ></a></div></div>";
+    var waiting = "<div style='height: auto;width:inherit'><div style='margin :0px auto;margin-top: 20px;  width:320px'><a><img src=" + "'<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
+dist/picture/chachong/waiting.gif'" + " ></a></div></div>";
 
 <?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="../dist/js/left_nav.js"><?php echo '</script'; ?>
 >
 
 </html><?php }

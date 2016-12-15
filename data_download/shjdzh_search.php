@@ -6,17 +6,17 @@
  * Time: 16:12
  */
 
-include("../include/GuanCangSmarty.php");
+//include("../include/GuanCangSmarty.php");
 require_once("../config.php");
-include("../db/con_mysql2.php");
+//include("../db/con_mysql2.php");
 require_once("../db/con_mssql.php");
 include("../db/dao.php");
 
 include ("auth_data_download.php");
 
 
-$smarty = new GuanCangSmarty();
-$smarty->MySmarty();
+//$smarty = new GuanCangSmarty();
+//$smarty->MySmarty();
 
 $tsfl_data3_array = array();
 

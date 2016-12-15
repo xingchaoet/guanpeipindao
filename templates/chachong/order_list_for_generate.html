@@ -1,0 +1,55 @@
+<div class="need_op_batch">
+
+    <div class="batch_title">
+                        <span>
+                            你还有{$need_op_batch_num}条未处理批次
+                        </span>
+    </div>
+
+    <table id="batch_table_generate" class="table table-bordered batch_table_generate">
+        <tr>
+            <td align="center" class="batch_ltd">
+                批次号
+            </td>
+
+            <td class="batch_mtd">
+                批次产生时间
+            </td>
+
+            <td class="batch_r_f_g_td">
+                生成订单
+            </td>
+
+            <td class="batch_rtd">
+                删除
+            </td>
+
+        </tr>
+
+        {foreach $need_op_batch_detail as $val }
+
+        <tr>
+            <td class="batch_ltd">
+                <a class="batch_item">{$val['PiCi_Num']}</a>
+            </td>
+
+            <td class="batch_mtd">
+                {$val['Date_Time']}
+            </td>
+
+            <td class="batch_r_f_g_td">
+                <input id='' type="button" class="btn btn-default btn-sm" name="generate_order" value="生成订单"/>
+            </td>
+
+            <td class="batch_rtd">
+                <a class="delete_batch"><img width="19" height="19"
+                                             src="{$relpostodist}dist/picture/chachong/delete_batch.png"></a>
+            </td>
+
+        </tr>
+
+        {/foreach}
+
+    </table>
+
+</div>
