@@ -16,6 +16,7 @@
     <?php $progressbar_css = 'dist/css/progressbar.css' ?>
     <link rel="stylesheet" href="<?php echo $progressbar_css .'?v='. filemtime( $progressbar_css ); ?>">
 
+
     <style>
         body {
             padding-top: 10px;
@@ -277,6 +278,7 @@
 <body>
 
 {include file="header.html"}
+
 <div class="site">
     <a id="default_num_two_types" style="display: none ">{if
         $smarty.session.default_num_two_types}{$smarty.session.default_num_two_types}{else}2{/if}</a>
@@ -587,6 +589,7 @@
 
 </body>
 <script src="dist/js/jquery.min.js"></script>
+
 <script src="dist/js/bootstrap.min.js"></script>
 <!--<script src="dist/js/holder.min.js"></script>-->
 <script src="dist/js/application.js"></script>

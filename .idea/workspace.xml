@@ -154,154 +154,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="order_list_for_generate.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chachong/order_list_for_generate.php">
+      <file leaf-file-name="batch_item.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/chachong/batch_item.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="41" column="37" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="more.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/more.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="138" column="2" selection-start-line="138" selection-start-column="2" selection-end-line="138" selection-end-column="2" />
+            <state relative-caret-position="247">
+              <caret line="420" column="154" selection-start-line="420" selection-start-column="154" selection-end-line="420" selection-end-column="154" />
               <folding>
-                <marker date="1481504816136" expanded="true" signature="2428:2473" ph="SELECT count... " />
-                <marker date="1481504816136" expanded="true" signature="4759:4829" ph="select rows,... " />
-                <marker date="1481504816136" expanded="true" signature="5353:5660" ph="SELECT rows,... " />
-                <marker date="1481504816136" expanded="true" signature="6590:6682" ph="SELECT count... bs_zhengdingdan_mx" />
-                <marker date="1481504816136" expanded="true" signature="7542:7587" ph="select count... " />
-                <marker date="1481504816136" expanded="true" signature="8087:8157" ph="select rows,... " />
-                <marker date="1481504816136" expanded="true" signature="9345:9652" ph="SELECT rows,... " />
-                <marker date="1481504816136" expanded="true" signature="10765:10857" ph="SELECT count... bs_zhengdingdan_mx" />
+                <marker date="1481798772656" expanded="true" signature="691:707" ph="..." />
+                <marker date="1481798772656" expanded="true" signature="1095:1138" ph="SELECT Book_... bs_temp_dingdan" />
+                <marker date="1481798772656" expanded="true" signature="2747:2793" ph="..." />
+                <marker date="1481798772656" expanded="true" signature="2912:2918" ph=" " />
+                <marker date="1481798772656" expanded="true" signature="2918:2924" ph=" " />
+                <marker date="1481798772656" expanded="true" signature="3072:3078" ph=" " />
+                <marker date="1481798772656" expanded="true" signature="3078:3084" ph=" " />
+                <marker date="1481798772656" expanded="true" signature="3318:3324" ph=" " />
+                <marker date="1481798772656" expanded="true" signature="3324:3330" ph=" " />
+                <marker date="1481798772656" expanded="true" signature="4434:4715" ph="SELECT Book_... ROW_NUMBER" />
+                <marker date="1481798772656" expanded="true" signature="4481:4596" ph="SELECT ${$se... bs_temp_dingdan" />
+                <marker date="1481798772656" expanded="true" signature="7795:8599" ph="..." />
+                <marker date="1481798772656" expanded="true" signature="7843:8599" ph="..." />
+                <marker date="1481798772656" expanded="true" signature="7854:8595" ph="..." />
+                <marker date="1481798772656" expanded="true" signature="7862:8585" ph="..." />
+                <marker date="1481798772656" expanded="true" signature="7910:8057" ph="..." />
+                <marker date="1481798772656" expanded="true" signature="9664:9682" ph="..." />
+                <marker date="1481798772656" expanded="true" signature="9698:9709" ph="..." />
+                <marker date="1481798772656" expanded="true" signature="12366:12719" ph="..." />
+                <marker date="1481798772656" expanded="true" signature="12381:12578" ph="..." />
+                <marker date="1481798772656" expanded="true" signature="12627:12719" ph="..." />
+                <marker date="1481798772656" expanded="true" signature="12636:12714" ph="..." />
+                <marker date="1481798772656" expanded="true" signature="13655:14247" ph="..." />
+                <marker date="1481798772656" expanded="true" signature="13673:14247" ph="..." />
+                <marker date="1481798772656" expanded="true" signature="13884:14229" ph="..." />
+                <marker date="1481798772656" expanded="true" signature="14024:14211" ph="..." />
+                <marker date="1481798772656" expanded="false" signature="14055:14065" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/search.php">
+      <file leaf-file-name="morebooks.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/morebooks.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-63">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="198">
+              <caret line="591" column="0" selection-start-line="591" selection-start-column="0" selection-end-line="591" selection-end-column="0" />
               <folding>
-                <marker date="1481793444661" expanded="true" signature="9367:9437" ph="select rows,... " />
-                <marker date="1481793444661" expanded="true" signature="10751:11077" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="10751:11078" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="10751:11095" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="10751:11103" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="10751:11108" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="10751:11128" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="11157:11321" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="11248:11259" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="11362:11373" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="11461:11837" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="11866:12036" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="11959:11970" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="12077:12089" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="17670:17716" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="17823:17829" ph=" " />
-                <marker date="1481793444661" expanded="true" signature="17829:17835" ph=" " />
-                <marker date="1481793444661" expanded="true" signature="17971:17977" ph=" " />
-                <marker date="1481793444661" expanded="true" signature="17977:17983" ph=" " />
-                <marker date="1481793444661" expanded="true" signature="18205:18211" ph=" " />
-                <marker date="1481793444661" expanded="true" signature="18211:18217" ph=" " />
-                <marker date="1481793444661" expanded="true" signature="21238:21523" ph="SELECT rows,... " />
-                <marker date="1481793444661" expanded="true" signature="21238:21524" ph="SELECT rows,... " />
-                <marker date="1481793444661" expanded="true" signature="21238:21527" ph="SELECT rows,... " />
-                <marker date="1481793444661" expanded="true" signature="23123:23240" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="23171:23240" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="23182:23240" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="23190:23240" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="25878:25896" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="25970:25981" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="26253:26264" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="26481:26492" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="29047:29229" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="29330:29512" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="29607:29788" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="29873:29965" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="29882:29960" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="30486:30716" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="30504:30716" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="30532:30662" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="30622:30657" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="30690:30716" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="30973:30983" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="31444:31454" ph="..." />
-                <marker date="1481793444661" expanded="true" signature="31888:31898" ph="..." />
+                <marker date="1481798861197" expanded="true" signature="21403:21429" ph="..." />
+                <marker date="1481798861197" expanded="true" signature="21443:21490" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="orders_view.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/zhengdingdan/orders_view.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="328" column="9" selection-start-line="328" selection-start-column="9" selection-end-line="328" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chachong.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dist/js/chachong.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!block;n#get_book_num_and_update_db_class_propertychange#0" expanded="false" />
-                <element signature="n#!!block;n#num_limit#0" expanded="false" />
-                <marker date="1481790149011" expanded="true" signature="1598:1646" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data_download.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/data_download/data_download.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="243" column="9" selection-start-line="243" selection-start-column="9" selection-end-line="243" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hall_communication.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/hall_communication/hall_communication.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="182" column="28" selection-start-line="182" selection-start-column="28" selection-end-line="182" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chachong.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/chachong/chachong.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="44" column="9" selection-start-line="39" selection-start-column="8" selection-end-line="44" selection-end-column="9" />
-              <folding>
-                <marker date="1481790772116" expanded="true" signature="22553:22579" ph="..." />
-                <marker date="1481790772116" expanded="true" signature="22593:22640" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="zzsc.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dist/js/zzsc.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -340,14 +239,11 @@
         <option value="$PROJECT_DIR$/templates/morebooks_picture.html" />
         <option value="$PROJECT_DIR$/more.php" />
         <option value="$PROJECT_DIR$/templates/morebooks_list.html" />
-        <option value="$PROJECT_DIR$/templates/morebooks.html" />
         <option value="$PROJECT_DIR$/templates/guanpeipindao.html" />
         <option value="$PROJECT_DIR$/user/程序使用说明.txt" />
         <option value="$PROJECT_DIR$/chachong/delete_batch.php" />
-        <option value="$PROJECT_DIR$/dist/js/morebooks.js" />
         <option value="$PROJECT_DIR$/chachong/add_or_delete_this_page_temp_table.php" />
         <option value="$PROJECT_DIR$/chachong/add_to_batch.php" />
-        <option value="$PROJECT_DIR$/chachong/batch_item.php" />
         <option value="$PROJECT_DIR$/chachong/default_num.php" />
         <option value="$PROJECT_DIR$/chachong/operate_temp_table.php" />
         <option value="$PROJECT_DIR$/data_download/shjdzh_search.php" />
@@ -377,6 +273,9 @@
         <option value="$PROJECT_DIR$/templates/data_download/data_download.html" />
         <option value="$PROJECT_DIR$/templates/hall_communication/hall_communication.html" />
         <option value="$PROJECT_DIR$/dist/js/zzsc.js" />
+        <option value="$PROJECT_DIR$/dist/js/morebooks.js" />
+        <option value="$PROJECT_DIR$/chachong/batch_item.php" />
+        <option value="$PROJECT_DIR$/templates/morebooks.html" />
       </list>
     </option>
   </component>
@@ -396,7 +295,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1924" />
+    <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -452,74 +351,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lgmianshi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="guanpeipindao" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zhengdingdan" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lgmianshi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="guanpeipindao" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hall_communication" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lgmianshi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="guanpeipindao" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data_download" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lgmianshi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="guanpeipindao" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="gc" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -535,6 +366,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="class" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lgmianshi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guanpeipindao" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chachong" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -935,21 +780,22 @@
       <workItem from="1481588997563" duration="15087000" />
       <workItem from="1481675772894" duration="11081000" />
       <workItem from="1481761026763" duration="24306000" />
-      <workItem from="1481794714300" duration="2218000" />
+      <workItem from="1481794714300" duration="4047000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1423114000" />
+    <option name="totallyTimeSpent" value="1424943000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1924" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2206499" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1546875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14055794" sideWeight="0.6273585" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.114528105" sideWeight="0.6740042" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08692529" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -962,7 +808,6 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="CSS Styles" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25672042" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.030398322" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2566278" sideWeight="0.6740042" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19936374" sideWeight="0.3726415" order="4" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1013,21 +858,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/zhengdingdan/orders_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3248">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zhengdingdan/return_yudingdan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-882">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/zhengdingdan/yudingdan_detail.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3969">
@@ -1150,6 +980,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1223,31 +1054,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chachong/batch_item.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="341" column="0" selection-start-line="341" selection-start-column="0" selection-end-line="341" selection-end-column="0" />
-          <folding>
-            <marker date="1481676257200" expanded="true" signature="691:707" ph="..." />
-            <marker date="1481676257200" expanded="true" signature="1095:1138" ph="SELECT Book_... bs_temp_dingdan" />
-            <marker date="1481676257200" expanded="true" signature="2747:2793" ph="..." />
-            <marker date="1481676257200" expanded="true" signature="2912:2918" ph=" " />
-            <marker date="1481676257200" expanded="true" signature="2918:2924" ph=" " />
-            <marker date="1481676257200" expanded="true" signature="3072:3078" ph=" " />
-            <marker date="1481676257200" expanded="true" signature="3078:3084" ph=" " />
-            <marker date="1481676257200" expanded="true" signature="3318:3324" ph=" " />
-            <marker date="1481676257200" expanded="true" signature="3324:3330" ph=" " />
-            <marker date="1481676257200" expanded="true" signature="9664:9682" ph="..." />
-            <marker date="1481676257200" expanded="true" signature="9698:9709" ph="..." />
-            <marker date="1481676257200" expanded="true" signature="13655:14185" ph="..." />
-            <marker date="1481676257200" expanded="true" signature="13673:14185" ph="..." />
-            <marker date="1481676257200" expanded="true" signature="13822:14167" ph="..." />
-            <marker date="1481676257200" expanded="true" signature="13962:14149" ph="..." />
-            <marker date="1481676257200" expanded="false" signature="13993:14003" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1346,13 +1152,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/morebooks_picture.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="42" column="75" selection-start-line="42" selection-start-column="75" selection-end-line="42" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/zhengdingdan/zhengdingdan_detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1050">
@@ -1365,7 +1164,7 @@
         <state relative-caret-position="84">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1378,18 +1177,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/js/morebooks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="595" column="0" selection-start-line="595" selection-start-column="0" selection-end-line="595" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chachong/order_list_for_generate.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="756">
           <caret line="41" column="37" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/zhengdingdan/orders_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="328" column="9" selection-start-line="328" selection-start-column="9" selection-end-line="328" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/data_download/data_download.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="243" column="9" selection-start-line="243" selection-start-column="9" selection-end-line="243" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/hall_communication/hall_communication.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="182" column="28" selection-start-line="182" selection-start-column="28" selection-end-line="182" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -1411,10 +1226,89 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dist/js/morebooks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="835" column="0" selection-start-line="835" selection-start-column="0" selection-end-line="835" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/chachong/chachong.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="384" column="9" selection-start-line="373" selection-start-column="0" selection-end-line="384" selection-end-column="9" />
+          <folding>
+            <marker date="1481790772116" expanded="true" signature="22553:22579" ph="..." />
+            <marker date="1481790772116" expanded="true" signature="22593:22640" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/js/chachong.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#get_book_num_and_update_db_class_propertychange#0" expanded="false" />
+            <element signature="n#!!block;n#num_limit#0" expanded="false" />
+            <marker date="1481790149011" expanded="true" signature="1598:1646" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="136" column="91" selection-start-line="136" selection-start-column="33" selection-end-line="136" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1134">
+          <caret line="54" column="28" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#3;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/morebooks_picture.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="819">
+          <caret line="39" column="57" selection-start-line="39" selection-start-column="57" selection-end-line="39" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/js/zzsc.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/morebooks.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="591" column="0" selection-start-line="591" selection-start-column="0" selection-end-line="591" selection-end-column="0" />
+          <folding>
+            <marker date="1481798861197" expanded="true" signature="21403:21429" ph="..." />
+            <marker date="1481798861197" expanded="true" signature="21443:21490" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/search.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-63">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="315">
+          <caret line="924" column="116" selection-start-line="924" selection-start-column="94" selection-end-line="924" selection-end-column="116" />
           <folding>
             <marker date="1481793444661" expanded="true" signature="9367:9437" ph="select rows,... " />
             <marker date="1481793444661" expanded="true" signature="10751:11077" ph="..." />
@@ -1465,69 +1359,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/js/chachong.js">
+    <entry file="file://$PROJECT_DIR$/chachong/batch_item.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state relative-caret-position="247">
+          <caret line="420" column="154" selection-start-line="420" selection-start-column="154" selection-end-line="420" selection-end-column="154" />
           <folding>
-            <element signature="n#!!block;n#get_book_num_and_update_db_class_propertychange#0" expanded="false" />
-            <element signature="n#!!block;n#num_limit#0" expanded="false" />
-            <marker date="1481790149011" expanded="true" signature="1598:1646" ph="..." />
+            <marker date="1481798772656" expanded="true" signature="691:707" ph="..." />
+            <marker date="1481798772656" expanded="true" signature="1095:1138" ph="SELECT Book_... bs_temp_dingdan" />
+            <marker date="1481798772656" expanded="true" signature="2747:2793" ph="..." />
+            <marker date="1481798772656" expanded="true" signature="2912:2918" ph=" " />
+            <marker date="1481798772656" expanded="true" signature="2918:2924" ph=" " />
+            <marker date="1481798772656" expanded="true" signature="3072:3078" ph=" " />
+            <marker date="1481798772656" expanded="true" signature="3078:3084" ph=" " />
+            <marker date="1481798772656" expanded="true" signature="3318:3324" ph=" " />
+            <marker date="1481798772656" expanded="true" signature="3324:3330" ph=" " />
+            <marker date="1481798772656" expanded="true" signature="4434:4715" ph="SELECT Book_... ROW_NUMBER" />
+            <marker date="1481798772656" expanded="true" signature="4481:4596" ph="SELECT ${$se... bs_temp_dingdan" />
+            <marker date="1481798772656" expanded="true" signature="7795:8599" ph="..." />
+            <marker date="1481798772656" expanded="true" signature="7843:8599" ph="..." />
+            <marker date="1481798772656" expanded="true" signature="7854:8595" ph="..." />
+            <marker date="1481798772656" expanded="true" signature="7862:8585" ph="..." />
+            <marker date="1481798772656" expanded="true" signature="7910:8057" ph="..." />
+            <marker date="1481798772656" expanded="true" signature="9664:9682" ph="..." />
+            <marker date="1481798772656" expanded="true" signature="9698:9709" ph="..." />
+            <marker date="1481798772656" expanded="true" signature="12366:12719" ph="..." />
+            <marker date="1481798772656" expanded="true" signature="12381:12578" ph="..." />
+            <marker date="1481798772656" expanded="true" signature="12627:12719" ph="..." />
+            <marker date="1481798772656" expanded="true" signature="12636:12714" ph="..." />
+            <marker date="1481798772656" expanded="true" signature="13655:14247" ph="..." />
+            <marker date="1481798772656" expanded="true" signature="13673:14247" ph="..." />
+            <marker date="1481798772656" expanded="true" signature="13884:14229" ph="..." />
+            <marker date="1481798772656" expanded="true" signature="14024:14211" ph="..." />
+            <marker date="1481798772656" expanded="false" signature="14055:14065" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/morebooks.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="602" column="0" selection-start-line="602" selection-start-column="0" selection-end-line="602" selection-end-column="0" />
-          <folding>
-            <marker date="1481536707853" expanded="true" signature="21400:21426" ph="..." />
-            <marker date="1481536707853" expanded="true" signature="21440:21487" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/zhengdingdan/orders_view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="328" column="9" selection-start-line="328" selection-start-column="9" selection-end-line="328" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/data_download/data_download.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="243" column="9" selection-start-line="243" selection-start-column="9" selection-end-line="243" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/chachong/chachong.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="44" column="9" selection-start-line="39" selection-start-column="8" selection-end-line="44" selection-end-column="9" />
-          <folding>
-            <marker date="1481790772116" expanded="true" signature="22553:22579" ph="..." />
-            <marker date="1481790772116" expanded="true" signature="22593:22640" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/hall_communication/hall_communication.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="182" column="28" selection-start-line="182" selection-start-column="28" selection-end-line="182" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/js/zzsc.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>

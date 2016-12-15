@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-15 17:21:31
+/* Smarty version 3.1.29, created on 2016-12-15 18:46:18
   from "D:\phpStudy\WWW\guanpeipindao\templates\morebooks.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5852609bc10703_29078964',
+  'unifunc' => 'content_5852747a138aa8_42070103',
   'file_dependency' => 
   array (
     'bc5e33c064d89c5076c6c4b89ee61990df348e57' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\morebooks.html',
-      1 => 1481536707,
+      1 => 1481798645,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_5852609bc10703_29078964 ($_smarty_tpl) {
+function content_5852747a138aa8_42070103 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!DOCTYPE html>
@@ -41,6 +41,10 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
 
     <?php $progressbar_css = 'dist/css/progressbar.css' ?>
     <link rel="stylesheet" href="<?php echo $progressbar_css .'?v='. filemtime( $progressbar_css ); ?>">
+
+    <?php echo '<script'; ?>
+ src="dist/js/jquery.min.js"><?php echo '</script'; ?>
+>
 
     <style>
         body {
@@ -304,6 +308,23 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
 
 <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
+
+
+<?php echo '<script'; ?>
+>
+
+    var web_dir = $('#web_dir').html();
+
+    function no_find() {
+
+        alert(web_dir);
+        var img = event.srcElement;
+        img.src = "/" + web_dir + "/dist/images/nopicture.png";
+        img.onerror = null; //控制不要一直跳动
+
+    }
+<?php echo '</script'; ?>
+>
 
 <div class="site">
     <a id="default_num_two_types" style="display: none "><?php if ($_SESSION['default_num_two_types']) {
@@ -697,9 +718,6 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_1_saved_item;
 </a>
 
 </body>
-<?php echo '<script'; ?>
- src="dist/js/jquery.min.js"><?php echo '</script'; ?>
->
 <?php echo '<script'; ?>
  src="dist/js/bootstrap.min.js"><?php echo '</script'; ?>
 >

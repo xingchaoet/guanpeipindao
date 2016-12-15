@@ -830,7 +830,7 @@ function manipulate_session_two_types() {
     var list = $('.hide_before_purchase');
     var list_session = $('.hide_before_purchase_session');
 
-    alert(default_num_two_types);
+    // alert(default_num_two_types);
 
     $('span.default_num_two_types_span').show();
 

@@ -418,7 +418,7 @@ if (!empty($batch_book_data_array)) {
                 }
                 echo "<table border=0 cellspacing=0>
              <tr>
-             <td rowspan=8><img src=http://www.ecsponline.com" . trim($tsfl_data3['slt']) . " width=120 height=120></td>
+             <td rowspan=8><img src=http://www.ecsponline.com" . trim($tsfl_data3['slt']) . " onerror=\"javascript:this.src='dist/images/nopicture.png';\"  width=120 height=120></td>
              <td height=20>
             <input type='checkbox' class = 'checkall get_book_info_and_update_db_class'  name=\"$bid\"  value=$n $checked/>
             <p>数量:
