@@ -687,7 +687,8 @@
 <script src="../dist/js/zzsc.js"></script>
 <script src="../dist/js/left_nav.js"></script>
 <script src="../dist/js/modernizr.custom.04022.js"></script>
-
+<?php $order_list_for_generate_js = '../dist/js/order_list_for_generate.js' ;?>
+<script src='../dist/js/order_list_for_generate.js?v=<?php echo filemtime( $order_list_for_generate_js );?>'></script>
 <script>
 
     var global_url = $('#global_url').html();

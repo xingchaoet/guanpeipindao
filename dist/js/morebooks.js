@@ -1136,21 +1136,22 @@ function sendpic_batch() {
         }
     }
 }
-$(".delete_batch").on('click', function () {
 
-    var save = $(this);
-    var batch_id = $(this).parent().parent().children().eq(0).children().eq(0).html();
-
-    var fdata = new FormData();
-    fdata.append("batch_id", batch_id);
-
-    xhr.open('POST', delete_batch_url, true);
-    xhr.send(fdata);
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4) {
-            alert(this.responseText);
-            save.parent().parent().remove();
-        }
-    }
-
-});
+// $(".delete_batch").on('click', function () {
+//
+//     var save = $(this);
+//     var batch_id = $(this).parent().parent().children().eq(0).children().eq(0).html();
+//
+//     var fdata = new FormData();
+//     fdata.append("batch_id", batch_id);
+//
+//     xhr.open('POST', delete_batch_url, true);
+//     xhr.send(fdata);
+//     xhr.onreadystatechange = function () {
+//         if (this.readyState == 4) {
+//             alert(this.responseText);
+//             save.parent().parent().remove();
+//         }
+//     }
+//
+// });

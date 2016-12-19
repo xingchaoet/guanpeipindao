@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-15 18:46:18
+/* Smarty version 3.1.29, created on 2016-12-19 11:51:42
   from "D:\phpStudy\WWW\guanpeipindao\templates\morebooks.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5852747a138aa8_42070103',
+  'unifunc' => 'content_5857594ec82a09_10799605',
   'file_dependency' => 
   array (
     'bc5e33c064d89c5076c6c4b89ee61990df348e57' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\morebooks.html',
-      1 => 1481798645,
+      1 => 1482119497,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_5852747a138aa8_42070103 ($_smarty_tpl) {
+function content_5857594ec82a09_10799605 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!DOCTYPE html>
@@ -42,9 +42,9 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
     <?php $progressbar_css = 'dist/css/progressbar.css' ?>
     <link rel="stylesheet" href="<?php echo $progressbar_css .'?v='. filemtime( $progressbar_css ); ?>">
 
-    <?php echo '<script'; ?>
- src="dist/js/jquery.min.js"><?php echo '</script'; ?>
->
+    <?php $jquery_confirm_css = 'dist/css/jquery.confirm.css' ?>
+    <link rel="stylesheet" href="<?php echo $jquery_confirm_css .'?v='. filemtime( $jquery_confirm_css ); ?>">
+
 
     <style>
         body {
@@ -310,22 +310,6 @@ if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\g
 ?>
 
 
-<?php echo '<script'; ?>
->
-
-    var web_dir = $('#web_dir').html();
-
-    function no_find() {
-
-        alert(web_dir);
-        var img = event.srcElement;
-        img.src = "/" + web_dir + "/dist/images/nopicture.png";
-        img.onerror = null; //控制不要一直跳动
-
-    }
-<?php echo '</script'; ?>
->
-
 <div class="site">
     <a id="default_num_two_types" style="display: none "><?php if ($_SESSION['default_num_two_types']) {
 echo $_SESSION['default_num_two_types'];
@@ -408,7 +392,8 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                             </td>
 
                             <td class="batch_rtd">
-                                <a class="delete_batch"><img width="19" height="19"
+                                <a class="delete_batch" name="<?php echo $_smarty_tpl->tpl_vars['val']->value['PiCi_Num'];?>
+"><img width="19" height="19"
                                                              src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
 dist/picture/chachong/delete_batch.png"></a>
                             </td>
@@ -719,6 +704,10 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_1_saved_item;
 
 </body>
 <?php echo '<script'; ?>
+ src="dist/js/jquery.min.js"><?php echo '</script'; ?>
+>
+
+<?php echo '<script'; ?>
  src="dist/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
 <!--<?php echo '<script'; ?>
@@ -740,6 +729,10 @@ echo '<script'; ?>
  src='dist/js/morebooks.js?v=<?php echo filemtime( $morebooks_js );?>'><?php echo '</script'; ?>
 >
 
+<?php $jquery_confirm_js = 'dist/js/jquery.confirm.js' ;
+echo '<script'; ?>
+ src='dist/js/jquery.confirm.js?v=<?php echo filemtime( $jquery_confirm_js );?>'><?php echo '</script'; ?>
+>
 <!--<?php echo '<script'; ?>
  src="dist/js/morebooks.js?+Math.random()"><?php echo '</script'; ?>
 >-->
@@ -842,6 +835,45 @@ dist/picture/pic_list/list_enable.gif";
                 }
             }
     );
+
+    $('.delete_batch').click(function (e) {
+
+        var save_this = $(this);
+        var batch_id = e.currentTarget.name;
+
+        $.confirm({
+            'title': '警告',
+            'message': '确认删除',
+            'buttons': {
+                '是': {
+                    'class': 'blue',
+                    'action': function () {
+                        var fdata = new FormData();
+                        fdata.append("batch_id", batch_id);
+
+                        xhr.open('POST', delete_batch_url, true);
+                        xhr.send(fdata);
+                        xhr.onreadystatechange = function () {
+                            if (this.readyState == 4) {
+                                alert(this.responseText);
+
+                                if (this.responseText == '删除成功！') {
+                                    save_this.parent().parent().remove();
+                                }
+                            }
+                        }
+                    }
+                },
+                '否': {
+                    'class': 'gray',
+                    'action': function () {
+                    }	// Nothing to do in this case. You can as well omit the action property.
+                }
+            }
+        });
+
+    });
+
 <?php echo '</script'; ?>
 >
 </html><?php }

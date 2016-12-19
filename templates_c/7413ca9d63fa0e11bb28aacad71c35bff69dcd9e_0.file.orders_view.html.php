@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-15 17:59:12
+/* Smarty version 3.1.29, created on 2016-12-16 17:33:07
   from "D:\phpStudy\WWW\guanpeipindao\templates\zhengdingdan\orders_view.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58526970c4d1e4_79568953',
+  'unifunc' => 'content_5853b4d337c331_04162499',
   'file_dependency' => 
   array (
     '7413ca9d63fa0e11bb28aacad71c35bff69dcd9e' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\zhengdingdan\\orders_view.html',
-      1 => 1481795925,
+      1 => 1481880503,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_58526970c4d1e4_79568953 ($_smarty_tpl) {
+function content_5853b4d337c331_04162499 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -765,7 +765,10 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_item;
 <?php echo '<script'; ?>
  src="../dist/js/modernizr.custom.04022.js"><?php echo '</script'; ?>
 >
-
+<?php $order_list_for_generate_js = '../dist/js/order_list_for_generate.js' ;
+echo '<script'; ?>
+ src='../dist/js/order_list_for_generate.js?v=<?php echo filemtime( $order_list_for_generate_js );?>'><?php echo '</script'; ?>
+>
 <?php echo '<script'; ?>
 >
 

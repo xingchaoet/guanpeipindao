@@ -38,11 +38,11 @@
             </td>
 
             <td class="batch_r_f_g_td">
-                <input id='' type="button" class="btn btn-default btn-sm" name="generate_order" value="生成订单"/>
+                <input id="{$val['PiCi_Num']}" type="button" class="btn btn-default btn-sm generate_order_btn" name="generate_order" value="生成订单"/>
             </td>
 
             <td class="batch_rtd">
-                <a class="delete_batch"><img width="19" height="19"
+                <a class="delete_batch" name="{$val['PiCi_Num']}" ><img width="19" height="19"
                                              src="{$relpostodist}dist/picture/chachong/delete_batch.png"></a>
             </td>
 

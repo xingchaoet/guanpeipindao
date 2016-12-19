@@ -13,7 +13,7 @@ include("../db/dao.php");
 require_once("../config.php");
 include("auth_chachong.php");
 
-$batch_id = $_POST['batch_id'];
+//session_start();
 
 $search_TJ = $_SESSION['search_TJ'];
 
@@ -48,10 +48,7 @@ $book_id_s = array();
 
 //$book_ids = $_POST['book_ids'];
 
-//
-//$dd_pc = $_SESSION['dd_pc'];
-
-$dd_pc = $batch_id;
+$dd_pc = $_SESSION['dd_pc'];
 
 //print_r($dd_pc);
 
@@ -84,8 +81,7 @@ while ($data = odbc_fetch_array($rs_sql_dd_pc)) {
 
 $lib_no = $_SESSION['lib_no'];
 
-//$uid = $_POST['user_id'];
-$uid = $_SESSION['user_id'];
+$uid = $_POST['user_id'];
 
 //预订单批次
 $ydd_pc = $lib_no . $uid;
@@ -827,9 +823,9 @@ if (!empty($book_id_s)) {
     $rs_sql_update_dingdan_pici = $ms->sdb($sql_update_dingdan_pici);
 
     try {
-        if (odbc_num_rows($rs_sql_update_dingdan_pici) <= 0) {
+        if (!$rs_sql_update_dingdan_pici) {
             echo "Error in query preparation/execution.<br />";
-            $error = "更新 批次$dd_pc中的 $book_id 订单已生成状态失败";
+            $error = "add $book_id to $table_name failed";
             $log->debug($error);
             throw new Exception($error);
         }
@@ -838,7 +834,7 @@ if (!empty($book_id_s)) {
     }
 
 } else {
-    echo "此批次中未选中书籍";
+    echo "未选中书籍";
 }
 
 

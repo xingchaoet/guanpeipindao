@@ -8,7 +8,6 @@
 include("include/GuanCangSmarty.php");
 require_once("config.php");
 include("db/con_mssql.php");
-//include("db/con_mysql2.php");
 include("db/dao.php");
 
 include("class/Page.class.php");
@@ -49,17 +48,6 @@ if (!empty($_SESSION['default_num_two_types'])) {
 
 $date_low = '2015-03';
 $search_TJ = "cbrq1 >= '$date_low'";
-//$manipulate_session_two_types = $_REQUEST["manipulate_session_two_types"];
-//unset($_REQUEST["manipulate_session_two_types"]);
-//
-////新批次
-//if ($manipulate_session_two_types == "manipulate_session_two_types") {
-//    echo "<script type='text/javascript'>alert('manipulate_session_two_types!');</script>";
-//    $_SESSION['start_purchase_two_types'] = false;
-////    print_r($manipulate_session_two_types);
-//
-//}
-
 
 $relpostodist = './';
 $smarty->assign("relpostodist", $relpostodist);
@@ -68,8 +56,6 @@ $smarty->assign("relpostodist", $relpostodist);
 
 
 $tot = '0';
-//$con_mysql2 = new con_mysql2();
-//$ms_tsfl4 = new con_mysql2();
 
 //未处理批次
 
@@ -114,9 +100,6 @@ if ($_REQUEST['type'] == 'recommend') { //推荐
     }
 //    $tot = $data['sum'];
 //
-//    echo $tot;
-//
-//    exit();
 
     $page = new Page('more.php', $tot, $show_num_per_page, $_REQUEST['type'], $_REQUEST['show']);
 
@@ -202,7 +185,6 @@ if ($_REQUEST['type'] == 'recommend') { //推荐
 
     $_SESSION['temp_table_two_types'] = $temp_table_bids;
 
-//    print_r($_SESSION['temp_table_two_types']);
 
     $sql_tsfl3 = "SELECT rows, book_id,sm,isbn,zzh,kb,cbrq,dj,jz1,jz3,slt
 FROM (SELECT $search_content,rows,
@@ -263,11 +245,6 @@ ORDER BY a.rows ASC";
         $recommendbooks[] = $data;
     }
 //    $recommendbooks = $recommendbooksObject->fetch_array(MYSQLI_ASSOC);
-//    print_r($recommendbooks);
-//
-//    exit();
-
-//    print_r($recommendbooks);
 
     $smarty->assign("type", "recommend");
     $smarty->assign("page_num", $page_num);

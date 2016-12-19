@@ -96,17 +96,17 @@ $ms = new con_mssql();
 //首次搜索
 if (!empty($first_search)) {
 
-    $bname = iconv('utf-8', 'gbk//IGNORE', $_REQUEST["bname"]);
-    $isbn = $_REQUEST["isbn"];
-    $csbname = iconv('utf-8', 'gbk//IGNORE', $_REQUEST["csbname"]);
+    $bname = trim(iconv('utf-8', 'gbk//IGNORE', $_REQUEST["bname"]));
+    $isbn = trim($_REQUEST["isbn"]);
+    $csbname = trim(iconv('utf-8', 'gbk//IGNORE', $_REQUEST["csbname"]));
     $writer = iconv('utf-8', 'gbk//IGNORE', $_REQUEST["writer"]);
     $keyword = iconv('utf-8', 'gbk//IGNORE', $_REQUEST["keyword"]);
-    $price_low = $_REQUEST["price_low"];
-    $price_high = $_REQUEST["price_high"];
-    $sjdate_low = $_REQUEST["sjdate_low"];
-    $sjdate_high = $_REQUEST["sjdate_high"];
-    $cbdate_low = $_REQUEST["cbdate_low"];
-    $cbdate_high = $_REQUEST["cbdate_high"];
+    $price_low = trim($_REQUEST["price_low"]);
+    $price_high = trim($_REQUEST["price_high"]);
+    $sjdate_low = trim($_REQUEST["sjdate_low"]);
+    $sjdate_high = trim($_REQUEST["sjdate_high"]);
+    $cbdate_low = trim($_REQUEST["cbdate_low"]);
+    $cbdate_high = trim($_REQUEST["cbdate_high"]);
     $zyfl_value = $_REQUEST["zyfl_id_sel"];
     $skfl_value = $_REQUEST["ztfl_sk_id_sel"];
     $zkfl_value = $_REQUEST["ztfl_zk_id_sel"];

@@ -114,12 +114,13 @@ AccordionMenu.prototype = {
                         sub_url = 'javascript:void(0)';
                         sub_sub_li = $('<li><a onclick="isnot_login();" href="' + sub_url + '">' + item.name + '</a></li>');
                     } else {
-                        if (item.auth == "order_generate") {
-                            sub_url = 'javascript:void(0)';
-                            sub_sub_li = $('<li onclick="generate_order();"><a href="' + sub_url + '">' + item.name + '</a></li>')
-                        } else {
-                            sub_sub_li = $('<li><a href="' + sub_url + '">' + item.name + '</a></li>')
-                        }
+                        // if (item.auth == "order_generate") {
+                        // sub_url = 'javascript:void(0)';
+
+                        sub_sub_li = $('<li><a href="' + sub_url + '">' + item.name + '</a></li>')
+                        // } else {
+                        //     sub_sub_li = $('<li><a href="' + sub_url + '">' + item.name + '</a></li>')
+                        // }
                     }
                     //here
                     $(sub_sub_Ul).append(sub_sub_li);

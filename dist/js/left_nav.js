@@ -27,7 +27,7 @@ var leftMenu =
                         {
                             "name": "订单生成",
                             "auth": "order_generate",
-                            "url": "http://" + global_url + "/chachong/order_list_for_generate.php",
+                            "url": "http://" + global_url + "/chachong/show_generate_order.php",
                         },
                     ],
 

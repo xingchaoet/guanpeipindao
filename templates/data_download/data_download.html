@@ -484,9 +484,10 @@
 <script src="../dist/js/holder.min.js"></script>
 <script src="../dist/js/application.js"></script>
 <!--<script src="../dist/js/jquery.icheck.min.js"></script>-->
-
 <script src="../dist/js/zzsc.js"></script>
 <script src="../dist/js/left_nav.js"></script>
+<?php $order_list_for_generate_js = '../dist/js/order_list_for_generate.js' ;?>
+<script src='../dist/js/order_list_for_generate.js?v=<?php echo filemtime( $order_list_for_generate_js );?>'></script>
 <script>
 
     var global_url = $('#global_url').html();

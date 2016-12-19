@@ -16,6 +16,9 @@
     <?php $progressbar_css = 'dist/css/progressbar.css' ?>
     <link rel="stylesheet" href="<?php echo $progressbar_css .'?v='. filemtime( $progressbar_css ); ?>">
 
+    <?php $jquery_confirm_css = 'dist/css/jquery.confirm.css' ?>
+    <link rel="stylesheet" href="<?php echo $jquery_confirm_css .'?v='. filemtime( $jquery_confirm_css ); ?>">
+
 
     <style>
         body {
@@ -342,7 +345,7 @@
                             </td>
 
                             <td class="batch_rtd">
-                                <a class="delete_batch"><img width="19" height="19"
+                                <a class="delete_batch" name="{$val['PiCi_Num']}"><img width="19" height="19"
                                                              src="{$relpostodist}dist/picture/chachong/delete_batch.png"></a>
                             </td>
 
@@ -600,6 +603,8 @@
 <?php $morebooks_js = 'dist/js/morebooks.js' ;?>
 <script src='dist/js/morebooks.js?v=<?php echo filemtime( $morebooks_js );?>'></script>
 
+<?php $jquery_confirm_js = 'dist/js/jquery.confirm.js' ;?>
+<script src='dist/js/jquery.confirm.js?v=<?php echo filemtime( $jquery_confirm_js );?>'></script>
 <!--<script src="dist/js/morebooks.js?+Math.random()"></script>-->
 <script>
     var waiting = "<div style='height: auto;width:inherit'><div style='margin :0px auto;margin-top: 20px;  width:320px'><a><img src=" + "'{$relpostodist}dist/picture/chachong/waiting.gif'" + " ></a></div></div>";
@@ -694,5 +699,44 @@
                 }
             }
     );
+
+    $('.delete_batch').click(function (e) {
+
+        var save_this = $(this);
+        var batch_id = e.currentTarget.name;
+
+        $.confirm({
+            'title': '警告',
+            'message': '确认删除',
+            'buttons': {
+                '是': {
+                    'class': 'blue',
+                    'action': function () {
+                        var fdata = new FormData();
+                        fdata.append("batch_id", batch_id);
+
+                        xhr.open('POST', delete_batch_url, true);
+                        xhr.send(fdata);
+                        xhr.onreadystatechange = function () {
+                            if (this.readyState == 4) {
+                                alert(this.responseText);
+
+                                if (this.responseText == '删除成功！') {
+                                    save_this.parent().parent().remove();
+                                }
+                            }
+                        }
+                    }
+                },
+                '否': {
+                    'class': 'gray',
+                    'action': function () {
+                    }	// Nothing to do in this case. You can as well omit the action property.
+                }
+            }
+        });
+
+    });
+
 </script>
 </html>

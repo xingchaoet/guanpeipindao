@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-15 16:33:58
+/* Smarty version 3.1.29, created on 2016-12-19 11:38:25
   from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\chachong.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58525576afe8f1_04824893',
+  'unifunc' => 'content_58575631924376_43812639',
   'file_dependency' => 
   array (
     'c7215b059ad1a7d7ea89acd7968a17fc303f3e3f' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\chachong.html',
-      1 => 1481790772,
+      1 => 1482118666,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_58525576afe8f1_04824893 ($_smarty_tpl) {
+function content_58575631924376_43812639 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,6 +39,9 @@ function content_58525576afe8f1_04824893 ($_smarty_tpl) {
 
     <?php $progressbar_css = '../dist/css/progressbar.css' ?>
     <link rel="stylesheet" href="<?php echo $progressbar_css .'?v='. filemtime( $progressbar_css ); ?>">
+
+    <?php $jquery_confirm_css = '../dist/css/jquery.confirm.css' ?>
+    <link rel="stylesheet" href="<?php echo $jquery_confirm_css .'?v='. filemtime( $jquery_confirm_css ); ?>">
 
     <?php echo '<script'; ?>
  src="../dist/js/jquery.min.js"><?php echo '</script'; ?>
@@ -428,11 +431,10 @@ function content_58525576afe8f1_04824893 ($_smarty_tpl) {
         </div>
 
         <div class="col-sm-9">
-            <div class="history">
+            <!--<div class="history">-->
 
-            </div>
+            <!--</div>-->
 
-            <div class="generate_order"></div>
             <div class="down">
                 <!--<form action="cc_index.php" method="post" enctype="multipart/form-data">-->
                 <input type="hidden" name="usrn" value="<?php echo $_SESSION['user_id'];?>
@@ -615,7 +617,8 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                             </td>
 
                             <td class="batch_rtd">
-                                <a class="delete_batch"><img width="19" height="19"
+                                <a class="delete_batch" name="<?php echo $_smarty_tpl->tpl_vars['val']->value['PiCi_Num'];?>
+"><img width="19" height="19"
                                                              src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
 dist/picture/chachong/delete_batch.png"></a>
                             </td>
@@ -701,15 +704,15 @@ dist/picture/pic_list/pic_disable.gif"
                     <!--</div>-->
                     <!--</div>-->
                     <div class="clear"></div>
-                    <div id="bottom" class="bottom">
-                        <button type="button" class="btn btn-sm btn-default" onclick="generate_order();"
-                                value="生成征订单和预订单">
-                            生成征订单和预订单
-                        </button>
-                        <button type="button" class="btn btn-sm btn-default" onclick="view_my_orders();" value=""
-                        >查看我的订单
-                        </button>
-                    </div>
+                    <!--<div id="bottom" class="bottom">-->
+                        <!--<button type="button" class="btn btn-sm btn-default" onclick="generate_order();"-->
+                                <!--value="生成征订单和预订单">-->
+                            <!--生成征订单和预订单-->
+                        <!--</button>-->
+                        <!--<button type="button" class="btn btn-sm btn-default" onclick="view_my_orders();" value=""-->
+                        <!--&gt;查看我的订单-->
+                        <!--</button>-->
+                    <!--</div>-->
                 </div>
             </div>
 
@@ -739,11 +742,55 @@ dist/picture/pic_list/pic_disable.gif"
 echo '<script'; ?>
  src='../dist/js/chachong.js?v=<?php echo filemtime( $chachong_js );?>'><?php echo '</script'; ?>
 >
+
+<?php $jquery_confirm_js = '../dist/js/jquery.confirm.js' ;
+echo '<script'; ?>
+ src='../dist/js/jquery.confirm.js?v=<?php echo filemtime( $jquery_confirm_js );?>'><?php echo '</script'; ?>
+>
+
 <?php echo '<script'; ?>
 >
 
     var waiting = "<div style='height: auto;width:inherit'><div style='margin :0px auto;margin-top: 20px;  width:320px'><a><img src=" + "'<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
 dist/picture/chachong/waiting.gif'" + " ></a></div></div>";
+
+    $('.delete_batch').click(function (e) {
+
+        var save_this = $(this);
+        var batch_id = e.currentTarget.name;
+
+        $.confirm({
+            'title': '警告',
+            'message': '确认删除',
+            'buttons': {
+                '是': {
+                    'class': 'blue',
+                    'action': function () {
+                        var fdata = new FormData();
+                        fdata.append("batch_id", batch_id);
+
+                        xhr.open('POST', delete_batch_url, true);
+                        xhr.send(fdata);
+                        xhr.onreadystatechange = function () {
+                            if (this.readyState == 4) {
+                                alert(this.responseText);
+
+                                if (this.responseText == '删除成功！') {
+                                    save_this.parent().parent().remove();
+                                }
+                            }
+                        }
+                    }
+                },
+                '否': {
+                    'class': 'gray',
+                    'action': function () {
+                    }	// Nothing to do in this case. You can as well omit the action property.
+                }
+            }
+        });
+
+    });
 
 <?php echo '</script'; ?>
 >
