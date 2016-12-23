@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-19 10:42:04
+/* Smarty version 3.1.29, created on 2016-12-23 14:48:41
   from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\show_generate_order.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_585748fc7a40a3_85447668',
+  'unifunc' => 'content_585cc8c93c0d22_23538310',
   'file_dependency' => 
   array (
     '75aea83179e640f0ad141efe979341d7d06bc494' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\show_generate_order.html',
-      1 => 1482115280,
+      1 => 1482475515,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_585748fc7a40a3_85447668 ($_smarty_tpl) {
+function content_585cc8c93c0d22_23538310 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +38,8 @@ function content_585748fc7a40a3_85447668 ($_smarty_tpl) {
     <link rel="stylesheet" href="<?php echo $introduce_css .'?v='. filemtime( $introduce_css ); ?>">
     <?php $jquery_confirm_css = '../dist/css/jquery.confirm.css' ?>
     <link rel="stylesheet" href="<?php echo $jquery_confirm_css .'?v='. filemtime( $jquery_confirm_css ); ?>">
-
+    <?php $batch_merge_split_css = '../dist/css/batch_merge_split.css' ?>
+    <link rel="stylesheet" href="<?php echo $batch_merge_split_css .'?v='. filemtime( $batch_merge_split_css ); ?>">
     <?php echo '<script'; ?>
  src="../dist/js/jquery.min.js"><?php echo '</script'; ?>
 >
@@ -82,6 +83,12 @@ function content_585748fc7a40a3_85447668 ($_smarty_tpl) {
 
         .need_op_batch {
             margin-top: 10px;
+        }
+
+        .batch_l_ltd {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 33px;
         }
 
         .batch_ltd {
@@ -157,17 +164,24 @@ function content_585748fc7a40a3_85447668 ($_smarty_tpl) {
             </div>
 
             <div class="generate_order">
-                <div class="need_op_batch">
+
+                <div id="div_list" name="div_list" class="need_op_batch">
 
                     <div class="batch_title">
                         <span>
-                            你还有<?php echo $_smarty_tpl->tpl_vars['need_op_batch_num']->value;?>
-条未处理批次
+                            你还有<span id="need_op_batch_num_span"><?php echo $_smarty_tpl->tpl_vars['need_op_batch_num']->value;?>
+</span>条未处理批次
                         </span>
                     </div>
 
+                    <!--<div class="row" name="row">-->
                     <table id="batch_table_generate" class="table table-bordered batch_table_generate">
                         <tr>
+
+                            <td align="center" class="batch_l_ltd">
+                                <input type="checkbox" name="all" class="checkall_box" class=""
+                                       onclick='checkallbox_changed();'/>
+                            </td>
                             <td align="center" class="batch_ltd">
                                 批次号
                             </td>
@@ -200,6 +214,11 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
 ?>
 
                         <tr>
+                            <td align="center" class="batch_l_ltd">
+                                <input type='checkbox' name="<?php echo $_smarty_tpl->tpl_vars['val']->value['PiCi_Num'];?>
+" class="checkall" onclick="checkboxes_changed();"/>
+                            </td>
+
                             <td class="batch_ltd">
                                 <a class="batch_item"><?php echo $_smarty_tpl->tpl_vars['val']->value['PiCi_Num'];?>
 </a>
@@ -235,10 +254,32 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
 ?>
 
                     </table>
+                    <!--</div>-->
 
                 </div>
             </div>
 
+            <div id="batch_merge_split">
+                <div class="tab-head">
+                    <h3 class="selected">订单合并</h3>
+                    <h3>订单拆分</h3>
+                    <h3>3</h3>
+                </div>
+                <div class="tab-content">
+                    <div class="show">
+                        <input type="button" id="batch_merge" class="btn btn-default btn-sm" value="合并订单">
+                    </div>
+                    <div>
+
+                        <input id='by_type' type="radio" name="by_radio" value="按种类拆分"/>按种类拆分
+                        <input id='by_price' type="radio" name="by_radio" value="按价格拆分"/>按价格拆分
+
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!--<a id="userid" style="display: none "><?php echo $_SESSION['user_id'];?>
@@ -267,6 +308,10 @@ echo '<script'; ?>
 <?php $order_list_for_generate_js = '../dist/js/order_list_for_generate.js' ;
 echo '<script'; ?>
  src='../dist/js/order_list_for_generate.js?v=<?php echo filemtime( $order_list_for_generate_js );?>'><?php echo '</script'; ?>
+>
+<?php $batch_merge_split_js = '../dist/js/batch_merge_split.js' ;
+echo '<script'; ?>
+ src='../dist/js/batch_merge_split.js?v=<?php echo filemtime( $batch_merge_split_js );?>'><?php echo '</script'; ?>
 >
 </html><?php }
 }

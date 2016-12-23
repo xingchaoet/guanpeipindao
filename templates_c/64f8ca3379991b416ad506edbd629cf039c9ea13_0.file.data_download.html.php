@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-16 17:30:12
+/* Smarty version 3.1.29, created on 2016-12-20 10:34:42
   from "D:\phpStudy\WWW\guanpeipindao\templates\data_download\data_download.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5853b4249816b4_26615028',
+  'unifunc' => 'content_585898c27c6ac8_53463067',
   'file_dependency' => 
   array (
     '64f8ca3379991b416ad506edbd629cf039c9ea13' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\data_download\\data_download.html',
-      1 => 1481880439,
+      1 => 1482201203,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_5853b4249816b4_26615028 ($_smarty_tpl) {
+function content_585898c27c6ac8_53463067 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -262,6 +262,7 @@ function content_5853b4249816b4_26615028 ($_smarty_tpl) {
         .download_zhuantishuju {
             font-style: italic;
             color: #F16D06;
+            cursor:pointer;
         }
 
         .generate_order {

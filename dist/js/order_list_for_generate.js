@@ -24,6 +24,8 @@ function do_generate_order() {
     // return;
     var batch_id = this.id;
     var fdata = new FormData();
+
+
     fdata.append("batch_id", batch_id);
 
     xhr.open('POST', generate_order_url, true);
@@ -34,6 +36,7 @@ function do_generate_order() {
             alert(this.responseText);
             if (this.responseText == "此批次中未选中书籍") {
             } else {
+
                 save.parent().parent().remove();
             }
         }
@@ -45,6 +48,7 @@ $('.delete_batch').click(function (e) {
 
     var save_this = $(this);
     var batch_id = e.currentTarget.name;
+    var need_op_batch_num = 0;
 
     $.confirm({
         'title': '警告',
@@ -64,6 +68,10 @@ $('.delete_batch').click(function (e) {
 
                             if (this.responseText == '删除成功！') {
                                 save_this.parent().parent().remove();
+
+                                need_op_batch_num = $('#need_op_batch_num_span').html();
+                                need_op_batch_num = need_op_batch_num - 1;
+                                $('#need_op_batch_num_span').html(need_op_batch_num);
                             }
                         }
                     }

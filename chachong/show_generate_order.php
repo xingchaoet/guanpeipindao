@@ -6,9 +6,9 @@
  * Time: 8:48
  */
 include("../include/GuanCangSmarty.php");
-require_once("../config.php");
-require_once('../PHPExcel.php');
-require_once("../db/con_mssql.php");
+require("../config.php");
+require('../PHPExcel.php');
+require("../db/con_mssql.php");
 include("../db/dao.php");
 include("auth_chachong.php");
 
@@ -38,7 +38,11 @@ while ($data = odbc_fetch_array($rs_sql_batch)) {
 }
 
 $relpostodist = '../';
+
+$smarty->assign("first_level","<a href={$relpostodist}guanpeipindao.php>馆配服务</a>");
+$smarty->assign("second_level","<a href='chachong.php'>在线订购</a>");
 $smarty->assign("relpostodist", $relpostodist);
+
 $smarty->assign("need_op_batch_num", $need_op_batch_num);
 $smarty->assign("need_op_batch_detail", $need_op_batch_detail);
 //$order_list_for_generate_page = $smarty->display("chachong/order_list_for_generate.html");

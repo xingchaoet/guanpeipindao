@@ -1,7 +1,7 @@
 <?php
 
-require_once("include/GuanCangSmarty.php");
-require_once("config.php");
+require("include/GuanCangSmarty.php");
+require("config.php");
 include("db/con_mssql.php");
 include("db/dao.php");
 

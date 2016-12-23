@@ -6,7 +6,7 @@
  * Time: 23:22
  */
 include("include/GuanCangSmarty.php");
-require_once("config.php");
+require("config.php");
 include("db/con_mssql.php");
 include("db/dao.php");
 
@@ -48,7 +48,7 @@ if (!empty($_SESSION['default_num_two_types'])) {
 
 $date_low = '2015-03';
 $search_TJ = "cbrq1 >= '$date_low'";
-
+$search_TJ .= "    AND bid1 is not null ";
 $relpostodist = './';
 $smarty->assign("relpostodist", $relpostodist);
 
@@ -167,7 +167,8 @@ if ($_REQUEST['type'] == 'recommend') { //推荐
 
        slt";
 
-    $sql_tsfl30 = "select rows,bid1 from v_ecs_book where " . $search_TJ . "ORDER BY rows ";
+//    $sql_tsfl30 = "select rows,bid1 from v_ecs_book where " . $search_TJ . "ORDER BY rows ";
+    $sql_tsfl30 = "select bid1 from v_ecs_book where " . $search_TJ . "ORDER BY bid1 ";
 
     $AdminResult = $ms->sdb($sql_tsfl30);
 //    $rows = odbc_num_rows($AdminResult);
@@ -186,13 +187,13 @@ if ($_REQUEST['type'] == 'recommend') { //推荐
     $_SESSION['temp_table_two_types'] = $temp_table_bids;
 
 
-    $sql_tsfl3 = "SELECT rows, book_id,sm,isbn,zzh,kb,cbrq,dj,jz1,jz3,slt
-FROM (SELECT $search_content,rows,
-ROW_NUMBER() OVER (ORDER BY rows) AS RowNumber
+    $sql_tsfl3 = "SELECT  book_id,sm,isbn,zzh,kb,cbrq,dj,jz1,jz3,slt
+FROM (SELECT $search_content,
+ROW_NUMBER() OVER (ORDER BY bid1) AS RowNumber
 FROM v_ecs_book where " . $search_TJ . ") a
 WHERE RowNumber > $page->offset AND RowNumber <= ($page->offset + $page->length) AND 
  cbrq > '$date_low'
-ORDER BY a.rows ASC";
+ORDER BY a.book_id ASC";
 
 //    echo "$sql_tsfl3";
 //
@@ -270,7 +271,7 @@ ORDER BY a.rows ASC";
     $page = new Page('more.php', $tot, $show_num_per_page, $_REQUEST['type'], $_REQUEST['show']);
 
 
-    $sql_tsfl30 = "select rows,bid1 from v_ecs_book where " . $search_TJ . "ORDER BY rows ";
+    $sql_tsfl30 = "select bid1 from v_ecs_book where " . $search_TJ . "ORDER BY bid1 ";
 
     $AdminResult = $ms->sdb($sql_tsfl30);
 //    $rows = odbc_num_rows($AdminResult);
@@ -317,13 +318,13 @@ ORDER BY a.rows ASC";
 
        slt";
 
-    $sql_tsfl3 = "SELECT rows, book_id,sm,isbn,zzh,kb,cbrq,dj,jz1,jz3,slt
-FROM (SELECT $search_content,rows,
-ROW_NUMBER() OVER (ORDER BY rows) AS RowNumber
+    $sql_tsfl3 = "SELECT  book_id,sm,isbn,zzh,kb,cbrq,dj,jz1,jz3,slt
+FROM (SELECT $search_content,
+ROW_NUMBER() OVER (ORDER BY bid1) AS RowNumber
 FROM v_ecs_book where " . $search_TJ . ") a
 WHERE RowNumber > $page->offset AND RowNumber <= ($page->offset + $page->length) AND 
  cbrq > '$date_low'
-ORDER BY a.rows ASC";
+ORDER BY a.book_id ASC";
 //    $sql_tsfl3 = "SELECT rows, book_id,sm,isbn,zzh,kb,cbrq,dj,jz1,jz3,slt
 //FROM (SELECT $search_content,rows,
 //ROW_NUMBER() OVER (ORDER BY rows) AS RowNumber

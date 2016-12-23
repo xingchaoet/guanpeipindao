@@ -7,7 +7,7 @@
  */
 include ("include/GuanCangSmarty.php");
 
-require_once("config.php");
+require("config.php");
 include("db/con_mssql.php");
 include("db/dao.php");
 //echo $_GET['book_id'];

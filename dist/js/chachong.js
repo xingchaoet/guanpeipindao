@@ -11,7 +11,7 @@ var search_url = 'http://' + global_url + '/search.php';
 var guangcangimport_url = 'http://' + global_url + '/chachong/guangcang_chachong.php';
 var guan_cang_import_history_url = 'http://' + global_url + '/chachong/gangcang_import_history.php';
 var delpici_url = 'http://' + global_url + '/chachong/delpici.php';
-var generate_order_url = 'http://' + global_url + '/chachong/generate_order.php';
+// var generate_order_url = 'http://' + global_url + '/chachong/generate_order.php';
 // var order_list_url = 'http://' + global_url + '/zhengdingdan/order_list.php';
 
 var operate_temp_table_url = 'http://' + global_url + '/chachong/operate_temp_table.php';
@@ -327,6 +327,7 @@ var checkboxes_changed = function () {
 
     var total_boxes = $row.find(checkboxes_sel).length;
     var checked_boxes = $row.find(checkboxes_sel + ":checked").length;
+
 
 //        alert(total_boxes);
 

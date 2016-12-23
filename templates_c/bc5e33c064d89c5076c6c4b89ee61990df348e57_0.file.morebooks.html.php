@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-19 11:51:42
+/* Smarty version 3.1.29, created on 2016-12-22 15:01:59
   from "D:\phpStudy\WWW\guanpeipindao\templates\morebooks.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5857594ec82a09_10799605',
+  'unifunc' => 'content_585b7a67e51544_18931867',
   'file_dependency' => 
   array (
     'bc5e33c064d89c5076c6c4b89ee61990df348e57' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\morebooks.html',
-      1 => 1482119497,
+      1 => 1482390090,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_5857594ec82a09_10799605 ($_smarty_tpl) {
+function content_585b7a67e51544_18931867 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_truncate')) require_once 'D:\\phpStudy\\WWW\\guanpeipindao\\libs\\plugins\\modifier.truncate.php';
 ?>
 <!DOCTYPE html>
@@ -336,8 +336,8 @@ echo $_SESSION['default_num_two_types'];
 
                     <div class="batch_title">
             <span>
-            你还有<?php echo $_smarty_tpl->tpl_vars['need_op_batch_num']->value;?>
-条未处理批次
+                            你还有<span id="need_op_batch_num_span"><?php echo $_smarty_tpl->tpl_vars['need_op_batch_num']->value;?>
+</span>条未处理批次
             </span>
                         <span class="batch_icon">
             <img id="toggle_table" src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
@@ -733,9 +733,7 @@ echo '<script'; ?>
 echo '<script'; ?>
  src='dist/js/jquery.confirm.js?v=<?php echo filemtime( $jquery_confirm_js );?>'><?php echo '</script'; ?>
 >
-<!--<?php echo '<script'; ?>
- src="dist/js/morebooks.js?+Math.random()"><?php echo '</script'; ?>
->-->
+
 <?php echo '<script'; ?>
 >
     var waiting = "<div style='height: auto;width:inherit'><div style='margin :0px auto;margin-top: 20px;  width:320px'><a><img src=" + "'<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
@@ -840,6 +838,7 @@ dist/picture/pic_list/list_enable.gif";
 
         var save_this = $(this);
         var batch_id = e.currentTarget.name;
+        var need_op_batch_num = 0;
 
         $.confirm({
             'title': '警告',
@@ -859,6 +858,10 @@ dist/picture/pic_list/list_enable.gif";
 
                                 if (this.responseText == '删除成功！') {
                                     save_this.parent().parent().remove();
+
+                                    need_op_batch_num = $('#need_op_batch_num_span').html();
+                                    need_op_batch_num = need_op_batch_num - 1;
+                                    $('#need_op_batch_num_span').html(need_op_batch_num);
                                 }
                             }
                         }

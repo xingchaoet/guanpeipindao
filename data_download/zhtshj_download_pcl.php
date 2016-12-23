@@ -5,10 +5,10 @@
  * Date: 2016/9/5
  * Time: 10:04
  */
-require_once("../db/con_mssql.php");
+require("../db/con_mssql.php");
 include("../db/dao.php");
-require_once("../config.php");
-require_once("../class/pclzip.lib.php");
+require("../config.php");
+require("../class/pclzip.lib.php");
 
 include ("auth_data_download.php");
 

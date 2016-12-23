@@ -6,8 +6,8 @@
  * Time: 9:32
  */
 include("../include/GuanCangSmarty.php");
-require_once("../config.php");
-require_once("../db/con_mssql.php");
+require("../config.php");
+require("../db/con_mssql.php");
 include("../db/dao.php");
 include("auth_chachong.php");
 

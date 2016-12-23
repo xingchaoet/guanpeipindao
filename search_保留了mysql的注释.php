@@ -6,10 +6,16 @@
  * Time: 9:51
  */
 
+//include("include/GuanCangSmarty.php");
 require("config.php");
+//include("db/con_mysql2.php");
 require("db/con_mssql.php");
 include("db/dao.php");
 include("auth.php");
+
+
+//$smarty = new GuanCangSmarty();
+//$smarty->MySmarty();
 
 $show_type = $_REQUEST["show_type"];
 $book_ids = $_REQUEST["book_ids"];
@@ -30,6 +36,7 @@ $manipulate_session = $_REQUEST["manipulate_session"];
 if ($manipulate_session == "manipulate_session") {
     echo "<script type='text/javascript'>alert('manipulate_session!');</script>";
     $_SESSION['start_purchase'] = false;
+//    print_r($manipulate_session);
 
 }
 
@@ -44,9 +51,47 @@ $TJaddon = "";
 $temp_table_bids = array();
 
 //echo $show_type;
+//
+//exit();
 
 $tsfl_data3_array = array();
 $ms = new con_mssql();
+
+
+//无有选中书籍信息并且不是从分页过来，创建临时表
+//if (empty($book_ids) && empty($origin_page)) {
+//
+//    $temp_table_name = 'temp_' . $usrid . '_' . date('YmdHis', time());
+//
+//    $_SESSION['temp_table_name'] = $temp_table_name;
+//
+//    $sql_create_temp_table = "
+//    CREATE TABLE [dbo]." . $temp_table_name . " (
+//    Id int IDENTITY(1, 1) PRIMARY KEY  NOT NULL,
+//    BookId varchar(50) NULL,
+//    IsChecked varchar(10) NULL
+//    );
+//
+//    ALTER TABLE [dbo]." . $temp_table_name . " SET (LOCK_ESCALATION = TABLE);
+//    ";
+//
+//    $rs_create_temp_table = $ms->sdb($sql_create_temp_table);
+//
+//    if (!$rs_create_temp_table) {
+//        echo "Error in query preparation/execution.<br />";
+//        die(print_r(odbc_errormsg(), true));
+//    }
+//}
+//echo $sql_create_temp_table;
+
+//exit();
+
+//if (isset($_REQUEST['submit_cc'])) {
+//if (1)
+//{
+
+//注释1---接收cc_index.php通过post传递出的参数，分别存储入变量-----------
+//sqlsever iconv('utf-8', 'gbk//IGNORE', $introduce)
 
 //首次搜索
 if (!empty($first_search)) {
@@ -66,6 +111,23 @@ if (!empty($first_search)) {
     $skfl_value = $_REQUEST["ztfl_sk_id_sel"];
     $zkfl_value = $_REQUEST["ztfl_zk_id_sel"];
     $media = $_REQUEST["media"];
+
+//mysql
+//$bname = $_REQUEST["bname"];
+//$isbn = $_REQUEST["isbn"];
+//$csbname = $_REQUEST["csbname"];
+//$writer = $_REQUEST["writer"];
+//$keyword = $_REQUEST["keyword"];
+//$price_low = $_REQUEST["price_low"];
+//$price_high = $_REQUEST["price_high"];
+//$sjdate_low = $_REQUEST["sjdate_low"];
+//$sjdate_high = $_REQUEST["sjdate_high"];
+//$cbdate_low = $_REQUEST["cbdate_low"];
+//$cbdate_high = $_REQUEST["cbdate_high"];
+//$zyfl_value = $_REQUEST["zyfl_id_sel"];
+//$skfl_value = $_REQUEST["ztfl_sk_id_sel"];
+//$zkfl_value = $_REQUEST["ztfl_zk_id_sel"];
+//$media = $_REQUEST["media"];
 
 //注释2---判断参数是否为空，如果为空，不作任何操作。如果有参数传出，则生成相应SQL语句。---------------------
     if ($bname != null) {
@@ -209,6 +271,37 @@ if (!empty($first_search)) {
         $search_TJ = " (1=0)";
     }
 
+//$ms_tsfl30 = new con_mysql2();
+//使用mssql
+
+//从这里写查重条件
+
+
+//    $sql = ser("lib_lxr_info", "xm,lib_no", "ID='$usrid'");
+////    echo $un;
+////    echo $sql;
+//
+//    $rs = $ms->sdb($sql);
+//    if (!$rs) {
+////        echo '这里出错了';
+//        echo "Error in query preparation/execution.<br />";
+//        die(print_r(odbc_errormsg(), true));
+//    }
+//    if (odbc_fetch_row($rs)) {
+//        $lib_no = trim(odbc_result($rs, "lib_no"));
+//        $xm = trim(odbc_result($rs, "xm"));
+//
+////        echo '图书馆代号';
+////        echo $lib_no;
+////        echo '用户id';
+////        echo $rID;
+////        echo '用户姓名';
+////        echo $xm;
+//    } else {
+////        echo 'test';
+//    }
+
+
 //用用户的id判断
     $sql_info = ser(lib_gc_info, "isbn", "inputby='$usrid'");
 
@@ -234,25 +327,28 @@ if (!empty($first_search)) {
 
     $TJaddon .= "    AND DATALENGTH(isbn) >= 10 ";
 
-//但是有同一书籍数据不一致导致bid1为空的情况，如select * from v_ecs_book where isbn = '9787030333582'
-//    所以需要要选出不为0的id,这里注意和产生$_SESSION['temp_table']的条件一致
-//解决该问题
-    $TJaddon .= "    AND bid1 is not null ";
 //    $TJaddon .=  "    AND jz !=  '2' "; //查询查重任何情况下都不出现电子书
+
 
     $search_TJ = $search_TJ . $TJaddon;
 
 //print_r($search_TJ);
 
-//
-//    (case
-//         when ( bid1 is not null) then bid1
-//         when ( bid1 is null ) then bid3
-//       end )as book_id,
-//
+//    $sql_tsfl30 = ser("ecs_book", "book_id ", $search_TJ);
+//得到总条数
+//$sql_tsfl30 = ser("v_ecs_book", "count(*) as sum", $search_TJ);
+//    $sql_tsfl30 = ser("ecs_book", "isbn", $search_TJ);
+
+//    $sql_tsfl30 = "select bid1 from v_ecs_book where " . $search_TJ;
+
     $search_content_all = "
-      bid1 as book_id,
-      isbn
+
+      (case
+         when (bid<>0 and bid1 is not null) then bid1
+         when (bid1 is null or bid=0) then bid3
+       end )as book_id,
+
+     isbn
      ";
 
     $sql_tsfl30 = "select $search_content_all from v_ecs_book where " . $search_TJ . "ORDER BY book_id ASC";
@@ -330,6 +426,107 @@ if ($_SESSION['start_purchase']) {
           ";
 }
 
+//exit();
+
+
+//有选中书籍信息，将临时表的选中书籍的IsChecked修改为订购数量，无，将结果中所有书籍写入临时表，IsChecked 默认为0
+//if (!empty($book_ids)) { //选中了书籍
+////        将当前页选中的书籍写入临时表
+//
+//    $book_id_s = explode(",", $book_ids);
+//    $book_num_s = explode(",", $book_nums);
+//    $temp_table_name = $_SESSION['temp_table_name'];
+//    for ($i = 0 ; $i < count($book_id_s); $i ++) {
+//        $book_id_temp = $book_id_s[$i];
+//        $book_num_temp = $book_num_s[$i];
+//
+//        //更新
+//        $sql_update_temp_table = "UPDATE [dbo]." . $temp_table_name . " SET  IsChecked = '$book_num_temp' WHERE BookId = '$book_id_temp' ";
+//
+//        echo $sql_update_temp_table;
+//        $rs_sql_update_temp_table = $ms->sdb($sql_update_temp_table);
+//
+//        try {
+//
+//            if (!$rs_sql_update_temp_table) {
+//
+//                echo "Error in query preparation/execution.<br />";
+////                die(print_r(odbc_errormsg(), true));
+//
+//                $error = "update $bid to $temp_table_name failed";
+//
+//                throw new Exception($error);      //创建一个异常对象，通过throw语句抛出
+//            }
+//
+//        } catch (Exception $e) {
+//
+//            echo 'Caught exception: ', $e->getMessage(), "\n";  //输出捕获的异常消息
+//
+//        }
+//
+//
+//    }
+//
+//} else if (empty($book_ids) && empty($origin_page)) { //不是从分页过来，也没选中书籍，就是直接的查询
+//
+//    while ($data = odbc_fetch_array($AdminResult)) {
+////        $tsfl_data3_array[] = $data;
+//        $bid = $data['bid1'];
+////        IsChecked 默认为0
+//        $sql_add_to_temp_table = "INSERT INTO [dbo]." . $temp_table_name . " (BookId, IsChecked) VALUES ('$bid', '0')";
+//
+//        $rs_sql_add_to_temp_table = $ms->sdb($sql_add_to_temp_table);
+//
+//        try {
+//
+//            if (!$rs_sql_add_to_temp_table) {
+//
+//                echo "Error in query preparation/execution.<br />";
+////                die(print_r(odbc_errormsg(), true));
+//
+//                $error = "insert $bid to $temp_table_name failed";
+//
+//                throw new Exception($error);      //创建一个异常对象，通过throw语句抛出
+//            }
+//
+//        } catch (Exception $e) {
+//
+//            echo 'Caught exception: ', $e->getMessage(), "\n";  //输出捕获的异常消息
+//
+//        }
+//
+//    }
+//
+//}
+
+//session_start();
+//$_SESSION['search_TJ'] = $search_TJ;  // 少了不出结果
+//因为分页函数里用到了
+
+//echo "当前查询条件11：".$search_TJ;
+//}
+//else {
+//    $rows = isset($_REQUEST["rows"]) ? $_REQUEST["rows"] : 0;
+//    //echo "当前记录数：".$rows;
+//    //session_start();
+//    $search_TJ = $_SESSION['search_TJ'];
+
+//    print_r($search_TJ);
+//    $_SESSION['search_TJ'] = $search_TJ;
+
+//echo "当前查询条件12：".$search_TJ;
+//}
+/* require('page.php');
+page($sql,'index.php');
+echo $pagenav;	 */
+
+
+// Page分页函数
+//if isset($page){$page = $_GET["page"];} else { $page=0;}
+//$page = $_GET["page"];
+
+
+//$page = isset($_GET["page"]) ? $_GET["page"] : 1;
 $page = isset($_REQUEST["page"]) ? $_REQUEST["page"] : 1; //不要改动这行代码的位置
 
 function Page($rows, $page_size, $show_type)
@@ -416,15 +613,15 @@ if (isset($rows) and $rows > 0) {
 //    统一使用bid1 这样不会和manipulate_session.php生成临时表 的语句 冲突
 //    但是有同一书籍数据不一致导致bid1为空的情况，如select * from v_ecs_book where isbn = '9787030333582'
 //    所以需要要选出不为0的id,这里注意和产生$_SESSION['temp_table']的条件一致
-//    (case
-//         when ( bid1 is not null) then bid1
-//         when (bid1 is null ) then bid3
-//       end )as book_id,
+//     bid1 as book_id ,
 
     $search_content = "
 
-     bid1 as book_id ,
-
+      (case
+         when (bid<>0 and bid1 is not null) then bid1
+         when (bid1 is null or bid=0) then bid3
+       end )as book_id,
+       
      sm,isbn,zzh,kb,
 
       (case
@@ -470,12 +667,20 @@ ORDER BY a.book_id ASC";
         die(print_r(odbc_errormsg(), true));
     }
     while ($data = odbc_fetch_array($rs_tsfl3)) {
+//    print_r($data);
         $tsfl_data3_array[] = $data;
     }
 
+
 }
 
+//print_r($tsfl_data3_array);
+
+//return ""
+//print_r($tsfl_data3_array);
+//exit();
 if (!empty($tsfl_data3_array)) {
+
 
     if ($show_type == 'chaxunchachong' | $show_type == 'list') {//list
 //    if ($show_type != 'pic') {//list
@@ -516,12 +721,14 @@ if (!empty($tsfl_data3_array)) {
 			<td width=70 bgcolor=\"#EDEDED\" align=center><b>库存</b></td>
 		</tr>
 	  </div>
-	  ";
+
+		";
 
         $n = $_REQUEST["n"];
         if ($n == null or $n == 0) {
             $n = 0;
         }
+        //$n=0;
 
         is_array($tsfl_data3_array) ? null : $tsfl_data3_array = array(); //如果该变量不是一个有效数组，则设置该变量为一个空数组即array()，
 

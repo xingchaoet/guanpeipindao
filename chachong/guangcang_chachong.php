@@ -1,11 +1,11 @@
 <?php
 header("Content-Type: text/html;charset=UTF-8");
 ini_set("max_execution_time", "1800");
-require_once('../PHPExcel.php');
-require_once("../db/con_mssql.php");
-//require_once("../db/con_mysql2.php");
+require('../PHPExcel.php');
+require("../db/con_mssql.php");
+//require("../db/con_mysql2.php");
 include("../db/dao.php");
-require_once("../config.php");
+require("../config.php");
 
 include("auth_chachong.php");
 
@@ -38,8 +38,8 @@ $xm = '';
 //exit();
 
 if ($_FILES["inputExcel"]["tmp_name"] == "") {
-    echo '无文件';
-    $_SESSION['err'] = "未上传文件！";
+    echo '请先选择文件';
+//    $_SESSION['err'] = "未上传文件！";
 //    $url = PATH . "gc_dr.php";
 //    Header("Location: $url");
 } else {
@@ -172,8 +172,8 @@ if ($_FILES["inputExcel"]["tmp_name"] == "") {
 
             $rs = $ms->sdb($sql);
 
-            if (!$rs) {
-                $_SESSION['err'] = "导入isbn为{$isbn}的书籍失败<br>";
+            if (odbc_num_rows($rs) <= 0) {
+//                $_SESSION['err'] = "导入isbn为{$isbn}的书籍失败<br>";
 //                $url = PATH . "gc_up.php";
 //                Header("Location: $url");
                 echo "导入isbn为{$isbn}的书籍失败<br>";
@@ -185,7 +185,7 @@ if ($_FILES["inputExcel"]["tmp_name"] == "") {
 
                 $sql_pc = ser(bs_gcdr_pc, "count(*) as sum", "gc_dr_pc ='$gc_dr_pc'");
 
-                echo $sql_pc;
+//                echo $sql_pc;
 
                 $rs_pc = $ms->sdb($sql_pc);
 
@@ -196,7 +196,7 @@ if ($_FILES["inputExcel"]["tmp_name"] == "") {
                 if ($sum == '0') {
                     $sql = ins("bs_gcdr_pc", "gc_dr_pc,lib_no,inputby,uptime", "'$gc_dr_pc','$lib_no1','$inputby1','$uptime1'");
 
-                    echo $sql;
+//                    echo $sql;
 
                     $rs = $ms->sdb($sql);
                 }

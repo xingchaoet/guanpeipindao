@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-19 11:38:25
+/* Smarty version 3.1.29, created on 2016-12-22 14:41:01
   from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\chachong.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58575631924376_43812639',
+  'unifunc' => 'content_585b757d9fad92_35857508',
   'file_dependency' => 
   array (
     'c7215b059ad1a7d7ea89acd7968a17fc303f3e3f' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\chachong.html',
-      1 => 1482118666,
+      1 => 1482388830,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_58575631924376_43812639 ($_smarty_tpl) {
+function content_585b757d9fad92_35857508 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -561,8 +561,8 @@ function content_58575631924376_43812639 ($_smarty_tpl) {
 
                     <div class="batch_title">
                         <span>
-                            你还有<?php echo $_smarty_tpl->tpl_vars['need_op_batch_num']->value;?>
-条未处理批次
+                            你还有<span id="need_op_batch_num_span"><?php echo $_smarty_tpl->tpl_vars['need_op_batch_num']->value;?>
+</span>条未处理批次
                         </span>
                         <span class="batch_icon">
                             <img id="toggle_table" src="<?php echo $_smarty_tpl->tpl_vars['relpostodist']->value;?>
@@ -758,6 +758,7 @@ dist/picture/chachong/waiting.gif'" + " ></a></div></div>";
 
         var save_this = $(this);
         var batch_id = e.currentTarget.name;
+        var need_op_batch_num = 0;
 
         $.confirm({
             'title': '警告',
@@ -777,6 +778,9 @@ dist/picture/chachong/waiting.gif'" + " ></a></div></div>";
 
                                 if (this.responseText == '删除成功！') {
                                     save_this.parent().parent().remove();
+                                    need_op_batch_num = $('#need_op_batch_num_span').html();
+                                    need_op_batch_num = need_op_batch_num - 1;
+                                    $('#need_op_batch_num_span').html(need_op_batch_num);
                                 }
                             }
                         }

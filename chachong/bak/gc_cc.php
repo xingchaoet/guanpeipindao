@@ -2,9 +2,9 @@
 header("Content-Type: text/html;charset=GB2312");
 ini_set("max_execution_time", "1800");
 require_once('../PHPExcel.php');
-require_once("../db/con_mssql.php");
+require("../db/con_mssql.php");
 include("../db/dao.php");
-require_once("../config.php");
+require("../config.php");
 
 session_start();
 

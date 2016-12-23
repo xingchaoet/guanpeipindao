@@ -5,8 +5,8 @@
  * Date: 2016/9/1
  * Time: 15:16
  */
-require_once("../config.php");
-require_once("../db/con_mssql.php");
+require("../config.php");
+require("../db/con_mssql.php");
 include("../db/dao.php");
 include("../include/GuanCangSmarty.php");
 include ("auth_hall_communication.php");

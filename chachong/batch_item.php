@@ -6,21 +6,14 @@
  * Time: 16:31
  */
 //print_r($_POST);
-//include("../include/GuanCangSmarty.php");
-require_once("../config.php");
-require_once("../db/con_mssql.php");
+require("../config.php");
+require("../db/con_mssql.php");
 include("../db/dao.php");
 include("auth_chachong.php");
 
 $show_type = $_REQUEST["show_type"];
-//$show_type = 'list';
-
-//$smarty = new GuanCangSmarty();
-//$smarty->MySmarty();
-//$batch_id = '';
 
 $from_url = $_REQUEST["from_url"];
-
 
 if ($from_url == 'a_new') {
     $batch_id = $_REQUEST["batch_id"];
@@ -31,10 +24,8 @@ if ($from_url == 'a_new') {
     $batch_id = $_SESSION['batch_id'];
 }
 
-//echo "$$$$$$$$$$$$$$$$$$$$$$";
 echo "<div style='margin-top: 4px;'>";
 echo "批次号：" . ($_SESSION['dd_pc']);
-//echo "$$$$$$$$$$$$$$$$$$$$$$";
 echo "</div>";
 
 $usrid = $_REQUEST["usrn"];
@@ -58,46 +49,12 @@ $_SESSION['batch_TJ'] = $batch_TJ;
 $batch_sql = " SELECT Book_Id FROM bs_temp_dingdan WHERE  " . $batch_TJ;
 //$batch_sql = " SELECT Book_Id,Book_Num,Sequence_Number FROM bs_temp_dingdan WHERE  " .$batch_TJ;
 
-//echo $batch_sql;
-
 $rs_batch_sql = $ms->sdb($batch_sql);
-//    $data = odbc_fetch_array($rs_info);
-$batch_rows = odbc_num_rows($rs_batch_sql);
 
+$batch_rows = odbc_num_rows($rs_batch_sql);
+echo $batch_rows;
 $_SESSION['batch_rows'] = $batch_rows;
 
-//echo "当前记录数：" . $batch_rows;
-
-//
-//while ($data = odbc_fetch_array($rs_batch_sql)) {
-//    $temp_book_id = $data['Book_Id'];
-//    $temp_book_num = $data['Book_Num'];
-//    $temp_sequence_number = $data['Sequence_Number'];
-//
-//    print_r($temp_book_id);
-//    print_r($temp_book_num);
-//    print_r($temp_sequence_number);
-//
-//    $batch_book_detail_sql = "SELECT * FROM  v_ecs_book WHERE bid1 = '$temp_book_id' OR bid3 = '$temp_book_id'";
-//
-//};
-
-
-//首次搜索
-//if (!empty($first_search)) {
-//
-//    $_SESSION['temp_table'] = $temp_table_bids;
-//
-//    $_SESSION['search_TJ'] = $batch_TJ;
-//
-//} else {
-//
-//    $batch_TJ = $_SESSION['search_TJ'];
-//
-//    $rows = $_SESSION['rows'];
-//}
-//
-//
 $page = isset($_REQUEST["page"]) ? $_REQUEST["page"] : 1; //不要改动这行代码的位置
 
 function Page($rows, $page_size, $show_type)
@@ -142,24 +99,25 @@ function Page($rows, $page_size, $show_type)
 // 用Page函数计算出 $select_from 从哪条记录开始检索、$pagenav 输出分页导航
 
 if (isset($batch_rows) and $batch_rows > 0) {
-    if ($show_type != 'pic') {
-        $page_size = 12; //每页显示数量
-    } else {
-        $page_size = 12; //每页显示数量
-    }
+//    if ($show_type != 'pic') {
+//        $page_size = 12; //每页显示数量
+//    } else {
+//        $page_size = 12; //每页显示数量
+//    }
+
+    $page_size = 12; //每页显示数量
 
     $batch_TJ = $_SESSION['batch_TJ'];
+
     Page($batch_rows, $page_size, $show_type);
 
-
     $search_content_first = "Book_Id,Book_Num,Sequence_Number";
-
 
     $sql_batch_book3 = "SELECT  Book_Id,Book_Num,Sequence_Number
 FROM (SELECT $search_content_first,
 ROW_NUMBER() OVER (ORDER BY Sequence_Number) AS RowNumber
 FROM bs_temp_dingdan WHERE $batch_TJ) a
-WHERE RowNumber > $select_from AND RowNumber <= ($select_from + $page_size)
+WHERE a.RowNumber > $select_from AND a.RowNumber <= ($select_from + $page_size)
 ORDER BY a.Sequence_Number ASC ";
 
 //    echo $sql_batch_book3;
@@ -204,7 +162,7 @@ ORDER BY a.Sequence_Number ASC ";
         $temp_batch_book_data_array[] = $data;
     }
 
-//    print_r($temp_batch_book_data3_array);
+//    print_r($temp_batch_book_data_array);
     $count_temp_batch_book_data_array = count($temp_batch_book_data_array);
 
     for ($i = 0; $i <= $count_temp_batch_book_data_array; $i++) {
@@ -236,11 +194,16 @@ ORDER BY a.Sequence_Number ASC ";
 //            print_r($data);
 
             $batch_book_data_array[] = $data;
-//            print_r($batch_book_data3_array);
 
         }
 
+
     };
+
+//    echo count($batch_book_data_array);
+//    print_r($batch_book_data_array);
+//
+//    exit();
 
 //    echo '********************************************';
 }

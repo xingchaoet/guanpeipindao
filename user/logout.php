@@ -6,7 +6,7 @@
  * Time: 1:56
  */
 
-require_once("../config.php");
+require("../config.php");
 
 session_start();
 session_unset();

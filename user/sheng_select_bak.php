@@ -1,7 +1,7 @@
 <?php
-require_once("../config.php");
-require_once("../DB/con_mssql.php");
-require_once("../DB/DAO.php");
+require("../config.php");
+require("../DB/con_mssql.php");
+require("../DB/DAO.php");
 header("Content-type: text/html; charset=utf-8");
 $ms=new con_mssql();
 $Query = "select sheng_name from sheng_info order by sheng_name";

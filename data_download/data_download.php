@@ -5,10 +5,10 @@
  * Date: 2016/8/12
  * Time: 11:34
  */
-require_once("../config.php");
-require_once("../db/con_mssql.php");
+require("../config.php");
+require("../db/con_mssql.php");
 include("../db/dao.php");
-//require_once("../db/con_mysql2.php");
+//require("../db/con_mysql2.php");
 
 include("../include/GuanCangSmarty.php");
 

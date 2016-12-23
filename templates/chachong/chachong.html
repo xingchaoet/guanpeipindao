@@ -525,7 +525,7 @@
 
                     <div class="batch_title">
                         <span>
-                            你还有{$need_op_batch_num}条未处理批次
+                            你还有<span id="need_op_batch_num_span">{$need_op_batch_num}</span>条未处理批次
                         </span>
                         <span class="batch_icon">
                             <img id="toggle_table" src="{$relpostodist}dist/picture/chachong/hide_table.png">
@@ -676,6 +676,7 @@
 
         var save_this = $(this);
         var batch_id = e.currentTarget.name;
+        var need_op_batch_num = 0;
 
         $.confirm({
             'title': '警告',
@@ -695,6 +696,9 @@
 
                                 if (this.responseText == '删除成功！') {
                                     save_this.parent().parent().remove();
+                                    need_op_batch_num = $('#need_op_batch_num_span').html();
+                                    need_op_batch_num = need_op_batch_num - 1;
+                                    $('#need_op_batch_num_span').html(need_op_batch_num);
                                 }
                             }
                         }

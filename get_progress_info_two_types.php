@@ -5,9 +5,9 @@
  * Date: 2016/12/8
  * Time: 16:12
  */
-require_once("config.php");
+require("config.php");
 //include("db/con_mysql2.php");
-//require_once("../db/con_mssql.php");
+//require("../db/con_mssql.php");
 //include("../db/dao.php");
 include("auth.php");
 //require '../plog/classes/plog.php';

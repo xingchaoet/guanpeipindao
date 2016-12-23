@@ -9,14 +9,14 @@
 include("../include/GuanCangSmarty.php");
 
 
-require_once("../config.php");
+require("../config.php");
 
 include("../db/con_mysql2.php");
 
-require_once('../PHPExcel.php');
-require_once("../db/con_mssql.php");
-require_once("../db/con_mysql2.php");
-require_once("../db/con_mysql3.php");
+require('../PHPExcel.php');
+require("../db/con_mssql.php");
+require("../db/con_mysql2.php");
+require("../db/con_mysql3.php");
 include("../db/dao.php");
 include("auth_chachong.php");
 //session_start();

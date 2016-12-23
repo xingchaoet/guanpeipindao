@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="<?php echo $introduce_css .'?v='. filemtime( $introduce_css ); ?>">
     <?php $jquery_confirm_css = '../dist/css/jquery.confirm.css' ?>
     <link rel="stylesheet" href="<?php echo $jquery_confirm_css .'?v='. filemtime( $jquery_confirm_css ); ?>">
-
+    <?php $batch_merge_split_css = '../dist/css/batch_merge_split.css' ?>
+    <link rel="stylesheet" href="<?php echo $batch_merge_split_css .'?v='. filemtime( $batch_merge_split_css ); ?>">
     <script src="../dist/js/jquery.min.js"></script>
 
     <title>生成订单</title>
@@ -59,6 +60,12 @@
 
         .need_op_batch {
             margin-top: 10px;
+        }
+
+        .batch_l_ltd {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 33px;
         }
 
         .batch_ltd {
@@ -129,16 +136,23 @@
             </div>
 
             <div class="generate_order">
-                <div class="need_op_batch">
+
+                <div id="div_list" name="div_list" class="need_op_batch">
 
                     <div class="batch_title">
                         <span>
-                            你还有{$need_op_batch_num}条未处理批次
+                            你还有<span id="need_op_batch_num_span">{$need_op_batch_num}</span>条未处理批次
                         </span>
                     </div>
 
+                    <!--<div class="row" name="row">-->
                     <table id="batch_table_generate" class="table table-bordered batch_table_generate">
                         <tr>
+
+                            <td align="center" class="batch_l_ltd">
+                                <input type="checkbox" name="all" class="checkall_box" class=""
+                                       onclick='checkallbox_changed();'/>
+                            </td>
                             <td align="center" class="batch_ltd">
                                 批次号
                             </td>
@@ -160,6 +174,10 @@
                         {foreach $need_op_batch_detail as $val }
 
                         <tr>
+                            <td align="center" class="batch_l_ltd">
+                                <input type='checkbox' name="{$val['PiCi_Num']}" class="checkall" onclick="checkboxes_changed();"/>
+                            </td>
+
                             <td class="batch_ltd">
                                 <a class="batch_item">{$val['PiCi_Num']}</a>
                             </td>
@@ -184,10 +202,32 @@
                         {/foreach}
 
                     </table>
+                    <!--</div>-->
 
                 </div>
             </div>
 
+            <div id="batch_merge_split">
+                <div class="tab-head">
+                    <h3 class="selected">订单合并</h3>
+                    <h3>订单拆分</h3>
+                    <h3>3</h3>
+                </div>
+                <div class="tab-content">
+                    <div class="show">
+                        <input type="button" id="batch_merge" class="btn btn-default btn-sm" value="合并订单">
+                    </div>
+                    <div>
+
+                        <input id='by_type' type="radio" name="by_radio" value="按种类拆分"/>按种类拆分
+                        <input id='by_price' type="radio" name="by_radio" value="按价格拆分"/>按价格拆分
+
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!--<a id="userid" style="display: none ">{$smarty.session.user_id}</a>-->
@@ -203,4 +243,6 @@
 <script src='../dist/js/jquery.confirm.js?v=<?php echo filemtime( $jquery_confirm_js );?>'></script>
 <?php $order_list_for_generate_js = '../dist/js/order_list_for_generate.js' ;?>
 <script src='../dist/js/order_list_for_generate.js?v=<?php echo filemtime( $order_list_for_generate_js );?>'></script>
+<?php $batch_merge_split_js = '../dist/js/batch_merge_split.js' ;?>
+<script src='../dist/js/batch_merge_split.js?v=<?php echo filemtime( $batch_merge_split_js );?>'></script>
 </html>

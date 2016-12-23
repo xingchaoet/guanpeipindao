@@ -7,9 +7,9 @@
  */
 
 include("../include/GuanCangSmarty.php");
-require_once("../config.php");
+require("../config.php");
 require_once('../PHPExcel.php');
-require_once("../db/con_mssql.php");
+require("../db/con_mssql.php");
 include("../db/dao.php");
 include("auth_chachong.php");
 

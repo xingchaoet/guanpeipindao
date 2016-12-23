@@ -8,7 +8,7 @@
 header("Content-Type: text/html;charset=utf-8");
 require_once("../db/con_mssql.php");
 include("../db/dao.php");
-require_once("../config.php");
+require("../config.php");
 include ("auth_data_download.php");
 
 //session_start();
