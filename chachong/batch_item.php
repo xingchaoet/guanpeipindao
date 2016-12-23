@@ -52,7 +52,7 @@ $batch_sql = " SELECT Book_Id FROM bs_temp_dingdan WHERE  " . $batch_TJ;
 $rs_batch_sql = $ms->sdb($batch_sql);
 
 $batch_rows = odbc_num_rows($rs_batch_sql);
-echo $batch_rows;
+//echo $batch_rows;
 $_SESSION['batch_rows'] = $batch_rows;
 
 $page = isset($_REQUEST["page"]) ? $_REQUEST["page"] : 1; //不要改动这行代码的位置
@@ -109,6 +109,10 @@ if (isset($batch_rows) and $batch_rows > 0) {
 
     $batch_TJ = $_SESSION['batch_TJ'];
 
+//    echo $batch_TJ;
+
+//    exit();
+
     Page($batch_rows, $page_size, $show_type);
 
     $search_content_first = "Book_Id,Book_Num,Sequence_Number";
@@ -163,9 +167,11 @@ ORDER BY a.Sequence_Number ASC ";
     }
 
 //    print_r($temp_batch_book_data_array);
+
+//    exit();
     $count_temp_batch_book_data_array = count($temp_batch_book_data_array);
 
-    for ($i = 0; $i <= $count_temp_batch_book_data_array; $i++) {
+    for ($i = 0; $i < $count_temp_batch_book_data_array; $i++) {
         $temp_book_id = $temp_batch_book_data_array[$i]['Book_Id'];
         $temp_book_num = $temp_batch_book_data_array[$i]['Book_Num'];
         $temp_sequence_number = $temp_batch_book_data_array[$i]['Sequence_Number'];
@@ -178,6 +184,9 @@ ORDER BY a.Sequence_Number ASC ";
 //        echo "<br>";
 
         $batch_book_detail_sql = "SELECT " . $search_content . " FROM  v_ecs_book WHERE bid1 = '$temp_book_id' OR bid3 = '$temp_book_id'";
+        echo $batch_book_detail_sql;
+//        exit();
+
         $rs_batch_book_detail_sql = $ms->sdb($batch_book_detail_sql);
 
         if (!$rs_batch_book_detail_sql) {

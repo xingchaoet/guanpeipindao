@@ -25,9 +25,12 @@ if (!empty($_POST['batch_ids'])) {
     $all_batch_ids = explode(",", $_POST['batch_ids']);
 }
 
-//print_r($all_batch_ids);
+print_r($all_batch_ids);
 
 $count_all_batch_ids = count($all_batch_ids);
+
+echo $count_all_batch_ids;
+
 if ($count_all_batch_ids == 0) {
     echo '请选择需要合并的订单';
     exit();
@@ -39,11 +42,19 @@ if ($count_all_batch_ids == 0) {
 
 $ms = new con_mssql();
 
+$lib_no = $_SESSION['lib_no'];
+
+//$uid = $_POST['user_id'];
+$uid = $_SESSION['user_id'];
+
+//预订单批次
+$ydd_pc = $lib_no . $uid;
+
 $book_id_s = array();
 
 // 有用户登录时，可从session中取用户id
 //从临时表中获取订单明细
-for ($i = 0; $i < $count_all_batch_ids; $i++) {
+for ($i = 0; $i <= $count_all_batch_ids; $i++) {
 
 //$dd_pc = $batch_id;
 
@@ -70,19 +81,12 @@ for ($i = 0; $i < $count_all_batch_ids; $i++) {
         $book_num_s[] = $data['Book_Num'];
 
     };
-//$lib_no = 'FJ0014';
+
 //print_r($book_id_s);
 //
 //print_r($book_num_s);
 //exit();
 
-    $lib_no = $_SESSION['lib_no'];
-
-//$uid = $_POST['user_id'];
-    $uid = $_SESSION['user_id'];
-
-//预订单批次
-    $ydd_pc = $lib_no . $uid;
 
 //征订单批次
 //$zdd_pc = $lib_no . $uid . '_' . md5($search_TJ);
@@ -180,7 +184,7 @@ for ($i = 0; $i < $count_all_batch_ids; $i++) {
 
 
             if ($jz1 > 0) {
-//            echo '纸本可供';
+                echo '纸本可供';
 //            $flag = "纸本可供";
                 $zhengdingdan_ids[] = $book_id_s[$i];
                 $zhengdingdan_nums[] = $book_num_s[$i];
@@ -193,6 +197,7 @@ for ($i = 0; $i < $count_all_batch_ids; $i++) {
             } else {
 
                 if (is_numeric($jz3) && ($jz3 > 0)) {
+                    echo 'POD可供';
 //                $flag = "POD可供";
                     //            测试预订单到征订单的转移 测试时，将查询到的POD可供的书籍，修改这里就可以了
 //
@@ -203,7 +208,10 @@ for ($i = 0; $i < $count_all_batch_ids; $i++) {
 //                $yudingdan_nums[] = $book_num_s[$i];
 
 //                echo 'POD可供';
-                } else if (is_null($jz3)) {
+//                } else if (is_null($jz3)) {
+                } else {
+
+                    echo '可预订';
 //                $flag = "可预订";
                     $yudingdan_ids[] = $book_id_s[$i];
                     $yudingdan_nums[] = $book_num_s[$i];
@@ -214,8 +222,9 @@ for ($i = 0; $i < $count_all_batch_ids; $i++) {
 
         }
 
-//    print_r($yudingdan_ids);
-//    print_r($yudingdan_nums);
+//        echo 'test';
+//        print_r($yudingdan_ids);
+//        print_r($yudingdan_nums);
 
 //    exit();
         if (!empty($yudingdan_ids[0])) { //预订单只创建一次
@@ -244,7 +253,7 @@ for ($i = 0; $i < $count_all_batch_ids; $i++) {
                     $log->debug($error);
 
                 }
-            } else {//添加到预订单
+            } else {//添加到预订单条目
 
                 $sql = ser(bs_yudingdan, "ydd_detail", "ydd_pc_id ='$ydd_pc'");
 
@@ -276,7 +285,11 @@ for ($i = 0; $i < $count_all_batch_ids; $i++) {
 
 //添加到明细表
 
+
             $count_yudingdan_ids = count($yudingdan_ids);
+
+            echo "预订单数量{$count_yudingdan_ids}\n";
+
             for ($i = 0; $i < $count_yudingdan_ids; $i++) {
 
                 $isbn = '';
@@ -664,26 +677,26 @@ for ($i = 0; $i < $count_all_batch_ids; $i++) {
                 }
             }
 
-        }
 
+//有征订单生成，将已生成订单的状态更改为1
 
-//    将已生成订单的状态更改为1
-
-        $sql_update_dingdan_pici = "UPDATE [dbo]." . bs_temp_dingdan_pici . " SET  State = '1'     WHERE PiCi_Num = '$dd_pc'";
+            $sql_update_dingdan_pici = "UPDATE [dbo]." . bs_temp_dingdan_pici . " SET  State = '1'     WHERE PiCi_Num = '$dd_pc'";
 
 //    echo $sql_update_temp_table;
 
-        $rs_sql_update_dingdan_pici = $ms->sdb($sql_update_dingdan_pici);
+            $rs_sql_update_dingdan_pici = $ms->sdb($sql_update_dingdan_pici);
 
-        try {
-            if (odbc_num_rows($rs_sql_update_dingdan_pici) <= 0) {
-                echo "Error in query preparation/execution.<br />";
-                $error = "更新 批次$dd_pc中的 $book_id 订单已生成状态失败";
-                $log->debug($error);
-                throw new Exception($error);
+            try {
+                if (odbc_num_rows($rs_sql_update_dingdan_pici) <= 0) {
+                    echo "Error in query preparation/execution.<br />";
+                    $error = "更新 批次$dd_pc中的 $book_id 订单已生成状态失败";
+                    $log->debug($error);
+                    throw new Exception($error);
+                }
+            } catch (Exception $e) {
+                echo 'Caught exception: ', $e->getMessage(), "\n";
             }
-        } catch (Exception $e) {
-            echo 'Caught exception: ', $e->getMessage(), "\n";
+
         }
 
 

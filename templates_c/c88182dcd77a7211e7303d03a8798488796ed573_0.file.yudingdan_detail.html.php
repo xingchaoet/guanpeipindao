@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-15 16:44:43
+/* Smarty version 3.1.29, created on 2016-12-23 20:13:26
   from "D:\phpStudy\WWW\guanpeipindao\templates\zhengdingdan\yudingdan_detail.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_585257fba2c7e4_64694987',
+  'unifunc' => 'content_585d14e668ee21_28993073',
   'file_dependency' => 
   array (
     'c88182dcd77a7211e7303d03a8798488796ed573' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\zhengdingdan\\yudingdan_detail.html',
-      1 => 1478138433,
+      1 => 1482316887,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_585257fba2c7e4_64694987 ($_smarty_tpl) {
+function content_585d14e668ee21_28993073 ($_smarty_tpl) {
 ?>
 <table class='table table-bordered table-striped'>
     <tr style="text-align: center">
@@ -97,6 +97,6 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_0_saved_item;
 </table>
 
 <!--<a>回到我的征订单</a>-->
-    <button class="btn btn-default btn-sm" id="return_to_my_yudingdan" onclick="return_to_my_yudingdan();" value="返回到我的预订单">返到我的预订单</button>
+    <button class="btn btn-default btn-sm" id="return_to_my_yudingdan" onclick="return_to_my_yudingdan();" value="返回到我的预订单">返回到我的预订单</button>
 <?php }
 }
