@@ -113,6 +113,13 @@
             margin-bottom: 10px;
         }
 
+        #by_type_num {
+            width: 100px;
+        }
+
+        #by_price_num {
+            width: 100px;
+        }
 
     </style>
 
@@ -175,7 +182,8 @@
 
                         <tr>
                             <td align="center" class="batch_l_ltd">
-                                <input type='checkbox' name="{$val['PiCi_Num']}" class="checkall" onclick="checkboxes_changed();"/>
+                                <input type='checkbox' name="{$val['PiCi_Num']}" class="checkall"
+                                       onclick="checkboxes_changed();"/>
                             </td>
 
                             <td class="batch_ltd">
@@ -202,7 +210,6 @@
                         {/foreach}
 
                     </table>
-                    <!--</div>-->
 
                 </div>
             </div>
@@ -211,28 +218,37 @@
                 <div class="tab-head">
                     <h3 class="selected">订单合并</h3>
                     <h3>订单拆分</h3>
-                    <h3>3</h3>
+                    <!--<h3>3</h3>-->
                 </div>
                 <div class="tab-content">
+
                     <div class="show">
                         <input type="button" id="batch_merge" class="btn btn-default btn-sm" value="合并订单">
                     </div>
+
                     <div>
+                        <div class="show">
+                            <input id='by_type' type="radio" name="by_radio" value="by_type"/>按种类拆分
+                            <input id="by_type_num" type="text">
+                        </div>
+                        <div class="show">
+                            <input id='by_price' type="radio" name="by_radio" value="by_price"/>按价格拆分
+                            <input id="by_price_num" type="text">
+                        </div>
 
-                        <input id='by_type' type="radio" name="by_radio" value="按种类拆分"/>按种类拆分
-                        <input id='by_price' type="radio" name="by_radio" value="按价格拆分"/>按价格拆分
+                        <div class="show">
+                            <input type="button" id="batch_split" class="btn btn-default btn-sm" value="拆分订单">
+                        </div>
+                        <!--<div>-->
 
-                    </div>
-                    <div>
-
+                        <!--</div>-->
                     </div>
                 </div>
             </div>
         </div>
+        <!--<a id="userid" style="display: none ">{$smarty.session.user_id}</a>-->
+        <!--<a id="usertype" style=" display: none ">{$smarty.session.user_type}</a>-->
     </div>
-    <!--<a id="userid" style="display: none ">{$smarty.session.user_id}</a>-->
-    <!--<a id="usertype" style=" display: none ">{$smarty.session.user_type}</a>-->
-</div>
 
 </body>
 <script src="../dist/js/bootstrap.min.js"></script>

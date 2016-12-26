@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-23 14:48:41
+/* Smarty version 3.1.29, created on 2016-12-26 15:20:06
   from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\show_generate_order.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_585cc8c93c0d22_23538310',
+  'unifunc' => 'content_5860c4a64b4563_36003712',
   'file_dependency' => 
   array (
     '75aea83179e640f0ad141efe979341d7d06bc494' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\show_generate_order.html',
-      1 => 1482475515,
+      1 => 1482736725,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_585cc8c93c0d22_23538310 ($_smarty_tpl) {
+function content_5860c4a64b4563_36003712 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -136,6 +136,13 @@ function content_585cc8c93c0d22_23538310 ($_smarty_tpl) {
             margin-bottom: 10px;
         }
 
+        #by_type_num {
+            width: 100px;
+        }
+
+        #by_price_num {
+            width: 100px;
+        }
 
     </style>
 
@@ -216,7 +223,8 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                         <tr>
                             <td align="center" class="batch_l_ltd">
                                 <input type='checkbox' name="<?php echo $_smarty_tpl->tpl_vars['val']->value['PiCi_Num'];?>
-" class="checkall" onclick="checkboxes_changed();"/>
+" class="checkall"
+                                       onclick="checkboxes_changed();"/>
                             </td>
 
                             <td class="batch_ltd">
@@ -254,7 +262,6 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
 ?>
 
                     </table>
-                    <!--</div>-->
 
                 </div>
             </div>
@@ -263,30 +270,39 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
                 <div class="tab-head">
                     <h3 class="selected">订单合并</h3>
                     <h3>订单拆分</h3>
-                    <h3>3</h3>
+                    <!--<h3>3</h3>-->
                 </div>
                 <div class="tab-content">
+
                     <div class="show">
                         <input type="button" id="batch_merge" class="btn btn-default btn-sm" value="合并订单">
                     </div>
+
                     <div>
+                        <div class="show">
+                            <input id='by_type' type="radio" name="by_radio" value="by_type"/>按种类拆分
+                            <input id="by_type_num" type="text">
+                        </div>
+                        <div class="show">
+                            <input id='by_price' type="radio" name="by_radio" value="by_price"/>按价格拆分
+                            <input id="by_price_num" type="text">
+                        </div>
 
-                        <input id='by_type' type="radio" name="by_radio" value="按种类拆分"/>按种类拆分
-                        <input id='by_price' type="radio" name="by_radio" value="按价格拆分"/>按价格拆分
+                        <div class="show">
+                            <input type="button" id="batch_split" class="btn btn-default btn-sm" value="拆分订单">
+                        </div>
+                        <!--<div>-->
 
-                    </div>
-                    <div>
-
+                        <!--</div>-->
                     </div>
                 </div>
             </div>
         </div>
+        <!--<a id="userid" style="display: none "><?php echo $_SESSION['user_id'];?>
+</a>-->
+        <!--<a id="usertype" style=" display: none "><?php echo $_SESSION['user_type'];?>
+</a>-->
     </div>
-    <!--<a id="userid" style="display: none "><?php echo $_SESSION['user_id'];?>
-</a>-->
-    <!--<a id="usertype" style=" display: none "><?php echo $_SESSION['user_type'];?>
-</a>-->
-</div>
 
 </body>
 <?php echo '<script'; ?>

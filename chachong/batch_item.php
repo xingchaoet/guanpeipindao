@@ -184,7 +184,7 @@ ORDER BY a.Sequence_Number ASC ";
 //        echo "<br>";
 
         $batch_book_detail_sql = "SELECT " . $search_content . " FROM  v_ecs_book WHERE bid1 = '$temp_book_id' OR bid3 = '$temp_book_id'";
-        echo $batch_book_detail_sql;
+//        echo $batch_book_detail_sql;
 //        exit();
 
         $rs_batch_book_detail_sql = $ms->sdb($batch_book_detail_sql);

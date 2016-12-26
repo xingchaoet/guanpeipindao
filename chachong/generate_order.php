@@ -11,7 +11,20 @@ require("../db/con_mssql.php");
 include("../db/dao.php");
 require("../config.php");
 include("auth_chachong.php");
+include ("../include/splitArray.php");
 $all_batch_ids = array();
+
+
+$lib_no = $_SESSION['lib_no'];
+
+//$uid = $_POST['user_id'];
+
+$uid = $_SESSION['user_id'];
+
+$type = $_POST['type'];
+$num = $_POST['num'];
+
+$ms = new con_mssql();
 
 //生成单个批次
 if (!empty($_POST['batch_id'])) {
@@ -25,42 +38,62 @@ if (!empty($_POST['batch_ids'])) {
     $all_batch_ids = explode(",", $_POST['batch_ids']);
 }
 
-print_r($all_batch_ids);
+//print_r($all_batch_ids);
 
 $count_all_batch_ids = count($all_batch_ids);
 
-echo $count_all_batch_ids;
+//echo $count_all_batch_ids;
+//echo "\n";
 
 if ($count_all_batch_ids == 0) {
     echo '请选择需要合并的订单';
     exit();
 }
 
+//征订单批次号
+if ($count_all_batch_ids >= 2) {
+
+    $zdd_pc = $lib_no . '_' . $uid . '_' . date('YmdHis', time());
+
+} else {
+
+    $zdd_pc = $all_batch_ids[0];
+
+}
+
 //$batch_id = $_POST['batch_id'];
 
-//$search_TJ = $_SESSION['search_TJ'];
-
-$ms = new con_mssql();
-
-$lib_no = $_SESSION['lib_no'];
-
-//$uid = $_POST['user_id'];
-$uid = $_SESSION['user_id'];
-
-//预订单批次
+//预订单批次号
 $ydd_pc = $lib_no . $uid;
 
-$book_id_s = array();
-
-// 有用户登录时，可从session中取用户id
 //从临时表中获取订单明细
-for ($i = 0; $i <= $count_all_batch_ids; $i++) {
+
+
+$book_id_s = array();
+$book_num_s = array();
+
+$yudingdan_ids = array();
+$yudingdan_nums = array();
+$zhengdingdan_ids = array();
+
+$ydd_isbn_list = array();
+$ydd_amount_list = array();
+$ydd_id_list = array();
+
+$transfer_isbn = array();
+$transfer_amount = array();
+$transfer_id = array();
+
+for ($index = 0; $index < $count_all_batch_ids; $index++) {
+
+    echo "第{$index}个订单";
+    echo "\n";
 
 //$dd_pc = $batch_id;
 
 //print_r($dd_pc);
 
-    $dd_pc = $all_batch_ids[$i];
+    $dd_pc = $all_batch_ids[$index];
 
     $sql_dd_pc = "SELECT Book_Id,Book_Num FROM bs_temp_dingdan WHERE Pi_Ci_No = '$dd_pc' AND Book_Num <> 0 AND State = 0";
     $rs_sql_dd_pc = $ms->sdb($sql_dd_pc);
@@ -93,25 +126,8 @@ for ($i = 0; $i <= $count_all_batch_ids; $i++) {
 //$zdd_pc = $lib_no . '_' . $uid . '_' . date('YmdHis', time());
 //    $zdd_pc = $dd_pc;
 
-    if ($count_all_batch_ids >= 2) {
-
-        $zdd_pc = $lib_no . '_' . $uid . '_' . date('YmdHis', time());
-
-    } else {
-
-        $zdd_pc = $dd_pc;
-
-    }
 
 //$zdd_pc = $dd_pc . '_' . date('YmdHis', time());
-
-    $ydd_isbn_list = array();
-    $ydd_amount_list = array();
-    $ydd_id_list = array();
-
-    $transfer_isbn = array();
-    $transfer_amount = array();
-    $transfer_id = array();
 
 
 //将书籍分为两类，征订单和预订单
@@ -122,21 +138,6 @@ for ($i = 0; $i <= $count_all_batch_ids; $i++) {
 
 
 //    征订单与预订单的处理 开始
-
-//    $book_id_s = explode(",", $book_ids);
-//    $book_nums = $_POST['book_nums'];
-////从首页加入订单过来 没数量
-//    if (empty($book_nums)) {
-//        $book_nums = 1;
-//    }
-//
-//    $book_num_s = explode(",", $book_nums);
-
-        $yudingdan_ids = '';
-        $yudingdan_nums = '';
-
-        $zhengdingdan_ids = '';
-        $zhengdingdan_nums = '';
 
         $gc_pc_time_prefix = date('YmdHis');
 
@@ -184,7 +185,7 @@ for ($i = 0; $i <= $count_all_batch_ids; $i++) {
 
 
             if ($jz1 > 0) {
-                echo '纸本可供';
+//                echo '纸本可供';
 //            $flag = "纸本可供";
                 $zhengdingdan_ids[] = $book_id_s[$i];
                 $zhengdingdan_nums[] = $book_num_s[$i];
@@ -197,7 +198,7 @@ for ($i = 0; $i <= $count_all_batch_ids; $i++) {
             } else {
 
                 if (is_numeric($jz3) && ($jz3 > 0)) {
-                    echo 'POD可供';
+//                    echo 'POD可供';
 //                $flag = "POD可供";
                     //            测试预订单到征订单的转移 测试时，将查询到的POD可供的书籍，修改这里就可以了
 //
@@ -211,7 +212,7 @@ for ($i = 0; $i <= $count_all_batch_ids; $i++) {
 //                } else if (is_null($jz3)) {
                 } else {
 
-                    echo '可预订';
+//                    echo '可预订';
 //                $flag = "可预订";
                     $yudingdan_ids[] = $book_id_s[$i];
                     $yudingdan_nums[] = $book_num_s[$i];
@@ -288,7 +289,7 @@ for ($i = 0; $i <= $count_all_batch_ids; $i++) {
 
             $count_yudingdan_ids = count($yudingdan_ids);
 
-            echo "预订单数量{$count_yudingdan_ids}\n";
+            echo "可预订书籍数量{$count_yudingdan_ids}\n";
 
             for ($i = 0; $i < $count_yudingdan_ids; $i++) {
 
@@ -354,9 +355,9 @@ for ($i = 0; $i <= $count_all_batch_ids; $i++) {
                 $rs = $ms->sdb($sql);
 
                 if (odbc_num_rows($rs) == 1) {
-                    echo "合并{$isbn}到预订单{$ydd_pc}明细成功\n";
+                    echo "合并{$isbn}到预订单明细{$ydd_pc}成功\n";
                 } else {
-                    $error = "合并{$isbn}到预订单{$ydd_pc}明细失败\n";
+                    $error = "合并{$isbn}到预订单明细{$ydd_pc}失败\n";
                     echo $error;
                     $log->debug($error);
                 }
@@ -534,171 +535,213 @@ for ($i = 0; $i <= $count_all_batch_ids; $i++) {
 //        print_r($zhengdingdan_ids);
 
 
-//        是否已有该征订单
-            $sql = ser(bs_zhengdingdan, "count(*) as sum", "zdd_pc_id ='$zdd_pc'");
-            $rs = $ms->sdb($sql);
-            $data = odbc_fetch_array($rs);
-            $sum = $data['sum'];
+//          是否需要拆分此征订单
+
+            if (empty($type)) {//不拆分
+                //        是否已有该征订单
+                $sql = ser(bs_zhengdingdan, "count(*) as sum", "zdd_pc_id ='$zdd_pc'");
+                $rs = $ms->sdb($sql);
+                $data = odbc_fetch_array($rs);
+                $sum = $data['sum'];
 
 //        去重，防止以前预订单表中的书籍又在这次征订单中
-            $zhengdingdan_ids_nums = array_combine($zhengdingdan_ids, $zhengdingdan_nums);
+                $zhengdingdan_ids_nums = array_combine($zhengdingdan_ids, $zhengdingdan_nums);
 
-            $zhengdingdan = json_encode((object)$zhengdingdan_ids_nums);
+                $zhengdingdan = json_encode((object)$zhengdingdan_ids_nums);
 
-            if ($sum == '0') { // 生成新征订单
+                if ($sum == '0') { // 生成新征订单
 
 //            echo "生成新征订单";
 
-                $sql = ins("bs_zhengdingdan", "zdd_pc_id,zdd_user_id,zdd_detail,zdd_time", "'$zdd_pc','$uid','$zhengdingdan',GETDATE()");
-                $rs = $ms->sdb($sql);
+                    $sql = ins("bs_zhengdingdan", "zdd_pc_id,zdd_user_id,zdd_detail,zdd_time", "'$zdd_pc','$uid','$zhengdingdan',GETDATE()");
+                    $rs = $ms->sdb($sql);
 
-                if (odbc_num_rows($rs) == 1) {
-                    echo "生成征订单{$zdd_pc}成功\n";
-                } else {
-                    $error = "生成征订单失败\n";
-                    echo $error;
-                    $log->debug($error);
-                }
-            } else { //添加到原有征订单
+                    if (odbc_num_rows($rs) == 1) {
+                        echo "生成征订单{$zdd_pc}成功\n";
+                    } else {
+                        $error = "生成征订单失败\n";
+                        echo $error;
+                        $log->debug($error);
+                    }
+                } else { //添加到原有征订单
 
 //            echo "添加到原有征订单";
 
 //先添加到条目
-                $sql = ser("bs_zhengdingdan", "zdd_detail", " zdd_pc_id = '$zdd_pc'");
+                    $sql = ser("bs_zhengdingdan", "zdd_detail", " zdd_pc_id = '$zdd_pc'");
 
-                $rs = $ms->sdb($sql);
+                    $rs = $ms->sdb($sql);
 
-                $data = odbc_fetch_array($rs);
+                    $data = odbc_fetch_array($rs);
 
-                $rs = $data['zdd_detail'];
+                    $rs = $data['zdd_detail'];
 
-                $zhengdingdan_detail = json_decode($rs, true) + $zhengdingdan_ids_nums;
+                    $zhengdingdan_detail = json_decode($rs, true) + $zhengdingdan_ids_nums;
 
-                $zhengdingdan = json_encode((object)$zhengdingdan_detail);
+                    $zhengdingdan = json_encode((object)$zhengdingdan_detail);
 
-                $sql = upd("bs_zhengdingdan", "zdd_detail = '$zhengdingdan'", "zdd_pc_id = '$zdd_pc'");
+                    $sql = upd("bs_zhengdingdan", "zdd_detail = '$zhengdingdan'", "zdd_pc_id = '$zdd_pc'");
 
 //        echo $sql;
 
-                $rs = $ms->sdb($sql);
+                    $rs = $ms->sdb($sql);
 
-                if (odbc_num_rows($rs) == 1) {
+                    if (odbc_num_rows($rs) == 1) {
 //                echo "合并" . print_r($zhengdingdan_ids_nums) . "到征订单条目成功";
-                } else {
-                    //                echo "合并" . print_r($zhengdingdan_ids_nums) . "到征订单条目失败";
-                    $error = "合并" . print_r($zhengdingdan_ids_nums) . "到征订单条目失败";
+                    } else {
+                        //                echo "合并" . print_r($zhengdingdan_ids_nums) . "到征订单条目失败";
+                        $error = "合并" . print_r($zhengdingdan_ids_nums) . "到征订单条目失败";
 //                echo $error;
-                    $log->debug($error);
+                        $log->debug($error);
+                    }
+
+
                 }
 
 
-            }
+                //    写入征订单明细表
 
+                $count_zhengdingdan_ids = count($zhengdingdan_ids);
 
-            //    写入征订单明细表
+                echo "纸本可供与POD可供书籍数量{$count_yudingdan_ids}\n";
 
-            $count_zhengdingdan_ids = count($zhengdingdan_ids);
+                for ($i = 0; $i < $count_zhengdingdan_ids; $i++) {
 
-            for ($i = 0; $i < $count_zhengdingdan_ids; $i++) {
+                    $isbn = '';
+                    $sm = '';
+                    $csm = '';
+                    $zzh = '';
+                    $dj = '';
+                    $cbrq = '';
+                    $sl = '';
+                    $kb = '';
 
-                $isbn = '';
-                $sm = '';
-                $csm = '';
-                $zzh = '';
-                $dj = '';
-                $cbrq = '';
-                $sl = '';
-                $kb = '';
+                    $id = $zhengdingdan_ids[$i];
 
-                $id = $zhengdingdan_ids[$i];
+                    $sql = "SELECT isbn,sm,csm,zzh,dj,cbrq,sl,kb FROM ecs_book WHERE  book_id = '$id'";
 
-                $sql = "SELECT isbn,sm,csm,zzh,dj,cbrq,sl,kb FROM ecs_book WHERE  book_id = '$id'";
+                    $book = $ms->sdb($sql);
 
-                $book = $ms->sdb($sql);
-
-                while (odbc_fetch_array($book)) {
+                    while (odbc_fetch_array($book)) {
 
 
 //                $kuncun1 = trim(odbc_result($book, "kc"));
 //                $isbn = trim(odbc_result($book, "isbn"));
 
-                    $isbn = trim(odbc_result($book, "isbn"));
+                        $isbn = trim(odbc_result($book, "isbn"));
 
-                    $sm = trim(odbc_result($book, "sm"));
-                    $csm = trim(odbc_result($book, "csm"));
-                    $zzh = trim(odbc_result($book, "zzh"));
-                    $dj = trim(odbc_result($book, "dj"));
+                        $sm = trim(odbc_result($book, "sm"));
+                        $csm = trim(odbc_result($book, "csm"));
+                        $zzh = trim(odbc_result($book, "zzh"));
+                        $dj = trim(odbc_result($book, "dj"));
 
 
-                    $tr_cbrq = trim(odbc_result($book, "cbrq"));
-                    $empty_cbrq = empty($tr_cbrq);
-                    if ($empty_cbrq) {
-                        $cbrq = NULL;
-                    } else {
-                        $cbrq = trim(odbc_result($book, "cbrq"));
-                        if (strstr($cbrq, "-")) {
-                            if (substr_count($cbrq, "-") == 1) {
-                                $cbrq = $cbrq . '-01';
+                        $tr_cbrq = trim(odbc_result($book, "cbrq"));
+                        $empty_cbrq = empty($tr_cbrq);
+                        if ($empty_cbrq) {
+                            $cbrq = NULL;
+                        } else {
+                            $cbrq = trim(odbc_result($book, "cbrq"));
+                            if (strstr($cbrq, "-")) {
+                                if (substr_count($cbrq, "-") == 1) {
+                                    $cbrq = $cbrq . '-01';
+                                }
+                                $cbrq = str_replace("-", "/", $cbrq);
                             }
-                            $cbrq = str_replace("-", "/", $cbrq);
+                            $cbrq = date('Y/m/d', strtotime($cbrq));
                         }
-                        $cbrq = date('Y/m/d', strtotime($cbrq));
+
+                        $sl = trim(odbc_result($book, "sl"));
+                        $kb = trim(odbc_result($book, "kb"));
                     }
 
-                    $sl = trim(odbc_result($book, "sl"));
-                    $kb = trim(odbc_result($book, "kb"));
-                }
-
-                $state = '10';
+                    $state = '10';
 
 //测试预订单到征订单的转移
 
-                if (!empty($cbrq)) {
-                    $sql = ins("bs_zhengdingdan_mx", "sheet_no,isbn,book_name,bookcs_name,writer,price,publish_date,fenlei,kb,amount,inputby,uptime,state,lib_no,book_id",
-                        "'$zdd_pc','$isbn','$sm','$csm','$zzh','$dj','$cbrq','$sl','$kb','$zhengdingdan_nums[$i]','$uid',GETDATE(),'$state','$lib_no','$id'");
+                    if (!empty($cbrq)) {
+                        $sql = ins("bs_zhengdingdan_mx", "sheet_no,isbn,book_name,bookcs_name,writer,price,publish_date,fenlei,kb,amount,inputby,uptime,state,lib_no,book_id",
+                            "'$zdd_pc','$isbn','$sm','$csm','$zzh','$dj','$cbrq','$sl','$kb','$zhengdingdan_nums[$i]','$uid',GETDATE(),'$state','$lib_no','$id'");
 
-                } else {
-                    $sql = ins("bs_zhengdingdan_mx", "sheet_no,isbn,book_name,bookcs_name,writer,price,publish_date,fenlei,kb,amount,inputby,uptime,state,lib_no,book_id",
-                        "'$zdd_pc','$isbn','$sm','$csm','$zzh','$dj',null,'$sl','$kb','$zhengdingdan_nums[$i]','$uid',GETDATE(),'$state','$lib_no','$id'");
-                }
+                    } else {
+                        $sql = ins("bs_zhengdingdan_mx", "sheet_no,isbn,book_name,bookcs_name,writer,price,publish_date,fenlei,kb,amount,inputby,uptime,state,lib_no,book_id",
+                            "'$zdd_pc','$isbn','$sm','$csm','$zzh','$dj',null,'$sl','$kb','$zhengdingdan_nums[$i]','$uid',GETDATE(),'$state','$lib_no','$id'");
+                    }
 
 //添加到征订单明细表
 
-                $rs = $ms->sdb($sql);
+                    $rs = $ms->sdb($sql);
 
-                if (odbc_num_rows($rs) == 1) {
-                    echo "合并{$isbn}到征订单明细{$zdd_pc}成功\n";
-                } else {
+                    if (odbc_num_rows($rs) == 1) {
+                        echo "合并{$isbn}到征订单明细{$zdd_pc}成功\n";
+                    } else {
 
-                    $error = "合并{$isbn}到征订单明细{$zdd_pc}失败\n";
-                    echo $error;
-                    $log->debug($error);
+                        $error = "合并{$isbn}到征订单明细{$zdd_pc}失败\n";
+                        echo $error;
+                        $log->debug($error);
 
+                    }
                 }
+            } else {
+
+                $count_zhengdingdan_ids = count($zhengdingdan_ids);
+
+                if ($type = 'by_type') {
+
+                    if ($count_zhengdingdan_ids > $num) {
+                        $split_to_num  = ceil($count_zhengdingdan_ids/$num);
+                        $zhengdingdan_ids = splitArray($zhengdingdan_ids,$split_to_num);
+                        $zhengdingdan_nums = splitArray($zhengdingdan_nums,$split_to_num);
+
+//                        $zhengdingdan_nums
+                    } else {
+                        echo '数目过大';
+                    }
+                }
+
             }
+        }
 
 
 //有征订单生成，将已生成订单的状态更改为1
 
-            $sql_update_dingdan_pici = "UPDATE [dbo]." . bs_temp_dingdan_pici . " SET  State = '1'     WHERE PiCi_Num = '$dd_pc'";
+//            $sql_update_dingdan_pici = "UPDATE [dbo]." . bs_temp_dingdan_pici . " SET  State = '1'     WHERE PiCi_Num = '$dd_pc'";
+        $batch_id_for_update = $all_batch_ids[$index];
+        $sql_update_dingdan_pici = "UPDATE [dbo]." . bs_temp_dingdan_pici . " SET  State = '1'     WHERE PiCi_Num = '$batch_id_for_update'";
 
 //    echo $sql_update_temp_table;
 
-            $rs_sql_update_dingdan_pici = $ms->sdb($sql_update_dingdan_pici);
+        $rs_sql_update_dingdan_pici = $ms->sdb($sql_update_dingdan_pici);
 
-            try {
-                if (odbc_num_rows($rs_sql_update_dingdan_pici) <= 0) {
-                    echo "Error in query preparation/execution.<br />";
-                    $error = "更新 批次$dd_pc中的 $book_id 订单已生成状态失败";
-                    $log->debug($error);
-                    throw new Exception($error);
-                }
-            } catch (Exception $e) {
-                echo 'Caught exception: ', $e->getMessage(), "\n";
+        try {
+            if (odbc_num_rows($rs_sql_update_dingdan_pici) <= 0) {
+                echo "Error in query preparation/execution.<br />";
+                $error = "更新 批次$dd_pc中的 $book_id 订单已生成状态失败";
+                $log->debug($error);
+                throw new Exception($error);
             }
-
+        } catch (Exception $e) {
+            echo 'Caught exception: ', $e->getMessage(), "\n";
         }
 
+        //    防止合并时重复添加
+        unset($book_id_s);
+        unset($book_num_s);
+
+        unset($yudingdan_ids);
+        unset($yudingdan_nums);
+        unset($zhengdingdan_ids);
+        unset($zhengdingdan_nums);
+
+
+        unset($ydd_isbn_list);
+
+        unset($ydd_amount_list);
+        unset($ydd_id_list);
+
+        unset($transfer_isbn);
+        unset($transfer_amount);
+        unset($transfer_id);
 
     } else {
         echo "批次{$dd_pc}中未选中书籍\n";

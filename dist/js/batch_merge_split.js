@@ -116,6 +116,80 @@ $('#batch_merge').click(function () {
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
             alert(this.responseText);
+        }
+    }
+
+})
+
+$('#batch_split').click(function () {
+
+    var utp = $('#usertype').html();
+
+    if (utp == null || utp == undefined || utp == '') {
+        alert("您还没登录");
+        return false;
+    }
+
+    if (utp != "library_user") {
+        alert("您不是图书馆用户");
+    }
+
+    // user_id = $('#userid').html();
+
+    // alert(utp);
+    // alert(user_id);
+
+    var batch_ids = [];
+    var $row = $('.row');
+    var checked_boxes = $row.find(checkboxes_sel + ":checked");
+
+    $.each(checked_boxes, function (index, checkboxEle) {
+
+        if (checkboxEle.name) {
+            batch_ids.push(checkboxEle.name);
+        }
+    })
+
+    // alert(batch_ids.length);
+    // alert(batch_ids);
+
+    if (batch_ids.length > 1) {
+        alert('一次只能拆分一个订单');
+        return;
+    } else if (batch_ids.length == 0) {
+        alert('请先选择订单');
+        return;
+    }
+
+
+    // var item = $(":radio:checked");
+    var type;
+    var num; //种类数或价格
+    var radio_checked = $(":radio:checked");
+    var len = radio_checked.length;
+
+    if (len > 0) {
+
+        type = radio_checked.val();
+        num = (radio_checked.next().val());
+
+    } else {
+        alert("请选择拆分类型");
+        return;
+    }
+    // alert(batch_ids);
+    // alert(type);
+    // alert(num);
+
+    return;
+    xhr.open('POST', generate_order_url, true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.send("type=" + type + "&num=" + num + "&batch_ids=" + batch_ids);
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            alert(this.responseText);
 
         }
     }

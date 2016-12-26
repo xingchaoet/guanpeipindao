@@ -829,7 +829,6 @@ function return_to_guancangchachong() {
 }
 
 
-
 function generate_order() {
     $('.down').hide();
 
