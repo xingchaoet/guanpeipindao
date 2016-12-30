@@ -580,9 +580,8 @@ function get_book_info_and_update_db_class_click() {
 
             if (this.responseText == '添加失败') {
                 save.prop("checked", false);
+                alert(this.responseText);
             }
-
-            alert(this.responseText);
 
             checkboxes_changed();
         }
@@ -728,9 +727,9 @@ function get_book_num_and_update_db_class_propertychange() {
                 } else if (save_num.prev().length == 1) {
                     save_num.prev().prop("checked", false);
                 }
-
+                alert(this.responseText);
             }
-            alert(this.responseText);
+            // alert(this.responseText);
 
             checkboxes_changed();
 

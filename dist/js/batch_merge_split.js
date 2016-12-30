@@ -125,6 +125,8 @@ $('#batch_split').click(function () {
 
     var utp = $('#usertype').html();
 
+    var pod_paper_price_sum = $('#pod_paper_price_sum').html();
+
     if (utp == null || utp == undefined || utp == '') {
         alert("您还没登录");
         return false;
@@ -180,12 +182,13 @@ $('#batch_split').click(function () {
     // alert(batch_ids);
     // alert(type);
     // alert(num);
-
-    return;
+    //
+    // alert(pod_paper_price_sum);
+    // return;
     xhr.open('POST', generate_order_url, true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-    xhr.send("type=" + type + "&num=" + num + "&batch_ids=" + batch_ids);
+    xhr.send("type=" + type + "&pod_paper_price_sum=" + pod_paper_price_sum + "&num=" + num + "&batch_ids=" + batch_ids);
 
     xhr.onreadystatechange = function () {
         if (this.readyState == 4) {

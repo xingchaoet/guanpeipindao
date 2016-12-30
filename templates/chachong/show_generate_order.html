@@ -74,6 +74,18 @@
             width: 260px;
         }
 
+        .batch_l_r_td {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 300px;
+        }
+
+        .batch_l_r_r_td {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 300px;
+        }
+
         .batch_mtd {
             margin-top: 5px;
             margin-bottom: 5px;
@@ -90,7 +102,7 @@
         .batch_r_f_g_td {
             margin-top: 5px;
             margin-bottom: 5px;
-            width: 260px;
+            width: 150px;
         }
 
         .batch_rtd {
@@ -163,7 +175,12 @@
                             <td align="center" class="batch_ltd">
                                 批次号
                             </td>
-
+                            <td align="left" class="batch_ltd">
+                                种类数
+                            </td>
+                            <td align="left" class="batch_ltd">
+                                金额
+                            </td>
                             <td class="batch_mtd">
                                 批次产生时间
                             </td>
@@ -187,7 +204,19 @@
                             </td>
 
                             <td class="batch_ltd">
-                                <a class="batch_item">{$val['PiCi_Num']}</a>
+                                <span class="batch_item">{$val['PiCi_Num']}</span>
+                            </td>
+
+                            <td align="left" class="batch_l_r_td">
+                                <p>总种类数： {$val['sum']}</p>
+                                <p>可预定：{$val['planned_sum']}</p>
+                                <p>纸本可供与POD可供：{$val['pod_paper_sum']}</p>
+                            </td>
+
+                            <td align="left" class="batch_l_r_r_td">
+                                <p>总金额：{$val['price_sum']}</p>
+                                <p>可预定：{$val['planned_price_sum']}</p>
+                                <p>纸本可供与POD可供：<span id="pod_paper_price_sum">{$val['pod_paper_price_sum']}</span></p>
                             </td>
 
                             <td class="batch_mtd">
@@ -216,14 +245,14 @@
 
             <div id="batch_merge_split">
                 <div class="tab-head">
-                    <h3 class="selected">订单合并</h3>
-                    <h3>订单拆分</h3>
+                    <h3 class="selected">合并生成订单</h3>
+                    <h3>拆分生成订单</h3>
                     <!--<h3>3</h3>-->
                 </div>
                 <div class="tab-content">
 
                     <div class="show">
-                        <input type="button" id="batch_merge" class="btn btn-default btn-sm" value="合并订单">
+                        <input type="button" id="batch_merge" class="btn btn-default btn-sm" value="合并生成订单">
                     </div>
 
                     <div>
@@ -237,7 +266,7 @@
                         </div>
 
                         <div class="show">
-                            <input type="button" id="batch_split" class="btn btn-default btn-sm" value="拆分订单">
+                            <input type="button" id="batch_split" class="btn btn-default btn-sm" value="拆分生成订单">
                         </div>
                         <!--<div>-->
 

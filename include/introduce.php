@@ -5,6 +5,7 @@
  * Date: 2016/11/28
  * Time: 17:59
  */
+//include_once ("../auth.php");
 
 $ms = new con_mssql();
 

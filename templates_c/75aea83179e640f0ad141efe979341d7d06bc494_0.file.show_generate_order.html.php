@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-26 15:20:06
+/* Smarty version 3.1.29, created on 2016-12-30 20:24:35
   from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\show_generate_order.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5860c4a64b4563_36003712',
+  'unifunc' => 'content_58665203255c12_33270144',
   'file_dependency' => 
   array (
     '75aea83179e640f0ad141efe979341d7d06bc494' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\show_generate_order.html',
-      1 => 1482736725,
+      1 => 1483100120,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_5860c4a64b4563_36003712 ($_smarty_tpl) {
+function content_58665203255c12_33270144 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,6 +97,18 @@ function content_5860c4a64b4563_36003712 ($_smarty_tpl) {
             width: 260px;
         }
 
+        .batch_l_r_td {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 300px;
+        }
+
+        .batch_l_r_r_td {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 300px;
+        }
+
         .batch_mtd {
             margin-top: 5px;
             margin-bottom: 5px;
@@ -113,7 +125,7 @@ function content_5860c4a64b4563_36003712 ($_smarty_tpl) {
         .batch_r_f_g_td {
             margin-top: 5px;
             margin-bottom: 5px;
-            width: 260px;
+            width: 150px;
         }
 
         .batch_rtd {
@@ -192,7 +204,12 @@ function content_5860c4a64b4563_36003712 ($_smarty_tpl) {
                             <td align="center" class="batch_ltd">
                                 批次号
                             </td>
-
+                            <td align="left" class="batch_ltd">
+                                种类数
+                            </td>
+                            <td align="left" class="batch_ltd">
+                                金额
+                            </td>
                             <td class="batch_mtd">
                                 批次产生时间
                             </td>
@@ -228,8 +245,26 @@ $__foreach_val_0_saved_local_item = $_smarty_tpl->tpl_vars['val'];
                             </td>
 
                             <td class="batch_ltd">
-                                <a class="batch_item"><?php echo $_smarty_tpl->tpl_vars['val']->value['PiCi_Num'];?>
-</a>
+                                <span class="batch_item"><?php echo $_smarty_tpl->tpl_vars['val']->value['PiCi_Num'];?>
+</span>
+                            </td>
+
+                            <td align="left" class="batch_l_r_td">
+                                <p>总种类数： <?php echo $_smarty_tpl->tpl_vars['val']->value['sum'];?>
+</p>
+                                <p>可预定：<?php echo $_smarty_tpl->tpl_vars['val']->value['planned_sum'];?>
+</p>
+                                <p>纸本可供与POD可供：<?php echo $_smarty_tpl->tpl_vars['val']->value['pod_paper_sum'];?>
+</p>
+                            </td>
+
+                            <td align="left" class="batch_l_r_r_td">
+                                <p>总金额：<?php echo $_smarty_tpl->tpl_vars['val']->value['price_sum'];?>
+</p>
+                                <p>可预定：<?php echo $_smarty_tpl->tpl_vars['val']->value['planned_price_sum'];?>
+</p>
+                                <p>纸本可供与POD可供：<span id="pod_paper_price_sum"><?php echo $_smarty_tpl->tpl_vars['val']->value['pod_paper_price_sum'];?>
+</span></p>
                             </td>
 
                             <td class="batch_mtd">
@@ -268,14 +303,14 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
 
             <div id="batch_merge_split">
                 <div class="tab-head">
-                    <h3 class="selected">订单合并</h3>
-                    <h3>订单拆分</h3>
+                    <h3 class="selected">合并生成订单</h3>
+                    <h3>拆分生成订单</h3>
                     <!--<h3>3</h3>-->
                 </div>
                 <div class="tab-content">
 
                     <div class="show">
-                        <input type="button" id="batch_merge" class="btn btn-default btn-sm" value="合并订单">
+                        <input type="button" id="batch_merge" class="btn btn-default btn-sm" value="合并生成订单">
                     </div>
 
                     <div>
@@ -289,7 +324,7 @@ $_smarty_tpl->tpl_vars['val'] = $__foreach_val_0_saved_item;
                         </div>
 
                         <div class="show">
-                            <input type="button" id="batch_split" class="btn btn-default btn-sm" value="拆分订单">
+                            <input type="button" id="batch_split" class="btn btn-default btn-sm" value="拆分生成订单">
                         </div>
                         <!--<div>-->
 
