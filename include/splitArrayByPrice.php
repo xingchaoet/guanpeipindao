@@ -19,8 +19,8 @@ function splitArrayByPrice($array_id, $array_num, $pod_paper_price_sum, $sum)
     }
     //结果集
     $result = array();
-
-    $boundary_sum = floor($pod_paper_price_sum / $sum);
+    $rot = 1.2;
+    $boundary_sum = floor($pod_paper_price_sum / $sum) * $rot;
 //    分界数组
     $boundary = array();
 
@@ -65,9 +65,12 @@ function splitArrayByPrice($array_id, $array_num, $pod_paper_price_sum, $sum)
 //        分割数组
     $count_boundary = count($boundary);
 
+    $count_boundary_1 = $count_boundary - 1;
+    $sum_1 = $sum - 1;
+
     for ($i = 0; $i < $count_boundary; $i++) {
 
-        if ($i != $count_boundary - 1) {
+        if (($i != $count_boundary_1) && ($i < $sum_1)) {
 
             $num = $boundary[$i + 1] - $boundary[$i];
 
@@ -77,6 +80,10 @@ function splitArrayByPrice($array_id, $array_num, $pod_paper_price_sum, $sum)
 
             $result[] = array_slice($array_id, $boundary[$i]);
 
+        }
+
+        if ($i >= $sum_1) {
+            break;
         }
 
     }

@@ -842,10 +842,14 @@ for ($index = 0; $index < $count_all_batch_ids; $index++) {
 
                     $count_boundary = count($boundary);
 
+                    $count_boundary_1 = $count_boundary - 1;
+                    $num_1 = $num - 1;
+
+
                     for ($i = 0; $i < $count_boundary; $i++) {
 
 
-                        if ($i != $count_boundary - 1) {
+                        if (($i != $count_boundary - 1) && ($i < $num_1)) {
 
                             $num = $boundary[$i + 1] - $boundary[$i];
 
@@ -855,6 +859,10 @@ for ($index = 0; $index < $count_all_batch_ids; $index++) {
 
                             $zhengdingdan_nums_after_split[] = array_slice($zhengdingdan_nums, $boundary[$i]);
 
+                        }
+
+                        if ($i >= $num_1) {
+                            break;
                         }
 
                     }

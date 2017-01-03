@@ -10,14 +10,21 @@
 		public $drv=SQLServer_DB_DRIVER;				//数据库驱动名称
         public $conn;									//数据库连接变量
 
+        protected static $_connection;
 
 		// 连接数据库
 		public function conms()
 		{
-			$c="Driver={$this->drv};Server=$this->srv;Database=$this->dbname;";
-			$this->conn=odbc_connect($c,$this->usr,$this->pwd);
+            if (self::$_connection === null) {
+                $c="Driver={$this->drv};Server=$this->srv;Database=$this->dbname;";
+                $this->conn=odbc_connect($c,$this->usr,$this->pwd);
+                self::$_connection = $this->conn;
+            }else{
+                $this->conn = self::$_connection;
+            }
+
 		}
-		// �Ͽ����ݿ�����
+		//
 		public function clo()
 		{
 			odbc_close($this->conn);

@@ -177,24 +177,44 @@
       <file leaf-file-name="generate_order.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chachong/generate_order.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
+            <state relative-caret-position="-357">
               <caret line="842" column="55" selection-start-line="842" selection-start-column="55" selection-end-line="842" selection-end-column="55" />
               <folding>
-                <element signature="e#15724#33479#0#PHP" expanded="false" />
-                <element signature="e#21297#33455#0#PHP" expanded="false" />
-                <marker date="1483100786624" expanded="true" signature="1960:2062" ph="SELECT Book_... bs_temp_dingdan" />
-                <marker date="1483100786624" expanded="true" signature="3265:3337" ph="select isbn v_ecs_book" />
-                <marker date="1483100786624" expanded="true" signature="3663:3727" ph="select isbn ecs_book" />
-                <marker date="1483100786624" expanded="true" signature="3965:4029" ph="select isbn ecs_book" />
-                <marker date="1483100786624" expanded="true" signature="7819:7892" ph="SELECT isbn,... ecs_book" />
-                <marker date="1483100786624" expanded="true" signature="10772:10846" ph="select book_... bs_yudingdan_mx" />
-                <marker date="1483100786624" expanded="true" signature="12020:12108" ph="SELECT count... " />
-                <marker date="1483100786624" expanded="true" signature="12364:12458" ph="SELECT count... " />
-                <marker date="1483100786624" expanded="true" signature="14742:14804" ph="delete from " />
-                <marker date="1483100786624" expanded="true" signature="18556:18629" ph="SELECT isbn,... ecs_book" />
-                <marker date="1483100786624" expanded="true" signature="24029:24102" ph="SELECT isbn,... ecs_book" />
-                <marker date="1483100786624" expanded="true" signature="30450:30523" ph="SELECT isbn,... ecs_book" />
+                <element signature="e#15724#33706#0#PHP" expanded="false" />
+                <element signature="e#21297#33682#0#PHP" expanded="false" />
+                <marker date="1483435436387" expanded="true" signature="1960:2062" ph="SELECT Book_... bs_temp_dingdan" />
+                <marker date="1483435436387" expanded="true" signature="3265:3337" ph="select isbn v_ecs_book" />
+                <marker date="1483435436387" expanded="true" signature="3663:3727" ph="select isbn ecs_book" />
+                <marker date="1483435436387" expanded="true" signature="3965:4029" ph="select isbn ecs_book" />
+                <marker date="1483435436387" expanded="true" signature="7819:7892" ph="SELECT isbn,... ecs_book" />
+                <marker date="1483435436387" expanded="true" signature="10772:10846" ph="select book_... bs_yudingdan_mx" />
+                <marker date="1483435436387" expanded="true" signature="12020:12108" ph="SELECT count... " />
+                <marker date="1483435436387" expanded="true" signature="12364:12458" ph="SELECT count... " />
+                <marker date="1483435436387" expanded="true" signature="14742:14804" ph="delete from " />
+                <marker date="1483435436387" expanded="true" signature="18556:18629" ph="SELECT isbn,... ecs_book" />
+                <marker date="1483435436387" expanded="true" signature="24029:24102" ph="SELECT isbn,... ecs_book" />
+                <marker date="1483435436387" expanded="true" signature="30677:30750" ph="SELECT isbn,... ecs_book" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="con_mssql.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/con_mssql.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="546">
+              <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -202,10 +222,10 @@
       <file leaf-file-name="splitArrayByPrice.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/include/splitArrayByPrice.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="724">
-              <caret line="79" column="9" selection-start-line="69" selection-start-column="8" selection-end-line="79" selection-end-column="9" />
+            <state relative-caret-position="630">
+              <caret line="84" column="24" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="24" />
               <folding>
-                <marker date="1483100589556" expanded="true" signature="755:805" ph="SELECT Book_... bs_temp_dingdan" />
+                <marker date="1483435136707" expanded="true" signature="777:827" ph="SELECT Book_... bs_temp_dingdan" />
               </folding>
             </state>
           </provider>
@@ -239,7 +259,7 @@
       <file leaf-file-name="show_generate_order.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/chachong/show_generate_order.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
+            <state relative-caret-position="21">
               <caret line="216" column="39" selection-start-line="216" selection-start-column="39" selection-end-line="216" selection-end-column="39" />
               <folding />
             </state>
@@ -350,7 +370,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/members_space/check_old_password.php" />
         <option value="$PROJECT_DIR$/members_space/change_password.php" />
         <option value="$PROJECT_DIR$/zhengdingdan/download_marc_bak.php" />
         <option value="$PROJECT_DIR$/zhengdingdan/download_marc.php" />
@@ -383,7 +402,6 @@
         <option value="$PROJECT_DIR$/dist/js/orders_view.js" />
         <option value="$PROJECT_DIR$/dist/css/light.css" />
         <option value="$PROJECT_DIR$/dist/css/jquery.confirm.css" />
-        <option value="$PROJECT_DIR$/config.php" />
         <option value="$PROJECT_DIR$/templates/zhengdingdan/yudingdan_detail.html" />
         <option value="$PROJECT_DIR$/dist/js/order_list_for_generate.js" />
         <option value="$PROJECT_DIR$/templates/chachong/chachong.html" />
@@ -399,6 +417,8 @@
         <option value="$PROJECT_DIR$/chachong/show_generate_order.php" />
         <option value="$PROJECT_DIR$/dist/js/batch_merge_split.js" />
         <option value="$PROJECT_DIR$/templates/chachong/show_generate_order.html" />
+        <option value="$PROJECT_DIR$/db/con_mssql.php" />
+        <option value="$PROJECT_DIR$/config.php" />
         <option value="$PROJECT_DIR$/include/splitArrayByPrice.php" />
         <option value="$PROJECT_DIR$/chachong/generate_order.php" />
       </list>
@@ -447,6 +467,57 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches">
+        <subPane />
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lgmianshi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lgmianshi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guanpeipindao" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lgmianshi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guanpeipindao" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="include" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lgmianshi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guanpeipindao" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Problems" />
         <subPane subId="Changed Files">
@@ -492,43 +563,6 @@
           </PATH>
         </subPane>
         <subPane subId="Tests" />
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lgmianshi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lgmianshi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="guanpeipindao" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lgmianshi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="guanpeipindao" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches">
-        <subPane />
       </pane>
     </panes>
   </component>
@@ -783,18 +817,19 @@
       <workItem from="1482712292991" duration="24848000" />
       <workItem from="1482747173293" duration="13968000" />
       <workItem from="1482971223177" duration="25627000" />
-      <workItem from="1483057487286" duration="29102000" />
+      <workItem from="1483057487286" duration="29354000" />
+      <workItem from="1483403274602" duration="10869000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1647827000" />
+    <option name="totallyTimeSpent" value="1658948000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="0" width="1924" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.05293501" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16090147" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14055794" sideWeight="0.6273585" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -861,13 +896,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/user/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user/login_chk.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-147">
@@ -1034,13 +1062,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chachong/manipulate_session.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -1155,10 +1176,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-726">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <marker date="1482199815456" expanded="true" signature="801:935" ph="SELECT Id, U... bs_message_board" />
-            <marker date="1482199815456" expanded="true" signature="1401:1534" ph="SELECT Reply... bs_message_board_reply" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1181,7 +1198,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="438">
           <caret line="732" column="0" selection-start-line="732" selection-start-column="0" selection-end-line="732" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1222,21 +1238,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/more.php">
+    <entry file="file://$PROJECT_DIR$/chachong/show_generate_order.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="756">
+          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
           <folding>
-            <marker date="1482389640804" expanded="true" signature="1951:1996" ph="SELECT count... " />
-            <marker date="1482389640804" expanded="true" signature="4343:4408" ph="select bid1 v_ecs_book" />
-            <marker date="1482389640804" expanded="true" signature="4882:5182" ph="SELECT book_... ROW_NUMBER" />
-            <marker date="1482389640804" expanded="true" signature="4939:5032" ph="SELECT ${$se... v_ecs_book" />
-            <marker date="1482389640804" expanded="true" signature="6112:6204" ph="SELECT count... bs_zhengdingdan_mx" />
-            <marker date="1482389640804" expanded="true" signature="6982:7027" ph="select count... " />
-            <marker date="1482389640804" expanded="true" signature="7527:7592" ph="select bid1 v_ecs_book" />
-            <marker date="1482389640804" expanded="true" signature="8780:9080" ph="SELECT book_... ROW_NUMBER" />
-            <marker date="1482389640804" expanded="true" signature="8837:8930" ph="SELECT ${$se... v_ecs_book" />
-            <marker date="1482389640804" expanded="true" signature="10193:10285" ph="SELECT count... bs_zhengdingdan_mx" />
+            <marker date="1483097508292" expanded="true" signature="1022:1092" ph="SELECT Book_... bs_temp_dingdan" />
+            <marker date="1483097508292" expanded="true" signature="1022:1112" ph="SELECT Book_... bs_temp_dingdan" />
+            <marker date="1483097508292" expanded="true" signature="1457:1511" ph="SELECT dj FR... ecs_book" />
+            <marker date="1483097508292" expanded="true" signature="1665:1737" ph="select isbn v_ecs_book" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/chachong/show_generate_order.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="216" column="39" selection-start-line="216" selection-start-column="39" selection-end-line="216" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/js/batch_merge_split.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="681">
+          <caret line="186" column="4" selection-start-line="186" selection-start-column="4" selection-end-line="186" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1290,6 +1318,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/more.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1482389640804" expanded="true" signature="1951:1996" ph="SELECT count... " />
+            <marker date="1482389640804" expanded="true" signature="4343:4408" ph="select bid1 v_ecs_book" />
+            <marker date="1482389640804" expanded="true" signature="4882:5182" ph="SELECT book_... ROW_NUMBER" />
+            <marker date="1482389640804" expanded="true" signature="4939:5032" ph="SELECT ${$se... v_ecs_book" />
+            <marker date="1482389640804" expanded="true" signature="6112:6204" ph="SELECT count... bs_zhengdingdan_mx" />
+            <marker date="1482389640804" expanded="true" signature="6982:7027" ph="select count... " />
+            <marker date="1482389640804" expanded="true" signature="7527:7592" ph="select bid1 v_ecs_book" />
+            <marker date="1482389640804" expanded="true" signature="8780:9080" ph="SELECT book_... ROW_NUMBER" />
+            <marker date="1482389640804" expanded="true" signature="8837:8930" ph="SELECT ${$se... v_ecs_book" />
+            <marker date="1482389640804" expanded="true" signature="10193:10285" ph="SELECT count... bs_zhengdingdan_mx" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/include/splitArray.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="609">
@@ -1298,66 +1345,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chachong/show_generate_order.php">
+    <entry file="file://$PROJECT_DIR$/include/splitArrayByPrice.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+        <state relative-caret-position="630">
+          <caret line="84" column="24" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="24" />
           <folding>
-            <marker date="1483097508292" expanded="true" signature="1022:1092" ph="SELECT Book_... bs_temp_dingdan" />
-            <marker date="1483097508292" expanded="true" signature="1022:1112" ph="SELECT Book_... bs_temp_dingdan" />
-            <marker date="1483097508292" expanded="true" signature="1457:1511" ph="SELECT dj FR... ecs_book" />
-            <marker date="1483097508292" expanded="true" signature="1665:1737" ph="select isbn v_ecs_book" />
+            <marker date="1483435136707" expanded="true" signature="777:827" ph="SELECT Book_... bs_temp_dingdan" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/js/batch_merge_split.js">
+    <entry file="file://$PROJECT_DIR$/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="681">
-          <caret line="186" column="4" selection-start-line="186" selection-start-column="4" selection-end-line="186" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/chachong/show_generate_order.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="216" column="39" selection-start-line="216" selection-start-column="39" selection-end-line="216" selection-end-column="39" />
+        <state relative-caret-position="168">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/splitArrayByPrice.php">
+    <entry file="file://$PROJECT_DIR$/db/con_mssql.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="724">
-          <caret line="79" column="9" selection-start-line="69" selection-start-column="8" selection-end-line="79" selection-end-column="9" />
-          <folding>
-            <marker date="1483100589556" expanded="true" signature="755:805" ph="SELECT Book_... bs_temp_dingdan" />
-          </folding>
+        <state relative-caret-position="546">
+          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chachong/generate_order.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
+        <state relative-caret-position="-357">
           <caret line="842" column="55" selection-start-line="842" selection-start-column="55" selection-end-line="842" selection-end-column="55" />
           <folding>
-            <element signature="e#15724#33479#0#PHP" expanded="false" />
-            <element signature="e#21297#33455#0#PHP" expanded="false" />
-            <marker date="1483100786624" expanded="true" signature="1960:2062" ph="SELECT Book_... bs_temp_dingdan" />
-            <marker date="1483100786624" expanded="true" signature="3265:3337" ph="select isbn v_ecs_book" />
-            <marker date="1483100786624" expanded="true" signature="3663:3727" ph="select isbn ecs_book" />
-            <marker date="1483100786624" expanded="true" signature="3965:4029" ph="select isbn ecs_book" />
-            <marker date="1483100786624" expanded="true" signature="7819:7892" ph="SELECT isbn,... ecs_book" />
-            <marker date="1483100786624" expanded="true" signature="10772:10846" ph="select book_... bs_yudingdan_mx" />
-            <marker date="1483100786624" expanded="true" signature="12020:12108" ph="SELECT count... " />
-            <marker date="1483100786624" expanded="true" signature="12364:12458" ph="SELECT count... " />
-            <marker date="1483100786624" expanded="true" signature="14742:14804" ph="delete from " />
-            <marker date="1483100786624" expanded="true" signature="18556:18629" ph="SELECT isbn,... ecs_book" />
-            <marker date="1483100786624" expanded="true" signature="24029:24102" ph="SELECT isbn,... ecs_book" />
-            <marker date="1483100786624" expanded="true" signature="30450:30523" ph="SELECT isbn,... ecs_book" />
+            <element signature="e#15724#33706#0#PHP" expanded="false" />
+            <element signature="e#21297#33682#0#PHP" expanded="false" />
+            <marker date="1483435436387" expanded="true" signature="1960:2062" ph="SELECT Book_... bs_temp_dingdan" />
+            <marker date="1483435436387" expanded="true" signature="3265:3337" ph="select isbn v_ecs_book" />
+            <marker date="1483435436387" expanded="true" signature="3663:3727" ph="select isbn ecs_book" />
+            <marker date="1483435436387" expanded="true" signature="3965:4029" ph="select isbn ecs_book" />
+            <marker date="1483435436387" expanded="true" signature="7819:7892" ph="SELECT isbn,... ecs_book" />
+            <marker date="1483435436387" expanded="true" signature="10772:10846" ph="select book_... bs_yudingdan_mx" />
+            <marker date="1483435436387" expanded="true" signature="12020:12108" ph="SELECT count... " />
+            <marker date="1483435436387" expanded="true" signature="12364:12458" ph="SELECT count... " />
+            <marker date="1483435436387" expanded="true" signature="14742:14804" ph="delete from " />
+            <marker date="1483435436387" expanded="true" signature="18556:18629" ph="SELECT isbn,... ecs_book" />
+            <marker date="1483435436387" expanded="true" signature="24029:24102" ph="SELECT isbn,... ecs_book" />
+            <marker date="1483435436387" expanded="true" signature="30677:30750" ph="SELECT isbn,... ecs_book" />
           </folding>
         </state>
       </provider>
