@@ -390,6 +390,8 @@ function add_or_delete_this_page_temp_table(option) {
     var book_index = [];
     var book_ids = [];
     var book_nums = [];
+    var prices = [];
+    var stock_states = [];
     var $row = $('.row');
     var checked_boxes = $row.find(checkboxes_sel + ":checked");
 //        var total_num = 1;
@@ -398,11 +400,27 @@ function add_or_delete_this_page_temp_table(option) {
     $.each(checked_boxes, function (index, checkboxEle) {
 
 //            alert($(this).parent().attr('class'));
-
         if ($(this).parent().attr('class') == 'list') {
             book_nums.push($(this).parent().next().children().val());
+
+            price = $(this).parent().next().next().next().next().next().next().next().text();
+            price = price.substr(1);
+            prices.push(price);
+
+            stock_state = $(this).parent().next().next().next().next().next().next().next().next().text();
+            stock_states.push(stock_state);
+
         } else {
             book_nums.push($(this).next().children().val());
+
+            price = $(this).parent().parent().next().next().next().next().next().next().text();
+            price = price.substr(4);
+            prices.push(price);
+
+            stock_state = $(this).parent().parent().next().next().next().next().next().next().next().text();
+            stock_state = stock_state.substr(3);
+            stock_states.push(stock_state);
+
         }
         if (checkboxEle.name) {
             book_ids.push(checkboxEle.name);
@@ -499,7 +517,7 @@ function add_or_delete_this_page_temp_table(option) {
 
     xhr.open('POST', add_or_delete_this_page_temp_table_url, true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("user_id=" + user_id + "&book_ids=" + book_ids + "&book_nums=" + book_nums + "&option=" + option);
+    xhr.send("user_id=" + user_id + "&book_ids=" + book_ids + "&book_nums=" + book_nums + "&prices=" + prices + "&stock_states=" + stock_states + "&option=" + option);
 //        xhr.send("user_id=" + user_id);
 
     xhr.onreadystatechange = function () {
@@ -519,6 +537,8 @@ function get_book_info_and_update_db_class_click() {
     var add_one_book_to_order = 1;
     var book_id = '';
     var book_num = '';
+    var price = '';
+    var stock_state = '';
 
     var fdata = new FormData();
 
@@ -527,12 +547,33 @@ function get_book_info_and_update_db_class_click() {
     // book_id = null;
     book_id = this.name;
 
+    price = $(this).attr("price");
+
+    stock_state = $(this).attr("stock_state");
+
     if ($(this).parent().attr('class') == 'list') {
         book_num = $(this).parent().next().children().val();
+
+        // price = $(this).parent().next().next().next().next().next().next().next().text();
+        // price = price.substr(1);
+        //
+        // stock_state = $(this).parent().next().next().next().next().next().next().next().next().text();
+
     } else {
         book_num = $(this).next().val();
+
+        // price = $(this).parent().parent().next().next().next().next().next().next().text();
+        // price = price.substr(4);
+        //
+        // stock_state = $(this).parent().parent().next().next().next().next().next().next().next().text();
+        // stock_state = stock_state.substr(3);
+
     }
 
+    // alert(price);
+    // alert(stock_state);
+
+    // return;
 
     if (book_num == '0') {
         alert("请填写数量");
@@ -550,6 +591,10 @@ function get_book_info_and_update_db_class_click() {
 
     fdata.append("book_id", book_id);
     fdata.append("book_num", book_num);
+
+    fdata.append("price", price);
+    fdata.append("stock_state", stock_state);
+
     fdata.append("user_id", user_id);
     fdata.append("add_one_book_to_order", add_one_book_to_order);
 
@@ -633,13 +678,13 @@ function get_book_num_and_update_db_class_propertychange() {
 
     user_id = $('#userid').html();
 
-    // book_id = $(this).parent().prev().children().attr('name');
-
-    // book_id = null;
-    //
     book_id = this.name;
 
     book_num = $(this).val();
+
+    price = $(this).attr("price");
+
+    stock_state = $(this).attr("stock_state");
 
 //            alert(book_id);
 //            alert(book_num);
@@ -676,6 +721,9 @@ function get_book_num_and_update_db_class_propertychange() {
 
     fdata.append("book_id", book_id);
     fdata.append("book_num", book_num);
+    fdata.append("price", price);
+    fdata.append("stock_state", stock_state);
+
     fdata.append("user_id", user_id);
     fdata.append("add_one_book_to_order", add_one_book_to_order);
 
@@ -988,8 +1036,12 @@ function SetProgress(progress) {
 //        alert('set_progress');
 //        alert(progress);
     if (progress) {
+
         $("#" + progress_id + " > div").css("width", String(progress) + "%"); //控制#loading div宽度
-        $("#" + progress_id + " > div").html(String(progress) + "%"); //显示百分比
+        // $("#" + progress_id + " > div").html(String(progress) + "%"); //显示百分比
+
+        // $("#" + progress_id ).html("正在保存数据"+String(progress) + "%"); //显示百分比
+
     }
 }
 
@@ -1007,6 +1059,8 @@ function doProgress() {
         SetProgress(progress);
         list.css("display", "block");
         list_session.css("display", "block");
+        // $("#" + progress_id ).html("保存数据完成"); //显示百分比
+        $('#progressbar').css("background-image","url(../dist/picture/chachong/progress_background_save_complete.png)");
         progress = 0;
         return;
     }

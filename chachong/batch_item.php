@@ -24,6 +24,7 @@ if ($from_url == 'a_new') {
     $batch_id = $_SESSION['batch_id'];
 }
 
+
 echo "<div style='margin-top: 4px;'>";
 echo "批次号：" . ($_SESSION['dd_pc']);
 echo "</div>";
@@ -284,10 +285,27 @@ if (!empty($batch_book_data_array)) {
                 $checked = "";
             }
 
+            $price = trim(sprintf('%.2f', iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['dj'])));
+
+            if ($tsfl_data3['jz1'] > 0) {
+//                echo '纸本可供';
+                $stock_state = '纸本可供';
+            } else {
+
+                if (is_numeric($tsfl_data3['jz3']) && ($tsfl_data3['jz3'] >= 0)) {
+//                    echo 'POD可供';
+                    $stock_state = 'POD可供';
+
+                } else if (is_null($tsfl_data3['jz3'])) {
+                    $stock_state = '可预订';
+//                    echo '可预订';
+                }
+            }
+
             $n = $n + 1;
             echo "<tr>";
-            echo "<td class='list' name='list'  height=20 width=15><input type='checkbox'   name=\"$bid\" class=\"checkall get_book_info_and_update_db_class\" value=$n $checked/></td>";
-            echo "<td style='text-align: center'><input style='width:15px;' name='$bid' id=\"amount1_$bid\" class='get_book_num_and_update_db_class'    type='text' maxlength='1' size='1' value=\"$book_num\" /></td>";
+            echo "<td class='list' name='list'  height=20 width=15><input type='checkbox'   name=\"$bid\"  price=\"$price\" stock_state=\"$stock_state\" class=\"checkall get_book_info_and_update_db_class\" value=$n $checked/></td>";
+            echo "<td style='text-align: center'><input style='width:15px;' name='$bid' id=\"amount1_$bid\" price=\"$price\" stock_state=\"$stock_state\" class='get_book_num_and_update_db_class'    type='text' maxlength='1' size='1' value=\"$book_num\" /></td>";
             if (strlen(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['sm']))) > 36) {
                 echo "<td align='left' width='280'>" . mb_substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['sm'])), 0, 18, 'utf8') . "</td>";
             } else {
@@ -307,22 +325,10 @@ if (!empty($batch_book_data_array)) {
             } else {
                 echo "<td align=center>" . substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['cbrq'])), 0, 4) . "年" . str_pad(str_replace('/', '', str_replace('-', '', substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['cbrq'])), 5, 2))), 2, '0', STR_PAD_LEFT) . "月</td>";
             }
-            echo "<td align=center>￥" . trim(sprintf('%.2f', iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['dj']))) . "</td>";
-            echo "<td align=center>";
+            echo "<td align=center>￥" . $price . "</td>";
 
+            echo "<td align=center> $stock_state </td></tr>";
 
-            if ($tsfl_data3['jz1'] > 0) {
-                echo '纸本可供';
-            } else {
-
-                if (is_numeric($tsfl_data3['jz3']) && ($tsfl_data3['jz3'] >= 0)) {
-                    echo 'POD可供';
-                } else if (is_null($tsfl_data3['jz3'])) {
-                    echo '可预订';
-                }
-            }
-
-            echo "</td></tr>";
         }
 
         echo "</div>";
@@ -381,6 +387,23 @@ if (!empty($batch_book_data_array)) {
                     $checked = "";
                 }
 
+                $price = trim(sprintf('%.2f', iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['dj'])));
+
+                if ($tsfl_data3['jz1'] > 0) {
+//                echo '纸本可供';
+                    $stock_state = '纸本可供';
+                } else {
+
+                    if (is_numeric($tsfl_data3['jz3']) && ($tsfl_data3['jz3'] >= 0)) {
+//                    echo 'POD可供';
+                        $stock_state = 'POD可供';
+
+                    } else if (is_null($tsfl_data3['jz3'])) {
+                        $stock_state = '可预订';
+//                    echo '可预订';
+                    }
+                }
+
                 $n = $n + 1;
                 $colnn = $n % 3;
                 if ($colnn == 1) {
@@ -392,9 +415,9 @@ if (!empty($batch_book_data_array)) {
              <tr>
              <td rowspan=8><img src=http://www.ecsponline.com" . trim($tsfl_data3['slt']) . " onerror=\"javascript:this.src='dist/images/nopicture.png';\"  width=120 height=120></td>
              <td height=20>
-            <input type='checkbox' class = 'checkall get_book_info_and_update_db_class'  name=\"$bid\"  value=$n $checked/>
+            <input type='checkbox' class = 'checkall get_book_info_and_update_db_class'  name=\"$bid\"  price=\"$price\" stock_state=\"$stock_state\" value=$n $checked/>
             <p>数量:
-            <input style='width:15px' name='$bid' id=\"amount1_$bid\" class='get_book_num_and_update_db_class'   type='text' maxlength='1' size='1' value=$book_num />
+            <input style='width:15px' name='$bid' id=\"amount1_$bid\" price=\"$price\" stock_state=\"$stock_state\" class='get_book_num_and_update_db_class'   type='text' maxlength='1' size='1' value=$book_num />
             </p>
             </td>
             </tr>";
@@ -418,21 +441,8 @@ if (!empty($batch_book_data_array)) {
                 } else {
                     echo "<tr><td>出版年月：" . substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['cbrq'])), 0, 4) . "年" . str_pad(str_replace('/', '', str_replace('-', '', substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['cbrq'])), 5, 2))), 2, '0', STR_PAD_LEFT) . "月</td></tr>";
                 }
-                echo "<tr><td>定价：￥" . trim(sprintf('%.2f', iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['dj']))) . "</td></tr>";
-                echo "<tr><td>库存：";
-
-
-                if ($tsfl_data3['jz1'] > 0) {
-                    echo '纸本可供' . "</td></tr></table>";
-                } else {
-
-                    if (is_numeric($tsfl_data3['jz3']) && ($tsfl_data3['jz3'] >= 0)) {
-                        echo 'POD可供' . "</td></tr></table>";
-                    } else if (is_null($tsfl_data3['jz3'])) {
-                        echo '可预订' . "</td></tr></table>";
-                    }
-                }
-
+                echo "<tr><td>定价：￥" . $price . "</td></tr>";
+                echo "<tr><td>库存：". $stock_state . "</td></tr></table>";
 
                 if ($colnn == 0) {
                     echo "</td></tr>";

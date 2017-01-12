@@ -17,12 +17,13 @@ $log = Plog::factory(__FILE__);
 include("auth_chachong.php");
 
 //session_start();
-
-
 $ms = new con_mssql();
 
 $book_ids = $_POST['book_ids'];
 $book_nums = $_POST['book_nums'];
+
+$prices = $_POST['prices'];
+$stock_states = $_POST['stock_states'];
 
 //print_r($book_ids);
 
@@ -53,6 +54,10 @@ $error_place = array();
 //}
 $book_num_s = explode(",", $book_nums);
 
+$price_s = explode(",", $prices);
+
+$stock_state_s = explode(",", $stock_states);
+
 if ($option == 'add') {//添加书籍
 
     $count_book_id_s = count($book_id_s);
@@ -61,8 +66,12 @@ if ($option == 'add') {//添加书籍
 
         $book_id = $book_id_s[$i];
         $book_num = $book_num_s[$i];
+
+        $price = $price_s[$i];
+        $stock_state = trim(iconv('utf-8', 'gbk//IGNORE', $stock_state_s[$i])) ;
+
         //    $sql_add_to_temp_table = "INSERT INTO [dbo]." . $table_name . " (Book_Id,Book_Num, State,User_Id,Pi_Ci_No,Date_Time) VALUES ('$book_id',$book_num, '0','$user_id','$zdd_pc',GETDATE())";
-        $sql_update_temp_table = "UPDATE [dbo]." . $table_name . " SET  Book_Num = '$book_num'     WHERE Book_Id = '$book_id' AND Pi_Ci_No = '$dd_pc'";
+        $sql_update_temp_table = "UPDATE [dbo]." . $table_name . " SET  Book_Num = '$book_num'  ,  Price = '$price' , StockState = '$stock_state'     WHERE Book_Id = '$book_id' AND Pi_Ci_No = '$dd_pc'";
 
 //
 
@@ -122,7 +131,7 @@ if ($option == 'add') {//添加书籍
     for ($i = 0; $i < $count_book_id_s; $i++) {
 
         $book_id = $book_id_s[$i];
-        $sql_update_temp_table = "UPDATE [dbo]." . $table_name . " SET  Book_Num = '0'  WHERE Book_Id = '$book_id' AND Pi_Ci_No = '$dd_pc'";
+        $sql_update_temp_table = "UPDATE [dbo]." . $table_name . " SET  Book_Num = '0' , Price = '0' , StockState = ''  WHERE Book_Id = '$book_id' AND Pi_Ci_No = '$dd_pc'";
 
 //        $open = fopen("D:/phpStudy/WWW/guanpeipindao/db/log.txt", "a");
 //        fwrite($open, $sql_update_temp_table . "\r\n");

@@ -8,7 +8,7 @@ $name = addslashes($_GET['name']);
 $pwd = $_GET['pwd'];
 if(!empty($name) and !empty($pwd)){
 	$ms=new con_mssql();
-	$sql = "select xm,count,active,lib_no,zw,ID,user_id,user_pwd from lib_lxr_info where ltrim(rtrim(user_id)) = '".$name."'";
+	$sql = "select xm,count,active,lib_no,zw,ID,user_id,user_pwd,dzyj1,bgdh,sj1 from lib_lxr_info where ltrim(rtrim(user_id)) = '".$name."'";
 	$rs1 = $ms->sdb($sql);
 	
 	$xm=trim(odbc_result($rs1,1));
@@ -17,14 +17,19 @@ if(!empty($name) and !empty($pwd)){
 	$lib_no=trim(odbc_result($rs1,4));
 	$zw=trim(odbc_result($rs1,5));
     $ID=trim(odbc_result($rs1,6));
+
+
     $uid=trim(odbc_result($rs1,7));
     $ud=trim(odbc_result($rs1,8));
+    $email=trim(odbc_result($rs1,9));
+    $telephone=trim(odbc_result($rs1,10));
+    $cellphone=trim(odbc_result($rs1,11));
 
     $ms0=new con_mssql();
 	$sql0 = "select tsgqc from lib_base_info where ltrim(rtrim(lib_no)) = '".$lib_no."'";
 	$rs0 = $ms0->sdb($sql0);
 	$tsgqc=trim(odbc_result($rs0,1));
-	
+
 	if($active == ''){
 		if(is_null($_COOKIE['count']) or $_COOKIE['count'] == 0){
 			setcookie('count',1);
@@ -58,17 +63,21 @@ if(!empty($name) and !empty($pwd)){
 			setcookie('tsgqc',$tsgqc);
 			setcookie('zw',$zw);
 
+            $_SESSION['email'] = $email;
+            $_SESSION['xm'] = $xm;
+            $_SESSION['telephone'] = $telephone;
+            $_SESSION['cellphone'] = $cellphone;
+            $_SESSION['tsgqc'] = $tsgqc;
+
             $_SESSION['username'] = $uid;
+            $_SESSION['name'] = $name;
+
             $_SESSION['islogin'] = 1;
             $_SESSION['user_id'] = $ID;
 
             $_SESSION['user_type'] = "library_user";
 
-
-            $_SESSION['name'] = $name;
-			$_SESSION['xm'] = $xm;
 			$_SESSION['lib_no'] = $lib_no;
-			$_SESSION['tsgqc'] = $tsgqc;
 			$_SESSION['zw'] = $zw;
             $_SESSION['ud'] = $ud;
 			$reback = '-1';

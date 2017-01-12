@@ -1,40 +1,42 @@
 <table class='table table-bordered table-striped'>
+    {$pagenav}
+
     <tr style="text-align: center">
-        <td width="50" align="center";>数量</td>
-        <td>书名</td>
-        <td width="80" align="center";>书号</td>
-        <td width="100" align="center";>作者</td>
-        <td width="50" align="center";>开本</td>
-        <td width="90" align="center";>出版日期</td>
-        <td>价格</td>
-        <td width="70"  align="center";>库存</td>
+        <td width="50" align="center" ;>数量</td>
+        <td width="180">书名</td>
+        <td width="80" align="center" ;>书号</td>
+        <td width="100" align="center" ;>作者</td>
+        <td width="50" align="center" ;>开本</td>
+        <td width="90" align="center" ;>出版日期</td>
+        <td width="50">价格</td>
+        <td width="70" align="center" ;>库存</td>
     </tr>
 
     {foreach $zdd_order_detail as $order}
     <tr>
-        <td width="50" align="center";>
+        <td width="50" align="center" ;>
             {$order['amount']}
         </td>
-        <td>
+        <td width="180">
             {$order['book_name']}
         </td>
-        <td width="80" align="center";>
+        <td width="80" align="center" ;>
             {$order['isbn']}
         </td>
-        <td width="100" align="center";>
+        <td width="100" align="center" ;>
             {$order['writer']}
         </td>
-        <td width="50" align="center";>
+        <td width="50" align="center" ;>
             {$order['kb']}
         </td>
-        <td width="90" align="center";>
+        <td width="90" align="center" ;>
             {$order['publish_date']}
         </td>
 
-        <td>
+        <td width="50">
             {$order['price']}
         </td>
-        <td width="70"  align="center";>
+        <td width="70" align="center" ;>
             {$order['kc']}
         </td>
 
@@ -42,10 +44,21 @@
 
     {/foreach}
 
-    {$pagenav}
 
-
+    {if $zdd_is_hide != '1'}
+    <span style="opacity: 1;float: right;color: #428bca;"> 征订单编号： {$sheet_no}</span>
+    {else}
+    <span style="opacity: 1;float: right;color: #2f332a;"> 已报征订单编号： {$sheet_no}</span>
+    {/if}
 </table>
 
-<!--<a>回到我的征订单</a>-->
-<button class="btn btn-default btn-sm" id="return_to_my_zhengdingdan" onclick="return_to_my_zhengdingdan();" value="返回到我的征订单">返回到我的征订单</button>
+{if $zdd_is_hide != '1'}
+<button class="btn btn-default btn-sm" id="return_to_my_zhengdingdan" style="color: #428bca;" onclick="return_to_my_zhengdingdan();"
+        value="返回到我的征订单">返回到我的征订单
+</button>
+{else}
+
+<button class="btn btn-default btn-sm" id="return_to_my_hide_zhengdingdan" onclick="return_to_my_hide_zhengdingdan();"
+        value="返回到我的已报征订单">返回到我的已报征订单
+</button>
+{/if}

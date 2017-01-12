@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-30 20:24:35
+/* Smarty version 3.1.29, created on 2017-01-10 18:26:07
   from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\show_generate_order.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58665203255c12_33270144',
+  'unifunc' => 'content_5874b6bf5e3b93_47480683',
   'file_dependency' => 
   array (
     '75aea83179e640f0ad141efe979341d7d06bc494' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\show_generate_order.html',
-      1 => 1483100120,
+      1 => 1483513678,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_58665203255c12_33270144 ($_smarty_tpl) {
+function content_5874b6bf5e3b93_47480683 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -208,7 +208,7 @@ function content_58665203255c12_33270144 ($_smarty_tpl) {
                                 种类数
                             </td>
                             <td align="left" class="batch_ltd">
-                                金额
+                                金额(元)
                             </td>
                             <td class="batch_mtd">
                                 批次产生时间

@@ -17,6 +17,12 @@ $log = Plog::factory(__FILE__);
 
 $book_id = $_POST['book_id'];
 $book_num = $_POST['book_num'];
+
+$price = trim($_POST['price']);
+
+$stock_state = $_POST['stock_state'];
+$stock_state = trim(iconv('utf-8', 'gbk//IGNORE', $stock_state));
+
 $user_id = $_POST['user_id'];
 $add_one_book_to_order = $_POST['add_one_book_to_order'];
 
@@ -36,7 +42,7 @@ $error_appear = false;
 
 if ($add_one_book_to_order) {//添加书籍
 
-    $sql_temp_table = "UPDATE [dbo]." . $table_name . " SET  Book_Num = '$book_num'     WHERE Book_Id = '$book_id' AND Pi_Ci_No = '$dd_pc'";
+    $sql_temp_table = "UPDATE [dbo]." . $table_name . " SET  Book_Num = '$book_num'  , Price = '$price' , StockState = '$stock_state'    WHERE Book_Id = '$book_id' AND Pi_Ci_No = '$dd_pc'";
 
     $rs_sql_temp_table = $ms->sdb($sql_temp_table);
 

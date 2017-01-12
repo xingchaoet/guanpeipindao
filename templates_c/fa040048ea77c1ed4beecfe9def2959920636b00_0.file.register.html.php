@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-20 11:08:26
+/* Smarty version 3.1.29, created on 2017-01-12 14:40:23
   from "D:\phpStudy\WWW\guanpeipindao\templates\user\register.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5858a0aa3e4da1_65855163',
+  'unifunc' => 'content_587724d7b8d4d7_01508632',
   'file_dependency' => 
   array (
     'fa040048ea77c1ed4beecfe9def2959920636b00' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\user\\register.html',
-      1 => 1481092275,
+      1 => 1484203139,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:header.html' => 1,
   ),
 ),false)) {
-function content_5858a0aa3e4da1_65855163 ($_smarty_tpl) {
+function content_587724d7b8d4d7_01508632 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,165 +55,6 @@ function content_5858a0aa3e4da1_65855163 ($_smarty_tpl) {
         <div class="tab-pane active fade in" id='library_user'>
 
             <div id="rgbgdiv">
-
-                <!--<table>-->
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--<td>-->
-
-                <!--</td>-->
-                <!--</tr>-->
-
-                <!--</table>-->
 
                 <!--<div id='top_title'><font size="4">会员注册</font></div>-->
 

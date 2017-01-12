@@ -22,6 +22,12 @@
     <?php $light_css = '../dist/css/light.css' ?>
     <link rel="stylesheet" href="<?php echo $light_css .'?v='. filemtime( $light_css ); ?>">
 
+    <?php $declaration_css = '../dist/css/declaration.css' ?>
+    <link rel="stylesheet" href="<?php echo $declaration_css .'?v='. filemtime( $declaration_css ); ?>">
+
+    <?php $jquery_confirm_css = '../dist/css/jquery.confirm.css' ?>
+    <link rel="stylesheet" href="<?php echo $jquery_confirm_css .'?v='. filemtime( $jquery_confirm_css ); ?>">
+
     <title>查看我的订单</title>
 
     <style>
@@ -78,6 +84,10 @@
             -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
             filter: alpha(opacity=0);
             cursor: pointer;
+        }
+
+        #show_zhengdingdan_table {
+            margin-top: 10px;
         }
 
         #scgc {
@@ -304,7 +314,6 @@
             margin-left: 10px;
             margin-right: 10px;
         }
-
         /*.white_content {*/
         /*display: none;*/
         /*position: absolute;*/
@@ -346,7 +355,6 @@
 
                 <div id="light_overlay">
 
-
                     <div id="light">
                         <div id="close"></div>
                         <div id="overlay_head"></div>
@@ -357,12 +365,42 @@
                     </div>
                 </div>
 
+                <div id="declaration">
+
+                    <div id="declaration_inner">
+
+                        <div id="declaration_close"></div>
+
+                        <div id="declaration_overlay_head"></div>
+
+                        <div id="declaration_content">
+                            <?php include('../zhengdingdan/company_select.php'); ?>
+
+                            <div id="reglibdiv">
+                                <span id="gps_span" width="200px;">
+                                    <select id="gps_people" width="200px" name="gps_people">
+                                        <option value='-1'>请先选择馆配商</option>
+                                    </select>
+                                </span>
+                            </div>
+
+                            <div id="email_content_div">
+                                <span>邮件内容：</span>
+                                <textarea  id="email_content"  placeholder="已报单" rows="10" cols="28">
+
+                                </textarea>
+                            </div>
+                            <div class="declaration_tj">
+                                <button class="btn btn-success btn-xs" id="declaration_tj_btn">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="the_space">
-                    <!-- Codrops top bar -->
                     <section class="tabs">
 
                         {if $user_type eq "library_user"}
-
                         <!--<div id="orders_view_nav_tab">-->
                         <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked"/>
                         <label for="tab-1" class="tab-label-1">我的征订单</label>
@@ -383,8 +421,13 @@
                         {if $user_type eq "library_user"}
                         <div class="content">
                             <div id="show_zhengdingdan" class="content-1">
+
                                 <span style="display: none" id="zdd_times">{$zdd_times}</span>
-                                <table class='table table-bordered table-striped'>
+
+
+                                <table id="show_zhengdingdan_table" class='table table-bordered table-striped'>
+                                    {$pagenav}
+
                                     <tr style="text-align: center">
                                         <td width="150">征订单编号</td>
                                         <td width="150">生成时间</td>
@@ -408,13 +451,18 @@
                                             <a id="view_zdd_detail" class="view_zdd_detail">查看详情</a>
                                             <!--<a id="view_zdd_detail_mssql"   class="view_zdd_detail_mssql">查看详情mssql</a>-->
                                             <a class="zhengdingdan_download_marc">下载</a>
-                                        </td>
 
+                                            <a class="zhengdingdan_hide" name="{$order['zdd_pc_id']}">报单</a>
+                                        </td>
                                     </tr>
                                     {/foreach}
-                                    {$pagenav}
 
+                                    <span style="opacity: 1;float: right;color: #4cae4c;cursor: pointer;"
+                                          id="view_hide_zhengdingdan">查看已报单</span>
+
+                                    <!--<span style="opacity: 1;float: right"><a id="view_hide_zhengdingdan">查看已报单</a></span>-->
                                 </table>
+
 
                             </div>
                             <!--<div id="show_yudingdan" class="content-2" onmouseover="show_ydd();">-->
@@ -681,13 +729,15 @@
 </body>
 <script src="../dist/js/jquery.min.js"></script>
 <script src="../dist/js/bootstrap.min.js"></script>
-<!--<script src="../dist/js/holder.min.js"></script>-->
 <script src="../dist/js/application.js"></script>
 
-<!--<link rel="shortcut icon" href="../favicon.ico">-->
 <script src="../dist/js/zzsc.js"></script>
 <script src="../dist/js/left_nav.js"></script>
+
 <script src="../dist/js/modernizr.custom.04022.js"></script>
+
+<?php $jquery_confirm_js = '../dist/js/jquery.confirm.js' ;?>
+<script src='../dist/js/jquery.confirm.js?v=<?php echo filemtime( $jquery_confirm_js );?>'></script>
 
 <?php $order_list_for_generate_js = '../dist/js/order_list_for_generate.js' ;?>
 <script src='../dist/js/order_list_for_generate.js?v=<?php echo filemtime( $order_list_for_generate_js );?>'></script>

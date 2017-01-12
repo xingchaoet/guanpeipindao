@@ -6,6 +6,7 @@
     background-image:url(../picture/chachong/progress_background.png);
     display: none;
     /*background-size:100%,100%;*/
+    /*filter:alpha(opacity=50);*/
 }
 #progressbar div{
     width:0px;
@@ -19,4 +20,5 @@
     font-size:18px;
     line-height:25px;
     display: none;
+    opacity: 0.8;
 }

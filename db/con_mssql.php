@@ -47,7 +47,7 @@
 				return $rs;
 			}
 
-			$this->clo();
+//			$this->clo();
 		}
 	}
 	

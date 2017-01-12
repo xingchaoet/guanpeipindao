@@ -1,14 +1,17 @@
-<table  class='table table-bordered table-striped'>
+<table id="show_zhengdingdan_table" class='table table-bordered table-striped'>
     <span style="display: none" id="zdd_times">{$zdd_times}</span>
+
+    {$pagenav}
+
     <tr style="text-align: center">
-        <td>征订单编号</td>
-        <td>生成时间</td>
-        <td>品种数量</td>
-        <td>操作</td>
+        <td width="150">征订单编号</td>
+        <td width="150">生成时间</td>
+        <td width="100">品种数量</td>
+        <td width="150">操作</td>
     </tr>
 
     {foreach $zdd_order_list as $order}
-    <tr>
+    <tr style="text-align: center">
         <td id="{$order['zdd_pc_id']}">
             {$order['zdd_pc_id']}
         </td>
@@ -22,10 +25,14 @@
             <a id="view_zdd_detail"   class="view_zdd_detail">查看详情</a>
             <!--<a id="view_zdd_detail_mssql"   class="view_zdd_detail_mssql">查看详情mssql</a>-->
             <a  class="zhengdingdan_download_marc" >下载</a>
-        </td>
+            <a class="zhengdingdan_hide" name="{$order['zdd_pc_id']}">报单</a>
 
+        </td>
     </tr>
     {/foreach}
-    {$pagenav}
+
+
+
+    <span style="opacity: 1;float: right;color: #4cae4c;cursor: pointer;" id="view_hide_zhengdingdan">查看已报单</span>
 
 </table>

@@ -1,0 +1,138 @@
+Jan 11 17:18:26 xc[23348]: Trying to smtp.exmail.qq.com:25
+Jan 11 17:18:26 xc[23348]: Connected to relay host smtp.exmail.qq.com
+Jan 11 17:18:26 xc[23348]: Error: Remote host returned "535 Error: 请使用授权码登录。详情请看: http://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=1001256"
+Jan 11 17:18:26 xc[23348]: Error: Error occurred while sending HELO command.
+Jan 11 17:18:26 xc[23348]: Error: Cannot send email to <>
+Jan 11 17:18:26 xc[23348]: Disconnected from remote host
+Jan 11 17:19:08 xc[23348]: Trying to smtp.exmail.qq.com:25
+Jan 11 17:19:08 xc[23348]: Connected to relay host smtp.exmail.qq.com
+Jan 11 17:19:08 xc[23348]: Error: Remote host returned "535 Error: 请使用授权码登录。详情请看: http://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=1001256"
+Jan 11 17:19:08 xc[23348]: Error: Error occurred while sending HELO command.
+Jan 11 17:19:08 xc[23348]: Error: Cannot send email to <2589701049@qq.com>
+Jan 11 17:19:08 xc[23348]: Disconnected from remote host
+Jan 11 17:20:34 xc[23348]: Trying to smtp.exmail.qq.com:25
+Jan 11 17:20:34 xc[23348]: Connected to relay host smtp.exmail.qq.com
+Jan 11 17:20:34 xc[23348]: Error: Remote host returned "535 Error: 请使用授权码登录。详情请看: http://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=1001256"
+Jan 11 17:20:34 xc[23348]: Error: Error occurred while sending HELO command.
+Jan 11 17:20:34 xc[23348]: Error: Cannot send email to <2589701049@qq.com>
+Jan 11 17:20:34 xc[23348]: Disconnected from remote host
+Jan 11 17:22:18 xc[17992]: Trying to smtp.exmail.qq.com:25
+Jan 11 17:22:18 xc[17992]: Connected to relay host smtp.exmail.qq.com
+Jan 11 17:22:18 xc[17992]: Error: Remote host returned "535 Error: 请使用授权码登录。详情请看: http://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=1001256"
+Jan 11 17:22:18 xc[17992]: Error: Error occurred while sending HELO command.
+Jan 11 17:22:18 xc[17992]: Error: Cannot send email to <2589701049@qq.com>
+Jan 11 17:22:18 xc[17992]: Disconnected from remote host
+Jan 11 17:26:07 xc[17992]: Trying to smtp.exmail.qq.com:25
+Jan 11 17:26:07 xc[17992]: Connected to relay host smtp.exmail.qq.com
+Jan 11 17:26:07 xc[17992]: Error: Remote host returned "535 Error: 请使用授权码登录。详情请看: http://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=1001256"
+Jan 11 17:26:07 xc[17992]: Error: Error occurred while sending HELO command.
+Jan 11 17:26:07 xc[17992]: Error: Cannot send email to <2589701049@qq.com>
+Jan 11 17:26:07 xc[17992]: Disconnected from remote host
+Jan 11 17:28:34 xc[23152]: Trying to smtp.exmail.qq.com:25
+Jan 11 17:28:34 xc[23152]: Connected to relay host smtp.exmail.qq.com
+Jan 11 17:28:34 xc[23152]: Error: Remote host returned "535 Error: 请使用授权码登录。详情请看: http://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=1001256"
+Jan 11 17:28:34 xc[23152]: Error: Error occurred while sending HELO command.
+Jan 11 17:28:34 xc[23152]: Error: Cannot send email to <2589701049@qq.com>
+Jan 11 17:28:34 xc[23152]: Disconnected from remote host
+Jan 11 17:29:44 xc[23152]: Trying to smtp.exmail.qq.com:25
+Jan 11 17:29:44 xc[23152]: Connected to relay host smtp.exmail.qq.com
+Jan 11 17:29:44 xc[23152]: Error: Remote host returned "535 Error: 请使用授权码登录。详情请看: http://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=1001256"
+Jan 11 17:29:44 xc[23152]: Error: Error occurred while sending HELO command.
+Jan 11 17:29:44 xc[23152]: Error: Cannot send email to <2589701049@qq.com>
+Jan 11 17:29:44 xc[23152]: Disconnected from remote host
+Jan 12 08:48:18 xc[4948]: Trying to smtp.exmail.qq.com:25
+Jan 12 08:48:18 xc[4948]: Connected to relay host smtp.exmail.qq.com
+Jan 12 08:48:18 xc[4948]: Error: Remote host returned "535 Error: 请使用授权码登录。详情请看: http://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=1001256"
+Jan 12 08:48:18 xc[4948]: Error: Error occurred while sending HELO command.
+Jan 12 08:48:18 xc[4948]: Error: Cannot send email to <2589701049@qq.com>
+Jan 12 08:48:18 xc[4948]: Disconnected from remote host
+Jan 12 08:52:53 xc[4948]: Trying to smtp.qq.com:25
+Jan 12 08:52:53 xc[4948]: Connected to relay host smtp.qq.com
+Jan 12 08:52:53 xc[4948]: Error: Remote host returned "530 Error: A secure connection is requiered(such as ssl). More information at http://service.mail.qq.com/cgi-bin/help?id=28"
+Jan 12 08:52:53 xc[4948]: Error: Error occurred while sending HELO command.
+Jan 12 08:52:53 xc[4948]: Error: Cannot send email to <2589701049@qq.com>
+Jan 12 08:52:53 xc[4948]: Disconnected from remote host
+Jan 12 08:54:51 xc[8740]: Trying to smtp.qq.com:465
+Jan 12 08:56:51 xc[8740]: Error: Remote host returned ""
+Jan 12 08:56:51 xc[8740]: Error: Cannot connenct to relay host smtp.qq.com
+Jan 12 08:56:51 xc[8740]: Error:  (0)
+Jan 12 08:56:51 xc[8740]: Error: Cannot send email to 2589701049@qq.com
+Jan 12 08:56:51 xc[4132]: Trying to smtp.qq.com:465
+Jan 12 08:57:54 xc[9084]: Trying to smtp.qq.com:465
+Jan 12 08:59:57 xc[9084]: Error: Remote host returned ""
+Jan 12 08:59:57 xc[9084]: Error: Cannot connenct to relay host smtp.qq.com
+Jan 12 08:59:57 xc[9084]: Error:  (0)
+Jan 12 08:59:57 xc[9084]: Error: Cannot send email to 2589701049@qq.com
+Jan 12 09:17:46 xc[5504]: Trying to smtp.qq.com:465
+Jan 12 09:19:46 xc[5504]: Error: Remote host returned ""
+Jan 12 09:19:46 xc[5504]: Error: Cannot connenct to relay host smtp.qq.com
+Jan 12 09:19:46 xc[5504]: Error:  (0)
+Jan 12 09:19:46 xc[5504]: Error: Cannot send email to 1363688001@qq.com
+Jan 12 09:30:41 xc[11372]: Trying to smtp.qq.com:25
+Jan 12 09:30:41 xc[11372]: Connected to relay host smtp.qq.com
+Jan 12 09:30:41 xc[11372]: Error: Remote host returned "530 Error: A secure connection is requiered(such as ssl). More information at http://service.mail.qq.com/cgi-bin/help?id=28"
+Jan 12 09:30:41 xc[11372]: Error: Error occurred while sending HELO command.
+Jan 12 09:30:41 xc[11372]: Error: Cannot send email to <1363688001@qq.com>
+Jan 12 09:30:41 xc[11372]: Disconnected from remote host
+Jan 12 09:31:18 xc[11372]: Trying to smtp.qq.com:25
+Jan 12 09:31:18 xc[11372]: Connected to relay host smtp.qq.com
+Jan 12 09:31:18 xc[11372]: Error: Remote host returned "530 Error: A secure connection is requiered(such as ssl). More information at http://service.mail.qq.com/cgi-bin/help?id=28"
+Jan 12 09:31:18 xc[11372]: Error: Error occurred while sending HELO command.
+Jan 12 09:31:18 xc[11372]: Error: Cannot send email to <1363688001@qq.com>
+Jan 12 09:31:18 xc[11372]: Disconnected from remote host
+Jan 12 09:37:31 xc[484]: Trying to smtp.qq.com:587
+Jan 12 09:37:31 xc[484]: Connected to relay host smtp.qq.com
+Jan 12 09:37:31 xc[484]: Error: Remote host returned "530 Must issue a STARTTLS command first."
+Jan 12 09:37:31 xc[484]: Error: Error occurred while sending HELO command.
+Jan 12 09:37:31 xc[484]: Error: Cannot send email to <1363688001@qq.com>
+Jan 12 09:37:31 xc[484]: Disconnected from remote host
+Jan 12 09:50:16 xc[13788]: Trying to smtp.qq.com:25
+Jan 12 09:50:16 xc[13788]: Connected to relay host smtp.qq.com
+Jan 12 09:50:16 xc[13788]: Error: Remote host returned "535 Error: 请使用授权码登录。详情请看: http://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=1001256"
+Jan 12 09:50:16 xc[13788]: Error: Error occurred while sending HELO command.
+Jan 12 09:50:16 xc[13788]: Error: Cannot send email to <1363688001@qq.com>
+Jan 12 09:50:16 xc[13788]: Disconnected from remote host
+Jan 12 09:52:01 xc[13788]: Trying to smtp.126.com:25
+Jan 12 09:52:02 xc[13788]: Connected to relay host smtp.126.com
+Jan 12 09:52:02 xc[13788]: E-mail has been sent to <1363688001@qq.com>
+Jan 12 09:52:02 xc[13788]: Disconnected from remote host
+Jan 12 09:55:45 xc[13788]: Trying to smtp.126.com:25
+Jan 12 09:55:45 xc[13788]: Connected to relay host smtp.126.com
+Jan 12 09:55:45 xc[13788]: E-mail has been sent to <2589701049@qq.com>
+Jan 12 09:55:45 xc[13788]: Disconnected from remote host
+Jan 12 10:13:06 xc[16200]: Trying to smtp.126.com:25
+Jan 12 10:13:07 xc[16200]: Connected to relay host smtp.126.com
+Jan 12 10:13:08 xc[16200]: E-mail has been sent to <2589701049@qq.com>
+Jan 12 10:13:08 xc[16200]: Disconnected from remote host
+Jan 12 11:16:24 xc[25520]: Trying to smtp.126.com:25
+Jan 12 11:16:25 xc[25520]: Connected to relay host smtp.126.com
+Jan 12 11:16:25 xc[25520]: E-mail has been sent to <2589701049@qq.com>
+Jan 12 11:16:25 xc[25520]: Disconnected from remote host
+Jan 12 11:28:25 xc[25276]: Trying to smtp.126.com:25
+Jan 12 11:28:26 xc[25276]: Connected to relay host smtp.126.com
+Jan 12 11:28:26 xc[25276]: E-mail has been sent to <2589701049@qq.com>
+Jan 12 11:28:26 xc[25276]: Disconnected from remote host
+Jan 12 11:30:17 xc[25276]: Trying to smtp.126.com:25
+Jan 12 11:30:17 xc[25276]: Connected to relay host smtp.126.com
+Jan 12 11:30:20 xc[25276]: E-mail has been sent to <2589701049@qq.com>
+Jan 12 11:30:20 xc[25276]: Disconnected from remote host
+Jan 12 11:30:20 xc[27216]: Trying to smtp.126.com:25
+Jan 12 11:30:20 xc[27216]: Connected to relay host smtp.126.com
+Jan 12 11:30:20 xc[27216]: E-mail has been sent to <2589701049@qq.com>
+Jan 12 11:30:20 xc[27216]: Disconnected from remote host
+Jan 12 15:56:00 xc[17580]: Trying to smtp.126.com:25
+Jan 12 15:56:01 xc[17580]: Connected to relay host smtp.126.com
+Jan 12 15:56:01 xc[17580]: E-mail has been sent to <2589701049@qq.com>
+Jan 12 15:56:01 xc[17580]: Disconnected from remote host
+Jan 12 16:29:11 xc[20032]: Trying to smtp.126.com:25
+Jan 12 16:29:12 xc[20032]: Connected to relay host smtp.126.com
+Jan 12 16:29:12 xc[20032]: E-mail has been sent to <2589701049@qq.com>
+Jan 12 16:29:12 xc[20032]: Disconnected from remote host
+Jan 12 17:22:37 xc[30796]: Trying to smtp.126.com:25
+Jan 12 17:22:38 xc[30796]: Connected to relay host smtp.126.com
+Jan 12 17:22:39 xc[30796]: E-mail has been sent to <2589701049@qq.com>
+Jan 12 17:22:39 xc[30796]: Disconnected from remote host
+Jan 12 17:25:00 xc[30796]: Trying to smtp.126.com:25
+Jan 12 17:25:00 xc[30796]: Connected to relay host smtp.126.com
+Jan 12 17:25:00 xc[30796]: E-mail has been sent to <2589701049@qq.com>
+Jan 12 17:25:00 xc[30796]: Disconnected from remote host

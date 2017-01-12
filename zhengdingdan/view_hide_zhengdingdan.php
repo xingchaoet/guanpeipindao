@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Administrator
- * Date: 2016/8/8
- * Time: 8:06
+ * User: xc
+ * Date: 2017/1/6
+ * Time: 15:07
  */
 header("Content-Type: text/html;charset=UTF-8");
 ini_set("max_execution_time", "1800");
@@ -13,38 +13,19 @@ require_once("../config.php");
 include("../include/GuanCangSmarty.php");
 include("auth_zhengdingdan.php");
 
-//session_start();
-$order_list = array();
-$user_type = $_SESSION['user_type'];
-
-//$uid = $_REQUEST['usrn'];
-//$global_url = GLOBAL_URL;
-//
-//$uid = $_SESSION['user_id'];
-//if (empty($uid)) {
-//    echo "<script type='text/javascript'>alert('您还没登录!');</script>";
-//    echo "<script type='text/javascript'>window.location.href='http://'+\"$global_url\"+'/user/login.php';</script>";
-//}
-
-
 $smarty = new GuanCangSmarty();
 $smarty->MySmarty();
 
-include("../include/introduce.php");
-
-// 实例化SQLServer封装类
-//$ms = new con_mssql();
-
+$ms = new con_mssql();
 
 $page_size = 10; //每页显示数量
 
-$sql_info = ser(bs_zhengdingdan, "count(*) as sum", "zdd_user_id='$uid' AND zdd_is_hide = '0' ");
+$sql_info = ser(bs_zhengdingdan, "count(*) as sum", "zdd_user_id='$uid' AND zdd_is_hide = '1'");
 //echo $sql_info;
 $rs_info = $ms->sdb($sql_info);
 $data = odbc_fetch_array($rs_info);
 
 $rows = $data['sum'];
-
 if ($rows) {
     //查询征订单
     // Page分页函数
@@ -71,14 +52,14 @@ if ($rows) {
 //    echo '////////////////////////';
 
         $pagenav .= "<span style='opacity: 1'>";
-        $pagenav .= "<a page = '1'  id = 'firstpage' showtype='orders_view' onclick='firstpagesend()'>首页</a>&nbsp;&nbsp; ";
-        $pagenav .= "<a page = $pre_page  id = 'prepage' showtype='orders_view' onclick='prepagesend()'>前一页</a>&nbsp;&nbsp; ";
+        $pagenav .= "<a page = '1'  id = 'firstpage' showtype = 'view_hide' onclick='firstpagesend()'>首页</a>&nbsp;&nbsp; ";
+        $pagenav .= "<a page = $pre_page  id = 'prepage' showtype = 'view_hide' onclick='prepagesend()'>前一页</a>&nbsp;&nbsp; ";
         $pagenav .= "第 $page/$page_count 页 共 $rows 条记录 &nbsp;&nbsp;";
-        $pagenav .= "<a page = $next_page  id = 'nextpage' showtype='orders_view' onclick='nextpagesend()'>后一页</a>&nbsp;&nbsp; ";
-        $pagenav .= "<a page = $page_count  id = 'lastpage' showtype='orders_view' onclick='lastpagesend()'>末页</a>";
+        $pagenav .= "<a page = $next_page  id = 'nextpage' showtype = 'view_hide' onclick='nextpagesend()'>后一页</a>&nbsp;&nbsp; ";
+        $pagenav .= "<a page = $page_count  id = 'lastpage' showtype = 'view_hide' onclick='lastpagesend()'>末页</a>";
 //    将  放到id = 'jumptopage' 之前 ，当$show_type为undefined时，会成为showtype =''id = 'jumptopage' 这种格式
 //    使得函数jumptopagesend()找不到id为jumptopage的元素，取不到该元素的page值,使得page的值也是undefined
-        $pagenav .= "　跳到<select name='topage' id = 'jumptopage' size='1' onchange='jumptopagesend()'   showtype='orders_view'>\n";
+        $pagenav .= "　跳到<select name='topage' id = 'jumptopage' size='1' onchange='jumptopagesend()'  showtype = 'view_hide'  >\n";
         for ($i = 1; $i <= $page_count; $i++) {
             if ($i == $page) $pagenav .= "<option value='$i' selected>$i</option>\n";
             else $pagenav .= "<option value='$i'>$i</option>\n";
@@ -101,7 +82,8 @@ if ($rows) {
     Page($rows, $page_size);
 
     $sql = "select top ($select_limit) zdd_pc_id,zdd_detail, zdd_time from bs_zhengdingdan
- where zdd_id not in (select top ($select_from) zdd_id from bs_zhengdingdan where zdd_user_id = '$uid' AND zdd_is_hide = '0' ) and zdd_user_id = '$uid' AND zdd_is_hide = '0'";
+ where zdd_id not in (select top ($select_from) zdd_id from bs_zhengdingdan where zdd_user_id = '$uid' AND zdd_is_hide = '1' ) and zdd_user_id = '$uid' AND zdd_is_hide = '1'
+ORDER BY zdd_time DESC";
 
 //$sql = ser("bs_zhengdingdan", "zdd_pc_id,zdd_detail, zdd_time", "zdd_user_id='$uid' ORDER BY zdd_time desc limit $select_from $select_limit");
 
@@ -134,61 +116,12 @@ if ($rows) {
 }
 
 
-//查询预订单
-$sql = ser("bs_yudingdan", "ydd_pc_id,ydd_detail, ydd_time", "ydd_user_id='$uid' ORDER BY ydd_time desc");
-
-$rs = $ms->sdb($sql);
-
-if (!$rs) {
-    echo "Error in query preparation/execution.<br />";
-    die(print_r(odbc_errormsg(), true));
-}
-while ($data = odbc_fetch_array($rs)) {
-    $ydd_order_list[] = $data;
-}
-
-$count_ydd_order_list = count($ydd_order_list);
-
-for ($i = 0; $i < $count_ydd_order_list; $i++) {
-    $ydd_pc_id = $ydd_order_list[$i]['ydd_pc_id'];
-
-    $sql_info = ser(bs_yudingdan_mx, "count(*) as sum", "sheet_no='$ydd_pc_id' ");
-
-    $rs_info = $ms->sdb($sql_info);
-
-    $data = odbc_fetch_array($rs_info);
-
-    $ydd_order_list[$i]['ydd_sum'] = $data['sum'];
-
-}
-
-$relpostodist = '../';
-
-$ydd_times = 1; //防止多次绑定函数
-$smarty->assign("ydd_times", $ydd_times);
-
-$zdd_times = 1; //防止多次绑定函数
 $smarty->assign("zdd_times", $zdd_times);
-
-
-//guanpeipindao.php与dist的相对此处位置相同
-$smarty->assign("first_level", "<a href={$relpostodist}guanpeipindao.php>馆配服务</a>");
-$smarty->assign("second_level", "<a href=orders_view.php?usrn=$uid>会员空间</a>");
-
-$smarty->assign("relpostodist", $relpostodist);
-
 $smarty->assign("pagenav", $pagenav);
 
 $smarty->assign("zdd_order_list", $zdd_order_list);
-$smarty->assign("ydd_order_list", $ydd_order_list);
-$smarty->assign("user_type", $user_type);
-
-//$page 有值说明是ajax请求
-if (isset($_REQUEST["page"])) {
-    $page_info = $smarty->display("zhengdingdan/zhengdingdan.html");
-    return $page_info;
-} else {
-    $smarty->display("zhengdingdan/orders_view.html");
-}
+//模板不变
+$page_info = $smarty->display("zhengdingdan/view_hide_zhengdingdan.html");
+return $page_info;
 
 

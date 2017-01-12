@@ -1,0 +1,36 @@
+<table  class='table table-bordered table-striped' style="margin-top: 10px;">
+    <span style="display: none" id="zdd_times">{$zdd_times}</span>
+
+    {$pagenav}
+    <tr style="text-align: center">
+        <td width="150">征订单编号</td>
+        <td width="150">提交时间</td>
+        <td width="100" align="center">品种数量</td>
+        <td width="150" align="center">操作</td>
+    </tr>
+
+    {foreach $zdd_order_list as $order}
+    <tr>
+        <td id="{$order['zdd_pc_id']}">
+            {$order['zdd_pc_id']}
+        </td>
+        <td>
+            {$order['zdd_time']}
+        </td>
+        <td id="{$order['zdd_sum']}" align="center">
+            {$order['zdd_sum']}
+        </td>
+        <td align="center">
+            <a id="view_hide_zdd_detail"   class="view_hide_zdd_detail">查看详情</a>
+            <!--<a id="view_zdd_detail_mssql"   class="view_zdd_detail_mssql">查看详情mssql</a>-->
+            <a  id="hide_zhengdingdan_download_marc" >下载</a>
+
+        </td>
+    </tr>
+    {/foreach}
+
+    <span style="opacity: 1;float: right;color:#9B410E">已报单列表</span>
+
+</table>
+
+<button class="btn btn-default btn-sm" id="return_to_my_zhengdingdan" style="color: #428bca;" onclick="return_to_my_zhengdingdan();" value="返回到我的征订单">返回到我的征订单</button>

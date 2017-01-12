@@ -298,37 +298,7 @@ if (!empty($first_search)) {
 //$rows = mysqli_num_rows($rs_tsfl30);
 //echo "当前记录数：" . $rows;
 //<span style='color:#ff6c77'> 保存采购结果中..........</span>
-if ($_SESSION['start_purchase']) {
-    echo "
-          <div id='batch_option'>
-               <input id='batch_option_create_radio' type=\"radio\" name=\"batch_option_radio\" value=\"创建新批次\" />创建新批次 
-               <input id='batch_option_add_radio' type=\"radio\" name=\"batch_option_radio\" value=\"添加到原有批次\" />添加到原有批次 
-          
-               <span class='default_num_span'>默认数量</span> <input class='default_num_input' type='text'>
- 
-          </div>
-          <div class='flow'> 
-             <button id='manipulate_session_btn' class='btn btn-default btn-sm'  style='float: left' disabled='true'>开始采购</button> 
-             
-          </div>
-          <div id='progressbar' style='float: left'><div></div></div>
-  
-          ";
-} else {
-    echo "
-          <div id='batch_option'>
-               <input id='batch_option_create_radio' type=\"radio\" name=\"batch_option_radio\" value=\"创建新批次\" />创建新批次 
-               <input id='batch_option_add_radio' type=\"radio\" name=\"batch_option_radio\" value=\"添加到原有批次\" />添加到原有批次 
-     
-               <span class='default_num_span'>默认数量</span> <input class='default_num_input' type='text'>
-     
-          </div>
-          <div class='flow'> 
-                <button id='manipulate_session_btn' class='btn btn-default btn-sm' style='float: left'  onclick='manipulate_session();'>开始采购</button>  
-          </div>
-          <div id='progressbar' style='float: left;'><div></div></div>
-          ";
-}
+
 
 $page = isset($_REQUEST["page"]) ? $_REQUEST["page"] : 1; //不要改动这行代码的位置
 
@@ -477,6 +447,39 @@ ORDER BY a.book_id ASC";
 
 if (!empty($tsfl_data3_array)) {
 
+    if ($_SESSION['start_purchase']) {
+        echo "
+          <div id='batch_option'>
+               <input id='batch_option_create_radio' type=\"radio\" name=\"batch_option_radio\" value=\"创建新批次\" disabled='disabled'/>创建新批次 
+               <input id='batch_option_add_radio' type=\"radio\" name=\"batch_option_radio\" value=\"添加到原有批次\" disabled='disabled'/>添加到原有批次 
+          
+               <span class='default_num_span'>默认数量</span> <input class='default_num_input' type='text'>
+ 
+          </div>
+          <div class='flow'> 
+             <button id='manipulate_session_btn' class='btn btn-default btn-sm'  style='float: left;margin-left: 10px' disabled='true'>开始采购</button> 
+             
+          </div>
+          <div id='progressbar' style='float: left;margin-left: 10px'><div></div></div>
+          <div id='current_batch_id' style='margin-top: 8px;float: right;margin-right: 0px'><span> 当前批次号：" . $_SESSION['dd_pc'] . "</span></div>
+  
+          ";
+    } else {
+        echo "
+          <div id='batch_option'>
+               <input id='batch_option_create_radio' type=\"radio\" name=\"batch_option_radio\" value=\"创建新批次\" />创建新批次 
+               <input id='batch_option_add_radio' type=\"radio\" name=\"batch_option_radio\" value=\"添加到原有批次\" />添加到原有批次 
+     
+               <span class='default_num_span'>默认数量</span> <input class='default_num_input' type='text'>
+     
+          </div>
+          <div class='flow'> 
+                <button id='manipulate_session_btn' class='btn btn-default btn-sm' style='float: left;margin-left: 10px'  onclick='manipulate_session();'>开始采购</button>  
+          </div>
+          <div id='progressbar' style='float: left;margin-left: 10px'><div></div></div>
+          ";
+    }
+
     if ($show_type == 'chaxunchachong' | $show_type == 'list') {//list
 //    if ($show_type != 'pic') {//list
         echo "<div id=\"div_list\" name=\"div_list\">
@@ -530,16 +533,35 @@ if (!empty($tsfl_data3_array)) {
             $bid = $tsfl_data3['book_id'];
 
             $n = $n + 1;
+
+
+            $price = trim(sprintf('%.2f', iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['dj'])));
+
+            if ($tsfl_data3['jz1'] > 0) {
+//                echo '纸本可供';
+                $stock_state = '纸本可供';
+            } else {
+
+                if (is_numeric($tsfl_data3['jz3']) && ($tsfl_data3['jz3'] >= 0)) {
+//                    echo 'POD可供';
+                    $stock_state = 'POD可供';
+
+                } else if (is_null($tsfl_data3['jz3'])) {
+                    $stock_state = '可预订';
+//                    echo '可预订';
+                }
+            }
+
             echo "<tr>";
 
             echo "<td class='list' height=20 width=15>";
 //
             if ($first_search) {
-                echo "<input type='checkbox'   name=\"$bid\" class=\"checkall get_book_info_and_update_db_class hide_before_purchase\" value=$n />";
+                echo "<input type='checkbox'   name=\"$bid\" price=\"$price\" stock_state=\"$stock_state\" class=\"checkall get_book_info_and_update_db_class hide_before_purchase\" value=$n />";
             } else if ($_SESSION['start_purchase']) {
-                echo "<input type='checkbox'   name=\"$bid\" class=\"checkall get_book_info_and_update_db_class\" value=$n />";
+                echo "<input type='checkbox'   name=\"$bid\" price=\"$price\" stock_state=\"$stock_state\" class=\"checkall get_book_info_and_update_db_class\" value=$n />";
             } else {
-                echo "<input type='checkbox'   name=\"$bid\" class=\"checkall get_book_info_and_update_db_class hide_before_purchase_session\" value=$n />";
+                echo "<input type='checkbox'   name=\"$bid\" price=\"$price\" stock_state=\"$stock_state\" class=\"checkall get_book_info_and_update_db_class hide_before_purchase_session\" value=$n />";
             }
 
 
@@ -547,11 +569,11 @@ if (!empty($tsfl_data3_array)) {
 
             echo "<td style='text-align: center'>";
             if ($first_search) {
-                echo "<input style='width:15px;' name='$bid' id=\"amount1_$bid\" class='get_book_num_and_update_db_class hide_before_purchase' onmouseover='num_limit();'  type='text' maxlength='1' size='1' value=$default_num />";
+                echo "<input style='width:15px;' name='$bid' price=\"$price\" stock_state=\"$stock_state\" id=\"amount1_$bid\" class='get_book_num_and_update_db_class hide_before_purchase' onmouseover='num_limit();'  type='text' maxlength='1' size='1' value=$default_num />";
             } else if ($_SESSION['start_purchase']) {
-                echo "<input style='width:15px;' name='$bid' id=\"amount1_$bid\" class='get_book_num_and_update_db_class' onmouseover='num_limit();'  type='text' maxlength='1' size='1' value=$default_num />";
+                echo "<input style='width:15px;' name='$bid' price=\"$price\" stock_state=\"$stock_state\" id=\"amount1_$bid\" class='get_book_num_and_update_db_class' onmouseover='num_limit();'  type='text' maxlength='1' size='1' value=$default_num />";
             } else {
-                echo "<input style='width:15px;' name='$bid' id=\"amount1_$bid\" class='get_book_num_and_update_db_class hide_before_purchase_session' onmouseover='num_limit();'  type='text' maxlength='1' size='1' value=$default_num />";
+                echo "<input style='width:15px;' name='$bid' price=\"$price\" stock_state=\"$stock_state\" id=\"amount1_$bid\" class='get_book_num_and_update_db_class hide_before_purchase_session' onmouseover='num_limit();'  type='text' maxlength='1' size='1' value=$default_num />";
             }
             echo "</td>";
 
@@ -574,22 +596,8 @@ if (!empty($tsfl_data3_array)) {
             } else {
                 echo "<td align=center>" . substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['cbrq'])), 0, 4) . "年" . str_pad(str_replace('/', '', str_replace('-', '', substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['cbrq'])), 5, 2))), 2, '0', STR_PAD_LEFT) . "月</td>";
             }
-            echo "<td align=center>￥" . trim(sprintf('%.2f', iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['dj']))) . "</td>";
-            echo "<td align=center>";
-
-
-            if ($tsfl_data3['jz1'] > 0) {
-                echo '纸本可供';
-            } else {
-
-                if (is_numeric($tsfl_data3['jz3']) && ($tsfl_data3['jz3'] >= 0)) {
-                    echo 'POD可供';
-                } else if (is_null($tsfl_data3['jz3'])) {
-                    echo '可预订';
-                }
-            }
-
-            echo "</td></tr>";
+            echo "<td align=center>￥" . $price . "</td>";
+            echo "<td align=center> $stock_state </td></tr>";
         }
 
         echo "</div>";
@@ -644,7 +652,22 @@ if (!empty($tsfl_data3_array)) {
             foreach ($tsfl_data3_array as $key => $tsfl_data3) {
 
                 $bid = $tsfl_data3['book_id'];
+                $price = trim(sprintf('%.2f', iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['dj'])));
 
+                if ($tsfl_data3['jz1'] > 0) {
+//                echo '纸本可供';
+                    $stock_state = '纸本可供';
+                } else {
+
+                    if (is_numeric($tsfl_data3['jz3']) && ($tsfl_data3['jz3'] >= 0)) {
+//                    echo 'POD可供';
+                        $stock_state = 'POD可供';
+
+                    } else if (is_null($tsfl_data3['jz3'])) {
+                        $stock_state = '可预订';
+//                    echo '可预订';
+                    }
+                }
 
                 $n = $n + 1;
                 $colnn = $n % 3;
@@ -700,20 +723,9 @@ if (!empty($tsfl_data3_array)) {
                 } else {
                     echo "<tr><td>出版年月：" . substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['cbrq'])), 0, 4) . "年" . str_pad(str_replace('/', '', str_replace('-', '', substr(trim(iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['cbrq'])), 5, 2))), 2, '0', STR_PAD_LEFT) . "月</td></tr>";
                 }
-                echo "<tr><td>定价：￥" . trim(sprintf('%.2f', iconv('gbk', 'utf-8//IGNORE', $tsfl_data3['dj']))) . "</td></tr>";
-                echo "<tr><td>库存：";
+                echo "<tr><td>定价：￥" . $price . "</td></tr>";
 
-
-                if ($tsfl_data3['jz1'] > 0) {
-                    echo '纸本可供' . "</td></tr></table>";
-                } else {
-
-                    if (is_numeric($tsfl_data3['jz3']) && ($tsfl_data3['jz3'] >= 0)) {
-                        echo 'POD可供' . "</td></tr></table>";
-                    } else if (is_null($tsfl_data3['jz3'])) {
-                        echo '可预订' . "</td></tr></table>";
-                    }
-                }
+                echo "<tr><td>库存：" . $stock_state . "</td></tr></table>";
 
 
                 if ($colnn == 0) {
@@ -733,6 +745,12 @@ if (!empty($tsfl_data3_array)) {
         }
 
     echo $pagenav;
+} else {
+
+    echo "<div style='margin-top: 40px;'>";
+    echo "未找到书籍";
+    echo "</div>";
+
 }
 
 

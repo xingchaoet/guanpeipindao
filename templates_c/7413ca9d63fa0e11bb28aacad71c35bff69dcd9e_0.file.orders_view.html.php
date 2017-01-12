@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-20 18:10:19
+/* Smarty version 3.1.29, created on 2017-01-12 16:27:17
   from "D:\phpStudy\WWW\guanpeipindao\templates\zhengdingdan\orders_view.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5859038bc0ef17_80642030',
+  'unifunc' => 'content_58773de5b84349_56106745',
   'file_dependency' => 
   array (
     '7413ca9d63fa0e11bb28aacad71c35bff69dcd9e' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\zhengdingdan\\orders_view.html',
-      1 => 1482228576,
+      1 => 1484208450,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_5859038bc0ef17_80642030 ($_smarty_tpl) {
+function content_58773de5b84349_56106745 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,6 +46,12 @@ function content_5859038bc0ef17_80642030 ($_smarty_tpl) {
 
     <?php $light_css = '../dist/css/light.css' ?>
     <link rel="stylesheet" href="<?php echo $light_css .'?v='. filemtime( $light_css ); ?>">
+
+    <?php $declaration_css = '../dist/css/declaration.css' ?>
+    <link rel="stylesheet" href="<?php echo $declaration_css .'?v='. filemtime( $declaration_css ); ?>">
+
+    <?php $jquery_confirm_css = '../dist/css/jquery.confirm.css' ?>
+    <link rel="stylesheet" href="<?php echo $jquery_confirm_css .'?v='. filemtime( $jquery_confirm_css ); ?>">
 
     <title>查看我的订单</title>
 
@@ -100,6 +106,10 @@ function content_5859038bc0ef17_80642030 ($_smarty_tpl) {
             -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
             filter: alpha(opacity=0);
             cursor: pointer;
+        }
+
+        #show_zhengdingdan_table {
+            margin-top: 10px;
         }
 
         #scgc {
@@ -311,7 +321,6 @@ function content_5859038bc0ef17_80642030 ($_smarty_tpl) {
             margin-left: 10px;
             margin-right: 10px;
         }
-
         /*.white_content */
         /**/
 
@@ -346,7 +355,6 @@ function content_5859038bc0ef17_80642030 ($_smarty_tpl) {
 
                 <div id="light_overlay">
 
-
                     <div id="light">
                         <div id="close"></div>
                         <div id="overlay_head"></div>
@@ -357,12 +365,42 @@ function content_5859038bc0ef17_80642030 ($_smarty_tpl) {
                     </div>
                 </div>
 
+                <div id="declaration">
+
+                    <div id="declaration_inner">
+
+                        <div id="declaration_close"></div>
+
+                        <div id="declaration_overlay_head"></div>
+
+                        <div id="declaration_content">
+                            <?php include('../zhengdingdan/company_select.php'); ?>
+
+                            <div id="reglibdiv">
+                                <span id="gps_span" width="200px;">
+                                    <select id="gps_people" width="200px" name="gps_people">
+                                        <option value='-1'>请先选择馆配商</option>
+                                    </select>
+                                </span>
+                            </div>
+
+                            <div id="email_content_div">
+                                <span>邮件内容：</span>
+                                <textarea  id="email_content"  placeholder="已报单" rows="10" cols="28">
+
+                                </textarea>
+                            </div>
+                            <div class="declaration_tj">
+                                <button class="btn btn-success btn-xs" id="declaration_tj_btn">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="the_space">
-                    <!-- Codrops top bar -->
                     <section class="tabs">
 
                         <?php if ($_smarty_tpl->tpl_vars['user_type']->value == "library_user") {?>
-
                         <!--<div id="orders_view_nav_tab">-->
                         <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked"/>
                         <label for="tab-1" class="tab-label-1">我的征订单</label>
@@ -383,9 +421,15 @@ function content_5859038bc0ef17_80642030 ($_smarty_tpl) {
                         <?php if ($_smarty_tpl->tpl_vars['user_type']->value == "library_user") {?>
                         <div class="content">
                             <div id="show_zhengdingdan" class="content-1">
+
                                 <span style="display: none" id="zdd_times"><?php echo $_smarty_tpl->tpl_vars['zdd_times']->value;?>
 </span>
-                                <table class='table table-bordered table-striped'>
+
+
+                                <table id="show_zhengdingdan_table" class='table table-bordered table-striped'>
+                                    <?php echo $_smarty_tpl->tpl_vars['pagenav']->value;?>
+
+
                                     <tr style="text-align: center">
                                         <td width="150">征订单编号</td>
                                         <td width="150">生成时间</td>
@@ -425,8 +469,10 @@ $__foreach_order_0_saved_local_item = $_smarty_tpl->tpl_vars['order'];
                                             <a id="view_zdd_detail" class="view_zdd_detail">查看详情</a>
                                             <!--<a id="view_zdd_detail_mssql"   class="view_zdd_detail_mssql">查看详情mssql</a>-->
                                             <a class="zhengdingdan_download_marc">下载</a>
-                                        </td>
 
+                                            <a class="zhengdingdan_hide" name="<?php echo $_smarty_tpl->tpl_vars['order']->value['zdd_pc_id'];?>
+">报单</a>
+                                        </td>
                                     </tr>
                                     <?php
 $_smarty_tpl->tpl_vars['order'] = $__foreach_order_0_saved_local_item;
@@ -435,10 +481,13 @@ if ($__foreach_order_0_saved_item) {
 $_smarty_tpl->tpl_vars['order'] = $__foreach_order_0_saved_item;
 }
 ?>
-                                    <?php echo $_smarty_tpl->tpl_vars['pagenav']->value;?>
 
+                                    <span style="opacity: 1;float: right;color: #4cae4c;cursor: pointer;"
+                                          id="view_hide_zhengdingdan">查看已报单</span>
 
+                                    <!--<span style="opacity: 1;float: right"><a id="view_hide_zhengdingdan">查看已报单</a></span>-->
                                 </table>
+
 
                             </div>
                             <!--<div id="show_yudingdan" class="content-2" onmouseover="show_ydd();">-->
@@ -735,22 +784,24 @@ $_smarty_tpl->tpl_vars['order'] = $__foreach_order_1_saved_item;
 <?php echo '<script'; ?>
  src="../dist/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
-<!--<?php echo '<script'; ?>
- src="../dist/js/holder.min.js"><?php echo '</script'; ?>
->-->
 <?php echo '<script'; ?>
  src="../dist/js/application.js"><?php echo '</script'; ?>
 >
 
-<!--<link rel="shortcut icon" href="../favicon.ico">-->
 <?php echo '<script'; ?>
  src="../dist/js/zzsc.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  src="../dist/js/left_nav.js"><?php echo '</script'; ?>
 >
+
 <?php echo '<script'; ?>
  src="../dist/js/modernizr.custom.04022.js"><?php echo '</script'; ?>
+>
+
+<?php $jquery_confirm_js = '../dist/js/jquery.confirm.js' ;
+echo '<script'; ?>
+ src='../dist/js/jquery.confirm.js?v=<?php echo filemtime( $jquery_confirm_js );?>'><?php echo '</script'; ?>
 >
 
 <?php $order_list_for_generate_js = '../dist/js/order_list_for_generate.js' ;

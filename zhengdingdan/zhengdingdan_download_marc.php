@@ -13,6 +13,8 @@ include ("auth_zhengdingdan.php");
 $sheet_no = $_POST['sheet_no'];
 $type_num = $_POST['type_num'];
 
+$zdd_is_hide = $_POST['zdd_is_hide'];
+
 //print_r($_POST);
 
 //exit();
@@ -27,6 +29,7 @@ $smarty->assign("zdd_times", $zdd_times);
 
 $smarty->assign("sheet_no", $sheet_no);
 $smarty->assign("type_num", $type_num);
+$smarty->assign("zdd_is_hide", $zdd_is_hide);
 
 $marc_page = $smarty->display("zhengdingdan/zhengdingdan_download_marc.html");
 return $marc_page;

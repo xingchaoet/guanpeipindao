@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-12-22 14:41:01
+/* Smarty version 3.1.29, created on 2017-01-10 14:47:09
   from "D:\phpStudy\WWW\guanpeipindao\templates\chachong\chachong.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_585b757d9fad92_35857508',
+  'unifunc' => 'content_5874836d80b5f1_62797746',
   'file_dependency' => 
   array (
     'c7215b059ad1a7d7ea89acd7968a17fc303f3e3f' => 
     array (
       0 => 'D:\\phpStudy\\WWW\\guanpeipindao\\templates\\chachong\\chachong.html',
-      1 => 1482388830,
+      1 => 1483438723,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:left_nav.html' => 1,
   ),
 ),false)) {
-function content_585b757d9fad92_35857508 ($_smarty_tpl) {
+function content_5874836d80b5f1_62797746 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">

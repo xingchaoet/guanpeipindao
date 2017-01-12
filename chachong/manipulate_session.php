@@ -30,6 +30,7 @@ $temp_table = $_SESSION['temp_table'];
 $table_name = 'bs_temp_dingdan';
 
 $user_id = $_POST['user_id'];
+
 $batch_option = $_POST['batch_option'];
 
 
@@ -97,8 +98,8 @@ if ($batch_option == "create_new_batch") {
 
         $sql_add_to_temp_table = "
         INSERT INTO [dbo]." . $temp_table_name
-            . " (Book_Id,Book_Num, State,User_Id,Pi_Ci_No,Date_Time,Sequence_Number)
-        VALUES ('$bid', '0','0','$user_id','$dd_pc',GETDATE(),'$i')";
+            . " (Book_Id,Book_Num,Price,StockState, State,User_Id,Pi_Ci_No,Date_Time,Sequence_Number)
+        VALUES ('$bid', '0','0','','0','$user_id','$dd_pc',GETDATE(),'$i')";
 
 
         $rs_sql_add_to_temp_table = $ms->sdb($sql_add_to_temp_table);
@@ -132,8 +133,8 @@ if ($batch_option == "create_new_batch") {
         $sequence_number = $previous_max_sequence_number + $i + 1;
         $sql_add_to_temp_table = "
         INSERT INTO [dbo]." . $temp_table_name
-            . " (Book_Id,Book_Num, State,User_Id,Pi_Ci_No,Date_Time,Sequence_Number)
-        VALUES ('$bid', '0','0','$user_id','$dd_pc',GETDATE(),'$sequence_number')";
+            . " (Book_Id,Book_Num, Price,StockState, State,User_Id,Pi_Ci_No,Date_Time,Sequence_Number)
+        VALUES ('$bid', '0','0','','0','$user_id','$dd_pc',GETDATE(),'$sequence_number')";
 
         $rs_sql_add_to_temp_table = $ms->sdb($sql_add_to_temp_table);
 

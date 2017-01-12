@@ -6,9 +6,16 @@ var global_url = $('#global_url').html();
 var orders_view_url = 'http://' + global_url + '/zhengdingdan/orders_view.php';
 
 var guangcangimport_url = 'http://' + global_url + '/chachong/guangcang_chachong.php';
-
 //    征订单查看详情
 var orders_view_detail_url = 'http://' + global_url + '/zhengdingdan/zhengdingdan_detail.php';
+//    已报征订单查看详情
+var orders_view_detail_hide_url = 'http://' + global_url + '/zhengdingdan/zhengdingdan_detail_hide.php';
+
+
+var zhengdingdan_hide_url = 'http://' + global_url + '/zhengdingdan/zhengdingdan_hide.php';
+
+var view_hide_zhengdingdan_url = 'http://' + global_url + '/zhengdingdan/view_hide_zhengdingdan.php';
+
 
 //    征订单查看详情 masql
 var orders_view_detail_mssql_url = 'http://' + global_url + '/zhengdingdan/zhengdingdan_detail_mssql.php';
@@ -72,10 +79,15 @@ function firstpagesend() {
     var showtype = $("#firstpage").attr("showtype");
     fdata.append("show_type", showtype);
 
-    if (showtype != 'detail') {
+    if (showtype == 'orders_view') {
         xhr.open('POST', orders_view_url, true);
-    } else {
+    } else if (showtype == 'detail') {
         xhr.open('POST', orders_view_detail_url, true);
+    } else if (showtype == 'hide_zdd_detail') {
+        xhr.open('POST', orders_view_detail_hide_url, true);
+    }
+    else {
+        xhr.open('POST', view_hide_zhengdingdan_url, true);
     }
 
     xhr.send(fdata);
@@ -123,10 +135,15 @@ function prepagesend() {
     var showtype = $("#prepage").attr("showtype");
     fdata.append("show_type", showtype);
 
-    if (showtype != 'detail') {
+    if (showtype == 'orders_view') {
         xhr.open('POST', orders_view_url, true);
-    } else {
+    } else if (showtype == 'detail') {
         xhr.open('POST', orders_view_detail_url, true);
+    } else if (showtype == 'hide_zdd_detail') {
+        xhr.open('POST', orders_view_detail_hide_url, true);
+    }
+    else {
+        xhr.open('POST', view_hide_zhengdingdan_url, true);
     }
 
     xhr.send(fdata);
@@ -174,10 +191,15 @@ function nextpagesend() {
     fdata.append("show_type", showtype);
 //        alert(showtype);
 
-    if (showtype != 'detail') {
+    if (showtype == 'orders_view') {
         xhr.open('POST', orders_view_url, true);
-    } else {
+    } else if (showtype == 'detail') {
         xhr.open('POST', orders_view_detail_url, true);
+    } else if (showtype == 'hide_zdd_detail') {
+        xhr.open('POST', orders_view_detail_hide_url, true);
+    }
+    else {
+        xhr.open('POST', view_hide_zhengdingdan_url, true);
     }
 
     xhr.send(fdata);
@@ -225,10 +247,15 @@ function lastpagesend() {
     var showtype = $("#lastpage").attr("showtype");
     fdata.append("show_type", showtype);
 
-    if (showtype != 'detail') {
+    if (showtype == 'orders_view') {
         xhr.open('POST', orders_view_url, true);
-    } else {
+    } else if (showtype == 'detail') {
         xhr.open('POST', orders_view_detail_url, true);
+    } else if (showtype == 'hide_zdd_detail') {
+        xhr.open('POST', orders_view_detail_hide_url, true);
+    }
+    else {
+        xhr.open('POST', view_hide_zhengdingdan_url, true);
     }
 
     xhr.send(fdata);
@@ -276,10 +303,15 @@ function jumptopagesend() {
     var showtype = $("#jumptopage").attr("showtype");
     fdata.append("show_type", showtype);
 
-    if (showtype != 'detail') {
+    if (showtype == 'orders_view') {
         xhr.open('POST', orders_view_url, true);
-    } else {
+    } else if (showtype == 'detail') {
         xhr.open('POST', orders_view_detail_url, true);
+    } else if (showtype == 'hide_zdd_detail') {
+        xhr.open('POST', orders_view_detail_hide_url, true);
+    }
+    else {
+        xhr.open('POST', view_hide_zhengdingdan_url, true);
     }
 
     xhr.send(fdata);
@@ -398,6 +430,145 @@ $('#show_zhengdingdan').on('mouseenter', function () {
 });
 
 
+//报单动作
+$('.down').delegate('#declaration_tj_btn', 'click', declaration_tj_btn_id_click);
+
+function declaration_tj_btn_id_click() {
+
+    // var save_this = $(this);
+    // var sheet_no = e.currentTarget.name;
+    var fdata = new FormData();
+    var gps = $("#company_gps option:selected").text();
+
+    var email_content = $('#email_content').val();
+
+    var email = $('#gps_people').val();
+    // alert(email);
+
+    if (email == '-1') {
+        alert('无用户邮箱信息');
+        return;
+    }
+
+    $.confirm({
+        'title': '提示',
+        'message': '确认提交报单',
+        'buttons': {
+            '是': {
+                'class': 'blue',
+                'action': function () {
+
+                    fdata.append("email", email);
+                    fdata.append("sheet_no", window.sheet_no);
+                    fdata.append("gps", gps);
+                    fdata.append("email_content", email_content);
+
+                    // alert(gps);
+                    xhr.open('POST', zhengdingdan_hide_url, true);
+                    xhr.send(fdata);
+                    xhr.onreadystatechange = function () {
+                        if (this.readyState == 4) {
+                            if (this.responseText == '1') {
+                                $("#declaration").fadeOut("slow");
+                                window.save_this.parent().parent().remove();
+                            } else if (this.responseText == '0') {
+                                $("#declaration").fadeOut("slow");
+                                alert('报单失败');
+                            } else {
+
+
+                                alert(this.responseText);
+                                // alert('error');
+                            }
+                        }
+                    }
+                }
+            },
+            '否': {
+                'class': 'gray',
+                'action': function () {
+                }	// Nothing to do in this case. You can as well omit the action property.
+            }
+        }
+    });
+}
+
+
+function zhengdingdan_hide_class_click(e) {
+    window.save_this = $(this);
+    window.sheet_no = e.currentTarget.name;
+
+    $("#declaration").fadeIn("slow");
+}
+
+$('#show_zhengdingdan').delegate('.zhengdingdan_hide', 'click', zhengdingdan_hide_class_click);
+//已报单批次列表
+$('#show_zhengdingdan').delegate('#view_hide_zhengdingdan', 'click', view_hide_zhengdingdan_id_click);
+
+function view_hide_zhengdingdan_id_click() {
+
+    var fdata = new FormData();
+    fdata.append("page", 1);
+
+    var uid = $("#userid").text();
+    fdata.append("usrn", uid);
+    xhr.open('POST', view_hide_zhengdingdan_url, true);
+    xhr.send(fdata);
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            document.getElementById('show_zhengdingdan').innerHTML = '';
+            document.getElementById('show_zhengdingdan').innerHTML = this.responseText;
+        }
+    }
+    // alert(1);
+
+}
+
+//已报单某批次详情列表
+$('#show_zhengdingdan').delegate('#view_hide_zdd_detail', 'click', view_hide_zdd_detail_id_click);
+
+function view_hide_zdd_detail_id_click() {
+
+    var fdata = new FormData();
+    var uid = $("#userid").text();
+    fdata.append("usrn", uid);
+    var sheet_no = $(this).parent().parent().children().eq(0).prop('id');
+    // alert(sheet_no);
+    fdata.append("sheet_no", sheet_no);
+
+    xhr.open('POST', orders_view_detail_hide_url, true);
+    xhr.send(fdata);
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            document.getElementById('show_zhengdingdan').innerHTML = '';
+            document.getElementById('show_zhengdingdan').innerHTML = this.responseText;
+        }
+    }
+}
+
+//已报单某批次详情下载
+$('#show_zhengdingdan').delegate('#hide_zhengdingdan_download_marc', 'click', hide_zhengdingdan_download_marc_id_click);
+
+function hide_zhengdingdan_download_marc_id_click() {
+
+    var fdata = new FormData();
+    var sheet_no = $(this).parent().parent().children().eq(0).prop('id');
+    fdata.append("sheet_no", sheet_no);
+    var type_num = $(this).parent().parent().children().eq(2).prop('id');
+    fdata.append("type_num", type_num);
+
+    fdata.append("zdd_is_hide", '已报单');
+
+    xhr.open('POST', zhengdingdan_download_marc_url, true);
+    xhr.send(fdata);
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            document.getElementById('show_zhengdingdan').innerHTML = '';
+            document.getElementById('show_zhengdingdan').innerHTML = this.responseText;
+        }
+    }
+}
+
 $('#show_yudingdan').on('mouseenter', function () {
 
     var flag;
@@ -490,6 +661,21 @@ function return_to_my_zhengdingdan() {
     }
 }
 
+function return_to_my_hide_zhengdingdan() {
+    var fdata = new FormData();
+    fdata.append("page", 1);
+
+    var uid = $("#userid").text();
+    fdata.append("usrn", uid);
+    xhr.open('POST', view_hide_zhengdingdan_url, true);
+    xhr.send(fdata);
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            document.getElementById('show_zhengdingdan').innerHTML = '';
+            document.getElementById('show_zhengdingdan').innerHTML = this.responseText;
+        }
+    }
+}
 
 function return_to_my_yudingdan() {
     var fdata = new FormData();
@@ -806,3 +992,47 @@ function generate_order() {
 $('#close').click(function () {
     $("#light_overlay").fadeOut("slow");
 })
+
+$('#declaration_close').click(function () {
+    $("#declaration").fadeOut("slow");
+})
+
+
+// document.getElementsByTagName('textarea')[0].onkeypress = function () {
+//     var value = this.value;
+//
+//     alert(value);
+// };
+//处理省份，select_gps是获取到的馆配商名称
+function select_gps_people(select_gps) {
+    var cObj = document.getElementById(gps_span);//取网页中id为city的容器对象
+
+    //判断确实选择到了省份值
+    if (select_gps != '' && select_gps != null && select_gps != 0 && select_gps != -1) {
+        //将省份名称值提交lib_select.php
+
+        var fdata = new FormData();
+        fdata.append("gps", select_gps);
+        xhr.open('POST', 'gps_people_select.php', true);
+        xhr.send(fdata);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState != 4) {
+            }
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    //将从chkpc中获取到的输出值写入网页中id为city的对象容器
+                    //    alert(xhr.responseText);
+                    // cObj.innerHTML = xhr.responseText;
+                    $('#gps_span').html(this.responseText);
+                }
+            }
+        }
+
+    }
+    else {
+        cObj.innerHTML = '';
+        //alert('请重新选择省份！');
+        return false;
+    }
+}

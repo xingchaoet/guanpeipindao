@@ -11,24 +11,17 @@ require_once("../db/con_mssql.php");
 include("../db/dao.php");
 require_once("../config.php");
 include("../include/GuanCangSmarty.php");
-include("auth_zhengdingdan.php");
+include ("auth_zhengdingdan.php");
 
 //session_start();
 $order_list = array();
 
 $uid = $_REQUEST['usrn'];
 
-//$zdd_is_hide = $_REQUEST['zdd_is_hide'];
-//
-//if (!empty($zdd_is_hide)) {
-//    $smarty->assign("zdd_is_hide", $zdd_is_hide);
-//}
-
-
-if (!empty($_REQUEST['sheet_no'])) {
+if(!empty($_REQUEST['sheet_no'])){
     $sheet_no = $_REQUEST['sheet_no'];
-    $_SESSION['sheet_no'] = $sheet_no;
-} else {
+    $_SESSION['sheet_no'] = $sheet_no ;
+}else{
     $sheet_no = $_SESSION['sheet_no'];
 }
 
@@ -41,9 +34,9 @@ $smarty->MySmarty();
 // 实例化SQLServer封装类
 $ms = new con_mssql();
 
-$page_size = 2; //每页显示数量
+$page_size = 5; //每页显示数量
 
-$sql_info = ser(bs_zhengdingdan_mx, "count(*) as sum", "inputby='$uid' and sheet_no='$sheet_no' ");
+$sql_info = ser(bs_zhengdingdan_mx, "count(*) as sum", "inputby='$uid' and sheet_no='$sheet_no' " );
 
 //echo $sql_info;
 
@@ -77,14 +70,14 @@ function Page($rows, $page_size)
 //    echo '////////////////////////';
 
 
-    $pagenav .= "<a page = '1' showtype = 'detail' id = 'firstpage' onclick='firstpagesend()'>首页</a>&nbsp;&nbsp; ";
-    $pagenav .= "<a page = $pre_page  showtype = 'detail' id = 'prepage' onclick='prepagesend()'>前一页</a>&nbsp;&nbsp; ";
+    $pagenav .= "<a page = '1' showtype = 'hide_zdd_detail' id = 'firstpage' onclick='firstpagesend()'>首页</a>&nbsp;&nbsp; ";
+    $pagenav .= "<a page = $pre_page  showtype = 'hide_zdd_detail' id = 'prepage' onclick='prepagesend()'>前一页</a>&nbsp;&nbsp; ";
     $pagenav .= "第 $page/$page_count 页 共 $rows 条记录 &nbsp;&nbsp;";
-    $pagenav .= "<a page = $next_page showtype = 'detail' id = 'nextpage' onclick='nextpagesend()'>后一页</a>&nbsp;&nbsp; ";
-    $pagenav .= "<a page = $page_count showtype = 'detail' id = 'lastpage' onclick='lastpagesend()'>末页</a>";
+    $pagenav .= "<a page = $next_page showtype = 'hide_zdd_detail' id = 'nextpage' onclick='nextpagesend()'>后一页</a>&nbsp;&nbsp; ";
+    $pagenav .= "<a page = $page_count showtype = 'hide_zdd_detail' id = 'lastpage' onclick='lastpagesend()'>末页</a>";
 //    将  放到id = 'jumptopage' 之前 ，当$show_type为undefined时，会成为showtype =''id = 'jumptopage' 这种格式
 //    使得函数jumptopagesend()找不到id为jumptopage的元素，取不到该元素的page值,使得page的值也是undefined
-    $pagenav .= "　跳到<select name='topage' id = 'jumptopage' size='1' onchange='jumptopagesend()'  showtype = 'detail' >\n";
+    $pagenav .= "　跳到<select name='topage' id = 'jumptopage' size='1' onchange='jumptopagesend()'  showtype = 'hide_zdd_detail' >\n";
     for ($i = 1; $i <= $page_count; $i++) {
         if ($i == $page) $pagenav .= "<option value='$i' selected>$i</option>\n";
         else $pagenav .= "<option value='$i'>$i</option>\n";
@@ -132,7 +125,7 @@ while ($data = odbc_fetch_array($rs)) {
 
 $count_zdd_order_detail = count($zdd_order_detail);
 
-for ($i = 0; $i < $count_zdd_order_detail; $i++) {
+for($i = 0;$i < $count_zdd_order_detail; $i ++){
 
     $zdd_order_detail[$i]['book_name'] = iconv('GBK', 'UTF-8', $zdd_order_detail[$i]['book_name']);
 
@@ -221,6 +214,8 @@ $smarty->assign("pagenav", $pagenav);
 $smarty->assign("zdd_order_detail", $zdd_order_detail);
 
 $smarty->assign("sheet_no", $sheet_no);
+
+$smarty->assign("zdd_is_hide", '1');
 
 
 $page_info = $smarty->display("zhengdingdan/zhengdingdan_detail.html");

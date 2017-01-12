@@ -104,6 +104,14 @@ $('#batch_merge').click(function () {
         }
     })
 
+    if (batch_ids.length < 2) {
+        alert('至少选择两个批次');
+        return;
+    } else if (batch_ids.length == 0) {
+        alert('请先选择批次');
+        return;
+    }
+
     // alert(batch_ids);
 
     // return;
@@ -156,10 +164,10 @@ $('#batch_split').click(function () {
     // alert(batch_ids);
 
     if (batch_ids.length > 1) {
-        alert('一次只能拆分一个订单');
+        alert('一次只能拆分一个批次');
         return;
     } else if (batch_ids.length == 0) {
-        alert('请先选择订单');
+        alert('请先选择批次');
         return;
     }
 
